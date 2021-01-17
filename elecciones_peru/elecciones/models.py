@@ -20,7 +20,7 @@ class candidato(models.Model):
   org_politica_postulate = models.CharField(max_length=90)
   link_foto = models.URLField(max_length=200)
 
-  class Meta(CandidatoPresidencial.Meta):
+  class Meta(candidato.Meta):
     db_table = 'candidato'
 
 class sentenciaPenal(models.Model):
@@ -135,7 +135,7 @@ class estudioPostgrado(models.Model):
 
 class informacionAdicional(models.Model):
   tiene_info = models.BooleanField(default=False)
-  info = models.Text()
+  info = models.TextField()
 
   class Meta(informacionAdicional.Meta):
     db_table = 'informacion_adicional'
