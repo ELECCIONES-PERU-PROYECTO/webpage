@@ -25,7 +25,7 @@ class Candidato(models.Model):
 
 
 class ExperienciaLaboral(models.Model):
-  candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
+  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE, default='-')
   centro_laboral = models.CharField(max_length=300)
   oficio = models.CharField(max_length=400)
   ruc_empresa_laboral = models.CharField(max_length=30)
@@ -38,10 +38,11 @@ class ExperienciaLaboral(models.Model):
 
   class Meta:
     db_table = 'experiencia_laboral'
-    unique_together = ('ruc_empresa_laboral', 'desde', 'hasta',)
+    unique_together = ('ruc_empresa_laboral', 'desde', 'hasta', 'dni_candidato',)
 
 
 class EducacionBasica(models.Model):
+  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
   tiene_estudio_primaria = models.CharField(max_length=10)
   concluyo_primaria = models.CharField(max_length=10)
   tiene_estudio_secundaria = models.CharField(max_length=10)
@@ -52,6 +53,7 @@ class EducacionBasica(models.Model):
 
 
 class EstudioTecnico(models.Model):
+  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
   tiene_estudio_tecnico = models.CharField(max_length=10)
   centro_estudio_tecnico = models.CharField(max_length=200)
   carrera_tecnica = models.CharField(max_length=200)
@@ -63,6 +65,7 @@ class EstudioTecnico(models.Model):
 
 
 class EstudioNoUniversitario(models.Model):
+  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
   tiene_estudio_no_universitario = models.CharField(max_length=10)
   centro_estudio_no_universitario = models.CharField(max_length=200)
   carrera_no_universitaria = models.CharField(max_length=200)
@@ -73,6 +76,7 @@ class EstudioNoUniversitario(models.Model):
 
 
 class EstudioUniversitario(models.Model):
+  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
   tiene_estudio_universitario = models.CharField(max_length=10)
   centro_estudio_universitario = models.CharField(max_length=200)
   concluyo_estudio_universitario = models.CharField(max_length=10)
@@ -86,6 +90,7 @@ class EstudioUniversitario(models.Model):
 
 
 class EstudioPostgrado(models.Model):
+  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
   tiene_postgrado = models.CharField(max_length=10)
   centro_estudio_postgrado = models.CharField(max_length=200)
   grado_postgrado = models.CharField(max_length=200)
@@ -101,6 +106,7 @@ class EstudioPostgrado(models.Model):
 
 
 class CargoPartidario(models.Model):
+  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
   organizacion_politica = models.CharField(max_length=150)
   cargo = models.CharField(max_length=300)
   desde = models.CharField(max_length=20)
@@ -109,9 +115,16 @@ class CargoPartidario(models.Model):
 
   class Meta:
     db_table = 'cargo_partidario'
+    constraints = [
+      models.UniqueConstraint(
+        fields=['dni_candidato'],
+        name='unique dni_carg_parti'
+      )
+    ]
 
 
 class CargoEleccionPopular(models.Model):
+  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
   organizacion_politica = models.CharField(max_length=150)
   cargo = models.CharField(max_length=300)
   desde = models.CharField(max_length=20)
@@ -120,19 +133,27 @@ class CargoEleccionPopular(models.Model):
 
   class Meta:
     db_table = 'cargo_eleccion_popular'
+    constraints = [
+      models.UniqueConstraint(
+        fields=['dni_candidato'],
+        name='unique dni_elecc_popu'
+      )
+    ]
 
 
 class Renuncia(models.Model):
-  candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
+  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
   organización_politica = models.CharField(max_length=140) 
   anhio = models.CharField(max_length=10)
   comentario = models.TextField()
 
   class Meta:
     db_table = 'renuncia'
+    unique_together = ('dni_candidato', 'organización_politica', 'anhio',)
 
 
 class SentenciaPenal(models.Model):
+  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
   n_experiente_penal = models.CharField(max_length=40, primary_key=True)
   fecha_sentencia_firme = models.CharField(max_length=40)
   organo_judicial = models.CharField(max_length=100)
@@ -146,6 +167,7 @@ class SentenciaPenal(models.Model):
 
 
 class SentenciaCivil(models.Model):
+  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
   materia_demanda_civil = models.CharField(max_length=140) 
   n_experiente_civil = models.CharField(max_length=40, primary_key=True)
   organo_judicial = models.CharField(max_length=100) 
@@ -156,7 +178,7 @@ class SentenciaCivil(models.Model):
 
 
 # es Ingresos en JSON
-class bienRenta(models.Model):
+class BienRenta(models.Model):
   anhio = models.CharField(max_length=10)
   total_bien_muebles = models.FloatField()
   total_ingresos = models.FloatField()
@@ -167,6 +189,7 @@ class bienRenta(models.Model):
 
 
 class BienInmueble(models.Model):
+  total_ingresos = models.ForeignKey(Candidato, on_delete=models.CASCADE)
   numero = models.IntegerField()
   tipo_bien = models.CharField(max_length=100)
   direccion_inmueble = models.CharField(max_length=300)
@@ -180,6 +203,8 @@ class BienInmueble(models.Model):
 
 # agregué el atr vehiculo ya que no existía en el modelo ER
 class Vehiculo(models.Model):
+  total_bien_muebles = models.ForeignKey(Candidato, on_delete=models.CASCADE, related_name='total_bien_muebles')
+  total_ingresos = models.ForeignKey(Candidato, on_delete=models.CASCADE, related_name='total_ingresos')
   numero = models.IntegerField()
   vehiculo = models.CharField(max_length=100)
   placa_vehiculo = models.CharField(max_length=10)
@@ -189,10 +214,51 @@ class Vehiculo(models.Model):
 
   class Meta:
     db_table = 'vehiculo'
+    unique_together = ('total_bien_muebles', 'total_ingresos', 'placa_vehiculo',)
 
 
 class InformacionAdicional(models.Model):
+  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
   info = models.TextField()
 
   class Meta:
     db_table = 'informacion_adicional'
+
+
+class TieneTP(models.Model):
+  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
+
+  class Meta:
+    db_table = 'tiene_trayectoria_partidaria'
+    constraints = [
+      models.UniqueConstraint(
+        fields=['dni_candidato'],
+        name='unique dni_tp'
+      )
+    ]
+
+
+class TieneInfoA(models.Model):
+  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
+
+  class Meta:
+    db_table = 'tiene_informacion_adicional'
+    constraints = [
+      models.UniqueConstraint(
+        fields=['dni_candidato'],
+        name='unique dni_infoA'
+      )
+    ]
+
+
+class TieneBR(models.Model):
+  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
+
+  class Meta:
+    db_table = 'tiene_bien_renta'
+    constraints = [
+      models.UniqueConstraint(
+        fields=['dni_candidato'],
+        name='unique dni_tieneBR'
+      )
+    ]
