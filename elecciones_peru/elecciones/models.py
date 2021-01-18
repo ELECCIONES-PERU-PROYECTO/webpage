@@ -1,60 +1,72 @@
 from django.db import models
 
-class Candidato(models.Model):
-  link_foto = models.URLField(max_length=300)
-  dni = models.CharField(max_length=8, primary_key=True)
-  sexo = models.CharField(max_length=10)
+class DatosPersonales(models.Model):
+  organizacion_politica = models.CharField(max_length=100)
+  distrito_elec = models.CharField(max_length=100)
+  dni_candidato = models.CharField(max_length=8)
+  candidato = models.CharField(max_length=200)
+  carnet_extranjeria = models.CharField(max_length=12, default='-')
   apellido_paterno = models.CharField(max_length=100)
   apellido_materno = models.CharField(max_length=100)
   nombres = models.CharField(max_length=150)
+  sexo = models.CharField(max_length=10)
   fecha_nacimiento = models.CharField(max_length=40)
-  carnet_extranjeria = models.CharField(max_length=12, default='-')
-  l_n_pais = models.CharField(max_length=80)
-  l_n_departamento = models.CharField(max_length=80)
-  l_n_provincia = models.CharField(max_length=80)
-  l_n_distrito = models.CharField(max_length=100)
-  l_d_departamento = models.CharField(max_length=80)
-  l_d_provincia = models.CharField(max_length=80)
-  l_d_distrito = models.CharField(max_length=100)
-  l_d_direccion = models.CharField(max_length=200)
-  org_politica_postulate = models.CharField(max_length=100)
-  cargo_postula = models.CharField(max_length=200)
+  pais_nacimiento = models.CharField(max_length=80)
+  departamento_nacimiento = models.CharField(max_length=80)
+  provincia_nacimiento = models.CharField(max_length=80)
+  distrito_nacimiento = models.CharField(max_length=100)
+  departamento_domicilio = models.CharField(max_length=80)
+  provincia_domicilio = models.CharField(max_length=80)
+  distrito_domicilio = models.CharField(max_length=100)
+  direccion_domicilio = models.CharField(max_length=200)
+  cargo_eleccion = models.CharField(max_length=200)
 
   class Meta:
-    db_table = 'candidato'
+    db_table = 'datos_personales'
 
 
 class ExperienciaLaboral(models.Model):
-  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE, default='-')
+  organizacion_politica = models.CharField(max_length=100)
+  distrito_eleccion = models.CharField(max_length=100)
+  dni_candidato = models.CharField(max_length=8)
+  candidato = models.CharField(max_length=200)
+  tiene_experiencia_laboral = models.CharField(max_length=2)
   centro_laboral = models.CharField(max_length=300)
-  oficio = models.CharField(max_length=400)
+  ocupacion = models.CharField(max_length=400)
   ruc_empresa_laboral = models.CharField(max_length=30)
   direccion_laboral = models.CharField(max_length=100)
-  desde = models.CharField(max_length= 20)
-  hasta = models.CharField(max_length= 20)
+  desde_anhio = models.CharField(max_length= 20)
+  hasta_anhio = models.CharField(max_length= 20)
   pais_laboral = models.CharField(max_length=80)
   departamento_laboral = models.CharField(max_length=80)
   provincia_laboral = models.CharField(max_length=80)
 
   class Meta:
     db_table = 'experiencia_laboral'
-    unique_together = ('ruc_empresa_laboral', 'desde', 'hasta', 'dni_candidato',)
+    unique_together = ('ruc_empresa_laboral', 'desde_anhio', 'hasta_anhio', 'dni_candidato',)
 
 
 class EducacionBasica(models.Model):
+  organizacion_politica = models.CharField(max_length=100)
+  distrito_eleccion = models.CharField(max_length=100)
   dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-  tiene_estudio_primaria = models.CharField(max_length=10)
-  concluyo_primaria = models.CharField(max_length=10)
-  tiene_estudio_secundaria = models.CharField(max_length=10)
-  concluyo_secundaria = models.CharField(max_length=10)
+  candidato = models.CharField(max_length=200)
+  tiene_educacion_basica = models.CharField(max_length=2)
+  tiene_estudio_primaria = models.CharField(max_length=2)
+  concluyo_primaria = models.CharField(max_length=2)
+  tiene_estudio_secundaria = models.CharField(max_length=2)
+  concluyo_secundaria = models.CharField(max_length=2)
 
   class Meta:
     db_table = 'educacion_basica'
 
 
 class EstudioTecnico(models.Model):
+  organizacion_politica = models.CharField(max_length=100)
+  distrito_eleccion = models.CharField(max_length=100)
   dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-  tiene_estudio_tecnico = models.CharField(max_length=10)
+  candidato = models.CharField(max_length=200)
+  tiene_estudio_tecnico = models.CharField(max_length=2)
   centro_estudio_tecnico = models.CharField(max_length=200)
   carrera_tecnica = models.CharField(max_length=200)
   concluyo_estudio_tecnico = models.CharField(max_length=10)
@@ -65,24 +77,30 @@ class EstudioTecnico(models.Model):
 
 
 class EstudioNoUniversitario(models.Model):
+  organizacion_politica = models.CharField(max_length=100)
+  distrito_eleccion = models.CharField(max_length=100)
   dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-  tiene_estudio_no_universitario = models.CharField(max_length=10)
+  candidato = models.CharField(max_length=200)
+  tiene_estudio_no_universitario = models.CharField(max_length=2)
   centro_estudio_no_universitario = models.CharField(max_length=200)
   carrera_no_universitaria = models.CharField(max_length=200)
-  concluyo_estudio_no_universitario = models.CharField(max_length=10)
+  concluyo_estudio_no_universitario = models.CharField(max_length=2)
 
   class Meta:
     db_table = 'estudio_no_universitario'
 
 
 class EstudioUniversitario(models.Model):
+  organizacion_politica = models.CharField(max_length=100)
+  distrito_eleccion = models.CharField(max_length=100)
   dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-  tiene_estudio_universitario = models.CharField(max_length=10)
-  centro_estudio_universitario = models.CharField(max_length=200)
-  concluyo_estudio_universitario = models.CharField(max_length=10)
-  grado_universitario = models.CharField(max_length=150)
-  es_egresado_universitario = models.CharField(max_length=10)
-  anhio_obtencion_universitario = models.CharField(max_length=10)
+  candidato = models.CharField(max_length=200)
+  tiene_estudio_universitario = models.CharField(max_length=2)
+  universidad = models.CharField(max_length=200)
+  carrera_universitaria = models.CharField(max_length=150)
+  concluyo_estudio_universitario = models.CharField(max_length=2)
+  es_egresado_universitario = models.CharField(max_length=2)
+  anhio_obtencion_universitario = models.CharField(max_length=4)
   comentario_estudio_universitario = models.TextField()
 
   class Meta:
@@ -90,15 +108,18 @@ class EstudioUniversitario(models.Model):
 
 
 class EstudioPostgrado(models.Model):
+  organizacion_politica = models.CharField(max_length=100)
+  distrito_eleccion = models.CharField(max_length=100)
   dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-  tiene_postgrado = models.CharField(max_length=10)
+  candidato = models.CharField(max_length=200)
+  tiene_postgrado = models.CharField(max_length=2)
   centro_estudio_postgrado = models.CharField(max_length=200)
-  grado_postgrado = models.CharField(max_length=200)
-  concluyo_estudio_postgrado = models.CharField(max_length=10)
-  es_egresado_postgrado = models.CharField(max_length=10)
-  es_maestro = models.CharField(max_length=10)
-  es_doctor = models.CharField(max_length=10)
-  anhio_obtencion_postgrado = models.CharField(max_length=10) 
+  especialidad = models.CharField(max_length=200)
+  concluyo_estudio_postgrado = models.CharField(max_length=2)
+  es_egresado_postgrado = models.CharField(max_length=2)
+  es_maestro = models.CharField(max_length=2)
+  es_doctor = models.CharField(max_length=2)
+  anhio_obtencion_postgrado = models.CharField(max_length=2) 
   comentario_estudio_postgrado = models.TextField()
 
   class Meta:
@@ -106,11 +127,15 @@ class EstudioPostgrado(models.Model):
 
 
 class CargoPartidario(models.Model):
+  organizacion_politica = models.CharField(max_length=100)
+  distrito_eleccion = models.CharField(max_length=100)
   dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
+  candidato = models.CharField(max_length=200)
+  tiene_cargo_partidario = models.CharField(max_length=2)
   organizacion_politica = models.CharField(max_length=150)
   cargo = models.CharField(max_length=300)
-  desde = models.CharField(max_length=20)
-  hasta = models.CharField(max_length=20)
+  desde_anhio = models.CharField(max_length=4)
+  hasta_anhio = models.CharField(max_length=4)
   comentario = models.TextField()
 
   class Meta:
@@ -123,16 +148,20 @@ class CargoPartidario(models.Model):
     ]
 
 
-class CargoEleccionPopular(models.Model):
+class CargoEleccion(models.Model):
+  organizacion_politica = models.CharField(max_length=100)
+  distrito_eleccion = models.CharField(max_length=100)
   dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
+  candidato = models.CharField(max_length=200)
+  tiene_info_por_declarar = models.CharField(max_length=2)
   organizacion_politica = models.CharField(max_length=150)
+  desde_anhio = models.CharField(max_length=20)
+  hasta_anhio = models.CharField(max_length=20)
   cargo = models.CharField(max_length=300)
-  desde = models.CharField(max_length=20)
-  hasta = models.CharField(max_length=20)
   comentario = models.TextField()
 
   class Meta:
-    db_table = 'cargo_eleccion_popular'
+    db_table = 'cargo_eleccion'
     constraints = [
       models.UniqueConstraint(
         fields=['dni_candidato'],
@@ -142,123 +171,111 @@ class CargoEleccionPopular(models.Model):
 
 
 class Renuncia(models.Model):
+  organizacion_politica = models.CharField(max_length=100)
+  distrito_eleccion = models.CharField(max_length=100)
   dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
+  candidato = models.CharField(max_length=200)
+  tiene_info_por_declarar = models.CharField(max_length=2)
   organización_politica = models.CharField(max_length=140) 
-  anhio = models.CharField(max_length=10)
   comentario = models.TextField()
 
   class Meta:
     db_table = 'renuncia'
-    unique_together = ('dni_candidato', 'organización_politica', 'anhio',)
+    unique_together = ('dni_candidato', 'organización_politica',)
 
 
 class SentenciaPenal(models.Model):
+  organizacion_politica = models.CharField(max_length=100)
+  distrito_eleccion = models.CharField(max_length=100)
   dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
+  candidato = models.CharField(max_length=200)
+  tiene_info_por_declarar = models.CharField(max_length=2)
   n_experiente_penal = models.CharField(max_length=40, primary_key=True)
   fecha_sentencia_firme = models.CharField(max_length=40)
   organo_judicial = models.CharField(max_length=100)
   delito_penal = models.CharField(max_length=120) 
   fallo_pena = models.CharField(max_length=120) 
   modalidad_penal = models.CharField(max_length=100) 
+  otra_modalidad = models.CharField(max_length=100) 
   cumplimiendo_del_fallo = models.TextField()  
 
   class Meta:
     db_table = 'sentencia_penal'
 
 
-class SentenciaCivil(models.Model):
+class SentenciaObligacion(models.Model):
+  organizacion_politica = models.CharField(max_length=100)
+  distrito_eleccion = models.CharField(max_length=100)
   dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-  materia_demanda_civil = models.CharField(max_length=140) 
-  n_experiente_civil = models.CharField(max_length=40, primary_key=True)
+  candidato = models.CharField(max_length=200)
+  tiene_info_por_declarar = models.CharField(max_length=2)
+  materia_sentencia = models.CharField(max_length=140) 
+  n_experiente_obliga = models.CharField(max_length=40, primary_key=True)
   organo_judicial = models.CharField(max_length=100) 
-  fallo_pena = models.CharField(max_length=120) 
+  fallo_obliga = models.CharField(max_length=120) 
 
   class Meta:
-    db_table = 'sentencia_civil'
+    db_table = 'sentencia_obligacion'
 
 
-# es Ingresos en JSON
-class BienRenta(models.Model):
-  anhio = models.CharField(max_length=10)
-  total_bien_muebles = models.FloatField()
-  total_ingresos = models.FloatField()
+class Ingresos(models.Model):
+  organizacion_politica = models.CharField(max_length=100)
+  distrito_eleccion = models.CharField(max_length=100)
+  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
+  candidato = models.CharField(max_length=200)
+  tiene_ingresos = models.CharField(max_length=2)
+  anhio_ingresos = models.CharField(max_length=4)
+  remu_bruta_pub = models.FloatField()
+  remu_bruta_priv = models.FloatField()
+  renta_indiv_pub = models.FloatField()
+  renta_indiv_priv = models.FloatField()
+  otro_ingreso_pub = models.FloatField()
+  otro_ingreso_priv = models.FloatField()
 
   class Meta:
-    db_table = 'bien_renta'
-    unique_together = ('total_bien_muebles', 'total_ingresos',)
+    db_table = 'ingresos'
 
 
 class BienInmueble(models.Model):
-  total_ingresos = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-  numero = models.IntegerField()
-  tipo_bien = models.CharField(max_length=100)
-  direccion_inmueble = models.CharField(max_length=300)
+  organizacion_politica = models.CharField(max_length=100)
+  distrito_eleccion = models.CharField(max_length=100)
+  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
+  candidato = models.CharField(max_length=200)
+  tiene_inmueble = models.CharField(max_length=2)
+  tipo_inmueble = models.CharField(max_length=150)
+  direccion_inmueble = models.CharField(max_length=200)
   esta_inscrito_sunarp = models.CharField(max_length=10)
-  partida_inmueble = models.CharField(max_length=100)
-  valor_inmueble = models.FloatField()
+  partida_inmueble_sunarp = models.CharField(max_length=100)
+  autovaluo = models.FloatField()
   comentario_inmueble = models.TextField()
 
   class Meta:
     db_table = 'bien_inmueble'
 
-# agregué el atr vehiculo ya que no existía en el modelo ER
-class Vehiculo(models.Model):
-  total_bien_muebles = models.ForeignKey(Candidato, on_delete=models.CASCADE, related_name='total_bien_muebles')
-  total_ingresos = models.ForeignKey(Candidato, on_delete=models.CASCADE, related_name='total_ingresos')
-  numero = models.IntegerField()
-  vehiculo = models.CharField(max_length=100)
-  placa_vehiculo = models.CharField(max_length=10)
-  caracteristicas_vehiculo = models.TextField()
+
+class BienMueble(models.Model):
+  organizacion_politica = models.CharField(max_length=100)
+  distrito_eleccion = models.CharField(max_length=100)
+  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
+  candidato = models.CharField(max_length=200)
+  tiene_bien_mueble = models.CharField(max_length=2)
+  vehiculo = models.CharField(max_length=200)
+  placa = models.CharField(max_length=8)
   valor = models.FloatField()
+  caracteristicas_vehiculo = models.TextField()
   comentario_vehiculo = models.TextField()
 
   class Meta:
-    db_table = 'vehiculo'
-    unique_together = ('total_bien_muebles', 'total_ingresos', 'placa_vehiculo',)
+    db_table = 'bien_mueble'
 
 
 class InformacionAdicional(models.Model):
+  organizacion_politica = models.CharField(max_length=100)
+  distrito_eleccion = models.CharField(max_length=100)
   dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
+  candidato = models.CharField(max_length=200)
+  tiene_info_adicional = models.CharField(max_length=2)
   info = models.TextField()
 
   class Meta:
     db_table = 'informacion_adicional'
-
-
-class TieneTP(models.Model):
-  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-
-  class Meta:
-    db_table = 'tiene_trayectoria_partidaria'
-    constraints = [
-      models.UniqueConstraint(
-        fields=['dni_candidato'],
-        name='unique dni_tp'
-      )
-    ]
-
-
-class TieneInfoA(models.Model):
-  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-
-  class Meta:
-    db_table = 'tiene_informacion_adicional'
-    constraints = [
-      models.UniqueConstraint(
-        fields=['dni_candidato'],
-        name='unique dni_infoA'
-      )
-    ]
-
-
-class TieneBR(models.Model):
-  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-
-  class Meta:
-    db_table = 'tiene_bien_renta'
-    constraints = [
-      models.UniqueConstraint(
-        fields=['dni_candidato'],
-        name='unique dni_tieneBR'
-      )
-    ]
