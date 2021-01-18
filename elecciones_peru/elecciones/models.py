@@ -25,6 +25,7 @@ class Candidato(models.Model):
 
 
 class ExperienciaLaboral(models.Model):
+  candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
   centro_laboral = models.CharField(max_length=300)
   oficio = models.CharField(max_length=400)
   ruc_empresa_laboral = models.CharField(max_length=30)
@@ -79,8 +80,6 @@ class EstudioUniversitario(models.Model):
   es_egresado_universitario = models.CharField(max_length=10)
   anhio_obtencion_universitario = models.CharField(max_length=10)
   comentario_estudio_universitario = models.TextField()
-  # Falta atributo
-  carrera_universitaria = models.CharField(max_length=200)
 
   class Meta:
     db_table = 'estudio_universitario'
@@ -101,17 +100,40 @@ class EstudioPostgrado(models.Model):
     db_table = 'estudio_postgrado'
 
 
+class CargoPartidario(models.Model):
+  organizacion_politica = models.CharField(max_length=150)
+  cargo = models.CharField(max_length=300)
+  desde = models.CharField(max_length=20)
+  hasta = models.CharField(max_length=20)
+  comentario = models.TextField()
+
+  class Meta:
+    db_table = 'cargo_partidario'
+
+
+class CargoEleccionPopular(models.Model):
+  organizacion_politica = models.CharField(max_length=150)
+  cargo = models.CharField(max_length=300)
+  desde = models.CharField(max_length=20)
+  hasta = models.CharField(max_length=20)
+  comentario = models.TextField()
+
+  class Meta:
+    db_table = 'cargo_eleccion_popular'
+
+
 class Renuncia(models.Model):
-  organización_politica_renuncia = models.CharField(max_length=140) 
-  anhio_renuncia = models.CharField(max_length=10)
-  comentario_renuncia = models.TextField()
+  candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
+  organización_politica = models.CharField(max_length=140) 
+  anhio = models.CharField(max_length=10)
+  comentario = models.TextField()
 
   class Meta:
     db_table = 'renuncia'
 
 
 class SentenciaPenal(models.Model):
-  n_experiente_penal = models.CharField(max_length=40 primary_key=True)
+  n_experiente_penal = models.CharField(max_length=40, primary_key=True)
   fecha_sentencia_firme = models.CharField(max_length=40)
   organo_judicial = models.CharField(max_length=100)
   delito_penal = models.CharField(max_length=120) 
@@ -133,7 +155,15 @@ class SentenciaCivil(models.Model):
     db_table = 'sentencia_civil'
 
 
-# Falta Ingresos here #
+# es Ingresos en JSON
+class bienRenta(models.Model):
+  anhio = models.CharField(max_length=10)
+  total_bien_muebles = models.FloatField()
+  total_ingresos = models.FloatField()
+
+  class Meta:
+    db_table = 'bien_renta'
+    unique_together = ('total_bien_muebles', 'total_ingresos',)
 
 
 class BienInmueble(models.Model):
@@ -148,50 +178,17 @@ class BienInmueble(models.Model):
   class Meta:
     db_table = 'bien_inmueble'
 
-
-# Faltan en el JSON
-class CargoPartidario(models.Model):
-  organizacion_politica = models.CharField(max_length=150)
-  desde = models.CharField(max_length=20)
-  hasta = models.CharField(max_length=20)
-  cargo = models.CharField(max_length=300)
-  comentario = models.TextField()
-
-  class Meta:
-    db_table = 'cargo_partidario'
-
-
-# Faltan en el JSON
-class bienRenta(models.Model):
-  total_bien_muebles = models.FloatField()
-  total_ingresos = models.FloatField()
-
-  class Meta:
-    db_table = 'bien_renta'
-    unique_together = ('total_bien_muebles', 'total_ingresos',)
-
-
-# Falta tabla en JSON
+# agregué el atr vehiculo ya que no existía en el modelo ER
 class Vehiculo(models.Model):
-  comentario_vehiculo = models.TextField()
-  valor = models.FloatField()
+  numero = models.IntegerField()
+  vehiculo = models.CharField(max_length=100)
   placa_vehiculo = models.CharField(max_length=10)
   caracteristicas_vehiculo = models.TextField()
+  valor = models.FloatField()
+  comentario_vehiculo = models.TextField()
 
   class Meta:
     db_table = 'vehiculo'
-
-
-# Faltan en el JSON
-class CargoEleccionPopular(models.Model):
-  organizacion_politica = models.CharField(max_length=150)
-  cargo = models.CharField(max_length=300)
-  desde = models.CharField(max_length=20)
-  hasta = models.CharField(max_length=20)
-  comentario = models.TextField()
-
-  class Meta:
-    db_table = 'cargo_eleccion_popular'
 
 
 class InformacionAdicional(models.Model):
