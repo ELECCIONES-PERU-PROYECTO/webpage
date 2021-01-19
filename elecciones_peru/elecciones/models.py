@@ -3,8 +3,8 @@ from django.db import models
 class DatosPersonales(models.Model):
   organizacion_politica = models.CharField(max_length=100)
   distrito_elec = models.CharField(max_length=100)
-  dni_candidato = models.CharField(max_length=8)
-  candidato = models.CharField(max_length=200)
+  dni_candidato = models.CharField(max_length=8, primary_key=True)
+  candidato = models.CharField(max_length=200, null=False)
   carnet_extranjeria = models.CharField(max_length=12, default='-')
   apellido_paterno = models.CharField(max_length=100)
   apellido_materno = models.CharField(max_length=100)
@@ -17,7 +17,7 @@ class DatosPersonales(models.Model):
   distrito_nacimiento = models.CharField(max_length=100)
   departamento_domicilio = models.CharField(max_length=80)
   provincia_domicilio = models.CharField(max_length=80)
-  distrito_domicilio = models.CharField(max_length=100)
+  distrito_domicilio = models.CharField(max_length=80)
   direccion_domicilio = models.CharField(max_length=200)
   cargo_eleccion = models.CharField(max_length=200)
 
@@ -26,10 +26,10 @@ class DatosPersonales(models.Model):
 
 
 class ExperienciaLaboral(models.Model):
-  organizacion_politica = models.CharField(max_length=100)
-  distrito_eleccion = models.CharField(max_length=100)
-  dni_candidato = models.CharField(max_length=8)
-  candidato = models.CharField(max_length=200)
+  organizacion_politica = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='organizacion_politica_ep')
+  distrito_eleccion = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='distrito_eleccion_ep')
+  dni_candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='dni_candidato_ep')
+  candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='candidato_ep')
   tiene_experiencia_laboral = models.CharField(max_length=2)
   centro_laboral = models.CharField(max_length=300)
   ocupacion = models.CharField(max_length=400)
@@ -40,17 +40,18 @@ class ExperienciaLaboral(models.Model):
   pais_laboral = models.CharField(max_length=80)
   departamento_laboral = models.CharField(max_length=80)
   provincia_laboral = models.CharField(max_length=80)
+  distrito_laboral = models.CharField(max_length=80)
 
   class Meta:
     db_table = 'experiencia_laboral'
-    unique_together = ('ruc_empresa_laboral', 'desde_anhio', 'hasta_anhio', 'dni_candidato',)
+    unique_together = ('dni_candidato', 'centro_laboral', 'desde_anhio', 'hasta_anhio',)
 
 
 class EducacionBasica(models.Model):
-  organizacion_politica = models.CharField(max_length=100)
-  distrito_eleccion = models.CharField(max_length=100)
-  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-  candidato = models.CharField(max_length=200)
+  organizacion_politica = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='organizacion_politica_eb')
+  distrito_eleccion = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='distrito_eleccion_eb')
+  dni_candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='dni_candidato_eb')
+  candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='candidato_eb')
   tiene_educacion_basica = models.CharField(max_length=2)
   tiene_estudio_primaria = models.CharField(max_length=2)
   concluyo_primaria = models.CharField(max_length=2)
@@ -59,13 +60,14 @@ class EducacionBasica(models.Model):
 
   class Meta:
     db_table = 'educacion_basica'
+    unique_together = ('organizacion_politica', 'distrito_eleccion', 'dni_candidato',)
 
 
 class EstudioTecnico(models.Model):
-  organizacion_politica = models.CharField(max_length=100)
-  distrito_eleccion = models.CharField(max_length=100)
-  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-  candidato = models.CharField(max_length=200)
+  organizacion_politica = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='organizacion_politica_et')
+  distrito_eleccion = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='distrito_elecciondistrito_eleccion_et')
+  dni_candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='dni_candidato_et')
+  candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='candidato_et')
   tiene_estudio_tecnico = models.CharField(max_length=2)
   centro_estudio_tecnico = models.CharField(max_length=200)
   carrera_tecnica = models.CharField(max_length=200)
@@ -77,10 +79,10 @@ class EstudioTecnico(models.Model):
 
 
 class EstudioNoUniversitario(models.Model):
-  organizacion_politica = models.CharField(max_length=100)
-  distrito_eleccion = models.CharField(max_length=100)
-  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-  candidato = models.CharField(max_length=200)
+  organizacion_politica = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='organizacion_politica_enu')
+  distrito_eleccion = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='distrito_elecciondistrito_eleccion_enu')
+  dni_candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='dni_candidato_enu')
+  candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='candidato_enu')
   tiene_estudio_no_universitario = models.CharField(max_length=2)
   centro_estudio_no_universitario = models.CharField(max_length=200)
   carrera_no_universitaria = models.CharField(max_length=200)
@@ -91,10 +93,10 @@ class EstudioNoUniversitario(models.Model):
 
 
 class EstudioUniversitario(models.Model):
-  organizacion_politica = models.CharField(max_length=100)
-  distrito_eleccion = models.CharField(max_length=100)
-  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-  candidato = models.CharField(max_length=200)
+  organizacion_politica = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='organizacion_politica_eu')
+  distrito_eleccion = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='distrito_elecciondistrito_eleccion_eu')
+  dni_candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='dni_candidato_eu')
+  candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='candidato_eu')
   tiene_estudio_universitario = models.CharField(max_length=2)
   universidad = models.CharField(max_length=200)
   carrera_universitaria = models.CharField(max_length=150)
@@ -108,10 +110,10 @@ class EstudioUniversitario(models.Model):
 
 
 class EstudioPostgrado(models.Model):
-  organizacion_politica = models.CharField(max_length=100)
-  distrito_eleccion = models.CharField(max_length=100)
-  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-  candidato = models.CharField(max_length=200)
+  organizacion_politica = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='organizacion_politica_epst')
+  distrito_eleccion = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='distrito_eleccion_epst')
+  dni_candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='dni_candidato_epst')
+  candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='candidato_epst')
   tiene_postgrado = models.CharField(max_length=2)
   centro_estudio_postgrado = models.CharField(max_length=200)
   especialidad = models.CharField(max_length=200)
@@ -127,12 +129,11 @@ class EstudioPostgrado(models.Model):
 
 
 class CargoPartidario(models.Model):
-  organizacion_politica = models.CharField(max_length=100)
-  distrito_eleccion = models.CharField(max_length=100)
-  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-  candidato = models.CharField(max_length=200)
+  organizacion_politica = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='organizacion_politica_cp')
+  distrito_eleccion = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='distrito_eleccion_cp')
+  dni_candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='dni_candidato_cp')
+  candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='candidato_cp')
   tiene_cargo_partidario = models.CharField(max_length=2)
-  organizacion_politica = models.CharField(max_length=150)
   cargo = models.CharField(max_length=300)
   desde_anhio = models.CharField(max_length=4)
   hasta_anhio = models.CharField(max_length=4)
@@ -140,21 +141,15 @@ class CargoPartidario(models.Model):
 
   class Meta:
     db_table = 'cargo_partidario'
-    constraints = [
-      models.UniqueConstraint(
-        fields=['dni_candidato'],
-        name='unique dni_carg_parti'
-      )
-    ]
 
 
 class CargoEleccion(models.Model):
-  organizacion_politica = models.CharField(max_length=100)
-  distrito_eleccion = models.CharField(max_length=100)
-  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-  candidato = models.CharField(max_length=200)
+  organizacion_politica = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='organizacion_politica_ce')
+  distrito_eleccion = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='distrito_eleccion_ce')
+  dni_candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='dni_candidato_ce')
+  candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='candidato_ce')
   tiene_info_por_declarar = models.CharField(max_length=2)
-  organizacion_politica = models.CharField(max_length=150)
+  org_politica_cargo = models.CharField(max_length=250)
   desde_anhio = models.CharField(max_length=20)
   hasta_anhio = models.CharField(max_length=20)
   cargo = models.CharField(max_length=300)
@@ -162,52 +157,45 @@ class CargoEleccion(models.Model):
 
   class Meta:
     db_table = 'cargo_eleccion'
-    constraints = [
-      models.UniqueConstraint(
-        fields=['dni_candidato'],
-        name='unique dni_elecc_popu'
-      )
-    ]
 
 
 class Renuncia(models.Model):
-  organizacion_politica = models.CharField(max_length=100)
-  distrito_eleccion = models.CharField(max_length=100)
-  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-  candidato = models.CharField(max_length=200)
+  organizacion_politica = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='organizacion_politica_r')
+  distrito_eleccion = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='distrito_eleccion_r')
+  dni_candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='dni_candidato_r')
+  candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='candidato_r')
   tiene_info_por_declarar = models.CharField(max_length=2)
-  organización_politica = models.CharField(max_length=140) 
+  organización_renuncia = models.CharField(max_length=140) 
   comentario = models.TextField()
 
   class Meta:
     db_table = 'renuncia'
-    unique_together = ('dni_candidato', 'organización_politica',)
 
 
 class SentenciaPenal(models.Model):
-  organizacion_politica = models.CharField(max_length=100)
-  distrito_eleccion = models.CharField(max_length=100)
-  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-  candidato = models.CharField(max_length=200)
+  organizacion_politica = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='organizacion_politica_sp')
+  distrito_eleccion = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='distrito_eleccion_sp')
+  dni_candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='dni_candidato_sp')
+  candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='candidato_sp')
   tiene_info_por_declarar = models.CharField(max_length=2)
   n_experiente_penal = models.CharField(max_length=40, primary_key=True)
-  fecha_sentencia_firme = models.CharField(max_length=40)
+  fecha_sentencia_penal = models.CharField(max_length=40)
   organo_judicial = models.CharField(max_length=100)
   delito_penal = models.CharField(max_length=120) 
-  fallo_pena = models.CharField(max_length=120) 
+  fallo_penal = models.CharField(max_length=120) 
   modalidad_penal = models.CharField(max_length=100) 
   otra_modalidad = models.CharField(max_length=100) 
-  cumplimiendo_del_fallo = models.TextField()  
+  cumplimiento_del_fallo = models.TextField()  
 
   class Meta:
     db_table = 'sentencia_penal'
 
 
 class SentenciaObligacion(models.Model):
-  organizacion_politica = models.CharField(max_length=100)
-  distrito_eleccion = models.CharField(max_length=100)
-  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-  candidato = models.CharField(max_length=200)
+  organizacion_politica = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='organizacion_politica_so')
+  distrito_eleccion = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='distrito_eleccion_so')
+  dni_candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='dni_candidato_so')
+  candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='candidato_so')
   tiene_info_por_declarar = models.CharField(max_length=2)
   materia_sentencia = models.CharField(max_length=140) 
   n_experiente_obliga = models.CharField(max_length=40, primary_key=True)
@@ -219,10 +207,10 @@ class SentenciaObligacion(models.Model):
 
 
 class Ingresos(models.Model):
-  organizacion_politica = models.CharField(max_length=100)
-  distrito_eleccion = models.CharField(max_length=100)
-  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-  candidato = models.CharField(max_length=200)
+  organizacion_politica = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='organizacion_politica_i')
+  distrito_eleccion = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='distrito_eleccion_i')
+  dni_candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='dni_candidato_i')
+  candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='candidato_i')
   tiene_ingresos = models.CharField(max_length=2)
   anhio_ingresos = models.CharField(max_length=4)
   remu_bruta_pub = models.FloatField()
@@ -237,10 +225,10 @@ class Ingresos(models.Model):
 
 
 class BienInmueble(models.Model):
-  organizacion_politica = models.CharField(max_length=100)
-  distrito_eleccion = models.CharField(max_length=100)
-  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-  candidato = models.CharField(max_length=200)
+  organizacion_politica = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='organizacion_politica_bi')
+  distrito_eleccion = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='distrito_eleccion_bi')
+  dni_candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='dni_candidato_bi')
+  candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='candidato_bi')
   tiene_inmueble = models.CharField(max_length=2)
   tipo_inmueble = models.CharField(max_length=150)
   direccion_inmueble = models.CharField(max_length=200)
@@ -254,10 +242,10 @@ class BienInmueble(models.Model):
 
 
 class BienMueble(models.Model):
-  organizacion_politica = models.CharField(max_length=100)
-  distrito_eleccion = models.CharField(max_length=100)
-  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-  candidato = models.CharField(max_length=200)
+  organizacion_politica = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='organizacion_politica_bm')
+  distrito_eleccion = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='distrito_eleccion_bm')
+  dni_candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='dni_candidato_bm')
+  candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='candidato_bm')
   tiene_bien_mueble = models.CharField(max_length=2)
   vehiculo = models.CharField(max_length=200)
   placa = models.CharField(max_length=8)
@@ -270,10 +258,10 @@ class BienMueble(models.Model):
 
 
 class InformacionAdicional(models.Model):
-  organizacion_politica = models.CharField(max_length=100)
-  distrito_eleccion = models.CharField(max_length=100)
-  dni_candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
-  candidato = models.CharField(max_length=200)
+  organizacion_politica = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='organizacion_politica_ia')
+  distrito_eleccion = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='distrito_eleccion_ia')
+  dni_candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='dni_candidato_ia')
+  candidato = models.ForeignKey(DatosPersonales, on_delete=models.CASCADE, related_name='candidato_ia')
   tiene_info_adicional = models.CharField(max_length=2)
   info = models.TextField()
 

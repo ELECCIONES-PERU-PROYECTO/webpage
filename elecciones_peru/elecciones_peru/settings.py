@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'elecciones_peru.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'elecciones_peru',
-        'USER': 'postgres',
-        'PASSWORD': 'pvta',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': 'db_partidos2020',
+        'USER': 'usr_esteban',
+        'PASSWORD': 'utec2021',
+        'HOST': 'postgresql-18527-0.cloudclusters.net',
+        'PORT': '18562',
     }
 }
 
