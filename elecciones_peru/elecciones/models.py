@@ -1,7 +1,7 @@
 from django.db import models
 
 class DatosPersonales(models.Model):
-  id = models.CharField(max_length=10, primary_key=True)
+  id = models.CharField(max_length=250, primary_key=True)
   organizacion_politica = models.CharField(max_length=250)
   distrito_elec = models.CharField(max_length=100)
   dni_candidato = models.CharField(max_length=8)
