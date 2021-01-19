@@ -47,7 +47,6 @@ class ExperienciaLaboral(models.Model):
 
   class Meta:
     db_table = 'experiencia_laboral'
-    unique_together = ('dni_candidato', 'centro_laboral', 'desde_anhio', 'hasta_anhio',)
 
 
 class EducacionBasica(models.Model):
@@ -64,7 +63,6 @@ class EducacionBasica(models.Model):
 
   class Meta:
     db_table = 'educacion_basica'
-    unique_together = ('organizacion_politica', 'distrito_elec', 'dni_candidato',)
 
 
 class EstudioTecnico(models.Model):
@@ -195,7 +193,7 @@ class SentenciaPenal(models.Model):
   fecha_sentencia_penal = models.CharField(max_length=40)
   organo_judicial = models.CharField(max_length=100)
   delito_penal = models.CharField(max_length=120) 
-  fallo_penal = models.CharField(max_length=120) 
+  fallo_penal = models.CharField(max_length=300) 
   modalidad_penal = models.CharField(max_length=100) 
   otra_modalidad = models.CharField(max_length=100) 
   cumplimiento_del_fallo = models.TextField()
@@ -214,7 +212,7 @@ class SentenciaObligacion(models.Model):
   materia_sentencia = models.CharField(max_length=140) 
   n_experiente_obliga = models.CharField(max_length=40)
   organo_judicial = models.CharField(max_length=100) 
-  fallo_obliga = models.CharField(max_length=120) 
+  fallo_obliga = models.CharField(max_length=500) 
 
   class Meta:
     db_table = 'sentencia_obligacion'
@@ -247,10 +245,10 @@ class BienInmueble(models.Model):
   candidato = models.CharField(max_length=250)
   tiene_inmueble = models.CharField(max_length=10)
   tipo_inmueble = models.CharField(max_length=150)
-  direccion_inmueble = models.CharField(max_length=200)
+  direccion_inmueble = models.CharField(max_length=400)
   esta_inscrito_sunarp = models.CharField(max_length=10)
   partida_inmueble_sunarp = models.CharField(max_length=100)
-  autovaluo = models.FloatField(default=0)
+  autovaluo = models.FloatField(default=0, null=True)
   comentario_inmueble = models.TextField()
 
   class Meta:
@@ -265,7 +263,7 @@ class BienMueble(models.Model):
   candidato = models.CharField(max_length=250)
   tiene_bien_mueble = models.CharField(max_length=10)
   vehiculo = models.CharField(max_length=200)
-  placa = models.CharField(max_length=8)
+  placa = models.CharField(max_length=20)
   valor = models.FloatField(default=0)
   caracteristicas_vehiculo = models.TextField()
   comentario_vehiculo = models.TextField()
