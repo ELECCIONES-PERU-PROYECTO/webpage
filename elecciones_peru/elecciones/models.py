@@ -3,7 +3,7 @@ from django.db import models
 class DatosPersonales(models.Model):
   organizacion_politica = models.CharField(max_length=100)
   distrito_elec = models.CharField(max_length=100)
-  dni_candidato = models.CharField(max_length=8, primary_key=True)
+  dni_candidato = models.CharField(max_length=8)
   candidato = models.CharField(max_length=200, null=False)
   carnet_extranjeria = models.CharField(max_length=12, default='-')
   apellido_paterno = models.CharField(max_length=100)
@@ -23,6 +23,7 @@ class DatosPersonales(models.Model):
 
   class Meta:
     db_table = 'datos_personales'
+    unique_together = ('dni_candidato', 'cargo_eleccion',)
 
 
 class ExperienciaLaboral(models.Model):
