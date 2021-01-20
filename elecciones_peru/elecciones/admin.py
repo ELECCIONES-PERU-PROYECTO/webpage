@@ -49,7 +49,7 @@ class ExperienciaLaboralAdmin(admin.ModelAdmin):
 class EducacionBasicaAdmin(admin.ModelAdmin):
   list_display = (
     'organizacion_politica',
-    'distrito_eleccion',
+    'distrito_elec',
     'dni_candidato',
     'candidato',
     'tiene_educacion_basica',
@@ -63,7 +63,7 @@ class EducacionBasicaAdmin(admin.ModelAdmin):
 class EstudioTecnicoAdmin(admin.ModelAdmin):
   list_display = (
     'organizacion_politica',
-    'distrito_eleccion',
+    'distrito_elec',
     'dni_candidato',
     'candidato',
     'tiene_estudio_tecnico',
@@ -77,7 +77,7 @@ class EstudioTecnicoAdmin(admin.ModelAdmin):
 class EstudioNoUniversitarioAdmin(admin.ModelAdmin):
   list_display = (
     'organizacion_politica',
-    'distrito_eleccion',
+    'distrito_elec',
     'dni_candidato',
     'candidato',
     'tiene_estudio_no_universitario',
@@ -90,7 +90,7 @@ class EstudioNoUniversitarioAdmin(admin.ModelAdmin):
 class EstudioUniversitarioAdmin(admin.ModelAdmin):
   list_display = (
     'organizacion_politica',
-    'distrito_eleccion',
+    'distrito_elec',
     'dni_candidato',
     'candidato',
     'tiene_estudio_universitario',
@@ -106,7 +106,7 @@ class EstudioUniversitarioAdmin(admin.ModelAdmin):
 class EstudioPostgradoAdmin(admin.ModelAdmin):
   list_display = (
     'organizacion_politica',
-    'distrito_eleccion',
+    'distrito_elec',
     'dni_candidato',
     'candidato',
     'tiene_postgrado',
@@ -124,11 +124,11 @@ class EstudioPostgradoAdmin(admin.ModelAdmin):
 class CargoPartidarioAdmin(admin.ModelAdmin):
   list_display = (
     'organizacion_politica',
-    'distrito_eleccion',
+    'distrito_elec',
     'dni_candidato',
     'candidato',
     'tiene_cargo_partidario',
-    'organizacion_politica',
+    'org_politica_cargo',
     'cargo',
     'desde_anhio',
     'hasta_anhio',
@@ -139,11 +139,11 @@ class CargoPartidarioAdmin(admin.ModelAdmin):
 class CargoEleccionAdmin(admin.ModelAdmin):
   list_display = (
     'organizacion_politica',
-    'distrito_eleccion',
+    'distrito_elec',
     'dni_candidato',
     'candidato',
     'tiene_info_por_declarar',
-    'organizacion_politica',
+    'org_politica_cargo',
     'desde_anhio',
     'hasta_anhio',
     'cargo',
@@ -198,7 +198,7 @@ class SentenciaObligacionAdmin(admin.ModelAdmin):
 class IngresoAdmin(admin.ModelAdmin):
   list_display = (
     'organizacion_politica',
-    'distrito_eleccion',
+    'distrito_elec',
     'dni_candidato',
     'candidato',
     'tiene_ingresos',
