@@ -1,0 +1,11 @@
+{% extends "elecciones/base.html" %}
+{% block title %}Elecciones{% endblock %}
+{% block content %}
+  <h1>Elecciones</h1>
+  {% for p in list_pres %}
+    <h2>
+      {{ p.candidato }}
+    </h2>
+    <!-- {{ post.body|truncatewords:30|linebreaks }} -->
+  {% endfor %}
+{% endblock %}

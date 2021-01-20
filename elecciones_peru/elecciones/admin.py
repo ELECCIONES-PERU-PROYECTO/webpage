@@ -25,6 +25,13 @@ class DatosPersonalesAdmin(admin.ModelAdmin):
     'cargo_eleccion',
   )
 
+  list_filter = (
+    'organizacion_politica',
+    'sexo',
+    'pais_nacimiento',
+    'cargo_eleccion',
+  )
+
 @admin.register(ExperienciaLaboral)
 class ExperienciaLaboralAdmin(admin.ModelAdmin):
   list_display = (

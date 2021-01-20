@@ -1,5 +1,5 @@
 from django.db import models
-
+# test_datos = DatosPersonales(organizacion_politica='MRTA', distrito_elec='dist_test', dni_candidato='87654321', carnet_extranjeria='13456678', apellido_paterno='si' , candidato='esteban si no' , apellido_materno='no', nombres='esteban', sexo='no sabe', fecha_nacimiento='18/34/45', pais_nacimiento='peru', departamento_nacimiento='peru', provincia_nacimiento='peru', distrito_nacimiento='peru' , departamento_domicilio='peru', provincia_domicilio='peru', distrito_domicilio='peru', direccion_domicilio='peru', cargo_eleccion='niu')
 class DatosPersonales(models.Model):
   id = models.CharField(max_length=10, primary_key=True)
   organizacion_politica = models.CharField(max_length=250)
