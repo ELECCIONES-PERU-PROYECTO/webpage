@@ -10,7 +10,7 @@ def presis(request):
     "AND DP.cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR "
     "DP.cargo_eleccion ='PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR "
     "DP.cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA'")
-
+  
     
   return render(request,
                 'elecciones/presis.html',
