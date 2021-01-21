@@ -58,7 +58,7 @@
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
                 <div class="uk-width-1-1@s">
-                  <select class="uk-select" id="nivel_academico">
+                  <select class="uk-select" id="nivel_academico" onchange="get_nivel_academico()">
                     <option value="primaria">Concluyó primaria</option>
                     <option value="secundaria">Concluyó secundaria</option>
                     <option value="tecnico">Concluyó técnico</option>
@@ -448,7 +448,7 @@
           </ul>
         </li>
       </ul>
-      
+      <button class="uk-button uk-button-secondary">Filtrar</button>
     </div>
     
   </aside>
