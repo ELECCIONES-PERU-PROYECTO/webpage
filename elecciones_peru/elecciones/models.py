@@ -226,12 +226,7 @@ class Ingreso(models.Model):
   candidato = models.CharField(max_length=250)
   tiene_ingresos = models.CharField(max_length=10)
   anhio_ingresos = models.CharField(max_length=4)
-  remu_bruta_pub = models.FloatField()
-  remu_bruta_priv = models.FloatField()
-  renta_indiv_pub = models.FloatField()
-  renta_indiv_priv = models.FloatField()
-  otro_ingreso_pub = models.FloatField()
-  otro_ingreso_priv = models.FloatField()
+  total_ingresos = models.FloatField()
 
   class Meta:
     db_table = 'ingreso'

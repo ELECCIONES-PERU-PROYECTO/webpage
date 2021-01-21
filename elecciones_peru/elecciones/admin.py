@@ -210,12 +210,7 @@ class IngresoAdmin(admin.ModelAdmin):
     'candidato',
     'tiene_ingresos',
     'anhio_ingresos',
-    'remu_bruta_pub',
-    'remu_bruta_priv',
-    'renta_indiv_pub',
-    'renta_indiv_priv',
-    'otro_ingreso_pub',
-    'otro_ingreso_priv',
+    'total_ingresos',
   )
 
 @admin.register(BienInmueble)
