@@ -161,6 +161,7 @@ class CargoEleccion(models.Model):
   org_politica_cargo = models.CharField(max_length=250)
   desde_anhio = models.CharField(max_length=20)
   hasta_anhio = models.CharField(max_length=20)
+  total_anhio_eleccion =  models.IntegerField(null=True)
   cargo = models.CharField(max_length=300)
   comentario = models.TextField()
 
@@ -278,3 +279,21 @@ class InformacionAdicional(models.Model):
 
   class Meta:
     db_table = 'informacion_adicional'
+
+
+class SentenciaPenalDelito(models.Model):
+  id = models.CharField(max_length=10, primary_key=True)
+  value = models.CharField(max_length=200)
+  delito = models.CharField(max_length=200)
+
+
+class Distrito(models.Model):
+  id = models.CharField(max_length=10, primary_key=True)
+  value = models.CharField(max_length=200)
+  distrito = models.CharField(max_length=200)
+
+
+class OrganizacionPolitica(models.Model):
+  id = models.CharField(max_length=10, primary_key=True)
+  value = models.CharField(max_length=200)
+  organizacion = models.CharField(max_length=200)
