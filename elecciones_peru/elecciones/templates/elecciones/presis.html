@@ -84,7 +84,7 @@
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
                 <div class="uk-width-1-1@s">
-                  <div class="uk-grid-small uk-child-width-auto uk-grid">
+                  <div class="uk-flex uk-flex-column">
                     <label class="uk-text-muted">
                       Años de servicio
                     </label>
@@ -138,37 +138,296 @@
                       Cantidad
                     </label>
                   </div>
+                  <!-- Deben salir cuando presione Tipos -->
+                  <div id="cantidad_senticia_opcion" class="uk-flex uk-flex-column">
+                    <label class="uk-text-muted" style="margin-top: 10px">
+                      Sentencia Penal
+                    </label>
+                    <div class="uk-flex uk-flex-column uk-padding-small uk-padding-remove-top">
+                      <label class="uk-text-muted">
+                        Delito
+                      </label>
+                      <select class="uk-select" id="delito_tipo">
+                        <option value="maltrato">maltrato</option>
+                        <option value="asesinato">asesinato</option>
+                        <option value="estafa">estafa</option>
+                      </select>
+                    </div>
+                    <label class="uk-text-muted" style="margin-top: 10px">
+                      Sentencia Civil
+                    </label>
+                    <div class="uk-flex uk-flex-column uk-padding-small uk-padding-remove-top">
+                      <label class="uk-text-muted">
+                        Material de la demanda
+                      </label>
+                      <select class="uk-select" id="material_demanda">
+                        <option value="maltrato">maltrato</option>
+                        <option value="asesinato">asesinato</option>
+                        <option value="estafa">estafa</option>
+                      </select>
+                    </div>
+                  </div>
                   <!-- Deben salir cuando presione Cantidad -->
-                  <label class="uk-text-muted" style="margin-top: 10px">
-                    Años de servicio
-                  </label>
-                  <div class="uk-flex uk-flex-middle">
-                    <input type="radio" id="anhio_servicio_asc" name="anhio_servicio" value="ASC">
-                    <label for="anhio_servicio_asc" class="uk-text-muted uk-margin-small-left">
-                      Ascendente
+                  <div id="cantidad_senticia_opcion" class="uk-flex uk-flex-column">
+                    <label class="uk-text-muted" style="margin-top: 10px">
+                      Sentencia Penal
                     </label>
-                  </div>
-                  <div class="uk-flex uk-flex-middle">
-                    <input type="radio" id="anhio_servicio_desc" name="anhio_servicio" value="DESC">
-                    <label for="anhio_servicio_desc" class="uk-text-muted uk-margin-small-left">
-                      Descendente
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="penal_sentencia_asc" name="penal_sentencia" value="ASC">
+                      <label for="penal_sentencia_asc" class="uk-text-muted uk-margin-small-left">
+                        Ascendente
+                      </label>
+                    </div>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="penal_sentencia_desc" name="penal_sentencia" value="DESC">
+                      <label for="penal_sentencia_desc" class="uk-text-muted uk-margin-small-left">
+                        Descendente
+                      </label>
+                    </div>
+                    <label class="uk-text-muted" style="margin-top: 10px">
+                      Sentencia Civil
                     </label>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="civil_sentencia_asc" name="civil_sentencia" value="ASC">
+                      <label for="civil_sentencia_asc" class="uk-text-muted uk-margin-small-left">
+                        Ascendente
+                      </label>
+                    </div>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="civil_sentencia_desc" name="civil_sentencia" value="DESC">
+                      <label for="civil_sentencia_desc" class="uk-text-muted uk-margin-small-left">
+                        Descendente
+                      </label>
+                    </div>
                   </div>
-                  <label class="uk-text-muted" style="margin-top: 10px">
-                    Porcentaje del total de años de servicio que tuvo cargo por elección popular
-                  </label>
-                  <div class="uk-flex uk-flex-middle">
-                    <input type="radio" id="porc_anhio_servicio_elecc_pop_asc" name="porc_anhio_servicio_elecc_pop" value="ASC">
-                    <label for="porc_anhio_servicio_elecc_pop_asc" class="uk-text-muted uk-margin-small-left">
-                      Ascendente
+                </div>
+              </fieldset>
+            </form>
+          </ul>
+        </li>
+        <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Bienes y Rentas</a>
+          <ul>
+            <form>
+              <fieldset class="uk-fieldset uk-padding-small">
+                <div class="uk-width-1-1@s">
+                  <div class="uk-flex uk-flex-column">
+                    <label class="uk-text-muted">
+                      Cantidad de ingresos
                     </label>
-                  </div>
-                  <div class="uk-flex uk-flex-middle">
-                    <input type="radio" id="porc_anhio_servicio_elecc_pop_desc" name="porc_anhio_servicio_elecc_pop" value="DESC">
-                    <label for="porc_anhio_servicio_elecc_pop_desc" class="uk-text-muted uk-margin-small-left">
-                      Descendente
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="cant_ingreso_asc" name="cant_ingreso" value="ASC">
+                      <label for="cant_ingreso_asc" class="uk-text-muted uk-margin-small-left">
+                        Ascendente
+                      </label>
+                    </div>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="cant_ingreso_desc" name="cant_ingreso" value="DESC">
+                      <label for="cant_ingreso_desc" class="uk-text-muted uk-margin-small-left">
+                        Descendente
+                      </label>
+                    </div>
+                    <label class="uk-text-muted" style="margin-top: 10px">
+                      Cantidad de inmuebles 
                     </label>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="cant_inmueble_asc" name="cant_inmuebles" value="ASC">
+                      <label for="cant_inmueble_asc" class="uk-text-muted uk-margin-small-left">
+                        Ascendente
+                      </label>
+                    </div>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="cant_inmueble_desc" name="cant_inmuebles" value="DESC">
+                      <label for="cant_inmueble_desc" class="uk-text-muted uk-margin-small-left">
+                        Descendente
+                      </label>
+                    </div>
+                    <label class="uk-text-muted" style="margin-top: 10px">
+                      Valor de inmuebles 
+                    </label>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="valor_inmueble_asc" name="valor_inmuebles" value="ASC">
+                      <label for="valor_inmueble_asc" class="uk-text-muted uk-margin-small-left">
+                        Ascendente
+                      </label>
+                    </div>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="valor_inmueble_desc" name="valor_inmuebles" value="DESC">
+                      <label for="valor_inmueble_desc" class="uk-text-muted uk-margin-small-left">
+                        Descendente
+                      </label>
+                    </div>
+                    <label class="uk-text-muted" style="margin-top: 10px">
+                      Cantidad de muebles 
+                    </label>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="cant_muebles_asc" name="cant_muebles" value="ASC">
+                      <label for="cant_muebles_asc" class="uk-text-muted uk-margin-small-left">
+                        Ascendente
+                      </label>
+                    </div>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="cant_mueble_desc" name="cant_muebles" value="DESC">
+                      <label for="cant_mueble_desc" class="uk-text-muted uk-margin-small-left">
+                        Descendente
+                      </label>
+                    </div>
+                    <label class="uk-text-muted" style="margin-top: 10px">
+                      Valor de inmuebles 
+                    </label>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="valor_mueble_asc" name="valor_inmuebles" value="ASC">
+                      <label for="valor_mueble_asc" class="uk-text-muted uk-margin-small-left">
+                        Ascendente
+                      </label>
+                    </div>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="valor_mueble_desc" name="valor_inmuebles" value="DESC">
+                      <label for="valor_mueble_desc" class="uk-text-muted uk-margin-small-left">
+                        Descendente
+                      </label>
+                    </div>
                   </div>
+                </div>
+              </fieldset>
+            </form>
+          </ul>
+        </li>
+        <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Renuncias</a>
+          <ul>
+            <form>
+              <fieldset class="uk-fieldset uk-padding-small">
+                <div class="uk-width-1-1@s">
+                  <div class="uk-flex uk-flex-column">
+                    <label class="uk-text-muted">
+                      Organizaciones políticas a las que ha pertenecido.
+                    </label>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="cantidad_renuncia_asc" name="cantidad_renuncia" value="ASC">
+                      <label for="cantidad_renuncia_asc" class="uk-text-muted uk-margin-small-left">
+                        Ascendente
+                      </label>
+                    </div>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="cantidad_renuncia_desc" name="cantidad_renuncia" value="DESC">
+                      <label for="cantidad_renuncia_desc" class="uk-text-muted uk-margin-small-left">
+                        Descendente
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </ul>
+        </li>
+        <!--Solo para CONGRESO Y PARLAMENTO -->
+        <!-- <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Genero</a>
+          <ul>
+            <form>
+              <fieldset class="uk-fieldset uk-padding-small">
+                <div class="uk-width-1-1@s">
+                  <div class="uk-flex uk-flex-column">
+                    <label class="uk-text-muted">
+                      Género
+                    </label>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="tipo_genero" name="opcion_genero" value="tipo_genero">
+                      <label for="tipo_genero" class="uk-text-muted uk-margin-small-left">
+                        Fememino
+                      </label>
+                    </div>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="tipo_genero" name="opcion_genero" value="tipo_genero">
+                      <label for="tipo_sentencia" class="uk-text-muted uk-margin-small-left">
+                        Masculino
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </ul>
+        </li> -->
+        <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Edad</a>
+          <ul>
+            <form>
+              <fieldset class="uk-fieldset uk-padding-small">
+                <div class="uk-width-1-1@s">
+                  <div class="uk-flex uk-flex-column">
+                    <label class="uk-text-muted">
+                      Rango de edades
+                    </label>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="rango_edad" name="rango_edad" value="18-30">
+                      <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                        18 - 30
+                      </label>
+                    </div>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="rango_edad" name="rango_edad" value="30-50">
+                      <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                        30 - 50
+                      </label>
+                    </div>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="rango_edad" name="rango_edad" value="50-70">
+                      <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                        50 - 70
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </ul>
+        </li>
+        <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Oriundo</a>
+          <ul>
+            <form>
+              <fieldset class="uk-fieldset uk-padding-small">
+                <div class="uk-width-1-1@s">
+                  <div class="uk-flex uk-flex-column">
+                    <label class="uk-text-muted">
+                      Nació en Perú
+                    </label>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="rango_edad" name="rango_edad" value="18-30">
+                      <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                        Sí
+                      </label>
+                    </div>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="rango_edad" name="rango_edad" value="30-50">
+                      <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                        No
+                      </label>
+                    </div>
+                    <div id="" class="uk-flex uk-flex-column uk-padding-small uk-padding-remove-top">
+                      <label class="uk-text-muted">
+                        Departamento de nacimiento
+                      </label>
+                      <select class="uk-select" id="delito_tipo">
+                        <option value="lima">Lima</option>
+                        <option value="cusco">Cusco</option>
+                        <option value="arequipa">Arequipa</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </ul>
+        </li>
+        <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cargo al que Postula</a>
+          <ul>
+            <form>
+              <fieldset class="uk-fieldset uk-padding-small">
+                <div class="uk-width-1-1@s uk-flex uk-flex-column">
+                  <select class="uk-select" id="cargo_postula">
+                    <option value="elegir_cargo">Elegir cargo</option>
+                    <option value="primervice">Primer Vicepresidente</option>
+                    <option value="segundovice">Segundo Vicepresidente</option>
+                    <option value="presidente">Presidente de la República</option>
+                  </select>
                 </div>
               </fieldset>
             </form>
