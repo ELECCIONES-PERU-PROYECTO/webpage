@@ -466,9 +466,22 @@
         </ul>
       <hr>
     </div>
-    {% for i in list_pres %}
-      <p> {{ i.nombres }}</p>
-    {% endfor %}
+    <table class="uk-table uk-table-divider">
+      <thead>
+        <tr>
+          <th>Nombres</th>
+          <th>DNI</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for candidato in candidatos %}
+        <tr>
+          <td>{{ candidato.candidato }}</td>
+          <td>{{ candidato.dni_candidato }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+  </table>
   </div>
   <!-- /CONTENT -->
   <!-- OFFCANVAS -->
