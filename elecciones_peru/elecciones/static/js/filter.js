@@ -27,6 +27,9 @@ function quitar_seleccion_cargo(){
     filtro_cargo = false
     cant_filtros--
 }
+
+//function onclick_
+
 function onclick_sentencias(){
     filtro_sentencia = true
     cant_filtros++
@@ -73,7 +76,11 @@ function get_range_edad(){
         return rango3
     }
 } 
+function get_bienes_rentas(){
+    
 
+
+}
 
 function button_filter(){
     let rango_edad = get_range_edad()
