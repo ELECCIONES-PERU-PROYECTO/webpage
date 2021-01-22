@@ -59,12 +59,12 @@
               <fieldset class="uk-fieldset uk-padding-small">
                 <div class="uk-width-1-1@s">
                   <select class="uk-select" id="nivel_academico" onchange="get_nivel_academico()">
-                    <option value="primaria">Concluyó primaria</option>
-                    <option value="secundaria">Concluyó secundaria</option>
-                    <option value="tecnico">Concluyó técnico</option>
-                    <option value="no_universitario">Concluyó no universitarios</option>
-                    <option value="universitario">Concluyó universidad</option>
-                    <option value="postgrado">Concluyó postgrado</option>
+                    <option value="concluyo_primaria">Concluyó primaria</option>
+                    <option value="concluyo_secundaria">Concluyó secundaria</option>
+                    <option value="concluyo_estudio_tecnico">Concluyó técnico</option>
+                    <option value="concluyo_estudio_no_universitario">Concluyó no universitarios</option>
+                    <option value="concluyo_estudio_universitario">Concluyó universidad</option>
+                    <option value="concluyo_estudio_postgrado">Concluyó postgrado</option>
                     <option value="maestro_doctor">Maestro o Doctor</option>
                   </select>
                 </div>
@@ -448,7 +448,7 @@
           </ul>
         </li>
       </ul>
-      <button class="uk-button uk-button-secondary">Filtrar</button>
+      <button class="uk-button uk-button-secondary" onClick="filter()">Filtrar</button>
     </div>
     
   </aside>
@@ -474,10 +474,25 @@
         </tr>
       </thead>
       <tbody>
+        <!-- todos los candidatos -->
         {% for candidato in candidatos %}
         <tr>
           <td>{{ candidato.candidato }}</td>
           <td>{{ candidato.dni_candidato }}</td>
+        </tr>
+        {% endfor %}
+        <!-- candidato con un dni en específico -->
+        {% for candidato in candidatos_by_dni %}
+        <tr>
+          <td>{{ candidato.candidato }}</td>
+          <td>{{ candidato.dni_candidato }}</td>
+        </tr>
+        {% endfor %}
+        <!-- candidato según su grado de estudio -->
+        {% for estudio in estudios %}
+        <tr>
+          <td>{{ estudio.candidato }}</td>
+          <td>{{ estudio.organizacion_politica }}</td>
         </tr>
         {% endfor %}
       </tbody>
