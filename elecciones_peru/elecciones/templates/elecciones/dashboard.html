@@ -74,6 +74,7 @@
         </li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cargos previos</a>
           <ul>
+            <button  onclick="quitar_seleccion_cargo()"></button>
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
                 <div class="uk-width-1-1@s">
@@ -339,19 +340,19 @@
                       Rango de edades
                     </label>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="rango_edad" name="rango_edad" value="18-30">
+                      <input type="radio" id="rango_edad1" name="rango_edad" value="18-30">
                       <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
                         18 - 30
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="rango_edad" name="rango_edad" value="30-50">
+                      <input type="radio" id="rango_edad2" name="rango_edad" value="30-50">
                       <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
                         30 - 50
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="rango_edad" name="rango_edad" value="50-70">
+                      <input type="radio" id="rango_edad3" name="rango_edad" value="50-70">
                       <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
                         50 - 70
                       </label>
@@ -448,7 +449,7 @@
           </ul>
         </li>
       </ul>
-      <button class="uk-button uk-button-secondary" onClick="filter()">Filtrar</button>
+      <button class="uk-button uk-button-secondary" onClick="button_filter()">Filtrar</button>
     </div>
     
   </aside>
