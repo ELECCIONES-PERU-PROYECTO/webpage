@@ -72,8 +72,8 @@ function quitar_seleccion_org_politica(){
     cant_filtros--
     console.log("cant_filtros: " ,cant_filtros)
     filtro_organizacion = false
-    let select_ = document.getElementsByName("select_org_politica")
-    select_.value = "elegir_cargo"
+    let select_ = document.getElementById("select_org_politica")
+    select_.selectedIndex = 0
   }
 }
 
@@ -102,9 +102,7 @@ function onchange_org_politica(){
   if(filtro_organizacion == false){
     cant_filtros++
     filtro_organizacion = true
-    
-  
-    console.log("cant_filtros: " ,cant_filtros)
+    console.log("cant_filtros: " , cant_filtros)
   }
 }
 function onclick_br() {
