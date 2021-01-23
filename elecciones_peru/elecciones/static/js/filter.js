@@ -172,7 +172,9 @@ function get_demanda() {
 
   return demanda_tipo_value
 }
+function get_oriundo(){
 
+}
 
 /* Onchange Penal - Cantidad */
 function penal_cantidad() {
@@ -210,3 +212,29 @@ function civil_cantidad() {
     }
   }
 }
+
+
+/* Quitar Bienes y Rentas */
+function quitar_seleccion_b_r(){
+  if(filtro_bienesraices == true){
+    document.getElementById("cant_ingreso_asc").checked = false
+    document.getElementById("cant_ingreso_desc").checked = false
+    document.getElementById("cant_inmueble_asc").checked = false
+    document.getElementById("cant_inmueble_desc").checked = false
+    document.getElementById("valor_inmueble_asc").checked = false
+    document.getElementById("valor_inmueble_desc").checked = false
+    document.getElementById("cant_mueble_asc").checked = false
+    document.getElementById("cant_mueble_desc").checked = false
+    document.getElementById("valor_mueble_asc").checked = false
+    document.getElementById("valor_mueble_desc").checked = false
+    cant_filtros--
+    console.log("cant_filtros: " ,cant_filtros)
+    filtro_bienesraices = false
+  }
+}
+
+/* Onchange Bienes y Rentas */
+
+// Porfa aumenta las funciones que faltan :(
+// No me alcanzó tiempo uu
+// Me avisas cualquier cosa uwu
