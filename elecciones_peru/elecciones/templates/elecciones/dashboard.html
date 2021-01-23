@@ -55,6 +55,8 @@
         <li class="uk-nav-header">Filtros</li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel Académico</a>
           <ul>
+            <button  onclick="quitar_seleccion_academico()">Decartar</button>
+
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
                 <div class="uk-width-1-1@s">
@@ -106,83 +108,83 @@
         </li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Sentencias</a>
           <ul>
+            <button  onclick="quitar_seleccion_sentencias()">Decartar</button>
+
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
                 <div class="uk-width-1-1@s uk-flex uk-flex-column">
-                  <div class="uk-flex uk-flex-middle">
-                    <input type="radio" id="tipo_sentencia" name="opcion_sentencia" value="tipo_sentencia">
-                    <label for="tipo_sentencia" class="uk-text-muted uk-margin-small-left">
-                      Tipos
-                    </label>
+                  <div>
+                    <label><input type="checkbox" id="penal_cbx" value="penal_val" onchange="togglePenal_opciones(this)">Penal</label><br>
                   </div>
-                  <div class="uk-flex uk-flex-middle">
-                    <input type="radio" id="cantidad_senticia" name="opcion_sentencia" value="cantidad_senticia">
-                    <label for="cantidad_senticia" class="uk-text-muted uk-margin-small-left">
-                      Cantidad
-                    </label>
-                  </div>
-                  <!-- Deben salir cuando presione Tipos -->
-                  <div id="cantidad_senticia_opcion" class="uk-flex uk-flex-column">
-                    <label class="uk-text-muted" style="margin-top: 10px">
-                      Sentencia Penal
-                    </label>
-                    <div class="uk-flex uk-flex-column uk-padding-small uk-padding-remove-top">
-                      <label class="uk-text-muted">
-                        Delito
-                      </label>
-                      <select class="uk-select" id="delito_tipo">
-                        <option value="maltrato">maltrato</option>
-                        <option value="asesinato">asesinato</option>
-                        <option value="estafa">estafa</option>
-                      </select>
-                    </div>
-                    <label class="uk-text-muted" style="margin-top: 10px">
-                      Sentencia Civil
-                    </label>
-                    <div class="uk-flex uk-flex-column uk-padding-small uk-padding-remove-top">
-                      <label class="uk-text-muted">
-                        Material de la demanda
-                      </label>
-                      <select class="uk-select" id="material_demanda">
-                        <option value="familia_alimentaria">Familia/Alimentaria</option>
-                        <option value="contractual">Contractural</option>
-                        <option value="laboral">Laboral</option>
-                        <option value="violencia_familiar">Violencia Familiar</option>
-                      </select>
-                    </div>
-                  </div>
-                  <!-- Deben salir cuando presione Cantidad -->
-                  <div id="cantidad_senticia_opcion" class="uk-flex uk-flex-column">
-                    <label class="uk-text-muted" style="margin-top: 10px">
-                      Sentencia Penal
+                    <div id = "div_opc_cant_sentencias"  style="display: none">
+
+                    <label class="uk-text-muted">
+                      Cantidad de Sentencias
                     </label>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="penal_sentencia_asc" name="penal_sentencia" value="ASC">
-                      <label for="penal_sentencia_asc" class="uk-text-muted uk-margin-small-left">
+                      <input type="radio" id="cant_senten_asc" name="cant_senten" value="ASC" onclick="">
+                      <label for="cant_senten_asc" class="uk-text-muted uk-margin-small-left">
                         Ascendente
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="penal_sentencia_desc" name="penal_sentencia" value="DESC">
-                      <label for="penal_sentencia_desc" class="uk-text-muted uk-margin-small-left">
+                      <input type="radio" id="cant_senten_desc" name="cant_senten" value="DESC" onclick="">
+                      <label for="cant_senten_desc" class="uk-text-muted uk-margin-small-left">
                         Descendente
                       </label>
                     </div>
-                    <label class="uk-text-muted" style="margin-top: 10px">
-                      Sentencia Civil
+                  </div>
+                  <div>
+                    <label><input type="checkbox" id="por_obligaciones" value="por_obligaciones_val" onchange="toggleObligacion_opciones(this)">Por obligaciones</label><br>
+                  </div>
+                  <div id = "div_opc_obligaciones"  style="display: none">
+
+                    <label class="uk-text-muted">
+                      Cantidad de Sentencias
                     </label>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="civil_sentencia_asc" name="civil_sentencia" value="ASC">
-                      <label for="civil_sentencia_asc" class="uk-text-muted uk-margin-small-left">
+                      <input type="radio" id="cant_senten_asc_oblig" name="cant_senten_oblig" value="ASC" onclick="">
+                      <label for="cant_senten_asc_oblig" class="uk-text-muted uk-margin-small-left">
                         Ascendente
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="civil_sentencia_desc" name="civil_sentencia" value="DESC">
-                      <label for="civil_sentencia_desc" class="uk-text-muted uk-margin-small-left">
+                      <input type="radio" id="cant_senten_desc_oblig" name="cant_senten_oblig" value="DESC" onclick="">
+                      <label for="cant_senten_desc_oblig" class="uk-text-muted uk-margin-small-left">
                         Descendente
                       </label>
                     </div>
+
+                    <label class="uk-text-muted">
+                      Materia de la demanda
+                    </label>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="mat_deman_fam_ali" name="opc_mat_demanda" value="Familia_Ali" onclick="">
+                      <label for="mat_deman_fam_alimen" class="uk-text-muted uk-margin-small-left">
+                        Familia/Alimentaria
+                      </label>
+                    </div>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="mat_deman_contrac" name="opc_mat_demanda" value="Contractual" onclick="">
+                      <label for="mat_deman_contract" class="uk-text-muted uk-margin-small-left">
+                        Contractual
+                      </label>
+                    </div>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="mat_deman_lab" name="opc_mat_demanda" value="Laboral" onclick="">
+                      <label for="mat_deman_laboral" class="uk-text-muted uk-margin-small-left">
+                        Laboral
+                      </label>
+                    </div>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="mat_deman_vio" name="opc_mat_demanda" value="Violencia" onclick="">
+                      <label for="mat_deman_violencia" class="uk-text-muted uk-margin-small-left">
+                        Violencia Familiar
+                      </label>
+                    </div>
+                  </div>
+                  <div>
+                    <label><input type="checkbox" id="no_tiene" value="no_tiene_val" onchange="noTiene_opcion(this)">No tiene</label><br>
                   </div>
                 </div>
               </fieldset>
@@ -410,6 +412,7 @@
         </li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cargo al que Postula</a>
           <ul>
+            <button  onclick="quitar_seleccion_postula()">Decartar</button>
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
                 <div class="uk-width-1-1@s uk-flex uk-flex-column">
@@ -425,9 +428,9 @@
           </ul>
         </li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Organización Política</a>
-
           <ul>
             <button  onclick="quitar_seleccion_org_politica()">Decartar</button>
+
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
                 <div class="uk-width-1-1@s uk-flex uk-flex-column">
@@ -443,8 +446,8 @@
           </ul>
         </li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Distrito Electoral</a>
-
           <ul>
+            <button  onclick="quitar_seleccion_distrito()">Decartar</button>
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
                 <div class="uk-width-1-1@s uk-flex uk-flex-column">
