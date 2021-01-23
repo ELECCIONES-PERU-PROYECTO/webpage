@@ -3,6 +3,7 @@ let dni = 17903382
 let win_href = window.location.hostname
 
 cant_filtros = 0
+
 filtro_academico = false
 filtro_cargo = false
 filtro_sentencia = false
@@ -13,19 +14,35 @@ filtro_oriundo = false
 filtro_cargo_postula = false
 filtro_organizacion = false
 filtro_distrito = false
+
 /* Onclick Academico */
 
 function onclick_cargo_popular(){
-    filtro_cargo = true
-    cant_filtros++
+    if(filtro_cargo == false){
+        filtro_cargo = true
+        cant_filtros++
+    }
 }
 function quitar_seleccion_cargo(){
-    button_asc = document.getElementById("anhio_servicio_asc")
+    let button_asc = document.getElementById("anhio_servicio_asc")
     button_asc.checked = false
-    button_desc = document.getElementById("anhio_servicio_desc")
+    let button_desc = document.getElementById("anhio_servicio_desc")
     button_desc.checked = false
     filtro_cargo = false
     cant_filtros--
+}
+
+function quitar_seleccion_b_r(){
+   document.getElementById("cant_ingreso_asc").checked = false
+   document.getElementById("cant_ingreso_desc").checked = false
+   document.getElementById("cant_inmueble_asc").checked = false
+   document.getElementById("cant_inmueble_desc").checked = false
+   document.getElementById("valor_inmueble_asc").checked = false
+   document.getElementById("valor_inmueble_desc").checked = false
+   document.getElementById("cant_mueble_asc").checked = false
+   document.getElementById("cant_mueble_desc").checked = false
+   document.getElementById("valor_mueble_asc").checked = false
+   document.getElementById("valor_mueble_desc").checked = false
 }
 
 //function onclick_
@@ -76,44 +93,42 @@ function get_range_edad(){
         return rango3
     }
 } 
-function get_bienes_rentas(){
+
+function get_nivel_academico(){
+    console.log("get_nivel_academico")
+
+    let nivel_academico = document.getElementById("nivel_academico")
+    let nivel_academico_value = nivel_academico.options[nivel_academico.selectedIndex].value;
+
+    console.log(nivel_academico_value)   
     
-
-
+    return nivel_academico_value
 }
-
 function button_filter(){
+    get_nivel_academico()
     let rango_edad = get_range_edad()
     let nivel_academico = get_nivel_academico()
     let cargos_previos_order = get_cargos_previos()
+    let 
+
+
+
+
+
+
 }
 
-function serviciouwu(){
-    anhio_servicio_asc_value = anhio_servicio_asc.checked
-    console.log(anhio_servicio_asc_value)
-    anhio_servicio_desc_value = anhio_servicio_desc.checked
-    console.log(anhio_servicio_desc_value)
-}
+
 function get_cargos_previos(){
     //return anhio_servicio_asc.checked && anhio_servicio_desc.checked
-    button_asc = document.getElementById("anhio_servicio_asc")
+    let button_asc = document.getElementById("anhio_servicio_asc")
     if (button_asc.checked != true){
         console.log("NULO CHECKED")
     }
 
 }
 
-function get_nivel_academico(){
-    let nivel_academico = document.getElementById("nivel_academico")
-    if (nivel_academico == null){
-        console.log("filtro nivel academico esta vacio")
-    }
 
-    let nivel_academico_value = nivel_academico.options[nivel_academico.selectedIndex].value;
-    console.log(nivel_academico_value)   
-    
-    return nivel_academico_value
-}
   
 function sentencias_(){
   tipo_sentencia.checked && cantidad_senticia.checked && penal_sentencia_asc.checked
@@ -131,6 +146,7 @@ function bienes_rentas(){
 
 function renuncias(){
     return cantidad_renuncia_asc.checked && cantidad_renuncia_desc.checked 
+
 }
 function get_nivel_academico() {
   let nivel_academico = document.getElementById("nivel_academico")

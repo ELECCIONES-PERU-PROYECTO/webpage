@@ -59,6 +59,7 @@
               <fieldset class="uk-fieldset uk-padding-small">
                 <div class="uk-width-1-1@s">
                   <select class="uk-select" id="nivel_academico" onchange="get_nivel_academico()">
+                    <option value="default">Elegir Nivel Academico</option>
                     <option value="concluyo_primaria">Concluyó primaria</option>
                     <option value="concluyo_secundaria">Concluyó secundaria</option>
                     <option value="concluyo_estudio_tecnico">Concluyó técnico</option>
@@ -190,6 +191,7 @@
         </li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Bienes y Rentas</a>
           <ul>
+            <button  onclick="quitar_seleccion_b_r()">Decartar</button>
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
                 <div class="uk-width-1-1@s">
@@ -243,19 +245,20 @@
                       Cantidad de muebles 
                     </label>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="cant_muebles_asc" name="cant_muebles" value="ASC">
+                      <input type="radio" id="cant_mueble_asc" name="cant_muebles" value="ASC">
                       <label for="cant_muebles_asc" class="uk-text-muted uk-margin-small-left">
                         Ascendente
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
+                      
                       <input type="radio" id="cant_mueble_desc" name="cant_muebles" value="DESC">
                       <label for="cant_mueble_desc" class="uk-text-muted uk-margin-small-left">
                         Descendente
                       </label>
                     </div>
                     <label class="uk-text-muted" style="margin-top: 10px">
-                      Valor de inmuebles 
+                      Valor de muebles 
                     </label>
                     <div class="uk-flex uk-flex-middle">
                       <input type="radio" id="valor_mueble_asc" name="valor_inmuebles" value="ASC">
