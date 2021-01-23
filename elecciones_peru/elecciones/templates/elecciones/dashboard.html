@@ -75,7 +75,7 @@
         </li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cargos previos</a>
           <ul>
-            <button  onclick="quitar_seleccion_cargo()">Decartar</button>
+            <button onclick="quitar_seleccion_cargos_pervios()">Decartar</button>
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
                 <div class="uk-width-1-1@s">
@@ -84,13 +84,13 @@
                       Cargos de elección popular
                     </label>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="anhio_servicio_asc" name="anhio_servicio" value="ASC">
+                      <input type="radio" id="anhio_servicio_asc" name="anhio_servicio" onclick="get_cargos_previos()" value="ASC">
                       <label for="anhio_servicio_asc" class="uk-text-muted uk-margin-small-left">
                         Ascendente
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="anhio_servicio_desc" name="anhio_servicio" value="DESC">
+                      <input type="radio" id="anhio_servicio_desc" name="anhio_servicio" onclick="get_cargos_previos()" value="DESC">
                       <label for="anhio_servicio_desc" class="uk-text-muted uk-margin-small-left">
                         Descendente
                       </label>
@@ -106,31 +106,33 @@
         </li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Sentencias</a>
           <ul>
+            <button onclick="quitar_seleccion_sentecias()">Decartar</button>
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
                 <div class="uk-width-1-1@s uk-flex uk-flex-column">
                   <div class="uk-flex uk-flex-middle">
-                    <input type="radio" id="tipo_sentencia" name="opcion_sentencia" value="tipo_sentencia">
+                    <input type="radio" id="tipo_sentencia" name="opcion_sentencia" onclick="get_sentencias()" value="tipo_sentencia">
                     <label for="tipo_sentencia" class="uk-text-muted uk-margin-small-left">
                       Tipos
                     </label>
                   </div>
                   <div class="uk-flex uk-flex-middle">
-                    <input type="radio" id="cantidad_senticia" name="opcion_sentencia" value="cantidad_senticia">
+                    <input type="radio" id="cantidad_senticia" name="opcion_sentencia" onclick="get_sentencias()" value="cantidad_senticia">
                     <label for="cantidad_senticia" class="uk-text-muted uk-margin-small-left">
                       Cantidad
                     </label>
                   </div>
                   <!-- Deben salir cuando presione Tipos -->
-                  <div id="cantidad_senticia_opcion" class="uk-flex uk-flex-column">
-                    <label class="uk-text-muted" style="margin-top: 10px">
+                  <div id="tipo_senticia_opcion" class="uk-flex uk-flex-column" style="margin-top: 10px">
+                    <label class="uk-text-muted">
                       Sentencia Penal
                     </label>
                     <div class="uk-flex uk-flex-column uk-padding-small uk-padding-remove-top">
                       <label class="uk-text-muted">
                         Delito
                       </label>
-                      <select class="uk-select" id="delito_tipo">
+                      <select class="uk-select" id="delito_tipo" onchange="get_delito()">
+                        <option value="default">Elige el tipo de delito</option>
                         <option value="maltrato">maltrato</option>
                         <option value="asesinato">asesinato</option>
                         <option value="estafa">estafa</option>
@@ -143,7 +145,8 @@
                       <label class="uk-text-muted">
                         Material de la demanda
                       </label>
-                      <select class="uk-select" id="material_demanda">
+                      <select class="uk-select" id="demanda_tipo" onchange="get_demanda()">
+                        <option value="default">Elige el tipo de demanda</option>
                         <option value="familia_alimentaria">Familia/Alimentaria</option>
                         <option value="contractual">Contractural</option>
                         <option value="laboral">Laboral</option>
@@ -152,18 +155,18 @@
                     </div>
                   </div>
                   <!-- Deben salir cuando presione Cantidad -->
-                  <div id="cantidad_senticia_opcion" class="uk-flex uk-flex-column">
-                    <label class="uk-text-muted" style="margin-top: 10px">
+                  <div id="cantidad_senticia_opcion" class="uk-flex uk-flex-column" style="margin-top: 10px">
+                    <label class="uk-text-muted">
                       Sentencia Penal
                     </label>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="penal_sentencia_asc" name="penal_sentencia" value="ASC">
+                      <input type="radio" id= "penal_sentencia_asc" name="penal_sentencia" onclick="penal_cantidad()" value="ASC">
                       <label for="penal_sentencia_asc" class="uk-text-muted uk-margin-small-left">
                         Ascendente
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="penal_sentencia_desc" name="penal_sentencia" value="DESC">
+                      <input type="radio" id="penal_sentencia_desc" name="penal_sentencia" onclick="penal_cantidad()" value="DESC">
                       <label for="penal_sentencia_desc" class="uk-text-muted uk-margin-small-left">
                         Descendente
                       </label>
@@ -172,13 +175,13 @@
                       Sentencia Civil
                     </label>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="civil_sentencia_asc" name="civil_sentencia" value="ASC">
+                      <input type="radio" id="civil_sentencia_asc" name="civil_sentencia" onclick="civil_cantidad()" value="ASC">
                       <label for="civil_sentencia_asc" class="uk-text-muted uk-margin-small-left">
                         Ascendente
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="civil_sentencia_desc" name="civil_sentencia" value="DESC">
+                      <input type="radio" id="civil_sentencia_desc" name="civil_sentencia" onclick="civil_cantidad()" value="DESC">
                       <label for="civil_sentencia_desc" class="uk-text-muted uk-margin-small-left">
                         Descendente
                       </label>
@@ -392,6 +395,7 @@
                         Departamento de nacimiento
                       </label>
                       <select class="uk-select" id="delito_tipo">
+                        <option value="default">Elige el país</option>
                         <option value="lima">Lima</option>
                         <option value="cusco">Cusco</option>
                         <option value="arequipa">Arequipa</option>
