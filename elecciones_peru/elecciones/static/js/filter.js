@@ -21,28 +21,74 @@ function onclick_cargo_popular(){
   if(filtro_cargo == false){
     filtro_cargo = true
     cant_filtros++
+    console.log("cant_filtros: " ,cant_filtros)
+
   }
 }
 function quitar_seleccion_cargo(){
-  let button_asc = document.getElementById("anhio_servicio_asc")
-  button_asc.checked = false
-  let button_desc = document.getElementById("anhio_servicio_desc")
-  button_desc.checked = false
-  filtro_cargo = false
-  cant_filtros--
+  if(filtro_cargo == true)
+  {
+    let button_asc = document.getElementById("anhio_servicio_asc")
+    button_asc.checked = false
+    let button_desc = document.getElementById("anhio_servicio_desc")
+    button_desc.checked = false
+    filtro_cargo = false
+    cant_filtros--
+    console.log("cant_filtros: " ,cant_filtros)
+  }
 }
 
 function quitar_seleccion_b_r(){
-  document.getElementById("cant_ingreso_asc").checked = false
-  document.getElementById("cant_ingreso_desc").checked = false
-  document.getElementById("cant_inmueble_asc").checked = false
-  document.getElementById("cant_inmueble_desc").checked = false
-  document.getElementById("valor_inmueble_asc").checked = false
-  document.getElementById("valor_inmueble_desc").checked = false
-  document.getElementById("cant_mueble_asc").checked = false
-  document.getElementById("cant_mueble_desc").checked = false
-  document.getElementById("valor_mueble_asc").checked = false
-  document.getElementById("valor_mueble_desc").checked = false
+  if(filtro_bienesraices == true){
+    document.getElementById("cant_ingreso_asc").checked = false
+    document.getElementById("cant_ingreso_desc").checked = false
+    document.getElementById("cant_inmueble_asc").checked = false
+    document.getElementById("cant_inmueble_desc").checked = false
+    document.getElementById("valor_inmueble_asc").checked = false
+    document.getElementById("valor_inmueble_desc").checked = false
+    document.getElementById("cant_mueble_asc").checked = false
+    document.getElementById("cant_mueble_desc").checked = false
+    document.getElementById("valor_mueble_asc").checked = false
+    document.getElementById("valor_mueble_desc").checked = false
+    cant_filtros--
+    console.log("cant_filtros: " ,cant_filtros)
+    filtro_bienesraices = false
+  }
+}
+function quitar_seleccion_edad(){
+  if(filtro_edad == true){
+    cant_filtros--
+    console.log("cant_filtros: " ,cant_filtros)
+    filtro_edad = false
+    let inputs = document.getElementsByName("rango_edad")
+    for(let i = 0; i < inputs.length; i++){
+      inputs[i].checked = false
+    }
+    
+  }
+}
+function quitar_seleccion_org_politica(){
+  if(filtro_organizacion == true){
+    cant_filtros--
+    console.log("cant_filtros: " ,cant_filtros)
+    filtro_organizacion = false
+    let select_ = document.getElementsByName("select_org_politica")
+    select_.value = "elegir_cargo"
+  }
+}
+
+function quitar_seleccion_oriundo(){
+  if(filtro_oriundo == true)
+    {
+      cant_filtros--
+      console.log("cant_filtros: " ,cant_filtros)
+      filtro_oriundo = false
+      oriundo = document.getElementById("desplegable_oriundo")
+      oriundo.style = "display:none"
+      oriundo_inputs = document.getElementsByName("oriundo_input")
+      oriundo_inputs[0].checked = false
+      oriundo_inputs[1].checked = false
+    }
 }
 
 //function onclick_
@@ -50,21 +96,78 @@ function quitar_seleccion_b_r(){
 function onclick_sentencias(){
   filtro_sentencia = true
   cant_filtros++
+  console.log("cant_filtros: " ,cant_filtros)
 }
-
-
+function onchange_org_politica(){
+  if(filtro_organizacion == false){
+    cant_filtros++
+    filtro_organizacion = true
+    
+  
+    console.log("cant_filtros: " ,cant_filtros)
+  }
+}
 function onclick_br() {
-  filtro_bienesraices = true
-  cant_filtros++
+  if(filtro_bienesraices == false )
+  {
+    filtro_bienesraices = true
+    cant_filtros++
+    console.log("cant_filtros: " ,cant_filtros)
+  }
 }
+function quitar_seleccion_renuncia(){
+  if(filtro_renuncias == true){
+    let inputs = document.getElementsByName("cantidad_renuncia")
+    cant_filtros--
+    console.log("cant_filtros: " ,cant_filtros)
+    filtro_renuncias = false
+    for(let i = 0 ; i < inputs.length; i++){
+      inputs[i].checked = false
+    }
+  }
+}
+
 
 function onclick_renun(){
-  filtro_renuncias = true
+if(filtro_renuncias == false)
+  {
+    filtro_renuncias = true
   cant_filtros++
+  console.log("cant_filtros: " ,cant_filtros)
+  }
 }
 
 function onclick_edad(){
-  filtro_edad = true
+  if(filtro_edad == false){
+    filtro_edad = true
+    cant_filtros++
+    console.log("cant_filtros: " ,cant_filtros)
+
+  }
+}
+
+/*Onclick oriundo*/
+function onclick_oriundo(){
+  let oriundo_inputs = document.getElementsByName("oriundo_input")
+
+  if(filtro_oriundo == false){
+    filtro_oriundo = true
+    cant_filtros++
+    console.log("cant_filtros: " ,cant_filtros)
+
+  }
+  
+
+  if(oriundo_inputs[0].checked == true){
+      oriundo = document.getElementById("desplegable_oriundo")
+      oriundo.style = ""
+  }
+
+  if(oriundo_inputs[1].checked == true){
+        oriundo = document.getElementById("desplegable_oriundo")
+        oriundo.style = "display:none"
+  }    
+
 }
 
 
@@ -109,9 +212,11 @@ function button_filter(){
   let rango_edad = get_range_edad()
   let nivel_academico = get_nivel_academico()
   let cargos_previos_order = get_cargos_previos()
+  let desplegable_oriundo = get_oriundo()
+}
+function get_oriundo(){
 
 }
-
 
 function get_cargos_previos(){
   //return anhio_servicio_asc.checked && anhio_servicio_desc.checked

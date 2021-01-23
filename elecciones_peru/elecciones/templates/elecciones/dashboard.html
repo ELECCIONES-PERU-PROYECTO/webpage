@@ -84,13 +84,13 @@
                       Cargos de elección popular
                     </label>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="anhio_servicio_asc" name="anhio_servicio" value="ASC">
+                      <input type="radio" id="anhio_servicio_asc" name="anhio_servicio" value="ASC" onclick="onclick_cargo_popular()">
                       <label for="anhio_servicio_asc" class="uk-text-muted uk-margin-small-left">
                         Ascendente
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="anhio_servicio_desc" name="anhio_servicio" value="DESC">
+                      <input type="radio" id="anhio_servicio_desc" name="anhio_servicio" value="DESC" onclick="onclick_cargo_popular()">
                       <label for="anhio_servicio_desc" class="uk-text-muted uk-margin-small-left">
                         Descendente
                       </label>
@@ -200,13 +200,13 @@
                       Cantidad de ingresos
                     </label>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="cant_ingreso_asc" name="cant_ingreso" value="ASC">
+                      <input type="radio" id="cant_ingreso_asc" name="cant_ingreso" onclick="onclick_br()" value="ASC">
                       <label for="cant_ingreso_asc" class="uk-text-muted uk-margin-small-left">
                         Ascendente
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="cant_ingreso_desc" name="cant_ingreso" value="DESC">
+                      <input type="radio" id="cant_ingreso_desc" name="cant_ingreso" onclick="onclick_br()" value="DESC">
                       <label for="cant_ingreso_desc" class="uk-text-muted uk-margin-small-left">
                         Descendente
                       </label>
@@ -215,13 +215,13 @@
                       Cantidad de inmuebles 
                     </label>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="cant_inmueble_asc" name="cant_inmuebles" value="ASC">
+                      <input type="radio" id="cant_inmueble_asc" name="cant_inmuebles" onclick="onclick_br()" value="ASC">
                       <label for="cant_inmueble_asc" class="uk-text-muted uk-margin-small-left">
                         Ascendente
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="cant_inmueble_desc" name="cant_inmuebles" value="DESC">
+                      <input type="radio" id="cant_inmueble_desc" name="cant_inmuebles"  onclick="onclick_br()" value="DESC">
                       <label for="cant_inmueble_desc" class="uk-text-muted uk-margin-small-left">
                         Descendente
                       </label>
@@ -230,13 +230,13 @@
                       Valor de inmuebles 
                     </label>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="valor_inmueble_asc" name="valor_inmuebles" value="ASC">
+                      <input type="radio" id="valor_inmueble_asc" name="valor_inmuebles" onclick="onclick_br()" value="ASC">
                       <label for="valor_inmueble_asc" class="uk-text-muted uk-margin-small-left">
                         Ascendente
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="valor_inmueble_desc" name="valor_inmuebles" value="DESC">
+                      <input type="radio" id="valor_inmueble_desc" name="valor_inmuebles" onclick="onclick_br()" value="DESC">
                       <label for="valor_inmueble_desc" class="uk-text-muted uk-margin-small-left">
                         Descendente
                       </label>
@@ -245,14 +245,14 @@
                       Cantidad de muebles 
                     </label>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="cant_mueble_asc" name="cant_muebles" value="ASC">
+                      <input type="radio" id="cant_mueble_asc" name="cant_muebles"  onclick="onclick_br()" value="ASC">
                       <label for="cant_muebles_asc" class="uk-text-muted uk-margin-small-left">
                         Ascendente
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
                       
-                      <input type="radio" id="cant_mueble_desc" name="cant_muebles" value="DESC">
+                      <input type="radio" id="cant_mueble_desc" name="cant_muebles" onclick="onclick_br()" value="DESC">
                       <label for="cant_mueble_desc" class="uk-text-muted uk-margin-small-left">
                         Descendente
                       </label>
@@ -261,13 +261,13 @@
                       Valor de muebles 
                     </label>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="valor_mueble_asc" name="valor_inmuebles" value="ASC">
+                      <input type="radio" id="valor_mueble_asc" name="valor_inmuebles" onclick="onclick_br()" value="ASC">
                       <label for="valor_mueble_asc" class="uk-text-muted uk-margin-small-left">
                         Ascendente
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="valor_mueble_desc" name="valor_inmuebles" value="DESC">
+                      <input type="radio" id="valor_mueble_desc" name="valor_inmuebles" onclick="onclick_br()" value="DESC">
                       <label for="valor_mueble_desc" class="uk-text-muted uk-margin-small-left">
                         Descendente
                       </label>
@@ -280,6 +280,8 @@
         </li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Renuncias</a>
           <ul>
+            <button  onclick="quitar_seleccion_renuncia()">Decartar</button>
+
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
                 <div class="uk-width-1-1@s">
@@ -288,13 +290,13 @@
                       Organizaciones políticas a las que ha pertenecido.
                     </label>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="cantidad_renuncia_asc" name="cantidad_renuncia" value="ASC">
+                      <input type="radio" id="cantidad_renuncia_asc" name="cantidad_renuncia" onclick="onclick_renun()" value="ASC">
                       <label for="cantidad_renuncia_asc" class="uk-text-muted uk-margin-small-left">
                         Ascendente
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="cantidad_renuncia_desc" name="cantidad_renuncia" value="DESC">
+                      <input type="radio" id="cantidad_renuncia_desc" name="cantidad_renuncia" onclick="onclick_renun()" value="DESC">
                       <label for="cantidad_renuncia_desc" class="uk-text-muted uk-margin-small-left">
                         Descendente
                       </label>
@@ -335,6 +337,8 @@
         </li> -->
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Edad</a>
           <ul>
+            <button  onclick="quitar_seleccion_edad()">Decartar</button>
+
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
                 <div class="uk-width-1-1@s">
@@ -343,19 +347,19 @@
                       Rango de edades
                     </label>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="rango_edad1" name="rango_edad" value="18-30">
+                      <input type="radio" id="rango_edad1" name="rango_edad" onclick="onclick_edad()" value="18-30">
                       <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
                         18 - 30
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="rango_edad2" name="rango_edad" value="30-50">
+                      <input type="radio" id="rango_edad2" name="rango_edad"onclick="onclick_edad()"  value="30-50">
                       <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
                         30 - 50
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="rango_edad3" name="rango_edad" value="50-70">
+                      <input type="radio" id="rango_edad3" name="rango_edad" onclick="onclick_edad()" value="50-70">
                       <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
                         50 - 70
                       </label>
@@ -368,6 +372,7 @@
         </li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Oriundo</a>
           <ul>
+            <button  onclick="quitar_seleccion_oriundo()">Decartar</button>
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
                 <div class="uk-width-1-1@s">
@@ -376,18 +381,18 @@
                       Nació en Perú
                     </label>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="rango_edad" name="rango_edad" value="18-30">
-                      <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                      <input type="radio" id="oriundo_si" name="oriundo_input" value="SI" onclick="onclick_oriundo()">
+                      <label for="oriundo_" class="uk-text-muted uk-margin-small-left">
                         Sí
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="rango_edad" name="rango_edad" value="30-50">
-                      <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                      <input type="radio" id="oriundo_" name="oriundo_input" value="NO"  onclick="onclick_oriundo()">
+                      <label for="oriundo_" class="uk-text-muted uk-margin-small-left">
                         No
                       </label>
                     </div>
-                    <div id="" class="uk-flex uk-flex-column uk-padding-small uk-padding-remove-top">
+                    <div id="desplegable_oriundo" class="uk-flex uk-flex-column uk-padding-small uk-padding-remove-top" style="display: none" >
                       <label class="uk-text-muted">
                         Departamento de nacimiento
                       </label>
@@ -420,11 +425,13 @@
           </ul>
         </li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Organización Política</a>
+
           <ul>
+            <button  onclick="quitar_seleccion_org_politica()">Decartar</button>
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
                 <div class="uk-width-1-1@s uk-flex uk-flex-column">
-                  <select class="uk-select" id="cargo_postula">
+                  <select class="uk-select" id="select_org_politica" onchange="onchange_org_politica()">
                     <option value="elegir_cargo">Elegir Organización Política</option>
                     <option value="org_1">Org 1</option>
                     <option value="org_2">Org 2</option>
@@ -435,13 +442,14 @@
             </form>
           </ul>
         </li>
-        <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Distritorito Electoral</a>
+        <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Distrito Electoral</a>
+
           <ul>
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
                 <div class="uk-width-1-1@s uk-flex uk-flex-column">
-                  <select class="uk-select" id="cargo_postula">
-                    <option value="elegir_cargo">Elegir Organización Política</option>
+                  <select class="uk-select" id="orga_polit" >
+                    <option value="elegir_cargo">Elegir Distrito Electoral</option>
                     <option value="dist_1">Distrito 1</option>
                     <option value="dist_2">Distrito 2</option>
                     <option value="dist_3">Distrito 3</option>
