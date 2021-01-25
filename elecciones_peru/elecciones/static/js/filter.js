@@ -6,6 +6,24 @@ Para nivel academico tenemos: filtro_academico(bool) y nivel_academico(string), 
 Tambien esta la LISTA DE ORDEN DE FILTROS, esta guarda el id de cada filtro, el orden en que este el id, esto solo aplica para los 
 filtros del tipo order by, que implican un orden, los filtros normales se aplican en orden arriba para abajo, puesto que ese orden
 no importa mucho
+
+La estructura del codigo es la siguiente:
+1. Variables globales (hay un contador de filtros normales, filtros ob (order by), filtros totales(filtros normales+filtros ob ) )
+2. Funciones debug (console.logs xd)
+3. Funciones de los filtros (gets, quitar seleciciones, extras que algunas secciones de filtros la requerian)
+
+OBSERVACIONES:
+La seccion de filtro de sentencias es bastante peculiar por que el input checkbox de NO TIENE actua de la misma manera que un input radio
+Ademas, este checkbox tiene la capacidad de desmarcar los otros checkbox y eliminar todos los datos generados en los sub filtros de sentencias
+
+Hay muchas peculiaridades en cada seccion de filtros, las mas simples son las 4 ultimas puesto que solo son desplegables y tienen la capacidad de descarmar
+si en un principio se pone un valor correcto, pero se seleccion al valor por default manualmente hace que actue de la misma manera que se haya clickeado en 
+desmarcar (asi con todos los desplegables)
+
+Cada funcion del tipo quitar seleccion tiene que retirar un valor del cantidad de filtros, cantidad de filtros que le corresponda (depende del tipo de filtro)y 
+retirar su determinado id de filtro de la lista de filtros (esta lista nos da el orden en el que se han marcado los filtros) y, dependiendo del tipo de filtro, 
+ocultarlo o mostrar un div
+
 -----------*/
 
 let cantidad_wrapper = document.getElementById("cantidad_senticia_opcion")
@@ -84,10 +102,13 @@ let cant_filtros_ob = 0
 let query = ""
 
 
+let lista_filtros = [filtro_academico,filtro_cargo,filtro_penal_cant , filtro_oblig_cant, filtro_oblig_mat, filtro_senten_no_tiene,
+  filtro_ingres_cant, filtro_inmu_cant, filtro_inmu_valor,filtro_mueb_cant,filtro_mueb_valor, filtro_renuncias,filtro_edad,filtro_oriundo,
+  filtro_cargo_postula, filtro_organizacion, filtro_distrito]
 /* */
 
 function button_filter(){
-  if(cant_filtros == 1 ){
+  /*if(cant_filtros == 1 ){
     if (cant_filtros_normales == 1 )
     {
       if(lista_orden_filtros[0] = 1){
@@ -112,7 +133,12 @@ function button_filter(){
 
     }
 
-  }
+  }*/
+  
+  console.log("------------------------------")
+  console.log("BUTTON_FILTER FUNCTION()")
+  console.log("lista_orden_filtros: ", lista_orden_filtros)
+  console.log("lista_filtros.length: ", lista_filtros.length)
 
 }
 
@@ -345,18 +371,16 @@ function get_sentencias_oblig_mat(){
     cant_filtros++
     lista_orden_filtros.push(5)
     console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-
     console.log("cant_filtros_ob: " ,cant_filtros_ob)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
     console.log("cant_filtros: " ,cant_filtros)
-    let cant_mat_list = document.getElementsByName("opc_mat_demanda")
-    for(let i = 0; i < cant_mat_list.length; i++) {
-      if(cant_mat_list[i].checked) {
-        mat_demanda = cant_mat_list[i].value
-        console.log("mat_demanda: ", mat_demanda)
-      }
+  }
+  let cant_mat_list = document.getElementsByName("opc_mat_demanda")
+  for(let i = 0; i < cant_mat_list.length; i++) {
+    if(cant_mat_list[i].checked) {
+      mat_demanda = cant_mat_list[i].value
+      console.log("mat_demanda: ", mat_demanda)
     }
-  
   }
 
 }
@@ -431,8 +455,19 @@ function quitar_seleccion_sentencias(){
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
     console.log("cant_filtros: " ,cant_filtros)
   }
+  if(no_tiene_val == true)
+  {
+    no_tiene_val = false
+  cant_filtros--
+  cant_filtros_normales--
+  console.log("Procedo a quitar el 6")
+  const index = lista_orden_filtros.indexOf(6);
+  if (index > -1) {
+    lista_orden_filtros.splice(index, 1);
+  }
+}
 
-  
+document.getElementById("mostrar_sentencias").style="" 
 }
 
 function noTiene_opcion(element){
@@ -497,6 +532,7 @@ function noTiene_opcion(element){
           inputs[i].checked = false
         }
       }
+
       console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
       console.log("cant_filtros_ob: " ,cant_filtros_ob)
       console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
@@ -504,12 +540,25 @@ function noTiene_opcion(element){
     }
     let  mostrar1 = document.getElementById("mostrar_sentencias")
     mostrar1.style = "display:none"
+    document.getElementById("div_opc_cant_sentencias").style="display:none"
+    document.getElementById("div_opc_obligaciones").style="display:none"
     no_tiene_val = true
+    lista_orden_filtros.push(6)
+    cant_filtros++
+    cant_filtros_normales++
+    impresion_peque()
   }
   else if (element.checked == false){
     let  mostrar1 = document.getElementById("mostrar_sentencias")
     mostrar1.style = ""
     no_tiene_val = false
+    cant_filtros--
+    cant_filtros_normales--
+    console.log("Procedo a quitar el 6")
+    const index = lista_orden_filtros.indexOf(6);
+    if (index > -1) {
+      lista_orden_filtros.splice(index, 1);
+    }
   }
 }
 
@@ -630,7 +679,16 @@ function quitar_seleccion_b_r(){
       }
       orden_valor_mueble = ""
     }
-  
+    document.getElementById("cant_ingreso_asc").checked = false
+    document.getElementById("cant_ingreso_desc").checked = false
+    document.getElementById("cant_inmueble_asc").checked = false
+    document.getElementById("cant_inmueble_desc").checked = false
+    document.getElementById("valor_inmueble_asc").checked = false
+    document.getElementById("valor_inmueble_desc").checked = false
+    document.getElementById("cant_mueble_asc").checked = false
+    document.getElementById("cant_mueble_desc").checked = false
+    document.getElementById("valor_mueble_asc").checked = false
+    document.getElementById("valor_mueble_desc").checked = false
 }
 
 /* FILTRO RENUNCIAS */
@@ -765,7 +823,9 @@ function onchange_desple_oriundo(){
     let dpt_ = dpt_desplegable.options[dpt_desplegable.selectedIndex].value
     departamento_nacimiento = dpt_
     console.log("departamento_nacimiento: ",departamento_nacimiento)
-
+    if( departamento_nacimiento ==  "default"){
+      quitar_seleccion_oriundo()
+    }
   }
 }
 
@@ -821,7 +881,9 @@ function get_cargo_postula(){
   let postula_value = postula_desplegable.options[postula_desplegable.selectedIndex].value
 
   cargo_postula = postula_value 
-  
+  if(cargo_postula == "cargo_postula"){
+    quitar_seleccion_postula()
+  }
   console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
   console.log("cant_filtros: " ,cant_filtros)
   console.log("cargo_postula: ", cargo_postula)
@@ -858,6 +920,9 @@ function get_org_politica(){
   let org_politica_ = document.getElementById("select_org_politica")
   let org_politica_value = org_politica_.options[org_politica_.selectedIndex].value
   org_politica = org_politica_value
+  if(org_politica == "default"){
+    quitar_seleccion_org_politica()
+  }
   console.log("org_politica: ", org_politica)
   
 }
@@ -906,10 +971,11 @@ function get_distrito_electoral(){
   console.log("cant_filtros: " ,cant_filtros)
   //get del valor
   dist_electoral = distrito_value
-  console.log("dist_electoral: ", dist_electoral)
-
+  if(dist_electoral == "default"){
+    quitar_seleccion_distrito()
+  }
+  console.log("dist_electoral: ", dist_electoral) 
 }
-
 
 function quitar_seleccion_distrito(){
   if(filtro_distrito  == true){
