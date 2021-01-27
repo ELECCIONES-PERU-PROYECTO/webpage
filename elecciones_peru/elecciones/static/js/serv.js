@@ -18,9 +18,28 @@ async function getCandidato() {
   }
 }
 
-async function grado_esudios() {
+async function getUrl_datos() {
+  try {
+    const response = await axios.get('/candidatos/?nivel_academico='+ nivel_academico+"/?cargos_previos_order="+cargos_previos_order+"/?orden_cant_sentencia="+orden_cant_sentencia+"/?orden_cant_sentencia_oblig="+orden_cant_sentencia_oblig+"/?mat_demanda="+mat_demanda+"/?no_tiene_val="+no_tiene_val+"/?orden_cant_ingreso="+orden_cant_ingreso+"/?orden_cant_inmueble="+orden_cant_inmueble+"/?orden_valor_inmueble="+orden_valor_inmueble+"/?orden_cant_mueble="+orden_cant_mueble+"/?=orden_valor_mueble"+orden_valor_mueble+"/?orden_renuncias="+orden_renuncias+"/?rango_edad_val="+rango_edad_val+"/?nac_per_si="+nac_per_si+"/?nac_per_no="+nac_per_no+"/?departamento_nacimiento="+departamento_nacimiento+"/?cargo_postula="+cargo_postula+"/?org_politica="+org_politica+"/?dist_electoral="+dist_electoral+"/?tipo_candidato_="+tipo_candidato_)
+    console.log(response)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+async function grado_estudios() {
   try {
     const response = await axios.get('/candidatos/estudios/?niv_acad=' + nivel_academico_value)
+    console.log(response)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+
+async function test() {
+  try {
+    const response = await axios.get('/candidatos/?nivel_academico='+nivel_academico)
     console.log(response)
   } catch (error) {
     console.error(error)

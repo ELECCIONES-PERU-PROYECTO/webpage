@@ -22,6 +22,13 @@ class DatosPersonales(models.Model):
   direccion_domicilio = models.CharField(max_length=200)
   cargo_eleccion = models.CharField(max_length=200)
 
+  def get_edu_join(self , EducacionBasica):
+    #print("dsa")
+    print(self.id)
+    return EducacionBasica.filter(dni_candidato = self.dni_candidato)    
+  def get_experienciaLaboral(self):
+    from ExperenciaLaboral.models import ExperienciaLaboral
+    return ExperienciaLaboral.ojects.filter(dni_candidato=self.dni_candidato)
   class Meta:
     db_table = 'datos_personales'
     unique_together = ('dni_candidato', 'cargo_eleccion',)
