@@ -288,19 +288,34 @@ class InformacionAdicional(models.Model):
     db_table = 'informacion_adicional'
 
 
-class SentenciaPenalDelito(models.Model):
+class FinanciamientoPrivado(models.Model):
+
   id = models.CharField(max_length=10, primary_key=True)
-  value = models.CharField(max_length=200)
-  delito = models.CharField(max_length=200)
+  organizacion_politica = models.CharField(max_length=250)
+  ruc_org_politica = models.CharField(max_length=30)
+  estado = models.CharField(max_lenght=100)
+  fecha_presentacion= model.CharField(max_lenght= 50)
+  total_activo = models.FloatField()
+  total_pasivo = models.FloatField()
+  total_patrimonio = models.FloatField()
+  total_pasivo_patrimonio = models.FloatField()
+  total_ingresos = models.FloatField()
+  total_gastos = models.FloatField()
+  anhio = models. models.IntegerField()
 
+  class Meta:
+    db_table = 'financiamiento_privado'
 
-class Distrito(models.Model):
+  
+  
+class FinanciamientoPublico(models.Model):
+
   id = models.CharField(max_length=10, primary_key=True)
-  value = models.CharField(max_length=200)
-  distrito = models.CharField(max_length=200)
+  organizacion_politica = models.CharField(max_length=250)
+  num_votos_congresales = models.IntegerField()
+  monto_quinquenal = models.FloatField()
+
+  class Meta:
+    db_table = 'financiamiento_publico'
 
 
-class OrganizacionPolitica(models.Model):
-  id = models.CharField(max_length=10, primary_key=True)
-  value = models.CharField(max_length=200)
-  organizacion = models.CharField(max_length=200)
