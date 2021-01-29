@@ -11,12 +11,12 @@
             <a class="uk-logo" href="#"><img class="custom-logo" src="img/dashboard-logo-white.svg" alt=""></a>
           </div> -->
           <ul class="uk-navbar-nav uk-visible@m">
-            <li><a href="#">Candidatos Presidenciales</a></li>
+            <li><a href="#" onclick="tipo_candiato(this)">Candidatos Presidenciales</a></li>
             <li>
-              <a href="#">Candidatos Congresales</a>
+              <a href="#" onclick="tipo_candiato(this)" >Candidatos Congresales</a>
             </li>
             <li>
-              <a href="#">Candidatos Parlamento Andino</a>
+              <a href="#" onclick="tipo_candiato(this)">Candidatos Parlamento Andino</a>
             </li>
           </ul>
           <!-- <div class="uk-navbar-item uk-visible@s">
@@ -51,7 +51,7 @@
     </div> -->
     
     <div class="left-nav-wrap">
-      <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
+      <ul id ="tipo_candidato_filter" class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
         <li class="uk-nav-header">Filtros</li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel Académico</a>
           <ul>
@@ -415,7 +415,7 @@
             </form>
           </ul>
         </li>
-        <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cargo al que Postula</a>
+        <li class="uk-parent" id = "postula_presidentes" style=""><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cargo al que Postula</a>
           <ul>
             <button  onclick="quitar_seleccion_postula()">Decartar</button>
             <form>
@@ -450,7 +450,7 @@
             </form>
           </ul>
         </li>
-        <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Distrito Electoral</a>
+        <li class="uk-parent" id="distrito_congreso" style="display: none;"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Distrito Electoral</a>
           <ul>
             <button  onclick="quitar_seleccion_distrito()">Decartar</button>
             <form>
@@ -502,6 +502,7 @@
         <tr>
           <td>{{ candidato.candidato }}</td>
           <td>{{ candidato.dni_candidato }}</td>
+          <td>{{ candidato.organizacion_politica }}</td>
         </tr>
         {% endfor %}
         <!-- candidato con un dni en específico -->

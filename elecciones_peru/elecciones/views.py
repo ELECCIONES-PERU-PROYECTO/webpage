@@ -2,29 +2,30 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import *
 
+SELECT_candidato = ""
+WHERE_candidato = ""
+
 def function_filtros_ob(self, query_normal, normnob1):
-    #print("function_filtros_ob")
+    #print("function_filtros_ob##################")
     #print(len(self))
+  
     query_total = ""
     subquery_list = list()
     for i in range(0, len(self)):
         index_ = self[i].find('_')
         valor = self[i][index_+1:]
         quitar = self[i][index_-1:]
+        if int(valor) > 9:
+          quitar = self[i][index_-2:]
         aux = self[i].replace("("+quitar, "")
         self[i] = aux
-                #if query_normal != "":
-
-        #print("len(self): ",len(self))
-        #print("self[i]: ",self[i] )
-        #print("valor: ",valor)
         if valor == "1":
             if len(self) > 1 or normnob1 == True: #cargos previos
                 subquery = " SELECT CE.total_anhio_eleccion AS conteo, DP.dni_candidato FROM cargo_eleccion AS CE JOIN  datos_personales AS DP USING (dni_candidato) WHERE CE.tiene_info_por_declarar  = 'SI' AND  (DP.cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion ='PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA') GROUP BY ( DP.dni_candidato,  conteo)  " 
                 
                 subquery_list.append(subquery)
             else:
-                subquery = " SELECT CE.total_anhio_eleccion AS conteo, DP.dni_candidato,   DP.candidato, DP.organizacion_politica, DP.cargo_eleccion FROM cargo_eleccion AS CE JOIN  datos_personales AS DP USING (dni_candidato) WHERE CE.tiene_info_por_declarar  = 'SI' AND  (DP.cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion ='PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA') GROUP BY (  DP.dni_candidato,  DP.candidato, DP.organizacion_politica, DP.cargo_eleccion, CE.total_anhio_eleccion) ORDER BY conteo " +self[i]
+                subquery = " SELECT DP.id, CE.total_anhio_eleccion AS conteo, DP.dni_candidato,   DP.candidato, DP.organizacion_politica, DP.cargo_eleccion FROM cargo_eleccion AS CE JOIN  datos_personales AS DP USING (dni_candidato) WHERE CE.tiene_info_por_declarar  = 'SI' AND  (DP.cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion ='PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA') GROUP BY (  Dp.id, DP.dni_candidato,  DP.candidato, DP.organizacion_politica, DP.cargo_eleccion, CE.total_anhio_eleccion) ORDER BY conteo " +self[i]
                 return subquery            
         elif valor == "2": # cant sentencia penal 
             if len(self) >1 or normnob1 == True :
@@ -235,6 +236,14 @@ def filter_function(request, nivel_academico,cargos_previos_order , orden_cant_s
     orden_cant_mueble, orden_valor_mueble,orden_renuncias, rango_edad_val,nac_per_si, nac_per_no, departamento_nacimiento,
     cargo_postula, org_politica, dist_electoral, tipo_candidato_
   ]
+  print("tipo_candidato_: ", tipo_candidato_)
+  
+  if tipo_candidato_ == "presidenciales":
+    SELECT_candidato =  "cargo_eleccion"
+    WHERE_candidato = " XD"
+  elif tipo_candidato_ == "congreso":
+    print('todo')
+
   lista_filtros_normales = list()
   lista_filtros_ob = list()
   # for i in range(0,len(lista_valores)):
@@ -247,6 +256,7 @@ def filter_function(request, nivel_academico,cargos_previos_order , orden_cant_s
   lista_ob_dict = list()
   almenos1 = False
   for i in range(0, len(lista_valores)-1):
+      print("lista_valores[i]: ", lista_valores[i])
       if lista_valores[13] != "unk" and i == 15:
           continue
       if lista_valores[i] != "unk":
@@ -266,7 +276,7 @@ def filter_function(request, nivel_academico,cargos_previos_order , orden_cant_s
           lista_valores[i] = ""
   #print("")
   # print(lista_val_new)
-  # print(lista_orden
+  #print("lista_orden: ",lista_orden)
   lista_index = list()
   if (tienes_al_menos1 == True):
       j = 1
@@ -293,7 +303,7 @@ def filter_function(request, nivel_academico,cargos_previos_order , orden_cant_s
   # print("lista_valores: ",lista_valores)
 # i lista_valores[] != "":
   # print(lista_orden)
-  # print(lista_filtros_ob)
+
   # print(lista_ids)
   # print(LN)
   #print(lista_ids_new)
@@ -306,6 +316,11 @@ def filter_function(request, nivel_academico,cargos_previos_order , orden_cant_s
           quitar = lista_valores[i][index_:]    
           aux = lista_valores[i].replace(quitar, "")
           lista_valores[i] = aux
+
+
+  #print("lista_filtros_ob: ",lista_filtros_ob)
+  #print("lista_filtros_normales: ", lista_filtros_normales)
+
   if len(lista_filtros_normales) == 0:
       #print("Lista de filtros normales esta vacia")
       query_normal = ""
@@ -346,7 +361,7 @@ def filter_function(request, nivel_academico,cargos_previos_order , orden_cant_s
           quitar = lista_filtros_ob_new[i][index_-1:]
           aux = lista_filtros_ob_new[i].replace("("+quitar, "")
           lista_filtros_ob_new[i] = aux
-      query_total = " SELECT DP.id,  DP.cargo_eleccion,  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE (DP.cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR DP.cargo_eleccion  ='PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA')  GROUP BY (conteo,  DP.candidato, DP.organizacion_politica, DP.cargo_eleccion) ORDER BY conteo " + lista_filtros_ob_new[0]
+      query_total = " SELECT DP.id,  DP.cargo_eleccion,  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE (DP.cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR DP.cargo_eleccion  ='PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA')  GROUP BY (conteo,DP.id,  DP.candidato, DP.organizacion_politica, DP.cargo_eleccion) ORDER BY conteo " + lista_filtros_ob_new[0]
       #query_total = (list,query_total_filtros_normales)
       #print("query_total: ", query_total)
   elif len(lista_filtros_normales)>1 and len(lista_filtros_ob_new)>1:
