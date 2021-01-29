@@ -42,11 +42,11 @@ def function_filtros_ob(self, query_normal, normnob1):
                 subquery = " SELECT  COUNT(SO.dni_candidato) AS conteo, DP.dni_candidato,  DP.candidato, DP.organizacion_politica, DP.distrito_elec FROM sentencia_obligacion AS SO JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_info_por_declarar = 'SI' AND  (DP.cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion ='PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA') GROUP BY (DP.dni_candidato, total_ingresos,DP.candidato, DP.organizacion_politica, DP.distrito_elec) ORDER BY conteo  " +self[i]
                 return subquery
         elif valor == "6":#cantidad ingresos
-            subquery = " SELECT total_ingresos AS  conteo , DP.dni_candidato FROM ingreso AS I JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_ingresos  = 'SI' AND  (DP.cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion ='PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA') GROUP BY ( DP.dni_candidato, conteo) "
+            subquery = " SELECT DP.id, total_ingresos AS  conteo , DP.dni_candidato FROM ingreso AS I JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_ingresos  = 'SI' AND  (DP.cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion ='PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA') GROUP BY (DP.id,  DP.dni_candidato, conteo) "
             if len(self) >1 or normnob1 == True :
                 subquery_list.append(subquery)
             else: 
-                subquery = " SELECT total_ingresos AS  conteo , DP.dni_candidato,  DP.candidato, DP.organizacion_politica, DP.distrito_elec FROM ingreso AS I JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_ingresos  = 'SI' AND (DP.cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion ='PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA') GROUP BY ( DP.dni_candidato, total_ingresos, DP.candidato, DP.organizacion_politica, DP.distrito_elec) ORDER BY conteo "  + self[i]
+                subquery = " SELECT DP.id, total_ingresos AS  conteo , DP.dni_candidato,  DP.candidato, DP.organizacion_politica, DP.distrito_elec FROM ingreso AS I JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_ingresos  = 'SI' AND (DP.cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion ='PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA') GROUP BY ( DP.id,DP.dni_candidato, total_ingresos, DP.candidato, DP.organizacion_politica, DP.distrito_elec) ORDER BY conteo "  + self[i]
                 return subquery
         elif valor == "7":#cantidad inmueble
             subquery = " SELECT COUNT(BI.dni_candidato) AS conteo, DP.dni_candidato FROM bien_inmueble AS BI JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_inmueble  = 'SI' AND  (DP.cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion ='PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR DP.cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA') GROUP BY (DP.dni_candidato) " 
@@ -336,6 +336,16 @@ def filter_function(request, nivel_academico,cargos_previos_order , orden_cant_s
       #print("query_total: ",query_total)
       #print("lista_filtros_normales: ",lista_filtros_normales )
      
+  elif len(lista_filtros_ob_new)  ==1 and len(lista_filtros_normales) ==1:
+      query_total_filtros_normales = ""
+      #print("len(lista_filtros_normales)>1 and len(lista_filtros_ob_new) >  1")
+      query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores)      
+      #print("query_total_filtros_normales: ", query_total_filtros_normales )
+      query_total = function_filtros_ob(lista_filtros_ob_new, query_total_filtros_normales, False)
+      
+      #print("--------------------------------------------------------------------")
+
+
   elif len(lista_filtros_normales)==1 and len(lista_filtros_ob_new)>1:
       #print("normales 1 ob n")
       query_total_filtro_normal = ""
