@@ -64,20 +64,20 @@ let filtro_distrito = false          //17
  //Nivel Academico
   let nivel_academico = ""        //        
  //Cargos previos
-  let cargos_previos_order = ""   //ob
+  let cargos_previos_order = ""   //ob1
  //Sentencias
-    let orden_cant_sentencia = ""    //ob
-    let orden_cant_sentencia_oblig = ""  //ob
+    let orden_cant_sentencia = ""    //ob2
+    let orden_cant_sentencia_oblig = ""  //ob3
     let mat_demanda = ""
   let no_tiene_val = ""         
   //Bienes y rentas
-  let orden_cant_ingreso = ""       //ob
-  let orden_cant_inmueble = ""//ob
-  let orden_valor_inmueble = ""//ob
-  let orden_cant_mueble = ""//ob
-  let orden_valor_mueble = ""//ob
+  let orden_cant_ingreso = ""       //ob 6
+  let orden_cant_inmueble = ""//ob 7
+  let orden_valor_inmueble = ""//ob 8
+  let orden_cant_mueble = ""//ob 9
+  let orden_valor_mueble = ""//ob 10
   //Renuncias
-  let orden_renuncias = ""   //ob
+  let orden_renuncias = ""   //ob 11
   //Edad
   let rango_edad_val = ""
   //Oriundo
@@ -125,6 +125,7 @@ function button_filter(){
     cargo_postula, org_politica, dist_electoral, tipo_candidato_
   ]
   
+
   let url = "http://127.0.0.1:8000/elecciones/candidatos"
   
   /*for (let i  = 0 ; i < lista_valores.length; i++){
@@ -138,6 +139,7 @@ function button_filter(){
     url = editedText
     }
     */
+   console.log(lista_orden_filtros)
    let x = 1
    for(let i = 0 ; i < lista_orden_filtros.length; i++){
      if(lista_orden_filtros[i] == 1){
@@ -203,13 +205,23 @@ function button_filter(){
      else if(lista_orden_filtros[i] == 13){
        lista_valores[12] = lista_valores[12]+"("+x
        //url = "/"+url+lista_valores[12]
+       console.log("lista_valores[12] ",lista_valores[12])
        x++
      }
      else if(lista_orden_filtros[i] == 14){
-       lista_valores[13] = lista_valores[13]+"("+x
+        console.log("i ",i)
+      if (lista_valores[13] == ""){
+        lista_valores[14] = lista_valores[14]+"("+x
+        //url = "/"+url+lista_valores[13]
+        console.log("lista_valores[13] ",lista_valores[13])
+        x++}
+       
+      else {
+        lista_valores[13] = lista_valores[13]+"("+x
        //url = "/"+url+lista_valores[13]
-       x++
-     }
+       console.log("lista_valores[13] ",lista_valores[13])
+       x++}
+      }
      else if(lista_orden_filtros[i] == 15){
        lista_valores[16] = lista_valores[16]+"("+x
        //url = "/"+url+lista_valores[16]
@@ -238,7 +250,7 @@ function button_filter(){
   console.log(lista_valores)
  
    }
- 
+   console.log(lista_valores)
    for (let i = 0  ; i < lista_valores.length ;i++){
      if( lista_valores[i] != ""){
        url = url + "/"+ lista_valores[i]
@@ -248,9 +260,7 @@ function button_filter(){
      }
    }
   console.log(url)
-
   window.history.pushState("object or string", "Title", url);
-  getUrl_datos()  
 
  
 
@@ -263,6 +273,7 @@ function button_filter(){
 
   window.location = url 
 
+  getUrl_datos()  
 
   getCandidato()
 
@@ -1023,6 +1034,7 @@ function get_cargo_postula(){
 function quitar_seleccion_postula(){
   if(filtro_cargo_postula == true){
     filtro_cargo_postula = false
+    cargo_postula=""
     cant_filtros_normales--
     cant_filtros--
     document.getElementById("cargo_postula").selectedIndex = 0
