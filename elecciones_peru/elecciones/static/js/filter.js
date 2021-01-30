@@ -90,7 +90,7 @@ let filtro_distrito = false          //17
   let org_politica = ""
   //Distrito electoral
   let dist_electoral = ""
-  let tipo_candidato_ = "presidenciales"
+  let tipo_candidato_ = ""
   
 /* Contadores de tipo de queries */
 let cant_filtros_normales = 0
@@ -119,26 +119,27 @@ let educa_tablas = {
 }
 
 function button_filter(){
+  tipo_candidato_ = document.getElementsByName("tipo_candidato_filter")[0].id
+
   let lista_valores = [nivel_academico,cargos_previos_order , orden_cant_sentencia,
     orden_cant_sentencia_oblig, mat_demanda, no_tiene_val, orden_cant_ingreso,orden_cant_inmueble,orden_valor_inmueble,
     orden_cant_mueble, orden_valor_mueble,orden_renuncias, rango_edad_val,nac_per_si, nac_per_no, departamento_nacimiento,
     cargo_postula, org_politica, dist_electoral, tipo_candidato_
   ]
-  
-
+  if (lista_orden_filtros.length == 0 ){
+		setTimeout(function(){
+			UIkit.notification('Escoja al menos un filtro');
+    }, 1000);
+    return 
+  }
+  else if(lista_valores[13]!= "" && lista_valores[15] == ""){
+		setTimeout(function(){
+			UIkit.notification('Especifique el distrito de nacimiento del filtro "Oriundo"');
+    }, 1000);
+    return 
+  }
   let url = "http://127.0.0.1:8000/elecciones/candidatos"
   
-  /*for (let i  = 0 ; i < lista_valores.length; i++){
-    if(lista_valores[i] == ""){
-      url = url+lista_valores[i]+"hola"
-    }
-    url = url+lista_valores[i]+"/"
-  }
-  if((url.charAt(url.length -1 )) == "/"  ){
-    const editedText = url.slice(0, -1) 
-    url = editedText
-    }
-    */
    console.log(lista_orden_filtros)
    let x = 1
    for(let i = 0 ; i < lista_orden_filtros.length; i++){

@@ -161,25 +161,25 @@
                       Materia de la demanda
                     </label>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="mat_deman_fam_ali" name="opc_mat_demanda" value="Familia_Ali" onclick="get_sentencias_oblig_mat()">
+                      <input type="radio" id="mat_deman_fam_ali" name="opc_mat_demanda" value="FamiliaAli" onclick="get_sentencias_oblig_mat()">
                       <label for="mat_deman_fam_alimen" class="uk-text-muted uk-margin-small-left">
                         Familia/Alimentaria
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="mat_deman_contrac" name="opc_mat_demanda" value="Contractual" onclick="get_sentencias_oblig_mat()">
+                      <input type="radio" id="mat_deman_contrac" name="opc_mat_demanda" value="CONTRACTUAL" onclick="get_sentencias_oblig_mat()">
                       <label for="mat_deman_contract" class="uk-text-muted uk-margin-small-left">
                         Contractual
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="mat_deman_lab" name="opc_mat_demanda" value="Laboral" onclick="get_sentencias_oblig_mat()">
+                      <input type="radio" id="mat_deman_lab" name="opc_mat_demanda" value="LABORAL" onclick="get_sentencias_oblig_mat()">
                       <label for="mat_deman_laboral" class="uk-text-muted uk-margin-small-left">
                         Laboral
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="mat_deman_vio" name="opc_mat_demanda" value="Violencia" onclick="get_sentencias_oblig_mat()">
+                      <input type="radio" id="mat_deman_vio" name="opc_mat_demanda" value="VIOLENCIA" onclick="get_sentencias_oblig_mat()">
                       <label for="mat_deman_violencia" class="uk-text-muted uk-margin-small-left">
                         Violencia Familiar
                       </label>
@@ -441,9 +441,28 @@
                 <div class="uk-width-1-1@s uk-flex uk-flex-column">
                   <select class="uk-select" id="select_org_politica" onchange="get_org_politica()">
                     <option value="default">Elegir Organización Política</option>
-                    <option value="FUERZA POPULAR">Fuerza Popular</option>
+                    <option value="PARTIDO POLÍTICO CONTIGO">Partido Politico Contigo</option>
                     <option value="PARTIDO MORADO">Partido Morado</option>
-                    <option value="org_3">Org 3</option>
+                    <option value="PARTIDO POPULAR CRISTIANO - PPC">Partido Popular Cristiano</option>
+                    <option value="PERU PATRIA SEGURA">Peru Patria Segura</option>
+                    <option value="PARTIDO NACIONALISTA PERUANO">Partido Nacionalista Peruano</option>
+                    <option value="ACCION POPULAR">Accion Popular</option>
+                    <option value="EL FRENTE AMPLIO POR JUSTICIA, VIDA Y LIBERTAD">Frente Amplio</option>
+                    <option value="FUERZA POPULAR">Fuerza Popular</option>
+                    <option value="AVANZA PAIS - PARTIDO DE INTEGRACION SOCIAL">Avanza Pais</option>
+                    <option value="PARTIDO APRISTA PERUANO">Partido Aprista Peruano</option>
+                    <option value="DEMOCRACIA DIRECTA">Democracia Directa</option>
+                    <option value="FRENTE POPULAR AGRICOLA FIA DEL PERU - FREPAP">FREPAP</option>
+                    <option value="PARTIDO POLITICO NACIONAL PERU LIBRE">Nacional Peru Libre</option>
+                    <option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Peru</option>
+                    <option value="RENOVACION POPULAR">Renovacion Popular</option>
+                    <option value="RENACIMIENTO UNIDO NACIONAL">Renacimiento Unido Nacional</option>
+                    <option value="ALIANZA PARA EL PROGRESO">Alianza Para el progreso</option>
+                    <option value="PARTIDO FRENTE DE LA ESPERANZA 2021">Partido Frente de la Esperana 2021</option>
+                    <option value="VICTORIA NACIONAL">Victoria Nacional</option>
+                    <option value="UNION POR EL PERU">Union por el Peru</option>
+                    <option value="PODEMOS PERU">Podemos Peru</option>
+                    <option value="JUNTOS POR EL PERU">Juntos Por el Peru</option>
                   </select>
                 </div>
               </fieldset>
@@ -494,6 +513,7 @@
           <th>Nombres</th>
           <th>DNI</th>
           <th>Partido</th>
+          <th>Cargo</th>
         </tr>
       </thead>
       <tbody>
@@ -503,6 +523,7 @@
           <td>{{ candidato.candidato }}</td>
           <td>{{ candidato.dni_candidato }}</td>
           <td>{{ candidato.organizacion_politica }}</td>
+          <td>{{ candidato.cargo_eleccion }}</td>
         </tr>
         {% endfor %}
         <!-- candidato con un dni en específico -->
