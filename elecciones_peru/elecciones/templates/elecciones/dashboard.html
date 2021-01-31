@@ -5,12 +5,12 @@
   <!--HEADER-->
   <header id="top-head" class="uk-position-fixed">
     <div class="uk-container uk-container-expand uk-background-secondary">
-      <nav class="uk-navbar uk-light" data-uk-navbar="mode:click; duration: 250">
+      <nav class="uk-navbar uk-light" data-uk-navbar="mode:click; duration: 250" >
         <div class="uk-navbar-left">
           <!-- <div class="uk-navbar-item uk-hidden@m">
             <a class="uk-logo" href="#"><img class="custom-logo" src="img/dashboard-logo-white.svg" alt=""></a>
           </div> -->
-          <ul class="uk-navbar-nav uk-visible@m">
+          <ul class="uk-navbar-nav uk-visible@m" id = "opciones_candidatos" > 
             <li><a href="#" onclick="tipo_candiato(this)">Candidatos Presidenciales</a></li>
             <li>
               <a href="#" onclick="tipo_candiato(this)" >Candidatos Congresales</a>
@@ -50,7 +50,7 @@
     <!-- <div class="left-content-box content-box-dark">
     </div> -->
     
-    <div class="left-nav-wrap" style="display: none;" id = "filtros-candidatos">
+    <div class="left-nav-wrap"  id = "filtros_candidatos">
       <ul id ="presidenciales" name ="tipo_candidato_filter"class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
         <li class="uk-nav-header">Filtros</li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel Académico</a>
@@ -512,7 +512,7 @@ SEPARACION
 SEPARACION
 -->
     </div>
-    <div class="left-nav-wrap"  >
+    <div class="left-nav-wrap" id = "filtros_organizaciones" style="display:none"  >
       <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
         <li class="uk-nav-header">Filtros</li>
 
@@ -576,14 +576,7 @@ SEPARACION
                     </label>
                   </div>
 
-                  <div class="uk-width-1-1@s uk-flex uk-flex-column">
-                    <select class="uk-select" id= "genero_desplegable" name= "opc_genero">
-                      <option value="default">Elegir Partido Politico</option>
-                      <option value="AMAZONAS">Partido Morado</option>
-                      <option value="LAMBAYEQUE">Lambayeque</option>
-                      <option value="ICA">Ica</option>
-                    </select>
-                  </div>
+
                   <div class="uk-flex uk-flex-middle">
                     <input type="radio" id= "genero"  name="genero_orden" onclick="set_valor(this)" value="ASC">
                     <label for="tipo_genero_asc_" class="uk-text-muted uk-margin-small-left">
@@ -998,18 +991,17 @@ SEPARACION
     <div class="uk-container uk-container-expand">
       <label class="uk-text-muted">
         Agrupar por
-      </label>
+      </label><!--PREGUNTAR A ALEXANDRA QUE BOTON SE DEBE PRESIONAR PARA QUE SE CAMBIE POR ORGANIZACIONES O CANDIDATOS-->
         <ul class="uk-subnav uk-subnav-pill uk-grid uk-grid-medium uk-child-width-1-1 uk-child-width-1-3@s uk-child-width-1-4@m uk-child-width-1-4@l uk-child-width-1-5@xl" data-uk-grid">
-          <li class="uk-active" data-uk-filter-control><a href="#">Mostrar todo</a></li>
-          <li data-uk-filter-control=".nature-card"><a href="#">Partidos</a></li>
+          <li class="uk-active" data-uk-filter-control onclick="activar_candidatos()"><a href="#">Mostrar todo</a></li>
+          <li data-uk-filter-control=".nature-card" onclick="activar_organizaciones()"><a href="#">Partidos</a></li>
           <li data-uk-filter-control=".music-card"><a href="#">Departamentos</a></li>
         </ul>
       <hr>
     </div>
-    <table class="uk-table uk-table-divider">
+    <table class="uk-table uk-table-divider" id ="tabla_candidatos" style ="">
       <thead>
         <tr>
-          
           <th>Nombres</th>
           <th>DNI</th>
           <th>Partido</th>
@@ -1043,6 +1035,43 @@ SEPARACION
         {% endfor %}
       </tbody>
   </table>
+  <table class="uk-table uk-table-divider" id ="tabla_organizaciones" style ="display: none;">
+    <thead>
+      <tr>
+        <th>Cantidad</th>
+        <th>Nombres</th>
+        <th>DNI</th>
+        <th>Partido</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- todos los candidatos -->
+      {% for candidato in candidatos %}
+      <tr>
+        <td>{{ candidato.conteo }}</td>
+        <td>{{ candidato.candidato }}</td>
+        <td>{{ candidato.dni_candidato }}</td>
+        <td>{{ candidato.organizacion_politica }}</td>
+        <td>{{ candidato.cargo_eleccion }}</td>
+      </tr>
+      {% endfor %}
+      <!-- candidato con un dni en específico -->
+      {% for candidato in candidatos_by_dni %}
+      <tr>
+        <td>{{ candidato.candidato }}</td>
+        <td>{{ candidato.dni_candidato }}</td>
+      </tr>
+      {% endfor %}
+      <!-- candidato según su grado de estudio -->
+      {% for estudio in estudios %}
+      <tr>
+        <td>{{ estudio.candidato }}</td>
+        <td>{{ estudio. }}</td>
+        <td>{{ estudio.organizacion_politica }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>
   </div>
   <!-- /CONTENT -->
   <!-- OFFCANVAS -->

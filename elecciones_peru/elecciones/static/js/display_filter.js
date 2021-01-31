@@ -24,6 +24,4 @@ function tipo_candiato(element){
 }
 
 
-function organizacion_candidatos(){
-    
-}
+

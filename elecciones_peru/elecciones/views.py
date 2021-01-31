@@ -121,11 +121,11 @@ def function_filtro_normal(self, stack_, SELECT_candidato,WHERE_candidato ):
     # print("self",self)
     print("SELECT_candidato: ", SELECT_candidato)
     print("WHERE_candidato: ", WHERE_candidato)
-    if stack_==False:
+    if stack_== False:
       if self[0] != "":
           print("self[0]: ",self[0])
           if(self[0] == 'maestro_doctor'):
-              query_total = "SELECT DP.id , SELECT DP.dni_candidato , DP.candidato, DP.organizacion_politica, "+  SELECT_candidato+ "  FROM  estudio_postgrado AS EP   JOIN  datos_personales AS DP USING   (dni_candidato) WHERE (EP.es_maestro= 'SI' OR EP.es_doctor = 'SI') AND  "+ SELECT_candidato
+              query_total = "SELECT DP.id ,  DP.dni_candidato , DP.candidato, DP.organizacion_politica, "+  SELECT_candidato+ "  FROM  estudio_postgrado AS EP   JOIN  datos_personales AS DP USING   (dni_candidato) WHERE ((EP.es_maestro= 'SI' ) OR (EP.es_doctor = 'SI')) AND  "+ WHERE_candidato
               return query_total
           else:
               tabla = ""

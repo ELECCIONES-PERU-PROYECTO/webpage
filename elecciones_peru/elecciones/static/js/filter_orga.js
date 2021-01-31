@@ -12,8 +12,8 @@ function button_filter_org(){
     }        
     let url = "http://127.0.0.1:8000/elecciones/candidatos"
     if(filtro_id=="opc_edad"){
-        let select_edad = document.getElementById("select_org_politica_orga")
-        let organizacion = select_edad.options[select_edad.selectedIndex].value
+        //let select_edad = document.getElementById("select_org_politica_orga")
+        //let organizacion = select_edad.options[select_edad.selectedIndex].value
         let rango=""
         inputs_edad = document.getElementsByName("opc_edad")
         for (let i = 0 ; i < inputs_edad.length; i++){
@@ -30,8 +30,8 @@ function button_filter_org(){
         }        
         url = url+"/"+filtro_id+"/"+organizacion+"/"+rango+"/"+"unk"
     }else if (filtro_id=="genero"){
-        let select_ = document.getElementById("genero_desplegable")
-        let organizacion = select_.options[select_.selectedIndex].value
+        //let select_ = document.getElementById("genero_desplegable")
+        //let organizacion = select_.options[select_.selectedIndex].value
         let inputs_genero = document.getElementsByName("opc_genero")
         let inputs_orden = document.getElementsByName("genero_orden")
         let orden = ""
@@ -51,38 +51,38 @@ function button_filter_org(){
     }else if (filtro_id=="primaria" || filtro_id == "secundaria" || 
     filtro_id == "tecnicos"  ||filtro_id == "nouni"|| filtro_id == "uni" ||   filtro_id =="postgrado"  ||filtro_id=="maestrodoctor"  
     ){
-        let select_ = document.getElementById("select_estudios")
-        let organizacion = select_.options[select_.selectedIndex].value
+        //let select_ = document.getElementById("select_estudios")
+        //let organizacion = select_.options[select_.selectedIndex].value
         let orden = filtro_info
 
-        url = url+"/"+filtro_id+"/"+organizacion+"/unk"+"/"+orden
+        url = url+"/"+filtro_id+"/unk/unk"+"/"+orden
     }else if (filtro_id=="penal_obligaciones_in"){
-        let select_edad = document.getElementById("penal_select")
-        let organizacion = select_edad.options[select_edad.selectedIndex].value
-        url = url+"/"+filtro_id+"/"+organizacion+"/"+filtro_info+"/unk"
+        //let select_edad = document.getElementById("penal_select")
+        //let organizacion = select_edad.options[select_edad.selectedIndex].value
+        url = url+"/"+filtro_id+"/unk/"+filtro_info+"/unk"
     }else if (filtro_id=="penal_cant"){
-        let select_edad = document.getElementById("penal_select")
-        let organizacion = select_edad.options[select_edad.selectedIndex].value
-        url = url+"/"+filtro_id+"/"+organizacion+"/"+filtro_info+"/unk"
+        //let select_edad = document.getElementById("penal_select")
+        //let organizacion = select_edad.options[select_edad.selectedIndex].value
+        url = url+"/"+filtro_id+"/unk/"+filtro_info+"/unk"
     }else if (filtro_id=="civil_cant"){
-        let select_edad = document.getElementById("penal_select")
-        let organizacion = select_edad.options[select_edad.selectedIndex].value
-        url = url+"/"+filtro_id+"/"+organizacion+"/"+filtro_info+"/unk"
+        //let select_edad = document.getElementById("penal_select")
+        //let organizacion = select_edad.options[select_edad.selectedIndex].value
+        url = url+"/"+filtro_id+"/unk/"+filtro_info+"/unk"
     }else if (filtro_id=="opc_si"){
-        let select_edad = document.getElementById("oriun_orga_select")
-        let organizacion = select_edad.options[select_edad.selectedIndex].value
+        //let select_edad = document.getElementById("oriun_orga_select")
+        //let organizacion = select_edad.options[select_edad.selectedIndex].value
         let select_ = document.getElementById("oriundo_select_departamento")
         let departamento = select_.options[select_.selectedIndex].value
 
         
-        url = url+"/"+filtro_id+"/"+organizacion+"/"+departamento+"/"+filtro_info
+        url = url+"/"+filtro_id+"/unk/unk/"+filtro_info
 
     }else if (filtro_id=="opc_no"){
         let select_edad = document.getElementById("oriun_orga_select")
         let organizacion = select_edad.options[select_edad.selectedIndex].value
         let select_ = document.getElementById("oriundo_select_departamento")
         let departamento = select_.options[select_.selectedIndex].value
-        url = url+"/"+filtro_id+"/"+organizacion+"/"+departamento+"/"+filtro_info
+        url = url+"/"+filtro_id+"/unk/unk/"+filtro_info
 
     }else if (filtro_id=="elecvsnacimiento_name"){
         url = url+"/"+filtro_id+"/unk/unk/"+filtro_info

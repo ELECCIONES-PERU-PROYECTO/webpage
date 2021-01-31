@@ -8,6 +8,45 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/uikit@latest/dist/css/uikit.min.css">
 	<link href="{% static "css/dashboard.css" %}" rel="stylesheet">
   <link href="{% static "css/cards.css" %}" rel="stylesheet">
+	<script>
+		function activar_organizaciones(){
+			let div1 = document.getElementById("filtros_candidatos")
+			div1.style.display ="none"
+			let div2 = document.getElementById("filtros_organizaciones")
+			div2.style.display ="block"
+			let tabla_organizaciones = document.getElementById("tabla_organizaciones")
+			let tabla_candidatos = document.getElementById("tabla_candidatos")
+			let opc_candidatos = document.getElementById("opciones_candidatos")
+			opc_candidatos.style.display = "none"
+
+
+			tabla_organizaciones.style.display="block"
+			tabla_candidatos.style.display="none"
+		}
+	</script>
+	<script>
+		function activar_candidatos(){
+			let div3 = document.getElementById("filtros_organizaciones")
+			div3.style.display ="none"	
+			let div4 = document.getElementById("filtros_candidatos")
+			div4.style.display ="block"
+			let tabla_organizaciones = document.getElementById("tabla_organizaciones")
+			let tabla_candidatos = document.getElementById("tabla_candidatos")
+
+
+			let opc_candidatos = document.getElementById("opciones_candidatos")
+			opc_candidatos.style.display = "block"
+
+
+
+			tabla_organizaciones.style.display="none"
+			tabla_candidatos.style.display="block"
+			
+
+
+		}
+	</script>
+
 </head>
 {% block content %}
 {% endblock %}
