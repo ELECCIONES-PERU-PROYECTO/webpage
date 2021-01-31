@@ -21,7 +21,7 @@ class DatosPersonales(models.Model):
   distrito_domicilio = models.CharField(max_length=80)
   direccion_domicilio = models.CharField(max_length=200)
   cargo_eleccion = models.CharField(max_length=200)
-  #url = models.CharField(max_length=200, default=200, null = True)
+  url = models.CharField(max_length=200, default="-", editable = False)
   def get_edu_join(self , EducacionBasica):
     #print("dsa")
     print(self.id)

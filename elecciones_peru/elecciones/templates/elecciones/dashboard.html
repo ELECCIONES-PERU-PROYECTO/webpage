@@ -50,7 +50,7 @@
     <!-- <div class="left-content-box content-box-dark">
     </div> -->
     
-    <div class="left-nav-wrap">
+    <div class="left-nav-wrap" style="display: none;" id = "filtros-candidatos">
       <ul id ="presidenciales" name ="tipo_candidato_filter"class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
         <li class="uk-nav-header">Filtros</li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel Académico</a>
@@ -469,7 +469,7 @@
             </form>
           </ul>
         </li>
-        <li class="uk-parent" id="distrito_congreso" style="display: none;"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Distrito Electoral</a>
+        <li class="uk-parent" id="distrito_congreso" style="display: none"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Distrito Electoral</a>
           <ul>
             <button  onclick="quitar_seleccion_distrito()">Decartar</button>
             <form>
@@ -486,9 +486,508 @@
             </form>
           </ul>
         </li>
+
       </ul>
       <button class="uk-button uk-button-secondary" onClick="button_filter()">Filtrar</button>
       <button class="uk-button uk-button-secondary" onClick="imprimir()">Imprimir</button>
+<!--
+SEPARACION
+SEPARACION
+SEPARACION
+SEPARACION
+SEPARACION
+SEPARACION
+SEPARACION
+SEPARACION
+SEPARACION
+SEPARACION
+SEPARACION
+SEPARACION
+SEPARACION
+SEPARACION
+SEPARACION
+SEPARACION
+SEPARACION
+SEPARACION
+SEPARACION
+-->
+    </div>
+    <div class="left-nav-wrap"  >
+      <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
+        <li class="uk-nav-header">Filtros</li>
+
+        <li class="uk-parent" id="opc_edad" name = "orga_filtro" style="" ><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Edad</a>
+        <ul>
+          <button  onclick="quitar_todas_selecciones(this)">Decartar</button>
+
+          <form>
+            <fieldset class="uk-fieldset uk-padding-small">
+              <div class="uk-width-1-1@s">
+
+                <div class="uk-flex uk-flex-column">
+                  <label class="uk-text-muted">
+                    Rango de edades
+                  </label>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="rango_edad" name="opc_edad" onclick="set_valor(this)" value="18-30">
+                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                      18 - 30
+                    </label>
+                  </div>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="rango_edad" name="opc_edad"onclick="set_valor(this)"  value="30-50">
+                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                      30 - 50
+                    </label>
+                  </div>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="rango_edad" name="opc_edad" onclick="set_valor(this)" value="50-70">
+                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                      50 - 70
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </ul>
+      </li>
+      <li class="uk-parent"  id = "opc_genero" name="orga_filtro" style=""><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Genero</a>
+        <ul>
+          <button  onclick="quitar_todas_selecciones(this)">Decartar</button>
+
+          <form>
+            <fieldset class="uk-fieldset uk-padding-small">
+              <div class="uk-width-1-1@s">
+                <div class="uk-flex uk-flex-column">
+                  <label class="uk-text-muted">
+                  Mujeres y hombres por partido  
+                  </label>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio"  id= "genero"name="opc_genero" onclick="set_valor(this)" value="MASCULINO">
+                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                      Masculino
+                    </label>
+                  </div>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio"  id= "genero" name="opc_genero" onclick="set_valor(this)" value="FEMENINO">
+                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                      Fememino
+                    </label>
+                  </div>
+
+                  <div class="uk-width-1-1@s uk-flex uk-flex-column">
+                    <select class="uk-select" id= "genero_desplegable" name= "opc_genero">
+                      <option value="default">Elegir Partido Politico</option>
+                      <option value="AMAZONAS">Partido Morado</option>
+                      <option value="LAMBAYEQUE">Lambayeque</option>
+                      <option value="ICA">Ica</option>
+                    </select>
+                  </div>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id= "genero"  name="genero_orden" onclick="set_valor(this)" value="ASC">
+                    <label for="tipo_genero_asc_" class="uk-text-muted uk-margin-small-left">
+                      Ascendente
+                    </label>
+                  </div>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id= "genero" name="genero_orden" onclick="set_valor(this)" value="DESC">
+                    <label for="tipo_genero_desc_" class="uk-text-muted uk-margin-small-left">
+                      Descendente
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </ul>
+      </li> 
+      <li class="uk-parent" name="orga_filtro" id = "opc_educacion"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel Academico</a>
+        <ul>
+          <button  onclick="quitar_todas_selecciones(this)">Descartar</button>
+          <form>
+            <fieldset class="uk-fieldset uk-padding-small">
+              <div class="uk-width-1-1@s">
+                <div class="uk-flex uk-flex-column">
+                  <label class="uk-text-muted">
+                    Estudios primarios
+                  </label>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="estudios" name="opc_educacion" onclick="set_valor(this)" value="ASC">
+                    <label for="primarios_asc_" class="uk-text-muted uk-margin-small-left">
+                      Ascendente
+                    </label>
+                  </div>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="estudios" name="opc_educacion" onclick="set_valor(this)" value="DESC">
+                    <label for="primarios_desc_" class="uk-text-muted uk-margin-small-left">
+                      Descendente
+                    </label>
+                  </div>
+                  <label class="uk-text-muted" style="margin-top: 10px">
+                    Estudios secundarios
+                  </label>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="estudios" name="opc_educacion" onclick="set_valor(this)" value="ASC">
+                    <label for="secundarios_asc_" class="uk-text-muted uk-margin-small-left">
+                      Ascendente
+                    </label>
+                  </div>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="estudios" name="opc_educacion"  onclick="set_valor(this)" value="DESC">
+                    <label for="secundarios_desc_" class="uk-text-muted uk-margin-small-left">
+                      Descendente
+                    </label>
+                  </div>
+                  <label class="uk-text-muted" style="margin-top: 10px">
+                    Estudios técnicos 
+                  </label>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="estudios" name="opc_educacion" onclick="set_valor(this)" value="ASC">
+                    <label for="tecnicos_asc_" class="uk-text-muted uk-margin-small-left">
+                      Ascendente
+                    </label>
+                  </div>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="estudios" name="opc_educacion" onclick="set_valor(this)" value="DESC">
+                    <label for="tecnicos_desc" class="uk-text-muted uk-margin-small-left">
+                      Descendente
+                    </label>
+                  </div>
+                  <label class="uk-text-muted" style="margin-top: 10px">
+                    Estudios no universitarios
+                  </label>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="estudios" name="opc_educacion"  onclick="set_valor(this)" value="ASC">
+                    <label for="nouniversitarios_asc_" class="uk-text-muted uk-margin-small-left">
+                      Ascendente
+                    </label>
+                  </div>
+                  <div class="uk-flex uk-flex-middle">
+                    
+                    <input type="radio" id="estudios" name="opc_educacion" onclick="set_valor(this)" value="DESC">
+                    <label for="nouniversitarios_desc_" class="uk-text-muted uk-margin-small-left">
+                      Descendente
+                    </label>
+                  </div>
+                  <label class="uk-text-muted" style="margin-top: 10px">
+                    Estudios universitarios 
+                  </label>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="estudios" name="opc_educacion" onclick="set_valor(this)" value="ASC">
+                    <label for="universitarios_asc_" class="uk-text-muted uk-margin-small-left">
+                      Ascendente
+                    </label>
+                  </div>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="estudios" name="opc_educacion" onclick="set_valor(this)" value="DESC">
+                    <label for="universitarios_desc_" class="uk-text-muted uk-margin-small-left">
+                      Descendente
+                    </label>
+                  </div>
+                   <label class="uk-text-muted" style="margin-top: 10px">
+                    Concluyó postgrado 
+                  </label>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="estudios" name="opc_educacion" onclick="set_valor(this)" value="ASC">
+                    <label for="postgrado_asc_" class="uk-text-muted uk-margin-small-left">
+                      Ascendente
+                    </label>
+                  </div>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="estudios" name="opc_educacion" onclick="set_valor(this)" value="DESC">
+                    <label for="postgrado_desc" class="uk-text-muted uk-margin-small-left">
+                      Descendente
+                    </label>
+                  </div>
+                     <label class="uk-text-muted" style="margin-top: 10px">
+                    Maestro o Doctor 
+                  </label>
+                  
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="estudios" name="opc_educacion" onclick="set_valor(this)" value="ASC">
+                    <label for="maestro_doctor_asc" class="uk-text-muted uk-margin-small-left">
+                      Ascendente
+                    </label>
+                  </div>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="estudios" name="opc_educacion" onclick="set_valor(this)" value="DESC">
+                    <label for="maestro_doctor_desc" class="uk-text-muted uk-margin-small-left">
+                      Descendente
+                    </label>
+                  </div>
+                </div>
+              
+            </fieldset>
+          </form>
+        </ul>
+      </li>
+        <li class="uk-parent" name="orga_filtro" id = "opc_sentencia"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Sentencias</a>
+        <ul>
+          <button  onclick="quitar_todas_selecciones(this)">Decartar</button>
+          <form>
+            <fieldset class="uk-fieldset uk-padding-small">
+              <div class="uk-width-1-1@s">
+                <div class="uk-flex uk-flex-column">
+                  <label for="penal_obligaciones_" class="uk-text-muted uk-margin-small-left">
+                      Cantidad Sentencia Penal (penal y obligaciones)
+                    </label>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="penal_obligaciones_in" name="penal_obligaciones_in" onclick="set_valor(this)"  value="ASC">
+                      <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                        Ascendente
+                      </label>
+                    </div>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="penal_obligaciones_in" name="penal_obligaciones_in" onclick="set_valor(this)" value="DESC">
+                      <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                       Descendente
+                      </label>
+                    </div>
+                  <label class="uk-text-muted">
+                    Cantidad de Sentencia Penal
+                  </label>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="penal_cant" name="penal_cant" onclick="set_valor(this)"  value="ASC">
+                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                      Ascendente
+                    </label>
+                  </div>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="penal_cant" name="penal_cant" onclick="set_valor(this)" value="DESC">
+                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                     Descendente
+                    </label>
+                  </div>
+                  <label class="uk-text-muted">
+                    Cantidad de Sentencia civil
+                  </label>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="civil_cant" name="civil_cant"onclick="set_valor(this)"  value="ASC">
+                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                      Ascendente
+                    </label>
+                  </div>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="civil_cant" name="civil_cant" onclick="set_valor(this)" value="DESC">
+                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                     Descendente
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </ul>
+      </li>
+      <li class="uk-parent" name="orga_filtro" id ="opc_oriundo" ><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Oriundo</a>
+        <ul>
+          <button  onclick="quitar_todas_selecciones(this)">Decartar</button>
+          <form>
+            <fieldset class="uk-fieldset uk-padding-small">
+              <div class="uk-width-1-1@s">
+                <div class="uk-flex uk-flex-column">
+                                   
+                  <label class="uk-text-muted">
+                    SET ORDER
+                  </label>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="oriundo" name="opc_si" value="ASC" onclick="set_valor(this)">
+                    <label for="oriundo_" class="uk-text-muted uk-margin-small-left">
+                      Ascendente
+                    </label>
+                  </div>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="oriundo" name="opc_si" value="DESC"  onclick="set_valor(this)">
+                    <label for="oriundo_" class="uk-text-muted uk-margin-small-left">
+                      Descendente
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </ul>
+      </li>
+      <li class="uk-parent" name="orga_filtro" id ="dist_electo" ><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cuantos candidatos del partido postulan por un distrito electoral diferente al de su nacimiento</a>
+        <ul>
+          <button  onclick="quitar_todas_selecciones(this)">Decartar</button>
+          <form>
+            <fieldset class="uk-fieldset uk-padding-small">
+              <div class="uk-width-1-1@s">
+
+                <div class="uk-flex uk-flex-middle">
+                  <input type="radio" id="elecvsnacimiento_id" name="elecvsnacimiento_name"onclick="set_valor(this)"  value="ASC">
+                  <label for="elecvsnacimiento" class="uk-text-muted uk-margin-small-left">
+                    Ascendente
+                  </label>
+                </div>
+                <div class="uk-flex uk-flex-middle">
+                  <input type="radio" id="elecvsnacimiento_id" name="elecvsnacimiento_name"onclick="set_valor(this)"  value="DESC">
+                  <label for="elecvsnacimiento" class="uk-text-muted uk-margin-small-left">
+                    Descendente
+                  </label>
+                </div>   
+                </div>
+                
+            </fieldset>
+          </form>
+
+        </ul>
+      </li>
+      <li class="uk-nav-header">Financiamiento 2017, 2018, 2019</li>
+    
+      <li class="uk-parent"  name="orga_filtro" id ="privado"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Financiamiento Privado</a>
+        <ul>
+          <button  onclick="quitar_todas_selecciones(this)">Decartar</button>
+          <form>
+            <fieldset class="uk-fieldset uk-padding-small">
+              <div class="uk-width-1-1@s">
+                
+                <label class="uk-text-muted">
+                  2019
+                </label>
+                <div class="uk-width-1-1@s">
+                  <label class="uk-text-muted">
+                    Estado de Presentación:
+                  </label>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="2019_priv" name ="2019_presente"  onclick="set_valor(this)"  value="PRESENTO">
+                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                      Presentaron
+                    </label>
+                  </div>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="2019_priv" name ="2019_presente" onclick="set_valor(this)" value="NO PRESENTA">
+                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                     No presentaron
+                    </label>
+                  </div>
+                  <label class="uk-text-muted">
+                    Ingresos Declarados
+                  </label>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="2019_priv" name ="2019_ingre" onclick="set_valor(this)"  value="ASC">
+                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                      Ascendente
+                    </label>
+                  </div>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="2019_priv" name ="2019_ingre"  onclick="set_valor(this)" value="DESC">
+                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                     Descendente
+                    </label>
+                  </div>
+                </div>
+
+                <label class="uk-text-muted">
+                  2018                    
+                </label>
+                <div class="uk-width-1-1@s">
+                  <label class="uk-text-muted">
+                    Estado de Presentación :
+                  </label>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="2018_priv" name ="2018_presente" onclick="set_valor(this)"  value="PRESENTO">
+                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                      Presentaron
+                    </label>
+                  </div>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="2018_priv" name ="2018_presente" onclick="" value="NO PRESENTO">
+                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                     No presentaron
+                    </label>
+                  </div>
+                  <label class="uk-text-muted">
+                    Ingresos Declarados
+                  </label>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="2018_priv" name ="2018_ingre" onclick="set_valor(this)"  value="ASC">
+                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                      Ascendente
+                    </label>
+                  </div>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="2018_priv" name ="2018_ingre" onclick="set_valor(this)" value="DESC">
+                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                     Descendente
+                    </label>
+                  </div>
+                </div>
+                <label class="uk-text-muted">
+                  2017                      
+                 </label>
+                 <div class="uk-width-1-1@s">
+                  <label class="uk-text-muted">
+                    Estado de Presentación :
+                  </label>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="2017_priv" name ="2017_presente" onclick="set_valor(this)"  value="PRESENTO">
+                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                      Presentaron
+                    </label>
+                  </div>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="2017_priv" name ="2017_presente" onclick="set_valor(this)" value="NO PRESENTO">
+                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                     No presentaron
+                    </label>
+                  </div>
+                  <label class="uk-text-muted">
+                    Ingresos Declarados
+                  </label>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="2017_priv" name ="2017_ingre"  onclick="set_valor(this)"  value="ASC">
+                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                      Ascendente
+                    </label>
+                  </div>
+                  <div class="uk-flex uk-flex-middle">
+                    <input type="radio" id="2017_priv" name ="2017_ingre" onclick="set_valor(this)" value="DESC">
+                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                     Descendente
+                    </label>
+                  </div>
+                </div>
+                </div>
+              
+            </fieldset>
+          </form>
+        </ul>
+      </li>
+      <li class="uk-parent" name="orga_filtro" id = "publico_div"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Financiamiento Publico</a>
+        <ul>
+          <button  onclick="quitar_todas_selecciones(this)">Decartar</button>
+          <form>
+            <fieldset class="uk-fieldset uk-padding-small">
+              <div class="uk-width-1-1@s">
+                <label class="uk-text-muted">
+                  Monto quinquenal asignado
+                </label>
+
+                <div class="uk-flex uk-flex-middle">
+                  <input type="radio" id="publico_orden" name="publico_orden"onclick="set_valor(this)"  value="ASC">
+                  <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                    Ascendente
+                  </label>
+                </div>
+                <div class="uk-flex uk-flex-middle">
+                  <input type="radio" id="publico_orden" name="publico_orden"onclick="set_valor(this)"  value="DESC">
+                  <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                    Descendente
+                  </label>
+                </div>   
+                </div>
+              
+            </fieldset>
+          </form>
+        </ul>
+      </li>
+    </ul>
+  
+      <button class="uk-button uk-button-secondary" onclick="button_filter_org()">Filtrar</button>
+      <button class="uk-button uk-button-secondary" onclick="imprimir_org()">Imprimir</button>
 
     </div>
     
@@ -510,6 +1009,7 @@
     <table class="uk-table uk-table-divider">
       <thead>
         <tr>
+          
           <th>Nombres</th>
           <th>DNI</th>
           <th>Partido</th>

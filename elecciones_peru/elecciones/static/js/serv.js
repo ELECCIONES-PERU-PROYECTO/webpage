@@ -27,6 +27,18 @@ async function getUrl_datos() {
   }
 }
 
+async function getUrl_orga(){
+  //path('candidatos/<str:filtro_id>/<str:organizacion>/<str:infoextra>/<str:orden>')
+
+  try {
+    const response = await axios.get('/candidatos/?filtro_id='+filtro_id+"/?organizacion="+organizacion+"/?info_extra="+info_extra+"/?orden="+orden)
+    console.log(response)
+  } catch (error) {
+    console.error(error)
+  }
+
+}
+
 async function grado_estudios() {
   try {
     const response = await axios.get('/candidatos/estudios/?niv_acad=' + nivel_academico_value)
