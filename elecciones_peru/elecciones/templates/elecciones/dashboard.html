@@ -11,12 +11,15 @@
             <a class="uk-logo" href="#"><img class="custom-logo" src="img/dashboard-logo-white.svg" alt=""></a>
           </div> -->
           <ul class="uk-navbar-nav uk-visible@m" id = "opciones_candidatos" > 
-            <li><a href="#" onclick="tipo_candiato(this)">Candidatos Presidenciales</a></li>
+            <li><a href="#" onclick="activar_candidatos(this)">Candidatos Presidenciales</a></li>
             <li>
-              <a href="#" onclick="tipo_candiato(this)" >Candidatos Congresales</a>
+              <a href="#" onclick="activar_candidatos(this)" >Candidatos Congresales</a>
             </li>
             <li>
-              <a href="#" onclick="tipo_candiato(this)">Candidatos Parlamento Andino</a>
+              <a href="#" onclick="activar_candidatos(this)">Candidatos Parlamento Andino</a>
+            </li>
+            <li>
+              <a href="#" onclick="activar_organizaciones(this)">Partidos Politicos</a>
             </li>
           </ul>
           <!-- <div class="uk-navbar-item uk-visible@s">
@@ -1005,7 +1008,8 @@ SEPARACION
           <th>Nombres</th>
           <th>DNI</th>
           <th>Partido</th>
-          <th>Cargo</th>
+          <th name="columnas_congresales" >Distrito Electoral</th>
+          <th name="columnas_presidenciales">Cargo</th>
         </tr>
       </thead>
       <tbody>
@@ -1015,7 +1019,8 @@ SEPARACION
           <td>{{ candidato.candidato }}</td>
           <td>{{ candidato.dni_candidato }}</td>
           <td>{{ candidato.organizacion_politica }}</td>
-          <td>{{ candidato.cargo_eleccion }}</td>
+          <td name="columnas_congresales" >{{ candidato.distrito_elec }}</td>
+          <td name="columnas_presidenciales" >{{ candidato.cargo_eleccion }}</td>
         </tr>
         {% endfor %}
         <!-- candidato con un dni en específico -->
