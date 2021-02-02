@@ -383,7 +383,7 @@ def filter_function(request, nivel_academico,cargos_previos_order , orden_cant_s
 
 
 
-      query_total = function_filtros_ob(lista_filtros_ob_new, query_total_filtros_normales, False)
+      query_total = function_filtros_ob(lista_filtros_ob_new, query_total_filtros_normales, False, SELECT_candidato, WHERE_candidato)
 
   print("-----------------------------------------------------------------")
   print("query_total", query_total)
@@ -499,78 +499,10 @@ def candidato_by_dni(request, dni):
                 {'candidatos_by_dni': candidatos_by_dni})
 
 
-def grado_estudios(request, niv_acad):
+def mainpage(request):
 
-  ''' 
-  if(niv_acad == 'maestro_doctor'):
-    estudios = EstudioPostgrado.objects.raw(
-      "SELECT DP.id, DP.candidato, DP.organizacion_politica, DP.cargo_eleccion "
-      "FROM  estudio_postgrado AS EP JOIN  datos_personales AS DP USING (dni_candidato) "
-      "WHERE (EP.es_maestro= 'SI' OR EP.es_doctor = 'SI') "
-      "AND (DP.cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR  "
-      "DP.cargo_eleccion ='PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR  "
-      "DP.cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA'); "
-    )
-  else:
-    if(niv_acad == 'concluyo_primaria' or niv_acad == 'concluyo_secundaria'):
-      tabla = 'educacion_basica'
-      modelo = EducacionBasica
-    elif(niv_acad == 'concluyo_estudio_tecnico'):
-      tabla = 'estudio_tecnico'
-      modelo = EstudioTecnico
-    elif(niv_acad == 'concluyo_estudio_no_universitario'):
-      tabla = 'estudio_no_universitario'
-      modelo = EstudioNoUniversitario
-    elif(niv_acad == 'concluyo_estudio_universitario'):
-      tabla = 'estudio_universitario'
-      modelo = EstudioUniversitario
-    elif(niv_acad == 'concluyo_estudio_postgrado'):
-      tabla = 'estudio_postgrado'
-      modelo = EstudioPostgrado
-  
-    estudios = modelo.objects.raw(
-      "SELECT DP.id, DP.candidato, DP.organizacion_politica, DP.cargo_eleccion "
-      "FROM " + tabla + " AS EB JOIN  datos_personales AS DP USING (dni_candidato) "
-      "WHERE EB." + niv_acad + " = 'SI' "
-      "AND (DP.cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR  "
-      "DP.cargo_eleccion ='PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR  "
-      "DP.cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA'); "
-    )'''
-  
-  object2 = EducacionBasica.objects.filter(concluyo_primaria="SI")
+    return render(request,'elecciones/landingpage.html',{})
 
-  querysetretorno = EducacionBasica.objects.none()
-
-  #variable tipo queryset VAR
-  object1 = DatosPersonales.objects.all()
-  print(len(object1))
-  for item in object1:
-    #print("dasa")
-    print(item.id)
-    item_append = item.get_edu_join(object2)
-    querysetretorno = querysetretorno | item_append
-
-
-
-
-  #object1.get_edu_join(object1, object2)
-  #object1[0].get_edu_join(object2)
-  #for item in object1:
-  #  item.get_edu_join(object2)
-  for item in querysetretorno:
-    print(item.dni_candidato, item.candidato)
-  
-  #all_objects = DatosPersonales.objects.all()
-  #pubs = publication.objects.select_related('country', 'country_state', 'city')
-
-  #objects = DatosPersonales.objects.filter(EducacionBasica)
-  #
-  #qry1 = "SELECT DP.id, DP.candidato, DP.organizacion_politica, DP.cargo_eleccion FROM EducacionBasica AS EB,  datos_personales AS DP  WHERE EB.dni_candidato=%s EB." + niv_acad + " = 'SI' " "AND (DP.cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion ='PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA');"
-  #
-  #cars = DatosPersonales.objects.raw(qry1,[dni_candidato])
-  #
-  #for obj in objects:
-  #  print(obj.dni_candidato)
-
-#  return render(request,'elecciones/dashboard.html',{'estudios': estudios})
-  return render(request,'elecciones/dashboard.html',{})
+def filterpage(request):
+    print("Pasa por aqui la filterpage")
+    return render(request,'elecciones/dashboard.html',{})

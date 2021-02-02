@@ -5,7 +5,9 @@ from . import views
 app_name = 'elecciones'
 #http://127.0.0.1:8000/elecciones/candidatos/estudios/concluyo_primaria
 urlpatterns = [
-  path('candidatos', views.candidatos),
+  path('', views.mainpage),
+  #path('candidatos', views.candidatos),
+  path('candidatos', views.filterpage),
   path('candidatos/estudios/<str:nivel_academico>', views.test_query),
   path('candidato/dni/<str:dni>', views.candidato_by_dni),
   path('candidatos/<str:nivel_academico>', views.test_query),

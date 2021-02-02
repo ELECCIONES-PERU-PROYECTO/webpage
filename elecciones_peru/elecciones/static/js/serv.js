@@ -7,7 +7,27 @@ async function getCandidatos() {
     console.error(error)
   }
 }
+async function mainpage(){
+  console.log("loading mainpage")
+  try {
+    const response = await axios.get('')
+    console.log(response)
+  } catch (error) {
+    console.error(error)
+  }
+}
+async function filterpage(){
+  console.log("loading filterpage")
 
+  try {
+    const response = await axios.get('/elecciones/candidatos')
+    console.log(response)
+  } catch (error) {
+    console.error(error)
+  }
+
+
+}
 // Retorna el andidato que tenga el dni en la ruta
 async function getCandidato() {
   try {
