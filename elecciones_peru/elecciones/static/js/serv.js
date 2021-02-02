@@ -17,6 +17,7 @@ async function mainpage(){
   }
 }
 async function filterpage(){
+  window.location = "http://127.0.0.1:8000/elecciones/candidatos"
   console.log("loading filterpage")
 
   try {
