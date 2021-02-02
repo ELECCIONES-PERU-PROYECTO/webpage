@@ -86,8 +86,7 @@ function activar_candidatos(text){
     console.log("activar_candidatos")
 
 
-    let data = JSON.parse(sessionStorage.getItem('data_filtro')) 
-    console.log("despues del update -> data['data_filtro'] : " , data['data_filtro'])
+
 
     let div3 = document.getElementById("filtros_organizaciones")
     div3.style.display ="none"	
