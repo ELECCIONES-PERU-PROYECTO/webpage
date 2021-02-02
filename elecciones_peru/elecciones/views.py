@@ -395,10 +395,9 @@ def filter_function(request, nivel_academico,cargos_previos_order , orden_cant_s
                 {'candidatos': candidatos}) 
 
 
-def filter_function_orga(request, filtro_id, organizacion, info_extra, orden):
+def filter_function_orga(request, filtro_id, info_extra, orden):
     query_total = "select * from datos_personales;"
     print("filtro_id: ",filtro_id)
-    print("organizacion: ",organizacion)
     print("info_extra: ",info_extra)
     print("orden: ",orden)
     if filtro_id =="opc_edad":
@@ -434,9 +433,7 @@ def filter_function_orga(request, filtro_id, organizacion, info_extra, orden):
         query_total = "SELECT id , COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_postgrado WHERE ( es_maestro  = 'SI' OR es_doctor = 'SI') GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
 
     elif filtro_id == "genero":
-        query_total = "SELECT id ,COUNT (dni_candidato) AS conteo, organizacion_politica FROM datos_personales  WHERE  sexo = " + info_extra+ " GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
-
-
+        query_total = "SELECT id ,COUNT (dni_candidato) AS conteo, organizacion_politica FROM datos_personales  WHERE  sexo = '" + info_extra+ "' GROUP BY (organizacion_politica,id ) ORDER BY (conteo) " + orden
     elif filtro_id == "penal_obligaciones_in":
         query_total = "SELECT id ,SUM(conteo) AS total, organizacion_politica FROM (SELECT  COUNT(dni_candidato) AS conteo , organizacion_politica  FROM sentencia_penal   WHERE  tiene_info_por_declarar  = 'SI' GROUP BY (organizacion_politica) UNION ALL SELECT  COUNT(dni_candidato) AS conteo , organizacion_politica  FROM sentencia_obligacion   WHERE  tiene_info_por_declarar  = 'SI' GROUP BY (organizacion_politica)) TABLA GROUP BY partido ORDER BY total " +orden 
 
@@ -463,10 +460,10 @@ def filter_function_orga(request, filtro_id, organizacion, info_extra, orden):
     elif filtro_id =="2017priv":
         query_total =  "SELECT id ,total_ingresos, organizacion_politica FROM financiamiento_privado  WHERE  estado   = '"+info_extra+"' AND  anhio = '2017' GROUP BY (organizacion_politica,total_ingresos) ORDER BY total_ingresos "+orden
     elif filtro_id =="publico_orden":
-        query_total =  "SELECTid , monto_quinquenal, organizacion_politica, numero_votos_congresales FROM financiamiento_publico  GROUP BY (organizacion_politica) ORDER BY monto_quinquenal "+orden
+        query_total =  "SELECT id , monto_quinquenal, organizacion_politica, numero_votos_congresales FROM financiamiento_publico  GROUP BY (organizacion_politica) ORDER BY monto_quinquenal "+orden
 
 
-
+    print("-------LLEGA A FINAL CASI DE LA FUNCION------------")
     print("query_total: ",query_total)
     #candidatos = DatosPersonales.objects.raw("SELECT * FROM datos_personales")
     candidatos = DatosPersonales.objects.raw(query_total)

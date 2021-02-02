@@ -11,12 +11,12 @@
             <a class="uk-logo" href="#"><img class="custom-logo" src="img/dashboard-logo-white.svg" alt=""></a>
           </div> -->
           <ul class="uk-navbar-nav uk-visible@m" id = "opciones_candidatos" > 
-            <li><a href="#" onclick="activar_candidatos(this)">Candidatos Presidenciales</a></li>
+            <li><a href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a></li>
             <li>
-              <a href="#" onclick="activar_candidatos(this)" >Candidatos Congresales</a>
+              <a href="#" onclick="activar_candidatos(this.text)" >Candidatos Congresales</a>
             </li>
             <li>
-              <a href="#" onclick="activar_candidatos(this)">Candidatos Parlamento Andino</a>
+              <a href="#" onclick="activar_candidatos(this.text)">Candidatos Parlamento Andino</a>
             </li>
             <li>
               <a href="#" onclick="activar_organizaciones(this)">Partidos Politicos</a>
@@ -1005,78 +1005,32 @@ SEPARACION
     <table class="uk-table uk-table-divider" id ="tabla_candidatos" style ="">
       <thead>
         <tr>
+          <th name="columnas_organizaciones" style="display:none">Cantidad</th >
           <th>Nombres</th>
           <th>DNI</th>
           <th>Partido</th>
-          <th name="columnas_congresales" >Distrito Electoral</th>
-          <th name="columnas_presidenciales">Cargo</th>
+          <th>Cargo</th>
+          <th>Distrito Electoral</th>
         </tr>
       </thead>
       <tbody>
         <!-- todos los candidatos -->
         {% for candidato in candidatos %}
         <tr>
+          <td name="columnas_organizaciones" style="display:none" >{{ candidato.conteo }}</td>
           <td>{{ candidato.candidato }}</td>
           <td>{{ candidato.dni_candidato }}</td>
           <td>{{ candidato.organizacion_politica }}</td>
-          <td name="columnas_congresales" >{{ candidato.distrito_elec }}</td>
-          <td name="columnas_presidenciales" >{{ candidato.cargo_eleccion }}</td>
+          <td >{{ candidato.cargo_eleccion }}</td>
+          <td >{{ candidato.distrito_elec }}</td>
         </tr>
         {% endfor %}
         <!-- candidato con un dni en específico -->
-        {% for candidato in candidatos_by_dni %}
-        <tr>
-          <td>{{ candidato.candidato }}</td>
-          <td>{{ candidato.dni_candidato }}</td>
-        </tr>
-        {% endfor %}
+
         <!-- candidato según su grado de estudio -->
-        {% for estudio in estudios %}
-        <tr>
-          <td>{{ estudio.candidato }}</td>
-          <td>{{ estudio. }}</td>
-          <td>{{ estudio.organizacion_politica }}</td>
-        </tr>
-        {% endfor %}
       </tbody>
   </table>
-  <table class="uk-table uk-table-divider" id ="tabla_organizaciones" style ="display: none;">
-    <thead>
-      <tr>
-        <th>Cantidad</th>
-        <th>Nombres</th>
-        <th>DNI</th>
-        <th>Partido</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- todos los candidatos -->
-      {% for candidato in candidatos %}
-      <tr>
-        <td>{{ candidato.conteo }}</td>
-        <td>{{ candidato.candidato }}</td>
-        <td>{{ candidato.dni_candidato }}</td>
-        <td>{{ candidato.organizacion_politica }}</td>
-        <td>{{ candidato.cargo_eleccion }}</td>
-      </tr>
-      {% endfor %}
-      <!-- candidato con un dni en específico -->
-      {% for candidato in candidatos_by_dni %}
-      <tr>
-        <td>{{ candidato.candidato }}</td>
-        <td>{{ candidato.dni_candidato }}</td>
-      </tr>
-      {% endfor %}
-      <!-- candidato según su grado de estudio -->
-      {% for estudio in estudios %}
-      <tr>
-        <td>{{ estudio.candidato }}</td>
-        <td>{{ estudio. }}</td>
-        <td>{{ estudio.organizacion_politica }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-</table>
+ 
   </div>
   <!-- /CONTENT -->
   <!-- OFFCANVAS -->

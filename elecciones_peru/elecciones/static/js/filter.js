@@ -276,7 +276,6 @@ function button_filter(){
 
   getUrl_datos()  
 
-  getCandidato()
 
   
   //let url = "http://127.0.0.1:8000/elecciones/candidatos/"  
