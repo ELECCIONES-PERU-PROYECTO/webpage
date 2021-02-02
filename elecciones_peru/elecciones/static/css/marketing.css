@@ -91,3 +91,16 @@ strong, b {
 .uk-margin-remove-top.uk-scrollspy-inview.uk-animation-slide-right-medium h1{
 	font-family: 'Poppins', sans-serif;
 }
+
+.subtitle-text{
+	color: #000000;
+	font-weight:390;
+	font-family: 'Poppins', sans-serif;
+
+
+}
+
+
+#white-text{
+	color: #ffffff;
+}
