@@ -388,36 +388,16 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
   candidatos = DatosPersonales.objects.raw(query_total)
 
   # Paginator 
-  paginator = Paginator(candidatos, 5)
+  paginator = Paginator(candidatos, 20)
   page_number = request.GET.get('page')
-
-
-  print("-------------------------------------------------------------------------")
-  print("-------------------------------------------------------------------------")
-  print("paginator pages", paginator.num_pages)
-  print("result count", paginator.count)
-  print("-------------------------------------------------------------------------")
-  print("-------------------------------------------------------------------------")
 
   try:
     page_obj = paginator.get_page(page_number)
-
-    # candidatos = paginator.page(page)
-    print("-------------------------------------------------------------------------")
-    print("-------------------------------------------------------------------------")
-    print("llego a la paginacion")
-    print("-------------------------------------------------------------------------")
-    print("-------------------------------------------------------------------------")
   except PageNotAnInteger:
     # If page is not an integer deliver the first page
     posts = paginator.page(1)
   except EmptyPage:
     # If page is out of range deliver last page of results
-    print("-------------------------------------------------------------------------")
-    print("-------------------------------------------------------------------------")
-    print("EmptyPage")
-    print("-------------------------------------------------------------------------")
-    print("-------------------------------------------------------------------------")
     posts = paginator.page(paginator.num_pages)
   
   return render(request,
@@ -504,13 +484,6 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
 
     try:
       candidatos = paginator.page(page)
-      print("-------------------------------------------------------------------------")
-      print("-------------------------------------------------------------------------")
-      print("-------------------------------------------------------------------------")
-      print("-------------------------------------------------------------------------")
-      print("llego a la paginacion")
-      print("-------------------------------------------------------------------------")
-      print("-------------------------------------------------------------------------")
     except PageNotAnInteger:
       # If page is not an integer deliver the first page
       posts = paginator.page(1)
