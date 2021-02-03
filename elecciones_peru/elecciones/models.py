@@ -276,7 +276,6 @@ class BienMueble(models.Model):
 
 
 class InformacionAdicional(models.Model):
-
   id = models.CharField(max_length=10, primary_key=True)
   organizacion_politica = models.CharField(max_length=250)
   distrito_elec = models.CharField(max_length=100)
@@ -290,7 +289,6 @@ class InformacionAdicional(models.Model):
 
 
 class FinanciamientoPrivado(models.Model):
-
   id = models.CharField(max_length=10, primary_key=True)
   organizacion_politica = models.CharField(max_length=250)
   ruc_org_politica = models.CharField(max_length=30)
@@ -310,7 +308,6 @@ class FinanciamientoPrivado(models.Model):
   
   
 class FinanciamientoPublico(models.Model):
-
   id = models.CharField(max_length=10, primary_key=True)
   organizacion_politica = models.CharField(max_length=250)
   num_votos_congresales = models.IntegerField()

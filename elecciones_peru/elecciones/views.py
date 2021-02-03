@@ -1,10 +1,9 @@
 from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from .models import *
 
-
-
-def function_filtros_ob(self, query_normal, normnob1, SELECT_candidato,WHERE_candidato ):
+def function_filtros_ob(self, query_normal, normnob1, SELECT_candidato, WHERE_candidato):
     #print("function_filtros_ob##################")
     #print(len(self))
     query_total = ""
@@ -113,10 +112,11 @@ def function_filtros_ob(self, query_normal, normnob1, SELECT_candidato,WHERE_can
         FROM = FROM + " JOIN ("+subquery_list[i]   +" ) AS Q" +str(i+1)+ " USING (dni_candidato) "    
     ORDER_BY = " ORDER BY "+Qs_
     query_total = SELECT + " , " + Qs + FROM + WHERE + GROUP_BY_ + ORDER_BY
-     
+
     #print("query_total_function: ", query_total)
     
     return query_total
+
 def function_filtro_normal(self, stack_, SELECT_candidato,WHERE_candidato ):
     # print("self",self)
     print("SELECT_candidato: ", SELECT_candidato)
@@ -232,9 +232,8 @@ def function_filtro_normal(self, stack_, SELECT_candidato,WHERE_candidato ):
           self[18] = ""
           return retorno
 
-
-def filter_function(request, nivel_academico,cargos_previos_order , orden_cant_sentencia, orden_cant_sentencia_oblig, mat_demanda, no_tiene_val, orden_cant_ingreso,orden_cant_inmueble,orden_valor_inmueble,orden_cant_mueble, orden_valor_mueble,orden_renuncias, rango_edad_val,nac_per_si, nac_per_no, departamento_nacimiento,cargo_postula, org_politica, dist_electoral, tipo_candidato_):
-  lista_valores = [nivel_academico,cargos_previos_order , orden_cant_sentencia,
+def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_sentencia, orden_cant_sentencia_oblig, mat_demanda, no_tiene_val, orden_cant_ingreso,orden_cant_inmueble,orden_valor_inmueble,orden_cant_mueble, orden_valor_mueble,orden_renuncias, rango_edad_val,nac_per_si, nac_per_no, departamento_nacimiento,cargo_postula, org_politica, dist_electoral, tipo_candidato_):
+  lista_valores = [nivel_academico, cargos_previos_order, orden_cant_sentencia,
     orden_cant_sentencia_oblig, mat_demanda, no_tiene_val, orden_cant_ingreso,orden_cant_inmueble,orden_valor_inmueble,
     orden_cant_mueble, orden_valor_mueble,orden_renuncias, rango_edad_val,nac_per_si, nac_per_no, departamento_nacimiento,
     cargo_postula, org_politica, dist_electoral, tipo_candidato_
@@ -322,7 +321,6 @@ def filter_function(request, nivel_academico,cargos_previos_order , orden_cant_s
   
   
   elif len(lista_filtros_ob_new) == 0:
-
       print("Lista de filtros ob esta vacio")
       print("lista_filtros_normales: ",lista_filtros_normales)
       #caso solo 1 filtro de normales
@@ -354,7 +352,6 @@ def filter_function(request, nivel_academico,cargos_previos_order , orden_cant_s
           aux = lista_filtros_ob_new[i].replace("("+quitar, "")
           lista_filtros_ob_new[i] = aux
       query_total = " SELECT DP.id,  " + SELECT_candidato + ",  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE " + WHERE_candidato+ "  GROUP BY (conteo,DP.id,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato +") ORDER BY conteo " + lista_filtros_ob_new[0]
-     
   
   
   elif ((len(lista_filtros_normales)>1 and len(lista_filtros_ob_new) ==  1))  or  (len(lista_filtros_normales)==1 and len(lista_filtros_ob_new)==1):
@@ -389,10 +386,43 @@ def filter_function(request, nivel_academico,cargos_previos_order , orden_cant_s
   print("query_total", query_total)
   print("-----------------------------------------------------------------")
   candidatos = DatosPersonales.objects.raw(query_total)
+
+  # Paginator 
+  paginator = Paginator(candidatos, 5)
+  page_number = request.GET.get('page')
+
+
+  print("-------------------------------------------------------------------------")
+  print("-------------------------------------------------------------------------")
+  print("paginator pages", paginator.num_pages)
+  print("result count", paginator.count)
+  print("-------------------------------------------------------------------------")
+  print("-------------------------------------------------------------------------")
+
+  try:
+    page_obj = paginator.get_page(page_number)
+
+    # candidatos = paginator.page(page)
+    print("-------------------------------------------------------------------------")
+    print("-------------------------------------------------------------------------")
+    print("llego a la paginacion")
+    print("-------------------------------------------------------------------------")
+    print("-------------------------------------------------------------------------")
+  except PageNotAnInteger:
+    # If page is not an integer deliver the first page
+    posts = paginator.page(1)
+  except EmptyPage:
+    # If page is out of range deliver last page of results
+    print("-------------------------------------------------------------------------")
+    print("-------------------------------------------------------------------------")
+    print("EmptyPage")
+    print("-------------------------------------------------------------------------")
+    print("-------------------------------------------------------------------------")
+    posts = paginator.page(paginator.num_pages)
   
   return render(request,
                 'elecciones/dashboard.html',
-                {'candidatos': candidatos}) 
+                {'page': page_obj}) 
 
 
 def filter_function_orga(request, filtro_id, info_extra, orden):
@@ -467,9 +497,31 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
     print("query_total: ",query_total)
     #candidatos = DatosPersonales.objects.raw("SELECT * FROM datos_personales")
     candidatos = DatosPersonales.objects.raw(query_total)
+
+    # Paginator 
+    paginator = Paginator(candidatos, 20)
+    page = request.GET.get('page')
+
+    try:
+      candidatos = paginator.page(page)
+      print("-------------------------------------------------------------------------")
+      print("-------------------------------------------------------------------------")
+      print("-------------------------------------------------------------------------")
+      print("-------------------------------------------------------------------------")
+      print("llego a la paginacion")
+      print("-------------------------------------------------------------------------")
+      print("-------------------------------------------------------------------------")
+    except PageNotAnInteger:
+      # If page is not an integer deliver the first page
+      posts = paginator.page(1)
+    except EmptyPage:
+      # If page is out of range deliver last page of results
+      posts = paginator.page(paginator.num_pages)
+
     return render(request,
                   'elecciones/dashboard.html',
-                  {'candidatos': candidatos})
+                  {'page': page,
+                  'candidatos': candidatos})
 
 def test_query(request, nivel_academico):
   print("test_query: NIVEL ACADEMICO ", nivel_academico)
@@ -493,14 +545,13 @@ def candidato_by_dni(request, dni):
   #  "select * from datos_personales where dni_candidato = '" + dni + "';"
   #   "select * from datos_personales;"
   #)
-  candidatos_by_dni = DatosPersonales.objects.raw("SELECT  id ,candidato, organizacion_politica, distrito_elec FROM  datos_personales WHERE departamento_nacimiento = 'AMAZONAS' AND  (cargo_eleccion = 'CONGRESISTA DE LA REPÚBLICA') INTERSECT SELECT DP.id ,   DP.candidato, DP.organizacion_politica, DP.distrito_elec FROM estudio_postgrado AS EP  JOIN  datos_personales AS DP USING (dni_candidato) WHERE   EP.concluyo_estudio_postgrado = 'SI' AND  (DP.cargo_eleccion = 'CONGRESISTA DE LA REPÚBLICA') ")
+  candidatos_by_dni = DatosPersonales.objects.raw("SELECT  id, candidato, organizacion_politica, distrito_elec FROM  datos_personales WHERE departamento_nacimiento = 'AMAZONAS' AND  (cargo_eleccion = 'CONGRESISTA DE LA REPÚBLICA') INTERSECT SELECT DP.id ,   DP.candidato, DP.organizacion_politica, DP.distrito_elec FROM estudio_postgrado AS EP  JOIN  datos_personales AS DP USING (dni_candidato) WHERE   EP.concluyo_estudio_postgrado = 'SI' AND  (DP.cargo_eleccion = 'CONGRESISTA DE LA REPÚBLICA') ")
   return render(request,
                 'elecciones/dashboard.html',
                 {'candidatos_by_dni': candidatos_by_dni})
 
 
 def mainpage(request):
-
     return render(request,'elecciones/landingpage.html',{})
 
 def filterpage(request):

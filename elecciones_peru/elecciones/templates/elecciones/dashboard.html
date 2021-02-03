@@ -1002,10 +1002,11 @@ SEPARACION
         </ul>
       <hr>
     </div>
-    <table class="uk-table uk-table-divider" id ="tabla_candidatos" style ="">
+    <table class="uk-table uk-table-divider" id ="tabla_candidatos">
       <thead>
         <tr>
           <th name="columnas_organizaciones" style="display:none">Cantidad</th >
+          <th>N.</th>
           <th>Nombres</th>
           <th>Partido</th>
           <th>Cargo</th>
@@ -1014,9 +1015,10 @@ SEPARACION
       </thead>
       <tbody>
         <!-- todos los candidatos -->
-        {% for candidato in candidatos %}
+        {% for candidato in page %}
         <tr>
           <td name="columnas_organizaciones" style="display:none" >{{ candidato.conteo }}</td>
+          <td>{{ candidato.id }}</td>
           <td>{{ candidato.candidato }}</td>
           <td>{{ candidato.organizacion_politica }}</td>
           <td >{{ candidato.cargo_eleccion }}</td>
@@ -1028,8 +1030,8 @@ SEPARACION
         <!-- candidato según su grado de estudio -->
       </tbody>
   </table>
- 
-  </div>
+  {% include "elecciones/pagination.html" with page=page %}
+</div>
   <!-- /CONTENT -->
   <!-- OFFCANVAS -->
   <div id="offcanvas-nav" data-uk-offcanvas="flip: true; overlay: true">
