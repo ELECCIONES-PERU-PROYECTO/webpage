@@ -1024,7 +1024,7 @@ SEPARACION
           <td>{{ candidato.organizacion_politica }}</td>
           <td >{{ candidato.cargo_eleccion }}</td>
           <td >{{ candidato.distrito_elec }}</td>
-          <td><button onclick="verHojadeVida()" > Ver Más</button></td>
+          <td><button  onclick="verHojadeVida(this)" >{{candidato.dni_candidato}}</button></td>
         </tr>
         {% endfor %}
         <!-- candidato con un dni en específico -->

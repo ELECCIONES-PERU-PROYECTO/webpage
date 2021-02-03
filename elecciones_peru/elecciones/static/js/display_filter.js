@@ -176,9 +176,15 @@ function activar_candidatos(text){
 
 }
 
-
-function verHojadeVida(){   
+let dni_hoja_de_vida = ""
+function verHojadeVida(element){   
     //let jeje = document.getElementsByName("get_candidato_dato")
+    dni_hoja_de_vida = element.textContent
+    let url_ = "http://127.0.0.1:8000/elecciones/candidato/hojadevida/"+ dni_hoja_de_vida
     
-    console.log(element)
+    window.location = url_
+    console.log(element.textContent)
+    getHojadeVida()
+
+
 }

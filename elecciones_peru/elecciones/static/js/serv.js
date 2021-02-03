@@ -62,6 +62,17 @@ async function getUrl_orga(){
 
 }
 
+async function getHojadeVida() {
+  try {
+    const response = await axios.get("/candidato/hojadevida/?dni_hoja_de_vida="+dni_hoja_de_vida)
+    //const response = await axios.get('/candidatos/opc_edad/30-50/ASC')
+    console.log(response)
+  } catch (error) {
+    console.error(error)
+  }
+
+}
+
 async function grado_estudios() {
   try {
     const response = await axios.get('/candidatos/estudios/?niv_acad=' + nivel_academico_value)
