@@ -175,3 +175,10 @@ function activar_candidatos(text){
 
 
 }
+
+
+function verHojadeVida(){   
+    //let jeje = document.getElementsByName("get_candidato_dato")
+    
+    console.log(element)
+}

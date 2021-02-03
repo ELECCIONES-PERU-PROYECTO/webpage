@@ -1010,6 +1010,7 @@ SEPARACION
           <th>Partido</th>
           <th>Cargo</th>
           <th>Distrito Electoral</th>
+          <th>Hoja de Vida</th>
         </tr>
       </thead>
       <tbody>
@@ -1017,10 +1018,11 @@ SEPARACION
         {% for candidato in candidatos %}
         <tr>
           <td name="columnas_organizaciones" style="display:none" >{{ candidato.conteo }}</td>
-          <td>{{ candidato.candidato }}</td>
+          <td name = "get_candidato_dato">{{ candidato.candidato }}</td>
           <td>{{ candidato.organizacion_politica }}</td>
           <td >{{ candidato.cargo_eleccion }}</td>
           <td >{{ candidato.distrito_elec }}</td>
+          <td><button onclick="verHojadeVida()" > Ver Más</button></td>
         </tr>
         {% endfor %}
         <!-- candidato con un dni en específico -->
