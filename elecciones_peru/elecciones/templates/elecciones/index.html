@@ -15,12 +15,12 @@
 
 	<!-- CSS
 	================================================== -->
+	<link type="text/css" href="{% static "css/main.css" %}" rel="stylesheet" >
 	<link type="text/css" href="{% static "css/base.css" %}" rel="stylesheet" >
 	<link type="text/css" href="{% static "css/vendor.css" %}" rel="stylesheet" >
 	<link type="text/css" href="{% static "css/cards.css" %}" rel="stylesheet" >
 	<link type="text/css" href="{% static "css/table.css" %}" rel="stylesheet" >
 	<link type="text/css" href="{% static "css/slider.css" %}" rel="stylesheet" >
-	<link href="{% static "css/dashboard.css" %}" rel="stylesheet">
 	<!--
 	<script src="../../../static/js/modernizr.js"></script>
 	<script src="../../../static/js/pace.min.js"></script>
@@ -36,7 +36,7 @@
    ================================================== -->
    <header>   	
    	<div class="row">
-
+		
    		<div class="top-bar">
    			<a class="menu-toggle" href="#"><span>Menu</span></a>
 
@@ -70,14 +70,13 @@
    <section id="intro">   
 
    	<div class="intro-overlay"></div>	
-
    	<div class="intro-content">
    		<div class="row">
 
    			<div class="col-twelve">
 
 	   			<!--<h5>Hello, World.</h5>-->
-				   <h1>JULIO ARMANDO GUZMAN CACERES</h1>
+				   <h1>{{hojadevida.candidato}}</h1>
 				   <br>
 
 				   <!--
