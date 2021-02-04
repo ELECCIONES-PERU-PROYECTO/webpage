@@ -518,7 +518,7 @@ def hojadevida_by_dni(request, dni_hoja_de_vida):
   #  "select * from datos_personales where dni_candidato = '" + dni + "';"
   #   "select * from datos_personales;"
   #)
-  hojadevida = DatosPersonales.objects.raw("SELECT  id, candidato, organizacion_politica, distrito_elec FROM  datos_personales WHERE departamento_nacimiento = 'AMAZONAS' AND  (cargo_eleccion = 'CONGRESISTA DE LA REPÚBLICA') INTERSECT SELECT DP.id ,   DP.candidato, DP.organizacion_politica, DP.distrito_elec FROM estudio_postgrado AS EP  JOIN  datos_personales AS DP USING (dni_candidato) WHERE   EP.concluyo_estudio_postgrado = 'SI' AND  (DP.cargo_eleccion = 'CONGRESISTA DE LA REPÚBLICA') ")
+  hojadevida = DatosPersonales.objects.raw("SELECT * from datos_personales WHERE dni_candidato ='" + dni_hoja_de_vida+"'")
   return render(request,
                 'elecciones/index.html',
                 {'hojadevida': hojadevida})

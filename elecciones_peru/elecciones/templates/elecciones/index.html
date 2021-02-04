@@ -30,7 +30,6 @@
 	================================================== -->
 	<link rel="icon" type="image/png" href="./favicon.png">
 </head>
-
 <body id="top">
 	<!-- header 
    ================================================== -->
@@ -74,9 +73,10 @@
    		<div class="row">
 
    			<div class="col-twelve">
+				{% for candidato in hojadevida %}
 
 	   			<!--<h5>Hello, World.</h5>-->
-				   <h1>{{hojadevida.candidato}}</h1>
+				   <h1>{{candidato.candidato}}</h1>
 				   <br>
 
 				   <!--
@@ -85,7 +85,7 @@
 	   				<span>UI/UX Designer</span > 
 				   </p>
 				   -->
-
+				{% endfor %}
 	   			<a class="button stroke smoothscroll" href="#about" title="">Conoce al candidato</a>
 
 	   		</div>  
@@ -129,35 +129,36 @@
 			   <br>
 
    			<h3>Perfil: </h3>
+			   {% for candidato in hojadevida %}
 
    			<ul class="info-list">
 				<li>
 					<strong>Cargo al que postula:</strong>
-					<span>Freelancer, Frontend Developer</span>
+					<span>{{candidato.cargo_eleccion}}</span>
 				</li>
 				<li>
 					<strong>Organización política:</strong>
-					<span>www.kardswebsite.com</span>
+					<span>{{candidato.organizacion_politica}}</span>
 				</li>
 
    				<li>
    					<strong>Fecha de nacimiento:</strong>
-   					<span>31/07/1970</span>
+   					<span>{{candidato.fecha_nacimiento}}</span>
    				</li>
    				<li>
    					<strong>Sexo:</strong>
-   					<span>Masculino</span>
+   					<span>{{candidato.sexo}}</span>
    				</li>
 
  
    				<li>
    					<strong>DNI:</strong>
-   					<span>09337130</span>
+   					<span>{{candidato.dni_candidato}}</span>
 				   </li>
 				   
 				   <li>
 					<strong>Canet de extranjería:</strong>
-					<span>-</span>
+					<span>{{candidato.carnet_extranjeria}}</span>
 				</li>
 
    			</ul> <!-- /info-list -->
@@ -174,25 +175,25 @@
 					<ul>
 						<tr>
 							<th><strong>País:</strong></th>
-							<th>Perú </th>
+							<th>{{candidato.pais_nacimiento}} </th>
 						</tr>
 						<br>
 
 						<tr>
 							<th><strong>Departamento:</strong></th>
-							<th>Lima </th>
+							<th>{{candidato.departamento_nacimiento}} </th>
 						</tr>
 						<br>
 
 						<tr>
 							<th><strong>Provincia:</strong></th>
-							<th>Lima </th>
+							<th>{{candidato.provincia_nacimiento}} </th>
 						</tr>
 						<br>
 
 						<tr>
 							<th><strong>Distrito:</strong></th>
-							<th>Jesús María</th>
+							<th>{{candidato.distrito_nacimiento}}</th>
 						</tr>
 					</ul>
 
@@ -206,25 +207,25 @@
 					<ul>
 						<tr>
 							<th><strong>Departamento:</strong></th>
-							<th>Perú </th>
+							<th>{{candidato.departamento_domicilio}}</th>
 						</tr>
 						<br>
 
 						<tr>
 							<th><strong>Provincia:</strong></th>
-							<th>Lima </th>
+							<th>{{candidato.provincia_domicilio}}</th>
 						</tr>
 						<br>
 
 						<tr>
 							<th><strong>Distrito:</strong></th>
-							<th>Lima </th>
+							<th>{{candidato.distrito_domicilio}}</th>
 						</tr>
 						<br>
 
 						<tr>
 							<th><strong>Dirección:</strong></th>
-							<th>Jesús María</th>
+							<th>{{candidato.direccion_domicilio}}</th>
 						</tr>
 					</ul>
 					<!--
@@ -232,6 +233,7 @@
 					-->
 				</li>
 				
+				{% endfor %}
 
  
 			   </ul> 
