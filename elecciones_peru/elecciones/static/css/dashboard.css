@@ -1,3 +1,8 @@
+/* -- Colors -- */
+.bg_red {
+	background-color: #b62222;
+}
+
 /* -- Top navigation -- */
 #top-head {
 	z-index: 9;

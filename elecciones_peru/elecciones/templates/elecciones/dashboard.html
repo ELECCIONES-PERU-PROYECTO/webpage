@@ -500,7 +500,9 @@
           </ul>
         </li>
       </ul>
-      <button class="uk-button uk-button-secondary" onClick="button_filter()">Filtrar</button>
+      <div class="uk-margin uk-text-center">
+        <button class="uk-button bg_red uk-text-bold" onClick="button_filter()">Filtrar</button>
+      </div>
       <!-- <button class="uk-button uk-button-secondary" onClick="imprimir()">Imprimir</button> -->
     </div>
 
@@ -548,7 +550,7 @@
           </form>
         </ul>
       </li>
-      <li class="uk-parent"  id="opc_genero" name="orga_filtro"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Genero</a>
+      <li class="uk-parent"  id="opc_genero" name="orga_filtro"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Género</a>
         <ul>
           <!-- <button  onclick="quitar_todas_selecciones(this)">Descartar</button> -->
           <form>
@@ -592,7 +594,7 @@
           </form>
         </ul>
       </li> 
-      <li class="uk-parent" name="orga_filtro" id="opc_educacion"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel Academico</a>
+      <li class="uk-parent" name="orga_filtro" id="opc_educacion"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel Académico</a>
         <ul>
           <!-- <button onclick="quitar_todas_selecciones(this)">Descartar</button> -->
           <form>
@@ -720,50 +722,56 @@
             <fieldset class="uk-fieldset uk-padding-small">
               <div class="uk-width-1-1@s uk-flex">
                 <div class="uk-flex uk-flex-column" style="width: 85%;">
-                  <label for="penal_obligaciones_" class="uk-text-muted">
-                      Cantidad Sentencia Penal (penal y obligaciones)
+                  <div class="uk-margin-small-bottom">
+                    <label for="penal_obligaciones_" class="uk-text-muted">
+                        Cantidad Sentencia Penal (penal y obligaciones)
+                      </label>
+                      <div class="uk-flex uk-flex-middle">
+                        <input type="radio" id="penal_obligaciones_in" name="penal_obligaciones_in" onclick="set_valor(this)" value="ASC">
+                        <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                          Ascendente
+                        </label>
+                      </div>
+                      <div class="uk-flex uk-flex-middle">
+                        <input type="radio" id="penal_obligaciones_in" name="penal_obligaciones_in" onclick="set_valor(this)" value="DESC">
+                        <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                          Descendente
+                        </label>
+                      </div>
+                    </div>
+                  <div class="uk-margin-small-bottom">
+                    <label class="uk-text-muted">
+                      Cantidad de Sentencia Penal
                     </label>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="penal_obligaciones_in" name="penal_obligaciones_in" onclick="set_valor(this)" value="ASC">
+                      <input type="radio" id="penal_cant" name="penal_cant" onclick="set_valor(this)" value="ASC">
                       <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
                         Ascendente
                       </label>
                     </div>
                     <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="penal_obligaciones_in" name="penal_obligaciones_in" onclick="set_valor(this)" value="DESC">
+                      <input type="radio" id="penal_cant" name="penal_cant" onclick="set_valor(this)" value="DESC">
                       <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
-                        Descendente
+                      Descendente
                       </label>
                     </div>
-                  <label class="uk-text-muted">
-                    Cantidad de Sentencia Penal
-                  </label>
-                  <div class="uk-flex uk-flex-middle">
-                    <input type="radio" id="penal_cant" name="penal_cant" onclick="set_valor(this)" value="ASC">
-                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
-                      Ascendente
-                    </label>
                   </div>
-                  <div class="uk-flex uk-flex-middle">
-                    <input type="radio" id="penal_cant" name="penal_cant" onclick="set_valor(this)" value="DESC">
-                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
-                     Descendente
+                  <div>
+                    <label class="uk-text-muted">
+                      Cantidad de Sentencia civil
                     </label>
-                  </div>
-                  <label class="uk-text-muted">
-                    Cantidad de Sentencia civil
-                  </label>
-                  <div class="uk-flex uk-flex-middle">
-                    <input type="radio" id="civil_cant" name="civil_cant" onclick="set_valor(this)" value="ASC">
-                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
-                      Ascendente
-                    </label>
-                  </div>
-                  <div class="uk-flex uk-flex-middle">
-                    <input type="radio" id="civil_cant" name="civil_cant" onclick="set_valor(this)" value="DESC">
-                    <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
-                     Descendente
-                    </label>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="civil_cant" name="civil_cant" onclick="set_valor(this)" value="ASC">
+                      <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                        Ascendente
+                      </label>
+                    </div>
+                    <div class="uk-flex uk-flex-middle">
+                      <input type="radio" id="civil_cant" name="civil_cant" onclick="set_valor(this)" value="DESC">
+                      <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                      Descendente
+                      </label>
+                    </div>
                   </div>
                 </div>
                 <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
@@ -934,7 +942,7 @@
                         </label>
                       </div>
                     </div>
-                    <div class="uk-margin-small-bottom">
+                    <div>
                       <label class="uk-text-muted">
                         Ingresos Declarados
                       </label>
@@ -989,7 +997,9 @@
         </ul>
       </li>
     </ul>
-    <button class="uk-button uk-button-secondary" onclick="button_filter_org()">Filtrar</button>
+    <div class="uk-margin uk-text-center">
+      <button class="uk-button bg_red uk-text-bold" onclick="button_filter_org()">Filtrar</button>
+    </div>
     <!-- <button class="uk-button uk-button-secondary" onclick="imprimir_org()">Imprimir</button> -->
     </div>
     
