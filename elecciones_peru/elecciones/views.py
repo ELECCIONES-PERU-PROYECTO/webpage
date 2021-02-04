@@ -150,7 +150,7 @@ def function_filtro_normal(self, stack_, SELECT_candidato,WHERE_candidato ):
           self[4] = ""
           return retorno
       if self[5] == "NO":
-          retorno = "SELECT DP.id, DP.dni_candidato, DP.candidato, DP.organizacion_politica,  "+SELECT_candidato+" ,  DP.dni_candidato FROM sentencia_obligacion AS SO JOIN  datos_personales AS DP USING (dni_candidato) WHERE SO.tiene_info_por_declarar = 'NO' "
+          retorno = "SELECT DP.id, DP.dni_candidato, DP.candidato, DP.organizacion_politica,  "+SELECT_candidato+" ,  DP.dni_candidato FROM sentencia_obligacion AS SO JOIN  datos_personales AS DP USING (dni_candidato) WHERE SO.tiene_info_por_declarar = 'NO'  AND "+ WHERE_candidato
           self[5] = ""
           return retorno
       if self[12] != "":
