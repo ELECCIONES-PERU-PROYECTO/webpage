@@ -96,11 +96,8 @@ let filtro_distrito = false          //17
 let cant_filtros_normales = 0
 let cant_filtros_ob = 0
 
- 
- 
 /*query -> producto final */
 let query = ""
-
 
 let lista_filtros = [filtro_academico,filtro_cargo,filtro_penal_cant , filtro_oblig_cant, filtro_oblig_mat, filtro_senten_no_tiene,
   filtro_ingres_cant, filtro_inmu_cant, filtro_inmu_valor,filtro_mueb_cant,filtro_mueb_valor, filtro_renuncias,filtro_edad,filtro_oriundo,

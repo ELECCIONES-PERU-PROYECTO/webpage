@@ -1,54 +1,37 @@
 {% load static %}
 <!DOCTYPE html>
-<html class="no-js" lang="en"> 
+<html> 
 <head>
-
-   <!--- basic page needs
-   ================================================== -->
-   <meta charset="utf-8">
+	<!--- basic page needs
+	================================================== -->
+	<meta charset="utf-8">
 	<title>Perú Informado</title>
 	<meta name="description" content="">  
 	<meta name="author" content="">
 
-   <!-- mobile specific metas
-   ================================================== -->
+	<!-- mobile specific metas
+	================================================== -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
- 	<!-- CSS
-   ================================================== -->
-
-   <!--<link  rel="stylesheet" href="{% static "css/basehdv.css" %}">
-   <link rel="stylesheet" href="{% static "css/vendorhdv.css" %}" >
-   <link rel="stylesheet" href="{% static "css/cardshdv.css" %}" >
-   <link rel="stylesheet" href="{% static "css/tablehdv.css" %}" >
-   <link rel="stylesheet" href="{% static "css/sliderhdv.css" %}" >
-   -->
-   <link  rel="stylesheet" href="{% static "css/base.css" %}">
-   <link rel="stylesheet" href="{% static "css/vendor.css" %}">
-   <link rel="stylesheet" href="{% static "css/cards.css" %}">
-   <link rel="stylesheet" href="{% static "css/table.css" %}">
-   <link rel="stylesheet" href="{% static "css/slider.css" %}">
-   <link href="{% static "css/dashboard.css" %}" rel="stylesheet">
-
-   <!-- script
-   ================================================== -->   
-	<script src="{% static "js/modernizr.js"%}"></script>
-	<script src="{% static "js/place.min.js"%}"></script>
-	<script src="{% static "js/slider.js"%}"></script>
-
-
+	<!-- CSS
+	================================================== -->
+	<link type="text/css" href="{% static "css/base.css" %}" rel="stylesheet" >
+	<link type="text/css" href="{% static "css/vendor.css" %}" rel="stylesheet" >
+	<link type="text/css" href="{% static "css/cards.css" %}" rel="stylesheet" >
+	<link type="text/css" href="{% static "css/table.css" %}" rel="stylesheet" >
+	<link type="text/css" href="{% static "css/slider.css" %}" rel="stylesheet" >
+	<link href="{% static "css/dashboard.css" %}" rel="stylesheet">
 	<!--
 	<script src="../../../static/js/modernizr.js"></script>
 	<script src="../../../static/js/pace.min.js"></script>
 	<script src="../../../static/js/slider.js"></script>
 -->
-   <!-- favicons
+	<!-- favicons
 	================================================== -->
 	<link rel="icon" type="image/png" href="./favicon.png">
 </head>
 
 <body id="top">
-
 	<!-- header 
    ================================================== -->
    <header>   	
@@ -931,7 +914,7 @@
 
 	         	<div class="bgrid folio-item">
 	               <div class="item-wrap">
-	               	<img src="../../static/images/portfolio/liberty.jpg" alt="Liberty">
+	               	<img src="{% static "images/portfolio/liberty.jpg" %}" alt="Liberty">
 	                  <a href="#modal-01" class="overlay">	                  	           
 	                     <div class="folio-item-table">
 	                     	<div class="folio-item-cell">
@@ -947,7 +930,7 @@
 
 	        		<div class="bgrid folio-item">
 	               <div class="item-wrap">
-	               	<img src="../../static/images/portfolio/shutterbug.jpg" alt="Shutterbug">
+	               	<img src="{% static "images/portfolio/shutterbug.jpg" %}" alt="Shutterbug">
 	               	<a href="#modal-02" class="overlay">              		                  
 	                     <div class="folio-item-table">
 	                     	<div class="folio-item-cell">
@@ -963,7 +946,7 @@
 
 	            <div class="bgrid folio-item">
 	               <div class="item-wrap">
-	               	<img src="../../static/images/portfolio/clouds.jpg"alt="Clouds">
+	               	<img src="{% static "images/portfolio/clouds.jpg" %}" alt="Clouds">
 	                  <a href="#modal-03" class="overlay">             		                  
 	                     <div class="folio-item-table">
 	                     	<div class="folio-item-cell">
@@ -979,7 +962,7 @@
 
 	            <div class="bgrid folio-item">
 	               <div class="item-wrap">
-	               	<img src="../../static/images/portfolio/beetle.jpg" alt="Beetle">
+	               	<img src="{% static "images/portfolio/beetle.jpg" %}" alt="Beetle">
 	                  <a href="#modal-04" class="overlay">                  	                 
 	                     <div class="folio-item-table">
 	                     	<div class="folio-item-cell">
@@ -995,7 +978,7 @@
 
 	        		<div class="bgrid folio-item">
 	               <div class="item-wrap">
-	               	<img src="../../static/images/portfolio/lighthouse.jpg" alt="Lighthouse">
+	               	<img src="{% static "images/portfolio/lighthouse.jpg" %}" alt="Lighthouse">
 	                  <a href="#modal-05" class="overlay">             		                  
 	                     <div class="folio-item-table">
 	                     	<div class="folio-item-cell">
@@ -1011,7 +994,7 @@
 
 	            <div class="bgrid folio-item">
 	               <div class="item-wrap">
-	               	<img src="../../static/images/portfolio/salad.jpg" alt="Salad">
+	               	<img src="{% static "images/portfolio/salad.jpg" %}" alt="Salad">
 	                  <a href="#modal-06" class="overlay">
 	                     <div class="folio-item-table">
 	                     	<div class="folio-item-cell">
@@ -1030,7 +1013,7 @@
 	            <div id="modal-01" class="popup-modal slider mfp-hide">	
 
 				     	<div class="media">
-				     		<img src="../../static/images/portfolio/modals/m-liberty.jpg" alt="" />
+				     		<img src="{% static "images/portfolio/modals/m-liberty.jpg" %}" alt="" />
 				     	</div>      	
 
 					   <div class="description-box">
@@ -1050,7 +1033,7 @@
 				   <div id="modal-02" class="popup-modal slider mfp-hide">	
 
 				     	<div class="media">
-				     		<img src="../../static/images/portfolio/modals/m-shutterbug.jpg" alt="" />
+				     		<img src="{% static "images/portfolio/modals/m-shutterbug.jpg" %}" alt="" />
 				     	</div>      	
 
 					   <div class="description-box">
@@ -1070,7 +1053,7 @@
 				   <div id="modal-03" class="popup-modal slider mfp-hide">	
 
 				     	<div class="media">
-				     		<img src="../../static/images/portfolio/modals/m-clouds.jpg" alt="" />
+				     		<img src="{% static "images/portfolio/modals/m-clouds.jpg" %}" alt="" />
 				     	</div>      	
 
 					   <div class="description-box">
@@ -1090,7 +1073,7 @@
 				   <div id="modal-04" class="popup-modal slider mfp-hide">	
 
 				     	<div class="media">
-				     		<img src="../../static/images/portfolio/modals/m-beetle.jpg" alt="" />
+				     		<img src="{% static "images/portfolio/modals/m-beetle.jpg" %}" alt="" />
 				     	</div>      	
 
 					   <div class="description-box">
@@ -1110,7 +1093,7 @@
 				   <div id="modal-05" class="popup-modal slider mfp-hide">	
 
 				     	<div class="media">
-				     		<img src="../../static/images/portfolio/modals/m-lighthouse.jpg" alt="" />
+				     		<img src="{% static "images/portfolio/modals/m-lighthouse.jpg" %}" alt="" />
 				     	</div>      	
 
 					   <div class="description-box">
@@ -1130,7 +1113,7 @@
 				   <div id="modal-06" class="popup-modal slider mfp-hide">	
 
 				     	<div class="media">
-				     		<img src="../../static/images/portfolio/modals/m-salad.jpg" alt="" />
+				     		<img src="{% static "images/portfolio/modals/m-salad.jpg" %}" alt="" />
 				     	</div>      	
 
 					   <div class="description-box">
@@ -1581,14 +1564,15 @@
 
    <div id="preloader"> 
     	<div id="loader"></div>
-   </div> 
-
-   <!-- Java Script
-   ================================================== --> 
-
-   <script src = "{% static " js/jquery-2.1.3.min.js"%}"></script>
-   <script src = "{% static " js/plugins.js"%}"></script>
-   <script src = "{% static " js/main.js"%}"></script>
-</body>
-
+	 </div> 
+	 
+		<!-- script
+		================================================== -->   
+		<script src="{% static "js/jquery-2.1.3.min.js"%}"></script>
+		<script src="{% static "js/plugins.js"%}"></script>
+		<script src="{% static "js/main.js"%}"></script>
+		<script src="{% static "js/modernizr.js"%}"></script>
+		<script src="{% static "js/place.min.js"%}"></script>
+		<script src="{% static "js/slider.js"%}"></script>
+	</body>
 </html>
