@@ -1,4 +1,4 @@
-var swiper = new Swiper('.blog-slider', {
+/*var swiper = new Swiper('.blog-slider', {
     spaceBetween: 30,
     effect: 'fade',
     loop: true,
@@ -10,4 +10,4 @@ var swiper = new Swiper('.blog-slider', {
       el: '.blog-slider__pagination',
       clickable: true,
     }
-  });
+  });*/
