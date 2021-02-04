@@ -2,6 +2,7 @@
 {% block title %}Elecciones{% endblock %}
 {% block content %}
 <body data-uk-filter="target: .js-filter">
+
   <!--HEADER-->
   <header id="top-head" class="uk-position-fixed">
     <div class="uk-container uk-container-expand uk-background-secondary">
@@ -10,7 +11,7 @@
           <!-- <div class="uk-navbar-item uk-hidden@m">
             <a class="uk-logo" href="#"><img class="custom-logo" src="img/dashboard-logo-white.svg" alt=""></a>
           </div> -->
-          <ul class="uk-navbar-nav uk-visible@m" id = "opciones_candidatos" > 
+          <ul class="uk-navbar-nav uk-visible@m" id="opciones_candidatos" > 
             <li><a href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a></li>
             <li>
               <a href="#" onclick="activar_candidatos(this.text)" >Candidatos Congresales</a>
@@ -44,6 +45,7 @@
     </div>
   </header>
   <!--/HEADER-->
+
   <!-- LEFT BAR -->
   <aside id="left-col" class="uk-light uk-visible@m">
     <!-- <div class="left-logo uk-flex uk-flex-middle">
@@ -53,17 +55,22 @@
     <!-- <div class="left-content-box content-box-dark">
     </div> -->
     
-    <div class="left-nav-wrap"  id = "filtros_candidatos">
+    <!--------------------------------------------
+      --------------------------------------------
+      MOSTRAR TODO
+      --------------------------------------------
+      --------------------------------------------
+    -->
+    <div class="left-nav-wrap"  id="filtros_candidatos">
       <ul id ="presidenciales" name ="tipo_candidato_filter"class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
         <li class="uk-nav-header">Filtros</li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel Académico</a>
           <ul>
-            <button  onclick="quitar_seleccion_academico()">Decartar</button>
-
+            <!-- <button  onclick="quitar_seleccion_academico()">Decartar</button> -->
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
-                <div class="uk-width-1-1@s">
-                  <select class="uk-select" id="nivel_academico" onchange="get_nivel_academico()">
+                <div class="uk-width-1-1@s uk-flex uk-flex-middle">
+                  <select class="uk-select uk-margin-small-right" id="nivel_academico" style="width: 85%" onchange="get_nivel_academico()">
                   <option value="default">Elegir Nivel Academico</option>
                     <option value="concluyo_primaria">Concluyó primaria</option>
                     <option value="concluyo_secundaria">Concluyó secundaria</option>
@@ -74,6 +81,7 @@
                     <option value="maestro_doctor">Maestro o Doctor</option>
                   </optgroup>
                   </select>
+                  <a onclick="quitar_seleccion_academico()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
                 </div>
               </fieldset>
             </form>
@@ -81,9 +89,9 @@
         </li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cargos previos</a>
           <ul>
-            <button onclick="quitar_seleccion_cargos_pervios()">Decartar</button>
+            <!-- <button onclick="quitar_seleccion_cargos_pervios()">Decartar</button> -->
             <form>
-              <fieldset class="uk-fieldset uk-padding-small">
+              <fieldset class="uk-fieldset uk-padding-small uk-flex">
                 <div class="uk-width-1-1@s">
                   <div class="uk-flex uk-flex-column">
                     <label class="uk-text-muted">
@@ -106,104 +114,103 @@
                     Ver Experiencia Laboral
                   </button>
                 </div>
+                <a onclick="quitar_seleccion_cargos_pervios()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
               </fieldset>
             </form>
           </ul>
         </li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Sentencias</a>
           <ul>
-            <button  onclick="quitar_seleccion_sentencias()">Decartar</button>
-
+            <!-- <button  onclick="quitar_seleccion_sentencias()">Decartar</button> -->
             <form>
-              <fieldset class="uk-fieldset uk-padding-small">
-                <div id="mostrar_sentencias" style="">
-                <div class="uk-width-1-1@s uk-flex uk-flex-column">
-                  <div>
-                    <label><input type="checkbox" id="penal_cbx" value="penal_val" onchange="togglePenal_opciones(this)">Penal</label><br>
+              <fieldset class="uk-fieldset uk-padding-small uk-flex uk-flex-between">
+                <div>
+                  <div id="mostrar_sentencias">
+                  <div class="uk-width-1-1@s uk-flex uk-flex-column">
+                    <div>
+                      <label><input type="checkbox" id="penal_cbx" value="penal_val" onchange="togglePenal_opciones(this)">Penal</label><br>
+                    </div>
+                      <div id="div_opc_cant_sentencias"  style="display: none">
+                      <label class="uk-text-muted">
+                        Cantidad de Sentencias
+                      </label>
+                      <div class="uk-flex uk-flex-middle">
+                        <input type="radio" id="cant_senten_asc" name="cant_senten" value="ASC" onclick="get_sentencias_penal_cant()">
+                        <label for="cant_senten_asc" class="uk-text-muted uk-margin-small-left">
+                          Ascendente
+                        </label>
+                      </div>
+                      <div class="uk-flex uk-flex-middle">
+                        <input type="radio" id="cant_senten_desc" name="cant_senten" value="DESC" onclick="get_sentencias_penal_cant()">
+                        <label for="cant_senten_desc" class="uk-text-muted uk-margin-small-left">
+                          Descendente
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <label><input type="checkbox" id="por_obligaciones" value="por_obligaciones_val" onchange="toggleObligacion_opciones(this)">Por obligaciones</label><br>
+                    </div>
+                    <div id="div_opc_obligaciones"  style="display: none">
+                      <label class="uk-text-muted">
+                        Cantidad de Sentencias
+                      </label>
+                      <div class="uk-flex uk-flex-middle">
+                        <input type="radio" id="cant_senten_asc_oblig" name="cant_senten_oblig" value="ASC" onclick="get_sentencias_oblig_cant()">
+                        <label for="cant_senten_asc_oblig" class="uk-text-muted uk-margin-small-left">
+                          Ascendente
+                        </label>
+                      </div>
+                      <div class="uk-flex uk-flex-middle">
+                        <input type="radio" id="cant_senten_desc_oblig" name="cant_senten_oblig" value="DESC" onclick="get_sentencias_oblig_cant()">
+                        <label for="cant_senten_desc_oblig" class="uk-text-muted uk-margin-small-left">
+                          Descendente
+                        </label>
+                      </div>
+                      <label class="uk-text-muted">
+                        Materia de la demanda
+                      </label>
+                      <div class="uk-flex uk-flex-middle">
+                        <input type="radio" id="mat_deman_fam_ali" name="opc_mat_demanda" value="FamiliaAli" onclick="get_sentencias_oblig_mat()">
+                        <label for="mat_deman_fam_alimen" class="uk-text-muted uk-margin-small-left">
+                          Familia/Alimentaria
+                        </label>
+                      </div>
+                      <div class="uk-flex uk-flex-middle">
+                        <input type="radio" id="mat_deman_contrac" name="opc_mat_demanda" value="CONTRACTUAL" onclick="get_sentencias_oblig_mat()">
+                        <label for="mat_deman_contract" class="uk-text-muted uk-margin-small-left">
+                          Contractual
+                        </label>
+                      </div>
+                      <div class="uk-flex uk-flex-middle">
+                        <input type="radio" id="mat_deman_lab" name="opc_mat_demanda" value="LABORAL" onclick="get_sentencias_oblig_mat()">
+                        <label for="mat_deman_laboral" class="uk-text-muted uk-margin-small-left">
+                          Laboral
+                        </label>
+                      </div>
+                      <div class="uk-flex uk-flex-middle">
+                        <input type="radio" id="mat_deman_vio" name="opc_mat_demanda" value="VIOLENCIA" onclick="get_sentencias_oblig_mat()">
+                        <label for="mat_deman_violencia" class="uk-text-muted uk-margin-small-left">
+                          Violencia Familiar
+                        </label>
+                      </div>
+                    </div>
                   </div>
-                    <div id = "div_opc_cant_sentencias"  style="display: none">
-
-                    <label class="uk-text-muted">
-                      Cantidad de Sentencias
-                    </label>
-                    <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="cant_senten_asc" name="cant_senten" value="ASC" onclick="get_sentencias_penal_cant()">
-                      <label for="cant_senten_asc" class="uk-text-muted uk-margin-small-left">
-                        Ascendente
-                      </label>
-                    </div>
-                    <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="cant_senten_desc" name="cant_senten" value="DESC" onclick="get_sentencias_penal_cant()">
-                      <label for="cant_senten_desc" class="uk-text-muted uk-margin-small-left">
-                        Descendente
-                      </label>
-                    </div>
                   </div>
-                  <div>
-                    <label><input type="checkbox" id="por_obligaciones" value="por_obligaciones_val" onchange="toggleObligacion_opciones(this)">Por obligaciones</label><br>
-                  </div>
-                  <div id = "div_opc_obligaciones"  style="display: none">
-
-                    <label class="uk-text-muted">
-                      Cantidad de Sentencias
-                    </label>
-                    <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="cant_senten_asc_oblig" name="cant_senten_oblig" value="ASC" onclick="get_sentencias_oblig_cant()">
-                      <label for="cant_senten_asc_oblig" class="uk-text-muted uk-margin-small-left">
-                        Ascendente
-                      </label>
-                    </div>
-                    <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="cant_senten_desc_oblig" name="cant_senten_oblig" value="DESC" onclick="get_sentencias_oblig_cant()">
-                      <label for="cant_senten_desc_oblig" class="uk-text-muted uk-margin-small-left">
-                        Descendente
-                      </label>
-                    </div>
-
-                    <label class="uk-text-muted">
-                      Materia de la demanda
-                    </label>
-                    <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="mat_deman_fam_ali" name="opc_mat_demanda" value="FamiliaAli" onclick="get_sentencias_oblig_mat()">
-                      <label for="mat_deman_fam_alimen" class="uk-text-muted uk-margin-small-left">
-                        Familia/Alimentaria
-                      </label>
-                    </div>
-                    <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="mat_deman_contrac" name="opc_mat_demanda" value="CONTRACTUAL" onclick="get_sentencias_oblig_mat()">
-                      <label for="mat_deman_contract" class="uk-text-muted uk-margin-small-left">
-                        Contractual
-                      </label>
-                    </div>
-                    <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="mat_deman_lab" name="opc_mat_demanda" value="LABORAL" onclick="get_sentencias_oblig_mat()">
-                      <label for="mat_deman_laboral" class="uk-text-muted uk-margin-small-left">
-                        Laboral
-                      </label>
-                    </div>
-                    <div class="uk-flex uk-flex-middle">
-                      <input type="radio" id="mat_deman_vio" name="opc_mat_demanda" value="VIOLENCIA" onclick="get_sentencias_oblig_mat()">
-                      <label for="mat_deman_violencia" class="uk-text-muted uk-margin-small-left">
-                        Violencia Familiar
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                </div>
                   <div>
                     <label><input type="checkbox" id="no_tiene" value="no_tiene_val" onchange="noTiene_opcion(this)">No tiene</label><br>
                   </div>
-               
+                </div>
+                <a onclick="quitar_seleccion_sentencias()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
               </fieldset>
             </form>
           </ul>
         </li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Bienes y Rentas</a>
           <ul>
-            <button  onclick="quitar_seleccion_b_r()">Decartar</button>
+            <!-- <button  onclick="quitar_seleccion_b_r()">Decartar</button> -->
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
-                <div class="uk-width-1-1@s">
+                <div class="uk-width-1-1@s uk-flex uk-flex-between">
                   <div class="uk-flex uk-flex-column">
                     <label class="uk-text-muted">
                       Cantidad de ingresos
@@ -282,6 +289,7 @@
                       </label>
                     </div>
                   </div>
+                  <a onclick="quitar_seleccion_b_r()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
                 </div>
               </fieldset>
             </form>
@@ -289,12 +297,11 @@
         </li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Renuncias</a>
           <ul>
-            <button  onclick="quitar_seleccion_renuncia()">Decartar</button>
-
+            <!-- <button  onclick="quitar_seleccion_renuncia()">Decartar</button> -->
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
-                <div class="uk-width-1-1@s">
-                  <div class="uk-flex uk-flex-column">
+                <div class="uk-width-1-1@s uk-flex uk-flex-between">
+                  <div class="uk-flex uk-flex-column" style="width: 80%">
                     <label class="uk-text-muted">
                       Organizaciones políticas a las que ha pertenecido.
                     </label>
@@ -311,6 +318,7 @@
                       </label>
                     </div>
                   </div>
+                  <a onclick="quitar_seleccion_renuncia()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1" style="font-size: 20px;"></a>
                 </div>
               </fieldset>
             </form>
@@ -346,11 +354,10 @@
         </li> -->
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Edad</a>
           <ul>
-            <button  onclick="quitar_seleccion_edad()">Decartar</button>
-
+            <!-- <button  onclick="quitar_seleccion_edad()">Decartar</button> -->
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
-                <div class="uk-width-1-1@s">
+                <div class="uk-width-1-1@s uk-flex uk-flex-between">
                   <div class="uk-flex uk-flex-column">
                     <label class="uk-text-muted">
                       Rango de edades
@@ -374,6 +381,7 @@
                       </label>
                     </div>
                   </div>
+                  <a onclick="quitar_seleccion_edad()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
                 </div>
               </fieldset>
             </form>
@@ -381,10 +389,10 @@
         </li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Oriundo</a>
           <ul>
-            <button  onclick="quitar_seleccion_oriundo()">Decartar</button>
+            <!-- <button  onclick="quitar_seleccion_oriundo()">Decartar</button> -->
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
-                <div class="uk-width-1-1@s">
+                <div class="uk-width-1-1@s uk-flex uk-flex-between">
                   <div class="uk-flex uk-flex-column">
                     <label class="uk-text-muted">
                       Nació en Perú
@@ -413,23 +421,25 @@
                       </select>
                     </div>
                   </div>
+                  <a onclick="quitar_seleccion_oriundo()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
                 </div>
               </fieldset>
             </form>
           </ul>
         </li>
-        <li class="uk-parent" id = "postula_presidentes" style=""><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cargo al que Postula</a>
+        <li class="uk-parent" id="postula_presidentes"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cargo al que Postula</a>
           <ul>
-            <button  onclick="quitar_seleccion_postula()">Decartar</button>
+            <!-- <button  onclick="quitar_seleccion_postula()">Decartar</button> -->
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
-                <div class="uk-width-1-1@s uk-flex uk-flex-column">
-                  <select class="uk-select" id="cargo_postula" onchange="get_cargo_postula()">
+                <div class="uk-width-1-1@s uk-flex uk-flex-middle">
+                  <select class="uk-select uk-margin-small-right" id="cargo_postula" style="width: 85%" onchange="get_cargo_postula()">
                   <option value="default">Elegir cargo</option>
                     <option value="PRIMER VICEPRESIDENTE DE LA REPÚBLICA">Primer Vicepresidente</option>
                     <option value="SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA">Segundo Vicepresidente</option>
                     <option value="PRESIDENTE DE LA REPÚBLICA">Presidente de la República</option>
                   </select>
+                  <a onclick="quitar_seleccion_postula()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
                 </div>
               </fieldset>
             </form>
@@ -437,12 +447,11 @@
         </li>
         <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Organización Política</a>
           <ul>
-            <button  onclick="quitar_seleccion_org_politica()">Decartar</button>
-
+            <!-- <button  onclick="quitar_seleccion_org_politica()">Decartar</button> -->
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
-                <div class="uk-width-1-1@s uk-flex uk-flex-column">
-                  <select class="uk-select" id="select_org_politica" onchange="get_org_politica()">
+                <div class="uk-width-1-1@s uk-flex uk-flex-middle">
+                  <select class="uk-select uk-margin-small-right" id="select_org_politica" style="width: 85%" onchange="get_org_politica()">
                     <option value="default">Elegir Organización Política</option>
                     <option value="PARTIDO POLÍTICO CONTIGO">Partido Politico Contigo</option>
                     <option value="PARTIDO MORADO">Partido Morado</option>
@@ -467,14 +476,15 @@
                     <option value="PODEMOS PERU">Podemos Peru</option>
                     <option value="JUNTOS POR EL PERU">Juntos Por el Peru</option>
                   </select>
+                  <a onclick="quitar_seleccion_org_politica()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
                 </div>
               </fieldset>
             </form>
           </ul>
         </li>
-        <li class="uk-parent" id="distrito_congreso" style="display: none"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Distrito Electoral</a>
+        <!-- <li class="uk-parent" id="distrito_congreso" style="display: none"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Distrito Electoral</a>
           <ul>
-            <button  onclick="quitar_seleccion_distrito()">Decartar</button>
+            <a onclick="quitar_seleccion_distrito()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
                 <div class="uk-width-1-1@s uk-flex uk-flex-column">
@@ -488,45 +498,27 @@
               </fieldset>
             </form>
           </ul>
-        </li>
-
+        </li> -->
       </ul>
       <button class="uk-button uk-button-secondary" onClick="button_filter()">Filtrar</button>
-      <button class="uk-button uk-button-secondary" onClick="imprimir()">Imprimir</button>
-<!--
-SEPARACION
-SEPARACION
-SEPARACION
-SEPARACION
-SEPARACION
-SEPARACION
-SEPARACION
-SEPARACION
-SEPARACION
-SEPARACION
-SEPARACION
-SEPARACION
-SEPARACION
-SEPARACION
-SEPARACION
-SEPARACION
-SEPARACION
-SEPARACION
-SEPARACION
--->
+      <!-- <button class="uk-button uk-button-secondary" onClick="imprimir()">Imprimir</button> -->
     </div>
-    <div class="left-nav-wrap" id = "filtros_organizaciones" style="display:none"  >
+
+    <!--------------------------------------------
+      --------------------------------------------
+      PARTIDOS
+      --------------------------------------------
+      --------------------------------------------
+    -->
+    <div class="left-nav-wrap" id="filtros_organizaciones" style="display:none"  >
       <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
         <li class="uk-nav-header">Filtros</li>
-
-        <li class="uk-parent" id="opc_edad" name = "orga_filtro" style="" ><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Edad</a>
+        <li class="uk-parent" id="opc_edad" name="orga_filtro"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Edad</a>
         <ul>
-          <button  onclick="quitar_todas_selecciones(this)">Decartar</button>
-
+          <!-- <button  onclick="quitar_todas_selecciones(this)">Descartar</button> -->
           <form>
             <fieldset class="uk-fieldset uk-padding-small">
-              <div class="uk-width-1-1@s">
-
+              <div class="uk-width-1-1@s uk-flex uk-flex-between">
                 <div class="uk-flex uk-flex-column">
                   <label class="uk-text-muted">
                     Rango de edades
@@ -550,18 +542,18 @@ SEPARACION
                     </label>
                   </div>
                 </div>
+                <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
               </div>
             </fieldset>
           </form>
         </ul>
       </li>
-      <li class="uk-parent"  id = "opc_genero" name="orga_filtro" style=""><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Genero</a>
+      <li class="uk-parent"  id="opc_genero" name="orga_filtro"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Genero</a>
         <ul>
-          <button  onclick="quitar_todas_selecciones(this)">Decartar</button>
-
+          <!-- <button  onclick="quitar_todas_selecciones(this)">Descartar</button> -->
           <form>
             <fieldset class="uk-fieldset uk-padding-small">
-              <div class="uk-width-1-1@s">
+              <div class="uk-width-1-1@s uk-flex">
                 <div class="uk-flex uk-flex-column">
                   <label class="uk-text-muted">
                   Mujeres y hombres por partido  
@@ -578,8 +570,9 @@ SEPARACION
                       Fememino
                     </label>
                   </div>
-
-
+                  <label class="uk-text-muted" style="margin-top: 10px">
+                    Ordenar de manera
+                  </label>
                   <div class="uk-flex uk-flex-middle">
                     <input type="radio" id= "genero"  name="genero_orden" onclick="set_valor(this)" value="ASC">
                     <label for="tipo_genero_asc_" class="uk-text-muted uk-margin-small-left">
@@ -593,17 +586,18 @@ SEPARACION
                     </label>
                   </div>
                 </div>
+                <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
               </div>
             </fieldset>
           </form>
         </ul>
       </li> 
-      <li class="uk-parent" name="orga_filtro" id = "opc_educacion"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel Academico</a>
+      <li class="uk-parent" name="orga_filtro" id="opc_educacion"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel Academico</a>
         <ul>
-          <button  onclick="quitar_todas_selecciones(this)">Descartar</button>
+          <!-- <button onclick="quitar_todas_selecciones(this)">Descartar</button> -->
           <form>
             <fieldset class="uk-fieldset uk-padding-small">
-              <div class="uk-width-1-1@s">
+              <div class="uk-width-1-1@s uk-flex ">
                 <div class="uk-flex uk-flex-column">
                   <label class="uk-text-muted">
                     Estudios primarios
@@ -713,19 +707,20 @@ SEPARACION
                     </label>
                   </div>
                 </div>
-              
+                <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
+              </div>
             </fieldset>
           </form>
         </ul>
       </li>
-        <li class="uk-parent" name="orga_filtro" id = "opc_sentencia"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Sentencias</a>
+        <li class="uk-parent" name="orga_filtro" id="opc_sentencia"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Sentencias</a>
         <ul>
-          <button  onclick="quitar_todas_selecciones(this)">Decartar</button>
+          <!-- <button  onclick="quitar_todas_selecciones(this)">Descartar</button> -->
           <form>
             <fieldset class="uk-fieldset uk-padding-small">
-              <div class="uk-width-1-1@s">
-                <div class="uk-flex uk-flex-column">
-                  <label for="penal_obligaciones_" class="uk-text-muted uk-margin-small-left">
+              <div class="uk-width-1-1@s uk-flex">
+                <div class="uk-flex uk-flex-column" style="width: 85%;">
+                  <label for="penal_obligaciones_" class="uk-text-muted">
                       Cantidad Sentencia Penal (penal y obligaciones)
                     </label>
                     <div class="uk-flex uk-flex-middle">
@@ -737,7 +732,7 @@ SEPARACION
                     <div class="uk-flex uk-flex-middle">
                       <input type="radio" id="penal_obligaciones_in" name="penal_obligaciones_in" onclick="set_valor(this)" value="DESC">
                       <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
-                       Descendente
+                        Descendente
                       </label>
                     </div>
                   <label class="uk-text-muted">
@@ -771,6 +766,7 @@ SEPARACION
                     </label>
                   </div>
                 </div>
+                <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
               </div>
             </fieldset>
           </form>
@@ -778,14 +774,13 @@ SEPARACION
       </li>
       <li class="uk-parent" name="orga_filtro" id ="opc_oriundo" ><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Oriundo</a>
         <ul>
-          <button  onclick="quitar_todas_selecciones(this)">Decartar</button>
+          <!-- <button  onclick="quitar_todas_selecciones(this)">Descartar</button> -->
           <form>
             <fieldset class="uk-fieldset uk-padding-small">
-              <div class="uk-width-1-1@s">
+              <div class="uk-width-1-1@s uk-flex uk-flex-middle">
                 <div class="uk-flex uk-flex-column">
-                                   
                   <label class="uk-text-muted">
-                    SET ORDER
+                    Ordenar de manera
                   </label>
                   <div class="uk-flex uk-flex-middle">
                     <input type="radio" id="oriundo" name="opc_si" value="ASC" onclick="set_valor(this)">
@@ -800,6 +795,7 @@ SEPARACION
                     </label>
                   </div>
                 </div>
+                <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
               </div>
             </fieldset>
           </form>
@@ -807,7 +803,8 @@ SEPARACION
       </li>
       <li class="uk-parent" name="orga_filtro" id ="dist_electo" ><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cuantos candidatos del partido postulan por un distrito electoral diferente al de su nacimiento</a>
         <ul>
-          <button  onclick="quitar_todas_selecciones(this)">Decartar</button>
+          <!-- <button  onclick="quitar_todas_selecciones(this)">Descartar</button> -->
+          <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
           <form>
             <fieldset class="uk-fieldset uk-padding-small">
               <div class="uk-width-1-1@s">
@@ -835,7 +832,8 @@ SEPARACION
     
       <li class="uk-parent"  name="orga_filtro" id ="privado"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Financiamiento Privado</a>
         <ul>
-          <button  onclick="quitar_todas_selecciones(this)">Decartar</button>
+          <!-- <button  onclick="quitar_todas_selecciones(this)">Descartar</button> -->
+          <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
           <form>
             <fieldset class="uk-fieldset uk-padding-small">
               <div class="uk-width-1-1@s">
@@ -952,9 +950,10 @@ SEPARACION
           </form>
         </ul>
       </li>
-      <li class="uk-parent" name="orga_filtro" id = "publico_div"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Financiamiento Publico</a>
+      <li class="uk-parent" name="orga_filtro" id="publico_div"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Financiamiento Publico</a>
         <ul>
-          <button  onclick="quitar_todas_selecciones(this)">Decartar</button>
+          <!-- <button  onclick="quitar_todas_selecciones(this)">Descartar</button> -->
+          <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
           <form>
             <fieldset class="uk-fieldset uk-padding-small">
               <div class="uk-width-1-1@s">
@@ -1024,7 +1023,7 @@ SEPARACION
           <td>{{ candidato.organizacion_politica }}</td>
           <td >{{ candidato.cargo_eleccion }}</td>
           <td >{{ candidato.distrito_elec }}</td>
-          <td><button  onclick="verHojadeVida(this)" >{{candidato.dni_candidato}}</button></td>
+          <td><button onclick="verHojadeVida(this)" class="dni_id" id={{candidato.dni_candidato}}>Ver hoja de vida</button></td>
         </tr>
         {% endfor %}
         <!-- candidato con un dni en específico -->

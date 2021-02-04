@@ -177,13 +177,13 @@ function activar_candidatos(text){
 }
 
 let dni_hoja_de_vida = ""
-function verHojadeVida(element){   
-    //let jeje = document.getElementsByName("get_candidato_dato")
-    dni_hoja_de_vida = element.textContent
+function verHojadeVida(element){
+    dni_hoja_de_vida = element.id
     let url_ = "http://127.0.0.1:8000/elecciones/candidato/hojadevida/"+ dni_hoja_de_vida
     
     window.location = url_
-    console.log(element.textContent)
+    console.log("Id candidato")
+    console.log(element.id)
     getHojadeVida()
 
 
