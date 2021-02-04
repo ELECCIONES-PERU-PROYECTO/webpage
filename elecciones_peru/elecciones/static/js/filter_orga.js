@@ -20,9 +20,8 @@ function button_filter_org(){
             }
         }
         console.log("rango: ",rango)
-       
-       url = url+"/"+filtro_id+"/"+rango+"/"+"unk"
-       console.log(url)
+        url = url+"/"+filtro_id+"/"+rango+"/"+"unk"
+        console.log(url)
     }else if (filtro_id=="genero"){
         let inputs_genero = document.getElementsByName("opc_genero")
         let inputs_orden = document.getElementsByName("genero_orden")
@@ -127,8 +126,6 @@ function button_filter_org(){
     console.log (url)
     //return ""
     window.location = url 
-
-
 
     getUrl_orga()  
 
