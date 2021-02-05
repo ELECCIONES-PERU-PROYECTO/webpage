@@ -27,68 +27,89 @@ ocultarlo o mostrar un div
 -----------*/
 //import {grado_estudios} from './serv'
 
-let cantidad_wrapper = document.getElementById("cantidad_senticia_opcion")
-let tipos_wrapper = document.getElementById("tipo_senticia_opcion")
+// let cantidad_wrapper = document.getElementById("cantidad_senticia_opcion")
+// let tipos_wrapper = document.getElementById("tipo_senticia_opcion")
 
-let win_href = window.location.hostname
+// let win_href = window.location.hostname
 
 let cant_filtros = 0
-
-
 let lista_orden_filtros = []
 
+// Filtro Académico
 let filtro_academico = false         //1 
+
+// Filtro Cargo
 let filtro_cargo = false             //2 OB
-//
+
+// Filtro Sentencias Penales
 let filtro_penal_cant = false        //3 OB         
-let filtro_oblig_cant = false        //4 OB        
+// Filtro Sentencias por Obligaciones - Cantidad
+let filtro_oblig_cant = false        //4 OB
+// Filtro Sentencias por Obligaciones - Material de Demanda
 let filtro_oblig_mat = false         //5 
-let filtro_senten_no_tiene = false   //6    
-//
-let filtro_ingres_cant = false      //7             
+// WARNING : donde está el de familia? 
+// Filtro Sentencias No Tiene
+let filtro_senten_no_tiene = false   //6  
+
+// Filtro Bienes y Rentas  - Cantidad Ingresos
+let filtro_ingres_cant = false      //7     
+// Filtro Bienes y Rentas  - Cantidad Inmuebles        
 let filtro_inmu_cant = false        //8
+// Filtro Bienes y Rentas  - Valor Inmuebles
 let filtro_inmu_valor = false       //9
+// Filtro Bienes y Rentas  - Cantidad Muebles
 let filtro_mueb_cant = false        //10
+// Filtro Bienes y Rentas  - Valor Muebles
 let filtro_mueb_valor = false       //11
 
+// Filtro Renuncias
+let filtro_renuncias = false         //12
 
-
-let filtro_renuncias = false         //12       
+// Filtro Edad
 let filtro_edad = false              //13
-let filtro_oriundo = false           //14              
-let filtro_cargo_postula = false     //15                  
-let filtro_organizacion = false      //16            
-let filtro_distrito = false          //17                 
-//
+
+// Filtro Oriundo
+let filtro_oriundo = false           //14
+
+// Filtro Cargo al que Postula
+let filtro_cargo_postula = false     //15
+
+// Filtro Org Política
+let filtro_organizacion = false      //16
+
+// Filtro Distrito
+let filtro_distrito = false          //17   
+
+
 /* Variables de filtros*/
- //Nivel Academico
-  let nivel_academico = ""        //        
- //Cargos previos
-  let cargos_previos_order = ""   //ob1
- //Sentencias
-    let orden_cant_sentencia = ""    //ob2
-    let orden_cant_sentencia_oblig = ""  //ob3
-    let mat_demanda = ""
+ // Nivel Academico
+  let nivel_academico = ""      
+ // Cargos previos
+  let cargos_previos_order = ""   // ob1
+ // Sentencias
+  let orden_cant_sentencia = ""    // ob2
+  let orden_cant_sentencia_oblig = ""  // ob3
+  let mat_demanda = ""
   let no_tiene_val = ""         
-  //Bienes y rentas
-  let orden_cant_ingreso = ""       //ob 6
-  let orden_cant_inmueble = ""//ob 7
-  let orden_valor_inmueble = ""//ob 8
-  let orden_cant_mueble = ""//ob 9
-  let orden_valor_mueble = ""//ob 10
-  //Renuncias
-  let orden_renuncias = ""   //ob 11
-  //Edad
+  // Bienes y rentas
+  let orden_cant_ingreso = ""    // ob 6
+  let orden_cant_inmueble = ""  // ob 7
+  let orden_valor_inmueble = "" // ob 8
+  let orden_cant_mueble = ""  // ob 9
+  let orden_valor_mueble = "" // ob 10
+  // Renuncias
+  let orden_renuncias = ""   // ob 11
+  // Edad
   let rango_edad_val = ""
-  //Oriundo
+  // Oriundo
   let nac_per_si = ""
   let nac_per_no = ""
   let departamento_nacimiento = ""
-  //Cargo al que Postula
+  // Cargo al que Postula
   let cargo_postula = ""
-  //Organizacion Politica
+  // Organizacion Politica
   let org_politica = ""
-  //Distrito electoral
+  // Distrito electoral
   let dist_electoral = ""
   let tipo_candidato_ = ""
   
@@ -96,31 +117,12 @@ let filtro_distrito = false          //17
 let cant_filtros_normales = 0
 let cant_filtros_ob = 0
 
-/*query -> producto final */
-let query = ""
-
-let lista_filtros = [filtro_academico,filtro_cargo,filtro_penal_cant , filtro_oblig_cant, filtro_oblig_mat, filtro_senten_no_tiene,
-  filtro_ingres_cant, filtro_inmu_cant, filtro_inmu_valor,filtro_mueb_cant,filtro_mueb_valor, filtro_renuncias,filtro_edad,filtro_oriundo,
-  filtro_cargo_postula, filtro_organizacion, filtro_distrito]
-
-let lista_filtros_ob = [2, 3, 4, 7, 8 ,9 ,10 ,11 ,12]
-/* */
-
-let educa_tablas = {
-  "concluyo_primaria": "educacion_basica",
-  "concluyo_secundaria":"educacion_basica",
-  "concluyo_estudio_tecnico":"estudio_tecnico",
-  "concluyo_estudio_no_universitario":"estudio_no_universitario",
-  "concluyo_estudio_universitario":"estudio_universitario",
-  "concluyo_estudio_postgrado":"estudio_postgrado",
-}
-
 function button_filter(){
   tipo_candidato_ = document.getElementsByName("tipo_candidato_filter")[0].id
 
-  let lista_valores = [nivel_academico,cargos_previos_order , orden_cant_sentencia,
-    orden_cant_sentencia_oblig, mat_demanda, no_tiene_val, orden_cant_ingreso,orden_cant_inmueble,orden_valor_inmueble,
-    orden_cant_mueble, orden_valor_mueble,orden_renuncias, rango_edad_val,nac_per_si, nac_per_no, departamento_nacimiento,
+  let lista_valores = [nivel_academico, cargos_previos_order, orden_cant_sentencia,
+    orden_cant_sentencia_oblig, mat_demanda, no_tiene_val, orden_cant_ingreso,orden_cant_inmueble, orden_valor_inmueble,
+    orden_cant_mueble, orden_valor_mueble, orden_renuncias, rango_edad_val, nac_per_si, nac_per_no, departamento_nacimiento,
     cargo_postula, org_politica, dist_electoral, tipo_candidato_
   ]
   if (lista_orden_filtros.length == 0 ){
@@ -273,13 +275,9 @@ function button_filter(){
 
   getUrl_datos()  
 
-
-  
   //let url = "http://127.0.0.1:8000/elecciones/candidatos/"  
 
-
   return
-
 }
 
 
@@ -288,10 +286,10 @@ function button_filter(){
 function imprimir(){
   console.log("--------------------------------------------")
   console.log("lista_orden_filtros: ", lista_orden_filtros)
-  console.log("cant_filtros_ob: " ,cant_filtros_ob)
-  console.log("cant_filtros_normales: " ,cant_filtros_normales)
+  console.log("cant_filtros_ob: ",cant_filtros_ob)
+  console.log("cant_filtros_normales: ",cant_filtros_normales)
   console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-  console.log("cant_filtros: " ,cant_filtros)
+  console.log("cant_filtros: ",cant_filtros)
   console.log("nivel_academico: ", nivel_academico)
   console.log(" cargos_previos_order: ", cargos_previos_order)
   console.log("orden_cant_sentencia : ",orden_cant_sentencia )
@@ -316,9 +314,9 @@ function imprimir(){
 }
 function impresion_peque(){
   console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-  console.log("cant_filtros_ob: " ,cant_filtros_ob)
+  console.log("cant_filtros_ob: ",cant_filtros_ob)
   console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-  console.log("cant_filtros: " ,cant_filtros)
+  console.log("cant_filtros: ",cant_filtros)
 }
 /* Funciones de filtros (gets y quitar seleccion) algunos filtros tienen una funcion extra*/
 
@@ -332,17 +330,15 @@ function get_nivel_academico(){
     cant_filtros_normales++
     lista_orden_filtros.push(1)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: " ,cant_filtros)
+    console.log("cant_filtros: ",cant_filtros)
     //get del valor
   }
   let nivel_academico_ = document.getElementById("nivel_academico")
   let nivel_academico_value = nivel_academico_.options[nivel_academico_.selectedIndex].value
   nivel_academico = nivel_academico_value
   console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-  console.log("cant_filtros: " ,cant_filtros)
+  console.log("cant_filtros: ",cant_filtros)
   console.log("nivel_academico: ", nivel_academico)
-
-
 }
 
 function quitar_seleccion_academico(){
@@ -357,21 +353,19 @@ function quitar_seleccion_academico(){
     }
 
     console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-    console.log("cant_filtros_ob: " ,cant_filtros_ob)
+    console.log("cant_filtros_ob: ",cant_filtros_ob)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: " ,cant_filtros)
+    console.log("cant_filtros: ",cant_filtros)
     document.getElementById("nivel_academico").selectedIndex = 0
     nivel_academico = ""
   }
-
 }
 
 /* FILTRO CARGOS PREVIOS */
 function get_cargos_previos(){
   let anhio_servicio_list = document.getElementsByName("anhio_servicio")
 
-if(filtro_cargo == false) 
-{  
+if(filtro_cargo == false) {  
   cant_filtros++
   cant_filtros_ob++
   filtro_cargo = true
@@ -390,14 +384,12 @@ if(filtro_cargo == false)
 
 }
 
-for(let i = 0; i < anhio_servicio_list.length; i++) {
-  if(anhio_servicio_list[i].checked) {
-    cargos_previos_order =  anhio_servicio_list[i].value
-    console.log("cargos_previos_order: ", cargos_previos_order)
-    
+  for(let i = 0; i < anhio_servicio_list.length; i++) {
+    if(anhio_servicio_list[i].checked) {
+      cargos_previos_order =  anhio_servicio_list[i].value
+      console.log("cargos_previos_order: ", cargos_previos_order)
+    }
   }
-}
-
 }
 
 
@@ -417,17 +409,13 @@ function quitar_seleccion_cargos_pervios(){
     }
     console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
     cargos_previos_order = ""
-    console.log("cant_filtros_ob: " ,cant_filtros_ob)
+    console.log("cant_filtros_ob: ",cant_filtros_ob)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: " ,cant_filtros)
+    console.log("cant_filtros: ",cant_filtros)
   }
 }
 
-
-
-
 /* FILTRO SENTENCIAS */
-
 function togglePenal_opciones(element){
   if(element.checked == true){
   mostrar = document.getElementById("div_opc_cant_sentencias")
@@ -438,6 +426,7 @@ function togglePenal_opciones(element){
     mostrar.style = "display:none"
   }
 }
+
 function toggleObligacion_opciones(element){
   mostrar = document.getElementById("div_opc_obligaciones")
   if(element.checked == true){
@@ -448,7 +437,6 @@ function toggleObligacion_opciones(element){
     }
 }
 
-
 function get_sentencias_penal_cant(){
   if(filtro_penal_cant == false){
     filtro_penal_cant = true
@@ -457,12 +445,11 @@ function get_sentencias_penal_cant(){
     lista_orden_filtros.push(3)
     console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
 
-    console.log("cant_filtros_ob: " ,cant_filtros_ob)
+    console.log("cant_filtros_ob: ",cant_filtros_ob)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: " ,cant_filtros)
-
-
+    console.log("cant_filtros: ",cant_filtros)
   }
+
   let cant_senten_list = document.getElementsByName("cant_senten")
   for(let i = 0; i < cant_senten_list.length; i++) {
     if(cant_senten_list[i].checked) {
@@ -481,9 +468,9 @@ function get_sentencias_oblig_cant(){
     lista_orden_filtros.push(4)
     console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
 
-    console.log("cant_filtros_ob: " ,cant_filtros_ob)
+    console.log("cant_filtros_ob: ",cant_filtros_ob)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: " ,cant_filtros)
+    console.log("cant_filtros: ",cant_filtros)
     let cant_senten_oblig_list = document.getElementsByName("cant_senten_oblig")
     for(let i = 0; i < cant_senten_oblig_list.length; i++) {
       if(cant_senten_oblig_list[i].checked) {
@@ -509,9 +496,9 @@ function get_sentencias_oblig_mat(){
     cant_filtros++
     lista_orden_filtros.push(5)
     console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-    console.log("cant_filtros_ob: " ,cant_filtros_ob)
+    console.log("cant_filtros_ob: ",cant_filtros_ob)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: " ,cant_filtros)
+    console.log("cant_filtros: ",cant_filtros)
   }
   let cant_mat_list = document.getElementsByName("opc_mat_demanda")
   for(let i = 0; i < cant_mat_list.length; i++) {
@@ -545,9 +532,9 @@ function quitar_seleccion_sentencias(){
       }
     }
     console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-    console.log("cant_filtros_ob: " ,cant_filtros_ob)
+    console.log("cant_filtros_ob: ",cant_filtros_ob)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: " ,cant_filtros)
+    console.log("cant_filtros: ",cant_filtros)
   }
   if(filtro_oblig_cant  == true){
     document.getElementById("por_obligaciones").checked = false
@@ -567,9 +554,9 @@ function quitar_seleccion_sentencias(){
       }
     }
     console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-    console.log("cant_filtros_ob: " ,cant_filtros_ob)
+    console.log("cant_filtros_ob: ",cant_filtros_ob)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: " ,cant_filtros)
+    console.log("cant_filtros: ",cant_filtros)
   }
   if(filtro_oblig_mat  == true){
     document.getElementById("por_obligaciones").checked = false
@@ -589,9 +576,9 @@ function quitar_seleccion_sentencias(){
       }
     }
     console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-    console.log("cant_filtros_ob: " ,cant_filtros_ob)
+    console.log("cant_filtros_ob: ",cant_filtros_ob)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: " ,cant_filtros)
+    console.log("cant_filtros: ",cant_filtros)
   }
   if(no_tiene_val == "NO")
   {
@@ -627,9 +614,9 @@ function noTiene_opcion(element){
         }
       }
       console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-      console.log("cant_filtros_ob: " ,cant_filtros_ob)
+      console.log("cant_filtros_ob: ",cant_filtros_ob)
       console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-      console.log("cant_filtros: " ,cant_filtros)
+      console.log("cant_filtros: ",cant_filtros)
     }
     if(filtro_oblig_cant  == true){
       document.getElementById("por_obligaciones").checked = false
@@ -649,9 +636,9 @@ function noTiene_opcion(element){
         }
       }
       console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-      console.log("cant_filtros_ob: " ,cant_filtros_ob)
+      console.log("cant_filtros_ob: ",cant_filtros_ob)
       console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-      console.log("cant_filtros: " ,cant_filtros)
+      console.log("cant_filtros: ",cant_filtros)
     }
     if(filtro_oblig_mat  == true){
       document.getElementById("por_obligaciones").checked = false
@@ -672,9 +659,9 @@ function noTiene_opcion(element){
       }
 
       console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-      console.log("cant_filtros_ob: " ,cant_filtros_ob)
+      console.log("cant_filtros_ob: ",cant_filtros_ob)
       console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-      console.log("cant_filtros: " ,cant_filtros)
+      console.log("cant_filtros: ",cant_filtros)
     }
     let  mostrar1 = document.getElementById("mostrar_sentencias")
     mostrar1.style = "display:none"
@@ -838,7 +825,7 @@ function get_renuncia(){
     cant_filtros++
     cant_filtros_ob++
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: " ,cant_filtros)
+    console.log("cant_filtros: ",cant_filtros)
     lista_orden_filtros.push(12)
   }
   let inputs = document.getElementsByName("cantidad_renuncia")
@@ -861,7 +848,7 @@ function quitar_seleccion_renuncia(){
     cant_filtros_ob--
     console.log("cant_filtros_ob: ", cant_filtros_ob)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: " ,cant_filtros)
+    console.log("cant_filtros: ",cant_filtros)
     for(let i = 0 ; i < inputs.length; i++){
       inputs[i].checked = false
   
@@ -882,7 +869,7 @@ function get_edad(){
     lista_orden_filtros.push(13)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
     cant_filtros++
-    console.log("cant_filtros: " ,cant_filtros)
+    console.log("cant_filtros: ",cant_filtros)
   
 }
 let inputs = document.getElementsByName("rango_edad")
@@ -902,7 +889,7 @@ function quitar_seleccion_edad(){
     cant_filtros_normales--
     console.log("cant_filtros_ob: ", cant_filtros_ob)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: " ,cant_filtros)
+    console.log("cant_filtros: ",cant_filtros)
     filtro_edad = false
     
     const index = lista_orden_filtros.indexOf(13);
@@ -928,7 +915,7 @@ function get_oriundo(){
     console.log("cant_filtros_normales: ", cant_filtros_normales)
     console.log("cant_filtros_new: ",cant_filtros_ob+cant_filtros_normales)    
     cant_filtros++
-    console.log("cant_filtros: " ,cant_filtros)
+    console.log("cant_filtros: ",cant_filtros)
     lista_orden_filtros.push(14)
     console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
 
@@ -974,10 +961,10 @@ function quitar_seleccion_oriundo(){
     {
       filtro_oriundo = false
       cant_filtros_normales--
-      console.log("cant_filtros_normales: " ,cant_filtros_normales)
+      console.log("cant_filtros_normales: ",cant_filtros_normales)
       cant_filtros--
       console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-      console.log("cant_filtros: " ,cant_filtros)
+      console.log("cant_filtros: ",cant_filtros)
       oriundo = document.getElementById("desplegable_oriundo")
       oriundo.style = "display:none"
       const index = lista_orden_filtros.indexOf(14);
@@ -1010,9 +997,9 @@ function get_cargo_postula(){
     cant_filtros++
     lista_orden_filtros.push(15)
     console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-    console.log("cant_filtros_ob: " ,cant_filtros_ob)
+    console.log("cant_filtros_ob: ",cant_filtros_ob)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: " ,cant_filtros)
+    console.log("cant_filtros: ",cant_filtros)
   }
   let postula_desplegable = document.getElementById("cargo_postula")
 
@@ -1023,7 +1010,7 @@ function get_cargo_postula(){
     quitar_seleccion_postula()
   }
   console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-  console.log("cant_filtros: " ,cant_filtros)
+  console.log("cant_filtros: ",cant_filtros)
   console.log("cargo_postula: ", cargo_postula)
 
 }
@@ -1053,7 +1040,7 @@ function get_org_politica(){
     cant_filtros_normales++
     lista_orden_filtros.push(16)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: " , cant_filtros)
+    console.log("cant_filtros: ", cant_filtros)
   }
 
   let org_politica_ = document.getElementById("select_org_politica")
@@ -1070,10 +1057,10 @@ function get_org_politica(){
 function quitar_seleccion_org_politica(){
   if(filtro_organizacion == true){
     cant_filtros--
-    console.log("cant_filtros: " ,cant_filtros)
+    console.log("cant_filtros: ",cant_filtros)
     cant_filtros_normales--
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros_normales: " ,cant_filtros_normales) 
+    console.log("cant_filtros_normales: ",cant_filtros_normales) 
     filtro_organizacion = false
     let select_ = document.getElementById("select_org_politica")
     select_.selectedIndex = 0
@@ -1095,12 +1082,12 @@ function get_distrito_electoral(){
     cant_filtros++
     lista_orden_filtros.push(17)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: " , cant_filtros)
+    console.log("cant_filtros: ", cant_filtros)
   }
   let distrito_ = document.getElementById("dist_electo")
   let distrito_value = distrito_.options[distrito_.selectedIndex].value
   console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-  console.log("cant_filtros: " ,cant_filtros)
+  console.log("cant_filtros: ",cant_filtros)
   //get del valor
   dist_electoral = distrito_value
   if(dist_electoral == "default"){

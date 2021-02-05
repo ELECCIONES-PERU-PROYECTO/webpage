@@ -2,7 +2,6 @@
 .bg_red {
 	background-color: #b62222;
 }
-
 /* -- Top navigation -- */
 #top-head {
 	z-index: 9;
@@ -155,17 +154,9 @@
 	width: 200px;
 	border-color: #fff !important;
 }
-.uk-card {
-	box-shadow: none;
-}
 .uk-heading-primary {
   letter-spacing: -0.032em;
   font-weight: 300;
-}
-/* Smooth shadow transition */
-.uk-card {
-	-webkit-transition: box-shadow 0.55s cubic-bezier(.4,0,.2,1);
-	transition: box-shadow 0.55s cubic-bezier(.4,0,.2,1);
 }
 /* Progress */
 .uk-progress {

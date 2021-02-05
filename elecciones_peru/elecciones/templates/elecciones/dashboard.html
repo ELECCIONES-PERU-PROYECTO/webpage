@@ -20,7 +20,7 @@
               <a href="#" onclick="activar_candidatos(this.text)">Candidatos Parlamento Andino</a>
             </li>
             <li>
-              <a href="#" onclick="activar_organizaciones(this)">Partidos Politicos</a>
+              <a href="#" onclick="activar_organizaciones(this)">Partidos Políticos</a>
             </li>
           </ul>
           <!-- <div class="uk-navbar-item uk-visible@s">
@@ -484,16 +484,18 @@
         </li>
         <li class="uk-parent" id="distrito_congreso" style="display: none"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Distrito Electoral</a>
           <ul>
-            <a onclick="quitar_seleccion_distrito()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
             <form>
               <fieldset class="uk-fieldset uk-padding-small">
-                <div class="uk-width-1-1@s uk-flex uk-flex-column">
-                  <select class="uk-select" id="dist_electo" onchange="get_distrito_electoral()">
-                    <option value="default">Elegir Distrito Electoral</option>
-                    <option value="AMAZONAS">Amazonas</option>
-                    <option value="LAMBAYEQUE">Lambayeque</option>
-                    <option value="ICA">Ica</option>
-                  </select>
+                <div class="uk-width-1-1@s uk-flex uk-flex-between">
+                  <div class="uk-flex uk-flex-column">
+                    <select class="uk-select" id="dist_electo" onchange="get_distrito_electoral()">
+                      <option value="default">Elegir Distrito Electoral</option>
+                      <option value="AMAZONAS">Amazonas</option>
+                      <option value="LAMBAYEQUE">Lambayeque</option>
+                      <option value="ICA">Ica</option>
+                    </select>
+                  </div>
+                <a onclick="quitar_seleccion_distrito()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
                 </div>
               </fieldset>
             </form>
@@ -508,7 +510,7 @@
 
     <!--------------------------------------------
       --------------------------------------------
-      PARTIDOS
+      PARTIDOS Y DEPARTAMENTOS
       --------------------------------------------
       --------------------------------------------
     -->
@@ -677,7 +679,7 @@
                       Descendente
                     </label>
                   </div>
-                   <label class="uk-text-muted" style="margin-top: 10px">
+                  <label class="uk-text-muted" style="margin-top: 10px">
                     Concluyó postgrado 
                   </label>
                   <div class="uk-flex uk-flex-middle">
@@ -692,7 +694,7 @@
                       Descendente
                     </label>
                   </div>
-                     <label class="uk-text-muted" style="margin-top: 10px">
+                    <label class="uk-text-muted" style="margin-top: 10px">
                     Maestro o Doctor 
                   </label>
                   
@@ -1007,73 +1009,62 @@
   <!-- /LEFT BAR -->
   <!-- CONTENT -->
   <div id="content" data-uk-height-viewport="expand: true">
-    <div class="uk-container uk-container-expand">
+    <!-- <div class="uk-container uk-container-expand uk-margin-bottom">
       <label class="uk-text-muted">
         Agrupar por
-      </label><!--PREGUNTAR A ALEXANDRA QUE BOTON SE DEBE PRESIONAR PARA QUE SE CAMBIE POR ORGANIZACIONES O CANDIDATOS-->
+      </label>
         <ul class="uk-subnav uk-subnav-pill uk-grid uk-grid-medium uk-child-width-1-1 uk-child-width-1-3@s uk-child-width-1-4@m uk-child-width-1-4@l uk-child-width-1-5@xl" data-uk-grid">
           <li class="uk-active" data-uk-filter-control onclick="activar_candidatos()"><a href="#">Mostrar todo</a></li>
           <li data-uk-filter-control=".nature-card" onclick="activar_organizaciones()"><a href="#">Partidos</a></li>
           <li data-uk-filter-control=".music-card"><a href="#">Departamentos</a></li>
         </ul>
       <hr>
-    </div>
-    <!-- <table class="uk-table uk-table-divider" id="tabla_candidatos">
-      <thead>
-        <tr>
-          <th name="columnas_organizaciones" style="display:none">Cantidad</th >
-          <th>Nombres</th>
-          <th>Partido</th>
-          <th>Cargo</th>
-          <th>Distrito Electoral</th>
-          <th>Hoja de Vida</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td name="columnas_organizaciones" style="display:none" >{{ candidato.conteo }}</td>
-          <td>{{ candidato.candidato }}</td>
-          <td>{{ candidato.organizacion_politica }}</td>
-          <td >{{ candidato.cargo_eleccion }}</td>
-          <td >{{ candidato.distrito_elec }}</td>
-          <td><button onclick="verHojadeVida(this)" class="dni_id" id={{candidato.dni_candidato}}>Ver hoja de vida</button></td>
-        </tr>
-      </tbody>
-    </table> -->
+    </div> -->
+
     <!-- todos los candidatos -->
-    {% for candidato in page %}
-      <div class="uk-card uk-card-default uk-grid-match uk-grid-small" uk-grid>
-        <div class="uk-card-media-left uk-cover-container uk-width-1-6@m">
-          <img src="{{ candidato.url }}" alt="{{ candidato.candidato }}" uk-cover>
-          <canvas width="600" height="400"></canvas>
+    <div class="uk-container uk-container-expand uk-margin-medium uk-margin-medium-left uk-margin-medium-top">
+      {% for candidato in page %}
+      <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-flex-middle uk-flex-center@s" uk-grid>
+        <div class="uk-width-1-6@m uk-width-1-6@s uk-text-center uk-padding-remove">
+          <img src="{{ candidato.url }}" alt="{{ candidato.candidato }}">
         </div>
-        <div class="uk-width-expand">
-          <div class="uk-card-body">
-            <div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
-              <div class="uk-width-expand uk-text-small">
-                <p class="uk-text-muted">Nombres</p>
-                {{ candidato.candidato }}
-              </div>
-              <div class="uk-width-expand uk-text-small">
-                <p class="uk-text-muted">Partido</p>
-                {{ candidato.organizacion_politica }}
-              </div>
-              <div class="uk-width-expand uk-text-small">
-                <p class="uk-text-muted">Cargo</p>
-                {{ candidato.cargo_eleccion }}
-              </div>
-              <div class="uk-width-auto uk-text-right">
-                <p class="uk-text-muted uk-margin-remove">Hoja de Vida</p>
-                <button onclick="verHojadeVida(this)" class="dni_id" id={{candidato.dni_candidato}}>Ver hoja de vida</button>
-              </div>
-              <!-- <div class="uk-width-auto uk-text-right">
-                <a data-uk-tooltip="title: Drag this card" href="#" class="uk-icon-link drag-icon" data-uk-icon="icon:move; ratio: 1"></a>
-              </div> -->
-            </div>
-          </div>
+        <div class="uk-width-expand@m uk-padding-right">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
         </div>
       </div>
-    {% endfor %}
+        <!-- <div class="uk-card uk-card-default uk-child-width-1-1@s uk-child-width-1-2@m" uk-grid>
+          <div class="uk-card-media-left uk-cover-container" style="height: 200px; width: 150px;">
+            <img src="{{ candidato.url }}" alt="{{ candidato.candidato }}" style="width: 100%;" uk-cover>
+            <canvas width="600" height="400"></canvas>
+          </div>
+          <div class="uk-width-expand">
+            <div class="uk-card-body">
+              <div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
+                <div class="uk-width-expand uk-text-small">
+                  <p class="uk-text-muted">Nombres</p>
+                  {{ candidato.candidato }}
+                </div>
+                <div class="uk-width-expand uk-text-small">
+                  <p class="uk-text-muted">Partido</p>
+                  {{ candidato.organizacion_politica }}
+                </div>
+                <div class="uk-width-expand uk-text-small">
+                  <p class="uk-text-muted">Cargo</p>
+                  {{ candidato.cargo_eleccion }}
+                </div>
+                <div class="uk-width-auto uk-text-right">
+                  <p class="uk-text-muted uk-margin-remove">Hoja de Vida</p>
+                  <button onclick="verHojadeVida(this)" class="dni_id" id={{candidato.dni_candidato}}>Ver hoja de vida</button>
+                </div>
+                --- <div class="uk-width-auto uk-text-right">
+                  <a data-uk-tooltip="title: Drag this card" href="#" class="uk-icon-link drag-icon" data-uk-icon="icon:move; ratio: 1"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      {% endfor %}
+    </div>
   {% include "elecciones/pagination.html" with page=page %}
 </div>
   <!-- /CONTENT -->
