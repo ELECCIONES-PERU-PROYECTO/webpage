@@ -15,12 +15,12 @@
 
 	<!-- CSS
 	================================================== -->
+	<link type="text/css" href="{% static "css/main.css" %}" rel="stylesheet" >
 	<link type="text/css" href="{% static "css/base.css" %}" rel="stylesheet" >
 	<link type="text/css" href="{% static "css/vendor.css" %}" rel="stylesheet" >
 	<link type="text/css" href="{% static "css/cards.css" %}" rel="stylesheet" >
 	<link type="text/css" href="{% static "css/table.css" %}" rel="stylesheet" >
 	<link type="text/css" href="{% static "css/slider.css" %}" rel="stylesheet" >
-	<link href="{% static "css/dashboard.css" %}" rel="stylesheet">
 	<!--
 	<script src="../../../static/js/modernizr.js"></script>
 	<script src="../../../static/js/pace.min.js"></script>
@@ -30,15 +30,14 @@
 	================================================== -->
 	<link rel="icon" type="image/png" href="./favicon.png">
 </head>
-
 <body id="top">
 	<!-- header 
-	================================================== -->
-	<header>   	
-		<div class="row">
-
-			<div class="top-bar">
-				<a class="menu-toggle" href="#"><span>Menu</span></a>
+   ================================================== -->
+   <header>   	
+   	<div class="row">
+		
+   		<div class="top-bar">
+   			<a class="menu-toggle" href="#"><span>Menu</span></a>
 
 				<div class="logo">
 					<a href="index.html">Perú Informado</a>
@@ -62,26 +61,33 @@
 	</header> <!-- /header -->
 
 	<!-- intro section
-  ================================================= -->
-  <section id="intro">  
-		<div class="intro-overlay"></div>
-		<div class="intro-content">
-			<div class="row">
-				<div class="col-twelve">
-          <h1>JULIO ARMANDO GUZMAN CACERES</h1>
-          <br>
+   ================================================== -->
+   <section id="intro">   
 
-          <!--
-          <p class="intro-position">
-          <span>Front-end Developer</span>
-          <span>UI/UX Designer</span > 
-          </p>
-          -->
+   	<div class="intro-overlay"></div>	
+   	<div class="intro-content">
+   		<div class="row">
 
-          <a class="button stroke smoothscroll" href="#about" title="">Conoce al candidato</a>
-        </div>
-      </div>   		 		
-    </div> <!-- /intro-content --> 
+   			<div class="col-twelve">
+				{% for candidato in hojadevida %}
+
+	   			<!--<h5>Hello, World.</h5>-->
+				   <h1>{{candidato.candidato}}</h1>
+				   <br>
+
+				   <!--
+	   			<p class="intro-position">
+	   				<span>Front-end Developer</span>
+	   				<span>UI/UX Designer</span > 
+				   </p>
+				   -->
+				{% endfor %}
+	   			<a class="button stroke smoothscroll" href="#about" title="">Conoce al candidato</a>
+
+	   		</div>  
+   			
+   		</div>   		 		
+   	</div> <!-- /intro-content --> 
 	<!--
     <ul class="intro-social">        
       <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -106,100 +112,123 @@
    				<img src="images/profile-pic.jpg" alt="Profile Picture">
 			   </div>   
 -->			
-      </div>   		
-    </div> <!-- /section-intro -->
-    <div class="row about-content">
-      <div class="col-six tab-full">
-        <br>
-        <h3>Perfil: </h3>
-        <ul class="info-list">
-          <li>
-            <strong>Cargo al que postula:</strong>
-            <span>Freelancer, Frontend Developer</span>
-          </li>
-          <li>
-            <strong>Organización política:</strong>
-            <span>www.kardswebsite.com</span>
-          </li>
-          <li>
-            <strong>Fecha de nacimiento:</strong>
-            <span>31/07/1970</span>
-          </li>
-          <li>
-            <strong>Sexo:</strong>
-            <span>Masculino</span>
-          </li>
-          <li>
-            <strong>DNI:</strong>
-            <span>09337130</span>
-          </li>
-          <li>
-            <strong>Canet de extranjería:</strong>
-            <span>-</span>
-          </li>
-        </ul> <!-- /info-list -->
-      </div>
+   		</div>   		
+   	</div> <!-- /section-intro -->
 
-      <div class="col-six tab-full">
-        <br>
-        <br>
-        <ul class="info-list">
-          <li>
-            <strong>Lugar de nacimiento:</strong>
-            <br>
-            <ul>
-              <tr>
-                <th><strong>País:</strong></th>
-                <th>Perú </th>
-              </tr>
-              <br>
-              <tr>
-                <th><strong>Departamento:</strong></th>
-                <th>Lima </th>
-              </tr>
-              <br>
-              <tr>
-                <th><strong>Provincia:</strong></th>
-                <th>Lima </th>
-              </tr>
-              <br>
-              <tr>
-                <th><strong>Distrito:</strong></th>
-                <th>Jesús María</th>
-              </tr>
-            </ul>
-          </li>
-        </ul>
-        <ul class="info-list">
-          <li>
-            <strong>Lugar de domicilio:</strong>
-            <br>
-            <ul>
-              <tr>
-                <th><strong>Departamento:</strong></th>
-                <th>Perú </th>
-              </tr>
-              <br>
-              <tr>
-                <th><strong>Provincia:</strong></th>
-                <th>Lima </th>
-              </tr>
-              <br>
-              <tr>
-                <th><strong>Distrito:</strong></th>
-                <th>Lima </th>
-              </tr>
-              <br>
-              <tr>
-                <th><strong>Dirección:</strong></th>
-                <th>Jesús María</th>
-              </tr>
-            </ul>
-            <!--
-            <ul><strong>País:</strong><span>PERÚ</span></ul> 
-            -->
-          </li>
-        </ul> 
+   	<div class="row about-content">
+
+   		<div class="col-six tab-full">
+			   <br>
+
+   			<h3>Perfil: </h3>
+			   {% for candidato in hojadevida %}
+
+   			<ul class="info-list">
+				<li>
+					<strong>Cargo al que postula:</strong>
+					<span>{{candidato.cargo_eleccion}}</span>
+				</li>
+				<li>
+					<strong>Organización política:</strong>
+					<span>{{candidato.organizacion_politica}}</span>
+				</li>
+
+   				<li>
+   					<strong>Fecha de nacimiento:</strong>
+   					<span>{{candidato.fecha_nacimiento}}</span>
+   				</li>
+   				<li>
+   					<strong>Sexo:</strong>
+   					<span>{{candidato.sexo}}</span>
+   				</li>
+
+ 
+   				<li>
+   					<strong>DNI:</strong>
+   					<span>{{candidato.dni_candidato}}</span>
+				   </li>
+				   
+				   <li>
+					<strong>Canet de extranjería:</strong>
+					<span>{{candidato.carnet_extranjeria}}</span>
+				</li>
+
+   			</ul> <!-- /info-list -->
+   		</div>
+
+   		<div class="col-six tab-full">
+			<br>
+			<br>
+
+			<ul class="info-list">
+				<li>
+					<strong>Lugar de nacimiento:</strong>
+					<br>
+					<ul>
+						<tr>
+							<th><strong>País:</strong></th>
+							<th>{{candidato.pais_nacimiento}} </th>
+						</tr>
+						<br>
+
+						<tr>
+							<th><strong>Departamento:</strong></th>
+							<th>{{candidato.departamento_nacimiento}} </th>
+						</tr>
+						<br>
+
+						<tr>
+							<th><strong>Provincia:</strong></th>
+							<th>{{candidato.provincia_nacimiento}} </th>
+						</tr>
+						<br>
+
+						<tr>
+							<th><strong>Distrito:</strong></th>
+							<th>{{candidato.distrito_nacimiento}}</th>
+						</tr>
+					</ul>
+
+				</li>
+			</ul>
+
+			<ul class="info-list">
+				<li>
+					<strong>Lugar de domicilio:</strong>
+					<br>
+					<ul>
+						<tr>
+							<th><strong>Departamento:</strong></th>
+							<th>{{candidato.departamento_domicilio}}</th>
+						</tr>
+						<br>
+
+						<tr>
+							<th><strong>Provincia:</strong></th>
+							<th>{{candidato.provincia_domicilio}}</th>
+						</tr>
+						<br>
+
+						<tr>
+							<th><strong>Distrito:</strong></th>
+							<th>{{candidato.distrito_domicilio}}</th>
+						</tr>
+						<br>
+
+						<tr>
+							<th><strong>Dirección:</strong></th>
+							<th>{{candidato.direccion_domicilio}}</th>
+						</tr>
+					</ul>
+					<!--
+					<ul><strong>País:</strong><span>PERÚ</span></ul> 
+					-->
+				</li>
+				
+				{% endfor %}
+
+ 
+			   </ul> 
 <!--
    			<h3>Skills</h3>
    			<p>Lorem ipsum Qui veniam ut consequat ex ullamco nulla in non ut esse in magna sint minim officia consectetur nisi commodo ea magna pariatur nisi cillum.</p>
