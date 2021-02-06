@@ -2,6 +2,7 @@
 .bg_red {
 	background-color: #b62222;
 }
+
 /* -- Top navigation -- */
 #top-head {
 	z-index: 9;
@@ -137,6 +138,12 @@
 	#top-head {
 		/* equal to left-col width */
 		left:240px;
+	}
+}
+
+@media screen and (max-width: 639px){
+	.uk-grid-divider.uk-grid-small>* {
+		padding-left: 0 !important;
 	}
 }
 
