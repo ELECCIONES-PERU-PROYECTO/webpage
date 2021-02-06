@@ -69,10 +69,12 @@
    		<div class="row">
 
    			<div class="col-twelve">
-				{% for candidato in hojadevida %}
 
-	   			<!--<h5>Hello, World.</h5>-->
-				   <h1>{{candidato.candidato}}</h1>
+				   <!--<h5>Hello, World.</h5>-->
+
+				   {% for obj in nombre %}
+				  	<h1>{{obj.candidato}}<h1>
+					{% endfor %}
 				   <br>
 
 				   <!--
@@ -81,7 +83,6 @@
 	   				<span>UI/UX Designer</span > 
 				   </p>
 				   -->
-				{% endfor %}
 	   			<a class="button stroke smoothscroll" href="#about" title="">Conoce al candidato</a>
 
 	   		</div>  
@@ -119,15 +120,25 @@
 
    		<div class="col-six tab-full">
 			   <br>
-
    			<h3>Perfil: </h3>
-			   {% for candidato in hojadevida %}
-
+			   {% for candidato in datos_personales %}
+				
    			<ul class="info-list">
+			   {% for candidato in cargo_eleccion %}
 				<li>
-					<strong>Cargo al que postula:</strong>
+					{% if cargo_eleccion|length > 1 %}
+					<strong>- Cargo al que postula:</strong>
 					<span>{{candidato.cargo_eleccion}}</span>
+
+					{% else %}
+					<strong>Cargo al que postula:</strong>
+
+					<span>{{candidato.cargo_eleccion}}</span>
+					{%endif%}
+
 				</li>
+	  			{% endfor %}
+
 				<li>
 					<strong>Organización política:</strong>
 					<span>{{candidato.organizacion_politica}}</span>
@@ -287,24 +298,30 @@
    		</div>   		
 	   </div>
 -->
-    <!-- /section-intro--> 
+	<!-- /section-intro-->
+ 
     <div class="row resume-timeline">
       <div class="col-twelve resume-header">			
         <h2>2. Experiencia Laboral</h2>
-        <br>
+		<br>
+		{% for experiencia in experiencia_laboral %}
         <div class="blocktext">
           <div class=”row”>
             <div class=”col-md-6″>
               <h3 class=”form-control”>¿Tiene experiencia laboral? </h3> 
             </div>
-
+		
             <!-- VAR : tiene_experiencia_laboral -->					
             <div class=”col-md-6″>
-              <h3 class=”form-control”> Sí</h3>
+              <h3 class=”form-control”>{{experiencia.tiene_experiencia_laboral}}</h3>
             </div>
           </div>
 				</div>
-      </div> <!-- /resume-header -->
+	  </div> <!-- /resume-header -->
+	  {% endfor %}
+
+	  {% for experiencia in experiencia_laboral %}
+
       <div class="col-twelve">
 			<div class="timeline-wrap">
 <!--SE AÑADE DINAMICAMENTE CADA BLOCK SEGÚN EL N° DE EXPERIENCIAS LABORALES-->
@@ -315,28 +332,28 @@
 					</div>
 <!--VAR : ocupacion -->
 					<div class="timeline-header">
-						<h3>PRESIDENTE DEL CONSEJO DIRECTIVO</h3>
+						<h3>{{experiencia.ocupacion}}</h3>
 <!--VAR: desde_anhio - VAR: hasta_anhio  -->
-						<p> 2018 - 2021</p>
+						<p>{{experiencia.desde_anhio}} - {{experiencia.hasta_anhio}} </p>
 					</div>
 
 <!--VAR: centro_laboral -->
 					<div class="timeline-content">
-						<h4>INSTITUTO DE FORMACION Y DESARROLLO DEL TALENTO PERUANO </h4>
+						<h4>{{experiencia.centro_laboral}}</h4>
 <!--VAR: direccion_laboral VAR:ruc_empresa_laboral  VAR:pais_laboral VAR:departamento_laboral VAR:provincia_laboral -->
 					<ul>
-						<li>Direccion del centro de trabajo: JR. ECHENIQUE NRO. 306 DPTO. 404 ECHENIQUE 306-404 (ESQUINA JIRON SALAVERRY Y JIRON ECHENIQUE) </li>
-						<li>RUC empresa: 20602831672 </li>
-						<li>País: PERÚ </li>
-						<li>Departamento: Lima</li>
-						<li>Provincia: Lima </li>
+						<li>{{experiencia.direccion_laboral}}</li>
+						<li>RUC empresa: {{experiencia.ruc_empresa_laboral}} </li>
+						<li>País: {{experiencia.pais_laboral}} </li>
+						<li>Departamento: {{experiencia.departamento_laboral}}</li>
+						<li>Provincia: {{experiencia.provincia_laboral}} </li>
 					</ul>
 
 					</div>
 
 				</div> <!-- /timeline-block -->
-
-				<div class="timeline-block">
+				{% endfor %}
+				<!--<div class="timeline-block">
 
 					<div class="timeline-ico">
 						<i class="fa fa-briefcase"></i>
@@ -352,19 +369,20 @@
 						<p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi incididunt.</p>
 					</div>
 
-				</div> <!-- /timeline-block -->
+				</div>  /timeline-block -->
 
 			</div> <!-- /timeline-wrap -->   			
 
 		</div> <!-- /col-twelve -->
+		
 
 
 <!--EDUCACION-->		
 	   </div> <!-- /resume-timeline -->
-	   <br>
-   	
-   	<div class="row resume-timeline">
 
+	   <br>
+   	<div class="row resume-timeline">
+		{% for basica in educacion_basica %}
    		<div class="col-twelve resume-header">
 
 			   <h2>3. Formación Académica</h2>
@@ -405,8 +423,8 @@
 				</div>
 			
 			</div>
-
-			
+		   </div>
+		{% endfor %}
 		<div class=”row”>
 			<div class=”col-md-6″>
 			<h2 class=”form-control”>Estudios no Universitarios</h2> 
@@ -575,7 +593,7 @@
 							</div> <!-- /timeline-wrap -->   	
 							
 	   </div> <!-- /resume-timeline -->
-
+	   
 <!--POSTGRADO-->
 	   <div class="col-twelve resume-header"> 	
 		<div class=”row”>

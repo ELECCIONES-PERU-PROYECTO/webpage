@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from .models import *
+from itertools import chain
 
 def function_filtros_ob(self, query_normal, normnob1, SELECT_candidato, WHERE_candidato):
     #print("function_filtros_ob##################")
@@ -150,7 +151,7 @@ def function_filtro_normal(self, stack_, SELECT_candidato,WHERE_candidato ):
           self[4] = ""
           return retorno
       if self[5] == "NO":
-          retorno = "SELECT DP.id, DP.dni_candidato, DP.candidato, DP.organizacion_politica,  "+SELECT_candidato+" ,  DP.dni_candidato FROM sentencia_obligacion AS SO JOIN  datos_personales AS DP USING (dni_candidato) WHERE SO.tiene_info_por_declarar = 'NO'  AND "+ WHERE_candidato
+          retorno = "SELECT DP.id, DP.dni_candidato, DP.candidato, DP.organizacion_politica,  "+SELECT_candidato+"  FROM sentencia_obligacion AS SO JOIN  datos_personales AS DP USING (dni_candidato) WHERE SO.tiene_info_por_declarar = 'NO'  AND "+ WHERE_candidato
           self[5] = ""
           return retorno
       if self[12] != "":
@@ -416,7 +417,8 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
         var2 = info_extra[rango+1:len(filtro_id):+1]
         print("var1: ", var1)
         print("var2: ", var2)
-        query_total = "SELECT id, COUNT (*),partido FROM tabla_edad WHERE edad BETWEEN " +var1+ " AND " +var2+" GROUP BY (id,partido)"    
+        # le falta PK
+        query_total = "SELECT  COUNT (*),partido FROM tabla_edad WHERE edad BETWEEN " +var1+ " AND " +var2+" GROUP BY (partido)"    
         #query_total = "SELECT  dni_candidato, candidato, organizacion_politica, cargo_eleccion FROM datos_personales "
     
 
@@ -512,15 +514,35 @@ def candidatos(request):
                 {'candidatos': candidatos})
 
 
-def hojadevida_by_dni(request, dni_hoja_de_vida):
-  #candidatos_by_dni = DatosPersonales.objects.raw(
-  #  "select * from datos_personales where dni_candidato = '" + dni + "';"
-  #   "select * from datos_personales;"
-  #)
-  hojadevida = DatosPersonales.objects.raw("SELECT * from datos_personales WHERE dni_candidato ='" + dni_hoja_de_vida+"'")
+def hojadevida_by_dni( request, dni_hoja_de_vida):
+  #expertiencia laboral = ExperienciaLaboral.objects.raw()
+  '''  
+  return render(request,
+                'elecciones/dashboard.html',
+                {'page': page_obj}) 
+  '''
+  if (len(dni_hoja_de_vida)!=8):
+      return 
+
+  query_exp_lab = "SELECT DISTINCT  tiene_experiencia_laboralWHERE, centro_laboral , ocupacion ,ruc_empresa_laboral, direccion_laboral, desde_anhio, hasta_anhio,pais_laboral,departamento_laboral,provincia_laboral FROM experiencia_laboral  dni_candidato = '"+dni_hoja_de_vida+"'   AND tiene_experiencia_laboral = 'SI';"
+  query_edu_basica = "select * from educacion_basica where dni_candidato ='"+dni_hoja_de_vida+"' LIMIT 1"
+  
+  print ("query_exp_lab: ",  query_exp_lab)
+
+  print("dni_hoja_de_vida: ",dni_hoja_de_vida)     
+  nombre_ = DatosPersonales.objects.raw("SELECT id ,candidato  FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "' LIMIT 1")
+  datos_personales_ = DatosPersonales.objects.raw("SELECT DISTINCT * FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "' LIMIT 1 ")
+  cargo_eleccion_ = DatosPersonales.objects.raw("SELECT  id ,cargo_eleccion FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "'")  
+  experiencia_loboral_ = ExperienciaLaboral.objects.raw(query_exp_lab)  #formacion_academica_ = 
+  edubasica_ = EducacionBasica.objects.raw(query_edu_basica)
   return render(request,
                 'elecciones/index.html',
-                {'hojadevida': hojadevida})
+                {   'nombre': nombre_,
+                    'datos_personales': datos_personales_,
+                    'cargo_eleccion' : cargo_eleccion_,
+                'experiencia_laboral': experiencia_loboral_,
+                'educacion_basica':edubasica_
+                })
 
 
 def mainpage(request):
