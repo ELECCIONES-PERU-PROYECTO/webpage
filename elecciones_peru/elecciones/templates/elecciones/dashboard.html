@@ -2,12 +2,43 @@
 {% block title %}Elecciones{% endblock %}
 {% block content %}
 <body data-uk-filter="target: .js-filter">
+  <!-- OFFCANVAS -->
+  <div id="offcanvas-nav" id="top-head" class="uk-position-fixed" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide">
+      <button class="uk-offcanvas-close uk-close uk-icon" type="button" data-uk-close></button>
+      <ul class="uk-nav uk-nav-default">
+        <li class="uk-active"><a href="#">Active</a></li>
+        <li class="uk-parent">
+          <a href="#">Parent</a>
+          <ul class="uk-nav-sub">
+            <li><a href="#">Sub item</a></li>
+            <li><a href="#">Sub item</a></li>
+          </ul>
+        </li>
+        <li class="uk-nav-header">Header</li>
+        <li><a href="#js-options"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: table"></span> Item</a></li>
+        <li><a href="#"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: thumbnails"></span> Item</a></li>
+        <li class="uk-nav-divider"></li>
+        <li><a href="#"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: trash"></span> Item</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- OFFCANVAS -->
 
   <!--HEADER-->
   <header id="top-head" class="uk-position-fixed">
     <div class="uk-container uk-container-expand uk-background-secondary">
       <nav class="uk-navbar uk-light" data-uk-navbar="mode:click; duration: 250" >
         <div class="uk-navbar-left">
+          <ul class="uk-navbar-nav">
+            <li class="uk-active uk-flex uk-flex-middle">
+              <a class="uk-padding-remove uk-flex uk-flex-row-reverse" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-nav" title="Offcanvas" data-uk-tooltip>
+                <span class="uk-margin-small-left">Filtros</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="uk-navbar-right">
           <!-- <div class="uk-navbar-item uk-hidden@m">
             <a class="uk-logo" href="#"><img class="custom-logo" src="img/dashboard-logo-white.svg" alt=""></a>
           </div> -->
@@ -22,23 +53,6 @@
             <li>
               <a href="#" onclick="activar_organizaciones(this)">Partidos Políticos</a>
             </li>
-          </ul>
-          <!-- <div class="uk-navbar-item uk-visible@s">
-            <form id="search-form" action="">
-              <div class="uk-inline uk-width-1-1">
-                <span class="uk-form-icon uk-form-icon-flip" data-uk-icon="icon: search"></span>
-                <input class="uk-input uk-width-1-1 search-fld" type="text" placeholder="Type your search" autofocus>
-                <a href="#" class="search-filter" data-uk-filter-control="[data-tags*='']" hidden>Search</a>
-              </div>
-            </form>
-          </div> -->
-        </div>
-        <div class="uk-navbar-right">
-          <ul class="uk-navbar-nav">
-            <li><a href="#" data-uk-icon="icon:user" title="Your profile" data-uk-tooltip></a></li>
-            <li><a href="#" data-uk-icon="icon: settings" title="Settings" data-uk-tooltip></a></li>
-            <li><a href="#" data-uk-icon="icon:  sign-out" title="Sign Out" data-uk-tooltip></a></li>
-            <li><a class="uk-navbar-toggle" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-nav" title="Offcanvas" data-uk-tooltip></a></li>
           </ul>
         </div>
       </nav>
@@ -1033,32 +1047,14 @@
             <div class="uk-text-small uk-margin-remove">
               <p class="uk-text-muted uk-margin-remove">Nombres</p>
               {{ candidato.candidato }}
-              <hr class="uk-margin-bottom">
-            </div>
-            <div class="uk-text-small uk-margin-remove">
-              <p class="uk-text-muted uk-margin-remove">DNI</p>
-              {{ candidato.dni_candidato }}
-              <hr class="uk-margin-bottom">
-            </div>
-            <div class="uk-text-small uk-margin-remove">
-              <p class="uk-text-muted uk-margin-remove">Sexo</p>
-              {{ candidato.sexo }}
-              <hr class="uk-margin-bottom">
-            </div>
-            <div class="uk-text-small uk-margin-remove">
-              <p class="uk-text-muted uk-margin-remove">Fecha de Nacimiento</p>
-              {{ candidato.fecha_nacimiento }}
-              <hr class="uk-margin-bottom">
             </div>
             <div class="uk-text-small uk-margin-remove">
               <p class="uk-text-muted uk-margin-remove">Partido</p>
               {{ candidato.organizacion_politica }}
-              <hr class="uk-margin-bottom uk-hidden@m">
             </div>
             <div class="uk-text-small uk-margin-remove">
               <p class="uk-text-muted uk-margin-remove">Cargo</p>
               {{ candidato.cargo_eleccion }}
-              <hr class="uk-margin-bottom uk-hidden@m">
             </div>
             <div class="uk-text-small uk-margin-remove">
               <p class="uk-text-muted uk-margin-remove">Hoja de Vida</p>
@@ -1103,51 +1099,4 @@
   {% include "elecciones/pagination.html" with page=page %}
 </div>
   <!-- /CONTENT -->
-  <!-- OFFCANVAS -->
-  <div id="offcanvas-nav" data-uk-offcanvas="flip: true; overlay: true">
-    <div class="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide">
-      <button class="uk-offcanvas-close uk-close uk-icon" type="button" data-uk-close></button>
-      <ul class="uk-nav uk-nav-default">
-        <li class="uk-active"><a href="#">Active</a></li>
-        <li class="uk-parent">
-          <a href="#">Parent</a>
-          <ul class="uk-nav-sub"> 
-            <li><a href="#">Sub item</a></li>
-            <li><a href="#">Sub item</a></li>
-          </ul>
-        </li>
-        <li class="uk-nav-header">Header</li>
-        <li><a href="#js-options"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: table"></span> Item</a></li>
-        <li><a href="#"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: thumbnails"></span> Item</a></li>
-        <li class="uk-nav-divider"></li>
-        <li><a href="#"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: trash"></span> Item</a></li>
-      </ul>
-      <h3>Title</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-  </div>
-  <!-- /OFFCANVAS -->  
-  <!-- OFFCANVAS -->
-  <div id="offcanvas-nav" data-uk-offcanvas="flip: true; overlay: true">
-    <div class="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide">
-      <button class="uk-offcanvas-close uk-close uk-icon" type="button" data-uk-close></button>
-      <ul class="uk-nav uk-nav-default">
-        <li class="uk-active"><a href="#">Active</a></li>
-        <li class="uk-parent">
-          <a href="#">Parent</a>
-          <ul class="uk-nav-sub">
-            <li><a href="#">Sub item</a></li>
-            <li><a href="#">Sub item</a></li>
-          </ul>
-        </li>
-        <li class="uk-nav-header">Header</li>
-        <li><a href="#js-options"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: table"></span> Item</a></li>
-        <li><a href="#"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: thumbnails"></span> Item</a></li>
-        <li class="uk-nav-divider"></li>
-        <li><a href="#"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: trash"></span> Item</a></li>
-      </ul>
-      <h3>Title</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-  </div>
 {% endblock %}
