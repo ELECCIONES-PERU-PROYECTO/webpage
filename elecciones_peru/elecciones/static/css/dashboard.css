@@ -10,6 +10,12 @@
 	left:0;
 	right:0;
 }
+/* -- Candidato Sidebar --*/
+#offcanvas-nav .uk-offcanvas-bar.candidatos-sidebar {
+	right: auto;
+	left: 0;
+}
+
 /* Smaller Header */
 .uk-navbar-nav > li > a,
 .uk-navbar-item,
@@ -129,12 +135,6 @@
 	background-color: #f7f7f7;
 	margin-left: 0;
 	transition: margin 0.2s cubic-bezier(.4,0,.2,1);
-}
-@media screen and (max-width: 959px){
-	.filtertype{
-		
-	}
-
 }
 
 
