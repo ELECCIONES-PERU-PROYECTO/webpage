@@ -142,13 +142,10 @@
 }
 
 @media screen and (max-width: 639px){
-	.uk-grid-divider.uk-grid-small>* {
+	.candidato-card .uk-grid-small>* {
 		padding-left: 0 !important;
 	}
 
-	.candidato-card .uk-grid-divider {
-		display: none;
-	}
 }
 
 #top-head [class*="uk-navbar-dropdown-bottom"] {

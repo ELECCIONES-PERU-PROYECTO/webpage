@@ -480,21 +480,20 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
 
     # Paginator 
     paginator = Paginator(candidatos, 20)
-    page = request.GET.get('page')
+    page_number = request.GET.get('page')
 
     try:
-      candidatos = paginator.page(page)
+        page_obj = paginator.get_page(page_number)
     except PageNotAnInteger:
-      # If page is not an integer deliver the first page
-      posts = paginator.page(1)
+        # If page is not an integer deliver the first page
+        posts = paginator.page(1)
     except EmptyPage:
-      # If page is out of range deliver last page of results
-      posts = paginator.page(paginator.num_pages)
+        # If page is out of range deliver last page of results
+        posts = paginator.page(paginator.num_pages)
 
     return render(request,
                   'elecciones/dashboard.html',
-                  {'page': page,
-                  'candidatos': candidatos})
+                  {'page': page_obj})
 
 def test_query(request, nivel_academico):
   print("test_query: NIVEL ACADEMICO ", nivel_academico)
