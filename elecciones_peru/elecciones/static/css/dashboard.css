@@ -130,6 +130,14 @@
 	margin-left: 0;
 	transition: margin 0.2s cubic-bezier(.4,0,.2,1);
 }
+@media screen and (max-width: 959px){
+	.filtertype{
+		
+	}
+
+}
+
+
 @media screen and (min-width: 960px){
 	#content {
 		/* equal to left-col width */
