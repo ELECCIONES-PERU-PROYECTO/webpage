@@ -320,12 +320,13 @@
 	  </div> <!-- /resume-header -->
 	  {% endfor %}
 
-	  {% for experiencia in experiencia_laboral %}
 
       <div class="col-twelve">
 			<div class="timeline-wrap">
 <!--SE AÑADE DINAMICAMENTE CADA BLOCK SEGÚN EL N° DE EXPERIENCIAS LABORALES-->
 <!--timeline-block == UNA EXPERIENCIA LABORAL-->
+{% for experiencia in experiencia_laboral %}
+
 				<div class="timeline-block">
 					<div class="timeline-ico">
 						<i class="fa fa-briefcase"></i>

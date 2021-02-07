@@ -180,11 +180,12 @@ let dni_hoja_de_vida = ""
 let cargo_postula_dato = ""
 function verHojadeVida(element){
     let dni_hoja_de_vida = element.id
-    let url_ = "http://127.0.0.1:8000/elecciones/candidato/hojadevida/"+ dni_hoja_de_vida
+    cargo_postula_dato = element.dataset.cargo
+    console.log("cargo_postula_dato: ",cargo_postula_dato)
+    let url_ = "http://127.0.0.1:8000/elecciones/candidato/hojadevida/"+dni_hoja_de_vida+"/"+cargo_postula_dato    
     console.log(url_)
     window.location = url_
-    console.log("Id candidato")
-    console.log(element.id)
+
      
     getHojadeVida()
 
