@@ -60,14 +60,17 @@ async function mainpage(){
   }
 }
 
-async function filterpage(){
-  window.location = "http://127.0.0.1:8000/elecciones/candidatos"
-  console.log("loading filterpage")
-
+async function test() {
   try {
-    const response = await axios.get('/elecciones/candidatos')
-    console.log(response)
+    const response = await axios.post('/candidatos/test', data)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    console.log(response);
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }

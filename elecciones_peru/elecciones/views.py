@@ -401,7 +401,6 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
                 'elecciones/dashboard.html',
                 {'page': page_obj}) 
 
-
 def filter_function_orga(request, filtro_id, info_extra, orden):
   query_total = "select * from datos_personales;"
   print("filtro_id: ",filtro_id)
@@ -455,7 +454,7 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
     query_total = "SELECT id ,COUNT (dni_candidato) AS conteo, organizacion_politica FROM datos_personales  WHERE departamento_nacimiento = '"+ info_extra+"' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
   
   #elif filtro_id =="opc_no":
-#    query_total = "S"
+  #    query_total = "S"
 
   elif filtro_id =="elecvsnacimiento_name":
     query_total = "SELECT id ,COUNT (dni_candidato) AS conteo, organizacion_politica  FROM datos_personales  WHERE departamento_nacimiento <> distrito_elec AND  distrito_elec <> 'PERUANOS RESIDENTES EN EL EXTRANJERO' AND distrito_elec <> 'LIMA PROVINCIAS' GROUP BY (organizacion_politica) ORDER BY (conteo) "+orden
@@ -493,14 +492,6 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
   return render(request,
                 'elecciones/dashboard.html',
                 {'page': page_obj})
-
-
-def test_query(request, nivel_academico):
-  print("test_query: NIVEL ACADEMICO ", nivel_academico)
-  test = DatosPersonales.objects.raw(
-    "select * from datos_personales;"
-  )
-  return render(request,'elecciones/dashboard.html',{'test': test})
 
 def candidatos(request):
   candidatos = DatosPersonales.objects.raw(
@@ -548,6 +539,7 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_eleccion_):
 def mainpage(request):
   return render(request,'elecciones/landingpage.html',{})
 
-def filterpage(request):
-  print("Pasa por aqui la filterpage")
-  return render(request,'elecciones/dashboard.html',{})
+def test_(request):
+  print("--------------------------------------------- REQUEST ---------------------------------------------")
+  print(request)
+  return render(request,'elecciones/test.html', {})

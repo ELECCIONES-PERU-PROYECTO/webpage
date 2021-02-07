@@ -141,6 +141,7 @@ function SendJSON() {
     "dist_electoral" : "",
     "tipo_candidato_" : ""
   }
+  window.location = 'http://127.0.0.1:8000/elecciones/candidatos/test'
 }
 
 function button_filter(){
