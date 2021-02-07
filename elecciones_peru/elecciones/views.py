@@ -5,8 +5,6 @@ from .models import *
 from itertools import chain
 
 def function_filtros_ob(self, query_normal, normnob1, SELECT_candidato, WHERE_candidato):
-    #print("function_filtros_ob##################")
-    #print(len(self))
     query_total = ""
     subquery_list = list()
     for i in range(0, len(self)):
@@ -405,7 +403,6 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
                 'elecciones/dashboard.html',
                 {'page': page_obj}) 
 
-
 def filter_function_orga(request, filtro_id, info_extra, orden):
     query_total = "select * from datos_personales;"
     print("filtro_id: ",filtro_id)
@@ -513,7 +510,6 @@ def candidatos(request):
                 'elecciones/dashboard.html',
                 {'candidatos': candidatos})
 
-
 def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_eleccion_):
   #expertiencia laboral = ExperienciaLaboral.objects.raw()
   '''  
@@ -549,10 +545,11 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_eleccion_):
                     'educacion_basica':edubasica_
                 })
 
-
 def mainpage(request):
     return render(request,'elecciones/landingpage.html',{})
 
 def filterpage(request):
     print("Pasa por aqui la filterpage")
     return render(request,'elecciones/dashboard.html',{})
+
+
