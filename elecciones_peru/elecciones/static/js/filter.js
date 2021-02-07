@@ -8,7 +8,7 @@ filtros del tipo order by, que implican un orden, los filtros normales se aplica
 no importa mucho
 
 La estructura del codigo es la siguiente:
-1. Variables globales (hay un contador de filtros normales, filtros ob (order by), filtros totales(filtros normales+filtros ob ) )
+1. Variables globales(hay un contador de filtros normales, filtros ob (order by), filtros totales(filtros normales+filtros ob ) )
 2. Funciones debug (console.logs xd)
 3. Funciones de los filtros (gets, quitar seleciciones, extras que algunas secciones de filtros la requerian)
 
@@ -243,25 +243,13 @@ function button_filter(){
       url = url + "/unk"
     }
   }
-  console.log(url)
-  window.history.pushState("object or string", "Title", url);
 
-   if((url.charAt(url.length -1 )) == "/"  ){
-     const editedText = url.slice(0, -1) //'abcde'
-     //url = editedText
-     }
   console.log(url)
 
   window.location = url 
 
-  getUrl_datos()  
-
-  //let url = "http://127.0.0.1:8000/elecciones/candidatos/"  
-
   return
 }
-
-
 
 
 function imprimir(){
@@ -299,11 +287,10 @@ function impresion_peque(){
   console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
   console.log("cant_filtros: ",cant_filtros)
 }
+
+
 /* Funciones de filtros (gets y quitar seleccion) algunos filtros tienen una funcion extra*/
-
-
 /* FILTRO ACADEMICO */
-
 function get_nivel_academico(){
   if (filtro_academico == false){
     filtro_academico = true
@@ -312,7 +299,6 @@ function get_nivel_academico(){
     lista_orden_filtros.push(1)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
     console.log("cant_filtros: ",cant_filtros)
-    //get del valor
   }
   let nivel_academico_ = document.getElementById("nivel_academico")
   let nivel_academico_value = nivel_academico_.options[nivel_academico_.selectedIndex].value
@@ -323,14 +309,13 @@ function get_nivel_academico(){
 }
 
 function quitar_seleccion_academico(){
-
   if(filtro_academico == true){
     filtro_academico = false
     cant_filtros_normales--
     cant_filtros--
-    const index = lista_orden_filtros.indexOf(1);
+    const index = lista_orden_filtros.indexOf(1)
     if (index > -1) {
-      lista_orden_filtros.splice(index, 1);
+      lista_orden_filtros.splice(index, 1)
     }
 
     console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
@@ -362,7 +347,6 @@ if(filtro_cargo == false) {
       return
     }
   }
-
 }
 
   for(let i = 0; i < anhio_servicio_list.length; i++) {
@@ -373,10 +357,8 @@ if(filtro_cargo == false) {
   }
 }
 
-
 function quitar_seleccion_cargos_pervios(){
-  if(filtro_cargo == true)
-  {
+  if(filtro_cargo == true) {
     let button_asc = document.getElementById("anhio_servicio_asc")
     button_asc.checked = false
     let button_desc = document.getElementById("anhio_servicio_desc")
@@ -384,10 +366,12 @@ function quitar_seleccion_cargos_pervios(){
     filtro_cargo = false
     cant_filtros--
     cant_filtros_ob--
-    const index = lista_orden_filtros.indexOf(2);
+    const index = lista_orden_filtros.indexOf(2)
+
     if (index > -1) {
-      lista_orden_filtros.splice(index, 1);
+      lista_orden_filtros.splice(index, 1)
     }
+
     console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
     cargos_previos_order = ""
     console.log("cant_filtros_ob: ",cant_filtros_ob)
@@ -396,13 +380,13 @@ function quitar_seleccion_cargos_pervios(){
   }
 }
 
+
 /* FILTRO SENTENCIAS */
 function togglePenal_opciones(element){
   if(element.checked == true){
   mostrar = document.getElementById("div_opc_cant_sentencias")
   mostrar.style = ""
-  }
-  else if (element.checked == false){
+  } else if (element.checked == false){
     mostrar = document.getElementById("div_opc_cant_sentencias")
     mostrar.style = "display:none"
   }
@@ -412,10 +396,9 @@ function toggleObligacion_opciones(element){
   mostrar = document.getElementById("div_opc_obligaciones")
   if(element.checked == true){
     mostrar.style = ""
-    }
-    else if (element.checked == false){
-      mostrar.style = "display:none"
-    }
+  } else if (element.checked == false){
+    mostrar.style = "display:none"
+  }
 }
 
 function get_sentencias_penal_cant(){
@@ -425,7 +408,6 @@ function get_sentencias_penal_cant(){
     cant_filtros++
     lista_orden_filtros.push(3)
     console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-
     console.log("cant_filtros_ob: ",cant_filtros_ob)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
     console.log("cant_filtros: ",cant_filtros)
@@ -440,7 +422,6 @@ function get_sentencias_penal_cant(){
   }
 }
 
-
 function get_sentencias_oblig_cant(){
   if( filtro_oblig_cant == false){
     filtro_oblig_cant = true
@@ -448,7 +429,6 @@ function get_sentencias_oblig_cant(){
     cant_filtros++
     lista_orden_filtros.push(4)
     console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-
     console.log("cant_filtros_ob: ",cant_filtros_ob)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
     console.log("cant_filtros: ",cant_filtros)
@@ -459,7 +439,6 @@ function get_sentencias_oblig_cant(){
         console.log("orden_cant_sentencia_oblig: ", orden_cant_sentencia_oblig)
       }
     }
-  
   }
   let cant_senten_oblig_list = document.getElementsByName("cant_senten_oblig")
   for(let i = 0; i < cant_senten_oblig_list.length; i++) {
@@ -481,30 +460,31 @@ function get_sentencias_oblig_mat(){
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
     console.log("cant_filtros: ",cant_filtros)
   }
+
   let cant_mat_list = document.getElementsByName("opc_mat_demanda")
+
   for(let i = 0; i < cant_mat_list.length; i++) {
     if(cant_mat_list[i].checked) {
       mat_demanda = cant_mat_list[i].value
       console.log("mat_demanda: ", mat_demanda)
     }
   }
-
 }
-
 
 function quitar_seleccion_sentencias(){
   document.getElementById("por_obligaciones").checked = false
   document.getElementById("penal_cbx").checked = false
   document.getElementById("no_tiene").checked = false
+
   if(filtro_penal_cant  == true){
     document.getElementById("penal_cbx").checked = false
     orden_cant_sentencia = ""
     filtro_penal_cant = false
     cant_filtros_ob--
     cant_filtros--
-    const index = lista_orden_filtros.indexOf(3);
+    const index = lista_orden_filtros.indexOf(3)
     if (index > -1) {
-      lista_orden_filtros.splice(index, 1);
+      lista_orden_filtros.splice(index, 1)
     }
     let inputs = document.getElementsByName("cant_senten")
     for(let i = 0; i < inputs.length; i++){
@@ -519,16 +499,18 @@ function quitar_seleccion_sentencias(){
   }
   if(filtro_oblig_cant  == true){
     document.getElementById("por_obligaciones").checked = false
-
     orden_cant_sentencia_oblig = ""
     filtro_oblig_cant = false
     cant_filtros_ob--
     cant_filtros--
-    const index = lista_orden_filtros.indexOf(4);
+    const index = lista_orden_filtros.indexOf(4)
+
     if (index > -1) {
-      lista_orden_filtros.splice(index, 1);
+      lista_orden_filtros.splice(index, 1)
     }
+
     let inputs = document.getElementsByName("cant_senten_oblig")
+
     for(let i = 0; i < inputs.length; i++){
       if(inputs[i].checked){
         inputs[i].checked = false
@@ -539,41 +521,46 @@ function quitar_seleccion_sentencias(){
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
     console.log("cant_filtros: ",cant_filtros)
   }
+
   if(filtro_oblig_mat  == true){
     document.getElementById("por_obligaciones").checked = false
-
     mat_demanda = ""
     filtro_oblig_mat = false
     cant_filtros_normales--
     cant_filtros--
-    const index = lista_orden_filtros.indexOf(5);
+    const index = lista_orden_filtros.indexOf(5)
+
     if (index > -1) {
-      lista_orden_filtros.splice(index, 1);
+      lista_orden_filtros.splice(index, 1)
     }
+
     let inputs = document.getElementsByName("opc_mat_demanda")
+
     for(let i = 0; i < inputs.length; i++){
       if(inputs[i].checked){
         inputs[i].checked = false
       }
     }
+
     console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
     console.log("cant_filtros_ob: ",cant_filtros_ob)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
     console.log("cant_filtros: ",cant_filtros)
   }
-  if(no_tiene_val == "NO")
-  {
-    no_tiene_val = ""
-  cant_filtros--
-  cant_filtros_normales--
-  console.log("Procedo a quitar el 6")
-  const index = lista_orden_filtros.indexOf(6);
-  if (index > -1) {
-    lista_orden_filtros.splice(index, 1);
-  }
-}
 
-document.getElementById("mostrar_sentencias").style="" 
+  if(no_tiene_val == "NO") {
+    no_tiene_val = ""
+    cant_filtros--
+    cant_filtros_normales--
+    console.log("Procedo a quitar el 6")
+    const index = lista_orden_filtros.indexOf(6)
+
+    if (index > -1) {
+      lista_orden_filtros.splice(index, 1)
+    }
+  }
+
+  document.getElementById("mostrar_sentencias").style="" 
 }
 
 function noTiene_opcion(element){
@@ -584,43 +571,52 @@ function noTiene_opcion(element){
       filtro_penal_cant = false
       cant_filtros_ob--
       cant_filtros--
-      const index = lista_orden_filtros.indexOf(3);
+      const index = lista_orden_filtros.indexOf(3)
+
       if (index > -1) {
-        lista_orden_filtros.splice(index, 1);
+        lista_orden_filtros.splice(index, 1)
       }
+
       let inputs = document.getElementsByName("cant_senten")
+
       for(let i = 0; i < inputs.length; i++){
         if(inputs[i].checked){
           inputs[i].checked = false
         }
       }
+
       console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
       console.log("cant_filtros_ob: ",cant_filtros_ob)
       console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
       console.log("cant_filtros: ",cant_filtros)
     }
+
     if(filtro_oblig_cant  == true){
       document.getElementById("por_obligaciones").checked = false
-
       orden_cant_sentencia_oblig = ""
       filtro_oblig_cant = false
       cant_filtros_ob--
       cant_filtros--
-      const index = lista_orden_filtros.indexOf(4);
+      const index = lista_orden_filtros.indexOf(4)
+
       if (index > -1) {
-        lista_orden_filtros.splice(index, 1);
+        lista_orden_filtros.splice(index, 1)
       }
+
       let inputs = document.getElementsByName("cant_senten_oblig")
+
       for(let i = 0; i < inputs.length; i++){
         if(inputs[i].checked){
           inputs[i].checked = false
         }
       }
+
       console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
       console.log("cant_filtros_ob: ",cant_filtros_ob)
       console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
       console.log("cant_filtros: ",cant_filtros)
     }
+
     if(filtro_oblig_mat  == true){
       document.getElementById("por_obligaciones").checked = false
 
@@ -628,11 +624,12 @@ function noTiene_opcion(element){
       filtro_oblig_mat = false
       cant_filtros_normales--
       cant_filtros--
-      const index = lista_orden_filtros.indexOf(5);
+      const index = lista_orden_filtros.indexOf(5)
       if (index > -1) {
-        lista_orden_filtros.splice(index, 1);
+        lista_orden_filtros.splice(index, 1)
       }
       let inputs = document.getElementsByName("opc_mat_demanda")
+
       for(let i = 0; i < inputs.length; i++){
         if(inputs[i].checked){
           inputs[i].checked = false
@@ -644,6 +641,7 @@ function noTiene_opcion(element){
       console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
       console.log("cant_filtros: ",cant_filtros)
     }
+
     let  mostrar1 = document.getElementById("mostrar_sentencias")
     mostrar1.style = "display:none"
     document.getElementById("div_opc_cant_sentencias").style="display:none"
@@ -653,40 +651,39 @@ function noTiene_opcion(element){
     cant_filtros++
     cant_filtros_normales++
     impresion_peque()
-  }
-  else if (element.checked == false){
+  } else if (element.checked == false){
     let  mostrar1 = document.getElementById("mostrar_sentencias")
     mostrar1.style = ""
     no_tiene_val = ""
     cant_filtros--
     cant_filtros_normales--
     console.log("Procedo a quitar el 6")
-    const index = lista_orden_filtros.indexOf(6);
+    const index = lista_orden_filtros.indexOf(6)
+
     if (index > -1) {
-      lista_orden_filtros.splice(index, 1);
+      lista_orden_filtros.splice(index, 1)
     }
   }
 }
 
 
 /* FILTRO BIENES Y RENTAS */
-
 function get_bienes_rentas(element){
   console.log("element.name: ",element.name)
-  switch (element.name) {
+  switch(element.name) {
     case "cant_ingreso":
-    if (filtro_ingres_cant == false){
-      filtro_ingres_cant = true
-      cant_filtros++
-      cant_filtros_ob++
-      lista_orden_filtros.push(7)
-      console.log("push 7")
-      impresion_peque()
-    }
-    orden_cant_ingreso = element.value
-    break;
+      if(filtro_ingres_cant == false){
+        filtro_ingres_cant = true
+        cant_filtros++
+        cant_filtros_ob++
+        lista_orden_filtros.push(7)
+        console.log("push 7")
+        impresion_peque()
+      }
+      orden_cant_ingreso = element.value
+      break;
     case "cant_inmuebles":
-      if (filtro_inmu_cant == false){
+      if(filtro_inmu_cant == false){
         filtro_inmu_cant = true
         cant_filtros++
         cant_filtros_ob++
@@ -695,9 +692,9 @@ function get_bienes_rentas(element){
         impresion_peque()
       }
       orden_cant_inmueble = element.value
-    break;
+      break;
     case "valor_inmuebles":
-      if (filtro_inmu_valor == false){
+      if(filtro_inmu_valor == false){
         filtro_inmu_valor = true
         cant_filtros++
         cant_filtros_ob++
@@ -708,7 +705,7 @@ function get_bienes_rentas(element){
       orden_valor_inmueble = element.value
       break;
       case "cant_muebles":
-        if (filtro_mueb_cant == false){
+        if(filtro_mueb_cant == false){
           filtro_mueb_cant = true
           cant_filtros++
           cant_filtros_ob++
@@ -717,9 +714,9 @@ function get_bienes_rentas(element){
           impresion_peque()
         }
         orden_cant_mueble = element.value
-    break;
+        break;
     case "valor_muebles":
-      if (filtro_mueb_valor == false){
+      if(filtro_mueb_valor == false){
         filtro_mueb_valor = true
         cant_filtros++
         cant_filtros_ob++
@@ -728,10 +725,8 @@ function get_bienes_rentas(element){
         impresion_peque()
       }
       orden_valor_mueble = element.value
-    break;
-
+      break;
   }
-
 }
 
 function quitar_seleccion_b_r(){
@@ -739,52 +734,62 @@ function quitar_seleccion_b_r(){
       filtro_ingres_cant = false
       cant_filtros--
       cant_filtros_ob--
-      const index = lista_orden_filtros.indexOf(7);
-      if (index > -1) {
-        lista_orden_filtros.splice(index, 1);
+      const index = lista_orden_filtros.indexOf(7)
+
+      if(index > -1) {
+        lista_orden_filtros.splice(index, 1)
       }
       orden_cant_ingreso = ""
     }
+
     if(filtro_inmu_cant){
       filtro_inmu_cant = false
       cant_filtros--
       cant_filtros_ob--
-      const index = lista_orden_filtros.indexOf(8);
-      if (index > -1) {
-        lista_orden_filtros.splice(index, 1);
+      const index = lista_orden_filtros.indexOf(8)
+
+      if(index > -1) {
+        lista_orden_filtros.splice(index, 1)
       }
       orden_cant_inmueble = ""
     }
+
     if(filtro_inmu_valor){
       filtro_inmu_valor = false
       cant_filtros--
       cant_filtros_ob--
-      const index = lista_orden_filtros.indexOf(9);
-      if (index > -1) {
-        lista_orden_filtros.splice(index, 1);
+      const index = lista_orden_filtros.indexOf(9)
+
+      if(index > -1) {
+        lista_orden_filtros.splice(index, 1)
       }
       orden_valor_inmueble = ""
     }
+
     if(filtro_mueb_cant){
       filtro_mueb_cant = false
       cant_filtros--
       cant_filtros_ob--
-      const index = lista_orden_filtros.indexOf(10);
-      if (index > -1) {
-        lista_orden_filtros.splice(index, 1);
+      const index = lista_orden_filtros.indexOf(10)
+
+      if(index > -1) {
+        lista_orden_filtros.splice(index, 1)
       }
       orden_cant_mueble = ""
     }
+
     if(filtro_mueb_valor){
       filtro_mueb_valor = false
       cant_filtros--
       cant_filtros_ob--
-      const index = lista_orden_filtros.indexOf(11);
-      if (index > -1) {
-        lista_orden_filtros.splice(index, 1);
+      const index = lista_orden_filtros.indexOf(11)
+
+      if(index > -1) {
+        lista_orden_filtros.splice(index, 1)
       }
       orden_valor_mueble = ""
     }
+
     document.getElementById("cant_ingreso_asc").checked = false
     document.getElementById("cant_ingreso_desc").checked = false
     document.getElementById("cant_inmueble_asc").checked = false
@@ -798,10 +803,8 @@ function quitar_seleccion_b_r(){
 }
 
 /* FILTRO RENUNCIAS */
-
-
 function get_renuncia(){
-  if (filtro_renuncias == false){
+  if(filtro_renuncias == false){
     filtro_renuncias = true
     cant_filtros++
     cant_filtros_ob++
@@ -816,10 +819,7 @@ function get_renuncia(){
       console.log("orden_renuncias, ", orden_renuncias)
     }
   }
-
-
 }
-
 
 function quitar_seleccion_renuncia(){
   if(filtro_renuncias == true){
@@ -830,17 +830,19 @@ function quitar_seleccion_renuncia(){
     console.log("cant_filtros_ob: ", cant_filtros_ob)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
     console.log("cant_filtros: ",cant_filtros)
+
     for(let i = 0; i < inputs.length; i++){
       inputs[i].checked = false
-  
     }
-    const index = lista_orden_filtros.indexOf(12);
-    if (index > -1) {
-      lista_orden_filtros.splice(index, 1);
+    const index = lista_orden_filtros.indexOf(12)
+
+    if(index > -1) {
+      lista_orden_filtros.splice(index, 1)
     }    
     orden_renuncias = ""
+  }
 }
-}
+
 
 /* FILTRO EDAD */
 function get_edad(){
@@ -851,17 +853,14 @@ function get_edad(){
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
     cant_filtros++
     console.log("cant_filtros: ",cant_filtros)
-  
-}
-let inputs = document.getElementsByName("rango_edad")
-for(let i = 0; i < inputs.length; i++){
-  if(inputs[i].checked){
-    rango_edad_val = inputs[i].value
-    console.log("rango_edad_val: ",rango_edad_val)
   }
-
-}
-
+  let inputs = document.getElementsByName("rango_edad")
+  for(let i = 0; i < inputs.length; i++){
+    if(inputs[i].checked){
+      rango_edad_val = inputs[i].value
+      console.log("rango_edad_val: ",rango_edad_val)
+    }
+  }
 }
 
 function quitar_seleccion_edad(){
@@ -873,11 +872,10 @@ function quitar_seleccion_edad(){
     console.log("cant_filtros: ",cant_filtros)
     filtro_edad = false
     
-    const index = lista_orden_filtros.indexOf(13);
-    if (index > -1) {
-      lista_orden_filtros.splice(index, 1);
+    const index = lista_orden_filtros.indexOf(13)
+    if(index > -1) {
+      lista_orden_filtros.splice(index, 1)
     }    
-
 
     let inputs = document.getElementsByName("rango_edad")
     for(let i = 0; i < inputs.length; i++){
@@ -887,8 +885,8 @@ function quitar_seleccion_edad(){
   }
 }
 
-/* FILTRO ORIUNDO  */
 
+/* FILTRO ORIUNDO  */
 function get_oriundo(){
   if(filtro_oriundo == false){
     filtro_oriundo = true
@@ -898,29 +896,26 @@ function get_oriundo(){
     cant_filtros++
     console.log("cant_filtros: ",cant_filtros)
     lista_orden_filtros.push(14)
-    console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-
+    console.log("lista_orden_filtros.length: ",lista_orden_filtros.length)
   }
+
   let oriundo_inputs = document.getElementsByName("oriundo_input")
+
   if(oriundo_inputs[1].checked == true){
     document.getElementById("desplegable_oriundo").style = "display:none"
     nac_per_no = "NO"
     nac_per_si = ""
     console.log("nac_per_no: ",nac_per_no)
     document.getElementById("nivel_academico").selectedIndex = 0
-
     return   
-  }
-  else if(oriundo_inputs[0].checked == true){
+  } else if(oriundo_inputs[0].checked == true){
     document.getElementById("desplegable_oriundo").style = ""
     if(nac_per_si == ""){
       nac_per_si = "SI"
       console.log("nac_per_si: ",nac_per_si)
       nac_per_no = ""
     }
-
   }
- 
 }
 
 function onchange_desple_oriundo(){
@@ -935,42 +930,38 @@ function onchange_desple_oriundo(){
   }
 }
 
-
-
 function quitar_seleccion_oriundo(){
-  if(filtro_oriundo == true)
-    {
-      filtro_oriundo = false
-      cant_filtros_normales--
-      console.log("cant_filtros_normales: ",cant_filtros_normales)
-      cant_filtros--
-      console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-      console.log("cant_filtros: ",cant_filtros)
-      oriundo = document.getElementById("desplegable_oriundo")
-      oriundo.style = "display:none"
-      const index = lista_orden_filtros.indexOf(14);
-      if (index > -1) {
-        lista_orden_filtros.splice(index, 1);
-      }
-      oriundo_inputs = document.getElementsByName("oriundo_input")
-      for(let i = 0; i < oriundo_inputs.length; i++){
-          if(oriundo_inputs[i].checked){
-            oriundo_inputs[i].checked = false
-          }
-      }
-      departamento_nacimiento = ""
-      nac_per_no = ""
-      nac_per_si = ""
-
-      console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-
+  if(filtro_oriundo == true) {
+    filtro_oriundo = false
+    cant_filtros_normales--
+    console.log("cant_filtros_normales: ",cant_filtros_normales)
+    cant_filtros--
+    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    console.log("cant_filtros: ",cant_filtros)
+    oriundo = document.getElementById("desplegable_oriundo")
+    oriundo.style = "display:none"
+    const index = lista_orden_filtros.indexOf(14)
+    
+    if(index > -1) {
+      lista_orden_filtros.splice(index, 1)
     }
+
+    oriundo_inputs = document.getElementsByName("oriundo_input")
+
+    for(let i = 0; i < oriundo_inputs.length; i++){
+      if(oriundo_inputs[i].checked){
+        oriundo_inputs[i].checked = false
+      }
+    }
+    departamento_nacimiento = ""
+    nac_per_no = ""
+    nac_per_si = ""
+    console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
+  }
 }
 
- 
+
 /* FILTRO CARGO POSTULA */
-
-
 function get_cargo_postula(){
   if(filtro_cargo_postula == false){
     filtro_cargo_postula = true
@@ -983,17 +974,17 @@ function get_cargo_postula(){
     console.log("cant_filtros: ",cant_filtros)
   }
   let postula_desplegable = document.getElementById("cargo_postula")
-
   let postula_value = postula_desplegable.options[postula_desplegable.selectedIndex].value
 
   cargo_postula = postula_value 
+
   if(cargo_postula == "cargo_postula"){
     quitar_seleccion_postula()
   }
+
   console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
   console.log("cant_filtros: ",cant_filtros)
   console.log("cargo_postula: ", cargo_postula)
-
 }
 
 function quitar_seleccion_postula(){
@@ -1003,17 +994,16 @@ function quitar_seleccion_postula(){
     cant_filtros_normales--
     cant_filtros--
     document.getElementById("cargo_postula").selectedIndex = 0
- 
-    const index = lista_orden_filtros.indexOf(15);
-    if (index > -1) {
-      lista_orden_filtros.splice(index, 1);
-    }
 
+    const index = lista_orden_filtros.indexOf(15)
+    if(index > -1) {
+      lista_orden_filtros.splice(index, 1)
+    }
   }
 }
 
-/* FILTRO  ORGANIZACION POLITICA */
 
+/* FILTRO  ORGANIZACION POLITICA */
 function get_org_politica(){
   if(filtro_organizacion == false){
     cant_filtros++
@@ -1026,14 +1016,15 @@ function get_org_politica(){
 
   let org_politica_ = document.getElementById("select_org_politica")
   let org_politica_value = org_politica_.options[org_politica_.selectedIndex].value
+
   org_politica = org_politica_value
+
   if(org_politica == "default"){
     quitar_seleccion_org_politica()
   }
-  console.log("org_politica: ", org_politica)
-  
-}
 
+  console.log("org_politica: ", org_politica)
+}
 
 function quitar_seleccion_org_politica(){
   if(filtro_organizacion == true){
@@ -1046,18 +1037,18 @@ function quitar_seleccion_org_politica(){
     let select_ = document.getElementById("select_org_politica")
     select_.selectedIndex = 0
     org_politica = ""
-    const index = lista_orden_filtros.indexOf(16);
-    if (index > -1) {
-      lista_orden_filtros.splice(index, 1);
-    }
+    const index = lista_orden_filtros.indexOf(16)
 
+    if(index > -1) {
+      lista_orden_filtros.splice(index, 1)
+    }
   }
 }
 
-/* FILTRO DISTRITO ELECTORAL */
 
+/* FILTRO DISTRITO ELECTORAL */
 function get_distrito_electoral(){
-  if (filtro_distrito == false){
+  if(filtro_distrito == false){
     filtro_distrito = true
     cant_filtros_normales++
     cant_filtros++
@@ -1065,12 +1056,16 @@ function get_distrito_electoral(){
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
     console.log("cant_filtros: ", cant_filtros)
   }
+
   let distrito_ = document.getElementById("dist_electo")
   let distrito_value = distrito_.options[distrito_.selectedIndex].value
+
   console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
   console.log("cant_filtros: ",cant_filtros)
+
   //get del valor
   dist_electoral = distrito_value
+
   if(dist_electoral == "default"){
     quitar_seleccion_distrito()
   }
@@ -1084,47 +1079,10 @@ function quitar_seleccion_distrito(){
     cant_filtros--
     let select_ = document.getElementById("dist_electo")
     select_.selectedIndex = 0
-  const index = lista_orden_filtros.indexOf(17);
-  if (index > -1){
-    lista_orden_filtros.splice(index, 1);
-  }
-  }
-
-}
-/* CODIGO DE GRACE
-function get_demanda() {
-  let demanda_tipo = document.getElementById("demanda_tipo")
-  let demanda_tipo_value = demanda_tipo.options[demanda_tipo.selectedIndex].value
-
-  if(!filtro_sentencia_civil_tipos) cant_filtros++
-  
-  filtro_sentencia_civil_tipos = true
-  
-  console.log(demanda_tipo_value)
-  console.log(cant_filtros)
-
-  return demanda_tipo_value
-}
-
-
-
-function civil_cantidad() {
-  let civil_sentencia_list = document.getElementsByName("civil_sentencia")
-
-  if(!filtro_sentencia_civil_cantidad) cant_filtros++
-
-  filtro_sentencia_civil_cantidad = true
-
-
-
-  console.log(cant_filtros)
-
-  for(let i = 0; i < civil_sentencia_list.length; i++) {
-    if(civil_sentencia_list[i].checked) {
-      console.log("si " + civil_sentencia_list[i].value)
-      return civil_sentencia_list[i].value
+    const index = lista_orden_filtros.indexOf(17)
+    
+    if(index > -1){
+      lista_orden_filtros.splice(index, 1)
     }
   }
 }
-
-*/
