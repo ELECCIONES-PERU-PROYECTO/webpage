@@ -117,6 +117,32 @@ let filtro_distrito = false          //17
 let cant_filtros_normales = 0
 let cant_filtros_ob = 0
 
+function SendJSON() {
+  console.log("Empacando datos")
+  let data = {
+    "nivel_academico" : "concluyo_secundaria",
+    "cargos_previos_order" : "DESC",
+    "orden_cant_sentencia" : "",
+    "orden_cant_sentencia_oblig" : "",
+    "mat_demanda" : "",
+    "no_tiene_val" : "",
+    "orden_cant_ingreso" : "",
+    "orden_cant_inmueble" : "",
+    "orden_valor_inmueble" : "",
+    "orden_cant_mueble" : "",
+    "orden_valor_mueble" : "",
+    "orden_renuncias" : "",
+    "rango_edad_val" : "",
+    "nac_per_si" : "",
+    "nac_per_no" : "",
+    "departamento_nacimiento" : "",
+    "cargo_postula" : "",
+    "org_politica" : "",
+    "dist_electoral" : "",
+    "tipo_candidato_" : ""
+  }
+}
+
 function button_filter(){
   tipo_candidato_ = document.getElementsByName("tipo_candidato_filter")[0].id
 

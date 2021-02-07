@@ -49,3 +49,25 @@ async function getHojadeVida() {
     console.error(error)
   }
 }
+
+async function mainpage(){
+  console.log("loading mainpage")
+  try {
+    const response = await axios.get('')
+    console.log(response)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+async function filterpage(){
+  window.location = "http://127.0.0.1:8000/elecciones/candidatos"
+  console.log("loading filterpage")
+
+  try {
+    const response = await axios.get('/elecciones/candidatos')
+    console.log(response)
+  } catch (error) {
+    console.error(error)
+  }
+}
