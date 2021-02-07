@@ -524,7 +524,7 @@ def hojadevida_by_dni( request, dni_hoja_de_vida):
   if (len(dni_hoja_de_vida)!=8):
       return 
 
-  query_exp_lab = "SELECT DISTINCT  tiene_experiencia_laboralWHERE, centro_laboral , ocupacion ,ruc_empresa_laboral, direccion_laboral, desde_anhio, hasta_anhio,pais_laboral,departamento_laboral,provincia_laboral FROM experiencia_laboral  dni_candidato = '"+dni_hoja_de_vida+"'   AND tiene_experiencia_laboral = 'SI';"
+  query_exp_lab = "SELECT DISTINCT tiene_experiencia_laboral WHERE,centro_laboral,ocupacion,ruc_empresa_laboral, direccion_laboral, desde_anhio, hasta_anhio,pais_laboral,departamento_laboral,provincia_laboral FROM experiencia_laboral  dni_candidato = '"+dni_hoja_de_vida+"' AND tiene_experiencia_laboral = 'SI';"
   query_edu_basica = "select * from educacion_basica where dni_candidato ='"+dni_hoja_de_vida+"' LIMIT 1"
   
   print ("query_exp_lab: ",  query_exp_lab)
@@ -537,11 +537,12 @@ def hojadevida_by_dni( request, dni_hoja_de_vida):
   edubasica_ = EducacionBasica.objects.raw(query_edu_basica)
   return render(request,
                 'elecciones/index.html',
-                {   'nombre': nombre_,
+                {   
+                    'nombre': nombre_,
                     'datos_personales': datos_personales_,
                     'cargo_eleccion' : cargo_eleccion_,
-                'experiencia_laboral': experiencia_loboral_,
-                'educacion_basica':edubasica_
+                    'experiencia_laboral': experiencia_loboral_,
+                    'educacion_basica':edubasica_
                 })
 
 
