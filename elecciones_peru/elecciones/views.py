@@ -51,7 +51,7 @@ def function_filtros_ob(self, query_normal, normnob1, SELECT_candidato, WHERE_ca
           if len(self) >1 or ( normnob1 == True):
               subquery_list.append(subquery)
           else:
-              subquery = "SELECT DP.id, COUNT(BI.dni_candidato) AS conteo, DP.dni_candidato,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato+" FROM bien_inmueble AS BI JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_inmueble  = 'SI' AND " + WHERE_candidato+"  GROUP BY (DP.dni_candidato, DP.candidato, DP.organizacion_politica," + SELECT_candidato+ ") ORDER BY conteo " + self[i]             
+              subquery = "SELECT DP.id, COUNT(BI.dni_candidato) AS conteo, DP.dni_candidato,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato+" FROM bien_inmueble AS BI JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_inmueble  = 'SI' AND " + WHERE_candidato+"  GROUP BY (DP.id, DP.dni_candidato, DP.candidato, DP.organizacion_politica," + SELECT_candidato+ ") ORDER BY conteo " + self[i]             
               return subquery            
       elif valor == "8":  #valor inmuebles
           subquery = " SELECT SUM (BI.autovaluo) AS conteo, DP.dni_candidato FROM bien_inmueble AS BI JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_inmueble = 'SI' AND  "+   WHERE_candidato +"  GROUP BY (DP.dni_candidato)  "
@@ -511,38 +511,62 @@ def candidatos(request):
                 'elecciones/dashboard.html',
                 {'candidatos': candidatos})
 
-def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_eleccion_):
+def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   #expertiencia laboral = ExperienciaLaboral.objects.raw()
   '''  
   return render(request,
                 'elecciones/dashboard.html',
                 {'page': page_obj}) 
   '''
-
+  if cargo_postula_dato == "favicon.png":
+      return
   #print("dni: ",dni)
-  print("----cargo_eleccion_-----: ",cargo_eleccion_)
+  print("----cargo_eleccion_-----: ",cargo_postula_dato)
 
-  if (len(dni_hoja_de_vida)>8):
-      return 
-
-  query_exp_lab = "SELECT EP.id, tiene_experiencia_laboral , centro_laboral , ocupacion ,ruc_empresa_laboral, direccion_laboral, desde_anhio, hasta_anhio,pais_laboral,departamento_laboral,provincia_laboral FROM experiencia_laboral AS EP JOIN datos_personales AS DP USING (dni_candidato)  WHERE EP.dni_candidato = '"+dni_hoja_de_vida+"'   AND EP.tiene_experiencia_laboral = 'SI' AND DP.cargo_eleccion='"+cargo_eleccion_+"';"
-  query_edu_basica = "SELECT * from educacion_basica where dni_candidato ='"+dni_hoja_de_vida+"' LIMIT 1"
+  #if (len(dni_hoja_de_vida)>8 or len(cargo_eleccion_)>13):
+  #    return 
+  if cargo_postula_dato == "PRIMER":
+      cargo_postula_dato ="PRIMER VICEPRESIDENTE DE LA REPÚBLICA"
   
-  print ("query_exp_lab: ",  query_exp_lab)
+  elif cargo_postula_dato =="PRESIDENTE":
+      cargo_postula_dato = "PRESIDENTE DE LA REPÚBLICA"
+  elif cargo_postula_dato == "SEGUNDO":
+      cargo_postula_dato = "SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA"
+  elif cargo_postula_dato == "REPRESENTANTE":
+      cargo_postula_dato = "REPRESENTANTE ANTE EL PARLAMENTO ANDINO"
+  elif cargo_postula_dato== "CONGRESISTA":
+      cargo_postula_dato= "CONGRESISTA DE LA REPÚBLICA"
+  elif cargo_postula_dato == "PRIMER":
+      cargo_postula_dato = "PRIMER VICEPRESIDENTE DE LA REPÚBLICA"
 
-  print("dni_hoja_de_vida: ",dni_hoja_de_vida)     
+
+  
+  query_exp_lab =   "SELECT DISTINCT DP.id, centro_laboral,tiene_experiencia_laboral, ocupacion,ruc_empresa_laboral, direccion_laboral, desde_anhio,hasta_anhio,pais_laboral,departamento_laboral,provincia_laboral  FROM experiencia_laboral AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'"
+  query_edu_basica = "SELECT * from educacion_basica where dni_candidato ='"+dni_hoja_de_vida+"' LIMIT 1"
+  #query_if_basica = "SELECT DISTINCT DP.id, EP.tiene_experiencia_laboral  FROM experiencia_laboral AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'""
+
+  #print ("query_exp_lab: ",  query_exp_lab)
+  #print("dni_hoja_de_vida: ",dni_hoja_de_vida)     
+  
   nombre_ = DatosPersonales.objects.raw("SELECT id ,candidato  FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "' LIMIT 1")
+  cargo_eleccion_ = DatosPersonales.objects.raw("SELECT  id ,cargo_eleccion FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "'")
   datos_personales_ = DatosPersonales.objects.raw("SELECT DISTINCT * FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "' LIMIT 1 ")
-  cargo_eleccion_ = DatosPersonales.objects.raw("SELECT  id ,cargo_eleccion FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "'")  
-  experiencia_loboral_ = ExperienciaLaboral.objects.raw(query_exp_lab)  #formacion_academica_ = 
+    
+  ifexpe_ = ExperienciaLaboral.objects.raw( "SELECT DISTINCT DP.id, EP.tiene_experiencia_laboral  FROM experiencia_laboral AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+  experiencia_laboral_ = ExperienciaLaboral.objects.raw(query_exp_lab)  #formacion_academica_ = 
+  
   edubasica_ = EducacionBasica.objects.raw(query_edu_basica)
+  
+
+  
   return render(request,
                 'elecciones/index.html',
                 {   
                     'nombre': nombre_,
                     'datos_personales': datos_personales_,
+                    'ifexpe': ifexpe_,
                     'cargo_eleccion' : cargo_eleccion_,
-                    'experiencia_laboral': experiencia_loboral_,
+                    'experiencia_laboral': experiencia_laboral_,
                     'educacion_basica':edubasica_
                 })
 

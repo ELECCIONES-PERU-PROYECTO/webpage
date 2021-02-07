@@ -304,7 +304,7 @@
       <div class="col-twelve resume-header">			
         <h2>2. Experiencia Laboral</h2>
 		<br>
-		{% for experiencia in experiencia_laboral %}
+		{% for experiencia in ifexpe %}
         <div class="blocktext">
           <div class=”row”>
             <div class=”col-md-6″>
@@ -317,7 +317,9 @@
             </div>
           </div>
 				</div>
-	  </div> <!-- /resume-header -->
+
+	  </div>
+	  <!-- /resume-header -->
 	  {% endfor %}
 
 
@@ -1149,7 +1151,7 @@
 	     		<h2 class="h01">Información Adicional:</h2>
 
 		      <p class="lead">
-		      Información adicional feijfwjiwjfkwnfkjnwkjf
+		      Información adicional
 				</p>
 <!--
 				<div class="action">
