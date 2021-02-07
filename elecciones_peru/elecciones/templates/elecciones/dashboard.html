@@ -1014,37 +1014,16 @@
       <hr>
     </div> -->
     <!-- todos los candidatos -->
-    <div class="uk-container uk-container-expand uk-margin-top">
-      {% for candidato in page %}
-      <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-flex-middle uk-width-3-4@xl uk-width-1-1@m uk-width-3-4@s uk-flex-center uk-margin-bottom uk-margin-auto" uk-grid>
-        <div class="uk-text-center uk-padding-remove">
-          <img src="{{ candidato.url }}" width="155px" height="215px" alt="{{ candidato.candidato }}">
-        </div>
-        <div class="uk-width-expand@m uk-padding-right uk-padding-small candidato-card">
-          <div class="uk-grid uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-margin-remove uk-grid-match" uk-grid>
-            <div class="uk-text-small uk-margin-remove">
-              <p class="uk-text-muted uk-margin-remove">Nombres</p>
-              {{ candidato.candidato }}
-            </div>
-            <div class="uk-text-small uk-margin-remove">
-              <p class="uk-text-muted uk-margin-remove">Partido</p>
-              {{ candidato.organizacion_politica }}
-            </div>
-            <div class="uk-text-small uk-margin-remove" >
-              <p class="uk-text-muted uk-margin-remove"  >Cargo</p>
-              {{ candidato.cargo_eleccion }}
-            </div>
-            <div class="uk-text-small uk-margin-remove">
-              <p class="uk-text-muted uk-margin-remove">Hoja de Vida</p>
-              <a onclick="verHojadeVida(this)" class="dni_id" id={{candidato.dni_candidato}}+{{candidato.cargo_eleccion}} style="width: fit-content; height: fit-content;">Ver hoja de vida</a>
-            </div>
-          </div>
-        </div>
-      </div>
-        <!-- <div class="uk-card uk-card-default uk-child-width-1-1@s uk-child-width-1-2@m" uk-grid>
-          <div class="uk-card-media-left uk-cover-container" style="height: 200px; width: 150px;">
-            <img src="{{ candidato.url }}" alt="{{ candidato.candidato }}" style="width: 100%;" uk-cover>
-            <canvas width="600" height="400"></canvas>
+    {% if page %}
+      <div class="uk-container uk-container-expand uk-margin-top">
+        {% for candidato in page %}
+        <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-flex-middle uk-width-3-4@xl uk-width-1-1@m uk-width-3-4@s uk-flex-center uk-margin-bottom uk-margin-auto" uk-grid>
+          <div class="uk-text-center uk-padding-remove">
+            {% if candidato.url %}
+              <img src="{{ candidato.url }}" width="155px" height="215px" alt="{{ candidato.candidato }}">
+            {% else %}
+              <img src="{% static "images/candidato_img.png" %}" width="155px" height="215px" alt="{{ candidato.candidato }}">
+            {% endif %}
           </div>
           <div class="uk-width-expand@m uk-padding-right uk-padding-small candidato-card">
             <div class="uk-grid uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-margin-remove uk-grid-match" uk-grid>
