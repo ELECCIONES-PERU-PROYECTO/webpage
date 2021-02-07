@@ -51,7 +51,7 @@ def function_filtros_ob(self, query_normal, normnob1, SELECT_candidato, WHERE_ca
           if len(self) >1 or ( normnob1 == True):
               subquery_list.append(subquery)
           else:
-              subquery = "SELECT DP.id, COUNT(BI.dni_candidato) AS conteo, DP.dni_candidato,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato+" FROM bien_inmueble AS BI JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_inmueble  = 'SI' AND " + WHERE_candidato+"  GROUP BY (DP.id, DP.dni_candidato, DP.candidato, DP.organizacion_politica," + SELECT_candidato+ ") ORDER BY conteo " + self[i]             
+              subquery = "SELECT DP.id, COUNT(BI.dni_candidato) AS conteo, DP.dni_candidato,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato+" FROM bien_inmueble AS BI JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_inmueble  = 'SI' AND " + WHERE_candidato+"  GROUP BY (DP.id,DP.dni_candidato, DP.candidato, DP.organizacion_politica," + SELECT_candidato+ ") ORDER BY conteo " + self[i]             
               return subquery            
       elif valor == "8":  #valor inmuebles
           subquery = " SELECT SUM (BI.autovaluo) AS conteo, DP.dni_candidato FROM bien_inmueble AS BI JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_inmueble = 'SI' AND  "+   WHERE_candidato +"  GROUP BY (DP.dni_candidato)  "
@@ -556,7 +556,7 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   experiencia_laboral_ = ExperienciaLaboral.objects.raw(query_exp_lab)  #formacion_academica_ = 
   
   edubasica_ = EducacionBasica.objects.raw(query_edu_basica)
-  
+  educacion = EducacionBasica.objects.raw("")
 
   
   return render(request,
