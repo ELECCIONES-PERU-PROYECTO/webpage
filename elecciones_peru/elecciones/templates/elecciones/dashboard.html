@@ -6,7 +6,7 @@
   <!-- OFFCANVAS -->
   <div id="offcanvas-nav" class="uk-position-fixed" data-uk-offcanvas="flip: true; overlay: true; esc-close: true">
     <div class="uk-offcanvas-bar candidatos-sidebar uk-offcanvas-bar-animation uk-offcanvas-slide">
-      <button class="uk-offcanvas-close uk-close uk-icon uk-hidden@l" type="button" data-uk-close></button>
+      <button class="uk-offcanvas-close uk-close uk-icon uk-hidden@m" type="button" data-uk-close></button>
       <aside id="left-col" class="uk-light">
         <!-- <div class="left-logo uk-flex uk-flex-middle">
           <img class="custom-logo" src="img/dashboard-logo.svg" alt="">
@@ -21,7 +21,7 @@
           --------------------------------------------
           --------------------------------------------
         -->
-        <div class="left-nav-wrap"  id="filtros_candidatos">
+        <div class="left-nav-wrap" id="filtros_candidatos">
           <ul id="presidenciales" name="tipo_candidato_filter" class="uk-nav uk-nav-default uk-nav-parent-icon uk-margin-medium-top" data-uk-nav>
             <li class="uk-nav-header">Filtros</li>
             <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel Académico</a>
@@ -975,7 +975,7 @@
         <div class="uk-navbar-left">
           <ul class="uk-navbar-nav uk-hidden@m">
             <li class="uk-active uk-flex uk-flex-middle">
-              <a class="uk-padding-remove uk-flex uk-flex-row-reverse" data-uk-toggle href="#offcanvas-nav" data-uk-tooltip>
+              <a class="uk-padding-remove uk-flex uk-flex-row-reverse filtros-text" data-uk-toggle href="#offcanvas-nav" data-uk-tooltip>
                 <span class="uk-margin-small-left">Filtros</span>
               </a>
             </li>
@@ -1050,8 +1050,11 @@
       </div>
       {% include "elecciones/pagination.html" with page=page %}
     {% else %}
-      <div class="uk-container">
-        <span uk-icon="icon: settings; ratio: 3"></span>
+      <div class="uk-container uk-text-center no-results-container">
+        <span uk-icon="icon: settings; ratio: 2.3"></span>
+        <h5 class="uk-text-large uk-text-light uk-margin-remove">
+          Escoge al menos un filro para que aparezcan los resultados.
+        </h5>
       </div>
     {% endif %}
 </div>

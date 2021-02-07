@@ -3,8 +3,17 @@
 	background-color: #b62222;
 }
 
+/* -- No hover -- */
 .no-text-styles-hover:hover {
 	text-decoration: none;
+}
+
+/* -- No Results Container -- */
+.uk-container.no-results-container {
+	display: flex;
+	flex-direction: column;
+	height: calc(100vh - 82px);
+	justify-content: center;
 }
 
 /* -- Top navigation -- */
@@ -169,6 +178,11 @@
 @media screen and (max-width: 959px){
 	#offcanvas-nav {
 		display: none;
+	}
+
+	/* -- Filtros Text -- */
+	ul.uk-navbar-nav li a.filtros-text {
+		min-height: 52px;
 	}
 }
 
