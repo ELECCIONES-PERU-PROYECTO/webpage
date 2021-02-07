@@ -514,18 +514,22 @@ def candidatos(request):
                 {'candidatos': candidatos})
 
 
-def hojadevida_by_dni( request, dni_hoja_de_vida):
+def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_eleccion_):
   #expertiencia laboral = ExperienciaLaboral.objects.raw()
   '''  
   return render(request,
                 'elecciones/dashboard.html',
                 {'page': page_obj}) 
   '''
-  if (len(dni_hoja_de_vida)!=8):
+
+  #print("dni: ",dni)
+  #print("cargo: ",cargo)
+
+  if (len(dni_hoja_de_vida)>8):
       return 
 
-  query_exp_lab = "SELECT DISTINCT  tiene_experiencia_laboralWHERE, centro_laboral , ocupacion ,ruc_empresa_laboral, direccion_laboral, desde_anhio, hasta_anhio,pais_laboral,departamento_laboral,provincia_laboral FROM experiencia_laboral  dni_candidato = '"+dni_hoja_de_vida+"'   AND tiene_experiencia_laboral = 'SI';"
-  query_edu_basica = "select * from educacion_basica where dni_candidato ='"+dni_hoja_de_vida+"' LIMIT 1"
+  query_exp_lab = "SELECT DISTINCT  id  , tiene_experiencia_laboral , centro_laboral , ocupacion ,ruc_empresa_laboral, direccion_laboral, desde_anhio, hasta_anhio,pais_laboral,departamento_laboral,provincia_laboral FROM experiencia_laboral  WHERE dni_candidato = '"+dni_hoja_de_vida+"'   AND tiene_experiencia_laboral = 'SI';"
+  query_edu_basica = "SELECT * from educacion_basica where dni_candidato ='"+dni_hoja_de_vida+"' LIMIT 1"
   
   print ("query_exp_lab: ",  query_exp_lab)
 

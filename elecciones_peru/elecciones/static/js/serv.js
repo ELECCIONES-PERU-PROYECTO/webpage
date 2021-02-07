@@ -64,7 +64,7 @@ async function getUrl_orga(){
 
 async function getHojadeVida() {
   try {
-    const response = await axios.get("/candidato/hojadevida/?dni_hoja_de_vida="+dni_hoja_de_vida)
+    const response = await axios.get("/candidato/hojadevida/?dni_hoja_de_vida="+dni_hoja_de_vida+"/?cargo_postula_dato="+cargo_postula_dato)
     //const response = await axios.get('/candidatos/opc_edad/30-50/ASC')
     console.log(response)
   } catch (error) {
