@@ -120,145 +120,129 @@ let cant_filtros_ob = 0
 function button_filter(){
   tipo_candidato_ = document.getElementsByName("tipo_candidato_filter")[0].id
 
-  let lista_valores = [nivel_academico, cargos_previos_order, orden_cant_sentencia,
-    orden_cant_sentencia_oblig, mat_demanda, no_tiene_val, orden_cant_ingreso,orden_cant_inmueble, orden_valor_inmueble,
-    orden_cant_mueble, orden_valor_mueble, orden_renuncias, rango_edad_val, nac_per_si, nac_per_no, departamento_nacimiento,
-    cargo_postula, org_politica, dist_electoral, tipo_candidato_
+  let lista_valores = [
+    nivel_academico, cargos_previos_order, orden_cant_sentencia,
+    orden_cant_sentencia_oblig, mat_demanda, no_tiene_val, 
+    orden_cant_ingreso, orden_cant_inmueble, orden_valor_inmueble,
+    orden_cant_mueble, orden_valor_mueble, orden_renuncias, 
+    rango_edad_val, nac_per_si, nac_per_no, 
+    departamento_nacimiento, cargo_postula, org_politica, 
+    dist_electoral, tipo_candidato_
   ]
-  if (lista_orden_filtros.length == 0 ){
+
+  if(lista_orden_filtros.length == 0){
 		setTimeout(function(){
-			UIkit.notification('Escoja al menos un filtro');
-    }, 1000);
+			UIkit.notification('Escoja al menos un filtro')
+    }, 1000)
     return 
   }
-  else if(lista_valores[13]!= "" && lista_valores[15] == ""){
+  else if(lista_valores[13] != "" && lista_valores[15] == ""){
 		setTimeout(function(){
-			UIkit.notification('Especifique el distrito de nacimiento del filtro "Oriundo"');
-    }, 1000);
+			UIkit.notification('Especifique el distrito de nacimiento del filtro "Oriundo"')
+    }, 1000)
     return 
   }
   let url = "http://127.0.0.1:8000/elecciones/candidatos"
+  let x = 1
   
-   console.log(lista_orden_filtros)
-   let x = 1
-   for(let i = 0 ; i < lista_orden_filtros.length; i++){
-     if(lista_orden_filtros[i] == 1){
-       lista_valores[0] = lista_valores[0]+"("+x
-       //url = "/"+url+lista_valores[0]
-       x++
-     }
-     else if(lista_orden_filtros[i] == 2){
-       lista_valores[1] = lista_valores[1]+"("+x
-       //url = "/"+url+lista_valores[1]
-       x++
-     }
-     else if(lista_orden_filtros[i] == 3){
-       lista_valores[2] = lista_valores[2]+"("+x
-       //url = "/"+url+lista_valores[2]
-       x++
-     }
-     else if(lista_orden_filtros[i] == 4){
-       lista_valores[3] = lista_valores[3]+"("+x
-       //url = "/"+url+lista_valores[3]
-       x++
-     }
-     else if(lista_orden_filtros[i] == 5){
-       lista_valores[4] = lista_valores[4]+"("+x
-       //url = "/"+url+lista_valores[4]
-       x++
-     }
-     else if(lista_orden_filtros[i] == 6){
-       lista_valores[5] = lista_valores[5]+"("+x
-       //url = "/"+url+lista_valores[5]
-       x++
-     }
-     else if(lista_orden_filtros[i] == 7){
-       lista_valores[6] = lista_valores[6]+"("+x
-       //url = "/"+url+lista_valores[6]
-       x++
-     }
-     else if(lista_orden_filtros[i] == 8){
-       lista_valores[7] = lista_valores[7]+"("+x
-       //url = "/"+url+lista_valores[7]
-       x++
-     }
-     else if(lista_orden_filtros[i] == 9){
-       lista_valores[8] = lista_valores[8]+"("+x
-       //url = "/"+url+lista_valores[8]
-       x++
-     }
-     else if(lista_orden_filtros[i] == 10){
-       lista_valores[9] = lista_valores[9]+"("+x
-       //url = "/"+url+lista_valores[9]
-       x++
-     }
-     else if(lista_orden_filtros[i] == 11){
-       lista_valores[10] = lista_valores[10]+"("+x
-       //url = "/"+url+lista_valores[10]
-       x++
-     }
-     else if(lista_orden_filtros[i] == 12){
-       lista_valores[11] = lista_valores[11]+"("+x
-       //url = "/"+url+lista_valores[11]
-       x++
-     }
-     else if(lista_orden_filtros[i] == 13){
-       lista_valores[12] = lista_valores[12]+"("+x
-       //url = "/"+url+lista_valores[12]
-       console.log("lista_valores[12] ",lista_valores[12])
-       x++
-     }
-     else if(lista_orden_filtros[i] == 14){
-        console.log("i ",i)
+  for(let i = 0; i < lista_orden_filtros.length; i++){
+    if(lista_orden_filtros[i] == 1){
+      lista_valores[0] = lista_valores[0] + "(" + x
+      x++
+    }
+    else if(lista_orden_filtros[i] == 2){
+      lista_valores[1] = lista_valores[1] + "(" + x
+      x++
+    }
+    else if(lista_orden_filtros[i] == 3){
+      lista_valores[2] = lista_valores[2] + "(" + x
+      x++
+    }
+    else if(lista_orden_filtros[i] == 4){
+      lista_valores[3] = lista_valores[3] + "(" + x
+      x++
+    }
+    else if(lista_orden_filtros[i] == 5){
+      lista_valores[4] = lista_valores[4] + "(" + x
+      x++
+    }
+    else if(lista_orden_filtros[i] == 6){
+      lista_valores[5] = lista_valores[5] + "(" + x
+      x++
+    }
+    else if(lista_orden_filtros[i] == 7){
+      lista_valores[6] = lista_valores[6] + "(" + x
+      x++
+    }
+    else if(lista_orden_filtros[i] == 8){
+      lista_valores[7] = lista_valores[7] + "(" + x
+      x++
+    }
+    else if(lista_orden_filtros[i] == 9){
+      lista_valores[8] = lista_valores[8] + "(" + x
+      x++
+    }
+    else if(lista_orden_filtros[i] == 10){
+      lista_valores[9] = lista_valores[9] + "(" + x
+      x++
+    }
+    else if(lista_orden_filtros[i] == 11){
+      lista_valores[10] = lista_valores[10] + "(" + x
+      x++
+    }
+    else if(lista_orden_filtros[i] == 12){
+      lista_valores[11] = lista_valores[11] + "(" + x
+      x++
+    }
+    else if(lista_orden_filtros[i] == 13){
+      lista_valores[12] = lista_valores[12] + "(" + x
+      x++
+    }
+    else if(lista_orden_filtros[i] == 14){
+      console.log("i ",i)
       if (lista_valores[13] == ""){
-        lista_valores[14] = lista_valores[14]+"("+x
-        //url = "/"+url+lista_valores[13]
+        lista_valores[14] = lista_valores[14] + "(" + x
         console.log("lista_valores[13] ",lista_valores[13])
-        x++}
-       
-      else {
-        lista_valores[13] = lista_valores[13]+"("+x
-       //url = "/"+url+lista_valores[13]
-       console.log("lista_valores[13] ",lista_valores[13])
-       x++}
+        x++
+      } else {
+        lista_valores[13] = lista_valores[13] + "(" + x
+        console.log("lista_valores[13] ",lista_valores[13])
+        x++
       }
-     else if(lista_orden_filtros[i] == 15){
-       lista_valores[16] = lista_valores[16]+"("+x
-       //url = "/"+url+lista_valores[16]
-       x++
-     }
-     else if(lista_orden_filtros[i] == 16){
-       lista_valores[17] = lista_valores[17]+"("+x
-       //url = "/"+url+lista_valores[17]
-       x++
-     }
-     else if(lista_orden_filtros[i] == 17){
-       lista_valores[18] = lista_valores[18]+"("+x
-       //url = "/"+url+lista_valores[18]
-       x++
-     }
-     else if(lista_orden_filtros[i] == 18){
-       lista_valores[19] = lista_valores[19]+"("+x
-       //url = "/"+url+lista_valores[19]
-       x++
-     }
-     else if(lista_orden_filtros[i] == 19){
-       lista_valores[20] = lista_valores[20]+"("+x
-       //url = "/"+url+lista_valores[20]
-       x++
-     }
-  console.log(lista_valores)
- 
-   }
-   console.log(lista_valores)
-   for (let i = 0  ; i < lista_valores.length ;i++){
-     if( lista_valores[i] != ""){
-       url = url + "/"+ lista_valores[i]
-     }
-     else{
-       url = url + "/unk"
-     }
-   }
+    }
+    else if(lista_orden_filtros[i] == 15){
+      lista_valores[16] = lista_valores[16] + "(" + x
+      x++
+    }
+    else if(lista_orden_filtros[i] == 16){
+      lista_valores[17] = lista_valores[17] + "(" + x
+      x++
+    }
+    else if(lista_orden_filtros[i] == 17){
+      lista_valores[18] = lista_valores[18] + "(" + x
+      x++
+    }
+    else if(lista_orden_filtros[i] == 18){
+      lista_valores[19] = lista_valores[19] + "(" + x
+      x++
+    }
+    else if(lista_orden_filtros[i] == 19){
+      lista_valores[20] = lista_valores[20] + "(" + x
+      x++
+    }
+  }
+  
+  console.log("LISTA FINAL DE VALORES ", lista_valores)
+
+  // Apendea los valores de la lista de valores a la url
+  for (let i = 0; i < lista_valores.length; i++){
+    if( lista_valores[i] != ""){
+      url = url + "/"+ lista_valores[i]
+    }
+    else{
+      url = url + "/unk"
+    }
+  }
   console.log(url)
   window.history.pushState("object or string", "Title", url);
 
@@ -523,7 +507,7 @@ function quitar_seleccion_sentencias(){
       lista_orden_filtros.splice(index, 1);
     }
     let inputs = document.getElementsByName("cant_senten")
-    for(let i = 0  ; i < inputs.length;i++){
+    for(let i = 0; i < inputs.length; i++){
       if(inputs[i].checked){
         inputs[i].checked = false
       }
@@ -545,7 +529,7 @@ function quitar_seleccion_sentencias(){
       lista_orden_filtros.splice(index, 1);
     }
     let inputs = document.getElementsByName("cant_senten_oblig")
-    for(let i = 0  ; i < inputs.length;i++){
+    for(let i = 0; i < inputs.length; i++){
       if(inputs[i].checked){
         inputs[i].checked = false
       }
@@ -567,7 +551,7 @@ function quitar_seleccion_sentencias(){
       lista_orden_filtros.splice(index, 1);
     }
     let inputs = document.getElementsByName("opc_mat_demanda")
-    for(let i = 0  ; i < inputs.length;i++){
+    for(let i = 0; i < inputs.length; i++){
       if(inputs[i].checked){
         inputs[i].checked = false
       }
@@ -605,7 +589,7 @@ function noTiene_opcion(element){
         lista_orden_filtros.splice(index, 1);
       }
       let inputs = document.getElementsByName("cant_senten")
-      for(let i = 0  ; i < inputs.length;i++){
+      for(let i = 0; i < inputs.length; i++){
         if(inputs[i].checked){
           inputs[i].checked = false
         }
@@ -627,7 +611,7 @@ function noTiene_opcion(element){
         lista_orden_filtros.splice(index, 1);
       }
       let inputs = document.getElementsByName("cant_senten_oblig")
-      for(let i = 0  ; i < inputs.length;i++){
+      for(let i = 0; i < inputs.length; i++){
         if(inputs[i].checked){
           inputs[i].checked = false
         }
@@ -649,7 +633,7 @@ function noTiene_opcion(element){
         lista_orden_filtros.splice(index, 1);
       }
       let inputs = document.getElementsByName("opc_mat_demanda")
-      for(let i = 0  ; i < inputs.length;i++){
+      for(let i = 0; i < inputs.length; i++){
         if(inputs[i].checked){
           inputs[i].checked = false
         }
@@ -826,7 +810,7 @@ function get_renuncia(){
     lista_orden_filtros.push(12)
   }
   let inputs = document.getElementsByName("cantidad_renuncia")
-  for(let i  = 0 ; i < inputs.length ; i++){
+  for(let i  = 0; i < inputs.length; i++){
     if(inputs[i].checked){
       orden_renuncias = inputs[i].value
       console.log("orden_renuncias, ", orden_renuncias)
@@ -846,7 +830,7 @@ function quitar_seleccion_renuncia(){
     console.log("cant_filtros_ob: ", cant_filtros_ob)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
     console.log("cant_filtros: ",cant_filtros)
-    for(let i = 0 ; i < inputs.length; i++){
+    for(let i = 0; i < inputs.length; i++){
       inputs[i].checked = false
   
     }
@@ -969,7 +953,7 @@ function quitar_seleccion_oriundo(){
         lista_orden_filtros.splice(index, 1);
       }
       oriundo_inputs = document.getElementsByName("oriundo_input")
-      for(let i = 0 ; i < oriundo_inputs.length ; i++){
+      for(let i = 0; i < oriundo_inputs.length; i++){
           if(oriundo_inputs[i].checked){
             oriundo_inputs[i].checked = false
           }
