@@ -3,6 +3,10 @@
 	background-color: #b62222;
 }
 
+.no-text-styles-hover:hover {
+	text-decoration: none;
+}
+
 /* -- Top navigation -- */
 #top-head {
 	z-index: 9;
@@ -26,7 +30,7 @@
   font-size: 0.85rem;
 }
 .navbar-logo {
-	background-color: #222A30;
+	background-color: #222;
 	margin-left: -12px;
 }
 /* Left bar */
@@ -37,7 +41,7 @@
   bottom:0;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: #222A30;
+  background-color: #222;
   width: 240px;
   z-index:2;
   transition: height 0.3s ease-out;
@@ -99,7 +103,7 @@
 .bar-bottom {
 	border-top: 1px solid rgba(255,255,255,0.07);
 	padding: 15px 0;
-   background-color: #222A30;
+   background-color: #222;
    position: fixed;
    left: 0;
    right: 0;
@@ -149,11 +153,23 @@
 	}
 }
 
+#offcanvas-nav {
+	display: flex;
+}
+#offcanvas-nav .candidatos-sidebar {
+	width: 240px;
+}
+
 @media screen and (max-width: 639px){
 	.candidato-card .uk-grid-small>* {
 		padding-left: 0 !important;
 	}
+}
 
+@media screen and (max-width: 959px){
+	#offcanvas-nav {
+		display: none;
+	}
 }
 
 #top-head [class*="uk-navbar-dropdown-bottom"] {

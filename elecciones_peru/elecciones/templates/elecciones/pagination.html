@@ -1,15 +1,24 @@
-<div class="pagination">
+<div class="pagination uk-text-center uk-margin">
   <span class="step-links">
-    {% if page.has_previous %}
-      <a href="?page=1">&laquo; first</a>
-      <a href="?page={{ page.previous_page_number }}">Previous</a>
-    {% endif %}
     <span class="current">
-      Page {{ page.number }} of {{ page.paginator.num_pages }}.
+      Página {{ page.number }} de {{ page.paginator.num_pages }}
     </span>
+    <br>
+    {% if page.has_previous %}
+      <a href="?page=1" class="no-text-styles-hover">
+        <span uk-icon="icon: chevron-double-left; ratio: 1.5" title="Primero"></span>
+      </a>
+      <a href="?page={{ page.previous_page_number }}" class="no-text-styles-hover">
+        <span uk-icon="icon: chevron-left; ratio: 1.5" title="Anterior"></span>
+      </a>
+    {% endif %}
     {% if page.has_next %}
-      <a href="?page={{ page.next_page_number }}">Next</a>
-      <a href="?page={{ page.paginator.num_pages }}">last &raquo;</a>
+      <a href="?page={{ page.next_page_number }}" class="no-text-styles-hover">
+        <span uk-icon="icon: chevron-right; ratio: 1.5" title="Último"></span>
+      </a>
+      <a href="?page={{ page.paginator.num_pages }}" class="no-text-styles-hover">
+        <span uk-icon="icon: chevron-double-right; ratio: 1.5" title="Siguiente"></span>
+      </a>
     {% endif %}
   </span>
 </div>

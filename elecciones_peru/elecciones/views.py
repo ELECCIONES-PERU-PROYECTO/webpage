@@ -541,11 +541,12 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_eleccion_):
   edubasica_ = EducacionBasica.objects.raw(query_edu_basica)
   return render(request,
                 'elecciones/index.html',
-                {   'nombre': nombre_,
+                {   
+                    'nombre': nombre_,
                     'datos_personales': datos_personales_,
                     'cargo_eleccion' : cargo_eleccion_,
-                'experiencia_laboral': experiencia_loboral_,
-                'educacion_basica':edubasica_
+                    'experiencia_laboral': experiencia_loboral_,
+                    'educacion_basica':edubasica_
                 })
 
 
