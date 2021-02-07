@@ -1050,7 +1050,9 @@
       </div>
       {% include "elecciones/pagination.html" with page=page %}
     {% else %}
-      div
+      <div class="uk-container">
+        <span uk-icon="icon: settings; ratio: 3"></span>
+      </div>
     {% endif %}
 </div>
   <!-- /CONTENT -->
