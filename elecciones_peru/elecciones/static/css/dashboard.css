@@ -3,6 +3,10 @@
 	background-color: #b62222;
 }
 
+.no-text-styles-hover:hover {
+	text-decoration: none;
+}
+
 /* -- Top navigation -- */
 #top-head {
 	z-index: 9;
