@@ -446,14 +446,26 @@
 										<i class="fa fa-graduation-cap"></i>
 									</div>
 									<div class="timeline-header">
+										{% if estudioinsti.carrera_tecnica == "NULL" %}
+										<h3></h3>
+										{% else %}
 										<h3>{{estudioinsti.carrera_tecnica}}</h3>
-										<p>Concluyó estudios: {{estudioinsti.tiene_estudio_tecnico}}</p>  
+										{% endif %}
+										{% if estudioinsti.concluyo_estudio_tecnico == "NULL" %}
+										<p></p>  
+										{% else %}
+										<p>Concluyó estudios: {{estudioinsti.concluyo_estudio_tecnico}}</p>  
+										{% endif %}
 									</div>
 									<div class="timeline-content">
+										{% if estudioinsti.centro_estudio_tecnico == "NULL" %}
+										<h4></h4>
+										{% else  %}
 										<h4>{{estudioinsti.centro_estudio_tecnico}}</h4>
+										{% endif %}
 										<ul>
 											{% if estudioinsti.comentario_estudio_tecnico == "NULL"%}
-											<li>Comentario: -</li>
+											<li></li>
 											{% else %}
 											<li>Comentario: {{estudioinsti.comentario_estudio_tecnico}}</li>
 											{% endif %}
@@ -461,7 +473,6 @@
 									</div>
 								</div> <!-- /timeline-block -->
 							{% endfor %}
-
 						</div> <!-- /timeline-wrap --> 
 					</div>
 
@@ -504,7 +515,9 @@
 									</div>
 									<div class="timeline-header">
 										<h3>{{estudios_no.carrera_no_universitaria}}</h3>
+										{% if estudios_no.concluyo_estudio_no_universitario %}
 										<p>Concluyó estudios: {{estudios_no.concluyo_estudio_no_universitario}}</p>  
+										{% endif %}
 									</div>
 									<div class="timeline-content">
 										<h4>{{estudios_no.centro_estudio_no_universitario}}</h4>
@@ -558,7 +571,52 @@
 				</div>		
 			</div>
 		</div>
-
+		<div class="col-twelve resume-header">
+			<div class="blocktext">
+			<div class="row">
+					<div class="col-md-6">
+						<h2 class="form-control">Estudios Postgrado</h2> 
+					</div>
+				</div>		
+				<div class="row">
+					<div class="col-md-6">
+						<h3 class="form-control">¿Tiene estudios universitarios?</h3> 
+					</div>
+					<div class=”col-md-6″>
+						{% for estudio in estudio_postgrado %}
+							{% if estudio.tiene_postgrado == "SI" %}
+								<h3 class=”form-control”>{{estudio.tiene_postgrado}}</h3>
+							{% else %}
+							<h3 class=”form-control”>NO</h3>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="col-twelve">
+						<div class="timeline-wrap">
+							{% for estudios_post in estudios_en_postgrado %}
+								<div class="timeline-block">
+									<div class="timeline-ico">
+										<i class="fa fa-graduation-cap"></i>
+									</div>
+									<div class="timeline-header">
+										<h3>{{estudios_post.especialidad}}</h3>
+										<p>Concluyó estudios: {{estudios_post.concluyo_estudio_postgrado}}</p>  
+									</div>
+									<div class="timeline-content">
+										<h4>{{estudios_post.centro_estudio_postgrado}}</h4>	
+										<ul>
+											<li>Año de obtención: {{estudios_post.anhio_obtencion_postgrado}}</li>
+											<li>Es egresado: {{estudios_post.es_egresado_postgrado}} </li>
+											<li>Comentario:  {{estudios_post.comentario_estudio_postgrado}} </li>
+										</ul>
+									</div>
+								</div> <!-- /timeline-block -->
+							{% endfor %}
+						</div> <!-- /timeline-wrap --> 
+					</div>
+				</div>		
+			</div>
+		</div>
 	   </div>
 
 <!--POSTGRADO-->

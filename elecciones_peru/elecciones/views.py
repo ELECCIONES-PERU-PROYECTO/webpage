@@ -401,6 +401,7 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
                 'elecciones/dashboard.html',
                 {'page': page_obj}) 
 
+
 def filter_function_orga(request, filtro_id, info_extra, orden):
   query_total = "select * from datos_personales;"
   print("filtro_id: ",filtro_id)
@@ -454,7 +455,7 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
     query_total = "SELECT id ,COUNT (dni_candidato) AS conteo, organizacion_politica FROM datos_personales  WHERE departamento_nacimiento = '"+ info_extra+"' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
   
   #elif filtro_id =="opc_no":
-  #    query_total = "S"
+#    query_total = "S"
 
   elif filtro_id =="elecvsnacimiento_name":
     query_total = "SELECT id ,COUNT (dni_candidato) AS conteo, organizacion_politica  FROM datos_personales  WHERE departamento_nacimiento <> distrito_elec AND  distrito_elec <> 'PERUANOS RESIDENTES EN EL EXTRANJERO' AND distrito_elec <> 'LIMA PROVINCIAS' GROUP BY (organizacion_politica) ORDER BY (conteo) "+orden
@@ -493,6 +494,14 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
                 'elecciones/dashboard.html',
                 {'page': page_obj})
 
+
+def test_query(request, nivel_academico):
+  print("test_query: NIVEL ACADEMICO ", nivel_academico)
+  test = DatosPersonales.objects.raw(
+    "select * from datos_personales;"
+  )
+  return render(request,'elecciones/dashboard.html',{'test': test})
+
 def candidatos(request):
   candidatos = DatosPersonales.objects.raw(
     "select * from datos_personales;"
@@ -502,7 +511,7 @@ def candidatos(request):
                 'elecciones/dashboard.html',
                 {'candidatos': candidatos})
 
-def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_eleccion_):
+def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   #expertiencia laboral = ExperienciaLaboral.objects.raw()
   '''  
   return render(request,
@@ -542,7 +551,7 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_eleccion_):
   nombre_ = DatosPersonales.objects.raw("SELECT id ,candidato  FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "' LIMIT 1")
   datos_personales_ = DatosPersonales.objects.raw("SELECT DISTINCT * FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "' LIMIT 1 ")
   cargo_eleccion_ = DatosPersonales.objects.raw("SELECT  id ,cargo_eleccion FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "'")  
-  experiencia_loboral_ = ExperienciaLaboral.objects.raw(query_exp_lab)  #formacion_academica_ = 
+  experiencia_laboral_ = ExperienciaLaboral.objects.raw(query_exp_lab)  #formacion_academica_ = 
   edubasica_ = EducacionBasica.objects.raw(query_edu_basica)
   
   edu_tecnic_ = EstudioTecnico.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_estudio_tecnico FROM estudio_tecnico AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE EP.centro_estudio_tecnico != 'null' AND  DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
@@ -558,7 +567,7 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_eleccion_):
 
   
   edu_post_ = EstudioPostgrado.objects.raw("SELECT DISTINCT DP.id, EP.tiene_postgrado  FROM estudio_postgrado AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE  DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
-
+  estudios_en_postgrado_ = EstudioPostgrado.objects.raw("SELECT DISTINCT DP.id , especialidad,centro_estudio_postgrado , concluyo_estudio_postgrado, es_maestro, es_doctor,anhio_obtencion_postgrado,  comentario_estudio_postgrado, es_egresado_postgrado FROM estudio_postgrado AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
   return render(request,
                 'elecciones/index.html',
                 {   
@@ -573,14 +582,13 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_eleccion_):
                     'estudio_postgrado':edu_post_,
                     'estudios_en_institutos': estudios_en_institutos_,
                     'estudios_en_la_u': estudio_univs,
-                    'estudios_no_universitarios': estudios_no_universitarios_
-                    #'estudios_en_postgrado':
+                    'estudios_no_universitarios': estudios_no_universitarios_,
+                    'estudios_en_postgrado': estudios_en_postgrado_
                 })
 
 def mainpage(request):
   return render(request,'elecciones/landingpage.html',{})
 
-def test(request):
-  print("--------------------------------------------- REQUEST ---------------------------------------------")
-  print(request.user)
-  return render(request,'elecciones/test.html', {})
+def filterpage(request):
+  print("Pasa por aqui la filterpage")
+  return render(request,'elecciones/dashboard.html',{})
