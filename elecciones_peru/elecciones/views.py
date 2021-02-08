@@ -513,11 +513,7 @@ def candidatos(request):
 
 def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   #expertiencia laboral = ExperienciaLaboral.objects.raw()
-  '''  
-  return render(request,
-                'elecciones/dashboard.html',
-                {'page': page_obj}) 
-  '''
+
   if cargo_postula_dato == "favicon.png":
       return
   print("dni_hoja_de_vida: ",dni_hoja_de_vida)
