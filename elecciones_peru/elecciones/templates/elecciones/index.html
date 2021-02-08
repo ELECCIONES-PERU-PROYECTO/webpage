@@ -307,10 +307,7 @@
 						<div class="col-md-6">
 							<h2 class="form-control">Educación Básica Regular</h2> 
 						</div>
-					</div>
-					<div class="blocktext">
-						<div class="row" style="padding-top: 2%">
-							<div class="col-md-6">
+													<div class="col-md-6">
 								<h3 class="form-control">¿Concluyó estudios primarios?</h3> 
 							</div>
 							<div class="col-md-6"> 
@@ -319,6 +316,10 @@
 								{% else %}
 								<h3 class="form-control">{{basica.concluyo_primaria}}</h3> {% endif %} 
 							</div>
+					</div>
+					<div class="blocktext">
+						<div class="row" style="padding-top: 2%">
+
 						</div>
 						<div class="row">
 							<div class="col-md-6">
@@ -340,8 +341,6 @@
 						<div class="col-md-6">
 							<h2 class="form-control">Estudios Técnicos</h2> 
 						</div>
-					</div>
-					<div class="row">
 						<div class="col-md-6">
 							<h3 class="form-control">¿Tiene estudios técnicos?</h3> 
 						</div>
@@ -354,6 +353,8 @@
 								{% endif %} 
 								{% endfor %} 
 						</div>
+					</div>
+					<div class="row">
 						<div class="col-twelve">
 							<div class="timeline-wrap"> 
 								{% for estudioinsti in estudios_en_institutos %}
@@ -400,9 +401,8 @@
 				<div class="blocktext">
 					<div class="row">
 						<div class="col-md-6">
-							<h2 class="form-control">Estudios No Universitarios</h2> </div>
-					</div>
-					<div class="row">
+							<h2 class="form-control">Estudios No Universitarios</h2> 
+						</div>
 						<div class="col-md-6">
 							<h3 class="form-control">¿Tiene estudios no universitarios?</h3> </div>
 						<div class=”col-md-6″> 
@@ -411,7 +411,12 @@
 							<h3 class=”form-control”>{{estudio.tiene_estudio_no_universitario}}</h3> 
 							{% else %}
 							<h3 class=”form-control”>NO</h3> {% endif %} 
-							{% endfor %} </div>
+							{% endfor %}
+						</div>
+					
+					</div>
+					<div class="row">
+
 						<div class="col-twelve">
 							<div class="timeline-wrap"> 
 								{% for estudios_no in estudios_no_universitarios %}
@@ -437,18 +442,21 @@
 				<div class="blocktext">
 					<div class="row">
 						<div class="col-md-6">
-							<h2 class="form-control">Estudios Universitarios</h2> </div>
-					</div>
-					<div class="row">
+							<h2 class="form-control">Estudios Universitarios</h2> 
+						</div>
 						<div class="col-md-6">
-							<h3 class="form-control">¿Tiene estudios universitarios?</h3> </div>
+							<h3 class="form-control">¿Tiene estudios universitarios?</h3> 
+						</div>
 						<div class=”col-md-6″> 
 							{% for estudio in estudio_univ %} 
 							{% if estudio.tiene_estudio_universitario == "SI" %}
 							<h3 class=”form-control”>{{estudio.tiene_estudio_universitario}}</h3> 
 							{% else %}
 							<h3 class=”form-control”>NO</h3> {% endif %} 
-							{% endfor %} </div>
+							{% endfor %} 
+						</div>
+					</div>
+					<div class="row">
 						<div class="col-twelve">
 							<div class="timeline-wrap"> 
 								{% for estudios_unv in estudios_en_la_u %}
@@ -471,14 +479,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-twelve resume-header">
+		<div class="row resume-timeline">
+			<div class="col-twelve resume-header">
 			<div class="blocktext">
 			<div class="row">
 					<div class="col-md-6">
 						<h2 class="form-control">Estudios Postgrado</h2> 
 					</div>
-				</div>		
-				<div class="row">
 					<div class="col-md-6">
 						<h3 class="form-control">¿Tiene estudios universitarios?</h3> 
 					</div>
@@ -491,6 +498,8 @@
 							{% endif %}
 						{% endfor %}
 					</div>
+				</div>		
+				<div class="row">
 					<div class="col-twelve">
 						<div class="timeline-wrap">
 							{% for estudios_post in estudios_en_postgrado %}
@@ -516,8 +525,9 @@
 					</div>
 				</div>		
 			</div>
+			</div>
 		</div>
-	   </div>
+	</div>
 
 <!--POSTGRADO-->
 
@@ -532,30 +542,7 @@
 			<div class="timeline-wrap">
 				<!--SE AÑADE DINAMICAMENTE CADA BLOCK SEGÚN EL N° DE EXPERIENCIAS LABORALES-->
 				<!--timeline-block == UNA EXPERIENCIA LABORAL-->
-				{% for experiencia in experiencia_laboral %}
-				<div class="timeline-block">
-					<div class="timeline-ico"> <i class="fa fa-briefcase"></i> </div>
-					<!--VAR : ocupacion -->
-					<div class="timeline-header">
-						<h3>{{experiencia.ocupacion}}</h3>
-						<!--VAR: desde_anhio - VAR: hasta_anhio  -->
-						<p>{{experiencia.desde_anhio}} - {{experiencia.hasta_anhio}} </p>
-					</div>
-					<!--VAR: centro_laboral -->
-					<div class="timeline-content">
-						<h4>{{experiencia.centro_laboral}}</h4>
-						<!--VAR: direccion_laboral VAR:ruc_empresa_laboral  VAR:pais_laboral VAR:departamento_laboral VAR:provincia_laboral -->
-						<ul>
-							<li>{{experiencia.direccion_laboral}}</li>
-							<li>RUC empresa: {{experiencia.ruc_empresa_laboral}} </li>
-							<li>País: {{experiencia.pais_laboral}} </li>
-							<li>Departamento: {{experiencia.departamento_laboral}}</li>
-							<li>Provincia: {{experiencia.provincia_laboral}} </li>
-						</ul>
-					</div>
-				</div>
-				<!-- /timeline-block -->
-				{% endfor %}
+				
 				<!--<div class="timeline-block">
 
 					<div class="timeline-ico">
