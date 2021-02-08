@@ -520,14 +520,13 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   '''
   if cargo_postula_dato == "favicon.png":
       return
-  #print("dni: ",dni)
+  print("dni_hoja_de_vida: ",dni_hoja_de_vida)
   print("----cargo_eleccion_-----: ",cargo_postula_dato)
 
   #if (len(dni_hoja_de_vida)>8 or len(cargo_eleccion_)>13):
   #    return 
   if cargo_postula_dato == "PRIMER":
       cargo_postula_dato ="PRIMER VICEPRESIDENTE DE LA REPÚBLICA"
-  
   elif cargo_postula_dato =="PRESIDENTE":
       cargo_postula_dato = "PRESIDENTE DE LA REPÚBLICA"
   elif cargo_postula_dato == "SEGUNDO":
@@ -539,10 +538,8 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   elif cargo_postula_dato == "PRIMER":
       cargo_postula_dato = "PRIMER VICEPRESIDENTE DE LA REPÚBLICA"
 
-
-  
-  query_exp_lab =   "SELECT DISTINCT DP.id, centro_laboral,tiene_experiencia_laboral, ocupacion,ruc_empresa_laboral, direccion_laboral, desde_anhio,hasta_anhio,pais_laboral,departamento_laboral,provincia_laboral  FROM experiencia_laboral AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'"
-  query_edu_basica = "SELECT * from educacion_basica where dni_candidato ='"+dni_hoja_de_vida+"' LIMIT 1"
+  query_exp_lab =   " SELECT DISTINCT DP.id, centro_laboral,tiene_experiencia_laboral, ocupacion,ruc_empresa_laboral, direccion_laboral, desde_anhio,hasta_anhio,pais_laboral,departamento_laboral,provincia_laboral  FROM experiencia_laboral AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'"
+  query_edu_basica = " SELECT * from educacion_basica where dni_candidato ='"+dni_hoja_de_vida+"' LIMIT 1"
   #query_if_basica = "SELECT DISTINCT DP.id, EP.tiene_experiencia_laboral  FROM experiencia_laboral AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'""
 
   #print ("query_exp_lab: ",  query_exp_lab)
@@ -556,9 +553,21 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   experiencia_laboral_ = ExperienciaLaboral.objects.raw(query_exp_lab)  #formacion_academica_ = 
   
   edubasica_ = EducacionBasica.objects.raw(query_edu_basica)
-  educacion = EducacionBasica.objects.raw("")
+  
+  edu_tecnic_ = EstudioTecnico.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_estudio_tecnico FROM estudio_tecnico AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE EP.centro_estudio_tecnico != 'null' AND  DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+  estudios_en_institutos_ = EstudioTecnico.objects.raw(" SELECT DISTINCT DP.id , carrera_tecnica ,centro_estudio_tecnico, concluyo_estudio_tecnico, comentario_estudio_tecnico FROM estudio_tecnico AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+
+
+  edu_uni_ = EstudioUniversitario.objects.raw("SELECT DISTINCT DP.id, EP.tiene_estudio_universitario  FROM estudio_universitario AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+  estudio_univs = EstudioUniversitario.objects.raw("SELECT DISTINCT DP.id ,carrera_universitaria,anhio_obtencion_universitario ,universidad , concluyo_estudio_universitario, comentario_estudio_universitario FROM estudio_universitario AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+    
+
+  edu_no_uni_ = EstudioNoUniversitario.objects.raw("SELECT DISTINCT DP.id, EP.tiene_estudio_no_universitario  FROM estudio_no_universitario AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+  estudios_no_universitarios_ = EstudioNoUniversitario.objects.raw("SELECT DISTINCT DP.id , centro_estudio_no_universitario , concluyo_estudio_no_universitario FROM estudio_no_universitario AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
   
+  edu_post_ = EstudioPostgrado.objects.raw("SELECT DISTINCT DP.id, EP.tiene_postgrado  FROM estudio_postgrado AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE  DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+
   return render(request,
                 'elecciones/index.html',
                 {   
@@ -567,7 +576,15 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
                     'ifexpe': ifexpe_,
                     'cargo_eleccion' : cargo_eleccion_,
                     'experiencia_laboral': experiencia_laboral_,
-                    'educacion_basica':edubasica_
+                    'educacion_basica':edubasica_,
+                    'estudio_tecnico' :edu_tecnic_ ,
+                    'estudio_no_univ' : edu_no_uni_,
+                    'estudio_univ':edu_uni_,
+                    'estudio_postgrado':edu_post_,
+                    'estudios_en_institutos': estudios_en_institutos_,
+                    'estudios_en_la_u': estudio_univs,
+                    'estudios_no_universitarios': estudios_no_universitarios_
+                    #'estudios_en_postgrado':
                 })
 
 def mainpage(request):

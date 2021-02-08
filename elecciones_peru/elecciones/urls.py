@@ -3,7 +3,6 @@ from django.urls import path
 from . import views
 
 app_name = 'elecciones'
-#http://127.0.0.1:8000/elecciones/candidatos/estudios/concluyo_primaria
 urlpatterns = [
   path('', views.mainpage),
   #path('candidatos', views.candidatos),
