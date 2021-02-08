@@ -539,7 +539,7 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_eleccion_):
 def mainpage(request):
   return render(request,'elecciones/landingpage.html',{})
 
-def test_(request):
+def test(request):
   print("--------------------------------------------- REQUEST ---------------------------------------------")
-  print(request)
+  print(request.user)
   return render(request,'elecciones/test.html', {})
