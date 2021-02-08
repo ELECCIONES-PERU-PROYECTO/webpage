@@ -558,13 +558,19 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   estudio_univs = EstudioUniversitario.objects.raw("SELECT DISTINCT DP.id ,carrera_universitaria,anhio_obtencion_universitario ,universidad , concluyo_estudio_universitario, comentario_estudio_universitario FROM estudio_universitario AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
     
 
-  edu_no_uni_ = EstudioNoUniversitario.objects.raw("SELECT DISTINCT DP.id, EP.tiene_estudio_no_universitario  FROM estudio_no_universitario AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
-  estudios_no_universitarios_ = EstudioNoUniversitario.objects.raw("SELECT DISTINCT DP.id , centro_estudio_no_universitario , concluyo_estudio_no_universitario FROM estudio_no_universitario AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+  edu_no_uni_ = EstudioNoUniversitario.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_estudio_no_universitario  FROM estudio_no_universitario AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+  estudios_no_universitarios_ = EstudioNoUniversitario.objects.raw(" SELECT DISTINCT DP.id , centro_estudio_no_universitario , concluyo_estudio_no_universitario FROM estudio_no_universitario AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
   
-  edu_post_ = EstudioPostgrado.objects.raw("SELECT DISTINCT DP.id, EP.tiene_postgrado  FROM estudio_postgrado AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE  DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
-  estudios_en_postgrado_ = EstudioPostgrado.objects.raw("SELECT DISTINCT DP.id , especialidad,centro_estudio_postgrado , concluyo_estudio_postgrado, es_maestro, es_doctor,anhio_obtencion_postgrado,  comentario_estudio_postgrado, es_egresado_postgrado FROM estudio_postgrado AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+  edu_post_ = EstudioPostgrado.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_postgrado  FROM estudio_postgrado AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE  DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+  estudios_en_postgrado_ = EstudioPostgrado.objects.raw(" SELECT DISTINCT DP.id , especialidad,centro_estudio_postgrado , concluyo_estudio_postgrado, es_maestro, es_doctor,anhio_obtencion_postgrado,  comentario_estudio_postgrado, es_egresado_postgrado FROM estudio_postgrado AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
   
+  #renuncias_ = Renuncia.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_info_por_declarar FROM renuncia AS EP RI")
+  renuncias_ = Renuncia.objects.raw(" SELECT DISTINCT DP.id, EP.organización_renuncia, EP.comentario FROM renuncia AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+  print(" SELECT DISTINCT DP.id, EP.tiene_info_por_declarar, EP.organización_renuncia, EP.comentario FROM renuncia AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+  ifreuncia_ = Renuncia.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_info_por_declarar FROM renuncia AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+
+
   return render(request, 'elecciones/index.html', {
                   'nombre': nombre_,
                   'datos_personales': datos_personales_,
@@ -578,7 +584,9 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
                   'estudios_en_institutos': estudios_en_institutos_,
                   'estudios_en_la_u': estudio_univs,
                   'estudios_no_universitarios' : estudios_no_universitarios_,
-                  'estudios_en_postgrado' : estudios_en_postgrado_
+                  'estudios_en_postgrado' : estudios_en_postgrado_,
+                  'ifreuncia':ifreuncia_,
+                  'renuncias': renuncias_
                 })
 
 def mainpage(request):
