@@ -1,7 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-
 <head>
 	<!--- basic page needs
 	================================================== -->
@@ -41,14 +40,14 @@
 						<li class="current"><a class="smoothscroll" href="#intro" title="">Inicio</a></li>
 						<li><a class="smoothscroll" href="#about" title="">1. DATOS PERSONALES</a></li>
 						<li><a class="smoothscroll" href="#resume" title="">2. EXPERIENCIA LABORAL</a></li>
-						<li><a class="smoothscroll" href="#portfolio" title="">3. FORMACIÓN ACADÉMICA</a></li>
-						<li><a class="smoothscroll" href="#portfolio" title="">4. CARGOS DE ELECCIÓN POPULAR</a></li>
+						<li><a class="smoothscroll" href="#formacion" title="">3. FORMACIÓN ACADÉMICA</a></li>
+						<li><a class="smoothscroll" href="#cargos" title="">4. CARGOS DE ELECCIÓN POPULAR</a></li>
 						<li><a class="smoothscroll" href="#services" title="">5. RENUNCIAS EFECTUADAS A OTROS PARTIDOS</a></li>
 						<li><a class="smoothscroll" href="#contact" title="">6. RELACIÓN DE SENTENCIAS</a></li>
 						<li><a class="smoothscroll" href="#contact" title="">7. INGRESOS DE BIENES E INGRESOS</a></li>
 						<li><a class="smoothscroll" href="#contact" title="">8. BIENES INMUEBLES</a></li>
 						<li><a class="smoothscroll" href="#contact" title="">9. BIENES MUEBLES</a></li>
-						<li><a class="smoothscroll" href="#contact" title="">10. INFORMACIÓN ADICIONAL</a></li>
+						<li><a class="smoothscroll" href="#portfolio" title="">10. INFORMACIÓN ADICIONAL</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -227,7 +226,6 @@
    	</div>
 -->
 	</section>
-	<!-- /process-->
 	<!-- resume Section 
   ================================================== -->
 	<section id="resume" class="grey-section" >
@@ -302,247 +300,259 @@
 		</div>
 		<!-- /col-twelve -->
 	</section>
-	<section id="resume" class="grey-section" >
 
-		<div class="row resume-timeline">
-			<div class="col-twelve resume-header"> 
-				
-				{% for basica in educacion_basica %}
-					<h2>3. Formación Académica</h2>
-					<div class="row">
-						<div class="col-md-6">
-							<h2 class="form-control">Educación Básica Regular</h2> 
-						</div>
-													<div class="col-md-6">
-								<h3 class="form-control">¿Concluyó estudios primarios?</h3> 
+	<section id="formacion">
+		<div class="row section-intro">
+			<div class="col-twelve">
+				<div class="row resume-timeline">
+					<div class="col-twelve resume-header"> 
+						{% for basica in educacion_basica %}
+							<h2>3. Formación Académica</h2>
+							<div class="row">
+								<div class="col-md-6">
+									<h2 class="form-control">Educación Básica Regular</h2> 
+								</div>
+															<div class="col-md-6">
+										<h3 class="form-control">¿Concluyó estudios primarios?</h3> 
+									</div>
+									<div class="col-md-6"> 
+										{% if basica.concluyo_primaria == "NULL" %}
+										<h3 class="form-control">NO</h3> 
+										{% else %}
+										<h3 class="form-control">{{basica.concluyo_primaria}}</h3> {% endif %} 
+									</div>
 							</div>
-							<div class="col-md-6"> 
-								{% if basica.concluyo_primaria == "NULL" %}
-								<h3 class="form-control">NO</h3> 
-								{% else %}
-								<h3 class="form-control">{{basica.concluyo_primaria}}</h3> {% endif %} 
-							</div>
-					</div>
-					<div class="blocktext">
-						<div class="row" style="padding-top: 2%">
+							<div class="blocktext">
+								<div class="row" style="padding-top: 2%">
 
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<h3 class="form-control">¿Concluyó estudios secundaria?</h3> 
-							</div>
-							<div class="col-md-6"> 
-								{% if basica.concluyo_secundaria == "NULL" %}
-								<h3 class="form-control">NO</h3> 
-								{% else %}
-								<h3 class="form-control">{{basica.concluyo_secundaria}}</h3> {% endif %} 
-							</div>
-						</div>
-					</div> 
-					{% endfor %} 
-			</div>
-			<div class="col-twelve resume-header">
-				<div class="blocktext">
-					<div class="row">
-						<div class="col-md-6">
-							<h2 class="form-control">Estudios Técnicos</h2> 
-						</div>
-						<div class="col-md-6">
-							<h3 class="form-control">¿Tiene estudios técnicos?</h3> 
-						</div>
-						<div class="col-md-6"> 
-							{% for estudio in estudio_tecnico %} 
-							{% if estudio.tiene_estudio_tecnico == "SI" %}
-								<h3 class="form-control">{{estudio.tiene_estudio_tecnico}}</h3> 
-								{% else %}
-								<h3 class="form-control">NO</h3> 
-								{% endif %} 
-								{% endfor %} 
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-twelve">
-							<div class="timeline-wrap"> 
-								{% for estudioinsti in estudios_en_institutos %}
-								<div class="timeline-block">
-									<div class="timeline-ico"> 
-										<i class="fa fa-graduation-cap"></i> 
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<h3 class="form-control">¿Concluyó estudios secundaria?</h3> 
 									</div>
-									<div class="timeline-header">
-										{% if estudioinsti.carrera_tecnica == "NULL" %}
-										<h3></h3>
+									<div class="col-md-6"> 
+										{% if basica.concluyo_secundaria == "NULL" %}
+										<h3 class="form-control">NO</h3> 
 										{% else %}
-										<h3>{{estudioinsti.carrera_tecnica}}</h3>
-										{% endif %}
-										{% if estudioinsti.concluyo_estudio_tecnico == "NULL" %}
-										<p></p>  
-										{% else %}
-										<p>Concluyó estudios: {{estudioinsti.concluyo_estudio_tecnico}}</p>  
-										{% endif %}
-									</div>
-									<div class="timeline-content">
-										{% if estudioinsti.centro_estudio_tecnico == "NULL" %}
-										<h4></h4>
-										{% else  %}
-										<h4>{{estudioinsti.centro_estudio_tecnico}}</h4>
-										{% endif %}
-										<ul>
-											{% if estudioinsti.comentario_estudio_tecnico == "NULL"%}
-											<li></li>
-											{% else %}
-											<li>Comentario: {{estudioinsti.comentario_estudio_tecnico}}</li> 
-											{% endif %} 
-										</ul>
+										<h3 class="form-control">{{basica.concluyo_secundaria}}</h3> {% endif %} 
 									</div>
 								</div>
-								<!-- /timeline-block -->
-								{% endfor %} 
-							</div>
-							<!-- /timeline-wrap -->
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-twelve resume-header">
-				<div class="blocktext">
-					<div class="row">
-						<div class="col-md-6">
-							<h2 class="form-control">Estudios No Universitarios</h2> 
-						</div>
-						<div class="col-md-6">
-							<h3 class="form-control">¿Tiene estudios no universitarios?</h3> </div>
-						<div class=”col-md-6″> 
-							{% for estudio in estudio_no_univ %} 
-							{% if estudio.tiene_estudio_no_unive == "SI" %}
-							<h3 class=”form-control”>{{estudio.tiene_estudio_no_universitario}}</h3> 
-							{% else %}
-							<h3 class=”form-control”>NO</h3> {% endif %} 
-							{% endfor %}
-						</div>
-					
-					</div>
-					<div class="row">
-
-						<div class="col-twelve">
-							<div class="timeline-wrap"> 
-								{% for estudios_no in estudios_no_universitarios %}
-								<div class="timeline-block">
-									<div class="timeline-ico"> <i class="fa fa-graduation-cap"></i> </div>
-									<div class="timeline-header">
-										<h3>{{estudios_no.carrera_no_universitaria}}</h3>
-										{% if estudios_no.concluyo_estudio_no_universitario %}
-										<p>Concluyó estudios: {{estudios_no.concluyo_estudio_no_universitario}}</p>  
-										{% endif %}
-									</div>
-									<div class="timeline-content">
-										<h4>{{estudios_no.centro_estudio_no_universitario}}</h4> </div>
-								</div>
-								<!-- /timeline-block -->
-								{% endfor %} </div>
-							<!-- /timeline-wrap -->
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-twelve resume-header">
-				<div class="blocktext">
-					<div class="row">
-						<div class="col-md-6">
-							<h2 class="form-control">Estudios Universitarios</h2> 
-						</div>
-						<div class="col-md-6">
-							<h3 class="form-control">¿Tiene estudios universitarios?</h3> 
-						</div>
-						<div class=”col-md-6″> 
-							{% for estudio in estudio_univ %} 
-							{% if estudio.tiene_estudio_universitario == "SI" %}
-							<h3 class=”form-control”>{{estudio.tiene_estudio_universitario}}</h3> 
-							{% else %}
-							<h3 class=”form-control”>NO</h3> {% endif %} 
+							</div> 
 							{% endfor %} 
+					</div>
+					<div class="col-twelve resume-header">
+						<div class="blocktext">
+							<div class="row">
+								<div class="col-md-6">
+									<h2 class="form-control">Estudios Técnicos</h2> 
+								</div>
+								<div class="col-md-6">
+									<h3 class="form-control">¿Tiene estudios técnicos?</h3> 
+								</div>
+								<div class="col-md-6"> 
+									{% for estudio in estudio_tecnico %} 
+									{% if estudio.tiene_estudio_tecnico == "SI" %}
+										<h3 class="form-control">{{estudio.tiene_estudio_tecnico}}</h3> 
+										{% else %}
+										<h3 class="form-control">NO</h3> 
+										{% endif %} 
+										{% endfor %} 
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-twelve">
+									<div class="timeline-wrap"> 
+										{% for estudioinsti in estudios_en_institutos %}
+										<div class="timeline-block">
+											<div class="timeline-ico"> 
+												<i class="fa fa-graduation-cap"></i> 
+											</div>
+											<div class="timeline-header">
+												{% if estudioinsti.carrera_tecnica == "NULL" %}
+												<h3></h3>
+												{% else %}
+												<h3>{{estudioinsti.carrera_tecnica}}</h3>
+												{% endif %}
+												{% if estudioinsti.concluyo_estudio_tecnico == "NULL" %}
+												<p></p>  
+												{% else %}
+												<p>Concluyó estudios: {{estudioinsti.concluyo_estudio_tecnico}}</p>  
+												{% endif %}
+											</div>
+											<div class="timeline-content">
+												{% if estudioinsti.centro_estudio_tecnico == "NULL" %}
+												<h4></h4>
+												{% else  %}
+												<h4>{{estudioinsti.centro_estudio_tecnico}}</h4>
+												{% endif %}
+												<ul>
+													{% if estudioinsti.comentario_estudio_tecnico == "NULL"%}
+													<li></li>
+													{% else %}
+													<li>Comentario: {{estudioinsti.comentario_estudio_tecnico}}</li> 
+													{% endif %} 
+												</ul>
+											</div>
+										</div>
+										<!-- /timeline-block -->
+										{% endfor %} 
+									</div>
+									<!-- /timeline-wrap -->
+								</div>
+							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-twelve">
-							<div class="timeline-wrap"> 
-								{% for estudios_unv in estudios_en_la_u %}
-								<div class="timeline-block">
-									<div class="timeline-ico"> <i class="fa fa-graduation-cap"></i> </div>
-									<div class="timeline-header">
-										<h3>{{estudios_unv.carrera_universitaria}}</h3>
-										<p>Concluyó estudios: {{estudios_unv.concluyo_estudio_universitario}}</p>
-									</div>
-									<div class="timeline-content">
-										<h4>{{estudios_unv.universidad}}</h4>
-										<li>{{estudios_unv.anhio_obtencion_universitario}}</li>
-									</div>
+					<div class="col-twelve resume-header">
+						<div class="blocktext">
+							<div class="row">
+								<div class="col-md-6">
+									<h2 class="form-control">Estudios No Universitarios</h2> 
 								</div>
-								<!-- /timeline-block -->
-								{% endfor %} </div>
-							<!-- /timeline-wrap -->
+								<div class="col-md-6">
+									<h3 class="form-control">¿Tiene estudios no universitarios?</h3> </div>
+								<div class=”col-md-6″> 
+									{% for estudio in estudio_no_univ %} 
+									{% if estudio.tiene_estudio_no_unive == "SI" %}
+									<h3 class=”form-control”>{{estudio.tiene_estudio_no_universitario}}</h3> 
+									{% else %}
+									<h3 class=”form-control”>NO</h3> {% endif %} 
+									{% endfor %}
+								</div>
+							
+							</div>
+							<div class="row">
+
+								<div class="col-twelve">
+									<div class="timeline-wrap"> 
+										{% for estudios_no in estudios_no_universitarios %}
+										<div class="timeline-block">
+											<div class="timeline-ico"> <i class="fa fa-graduation-cap"></i> </div>
+											<div class="timeline-header">
+												<h3>{{estudios_no.carrera_no_universitaria}}</h3>
+												{% if estudios_no.concluyo_estudio_no_universitario %}
+												<p>Concluyó estudios: {{estudios_no.concluyo_estudio_no_universitario}}</p>  
+												{% endif %}
+											</div>
+											<div class="timeline-content">
+												<h4>{{estudios_no.centro_estudio_no_universitario}}</h4> </div>
+										</div>
+										<!-- /timeline-block -->
+										{% endfor %} </div>
+									<!-- /timeline-wrap -->
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-twelve resume-header">
+						<div class="blocktext">
+							<div class="row">
+								<div class="col-md-6">
+									<h2 class="form-control">Estudios Universitarios</h2> 
+								</div>
+								<div class="col-md-6">
+									<h3 class="form-control">¿Tiene estudios universitarios?</h3> 
+								</div>
+								<div class=”col-md-6″> 
+									{% for estudio in estudio_univ %} 
+									{% if estudio.tiene_estudio_universitario == "SI" %}
+									<h3 class=”form-control”>{{estudio.tiene_estudio_universitario}}</h3> 
+									{% else %}
+									<h3 class=”form-control”>NO</h3> {% endif %} 
+									{% endfor %} 
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-twelve">
+									<div class="timeline-wrap"> 
+										{% for estudios_unv in estudios_en_la_u %}
+										<div class="timeline-block">
+											<div class="timeline-ico"> <i class="fa fa-graduation-cap"></i> </div>
+											<div class="timeline-header">
+												<h3>{{estudios_unv.carrera_universitaria}}</h3>
+												<p>Concluyó estudios: {{estudios_unv.concluyo_estudio_universitario}}</p>
+											</div>
+											<div class="timeline-content">
+												<h4>{{estudios_unv.universidad}}</h4>
+												<li>{{estudios_unv.anhio_obtencion_universitario}}</li>
+											</div>
+										</div>
+										<!-- /timeline-block -->
+										{% endfor %} </div>
+									<!-- /timeline-wrap -->
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-		<div class="row resume-timeline">
-			<div class="col-twelve resume-header">
-			<div class="blocktext">
-			<div class="row">
-					<div class="col-md-6">
-						<h2 class="form-control">Estudios Postgrado</h2> 
+				<div class="row resume-timeline">
+					<div class="col-twelve resume-header">
+					<div class="blocktext">
+					<div class="row">
+							<div class="col-md-6">
+								<h2 class="form-control">Estudios Postgrado</h2> 
+							</div>
+							<div class="col-md-6">
+								<h3 class="form-control">¿Tiene estudios universitarios?</h3> 
+							</div>
+							<div class=”col-md-6″>
+								{% for estudio in estudio_postgrado %}
+									{% if estudio.tiene_postgrado == "SI" %}
+										<h3 class=”form-control”>{{estudio.tiene_postgrado}}</h3>
+									{% else %}
+									<h3 class=”form-control”>NO</h3>
+									{% endif %}
+								{% endfor %}
+							</div>
+						</div>		
+						<div class="row">
+							<div class="col-twelve">
+								<div class="timeline-wrap">
+									{% for estudios_post in estudios_en_postgrado %}
+										<div class="timeline-block">
+											<div class="timeline-ico">
+												<i class="fa fa-graduation-cap"></i>
+											</div>
+											<div class="timeline-header">
+												<h3>{{estudios_post.especialidad}}</h3>
+												<p>Concluyó estudios: {{estudios_post.concluyo_estudio_postgrado}}</p>  
+											</div>
+											<div class="timeline-content">
+												<h4>{{estudios_post.centro_estudio_postgrado}}</h4>	
+												<ul>
+													<li>Año de obtención: {{estudios_post.anhio_obtencion_postgrado}}</li>
+													<li>Es egresado: {{estudios_post.es_egresado_postgrado}} </li>
+													<li>Comentario:  {{estudios_post.comentario_estudio_postgrado}} </li>
+												</ul>
+											</div>
+										</div> <!-- /timeline-block -->
+									{% endfor %}
+								</div> <!-- /timeline-wrap --> 
+							</div>
+						</div>		
 					</div>
-					<div class="col-md-6">
-						<h3 class="form-control">¿Tiene estudios universitarios?</h3> 
 					</div>
-					<div class=”col-md-6″>
-						{% for estudio in estudio_postgrado %}
-							{% if estudio.tiene_postgrado == "SI" %}
-								<h3 class=”form-control”>{{estudio.tiene_postgrado}}</h3>
-							{% else %}
-							<h3 class=”form-control”>NO</h3>
-							{% endif %}
-						{% endfor %}
-					</div>
-				</div>		
-				<div class="row">
-					<div class="col-twelve">
-						<div class="timeline-wrap">
-							{% for estudios_post in estudios_en_postgrado %}
-								<div class="timeline-block">
-									<div class="timeline-ico">
-										<i class="fa fa-graduation-cap"></i>
-									</div>
-									<div class="timeline-header">
-										<h3>{{estudios_post.especialidad}}</h3>
-										<p>Concluyó estudios: {{estudios_post.concluyo_estudio_postgrado}}</p>  
-									</div>
-									<div class="timeline-content">
-										<h4>{{estudios_post.centro_estudio_postgrado}}</h4>	
-										<ul>
-											<li>Año de obtención: {{estudios_post.anhio_obtencion_postgrado}}</li>
-											<li>Es egresado: {{estudios_post.es_egresado_postgrado}} </li>
-											<li>Comentario:  {{estudios_post.comentario_estudio_postgrado}} </li>
-										</ul>
-									</div>
-								</div> <!-- /timeline-block -->
-							{% endfor %}
-						</div> <!-- /timeline-wrap --> 
-					</div>
-				</div>		
-			</div>
+				</div>
 			</div>
 		</div>
 	</section>
-<!--POSTGRADO-->
 
-  
-		
-	</section> <!-- /features -->
-
-	<section id = "resume" class="grey-section" >
-		<div class="row resume-timeline">
-		hols
+	<section id="cargos" class="grey-section" >
+		<div class="col-twelve resume-header">
+			<h2>4. Cargos de elección popular</h2>
+			<br> 
+			{% for experiencia in ifexpe %}
+				<div class="blocktext">
+					<div class="row">
+						<div class="col-md-6">
+							<h3 class="form-control">¿Tiene experiencia laboral? </h3> 
+						</div>
+						<!-- VAR : tiene_experiencia_laboral -->
+						<div class="col-md-6">
+							<h3 class="form-control">{{experiencia.tiene_experiencia_laboral}}</h3> 
+						</div>
+					</div>
+				</div> 
+				{% endfor %} 
 		</div>
 	</section>
 

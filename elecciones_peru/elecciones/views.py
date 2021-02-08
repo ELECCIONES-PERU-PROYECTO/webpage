@@ -514,10 +514,10 @@ def candidatos(request):
 def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   #expertiencia laboral = ExperienciaLaboral.objects.raw()
 
-  if cargo_postula_dato == "favicon.png":
-      return
-  print("dni_hoja_de_vida: ",dni_hoja_de_vida)
-  print("----cargo_eleccion_-----: ",cargo_postula_dato)
+  # if cargo_postula_dato == "favicon.png":
+  #     return
+  # print("dni_hoja_de_vida: ",dni_hoja_de_vida)
+  # print("----cargo_eleccion_-----: ",cargo_postula_dato)
 
   #if (len(dni_hoja_de_vida)>8 or len(cargo_eleccion_)>13):
   #    return 
@@ -564,22 +564,21 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   
   edu_post_ = EstudioPostgrado.objects.raw("SELECT DISTINCT DP.id, EP.tiene_postgrado  FROM estudio_postgrado AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE  DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
   estudios_en_postgrado_ = EstudioPostgrado.objects.raw("SELECT DISTINCT DP.id , especialidad,centro_estudio_postgrado , concluyo_estudio_postgrado, es_maestro, es_doctor,anhio_obtencion_postgrado,  comentario_estudio_postgrado, es_egresado_postgrado FROM estudio_postgrado AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
-  return render(request,
-                'elecciones/index.html',
-                {   
-                    'nombre': nombre_,
-                    'datos_personales': datos_personales_,
-                    'cargo_eleccion' : cargo_eleccion_,
-                    'experiencia_laboral': experiencia_laboral_,
-                    'educacion_basica':edubasica_,
-                    'estudio_tecnico' :edu_tecnic_ ,
-                    'estudio_no_univ' : edu_no_uni_,
-                    'estudio_univ':edu_uni_,
-                    'estudio_postgrado':edu_post_,
-                    'estudios_en_institutos': estudios_en_institutos_,
-                    'estudios_en_la_u': estudio_univs,
-                    'estudios_no_universitarios': estudios_no_universitarios_,
-                    'estudios_en_postgrado': estudios_en_postgrado_
+  
+  return render(request, 'elecciones/index.html', {
+                  'nombre': nombre_,
+                  'datos_personales': datos_personales_,
+                  'cargo_eleccion' : cargo_eleccion_,
+                  'experiencia_laboral': experiencia_laboral_,
+                  'educacion_basica': edubasica_,
+                  'estudio_tecnico' : edu_tecnic_ ,
+                  'estudio_no_univ' :  edu_no_uni_,
+                  'estudio_univ': edu_uni_,
+                  'estudio_postgrado' : edu_post_,
+                  'estudios_en_institutos': estudios_en_institutos_,
+                  'estudios_en_la_u': estudio_univs,
+                  'estudios_no_universitarios' : estudios_no_universitarios_,
+                  'estudios_en_postgrado' : estudios_en_postgrado_
                 })
 
 def mainpage(request):
