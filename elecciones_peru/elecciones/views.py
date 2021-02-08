@@ -565,6 +565,8 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   edu_post_ = EstudioPostgrado.objects.raw("SELECT DISTINCT DP.id, EP.tiene_postgrado  FROM estudio_postgrado AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE  DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
   estudios_en_postgrado_ = EstudioPostgrado.objects.raw("SELECT DISTINCT DP.id , especialidad,centro_estudio_postgrado , concluyo_estudio_postgrado, es_maestro, es_doctor,anhio_obtencion_postgrado,  comentario_estudio_postgrado, es_egresado_postgrado FROM estudio_postgrado AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
   
+
+  
   return render(request, 'elecciones/index.html', {
                   'nombre': nombre_,
                   'datos_personales': datos_personales_,

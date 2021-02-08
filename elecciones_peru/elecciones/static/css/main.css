@@ -50,6 +50,14 @@ html {
 	font-size: 10px;
 }
 
+.blocktext {
+	margin: 0 0 3rem 0;
+}
+
+.no-margin-b {
+	margin-bottom: 0 !important;
+}
+
 @media only screen and (max-width:1024px) {
 	html {
 		font-size: 9.411764705882353px;
@@ -1536,15 +1544,20 @@ header .logo a {
 	text-transform: uppercase;
 	letter-spacing: .25rem;
 }
-.about-content .info-list {
+
+#resume .info-list li {
+	padding: 0;
+}
+
+.info-list {
 	list-style: none;
 	margin-left: 0;
 }
-.about-content .info-list li {
-	padding: 0 0 1.5rem 0;
+.info-list li {
+	padding: 0 0 .8rem 0;
 	margin-bottom: .6rem;
 }
-.about-content .info-list li strong {
+.info-list li strong {
 	font-family: "poppins-bold", sans-serif;
 	color: #313131;
 	text-transform: uppercase;
@@ -1553,11 +1566,11 @@ header .logo a {
 	line-height: 3rem;
 }
 
-.col-six.tab-full .info-list{
+.info-list{
 	font-family: "poppins-regular", sans-serif !important;
 }
 
-.about-content .info-list li ul tr th {
+.info-list li ul tr th {
 	display: block;
 	font-family: "poppins-regular", sans-serif;
 	color: #888888;
@@ -1565,7 +1578,7 @@ header .logo a {
 	line-height: 1;
 }
 
-.about-content .info-list li span {
+.info-list li span {
 	display: block;
 	font-family: "poppins-regular", sans-serif;
 	color: #888888;
@@ -1608,7 +1621,7 @@ header .logo a {
 	.about-content h3 {
 		text-align: center;
 	}
-	.about-content .info-list, .about-content .skill-bars {
+	.info-list, .about-content .skill-bars {
 		margin-bottom: 4.2rem;
 	}
 	.button-section .button {
@@ -1655,14 +1668,16 @@ header .logo a {
 	color: #d81b1b;
 }
 
+#formacion .resume-header h2, #cargos .resume-header h2 {
+	margin-bottom: 3rem;
+}
+
 #resume .resume-timeline, #formacion .resume-timeline, #cargos .resume-timeline {
 	max-width: 980px;
 }
 
 #resume .timeline-wrap, #formacion .timeline-wrap, #cargos .timeline-wrap {
 	position: relative;
-	margin-top: 1.5rem;
-	margin-bottom: 6rem;
 }
 #resume .timeline-wrap::before, #formacion .timeline-wrap::before, #cargos .timeline-wrap::before {
 	content: "";
