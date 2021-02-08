@@ -1,26 +1,25 @@
 {% load static %}
 <!DOCTYPE html>
-<html> 
+<html>
+
 <head>
 	<!--- basic page needs
 	================================================== -->
 	<meta charset="utf-8">
 	<title>Perú Informado</title>
-	<meta name="description" content="">  
+	<meta name="description" content="">
 	<meta name="author" content="">
-
 	<!-- mobile specific metas
 	================================================== -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
 	<!-- CSS
 	================================================== -->
-	<link type="text/css" href="{% static "css/main.css" %}" rel="stylesheet" >
-	<link type="text/css" href="{% static "css/base.css" %}" rel="stylesheet" >
-	<link type="text/css" href="{% static "css/vendor.css" %}" rel="stylesheet" >
-	<link type="text/css" href="{% static "css/cards.css" %}" rel="stylesheet" >
-	<link type="text/css" href="{% static "css/table.css" %}" rel="stylesheet" >
-	<link type="text/css" href="{% static "css/slider.css" %}" rel="stylesheet" >
+	<link type="text/css" href="{% static " css/main.css " %}" rel="stylesheet">
+	<link type="text/css" href="{% static " css/base.css " %}" rel="stylesheet">
+	<link type="text/css" href="{% static " css/vendor.css " %}" rel="stylesheet">
+	<link type="text/css" href="{% static " css/cards.css " %}" rel="stylesheet">
+	<link type="text/css" href="{% static " css/table.css " %}" rel="stylesheet">
+	<link type="text/css" href="{% static " css/slider.css " %}" rel="stylesheet">
 	<!--
 	<script src="../../../static/js/modernizr.js"></script>
 	<script src="../../../static/js/pace.min.js"></script>
@@ -28,68 +27,56 @@
 -->
 	<!-- favicons
 	================================================== -->
-	<link rel="icon" type="image/png" href="./favicon.png">
-</head>
+	<link rel="icon" type="image/png" href="./favicon.png"> </head>
+
 <body id="top">
 	<!-- header 
-   ================================================== -->
-   <header>   	
-   	<div class="row">
-		
-   		<div class="top-bar">
-   			<a class="menu-toggle" href="#"><span>Menu</span></a>
-
-				<div class="logo">
-					<a href="index.html">Perú Informado</a>
-				</div>		      
-
+	================================================== -->
+	<header>
+		<div class="row">
+			<div class="top-bar"> <a class="menu-toggle" href="#"><span>Menu</span></a>
+				<div class="logo"> <a href="index.html">Perú Informado</a> </div>
 				<nav id="main-nav-wrap">
 					<ul class="main-navigation">
-						<li class="current"><a class="smoothscroll"  href="#intro" title="">Inicio</a></li>
-						<li><a class="smoothscroll"  href="#about" title="">1. DATOS PERSONALES</a></li>
-						<li><a class="smoothscroll"  href="#resume" title="">2. EXPERIENCIA LABORAL</a></li>
-						<li><a class="smoothscroll"  href="#portfolio" title="">3. FORMACIÓN ACADÉMICA</a></li>
-						<li><a class="smoothscroll"  href="#services" title="">4. RELACIÓN DE SENTENCIAS</a></li>					
-						<li><a class="smoothscroll"  href="#contact" title="">5. INGRESOS DE BIENES Y RENTAS</a></li>	
-						<li><a class="smoothscroll"  href="#contact" title="">6. BIENES INMUEBLES</a></li>	
-						<li><a class="smoothscroll"  href="#contact" title="">7. BIENES MUEBLES</a></li>	
-						<li><a class="smoothscroll"  href="#contact" title="">8. INFORMACIÓN ADICIONAL</a></li>	
+						<li class="current"><a class="smoothscroll" href="#intro" title="">Inicio</a></li>
+						<li><a class="smoothscroll" href="#about" title="">1. DATOS PERSONALES</a></li>
+						<li><a class="smoothscroll" href="#resume" title="">2. EXPERIENCIA LABORAL</a></li>
+						<li><a class="smoothscroll" href="#portfolio" title="">3. FORMACIÓN ACADÉMICA</a></li>
+						<li><a class="smoothscroll" href="#portfolio" title="">4. CARGOS DE ELECCIÓN POPULAR</a></li>
+						<li><a class="smoothscroll" href="#services" title="">5. RENUNCIAS EFECTUADAS A OTROS PARTIDOS</a></li>
+						<li><a class="smoothscroll" href="#contact" title="">6. RELACIÓN DE SENTENCIAS</a></li>
+						<li><a class="smoothscroll" href="#contact" title="">7. INGRESOS DE BIENES E INGRESOS</a></li>
+						<li><a class="smoothscroll" href="#contact" title="">8. BIENES INMUEBLES</a></li>
+						<li><a class="smoothscroll" href="#contact" title="">9. BIENES MUEBLES</a></li>
+						<li><a class="smoothscroll" href="#contact" title="">10. INFORMACIÓN ADICIONAL</a></li>
 					</ul>
-					</nav>    		
-			</div> <!-- /top-bar --> 
-		</div> <!-- /row --> 		
-	</header> <!-- /header -->
-
+				</nav>
+			</div>
+		</div>
+	</header>
 	<!-- intro section
-   ================================================== -->
-   <section id="intro">   
-
-   	<div class="intro-overlay"></div>	
-   	<div class="intro-content">
-   		<div class="row">
-
-   			<div class="col-twelve">
-
-				   <!--<h5>Hello, World.</h5>-->
-
-				   {% for obj in nombre %}
-				  	<h1>{{obj.candidato}}<h1>
+	================================================== -->
+	<section id="intro">
+		<div class="intro-overlay"></div>
+		<div class="intro-content">
+			<div class="row">
+				<div class="col-twelve">
+					<!--<h5>Hello, World.</h5>-->
+					{% for obj in nombre %}
+					<h1>{{obj.candidato}}</h1> 
 					{% endfor %}
-				   <br>
-
-				   <!--
+					<br>
+					<!--
 	   			<p class="intro-position">
-	   				<span>Front-end Developer</span>
-	   				<span>UI/UX Designer</span > 
-				   </p>
-				   -->
-	   			<a class="button stroke smoothscroll" href="#about" title="">Conoce al candidato</a>
-
-	   		</div>  
-   			
-   		</div>   		 		
-   	</div> <!-- /intro-content --> 
-	<!--
+							<span>Front-end Developer</span>
+							<span>UI/UX Designer</span > 
+						</p>
+						-->
+					<a class="button stroke smoothscroll" href="#about" title="">Conoce al candidato</a> </div>
+			</div>
+		</div>
+		<!-- /intro-content -->
+		<!--
     <ul class="intro-social">        
       <li><a href="#"><i class="fa fa-facebook"></i></a></li>
       <li><a href="#"><i class="fa fa-behance"></i></a></li>
@@ -98,149 +85,105 @@
       <li><a href="#"><i class="fa fa-instagram"></i></a></li>
     </ul>
   -->
-
-  <!-- /intro-social -->      	
-  </section> <!-- /intro -->
-  <!-- about section
+		<!-- /intro-social -->
+	</section>
+	<!-- /intro -->
+	<!-- about section
   ================================================== -->
-  <section id="about">  
-    <div class="row section-intro">
-      <div class="col-twelve">
-        <h1>Datos personales</h1>
-<!--
-   			<div class="intro-info">
+	<section id="about">
+		<div class="row section-intro">
+			<div class="col-twelve">
+				<h1>Datos personales</h1>
+				<!--
+			<div class="intro-info">
 
-   				<img src="images/profile-pic.jpg" alt="Profile Picture">
-			   </div>   
--->			
-   		</div>   		
-   	</div> <!-- /section-intro -->
-
-   	<div class="row about-content">
-
-   		<div class="col-six tab-full">
-			   <br>
-   			<h3>Perfil: </h3>
-			   {% for candidato in datos_personales %}
-				
-   			<ul class="info-list">
-			   {% for candidato in cargo_eleccion %}
-				<li>
-					{% if cargo_eleccion|length > 1 %}
-					<strong>- Cargo al que postula:</strong>
-					<span>{{candidato.cargo_eleccion}}</span>
-
-					{% else %}
-					<strong>Cargo al que postula:</strong>
-
-					<span>{{candidato.cargo_eleccion}}</span>
-					{%endif%}
-
-				</li>
-	  			{% endfor %}
-
-				<li>
-					<strong>Organización política:</strong>
-					<span>{{candidato.organizacion_politica}}</span>
-				</li>
-
-   				<li>
-   					<strong>Fecha de nacimiento:</strong>
-   					<span>{{candidato.fecha_nacimiento}}</span>
-   				</li>
-   				<li>
-   					<strong>Sexo:</strong>
-   					<span>{{candidato.sexo}}</span>
-   				</li>
-
- 
-   				<li>
-   					<strong>DNI:</strong>
-   					<span>{{candidato.dni_candidato}}</span>
-				   </li>
-				   
-				   <li>
-					<strong>Canet de extranjería:</strong>
-					<span>{{candidato.carnet_extranjeria}}</span>
-				</li>
-
-   			</ul> <!-- /info-list -->
-   		</div>
-
-   		<div class="col-six tab-full">
-			<br>
-			<br>
-
-			<ul class="info-list">
-				<li>
-					<strong>Lugar de nacimiento:</strong>
-					<br>
-					<ul>
-						<tr>
-							<th><strong>País:</strong></th>
-							<th>{{candidato.pais_nacimiento}} </th>
-						</tr>
+				<img src="images/profile-pic.jpg" alt="Profile Picture">
+			</div>   
+			-->
+		</div>
+		</div>
+		<!-- /section-intro -->
+		<div class="row about-content">
+			<div class="col-six tab-full">
+				<br>
+				<h3>Perfil: </h3> 
+				{% for candidato in datos_personales %}
+				<ul class="info-list"> 
+					{% for candidato in cargo_eleccion %}
+					<li> 
+						{% if cargo_eleccion|length > 1 %} 
+						<strong>- Cargo al que postula:</strong> <span>{{candidato.cargo_eleccion}}</span> 
+						{% else %} 
+						<strong>Cargo al que postula:</strong> <span>{{candidato.cargo_eleccion}}</span> 
+						{%endif%} </li> 
+						{% endfor %}
+					<li> <strong>Organización política:</strong> <span>{{candidato.organizacion_politica}}</span> </li>
+					<li> <strong>Fecha de nacimiento:</strong> <span>{{candidato.fecha_nacimiento}}</span> </li>
+					<li> <strong>Sexo:</strong> <span>{{candidato.sexo}}</span> </li>
+					<li> <strong>DNI:</strong> <span>{{candidato.dni_candidato}}</span> </li>
+					<li> <strong>Canet de extranjería:</strong> <span>{{candidato.carnet_extranjeria}}</span> </li>
+				</ul>
+				<!-- /info-list -->
+			</div>
+			<div class="col-six tab-full">
+				<br>
+				<br>
+				<ul class="info-list">
+					<li> <strong>Lugar de nacimiento:</strong>
 						<br>
-
-						<tr>
-							<th><strong>Departamento:</strong></th>
-							<th>{{candidato.departamento_nacimiento}} </th>
-						</tr>
+						<ul>
+							<tr>
+								<th><strong>País:</strong></th>
+								<th>{{candidato.pais_nacimiento}} </th>
+							</tr>
+							<br>
+							<tr>
+								<th><strong>Departamento:</strong></th>
+								<th>{{candidato.departamento_nacimiento}} </th>
+							</tr>
+							<br>
+							<tr>
+								<th><strong>Provincia:</strong></th>
+								<th>{{candidato.provincia_nacimiento}} </th>
+							</tr>
+							<br>
+							<tr>
+								<th><strong>Distrito:</strong></th>
+								<th>{{candidato.distrito_nacimiento}}</th>
+							</tr>
+						</ul>
+					</li>
+				</ul>
+				<ul class="info-list">
+					<li> <strong>Lugar de domicilio:</strong>
 						<br>
-
-						<tr>
-							<th><strong>Provincia:</strong></th>
-							<th>{{candidato.provincia_nacimiento}} </th>
-						</tr>
-						<br>
-
-						<tr>
-							<th><strong>Distrito:</strong></th>
-							<th>{{candidato.distrito_nacimiento}}</th>
-						</tr>
-					</ul>
-
-				</li>
-			</ul>
-
-			<ul class="info-list">
-				<li>
-					<strong>Lugar de domicilio:</strong>
-					<br>
-					<ul>
-						<tr>
-							<th><strong>Departamento:</strong></th>
-							<th>{{candidato.departamento_domicilio}}</th>
-						</tr>
-						<br>
-
-						<tr>
-							<th><strong>Provincia:</strong></th>
-							<th>{{candidato.provincia_domicilio}}</th>
-						</tr>
-						<br>
-
-						<tr>
-							<th><strong>Distrito:</strong></th>
-							<th>{{candidato.distrito_domicilio}}</th>
-						</tr>
-						<br>
-
-						<tr>
-							<th><strong>Dirección:</strong></th>
-							<th>{{candidato.direccion_domicilio}}</th>
-						</tr>
-					</ul>
-					<!--
+						<ul>
+							<tr>
+								<th><strong>Departamento:</strong></th>
+								<th>{{candidato.departamento_domicilio}}</th>
+							</tr>
+							<br>
+							<tr>
+								<th><strong>Provincia:</strong></th>
+								<th>{{candidato.provincia_domicilio}}</th>
+							</tr>
+							<br>
+							<tr>
+								<th><strong>Distrito:</strong></th>
+								<th>{{candidato.distrito_domicilio}}</th>
+							</tr>
+							<br>
+							<tr>
+								<th><strong>Dirección:</strong></th>
+								<th>{{candidato.direccion_domicilio}}</th>
+							</tr>
+						</ul>
+						<!--
 					<ul><strong>País:</strong><span>PERÚ</span></ul> 
 					-->
-				</li>
-				
-				{% endfor %}
-
- 
-			   </ul> 
-<!--
+					</li> 
+					{% endfor %} </ul>
+				<!--
    			<h3>Skills</h3>
    			<p>Lorem ipsum Qui veniam ut consequat ex ullamco nulla in non ut esse in magna sint minim officia consectetur nisi commodo ea magna pariatur nisi cillum.</p>
 
@@ -269,10 +212,10 @@
       
 				</ul>
 -->
- <!-- /skill-bars -->		
-      </div>
-    </div>
-<!--
+				<!-- /skill-bars -->
+			</div>
+		</div>
+		<!--
    	<div class="row button-section">
    		<div class="col-twelve">
    			<a href="#contact" title="Hire Me" class="button stroke smoothscroll">Hire Me</a>
@@ -280,80 +223,268 @@
    		</div>   		
    	</div>
 -->
-  </section> <!-- /process-->    
-
-
-  <!-- resume Section
+	</section>
+	<!-- /process-->
+	<!-- resume Section 
   ================================================== -->
 	<section id="resume" class="grey-section">
-<!--
-		<div class="row section-intro">
-   		<div class="col-twelve">
+		<!-- /section-intro-->
+		<div class="row resume-timeline">
+			<div class="col-twelve resume-header">
+				<h2>2. Experiencia Laboral</h2>
+				<br> 
+				
+				{% for experiencia in ifexpe %}
+					<div class="blocktext">
+						<div class="row">
+							<div class="col-md-6">
+								<h3 class="form-control">¿Tiene experiencia laboral? </h3> 
+							</div>
+							<!-- VAR : tiene_experiencia_laboral -->
+							<div class="col-md-6">
+								<h3 class="form-control">{{experiencia.tiene_experiencia_laboral}}</h3> 
+							</div>
+						</div>
+					</div> 
+					{% endfor %} 
+			</div>
+			<!-- /resume-header -->
+			<div class="col-twelve">
+				<div class="timeline-wrap">
+					<!--SE AÑADE DINAMICAMENTE CADA BLOCK SEGÚN EL N° DE EXPERIENCIAS LABORALES-->
+					<!--timeline-block == UNA EXPERIENCIA LABORAL-->
+					{% for experiencia in experiencia_laboral %}
+					<div class="timeline-block">
+						<div class="timeline-ico"> 
+							<i class="fa fa-briefcase"></i> 
+						</div>
+						<!--VAR : ocupacion -->
+						<div class="timeline-header">
+							<h3>{{experiencia.ocupacion}}</h3>
+							<!--VAR: desde_anhio - VAR: hasta_anhio  -->
+							<p>{{experiencia.desde_anhio}} - {{experiencia.hasta_anhio}} </p>
+						</div>
+						<!--VAR: centro_laboral -->
+						<div class="timeline-content">
+							<h4>{{experiencia.centro_laboral}}</h4>
+							<!--VAR: direccion_laboral VAR:ruc_empresa_laboral  VAR:pais_laboral VAR:departamento_laboral VAR:provincia_laboral -->
+							<ul>
+								<li>{{experiencia.direccion_laboral}}</li>
+								<li>RUC empresa: {{experiencia.ruc_empresa_laboral}} </li>
+								<li>País: {{experiencia.pais_laboral}} </li>
+								<li>Departamento: {{experiencia.departamento_laboral}}</li>
+								<li>Provincia: {{experiencia.provincia_laboral}} </li>
+							</ul>
+						</div>
+					</div>
+					<!-- /timeline-block -->
+					{% endfor %}
+					<!--<div class="timeline-block">
 
-   			<h5>Resume</h5>
-   			<h1>More of my credentials.</h1>
-
-   			<p class="lead">Lorem ipsum Do commodo in proident enim in dolor cupidatat adipisicing dolore officia nisi aliqua incididunt Ut veniam lorem ipsum Consectetur ut in in eu do.</p>
-
-   		</div>   		
-	   </div>
--->
-	<!-- /section-intro-->
- 
-    <div class="row resume-timeline">
-      <div class="col-twelve resume-header">			
-        <h2>2. Experiencia Laboral</h2>
-		<br>
-		{% for experiencia in ifexpe %}
-        <div class="blocktext">
-          <div class="row">
-            <div class="col-md-6">
-              <h3 class="form-control">¿Tiene experiencia laboral? </h3> 
-            </div>
-		
-            <!-- VAR : tiene_experiencia_laboral -->					
-            <div class="col-md-6">
-              <h3 class="form-control">{{experiencia.tiene_experiencia_laboral}}</h3>
-            </div>
-          </div>
-				</div>
-	  {% endfor %}
-
-	  </div>
-	  <!-- /resume-header -->
-
-
-    	<div class="col-twelve">
-			<div class="timeline-wrap">
-<!--SE AÑADE DINAMICAMENTE CADA BLOCK SEGÚN EL N° DE EXPERIENCIAS LABORALES-->
-<!--timeline-block == UNA EXPERIENCIA LABORAL-->
-				{% for experiencia in experiencia_laboral %}
-				<div class="timeline-block">
 					<div class="timeline-ico">
 						<i class="fa fa-briefcase"></i>
 					</div>
-<!--VAR : ocupacion -->
+
+					<div class="timeline-header">
+						<h3>Bachelor Degree</h3>
+						<p>July 2014 - June 2015</p>
+					</div>
+
+					<div class="timeline-content">
+						<h4>State Design University</h4>
+						<p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi incididunt.</p>
+					</div> -->
+				</div>
+			</div>
+			<!-- /timeline-wrap -->
+		</div>
+		<!-- /col-twelve -->
+		<div class="row resume-timeline">
+			<div class="col-twelve resume-header"> 
+				
+				{% for basica in educacion_basica %}
+					<h2>3. Formación Académica</h2>
+					<div class="row">
+						<div class="col-md-6">
+							<h2 class="form-control">Educación Básica Regular</h2> 
+						</div>
+					</div>
+					<div class="blocktext">
+						<div class="row" style="padding-top: 2%">
+							<div class="col-md-6">
+								<h3 class="form-control">¿Concluyó estudios primarios?</h3> 
+							</div>
+							<div class="col-md-6"> 
+								{% if basica.concluyo_primaria == "NULL" %}
+								<h3 class="form-control">NO</h3> 
+								{% else %}
+								<h3 class="form-control">{{basica.concluyo_primaria}}</h3> {% endif %} 
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<h3 class="form-control">¿Concluyó estudios secundaria?</h3> 
+							</div>
+							<div class="col-md-6"> 
+								{% if basica.concluyo_secundaria == "NULL" %}
+								<h3 class="form-control">NO</h3> 
+								{% else %}
+								<h3 class="form-control">{{basica.concluyo_secundaria}}</h3> {% endif %} 
+							</div>
+						</div>
+					</div> 
+					{% endfor %} 
+			</div>
+			<div class="col-twelve resume-header">
+				<div class="blocktext">
+					<div class="row">
+						<div class="col-md-6">
+							<h2 class="form-control">Estudios Técnicos</h2> 
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<h3 class="form-control">¿Tiene estudios técnicos?</h3> 
+						</div>
+						<div class="col-md-6"> 
+							{% for estudio in estudio_tecnico %} 
+							{% if estudio.tiene_estudio_tecnico == "SI" %}
+								<h3 class="form-control">{{estudio.tiene_estudio_tecnico}}</h3> 
+								{% else %}
+								<h3 class="form-control">NO</h3> 
+								{% endif %} 
+								{% endfor %} 
+						</div>
+						<div class="col-twelve">
+							<div class="timeline-wrap"> 
+								{% for estudioinsti in estudios_en_institutos %}
+								<div class="timeline-block">
+									<div class="timeline-ico"> 
+										<i class="fa fa-graduation-cap"></i> 
+									</div>
+									<div class="timeline-header">
+										<h3>{{estudioinsti.carrera_tecnica}}</h3>
+										<p>Concluyó estudios: {{estudioinsti.tiene_estudio_tecnico}}</p>
+									</div>
+									<div class="timeline-content">
+										<h4>{{estudioinsti.centro_estudio_tecnico}}</h4>
+										<ul> 
+											{% if estudioinsti.comentario_estudio_tecnico == "NULL"%}
+											<li>Comentario: -</li> 
+											{% else %}
+											<li>Comentario: {{estudioinsti.comentario_estudio_tecnico}}</li> 
+											{% endif %} 
+										</ul>
+									</div>
+								</div>
+								<!-- /timeline-block -->
+								{% endfor %} 
+							</div>
+							<!-- /timeline-wrap -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-twelve resume-header">
+				<div class="blocktext">
+					<div class="row">
+						<div class="col-md-6">
+							<h2 class="form-control">Estudios No Universitarios</h2> </div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<h3 class="form-control">¿Tiene estudios no universitarios?</h3> </div>
+						<div class=”col-md-6″> 
+							{% for estudio in estudio_no_univ %} 
+							{% if estudio.tiene_estudio_no_unive == "SI" %}
+							<h3 class=”form-control”>{{estudio.tiene_estudio_no_universitario}}</h3> 
+							{% else %}
+							<h3 class=”form-control”>NO</h3> {% endif %} 
+							{% endfor %} </div>
+						<div class="col-twelve">
+							<div class="timeline-wrap"> 
+								{% for estudios_no in estudios_no_universitarios %}
+								<div class="timeline-block">
+									<div class="timeline-ico"> <i class="fa fa-graduation-cap"></i> </div>
+									<div class="timeline-header">
+										<h3>{{estudios_no.carrera_no_universitaria}}</h3>
+										<p>Concluyó estudios: {{estudios_no.concluyo_estudio_no_universitario}}</p>
+									</div>
+									<div class="timeline-content">
+										<h4>{{estudios_no.centro_estudio_no_universitario}}</h4> </div>
+								</div>
+								<!-- /timeline-block -->
+								{% endfor %} </div>
+							<!-- /timeline-wrap -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-twelve resume-header">
+				<div class="blocktext">
+					<div class="row">
+						<div class="col-md-6">
+							<h2 class="form-control">Estudios Universitarios</h2> </div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<h3 class="form-control">¿Tiene estudios universitarios?</h3> </div>
+						<div class=”col-md-6″> 
+							{% for estudio in estudio_univ %} 
+							{% if estudio.tiene_estudio_universitario == "SI" %}
+							<h3 class=”form-control”>{{estudio.tiene_estudio_universitario}}</h3> 
+							{% else %}
+							<h3 class=”form-control”>NO</h3> {% endif %} 
+							{% endfor %} </div>
+						<div class="col-twelve">
+							<div class="timeline-wrap"> 
+								{% for estudios_unv in estudios_en_la_u %}
+								<div class="timeline-block">
+									<div class="timeline-ico"> <i class="fa fa-graduation-cap"></i> </div>
+									<div class="timeline-header">
+										<h3>{{estudios_unv.carrera_universitaria}}</h3>
+										<p>Concluyó estudios: {{estudios_unv.concluyo_estudio_universitario}}</p>
+									</div>
+									<div class="timeline-content">
+										<h4>{{estudios_unv.universidad}}</h4>
+										<li>{{estudios_unv.anhio_obtencion_universitario}}</li>
+									</div>
+								</div>
+								<!-- /timeline-block -->
+								{% endfor %} </div>
+							<!-- /timeline-wrap -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-twelve">
+			<div class="timeline-wrap">
+				<!--SE AÑADE DINAMICAMENTE CADA BLOCK SEGÚN EL N° DE EXPERIENCIAS LABORALES-->
+				<!--timeline-block == UNA EXPERIENCIA LABORAL-->
+				{% for experiencia in experiencia_laboral %}
+				<div class="timeline-block">
+					<div class="timeline-ico"> <i class="fa fa-briefcase"></i> </div>
+					<!--VAR : ocupacion -->
 					<div class="timeline-header">
 						<h3>{{experiencia.ocupacion}}</h3>
-<!--VAR: desde_anhio - VAR: hasta_anhio  -->
+						<!--VAR: desde_anhio - VAR: hasta_anhio  -->
 						<p>{{experiencia.desde_anhio}} - {{experiencia.hasta_anhio}} </p>
 					</div>
-
-<!--VAR: centro_laboral -->
+					<!--VAR: centro_laboral -->
 					<div class="timeline-content">
 						<h4>{{experiencia.centro_laboral}}</h4>
-<!--VAR: direccion_laboral VAR:ruc_empresa_laboral  VAR:pais_laboral VAR:departamento_laboral VAR:provincia_laboral -->
-					<ul>
-						<li>{{experiencia.direccion_laboral}}</li>
-						<li>RUC empresa: {{experiencia.ruc_empresa_laboral}} </li>
-						<li>País: {{experiencia.pais_laboral}} </li>
-						<li>Departamento: {{experiencia.departamento_laboral}}</li>
-						<li>Provincia: {{experiencia.provincia_laboral}} </li>
-					</ul>
-
+						<!--VAR: direccion_laboral VAR:ruc_empresa_laboral  VAR:pais_laboral VAR:departamento_laboral VAR:provincia_laboral -->
+						<ul>
+							<li>{{experiencia.direccion_laboral}}</li>
+							<li>RUC empresa: {{experiencia.ruc_empresa_laboral}} </li>
+							<li>País: {{experiencia.pais_laboral}} </li>
+							<li>Departamento: {{experiencia.departamento_laboral}}</li>
+							<li>Provincia: {{experiencia.provincia_laboral}} </li>
+						</ul>
 					</div>
-
-				</div> <!-- /timeline-block -->
+				</div>
+				<!-- /timeline-block -->
 				{% endfor %}
 				<!--<div class="timeline-block">
 
@@ -371,829 +502,446 @@
 						<p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi incididunt.</p>
 					</div>
 
-				</div>  /timeline-block -->
-
-			</div> <!-- /timeline-wrap -->   			
-
-		</div> <!-- /col-twelve -->
-		
-	   </div> 
-
-   	<div class="row resume-timeline">
-   		<div class="col-twelve resume-header">
-			{% for basica in educacion_basica %}
-				<h2>3. Formación Académica</h2>
-				<div class="row">
-					<div class="col-md-6">
-						<h2 class="form-control">Educación Básica Regular</h2> 
-					</div>
-				</div>
-				<div class="blocktext">
-					<div class="row" style="padding-top: 2%">
-						<div class="col-md-6">
-							<h3 class="form-control">¿Concluyó estudios primarios?</h3> 
-						</div>
-						<div class="col-md-6">
-							{% if basica.concluyo_primaria == "NULL" %}
-								<h3 class="form-control">NO</h3>
-							{% else %}
-								<h3 class="form-control">{{basica.concluyo_primaria}}</h3>
-							{% endif %}
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<h3 class="form-control">¿Concluyó estudios secundaria?</h3> 
-						</div>
-						<div class="col-md-6">
-							{% if basica.concluyo_secundaria == "NULL" %}
-								<h3 class="form-control">NO</h3>
-							{% else %}
-								<h3 class="form-control">{{basica.concluyo_secundaria}}</h3>
-							{% endif %}
-						</div>		
-					</div>
-				</div>
-				{% endfor %}
+				</div>  /timeline-block --></div>
+			<!-- /timeline-wrap -->
 		</div>
-		<div class="col-twelve resume-header">
-			<div class="blocktext">
-			<div class="row">
-					<div class="col-md-6">
-						<h2 class="form-control">Estudios Técnicos</h2> 
-					</div>
-				</div>		
-				<div class="row">
-
-					<div class="col-md-6">
-						<h3 class="form-control">¿Tiene estudios técnicos?</h3> 
-					</div>
-					<div class=”col-md-6″>
-						{% for estudio in estudio_tecnico %}
-							{% if estudio.tiene_estudio_tecnico == "SI" %}
-								<h3 class=”form-control”>{{estudio.tiene_estudio_tecnico}}</h3>
-							{% else %}
-							<h3 class=”form-control”>NO</h3>
-							{% endif %}
-
-						{% endfor %}
-					</div>
-					<div class="col-twelve">
-						<div class="timeline-wrap">
-							{% for estudioinsti in estudios_en_institutos %}
-								<div class="timeline-block">
-									<div class="timeline-ico">
-										<i class="fa fa-graduation-cap"></i>
-									</div>
-									<div class="timeline-header">
-										<h3>{{estudioinsti.carrera_tecnica}}</h3>
-										<p>Concluyó estudios: {{estudioinsti.tiene_estudio_tecnico}}</p>  
-									</div>
-									<div class="timeline-content">
-										<h4>{{estudioinsti.centro_estudio_tecnico}}</h4>
-										<ul>
-											{% if estudioinsti.comentario_estudio_tecnico == "NULL"%}
-											<li>Comentario: -</li>
-											{% else %}
-											<li>Comentario: {{estudioinsti.comentario_estudio_tecnico}}</li>
-											{% endif %}
-										</ul>
-									</div>
-								</div> <!-- /timeline-block -->
-							{% endfor %}
-
-						</div> <!-- /timeline-wrap --> 
-					</div>
-
-
-
-
-
-				</div>		
-
-
-
-				</div>
+		<!-- /col-twelve -->
+		<!--POSTGRADO-->
+	</section>
+	<!-- /features -->
+	<section id="portfolio">
+		<div class="row section-intro">
+			<div class="col-twelve">
+				<h2>Sentencias</h2> </div>
 		</div>
-		<div class="col-twelve resume-header">
-			<div class="blocktext">
-			<div class="row">
-					<div class="col-md-6">
-						<h2 class="form-control">Estudios No Universitarios</h2> 
+		<!--PENALES-->
+		<section class=p rueba>
+			<div class="wrapper">
+				<div class="cards_wrap">
+					<!-- delito_penal -->
+					<div class="card_item">
+						<div class="card_inner">
+							<div class="card_top">
+								<h3 style="text-align:center;">Delito</h3>
+								<ul class="info-list">
+									<li>
+										<tr>
+											<th><strong>Fallo o pena:</strong></th>
+											<th>3 años de carcel </th>
+										</tr>
+									</li>
+									<br>
+									<li>
+										<tr>
+											<th><strong>Cumplimiento del fallo:</strong></th>
+											<th>3 años de carcel </th>
+										</tr>
+										<br> </li>
+									<br>
+									<li>
+										<tr>
+											<th><strong>Modalidad:</strong></th>
+											<th>3 años de carcel </th>
+										</tr>
+										<br> </li>
+									<br>
+									<li>
+										<tr>
+											<th><strong>N° expediente:</strong></th>
+											<th>3 años de carcel </th>
+										</tr>
+										<br> </li>
+									<br>
+									<li>
+										<tr>
+											<th><strong>Fecha sentencia firme:</strong></th>
+											<th>3 años de carcel </th>
+										</tr>
+									</li>
+									<br>
+									<li>
+										<tr>
+											<th><strong>Órgano judicial:</strong></th>
+											<th>3 años de carcel </th>
+										</tr>
+										<br> </li>
+								</ul>
+							</div>
+						</div>
 					</div>
-				</div>		
-				<div class="row">
-					<div class="col-md-6">
-						<h3 class="form-control">¿Tiene estudios no universitarios?</h3> 
+					<!--POR OBLIGACIONES-->
+					<div class="card_item">
+						<div class="card_inner">
+							<div class="card_top">
+								<h3 style="text-align:center;">Materia de la demanda</h3>
+								<ul class="info-list">
+									<li>
+										<tr>
+											<th><strong>Fallo o pena:</strong></th>
+											<th>3 años de carcel </th>
+										</tr>
+									</li>
+									<br>
+									<li>
+										<tr>
+											<th><strong>N° expediente:</strong></th>
+											<th>3 años de carcel </th>
+										</tr>
+										<br> </li>
+									<br>
+									<li>
+										<tr>
+											<th><strong>Órgano judicial:</strong></th>
+											<th>3 años de carcel </th>
+										</tr>
+										<br> </li>
+								</ul>
+							</div>
+						</div>
 					</div>
-					<div class=”col-md-6″>
-						{% for estudio in estudio_no_univ %}
-							{% if estudio.tiene_estudio_no_unive == "SI" %}
-								<h3 class=”form-control”>{{estudio.tiene_estudio_no_universitario}}</h3>
-							{% else %}
-							<h3 class=”form-control”>NO</h3>
-							{% endif %}
-						{% endfor %}
-					</div>
-					<div class="col-twelve">
-						<div class="timeline-wrap">
-							{% for estudios_no in estudios_no_universitarios %}
-								<div class="timeline-block">
-									<div class="timeline-ico">
-										<i class="fa fa-graduation-cap"></i>
-									</div>
-									<div class="timeline-header">
-										<h3>{{estudios_no.carrera_no_universitaria}}</h3>
-										<p>Concluyó estudios: {{estudios_no.concluyo_estudio_no_universitario}}</p>  
-									</div>
-									<div class="timeline-content">
-										<h4>{{estudios_no.centro_estudio_no_universitario}}</h4>
-									</div>
-								</div> <!-- /timeline-block -->
-							{% endfor %}
-						</div> <!-- /timeline-wrap --> 
-					</div>
-				</div>		
 				</div>
-		</div>
-		<div class="col-twelve resume-header">
-			<div class="blocktext">
-			<div class="row">
-					<div class="col-md-6">
-						<h2 class="form-control">Estudios Universitarios</h2> 
-					</div>
-				</div>		
-				<div class="row">
-					<div class="col-md-6">
-						<h3 class="form-control">¿Tiene estudios universitarios?</h3> 
-					</div>
-					<div class=”col-md-6″>
-						{% for estudio in estudio_univ %}
-							{% if estudio.tiene_estudio_universitario == "SI" %}
-								<h3 class=”form-control”>{{estudio.tiene_estudio_universitario}}</h3>
-							{% else %}
-							<h3 class=”form-control”>NO</h3>
-							{% endif %}
-						{% endfor %}
-					</div>
-					<div class="col-twelve">
-						<div class="timeline-wrap">
-							{% for estudios_unv in estudios_en_la_u %}
-								<div class="timeline-block">
-									<div class="timeline-ico">
-										<i class="fa fa-graduation-cap"></i>
-									</div>
-									<div class="timeline-header">
-										<h3>{{estudios_unv.carrera_universitaria}}</h3>
-										<p>Concluyó estudios: {{estudios_unv.concluyo_estudio_universitario}}</p>  
-									</div>
-									<div class="timeline-content">
-										<h4>{{estudios_unv.universidad}}</h4>	
-										<li>{{estudios_unv.anhio_obtencion_universitario}}</li>
-									</div>
-								</div> <!-- /timeline-block -->
-							{% endfor %}
-						</div> <!-- /timeline-wrap --> 
-					</div>
-				</div>		
 			</div>
-		</div>
-
-	   </div>
-
-<!--POSTGRADO-->
-
-  
-		
-	</section> <!-- /features -->
-
-
-<section id="portfolio">
-	<div class="row section-intro">
-		<div class="col-twelve">
-
-			<h2>Sentencias</h2>
-
-		</div>   		
-	</div> 
-<!--PENALES-->
-	<section class= prueba>
-		<div class="wrapper">
-		  <div class="cards_wrap">
-<!-- delito_penal -->		
-			<div class="card_item">
-			  <div class="card_inner">
-				<div class="card_top">
-				  <h3 style="text-align:center;">Delito</h3>
-
-				  <ul class="info-list">
-					<li>
-						<tr>
-							<th><strong>Fallo o pena:</strong></th>
-							<th>3 años de carcel  </th>
-						</tr>		
-					</li>
-					<br>
-					<li>
-						<tr>
-							<th><strong>Cumplimiento del fallo:</strong></th>
-							<th>3 años de carcel  </th>
-						</tr>		
-						<br>
-					</li>
-					<br>
-					<li>
-						<tr>
-							<th><strong>Modalidad:</strong></th>
-							<th>3 años de carcel  </th>
-						</tr>		
-						<br>
-					</li>
-					<br>
-					<li>
-						<tr>
-							<th><strong>N° expediente:</strong></th>
-							<th>3 años de carcel  </th>
-						</tr>		
-						<br>
-					</li>
-					<br>
-					<li>
-						<tr>
-							<th><strong>Fecha sentencia firme:</strong></th>
-							<th>3 años de carcel  </th>
-						</tr>		
-						
-					</li>
-					<br>
-					<li>
-						<tr>
-							<th><strong>Órgano judicial:</strong></th>
-							<th>3 años de carcel  </th>
-						</tr>		
-						<br>
-					</li>
-		
-				   </ul> 
-				</div>
-			  </div>
-			</div>
-
-<!--POR OBLIGACIONES-->	
-			
-<div class="card_item">
-	<div class="card_inner">
-	  <div class="card_top">
-		<h3 style="text-align:center;">Materia de la demanda</h3>
-
-		<ul class="info-list">
-		  <li>
-			  <tr>
-				  <th><strong>Fallo o pena:</strong></th>
-				  <th>3 años de carcel  </th>
-			  </tr>		
-		  </li>
-		  <br>
-		  <li>
-			  <tr>
-				  <th><strong>N° expediente:</strong></th>
-				  <th>3 años de carcel  </th>
-			  </tr>		
-			  <br>
-		  </li>
-		  <br>
-
-		  <li>
-			  <tr>
-				  <th><strong>Órgano judicial:</strong></th>
-				  <th>3 años de carcel  </th>
-			  </tr>		
-			  <br>
-		  </li>
-
-		 </ul> 
-	  </div>
-	</div>
-  </div>
-
-		  </div>
-		</div>
 		</section>
-	 
-<br>
-<br>
-<table class="container-table">
-	<thead>
-		<tr>
-			<th><h1>Tipo</h1></th>
-			<th><h1>Dirección</h1></th>
-			<th><h1>Autovaluo</h1></th>
-			<th><h1>Comentario</h1></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>fefe</td>
-			<td>fwejfn</td>
-			<td>njenfer</td>
-			<td>fewifjf</td>
-		</tr>
-		<tr>
-			<td>fwef</td>
-			<td>7326</td>
-			<td>10437</td>
-			<td>fewfw</td>
-		</tr>
-
-	</tbody>
-</table>
-<br>
-<br>
-
-	<div class="container cc-experience">
-		<div class="card">
-		  <div class="row">
-			<div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-			  <div class="card-body cc-experience-header">
-				<p>March 2016 - Present</p>
-				<div class="h5">CreativeM</div>
-			  </div>
+		<br>
+		<br>
+		<table class="container-table">
+			<thead>
+				<tr>
+					<th>
+						<h1>Tipo</h1></th>
+					<th>
+						<h1>Dirección</h1></th>
+					<th>
+						<h1>Autovaluo</h1></th>
+					<th>
+						<h1>Comentario</h1></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>fefe</td>
+					<td>fwejfn</td>
+					<td>njenfer</td>
+					<td>fewifjf</td>
+				</tr>
+				<tr>
+					<td>fwef</td>
+					<td>7326</td>
+					<td>10437</td>
+					<td>fewfw</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<br>
+		<div class="container cc-experience">
+			<div class="card">
+				<div class="row">
+					<div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
+						<div class="card-body cc-experience-header">
+							<p>March 2016 - Present</p>
+							<div class="h5">CreativeM</div>
+						</div>
+					</div>
+					<div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
+						<div class="card-body">
+							<div class="h5">Front End Developer</div>
+							<p>Euismod massa scelerisque suspendisse fermentum habitant vitae ullamcorper magna quam iaculis, tristique sapien taciti mollis interdum sagittis libero nunc inceptos tellus, hendrerit vel eleifend primis lectus quisque cubilia sed mauris. Lacinia porta vestibulum diam integer quisque eros pulvinar curae, curabitur feugiat arcu vivamus parturient aliquet laoreet at, eu etiam pretium molestie ultricies sollicitudin dui.</p>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-			  <div class="card-body">
-				<div class="h5">Front End Developer</div>
-				<p>Euismod massa scelerisque suspendisse fermentum habitant vitae ullamcorper magna quam iaculis, tristique sapien taciti mollis interdum sagittis libero nunc inceptos tellus, hendrerit vel eleifend primis lectus quisque cubilia sed mauris. Lacinia porta vestibulum diam integer quisque eros pulvinar curae, curabitur feugiat arcu vivamus parturient aliquet laoreet at, eu etiam pretium molestie ultricies sollicitudin dui.</p>
-			  </div>
+			<div class="card">
+				<div class="row">
+					<div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
+						<div class="card-body cc-experience-header">
+							<p>April 2014 - March 2016</p>
+							<div class="h5">WebNote</div>
+						</div>
+					</div>
+					<div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
+						<div class="card-body">
+							<div class="h5">Web Developer</div>
+							<p>Euismod massa scelerisque suspendisse fermentum habitant vitae ullamcorper magna quam iaculis, tristique sapien taciti mollis interdum sagittis libero nunc inceptos tellus, hendrerit vel eleifend primis lectus quisque cubilia sed mauris. Lacinia porta vestibulum diam integer quisque eros pulvinar curae, curabitur feugiat arcu vivamus parturient aliquet laoreet at, eu etiam pretium molestie ultricies sollicitudin dui.</p>
+						</div>
+					</div>
+				</div>
 			</div>
-		  </div>
+			<div class="card">
+				<div class="row">
+					<div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
+						<div class="card-body cc-experience-header">
+							<p>April 2013 - February 2014</p>
+							<div class="h5">WEBM</div>
+						</div>
+					</div>
+					<div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
+						<div class="card-body">
+							<div class="h5">Intern</div>
+							<p>Euismod massa scelerisque suspendisse fermentum habitant vitae ullamcorper magna quam iaculis, tristique sapien taciti mollis interdum sagittis libero nunc inceptos tellus, hendrerit vel eleifend primis lectus quisque cubilia sed mauris. Lacinia porta vestibulum diam integer quisque eros pulvinar curae, curabitur feugiat arcu vivamus parturient aliquet laoreet at, eu etiam pretium molestie ultricies sollicitudin dui.</p>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="card">
-		  <div class="row">
-			<div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-			  <div class="card-body cc-experience-header">
-				<p>April 2014 - March 2016</p>
-				<div class="h5">WebNote</div>
-			  </div>
-			</div>
-			<div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-			  <div class="card-body">
-				<div class="h5">Web Developer</div>
-				<p>Euismod massa scelerisque suspendisse fermentum habitant vitae ullamcorper magna quam iaculis, tristique sapien taciti mollis interdum sagittis libero nunc inceptos tellus, hendrerit vel eleifend primis lectus quisque cubilia sed mauris. Lacinia porta vestibulum diam integer quisque eros pulvinar curae, curabitur feugiat arcu vivamus parturient aliquet laoreet at, eu etiam pretium molestie ultricies sollicitudin dui.</p>
-			  </div>
-			</div>
-		  </div>
-		</div>
-		<div class="card">
-		  <div class="row">
-			<div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-			  <div class="card-body cc-experience-header">
-				<p>April 2013 - February 2014</p>
-				<div class="h5">WEBM</div>
-			  </div>
-			</div>
-			<div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-			  <div class="card-body">
-				<div class="h5">Intern</div>
-				<p>Euismod massa scelerisque suspendisse fermentum habitant vitae ullamcorper magna quam iaculis, tristique sapien taciti mollis interdum sagittis libero nunc inceptos tellus, hendrerit vel eleifend primis lectus quisque cubilia sed mauris. Lacinia porta vestibulum diam integer quisque eros pulvinar curae, curabitur feugiat arcu vivamus parturient aliquet laoreet at, eu etiam pretium molestie ultricies sollicitudin dui.</p>
-			  </div>
-			</div>
-		  </div>
-		</div>
-	  </div>
-
-	
-</section>
- 
+	</section>
 	<!-- INFO ADICIONAL 
    ================================================== -->
 	<section id="cta" class="grey-section">
-
-   	<div class="row cta-content">
-
-   		<div class="col-twelve section-ads">  
-
-	     		<h2 class="h01">Información Adicional:</h2>
-
-		      <p class="lead">
-		      Información adicional
-				</p>
-<!--
+		<div class="row cta-content">
+			<div class="col-twelve section-ads">
+				<h2 class="h01">Información Adicional:</h2>
+				<p class="lead"> Información adicional </p>
+				<!--
 				<div class="action">
 			      <a class="button button-primary large" >Sign Up Now</a>
 			  </div>	
--->	     	
-
-   		</div>
-
-   	</div> <!-- /cta-content -->
-
-   </section> <!-- /cta --> 
-
-	
+--></div>
+		</div>
+		<!-- /cta-content -->
+	</section>
+	<!-- /cta -->
 	<!-- SENTENCIAS
+		HERE
    ================================================== -->
 	<section id="services">
-
-		<div class="overlay"></div>
-
-		<div class="row section-intro">
-   		<div class="col-twelve">
-
-   			<h1>Sentencia</h1>
-	
-		   </div> <!-- /section-intro -->
-		   
-		   
-
-   	<div class="row services-content">
-
-   		<div id="owl-slider" class="owl-carousel services-list">
-
-	      	<div class="service">	
-
-	      		<span class="icon"><i class="icon-earth"></i></span>            
-
-	            <div class="service-content">	
-
-					 <h3>Webdesign</h3>
-
-		            <p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-	         		</p>
-	         		
-				 </div> 	 
-				 
-			
-
-				</div> <!-- /service -->
-
-				<div class="service">	
-
-					<span class="icon"><i class="icon-window"></i></span>                          
-
-	            <div class="service-content">	
-
-	            	<h3>Web Development</h3>  
-
-		            <p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-	         		</p>
-
-	            </div>	                          
-
-			   </div> <!-- /service -->
-			   <div class="service">	
-
-				<span class="icon"><i class="icon-window"></i></span>                          
-
-			<div class="service-content">	
-
-				<h3>Web Development</h3>  
-
-				<p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-				 </p>
-
-			</div>	                          
-
-		   </div> <!-- /service -->
-
-			   <div class="service">
-
-			   	<span class="icon"><i class="icon-paint-brush"></i></span>		            
-
-	            <div class="service-content">
-
-	            	<h3>Branding</h3>
-
-		            <p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-	        			</p> 
-
-	            </div> 	            	               
-
-			   </div> <!-- /service -->
-
-				<div class="service">
-
-					<span class="icon"><i class="icon-toggles"></i></span>	              
-
-	            <div class="service-content">
-
-	            	<h3>UI/UX Design</h3>
-
-		            <p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-	         		</p> 
-	         		
-	            </div>                
-
-				</div> <!-- /service -->
-				
-
-			   <div class="service">
-
-			   	<span class="icon"><i class="icon-image"></i></span>	            
-
-	            <div class="service-content">
-
-	            	<h3>Graphics Design</h3>
-
-		            <p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-	        			</p> 
-
-	            </div>	               
-
-			   </div> <!-- /service -->
-			   
-
-			   <div class="service">
-
-			   	<span class="icon"><i class="icon-chat"></i></span>	   	           
-
-	            <div class="service-content">
-
-	            	 <h3>Consultancy</h3>
-
-		            <p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-	        			</p> 
-	        			
-	            </div>	               
-
-			   </div> <!-- /service -->
-
-	      </div> <!-- /services-list -->
-   		
-   	</div> <!-- /services-content -->
-		
-	</section> <!-- /services -->	
-
-
+		<div class="overlay">
+			<div class="row section-intro">
+				<div class="col-twelve">
+					<h1>Sentencia</h1> 
+				</div>
+				<!-- /section-intro -->
+				<div class="row services-content">
+					<div id="owl-slider" class="owl-carousel services-list">
+						<div class="service"> <span class="icon"><i class="icon-earth"></i></span>
+							<div class="service-content">
+								<h3>Webdesign</h3>
+								<p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. </p>
+							</div>
+						</div>
+						<!-- /service -->
+						<div class="service"> <span class="icon"><i class="icon-window"></i></span>
+							<div class="service-content">
+								<h3>Web Development</h3>
+								<p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. </p>
+							</div>
+						</div>
+						<!-- /service -->
+						<div class="service"> <span class="icon"><i class="icon-window"></i></span>
+							<div class="service-content">
+								<h3>Web Development</h3>
+								<p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. </p>
+							</div>
+						</div>
+						<!-- /service -->
+						<div class="service"> <span class="icon"><i class="icon-paint-brush"></i></span>
+							<div class="service-content">
+								<h3>Branding</h3>
+								<p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. </p>
+							</div>
+						</div>
+						<!-- /service -->
+						<div class="service"> <span class="icon"><i class="icon-toggles"></i></span>
+							<div class="service-content">
+								<h3>UI/UX Design</h3>
+								<p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. </p>
+							</div>
+						</div>
+						<!-- /service -->
+						<div class="service"> <span class="icon"><i class="icon-image"></i></span>
+							<div class="service-content">
+								<h3>Graphics Design</h3>
+								<p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. </p>
+							</div>
+						</div>
+						<!-- /service -->
+						<div class="service"> <span class="icon"><i class="icon-chat"></i></span>
+							<div class="service-content">
+								<h3>Consultancy</h3>
+								<p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. </p>
+							</div>
+						</div>
+						<!-- /service -->
+					</div>
+					<!-- /services-list -->
+				</div>
+				<!-- /services-content -->
+			</div>
+		</div>
+	</section>
+	<!-- /services -->
 	<!-- stats Section
    ================================================== -->
 	<section id="stats" class="count-up">
-
 		<div class="row">
 			<div class="col-twelve">
-
 				<div class="block-1-6 block-s-1-3 block-tab-1-2 block-mob-full stats-list">
-
 					<div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-pencil-ruler"></i>
-						</div>
-
+						<div class="icon-part"> <i class="icon-pencil-ruler"></i> </div>
 						<h3 class="stat-count">
 							1500
 						</h3>
-
 						<h5 class="stat-title">
 							Projects Completed
-						</h5>
-
-					</div> <!-- /stat -->					
-
+						</h5> </div>
+					<!-- /stat -->
 					<div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-users"></i>
-						</div>
-
+						<div class="icon-part"> <i class="icon-users"></i> </div>
 						<h3 class="stat-count">
 							900
 						</h3>
-
 						<h5 class="stat-title">
 							Happy Clients
-						</h5>
-
-					</div> <!-- /stat -->
-
+						</h5> </div>
+					<!-- /stat -->
 					<div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-badge"></i>
-						</div>
-
+						<div class="icon-part"> <i class="icon-badge"></i> </div>
 						<h3 class="stat-count">
 							200
 						</h3>
-
 						<h5 class="stat-title">
 							Awards Received
-						</h5>
-
-					</div> <!-- /stat -->									
-
+						</h5> </div>
+					<!-- /stat -->
 					<div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-light-bulb"></i>
-						</div>
-
+						<div class="icon-part"> <i class="icon-light-bulb"></i> </div>
 						<h3 class="stat-count">
 							120
 						</h3>
-
 						<h5 class="stat-title">
 							Crazy Ideas
-						</h5>
-
-					</div> <!-- /stat -->
-
+						</h5> </div>
+					<!-- /stat -->
 					<div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-cup"></i>
-						</div>
-
+						<div class="icon-part"> <i class="icon-cup"></i> </div>
 						<h3 class="stat-count">
 							1500
 						</h3>
-
 						<h5 class="stat-title">
 							Coffee Cups
-						</h5>
-
-					</div> <!-- /stat -->
-
+						</h5> </div>
+					<!-- /stat -->
 					<div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-clock"></i>
-						</div>
-
+						<div class="icon-part"> <i class="icon-clock"></i> </div>
 						<h3 class="stat-count">
 							7200
 						</h3>
-
 						<h5 class="stat-title">
 							Hours
-						</h5>
-
-					</div> <!-- /stat -->
-
-				</div> <!-- /stats-list -->
-
-			</div> <!-- /twelve -->
-		</div> <!-- /row -->
-
-	</section> <!-- /stats -->
-
-	
-   <!-- contact
+						</h5> </div>
+					<!-- /stat -->
+				</div>
+				<!-- /stats-list -->
+			</div>
+			<!-- /twelve -->
+		</div>
+		<!-- /row -->
+	</section>
+	<!-- /stats -->
+	<!-- contact
    ================================================== -->
 	<section id="contact">
-
 		<div class="row section-intro">
-   		<div class="col-twelve">
-
-   			<h5>Contact</h5>
-   			<h1>I'd Love To Hear From You.</h1>
-
-   			<p class="lead">Lorem ipsum Do commodo in proident enim in dolor cupidatat adipisicing dolore officia nisi aliqua incididunt Ut veniam lorem ipsum Consectetur ut in in eu do.</p>
-
-   		</div> 
-   	</div> <!-- /section-intro -->
-
-   	<div class="row contact-form">
-
-   		<div class="col-twelve">
-
-            <!-- form -->
-            <form name="contactForm" id="contactForm" method="post" action="">
-      			<fieldset>
-
-                  <div class="form-field">
- 						   <input name="contactName" type="text" id="contactName" placeholder="Name" value="" minlength="2" required="">
-                  </div>
-                  <div class="form-field">
-	      			   <input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value="" required="">
-	               </div>
-                  <div class="form-field">
-	     				   <input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value="">
-	               </div>                       
-                  <div class="form-field">
-	                 	<textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10" cols="50" required=""></textarea>
-	               </div>                      
-                 <div class="form-field">
-                     <button class="submitform">Submit</button>
-                     <div id="submit-loader">
-                        <div class="text-loader">Sending...</div>                             
-       				      <div class="s-loader">
-								  	<div class="bounce1"></div>
-								  	<div class="bounce2"></div>
-								  	<div class="bounce3"></div>
+			<div class="col-twelve">
+				<h5>Contact</h5>
+				<h1>I'd Love To Hear From You.</h1>
+				<p class="lead">Lorem ipsum Do commodo in proident enim in dolor cupidatat adipisicing dolore officia nisi aliqua incididunt Ut veniam lorem ipsum Consectetur ut in in eu do.</p>
+			</div>
+		</div>
+		<!-- /section-intro -->
+		<div class="row contact-form">
+			<div class="col-twelve">
+				<!-- form -->
+				<form name="contactForm" id="contactForm" method="post" action="">
+					<fieldset>
+						<div class="form-field">
+							<input name="contactName" type="text" id="contactName" placeholder="Name" value="" minlength="2" required=""> </div>
+						<div class="form-field">
+							<input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value="" required=""> </div>
+						<div class="form-field">
+							<input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value=""> </div>
+						<div class="form-field">
+							<textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10" cols="50" required=""></textarea>
+						</div>
+						<div class="form-field">
+							<button class="submitform">Submit</button>
+							<div id="submit-loader">
+								<div class="text-loader">Sending...</div>
+								<div class="s-loader">
+									<div class="bounce1"></div>
+									<div class="bounce2"></div>
+									<div class="bounce3"></div>
 								</div>
 							</div>
-                  </div>
-
-      			</fieldset>
-      		</form> <!-- Form End -->
-
-            <!-- contact-warning -->
-            <div id="message-warning">            	
-            </div>            
-            <!-- contact-success -->
-      		<div id="message-success">
-               <i class="fa fa-check"></i>Your message was sent, thank you!<br>
-      		</div>
-
-         </div> <!-- /col-twelve -->
-   		
-   	</div> <!-- /contact-form -->
-
-   	<div class="row contact-info">
-
-   		<div class="col-four tab-full">
-
-   			<div class="icon">
-   				<i class="icon-pin"></i>
-   			</div>
-
-   			<h5>Where to find me</h5>
-
-   			<p>
-            1600 Amphitheatre Parkway<br>
-            Mountain View, CA<br>
-            94043 US
-            </p>
-
-   		</div>
-
-   		<div class="col-four tab-full collapse">
-
-   			<div class="icon">
-   				<i class="icon-mail"></i>
-   			</div>
-
-   			<h5>Email Me At</h5>
-
-   			<p>someone@kardswebsite.com<br>
-			   	info@kardswebsite.com			     
-			   </p>
-
-   		</div>
-
-   		<div class="col-four tab-full">
-
-   			<div class="icon">
-   				<i class="icon-phone"></i>
-   			</div>
-
-   			<h5>Call Me At</h5>
-
-   			<p>Phone: (+63) 555 1212<br>
-			   	Mobile: (+63) 555 0100<br>
-			     	Fax: (+63) 555 0101
-			   </p>
-
-   		</div>
-   		
-   	</div> <!-- /contact-info -->
-		
-	</section> <!-- /contact -->
-
-
-   <!-- footer
+						</div>
+					</fieldset>
+				</form>
+				<!-- Form End -->
+				<!-- contact-warning -->
+				<div id="message-warning"> </div>
+				<!-- contact-success -->
+				<div id="message-success"> <i class="fa fa-check"></i>Your message was sent, thank you!
+					<br> </div>
+			</div>
+			<!-- /col-twelve -->
+		</div>
+		<!-- /contact-form -->
+		<div class="row contact-info">
+			<div class="col-four tab-full">
+				<div class="icon"> <i class="icon-pin"></i> </div>
+				<h5>Where to find me</h5>
+				<p> 1600 Amphitheatre Parkway
+					<br> Mountain View, CA
+					<br> 94043 US </p>
+			</div>
+			<div class="col-four tab-full collapse">
+				<div class="icon"> <i class="icon-mail"></i> </div>
+				<h5>Email Me At</h5>
+				<p>someone@kardswebsite.com
+					<br> info@kardswebsite.com </p>
+			</div>
+			<div class="col-four tab-full">
+				<div class="icon"> <i class="icon-phone"></i> </div>
+				<h5>Call Me At</h5>
+				<p>Phone: (+63) 555 1212
+					<br> Mobile: (+63) 555 0100
+					<br> Fax: (+63) 555 0101 </p>
+			</div>
+		</div>
+		<!-- /contact-info -->
+	</section>
+	<!-- /contact -->
+	<!-- footer
    ================================================== -->
+	<footer>
+		<div class="row">
+			<div class="col-six tab-full pull-right social">
+				<ul class="footer-social">
+					<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+					<li><a href="#"><i class="fa fa-behance"></i></a></li>
+					<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+					<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+					<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+				</ul>
+			</div>
+			<div class="col-six tab-full">
+				<div class="copyright"> <span>© Copyright Kards 2016.</span> <span>Design by <a href="http://www.styleshout.com/">styleshout</a></span> </div>
+			</div>
+			<div id="go-top"> <a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a> </div>
+		</div>
+		<!-- /row -->
+	</footer>
+	<div id="preloader">
+		<div id="loader"></div>
+	</div>
+	<!-- script
+		================================================== -->
+	<script src="{% static " js/jquery-2.1.3.min.js "%}"></script>
+	<script src="{% static " js/plugins.js "%}"></script>
+	<script src="{% static " js/main.js "%}"></script>
+	<script src="{% static " js/modernizr.js "%}"></script>
+	<script src="{% static " js/place.min.js "%}"></script>
+	<script src="{% static " js/slider.js "%}"></script>
+</body>
 
-   <footer>
-     	<div class="row">
-
-     		<div class="col-six tab-full pull-right social">
-
-     			<ul class="footer-social">        
-			      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-			      <li><a href="#"><i class="fa fa-behance"></i></a></li>
-			      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-			      <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-			      <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-			   </ul> 
-	      		
-	      </div>
-
-      	<div class="col-six tab-full">
-	      	<div class="copyright">
-		        	<span>© Copyright Kards 2016.</span> 
-		        	<span>Design by <a href="http://www.styleshout.com/">styleshout</a></span>	         	
-		         </div>		                  
-	      	</div>
-
-	      	<div id="go-top">
-		         <a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
-		      </div>
-
-      	</div> <!-- /row -->     	
-   </footer>  
-
-   <div id="preloader"> 
-    	<div id="loader"></div>
-	 </div> 
-	 
-		<!-- script
-		================================================== -->   
-		<script src="{% static "js/jquery-2.1.3.min.js"%}"></script>
-		<script src="{% static "js/plugins.js"%}"></script>
-		<script src="{% static "js/main.js"%}"></script>
-		<script src="{% static "js/modernizr.js"%}"></script>
-		<script src="{% static "js/place.min.js"%}"></script>
-		<script src="{% static "js/slider.js"%}"></script>
-	</body>
 </html>

@@ -60,6 +60,7 @@ async function mainpage(){
   }
 }
 
+// Test
 async function test() {
   try {
     const response = await axios.post('/candidatos/test', data)

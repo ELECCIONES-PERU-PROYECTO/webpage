@@ -502,13 +502,9 @@ def candidatos(request):
                 'elecciones/dashboard.html',
                 {'candidatos': candidatos})
 
-def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_eleccion_):
+def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   #expertiencia laboral = ExperienciaLaboral.objects.raw()
-  '''  
-  return render(request,
-                'elecciones/dashboard.html',
-                {'page': page_obj}) 
-  '''
+
   if cargo_postula_dato == "favicon.png":
       return
   print("dni_hoja_de_vida: ",dni_hoja_de_vida)
@@ -542,7 +538,7 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_eleccion_):
   nombre_ = DatosPersonales.objects.raw("SELECT id ,candidato  FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "' LIMIT 1")
   datos_personales_ = DatosPersonales.objects.raw("SELECT DISTINCT * FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "' LIMIT 1 ")
   cargo_eleccion_ = DatosPersonales.objects.raw("SELECT  id ,cargo_eleccion FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "'")  
-  experiencia_loboral_ = ExperienciaLaboral.objects.raw(query_exp_lab)  #formacion_academica_ = 
+  experiencia_laboral_ = ExperienciaLaboral.objects.raw(query_exp_lab)  #formacion_academica_ = 
   edubasica_ = EducacionBasica.objects.raw(query_edu_basica)
   
   edu_tecnic_ = EstudioTecnico.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_estudio_tecnico FROM estudio_tecnico AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE EP.centro_estudio_tecnico != 'null' AND  DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
