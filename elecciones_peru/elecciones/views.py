@@ -583,7 +583,3 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
 
 def mainpage(request):
   return render(request,'elecciones/landingpage.html',{})
-
-def filterpage(request):
-  print("Pasa por aqui la filterpage")
-  return render(request,'elecciones/dashboard.html',{})
