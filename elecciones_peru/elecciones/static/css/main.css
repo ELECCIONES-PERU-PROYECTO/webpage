@@ -1025,6 +1025,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
  */
 .grey-section {
 	background: #ebebeb;
+	padding: 5%  !important;
 }
 
 .white-section {
