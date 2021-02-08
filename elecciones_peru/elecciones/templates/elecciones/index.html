@@ -115,13 +115,16 @@
 						<strong>- Cargo al que postula:</strong> <span>{{candidato.cargo_eleccion}}</span> 
 						{% else %} 
 						<strong>Cargo al que postula:</strong> <span>{{candidato.cargo_eleccion}}</span> 
-						{%endif%} </li> 
+						{% endif %} 
+					</li> 
 						{% endfor %}
 					<li> <strong>Organización política:</strong> <span>{{candidato.organizacion_politica}}</span> </li>
 					<li> <strong>Fecha de nacimiento:</strong> <span>{{candidato.fecha_nacimiento}}</span> </li>
 					<li> <strong>Sexo:</strong> <span>{{candidato.sexo}}</span> </li>
 					<li> <strong>DNI:</strong> <span>{{candidato.dni_candidato}}</span> </li>
-					<li> <strong>Canet de extranjería:</strong> <span>{{candidato.carnet_extranjeria}}</span> </li>
+					{% if candidato.carnet_extranjeria %} 
+						<li> <strong>Canet de extranjería:</strong> <span>{{candidato.carnet_extranjeria}}</span> </li>
+					{% endif %}
 				</ul>
 				<!-- /info-list -->
 			</div>
