@@ -68,7 +68,18 @@ display: block;
     line-height: 3rem;
 }
 
+@media (max-width: 850px){
+    .uk-text-center .card-sentencias{
+    width: 100%;
+  }
+}
+@media (min-width: 850px){
+#grid-sentencias {
+  display: flex;
+}
 
+
+}
 @media (max-width: 1024px) {
   .cards_wrap .card_item {
     width: 33.3%;
