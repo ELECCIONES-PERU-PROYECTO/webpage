@@ -573,6 +573,11 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   print("SELECT DISTINCT DP.id, EP.tiene_info_por_declarar, EP.organización_renuncia, EP.comentario FROM renuncia AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
   ifreuncia_ = Renuncia.objects.raw("SELECT DISTINCT DP.id, EP.tiene_info_por_declarar FROM renuncia AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
+  if_penal_ = SentenciaPenal.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_info_por_declarar FROM sentencia_penal AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
+  sentencia_penales_ = SentenciaPenal.objects.raw(" SELECT DISTINCT DP.id, EP.fallo_penal, EP.cumplimiento_del_fallo, EP.modalidad_penal  ,EP.n_experiente_penal, EP.fecha_sentencia_penal, EP.organo_judicial FROM sentencia_penal AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+
+  if_oblig_ = SentenciaObligacion.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_info_por_declarar FROM sentencia_obligacion AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
+  sentencia_obliga_ = SentenciaObligacion.objects.raw(" SELECT DISTINCT DP.id, EP.materia_sentencia, EP.fallo_obliga, EP.n_experiente_obliga, EP.organo_judicial FROM sentencia_obligacion AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
   return render(request, 'elecciones/index.html', {
                   'nombre': nombre_,
@@ -591,7 +596,11 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
                   'carg_eleccion_pop': carg_eleccion_pop_,
                   'cargo_eleccion_popular': cargo_eleccion_popular_,
                   'ifreuncia':ifreuncia_,
-                  'renuncias': renuncias_
+                  'renuncias': renuncias_,
+                  'if_penal': if_penal_,
+                  'setencia_penales': sentencia_penales_,
+                  'if_oblig':if_oblig_,
+                  'sentencia_obliga':sentencia_obliga_
                 })
 
 def mainpage(request):
