@@ -579,6 +579,9 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   if_oblig_ = SentenciaObligacion.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_info_por_declarar FROM sentencia_obligacion AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
   sentencia_obliga_ = SentenciaObligacion.objects.raw(" SELECT DISTINCT DP.id, EP.materia_sentencia, EP.fallo_obliga, EP.n_experiente_obliga, EP.organo_judicial FROM sentencia_obligacion AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
+  if_ingreso_ = Ingreso.objects.raw("SELECT DISTINCT DP.id, EP.tiene_ingresos FROM sentencia_obligacion AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
+  ingresos_ = Ingreso.objects.raw(" SELECT DISTINCT DP.id, EP.anhio_ingresos, EP.total_ingresos FROM ingreso AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+
   return render(request, 'elecciones/index.html', {
                   'nombre': nombre_,
                   'datos_personales': datos_personales_,
@@ -600,7 +603,10 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
                   'if_penal': if_penal_,
                   'setencia_penales': sentencia_penales_,
                   'if_oblig':if_oblig_,
-                  'sentencia_obliga':sentencia_obliga_
+                  'sentencia_obliga':sentencia_obliga_,
+                  'if_ingreso': if_ingreso_,
+                  'ingresos': ingresos_
+
                 })
 
 def mainpage(request):
