@@ -31,9 +31,9 @@
 						<li><a class="smoothscroll" href="#renuncias" title="">5. RENUNCIAS EFECTUADAS A OTROS PARTIDOS</a></li>
 						<li><a class="smoothscroll" href="#contact" title="">6. RELACIÓN DE SENTENCIAS</a></li>
 						<li><a class="smoothscroll" href="#ingreso" title="">7. INGRESOS</a></li>
-						<li><a class="smoothscroll" href="#contact" title="">8. BIENES INMUEBLES</a></li>
-						<li><a class="smoothscroll" href="#contact" title="">9. BIENES MUEBLES</a></li>
-						<li><a class="smoothscroll" href="#portfolio" title="">10. INFORMACIÓN ADICIONAL</a></li>
+						<li><a class="smoothscroll" href="#bienes-inmuebles" title="">8. BIENES INMUEBLES</a></li>
+						<li><a class="smoothscroll" href="#bienes-muebles" title="">9. BIENES MUEBLES</a></li>
+						<li><a class="smoothscroll" href="#informacion-adicional" title="">10. INFORMACIÓN ADICIONAL</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -793,7 +793,7 @@
 	</section>
 
 	<section id="bienes-inmuebles" class="grey-section">
-		<h2>BIENE INMUEBLES</h2>		
+		<h1>BIENE INMUEBLES</h1>		
 		tiene bienes inmuebles que declarar? <br>	
 		{% for bien_inmu in if_bien_inmueble %}
 			{{bien_inmu.tiene_inmueble}}
@@ -801,7 +801,7 @@
 		<br>
 		<br>
 		{% for bien_inmu_ in bienes_inmuebles %}
-		<h1>Bien inmueble</h1>	
+		<h2>Bien inmueble</h2>	
 		el bien inmueble esta inscrito en sunarp? <br>
 		{{bien_inmu_.esta_inscrito_sunarp}}
 			<br>
@@ -823,7 +823,52 @@
 		{% endfor %}
 		<br><br><br>
 	</section>
+	<section id= "bienes-muebles" class= "grey-section">
+		<h1>BIENES MUEBLES</h1>			
+		{% for if_bien_mue in if_bien_mueble %}
+			tiene bienes muebles? <br>
+			{{if_bien_mue.tiene_bien_mueble}}
+		{%  endfor %}
+		<br>
+		<br>
+		{% for bien_mueb in bienes_muebles %}
+		<h2> Bien mueble</h2>
+			Vehiculo <br>
+			{{bien_mueb.vehiculo}}
+			<br>
+			<br>
+			Placa 
+			<br>
+			{{bien_mueb.placa}}
+			<br>
+			Valor
+			<br>
+			{{bien_mueb.valor}}
+			<br>
+			Caracteristicas del vehiculo
+			<br>
+			{{bien_mueb.caracteristicas_vehiculo}}
+			<br>
+			Comentario
+			<br>
+			{{bien_mueb.comentario_vehiculo}}			
+			{% endfor %}
+	</section>
+	<section id= "informacion-adicional" class="grey-section">
+		
 
+		<h2>INFORMACION ADICIONAL</h2>			
+		{% for info_ in informacio_adicional %}
+			tiene informacion adicional que declara? <br>
+			{{info_.tiene_info_adicional}}
+		<br>
+		<br>
+			Informacion adicional <br>
+			{{info_.info}}
+			<br>
+			<br>
+		{% endfor %}
+	</section>
 	<!--
 		<div class="row section-intro">
 			<div class="col-twelve">

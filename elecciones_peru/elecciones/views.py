@@ -585,16 +585,17 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   ingresos_ = Ingreso.objects.raw(" SELECT DISTINCT DP.id, EP.anhio_ingresos, EP.total_ingresos FROM ingreso AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
   # si es que tiene que declarar bienes inmuebles solo da dp.id, 
-  if_bien_inmueble_ = Ingreso.objects.raw("SELECT DISTINCT DP.id, EP.tiene_inmueble FROM bien_inmueble AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
+  if_bien_inmueble_ = BienInmueble.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_inmueble FROM bien_inmueble AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
   # los bienes inmuebles da columnas EP.tipo_inmueble, EP.direccion_inmueble,EP.esta_inscrito_sunarp, EP.partida_inmueble_sunarp ,EP.comentario_inmueble  
-  bienes_inmuebles_ = Ingreso.objects.raw(" SELECT DISTINCT DP.id, EP.tipo_inmueble, EP.direccion_inmueble,EP.esta_inscrito_sunarp, EP.partida_inmueble_sunarp ,EP.comentario_inmueble FROM bien_inmueble AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+  bienes_inmuebles_ = BienInmueble.objects.raw(" SELECT DISTINCT DP.id, EP.tipo_inmueble, EP.direccion_inmueble,EP.esta_inscrito_sunarp, EP.partida_inmueble_sunarp ,EP.comentario_inmueble FROM bien_inmueble AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+ 
+  if_bien_mueble_ = BienMueble.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_bien_mueble FROM bien_mueble AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
+  bienes_muebles_ = BienMueble.objects.raw(" SELECT DISTINCT DP.id, EP.vehiculo, EP.placa,EP.valor, EP.caracteristicas_vehiculo ,EP.comentario_vehiculo FROM bien_mueble AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
+  informacio_adicional_ = InformacionAdicional.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_info_adicional, EP.info FROM informacion_adicional AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
+  print(" SELECT DISTINCT DP.id, EP.tiene_info_adicional, EP.info FROM informacion_adicional AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
-  print("if_bien_inmueble_: ")
-  print("SELECT DISTINCT DP.id, EP.tiene_inmueble FROM bien_inmueble AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
-  print("bienes_inmuebles_:")
-  print("SELECT DISTINCT DP.id, EP.tipo_inmueble, EP.direccion_inmueble,EP.esta_inscrito_sunarp, EP.partida_inmueble_sunarp ,EP.comentario_inmueble FROM bien_inmueble AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
   return render(request, 'elecciones/index.html', {
                   'nombre': nombre_,
                   'datos_personales': datos_personales_,
@@ -620,7 +621,10 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
                   'if_ingreso': if_ingreso_,
                   'ingresos': ingresos_,
                   'if_bien_inmueble':if_bien_inmueble_,
-                  'bienes_inmuebles':bienes_inmuebles_
+                  'bienes_inmuebles':bienes_inmuebles_,
+                  'if_bien_mueble':if_bien_mueble_ ,
+                  'bienes_muebles':bienes_muebles_,
+                  'informacio_adicional':informacio_adicional_
                 })
 
 def mainpage(request):
