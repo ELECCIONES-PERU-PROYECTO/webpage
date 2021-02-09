@@ -584,7 +584,11 @@
 								</div>
 								<div class="timeline-content">
 									<ul class="info-list">
-										<li>Comentario: {{cargo.comentario}} </li>
+										{% if cargo.comentario %}
+											<li>Comentario: {{cargo.comentario}} </li>
+										{% else %}
+											<li>Comentario: - </li>
+										{% endif %}
 									</ul>
 								</div>
 							</div>
@@ -595,7 +599,7 @@
 		</div>
 	</section>
 
-	<section id="renuncias" class="grey-section" >
+	<section id="renuncias">
 		<div class="row resume-timeline">
 			<div class="col-twelve resume-header">
 				<h2>5. Renuncias efectuadas a otros partidos</h2>
@@ -646,7 +650,7 @@
 				<h2>6. Relación de sentencias</h2>
 				<br>
 				<div id="grid-sentencias" class="uk-text-center" uk-grid>
-					<div class="uk-width-1-2" >
+					<div class="uk-width-1-2@m uk-width-1-1@s" >
 						<div>
 							<div class="col-twelve resume-header uk-margin-top">
 								<h2>Sentencia Penal</h2>
@@ -706,7 +710,7 @@
 							{% endfor %}
 						</div>
 					</div>
-					<div class="uk-width-1-2">
+					<div class="uk-width-1-2@m uk-width-1-1@s">
 						<div>
 							<div class="col-twelve resume-header uk-margin-top">
 								<h2>Sentencia por Obligación</h2>
@@ -756,24 +760,38 @@
 		</div>
 	</section>
 
-
-	<section id="ingreso" class="grey-section">
-		<h2>INGRESOS</h2>			
-		{% for ingreso in if_ingreso %}
-			tiene ingresos? <br>
-			{{ingreso.tiene_ingresos}}
-		{%  endfor %}
-		<br>
-		<br>
-		{% for ingreso_ in ingresos %}
-			Año de ingresos <br>
-			{{ingreso_.anhio_ingresos}}
-			<br>
-			<br>
-			Total ingresos <br>
-			{{ingreso_.total_ingresos}}
-		{% endfor %}
+	<section id="ingresos">
+		<div class="row resume-timeline">
+			<div class="col-twelve resume-header">
+				<h2>7. Ingresos</h2>
+				<br>
+				{% for ingreso in if_ingreso %}
+				<div class="blocktext">
+					<ul class="info-list">
+						<li class="uk-text-center">
+							<strong>¿Tiene ingresos?</strong>
+							{{ingreso.tiene_ingresos}}
+						</li>
+					</ul>
+				{% endfor %} 
+				{% for ingreso_ in ingresos %}
+					{% if renuncia.tiene_info_por_declarar != "NO" %}
+						<ul class="info-list">
+							<li class="uk-text-center">
+								<strong>Año de ingresos</strong>
+								{{ingreso_.anhio_ingresos}}
+							</li>
+							<li class="uk-text-center">
+								<strong>Total ingresos</strong>
+								{{ingreso_.total_ingresos}}
+							</li>
+						</ul>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</div>
 	</section>
+
 	<section id="bienes-inmuebles" class="grey-section">
 		<h1>BIENE INMUEBLES</h1>		
 		tiene bienes inmuebles que declarar? <br>	
