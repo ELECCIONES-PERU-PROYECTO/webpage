@@ -601,39 +601,37 @@
 							<div class="col-md-6">
 								<h3 class="form-control">¿Tiene que información por declarar? </h3> 
 							</div>
-							<!-- VAR : tiene_experiencia_laboral -->
 							<div class="col-md-6">
 								<h3 class="form-control">{{renuncia.tiene_info_por_declarar}}</h3> 
 							</div>
 						</div>
 					</div> 
-					{% endfor %} 
+				{% endfor %} 
 			</div>
 			<!-- /resume-header -->
 			<div class="col-twelve">
 				<div class="timeline-wrap">
-					<!--SE AÑADE DINAMICAMENTE CADA BLOCK SEGÚN EL N° DE EXPERIENCIAS LABORALES-->
-					<!--timeline-block == UNA EXPERIENCIA LABORAL-->
 					{% for renuncia in renuncias %}
-					<div class="timeline-block">
-						<div class="timeline-ico"> 
-							<i class="fa fa-briefcase"></i> 
-						</div>
-						<!--VAR : ocupacion -->
-						<div class="timeline-header">
-							<h3>{{renuncia.organización_renuncia}}</h3>
-						</div>
-						<!--VAR: centro_laboral -->
-						<div class="timeline-content">
-							<h3>Comentario: </h3>
-							
-								{% if renuncia.comentario == "NO" %}
+					{% if renuncia.tiene_info_por_declarar != "NO" %}
+						<div class="timeline-block">
+							<div class="timeline-ico"> 
+								<i class="fa fa-briefcase"></i> 
+							</div>
+							<!--VAR : ocupacion -->
+							<div class="timeline-header">
+								<h3>{{renuncia.organización_renuncia}}</h3>
+							</div>
+							<!--VAR: centro_laboral -->
+							<div class="timeline-content">
+								<h3>Comentario: </h3>
+								{% if renuncia.comentario != NULL %}
 									<h4>-</h4>
 								{% else %}
 									<h4>{{renuncia.comentario}}</h4>
 								{% endif %}
+							</div>
 						</div>
-					</div>
+					{% endif %}
 					<!-- /timeline-block -->
 					{% endfor %}
 					<!--<div class="timeline-block">
