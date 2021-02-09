@@ -655,94 +655,198 @@
 		<!--POSTGRADO-->
 	</section>
 	<!-- /features -->			
+	<section id = "sentencias" class= "grey-section">
+		<h2>6. Relación de sentencias</h2>
+
+	<br>
+	
 	<div id = "grid-sentencias" class="uk-text-center"  uk-grid>
-					<!-- delito_penal -->
-						<div class="uk-width-1-2 card-sentencias" >
-							<div class="uk-card uk-card-default uk-card-body">
-									<h3 style="text-align:center;">Delito</h3>
-									<ul class="info-list">
-										<li>
-											<tr>
-												<th><strong>Fallo o pena:</strong></th>
-												<th>3 años de carcel </th>
-											</tr>
-										</li>
-										<br>
-										<li>
-											<tr>
-												<th><strong>Cumplimiento del fallo:</strong></th>
-												<th>3 años de carcel </th>
-											</tr>
-											<br> </li>
-										<br>
-										<li>
-											<tr>
-												<th><strong>Modalidad:</strong></th>
-												<th>3 años de carcel </th>
-											</tr>
-											<br> </li>
-										<br>
-										<li>
-											<tr>
-												<th><strong>N° expediente:</strong></th>
-												<th>3 años de carcel </th>
-											</tr>
-											<br> </li>
-										<br>
-										<li>
-											<tr>
-												<th><strong>Fecha sentencia firme:</strong></th>
-												<th>3 años de carcel </th>
-											</tr>
-										</li>
-										<br>
-										<li>
-											<tr>
-												<th><strong>Órgano judicial:</strong></th>
-												<th>3 años de carcel </th>
-											</tr>
-											<br> </li>
-									</ul>
+		<div class="uk-width-1-2 card-sentencias" >
+			<div class="uk-card uk-card-default uk-card-body">
+				<h3 style="text-align:center;">Delito</h3>
+				{% for penal in if_penal %}
+					<div class="blocktext">
+						<div class="row">
+							<div class="col-md-6">
+								<h3 class="form-control">¿Tiene información por declarar? </h3> 
+							</div>
+							<div class="col-md-6">
+								<h3 class="form-control">{{penal.tiene_info_por_declarar}}</h3> 
 							</div>
 						</div>
-						<!--POR OBLIGACIONES-->
-							<div class="uk-width-1-2 card-sentencias">
-								<div class="uk-card uk-card-default uk-card-body">
-									<h3 style="text-align:center;">Materia de la demanda</h3>
-									<ul class="info-list">
-										<li>
-											<tr>
-												<th><strong>Fallo o pena:</strong></th>
-												<th>3 años de carcel </th>
-											</tr>
-										</li>
-										<br>
-										<li>
-											<tr>
-												<th><strong>N° expediente:</strong></th>
-												<th>3 años de carcel </th>
-											</tr>
-											<br> </li>
-										<br>
-										<li>
-											<tr>
-												<th><strong>Órgano judicial:</strong></th>
-												<th>3 años de carcel </th>
-											</tr>
-											<br> </li>
-									</ul>
-								</div>
-							</div>
-			</div>		
-	<section >
+					</div> 
+				{% endfor %}
+				{% for sentencia in setencia_penales %}
+				<p style = "color:red;">Sentencia penal</p>
 
+				<ul class="info-list">
+					<li>
+						<tr>
+							<th><strong>Fallo o pena:</strong></th>
+							<th>{{sentencia.fallo_pena}}</th>
+						</tr>
+					</li>
+					<br>
+					<li>
+						<tr>
+							<th><strong>Cumplimiento del fallo:</strong></th>
+							<th>{{sentencia.cumplimiento_del_fallo}}</th>
+						</tr>
+						 </li>
+					<br>
+					<li>
+						<tr>
+							<th><strong>Modalidad:</strong></th>
+							<th>{{sentencia.modalidad_penal}}</th>
+						</tr>
+						 </li>
+					<br>
+					<li>
+						<tr>
+							<th><strong>N° expediente:</strong></th>
+							<th>{{sentencia.n_experiente_penal}}</th>
+						</tr>
+						 </li>
+					<br>
+					<li>
+										<tr>
+											<th><strong>Fecha sentencia firme:</strong></th>
+											<th>{{sentencia.fecha_sentencia_penal}}</th>
+										</tr>
+					</li>
+					<br>
+					<li>
+						<tr>
+							<th><strong>Órgano judicial:</strong></th>
+							<th>{{sentencia.organo_judicial}}</th>
+					</tr>
+					</li><br> 
+				</ul>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="uk-width-1-2 card-sentencias">
+			<div class="uk-card uk-card-default uk-card-body">
+				<h3 style="text-align:center;">Materia de la demanda</h3>
+				{% for sentencia in if_oblig %}
+				<div class="blocktext">
+					<div class="row">
+						<div class="col-md-6">
+							<h3 class="form-control">¿Tiene información por declarar? </h3> 
+						</div>
+						<div class="col-md-6">
+							<h3 class="form-control">{{sentencia.tiene_info_por_declarar}}</h3> 
+						</div>
+					</div>
+				</div> 
+				{% endfor %}
+				{% for sentencia in sentencia_obliga %}
+				<p style = "color:red;">Sentencia por Obligación</p>
+
+				<ul class="info-list">
+					<li>
+						<tr>
+							<th><strong>Fallo o pena:</strong></th>
+							<th>{{sentencia.fallo_obliga}}</th>
+						</tr>
+					</li>
+		
+					<li>
+						<tr>
+							<th><strong>N° expediente:</strong></th>
+							<th>{{sentencia.n_experiente_penal}}</th>
+						</tr>
+					</li>
+					<br>
+					<li>
+						<tr>
+							<th><strong>Órgano judicial:</strong></th>
+							<th>{{sentencia.organo_judicial}}</th>
+						</tr>
+				 </li>	<br>
+				</ul>
+				{% endfor %}
+			</div>
+		</div>
+	</div>		
+</section>
+
+	<section id="ingreso" class="grey-section">
+		<div class="row resume-timeline">
+			<div class="col-twelve resume-header">
+				<h2>2. Experiencia Laboral</h2>
+				<br> 
+				{% for experiencia in ifexpe %}
+					<div class="blocktext">
+						<div class="row">
+							<div class="col-md-6">
+								<h3 class="form-control">¿Tiene experiencia laboral? </h3> 
+							</div>
+							<!-- VAR : tiene_experiencia_laboral -->
+							<div class="col-md-6">
+								<h3 class="form-control">{{experiencia.tiene_experiencia_laboral}}</h3> 
+							</div>
+						</div>
+					</div> 
+					{% endfor %} 
+			</div>
+			<!-- /resume-header -->
+			<div class="col-twelve">
+				<div class="timeline-wrap">
+					<!--SE AÑADE DINAMICAMENTE CADA BLOCK SEGÚN EL N° DE EXPERIENCIAS LABORALES-->
+					<!--timeline-block == UNA EXPERIENCIA LABORAL-->
+					{% for experiencia in experiencia_laboral %}
+					<div class="timeline-block">
+						<div class="timeline-ico"> 
+							<i class="fa fa-briefcase"></i> 
+						</div>
+						<!--VAR : ocupacion -->
+						<div class="timeline-header">
+							<h3>{{experiencia.ocupacion}}</h3>
+							<!--VAR: desde_anhio - VAR: hasta_anhio  -->
+							<p>{{experiencia.desde_anhio}} - {{experiencia.hasta_anhio}} </p>
+						</div>
+						<!--VAR: centro_laboral -->
+						<div class="timeline-content">
+							<h4>{{experiencia.centro_laboral}}</h4>
+							<!--VAR: direccion_laboral VAR:ruc_empresa_laboral  VAR:pais_laboral VAR:departamento_laboral VAR:provincia_laboral -->
+							<ul class="info-list">
+								<li>{{experiencia.direccion_laboral}}</li>
+								<li>RUC empresa: {{experiencia.ruc_empresa_laboral}} </li>
+								<li>País: {{experiencia.pais_laboral}} </li>
+								<li>Departamento: {{experiencia.departamento_laboral}}</li>
+								<li>Provincia: {{experiencia.provincia_laboral}} </li>
+							</ul>
+						</div>
+					</div>
+					<!-- /timeline-block -->
+					{% endfor %}
+					<!--<div class="timeline-block">
+
+					<div class="timeline-ico">
+						<i class="fa fa-briefcase"></i>
+					</div>
+
+					<div class="timeline-header">
+						<h3>Bachelor Degree</h3>
+						<p>July 2014 - June 2015</p>
+					</div>
+
+					<div class="timeline-content">
+						<h4>State Design University</h4>
+						<p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi incididunt.</p>
+					</div> -->
+				</div>
+			</div>
+			<!-- /timeline-wrap -->
+		</div>
+		<!-- /col-twelve -->
 	</section>
-	<section id="portfolio">
+	<!--
 		<div class="row section-intro">
 			<div class="col-twelve">
-				<h2>Sentencias</h2> </div>
+				<h2>Bienes</h2> </div>
 		</div>
-		<!--PENALES-->
 
 		<br>
 		<br>
@@ -826,9 +930,8 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	-->
 
-	
 	<!-- INFO ADICIONAL 
    ================================================== -->
 	<section id="cta" class="grey-section">
