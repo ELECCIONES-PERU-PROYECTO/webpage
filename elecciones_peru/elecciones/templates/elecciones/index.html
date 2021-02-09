@@ -1,7 +1,19 @@
 {% extends "elecciones/base.html" %}
 {% block title %}Perú Informado{% endblock %}
 {% load static %}
+{% block css %}
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/css/uikit.min.css" />
+	<!-- <link href="{% static "css/dashboard.css" %}" rel="stylesheet"> -->
+  <link type="text/css" href="{% static "css/main.css" %}" rel="stylesheet">
+	<link type="text/css" href="{% static "css/base.css" %}" rel="stylesheet">
+	<link type="text/css" href="{% static "css/vendor.css" %}" rel="stylesheet">
+	<!-- <link type="text/css" href="{% static "css/cards.css" %}" rel="stylesheet"> -->
+	<link type="text/css" href="{% static "css/cardshdv.css" %}" rel="stylesheet">
+	<!-- <link type="text/css" href="{% static "css/table.css" %}" rel="stylesheet"> -->
+	<!-- <link type="text/css" href="{% static "css/slider.css" %}" rel="stylesheet"> -->
+{% endblock %}
 {% block content %}
+</head>
 <body id="top">
 	<!-- header 
 	================================================== -->
@@ -359,12 +371,12 @@
 													</div>
 													<div class="timeline-content">
 														{% if estudioinsti.centro_estudio_tecnico != "NULL" %}
-														<h4>{{estudioinsti.centro_estudio_tecnico}}</h4>
+															<h4>{{estudioinsti.centro_estudio_tecnico}}</h4>
 														{% endif %}
-														<ul>
+														<ul class="info-list">
 															{% if estudioinsti.comentario_estudio_tecnico != "NULL"%}
 																<li>Comentario: {{estudioinsti.comentario_estudio_tecnico}}</li> 
-															{% endif %} 
+															{% endif %}
 														</ul>
 													</div>
 												</div>
@@ -401,24 +413,24 @@
 							<div class="row">
 								<div class="col-twelve">
 									<div class="timeline-wrap"> 
-										{% for estudios_no in estudios_no_universitarios %}
-											{% if estudios_no.concluyo_estudio_no_universitario %}
-												<div class="timeline-block">
-														<div class="timeline-ico"> 
-															<i class="fa fa-graduation-cap"></i> 
-														</div>
-													<div class="timeline-header">
-														<h3>{{estudios_no.carrera_no_universitaria}}</h3>
-														{% if estudios_no.concluyo_estudio_no_universitario %}
-														<p>Concluyó estudios: {{estudios_no.concluyo_estudio_no_universitario}}</p>  
-														{% endif %}
-													</div>
-													<div class="timeline-content">
-														<h4>{{estudios_no.centro_estudio_no_universitario}}</h4> </div>
+									{% for estudios_no in estudios_no_universitarios %}
+										{% if estudios_no.concluyo_estudio_no_universitario %}
+											<div class="timeline-block">
+												<div class="timeline-ico"> 
+													<i class="fa fa-graduation-cap"></i> 
 												</div>
-											{% endif %}
-										{% endfor %} 
-									</div>
+												<div class="timeline-header">
+													<h3>{{estudios_no.carrera_no_universitaria}}</h3>
+													{% if estudios_no.concluyo_estudio_no_universitario %}
+													<p>Concluyó estudios: {{estudios_no.concluyo_estudio_no_universitario}}</p>  
+													{% endif %}
+												</div>
+												<div class="timeline-content">
+													<h4>{{estudios_no.centro_estudio_no_universitario}}</h4>
+												</div>
+											</div>
+										{% endif %}
+									{% endfor %} 
 								</div>
 							</div>
 						</div>
@@ -429,17 +441,19 @@
 								<div class="col-md-6">
 									<h2 class="form-control">Estudios Universitarios</h2> 
 								</div>
-								<div class="col-md-6">
-									<h3 class="form-control">¿Tiene estudios universitarios?</h3> 
-								</div>
-								<div class=”col-md-6″> 
-									{% for estudio in estudio_univ %} 
-										{% if estudio.tiene_estudio_universitario == "SI" %}
-										<h3 class=”form-control”>{{estudio.tiene_estudio_universitario}}</h3> 
-										{% else %}
-									<h3 class=”form-control”>NO</h3> 
-										{% endif %} 
-									{% endfor %} 
+								<div class="uk-flex uk-flex-right">
+									<div class="col-md-6">
+										<h3 class="form-control">¿Tiene estudios universitarios?</h3> 
+									</div>
+									<div class=”col-md-6″> 
+										{% for estudio in estudio_univ %} 
+											{% if estudio.tiene_estudio_universitario == "SI" %}
+											<h3 class=”form-control”>{{estudio.tiene_estudio_universitario}}</h3> 
+											{% else %}
+										<h3 class=”form-control”>NO</h3> 
+											{% endif %} 
+										{% endfor %} 
+									</div>
 								</div>
 							</div>
 							<div class="row">
@@ -454,7 +468,11 @@
 											</div>
 											<div class="timeline-content">
 												<h4>{{estudios_unv.universidad}}</h4>
-												<li>{{estudios_unv.anhio_obtencion_universitario}}</li>
+												<ul class="info-list">
+													{% if estudios_unv.anhio_obtencion_universitario %}
+														<li>Año de obtención: {{estudios_unv.anhio_obtencion_universitario}} </li>
+													{% endif %}
+												</ul>
 											</div>
 										</div>
 										<!-- /timeline-block -->
@@ -472,17 +490,19 @@
 							<div class="col-md-6">
 								<h2 class="form-control">Estudios Postgrado</h2> 
 							</div>
-							<div class="col-md-6">
-								<h3 class="form-control">¿Tiene estudios de postgrado?</h3> 
-							</div>
-							<div class=”col-md-6″>
-								{% for estudio in estudio_postgrado %}
-									{% if estudio.tiene_postgrado == "SI" %}
-										<h3 class=”form-control”>{{estudio.tiene_postgrado}}</h3>
-									{% else %}
-									<h3 class=”form-control”>NO</h3>
-									{% endif %}
-								{% endfor %}
+							<div class="uk-flex uk-flex-right">
+								<div class="col-md-6">
+									<h3 class="form-control">¿Tiene estudios de postgrado?</h3> 
+								</div>
+									<div class=”col-md-6″>
+										{% for estudio in estudio_postgrado %}
+											{% if estudio.tiene_postgrado == "SI" %}
+											<h3 class=”form-control”>{{estudio.tiene_postgrado}}</h3>
+											{% else %}
+											<h3 class=”form-control”>NO</h3>
+											{% endif %}
+										{% endfor %}
+									</div>
 							</div>
 						</div>		
 						<div class="row">
@@ -499,10 +519,16 @@
 											</div>
 											<div class="timeline-content">
 												<h4>{{estudios_post.centro_estudio_postgrado}}</h4>	
-												<ul>
-													<li>Año de obtención: {{estudios_post.anhio_obtencion_postgrado}}</li>
-													<li>Es egresado: {{estudios_post.es_egresado_postgrado}} </li>
-													<li>Comentario:  {{estudios_post.comentario_estudio_postgrado}} </li>
+												<ul class="info-list">
+													{% if estudios_post.anhio_obtencion_postgrado %}
+														<li>Año de obtención: {{estudios_post.anhio_obtencion_postgrado}}</li>
+													{% endif %}
+													{% if estudios_post.es_egresado_postgrado %}
+														<li>Es egresado: {{estudios_post.es_egresado_postgrado}} </li>
+													{% endif %}
+													{% if estudios_post.comentario_estudio_postgrado %}
+														<li>Comentario:  {{estudios_post.comentario_estudio_postgrado}} </li>
+													{% endif %}
 												</ul>
 											</div>
 										</div> <!-- /timeline-block -->
@@ -527,9 +553,10 @@
 					<div class="row">
 						<div class="col-md-6">
 							<p>{{carg_elecc.org_politica_cargo}}</p>
-					</div>
-				</div> 
-				{% endfor %} 
+						</div>
+					</div> 
+				</div>
+			{% endfor %} 
 		</div>
 	</div>
 	</section>

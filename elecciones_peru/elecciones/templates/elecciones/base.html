@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{% endblock %}</title>
+<<<<<<< HEAD
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/css/uikit.min.css" />
 	<link href="{% static "css/dashboard.css" %}" rel="stylesheet">
   <link type="text/css" href="{% static "css/main.css" %}" rel="stylesheet">
@@ -16,6 +17,12 @@
 	<link type="text/css" href="{% static "css/slider.css" %}" rel="stylesheet">
 </head>
 {% block content %}
+=======
+	{% block css %}
+	{% endblock %}
+	{% block content %}
+
+>>>>>>> 0371486a0ca7daa165aebd4cdb13841d21c3fc9f
 {% endblock %}
 </body>
 </html>
