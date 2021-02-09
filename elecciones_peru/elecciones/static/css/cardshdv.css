@@ -26,7 +26,8 @@
 .cards_wrap .card_item {
   width: 25%;
   padding: 20px;
-  
+  margin-left: 12%;
+  margin-right: 12%;
 }
 
 .cards_wrap .card_inner {
@@ -67,10 +68,23 @@ display: block;
     line-height: 3rem;
 }
 
+@media (max-width: 850px){
+    .uk-text-center .card-sentencias{
+    width: 100%;
+  }
+}
+@media (min-width: 850px){
+#grid-sentencias {
+  display: flex;
+}
 
+
+}
 @media (max-width: 1024px) {
   .cards_wrap .card_item {
     width: 33.3%;
+    margin-left: 8%;
+    margin-right: 8%;
   }
 }
 
