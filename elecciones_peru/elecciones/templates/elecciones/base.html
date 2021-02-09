@@ -5,19 +5,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{% endblock %}</title>
-	<link href="{% static "css/dashboard.css" %}" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/css/uikit.min.css" />
-  <!-- <link href="{% static "css/cards.css" %}" rel="stylesheet"> -->
+	<link href="{% static "css/dashboard.css" %}" rel="stylesheet">
+  <link type="text/css" href="{% static "css/main.css" %}" rel="stylesheet">
+	<link type="text/css" href="{% static "css/base.css" %}" rel="stylesheet">
+	<link type="text/css" href="{% static "css/vendor.css" %}" rel="stylesheet">
+	<link type="text/css" href="{% static "css/cards.css" %}" rel="stylesheet">
+	<link type="text/css" href="{% static "css/table.css" %}" rel="stylesheet">
+	<link type="text/css" href="{% static "css/slider.css" %}" rel="stylesheet">
 </head>
 {% block content %}
 {% endblock %}
-	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.6/qs.min.js" integrity="sha512-3TmPrquYLaAsUmZKXRARTDC5siWhLAdBVqNo4dWpDABBtLU62AaoTaQJEvjxjExcZYurO6i1dnK85k8pPIBlRg==" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit-icons.min.js"></script>
-	<script src="{% static "js/filter.js"%}"></script>
-	<script src="{% static "js/display_filter.js"%}"></script>
-	<script src="{% static "js/filter_orga.js"%}"></script>
-	<script src="{% static "js/serv.js"%}"></script>
 </body>
 </html>

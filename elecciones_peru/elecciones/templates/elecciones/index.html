@@ -1,33 +1,7 @@
+{% extends "elecciones/base.html" %}
+{% block title %}Perú Informado{% endblock %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-	<!--- basic page needs
-	================================================== -->
-	<meta charset="utf-8">
-	<title>Perú Informado</title>
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<!-- mobile specific metas
-	================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<!-- CSS
-	================================================== -->
-	<link type="text/css" href="{% static "css/main.css" %}" rel="stylesheet">
-	<link type="text/css" href="{% static "css/base.css" %}" rel="stylesheet">
-	<link type="text/css" href="{% static "css/vendor.css" %}" rel="stylesheet">
-	<link type="text/css" href="{% static "css/cards.css" %}" rel="stylesheet">
-	<link type="text/css" href="{% static "css/table.css" %}" rel="stylesheet">
-	<link type="text/css" href="{% static "css/slider.css" %}" rel="stylesheet">
-	<!--
-	<script src="../../../static/js/modernizr.js"></script>
-	<script src="../../../static/js/pace.min.js"></script>
-	<script src="../../../static/js/slider.js"></script>
--->
-	<!-- favicons
-	================================================== -->
-	<link rel="icon" type="image/png" href="./favicon.png"> </head>
-
+{% block content %}
 <body id="top">
 	<!-- header 
 	================================================== -->
@@ -310,27 +284,35 @@
 							<h2>3. Formación Académica</h2>
 							<div class="blocktext">
 								<div class="row">
-									<div class="col-md-6">
-										<h2 class="form-control">Educación Básica Regular</h2> 
+									<div>
+										<div class="col-md-6">
+											<h2 class="form-control">Educación Básica Regular</h2> 
+										</div>
 									</div>
-									<div class="col-md-6">
-										<h3 class="form-control">¿Concluyó estudios primarios?</h3> 
-									</div>
-									<div class="col-md-6"> 
-										{% if basica.concluyo_primaria == "NULL" %}
-										<h3 class="form-control">NO</h3> 
-										{% else %}
-										<h3 class="form-control">{{basica.concluyo_primaria}}</h3> 
-										{% endif %} 
-									</div>
-									<div class="col-md-6">
-										<h3 class="form-control">¿Concluyó estudios secundaria?</h3> 
-									</div>
-									<div class="col-md-6"> 
-										{% if basica.concluyo_secundaria == "NULL" %}
-										<h3 class="form-control">NO</h3> 
-										{% else %}
-										<h3 class="form-control">{{basica.concluyo_secundaria}}</h3> {% endif %} 
+									<div class="uk-flex uk-flex-column">
+										<div class="uk-flex uk-flex-right">
+											<div class="col-md-6">
+												<h3 class="form-control">¿Concluyó estudios primarios?</h3> 
+											</div >
+											<div class="col-md-6"> 
+												{% if basica.concluyo_primaria == "NULL" %}
+													<h3 class="form-control">NO</h3> 
+												{% else %}
+													<h3 class="form-control">{{basica.concluyo_primaria}}</h3> 
+												{% endif %} 
+											</div>
+										</div>
+										<div class="uk-flex uk-flex-right">
+											<div class="col-md-6">
+												<h3 class="form-control">¿Concluyó estudios secundaria?</h3> 
+											</div>
+											<div class="col-md-6"> 
+												{% if basica.concluyo_secundaria == "NULL" %}
+													<h3 class="form-control">NO</h3> 
+												{% else %}
+												<h3 class="form-control">{{basica.concluyo_secundaria}}</h3> {% endif %} 
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -342,17 +324,19 @@
 								<div class="col-md-6">
 									<h2 class="form-control no-margin-b">Estudios Técnicos</h2> 
 								</div>
-								<div class="col-md-6">
-									<h3 class="form-control">¿Tiene estudios técnicos?</h3> 
-								</div>
-								<div class="col-md-6"> 
-									{% for estudio in estudio_tecnico %} 
-										{% if estudio.tiene_estudio_tecnico == "SI" %}
-											<h3 class="form-control">{{estudio.tiene_estudio_tecnico}}</h3> 
-										{% else %}
-											<h3 class="form-control">NO</h3> 
-										{% endif %} 
-									{% endfor %} 
+								<div class="uk-flex uk-flex-right">
+									<div class="col-md-6">
+										<h3 class="form-control">¿Tiene estudios técnicos?</h3> 
+									</div>
+									<div class="col-md-6"> 
+										{% for estudio in estudio_tecnico %} 
+											{% if estudio.tiene_estudio_tecnico == "SI" %}
+												<h3 class="form-control">{{estudio.tiene_estudio_tecnico}}</h3> 
+											{% else %}
+												<h3 class="form-control">NO</h3> 
+											{% endif %} 
+										{% endfor %} 
+									</div>
 								</div>
 							</div>
 							{% if estudios_en_institutos%}
@@ -400,16 +384,18 @@
 								<div class="col-md-6">
 									<h2 class="form-control">Estudios No Universitarios</h2> 
 								</div>
-								<div class="col-md-6">
-									<h3 class="form-control">¿Tiene estudios no universitarios?</h3> </div>
-								<div class=”col-md-6″> 
-									{% for estudio in estudio_no_univ %} 
-										{% if estudio.tiene_estudio_no_unive == "SI" %}
-											<h3 class=”form-control”>{{estudio.tiene_estudio_no_universitario}}</h3> 
-										{% else %}
-											<h3 class=”form-control”>NO</h3> 
-										{% endif %} 
-									{% endfor %}
+								<div class="uk-flex uk-flex-right">
+									<div class="col-md-6">
+										<h3 class="form-control">¿Tiene estudios no universitarios?</h3> </div>
+									<div class=”col-md-6″> 
+										{% for estudio in estudio_no_univ %} 
+											{% if estudio.tiene_estudio_no_unive == "SI" %}
+												<h3 class=”form-control”>{{estudio.tiene_estudio_no_universitario}}</h3> 
+											{% else %}
+												<h3 class=”form-control”>NO</h3> 
+											{% endif %} 
+										{% endfor %}
+									</div>
 								</div>
 							</div>
 							<div class="row">
@@ -448,10 +434,11 @@
 								</div>
 								<div class=”col-md-6″> 
 									{% for estudio in estudio_univ %} 
-									{% if estudio.tiene_estudio_universitario == "SI" %}
-									<h3 class=”form-control”>{{estudio.tiene_estudio_universitario}}</h3> 
-									{% else %}
-									<h3 class=”form-control”>NO</h3> {% endif %} 
+										{% if estudio.tiene_estudio_universitario == "SI" %}
+										<h3 class=”form-control”>{{estudio.tiene_estudio_universitario}}</h3> 
+										{% else %}
+									<h3 class=”form-control”>NO</h3> 
+										{% endif %} 
 									{% endfor %} 
 								</div>
 							</div>
@@ -1071,13 +1058,11 @@
 	<div id="preloader">
 		<div id="loader"></div>
 	</div>
-	<!-- script
-		================================================== -->
+
 	<script src="{% static "js/jquery-2.1.3.min.js"%}"></script>
 	<script src="{% static "js/plugins.js"%}"></script>
 	<script src="{% static "js/main.js"%}"></script>
 	<script src="{% static "js/modernizr.js"%}"></script>
 	<script src="{% static "js/place.min.js"%}"></script>
 	<script src="{% static "js/slider.js"%}"></script>
-</body>
-</html>
+{% endblock %}
