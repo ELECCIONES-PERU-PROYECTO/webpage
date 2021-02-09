@@ -292,8 +292,8 @@
 			<div class="col-twelve">
 				<div class="row resume-timeline">
 					<div class="col-twelve resume-header"> 
+						<h2>3. Formación Académica</h2>
 						{% for basica in educacion_basica %}
-							<h2>3. Formación Académica</h2>
 							<div class="blocktext">
 								<div class="row">
 									<div>
@@ -543,23 +543,24 @@
 		</div>
 	</section>
 
-	{% if cargo_eleccion %}
 	<section id="cargos" class="grey-section" >
 		<div class="col-twelve resume-header">
 			<h2>4. Cargos de elección popular</h2>
 			<br> 
-			{% for carg_elecc in cargo_eleccion %}
+			{% for carg_elecc_pop in cargo_eleccion_popular %}
 				<div class="blocktext">
 					<div class="row">
 						<div class="col-md-6">
-							<p>{{carg_elecc.org_politica_cargo}}</p>
+							<p>{{carg_elecc_pop.org_politica_cargo}}</p>
 						</div>
 					</div> 
 				</div>
 			{% endfor %} 
+			<div class="blocktext">
+				No tiene
+			</div>
 		</div>
 	</section>
-	{% endif %}
 
 
 	<section id="formacion" class="grey-section" >
