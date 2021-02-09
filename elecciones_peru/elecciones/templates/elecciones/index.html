@@ -30,7 +30,7 @@
 						<li><a class="smoothscroll" href="#cargos" title="">4. CARGOS DE ELECCIÓN POPULAR</a></li>
 						<li><a class="smoothscroll" href="#renuncias" title="">5. RENUNCIAS EFECTUADAS A OTROS PARTIDOS</a></li>
 						<li><a class="smoothscroll" href="#contact" title="">6. RELACIÓN DE SENTENCIAS</a></li>
-						<li><a class="smoothscroll" href="#contact" title="">7. INGRESOS DE BIENES E INGRESOS</a></li>
+						<li><a class="smoothscroll" href="#ingreso" title="">7. INGRESOS</a></li>
 						<li><a class="smoothscroll" href="#contact" title="">8. BIENES INMUEBLES</a></li>
 						<li><a class="smoothscroll" href="#contact" title="">9. BIENES MUEBLES</a></li>
 						<li><a class="smoothscroll" href="#portfolio" title="">10. INFORMACIÓN ADICIONAL</a></li>
@@ -758,8 +758,54 @@
 
 
 	<section id="ingreso" class="grey-section">
-		<!--AQUI DEBE IR EL CONTENIDO DE LA SECCION (ingreso)-->
+		<h2>INGRESOS</h2>			
+		{% for ingreso in if_ingreso %}
+			tiene ingresos? <br>
+			{{ingreso.tiene_ingresos}}
+		{%  endfor %}
+		<br>
+		<br>
+		{% for ingreso_ in ingresos %}
+			Año de ingresos <br>
+			{{ingreso_.anhio_ingresos}}
+			<br>
+			<br>
+			Total ingresos <br>
+			{{ingreso_.total_ingresos}}
+		{% endfor %}
 	</section>
+	<section id="bienes-inmuebles" class="grey-section">
+		<h2>BIENE INMUEBLES</h2>		
+		tiene bienes inmuebles que declarar? <br>	
+		{% for bien_inmu in if_bien_inmueble %}
+			{{bien_inmu.tiene_inmueble}}
+		{%  endfor %}
+		<br>
+		<br>
+		{% for bien_inmu_ in bienes_inmuebles %}
+		<h1>Bien inmueble</h1>	
+		el bien inmueble esta inscrito en sunarp? <br>
+		{{bien_inmu_.esta_inscrito_sunarp}}
+			<br>
+		que tipo de bien inmueble es ? <br>	
+		{{bien_inmu_.tipo_inmueble}}
+			<br>
+			direccion de bien inmueble <br>
+			{{bien_inmu_.direccion_inmueble}}
+
+			<br>
+			partida de inmueble en sunarp <br>
+			{{bien_inmu_.partida_inmueble_sunarp}}
+
+			<br>
+			comentario<br>
+			{{bien_inmu_.comentario_inmueble}}
+
+			<br>
+		{% endfor %}
+		<br><br><br>
+	</section>
+
 	<!--
 		<div class="row section-intro">
 			<div class="col-twelve">
