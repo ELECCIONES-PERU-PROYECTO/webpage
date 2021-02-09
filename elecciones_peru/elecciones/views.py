@@ -579,9 +579,22 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   if_oblig_ = SentenciaObligacion.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_info_por_declarar FROM sentencia_obligacion AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
   sentencia_obliga_ = SentenciaObligacion.objects.raw(" SELECT DISTINCT DP.id, EP.materia_sentencia, EP.fallo_obliga, EP.n_experiente_obliga, EP.organo_judicial FROM sentencia_obligacion AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
-  if_ingreso_ = Ingreso.objects.raw("SELECT DISTINCT DP.id, EP.tiene_ingresos FROM sentencia_obligacion AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
+  # si es que tiene ingresos, solo da DP.id, EP.tiene_ingresos 
+  if_ingreso_ = Ingreso.objects.raw("SELECT DISTINCT DP.id, EP.tiene_ingresos FROM ingreso AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
+  # el ingreso en cierto año da columnas EP.anhio_ingresos, EP.total_ingresos
   ingresos_ = Ingreso.objects.raw(" SELECT DISTINCT DP.id, EP.anhio_ingresos, EP.total_ingresos FROM ingreso AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
+  # si es que tiene que declarar bienes inmuebles solo da dp.id, 
+  if_bien_inmueble_ = Ingreso.objects.raw("SELECT DISTINCT DP.id, EP.tiene_inmueble FROM bien_inmueble AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
+  # los bienes inmuebles da columnas EP.tipo_inmueble, EP.direccion_inmueble,EP.esta_inscrito_sunarp, EP.partida_inmueble_sunarp ,EP.comentario_inmueble  
+  bienes_inmuebles_ = Ingreso.objects.raw(" SELECT DISTINCT DP.id, EP.tipo_inmueble, EP.direccion_inmueble,EP.esta_inscrito_sunarp, EP.partida_inmueble_sunarp ,EP.comentario_inmueble FROM bien_inmueble AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+
+
+
+  print("if_bien_inmueble_: ")
+  print("SELECT DISTINCT DP.id, EP.tiene_inmueble FROM bien_inmueble AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
+  print("bienes_inmuebles_:")
+  print("SELECT DISTINCT DP.id, EP.tipo_inmueble, EP.direccion_inmueble,EP.esta_inscrito_sunarp, EP.partida_inmueble_sunarp ,EP.comentario_inmueble FROM bien_inmueble AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
   return render(request, 'elecciones/index.html', {
                   'nombre': nombre_,
                   'datos_personales': datos_personales_,
@@ -605,8 +618,9 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
                   'if_oblig':if_oblig_,
                   'sentencia_obliga':sentencia_obliga_,
                   'if_ingreso': if_ingreso_,
-                  'ingresos': ingresos_
-
+                  'ingresos': ingresos_,
+                  'if_bien_inmueble':if_bien_inmueble_,
+                  'bienes_inmuebles':bienes_inmuebles_
                 })
 
 def mainpage(request):
