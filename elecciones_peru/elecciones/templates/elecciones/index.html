@@ -542,26 +542,55 @@
 			</div>
 		</div>
 	</section>
-
-	<section id="cargos" class="grey-section" >
-		<div class="col-twelve resume-header">
-			<h2>4. Cargos de elección popular</h2>
-			<br>
-				{% for carg_elecc_pop in cargo_eleccion_popular %}
+<!--               'carg_eleccion_pop': carg_eleccion_pop_,
+				  'cargo_eleccion_popular': cargo_eleccion_popular_,
+-->
+	<section id="cargos_eleccion" class="grey-section" >
+		<div class="row resume-timeline">
+			<div class="col-twelve resume-header">
+				<h2>4. Cargos de elección popular</h2>
+				<br> 
+				{% for if_cargo in carg_eleccion_pop %}
 					<div class="blocktext">
 						<div class="row">
 							<div class="col-md-6">
-								<p>{{carg_elecc_pop.org_politica_cargo}}</p>
+								<h3 class="form-control">¿Tiene que información por declarar? </h3> 
 							</div>
-						</div> 
+							<div class="col-md-6">
+								<h3 class="form-control">{{if_cargo.tiene_info_por_declarar}}</h3> 
+							</div>
+						</div>
+					</div> 
+					{% endfor %} 
+			</div>
+			<div class="col-twelve">
+				<div class="timeline-wrap">
+					{% for cargo in cargo_eleccion_popular_ %}
+					<div class="timeline-block">
+						<div class="timeline-ico"> 
+							<i class="fa fa-briefcase"></i> 
+						</div>
+						<div class="timeline-header">
+							<h3>{{cargo.organización_renuncia}}</h3>
+						</div>
+						<div class="timeline-content">
+							<h3>Comentario: </h3>
+							
+								{% if renuncia.comentario == "NO" %}
+									<h4>-</h4>
+								{% else %}
+									<h4>{{renuncia.comentario}}</h4>
+								{% endif %}
+						</div>
 					</div>
-				{% endfor %} 
-			
+					{% endfor %}
+				</div>
+			</div>
 		</div>
 	</section>
 
 
-	<section id="formacion" class="grey-section" >
+	<section id="renuncias" class="grey-section" >
 		<div class="row resume-timeline">
 			<div class="col-twelve resume-header">
 				<h2>5. Renuncias efectuadas a otros partidos</h2>
