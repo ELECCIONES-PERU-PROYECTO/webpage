@@ -543,23 +543,22 @@
 		</div>
 	</section>
 
-	{% if cargo_eleccion_popular %}
 	<section id="cargos" class="grey-section" >
 		<div class="col-twelve resume-header">
 			<h2>4. Cargos de elección popular</h2>
-			<br> 
-			{% for carg_elecc_pop in cargo_eleccion_popular %}
-				<div class="blocktext">
-					<div class="row">
-						<div class="col-md-6">
-							<p>{{carg_elecc_pop.org_politica_cargo}}</p>
-						</div>
-					</div> 
-				</div>
-			{% endfor %} 
+			<br>
+				{% for carg_elecc_pop in cargo_eleccion_popular %}
+					<div class="blocktext">
+						<div class="row">
+							<div class="col-md-6">
+								<p>{{carg_elecc_pop.org_politica_cargo}}</p>
+							</div>
+						</div> 
+					</div>
+				{% endfor %} 
+			
 		</div>
 	</section>
-	{% endif %}
 
 
 	<section id="formacion" class="grey-section" >
