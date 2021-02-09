@@ -649,7 +649,7 @@
 					<div class="uk-width-1-2" >
 						<div>
 							<div class="col-twelve resume-header uk-margin-top">
-								<h2>Sentencia penal</h2>
+								<h2>Sentencia Penal</h2>
 								<br>
 							</div>
 							{% for penal in if_penal %}
@@ -709,40 +709,45 @@
 					<div class="uk-width-1-2">
 						<div>
 							<div class="col-twelve resume-header uk-margin-top">
-								<h2>Materia de la demanda</h2>
+								<h2>Sentencia por Obligación</h2>
 								<br>
 							</div>
 							{% for sentencia in if_oblig %}
 							<div class="blocktext">
-								<div class="row">
-									<div class="col-md-6">
-										<h3 class="form-control">¿Tiene información por declarar? </h3> 
-									</div>
-									<div class="col-md-6">
-										<h3 class="form-control">{{sentencia.tiene_info_por_declarar}}</h3> 
-									</div>
-								</div>
+								<ul class="info-list">
+									<li class="uk-text-left">
+										<strong>¿Tiene información por declarar?</strong>
+										{{sentencia.tiene_info_por_declarar}}
+									</li>
+								</ul>
 							</div> 
 							{% endfor %}
 							{% for sentencia in sentencia_obliga %}
-							<p style="color:red;">Sentencia por Obligación</p>
-
-							<ul class="info-list">
-								<li>
-										<th><strong>Fallo o pena:</strong></th>
-										<th>{{sentencia.fallo_obliga}}</th>
-								</li>
-					
-								<li>
-										<th><strong>N° expediente:</strong></th>
-										<th>{{sentencia.n_experiente_penal}}</th>
-								</li>
-								<br>
-								<li>
-										<th><strong>Órgano judicial:</strong></th>
-										<th>{{sentencia.organo_judicial}}</th>
-							</li>	<br>
-							</ul>
+								{% if sentencia.tiene_info_por_declarar == "SI" %}
+									<div class="uk-margin-medium-bottom">
+										<h3>Materia de la demanda</h3>
+										<ul class="info-list">
+										{% if sentencia.fallo_obliga %}
+											<li class="uk-text-left">
+												<strong>Fallo o pena:</strong>
+												{{sentencia.fallo_obliga}}
+											</li>
+										{% endif %}
+										{% if sentencia.n_experiente_penal %}
+											<li class="uk-text-left">
+												<strong>N° expediente:</strong>
+												{{sentencia.n_experiente_penal}}
+											</li>
+										{% endif %}
+										{% if sentencia.organo_judicial %}
+											<li class="uk-text-left">
+												<strong>Órgano judicial:</strong>
+												{{sentencia.organo_judicial}}
+											</li>
+										{% endif %}
+										</ul>
+									</div>
+								{% endif %}
 							{% endfor %}
 						</div>
 					</div>
