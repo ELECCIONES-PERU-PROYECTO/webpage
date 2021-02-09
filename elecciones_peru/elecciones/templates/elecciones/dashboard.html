@@ -2,6 +2,11 @@
 {% block title %}Elecciones{% endblock %}
 {% load static %}
 {% block content %}
+{% block css %}
+<link href="{% static "css/dashboard.css" %}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/css/uikit.min.css" />
+{% endblock %}
+</head>
 <body data-uk-filter="target: .js-filter">
   <!-- OFFCANVAS -->
   <div id="offcanvas-nav" class="uk-position-fixed" data-uk-offcanvas="flip: true; overlay: true; esc-close: true">
