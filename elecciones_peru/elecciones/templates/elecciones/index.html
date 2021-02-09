@@ -657,88 +657,121 @@
 		<!--POSTGRADO-->
 	</section>
 	<!-- /features -->			
+	<section id = "sentencias" class= "grey-section">
+		<h2>6. Relación de sentencias</h2>
+
+	<br>
+	
 	<div id = "grid-sentencias" class="uk-text-center"  uk-grid>
-					<!-- delito_penal -->
-						<div class="uk-width-1-2 card-sentencias" >
-							<div class="uk-card uk-card-default uk-card-body">
-									<h3 style="text-align:center;">Delito</h3>
-									<ul class="info-list">
-										<li>
-											<tr>
-												<th><strong>Fallo o pena:</strong></th>
-												<th>3 años de carcel </th>
-											</tr>
-										</li>
-										<br>
-										<li>
-											<tr>
-												<th><strong>Cumplimiento del fallo:</strong></th>
-												<th>3 años de carcel </th>
-											</tr>
-											<br> </li>
-										<br>
-										<li>
-											<tr>
-												<th><strong>Modalidad:</strong></th>
-												<th>3 años de carcel </th>
-											</tr>
-											<br> </li>
-										<br>
-										<li>
-											<tr>
-												<th><strong>N° expediente:</strong></th>
-												<th>3 años de carcel </th>
-											</tr>
-											<br> </li>
-										<br>
-										<li>
-											<tr>
-												<th><strong>Fecha sentencia firme:</strong></th>
-												<th>3 años de carcel </th>
-											</tr>
-										</li>
-										<br>
-										<li>
-											<tr>
-												<th><strong>Órgano judicial:</strong></th>
-												<th>3 años de carcel </th>
-											</tr>
-											<br> </li>
-									</ul>
+		<div class="uk-width-1-2 card-sentencias" >
+			<div class="uk-card uk-card-default uk-card-body">
+				<h3 style="text-align:center;">Delito</h3>
+				{% for penal in if_penal %}
+					<div class="blocktext">
+						<div class="row">
+							<div class="col-md-6">
+								<h3 class="form-control">¿Tiene información por declarar? </h3> 
+							</div>
+							<div class="col-md-6">
+								<h3 class="form-control">{{penal.tiene_info_por_declarar}}</h3> 
 							</div>
 						</div>
-						<!--POR OBLIGACIONES-->
-							<div class="uk-width-1-2 card-sentencias">
-								<div class="uk-card uk-card-default uk-card-body">
-									<h3 style="text-align:center;">Materia de la demanda</h3>
-									<ul class="info-list">
-										<li>
-											<tr>
-												<th><strong>Fallo o pena:</strong></th>
-												<th>3 años de carcel </th>
-											</tr>
-										</li>
-										<br>
-										<li>
-											<tr>
-												<th><strong>N° expediente:</strong></th>
-												<th>3 años de carcel </th>
-											</tr>
-											<br> </li>
-										<br>
-										<li>
-											<tr>
-												<th><strong>Órgano judicial:</strong></th>
-												<th>3 años de carcel </th>
-											</tr>
-											<br> </li>
-									</ul>
-								</div>
-							</div>
-			</div>		
-	<section >
+					</div> 
+				{% endfor %}
+				{% for sentencia in setencia_penales %}
+				<p style = "color:red;">Sentencia penal</p>
 
-	</section>
+				<ul class="info-list">
+					<li>
+						<tr>
+							<th><strong>Fallo o pena:</strong></th>
+							<th>{{sentencia.fallo_pena}}</th>
+						</tr>
+					</li>
+					<br>
+					<li>
+						<tr>
+							<th><strong>Cumplimiento del fallo:</strong></th>
+							<th>{{sentencia.cumplimiento_del_fallo}}</th>
+						</tr>
+						 </li>
+					<br>
+					<li>
+						<tr>
+							<th><strong>Modalidad:</strong></th>
+							<th>{{sentencia.modalidad_penal}}</th>
+						</tr>
+						 </li>
+					<br>
+					<li>
+						<tr>
+							<th><strong>N° expediente:</strong></th>
+							<th>{{sentencia.n_experiente_penal}}</th>
+						</tr>
+						 </li>
+					<br>
+					<li>
+										<tr>
+											<th><strong>Fecha sentencia firme:</strong></th>
+											<th>{{sentencia.fecha_sentencia_penal}}</th>
+										</tr>
+					</li>
+					<br>
+					<li>
+						<tr>
+							<th><strong>Órgano judicial:</strong></th>
+							<th>{{sentencia.organo_judicial}}</th>
+					</tr>
+					</li><br> 
+				</ul>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="uk-width-1-2 card-sentencias">
+			<div class="uk-card uk-card-default uk-card-body">
+				<h3 style="text-align:center;">Materia de la demanda</h3>
+				{% for sentencia in if_oblig %}
+				<div class="blocktext">
+					<div class="row">
+						<div class="col-md-6">
+							<h3 class="form-control">¿Tiene información por declarar? </h3> 
+						</div>
+						<div class="col-md-6">
+							<h3 class="form-control">{{sentencia.tiene_info_por_declarar}}</h3> 
+						</div>
+					</div>
+				</div> 
+				{% endfor %}
+				{% for sentencia in sentencia_obliga %}
+				<p style = "color:red;">Sentencia por Obligación</p>
+
+				<ul class="info-list">
+					<li>
+						<tr>
+							<th><strong>Fallo o pena:</strong></th>
+							<th>{{sentencia.fallo_obliga}}</th>
+						</tr>
+					</li>
+		
+					<li>
+						<tr>
+							<th><strong>N° expediente:</strong></th>
+							<th>{{sentencia.n_experiente_penal}}</th>
+						</tr>
+					</li>
+					<br>
+					<li>
+						<tr>
+							<th><strong>Órgano judicial:</strong></th>
+							<th>{{sentencia.organo_judicial}}</th>
+						</tr>
+				 </li>	<br>
+				</ul>
+				{% endfor %}
+			</div>
+		</div>
+	</div>		
+</section>
 
 	<section id="ingreso" class="grey-section">
 		<div class="row resume-timeline">
