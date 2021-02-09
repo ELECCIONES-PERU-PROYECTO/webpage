@@ -559,7 +559,7 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
     
 
   edu_no_uni_ = EstudioNoUniversitario.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_estudio_no_universitario  FROM estudio_no_universitario AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
-  estudios_no_universitarios_ = EstudioNoUniversitario.objects.raw(" SELECT DISTINCT DP.id , centro_estudio_no_universitario , concluyo_estudio_no_universitario FROM estudio_no_universitario AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+  estudios_no_universitarios_ = EstudioNoUniversitario.objects.raw(" SELECT DISTINCT DP.id, centro_estudio_no_universitario , concluyo_estudio_no_universitario FROM estudio_no_universitario AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
   
   edu_post_ = EstudioPostgrado.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_postgrado  FROM estudio_postgrado AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE  DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
