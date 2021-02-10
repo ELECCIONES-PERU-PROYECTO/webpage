@@ -338,7 +338,7 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
 
       for i in range(1, len(lista_filtros_normales)):
           query = query +" INTERSECT "+ function_filtro_normal(lista_valores, True, SELECT_candidato,WHERE_candidato )
-      query_total = "SELECT  DISTINCT DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica,   " + SELECT_candidato+ "   FROM  ( "+query + " ) AS QN JOIN datos_personales AS DP USING (dni_candidato)"   
+      query_total = "SELECT  DISTINCT DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica,   " + SELECT_candidato+ "   FROM  ( "+query + " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) WHERE " + WHERE_candidato  
   elif len(lista_filtros_normales)==1 and len(lista_filtros_ob_new)>1:
     query_total_filtros_normales = ""
     query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato,WHERE_candidato )
