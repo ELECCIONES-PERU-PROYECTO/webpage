@@ -54,6 +54,10 @@ html {
 	margin: 3rem 0 0 0;
 }
 
+.blocktext.formacion {
+	margin: 4rem 0 0 0;
+}
+
 .no-margin-b {
 	margin-bottom: 0 !important;
 }
@@ -1507,11 +1511,11 @@ header .logo a {
 #about, 
 #formacion, 
 #renuncias,
-#ingresos
+#ingresos,
+#bienes-muebles
 {
 	background: #FFFFFF;
-	padding-top: 12rem;
-	padding-bottom: 15rem;
+	padding: 5%;
 }
 
 .intro-info {
@@ -1556,15 +1560,16 @@ header .logo a {
 }
 .info-list li {
 	padding: 0 0 .8rem 0;
-	margin-bottom: .6rem;
+	line-height: 20px;
 }
+
 .info-list li strong {
 	font-family: "poppins-bold", sans-serif;
 	color: #313131;
 	text-transform: uppercase;
 	letter-spacing: .2rem;
 	font-size: 1.5rem;
-	line-height: 3rem;
+	line-height: 2.3rem;
 }
 
 .info-list{
@@ -1675,11 +1680,6 @@ header .logo a {
 	color: #d81b1b;
 }
 
-.resume-timeline
-{
-	max-width: 980px;
-}
-
 .timeline-wrap
 {
 	position: relative;
@@ -1702,6 +1702,10 @@ header .logo a {
 	position: relative;
 	padding-top: 1.5rem;
 	margin-bottom: 2rem;
+}
+
+.timeline-block.inmueble {
+	margin-bottom: 6rem;
 }
 
 .timeline-ico
@@ -1762,10 +1766,6 @@ header .logo a {
 	color: #888888;
 }
 
-.resume-timeline 
-{
-	margin: auto;
-}
 /* #resume .timeline-content h4::after 
 /cargos_eleccionume .timeline-content h4::after 
 {
