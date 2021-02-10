@@ -22,62 +22,62 @@ def function_filtros_ob(self, query_normal, normnob1, SELECT_candidato, WHERE_ca
 
     if valor == "1":
       if len(self) > 1 or normnob1 == True: #cargos previos
-        subquery = " SELECT CE.total_anhio_eleccion AS conteo, DP.dni_candidato FROM cargo_eleccion AS CE JOIN  datos_personales AS DP USING (dni_candidato) WHERE CE.tiene_info_por_declarar  = 'SI' AND "+ WHERE_candidato+ " GROUP BY ( DP.dni_candidato,  conteo)  "       
+        subquery = " SELECT DP.id,CE.total_anhio_eleccion AS conteo, DP.dni_candidato FROM cargo_eleccion AS CE JOIN  datos_personales AS DP USING (dni_candidato) WHERE CE.tiene_info_por_declarar  = 'SI' AND "+ WHERE_candidato+ " GROUP BY (DP.id, DP.dni_candidato,  conteo)  "       
         subquery_list.append(subquery)
       else:
         subquery = " SELECT DP.id, CE.total_anhio_eleccion AS conteo, DP.dni_candidato,   DP.candidato, DP.organizacion_politica, "  +  SELECT_candidato + " FROM cargo_eleccion AS CE JOIN  datos_personales AS DP USING (dni_candidato) WHERE CE.tiene_info_por_declarar  = 'SI' AND "  + WHERE_candidato + "  GROUP BY (  Dp.id, DP.dni_candidato,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato+ ", CE.total_anhio_eleccion) ORDER BY conteo " +self[i]
         return subquery
     elif valor == "2":# cant sentencia penal 
       if len(self) >1 or normnob1 == True :
-        subquery =   " SELECT  COUNT(SP.dni_candidato) AS conteo, DP.dni_candidato FROM sentencia_penal AS SP JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_info_por_declarar = 'SI' AND " + WHERE_candidato+" GROUP BY (DP.dni_candidato)  "
+        subquery =   " SELECT DP.id, COUNT(SP.dni_candidato) AS conteo, DP.dni_candidato FROM sentencia_penal AS SP JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_info_por_declarar = 'SI' AND " + WHERE_candidato+" GROUP BY (DP.id,DP.dni_candidato)  "
         subquery_list.append(subquery)
       else: 
         subquery = " SELECT DP.id, COUNT(SP.dni_candidato) AS conteo, DP.dni_candidato,   DP.candidato, DP.organizacion_politica, "+ SELECT_candidato  +"  FROM sentencia_penal AS SP JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_info_por_declarar = 'SI' AND  " +  WHERE_candidato  +" GROUP BY (Dp.id, DP.dni_candidato,   DP.candidato, DP.organizacion_politica, "+ SELECT_candidato +" ) ORDER BY conteo  " +self[i] 
         return subquery                            
     elif valor == "3": #cantidad sentencia obligaciones
       if len(self) >1 or normnob1 == True :
-        subquery = " SELECT  COUNT(SO.dni_candidato) AS conteo, DP.dni_candidato FROM sentencia_obligacion AS SO JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_info_por_declarar = 'SI' AND  " +   WHERE_candidato +    " GROUP BY (DP.dni_candidato) "
+        subquery = " SELECT DP.id, COUNT(SO.dni_candidato) AS conteo, DP.dni_candidato FROM sentencia_obligacion AS SO JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_info_por_declarar = 'SI' AND  " +   WHERE_candidato +    " GROUP BY (DP.id,DP.dni_candidato) "
         subquery_list.append(subquery)
       else: 
         subquery = " SELECT  DP.id, COUNT(SO.dni_candidato) AS conteo, DP.dni_candidato,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato +  " FROM sentencia_obligacion AS SO JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_info_por_declarar = 'SI' AND " +  WHERE_candidato +"   GROUP BY (" + SELECT_candidato + ", DP.dni_candidato,DP.candidato, DP.organizacion_politica, DP.id) ORDER BY conteo  " +self[i]
         return subquery
     elif valor == "6":#cantidad ingresos
-      subquery = " SELECT  total_ingresos AS  conteo, DP.dni_candidato FROM ingreso AS I JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_ingresos  = 'SI' AND "+ WHERE_candidato +"  GROUP BY (DP.id,  DP.dni_candidato, conteo) "
+      subquery = " SELECT  DP.id,total_ingresos AS  conteo, DP.dni_candidato FROM ingreso AS I JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_ingresos  = 'SI' AND "+ WHERE_candidato +"  GROUP BY (DP.id,  DP.dni_candidato, conteo) "
       if len(self) >1 or normnob1 == True :
         subquery_list.append(subquery)
       else: 
         subquery = " SELECT DP.id, total_ingresos AS  conteo, DP.dni_candidato,  DP.candidato, DP.organizacion_politica," + SELECT_candidato  +   " FROM ingreso AS I JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_ingresos  = 'SI' AND "+ WHERE_candidato +" GROUP BY ( DP.id,DP.dni_candidato, total_ingresos, DP.candidato, DP.organizacion_politica, "  +  SELECT_candidato +") ORDER BY conteo "  + self[i]
         return subquery
     elif valor == "7":#cantidad inmueble
-      subquery = " SELECT  COUNT(BI.dni_candidato) AS conteo, DP.dni_candidato FROM bien_inmueble AS BI JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_inmueble  = 'SI' AND "+ WHERE_candidato+"  GROUP BY (DP.dni_candidato) " 
+      subquery = " SELECT  DP.id,COUNT(BI.dni_candidato) AS conteo, DP.dni_candidato FROM bien_inmueble AS BI JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_inmueble  = 'SI' AND "+ WHERE_candidato+"  GROUP BY (DP.id,DP.dni_candidato) " 
       if len(self) >1 or ( normnob1 == True):
         subquery_list.append(subquery)
       else:
-        subquery = "SELECT DP.id, COUNT(BI.dni_candidato) AS conteo, DP.dni_candidato,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato+" FROM bien_inmueble AS BI JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_inmueble  = 'SI' AND " + WHERE_candidato+"  GROUP BY (DP.dni_candidato, DP.candidato, DP.organizacion_politica," + SELECT_candidato+ ") ORDER BY conteo " + self[i]             
+        subquery = "SELECT  DP.id, COUNT(BI.dni_candidato) AS conteo, DP.dni_candidato,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato+" FROM bien_inmueble AS BI JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_inmueble  = 'SI' AND " + WHERE_candidato+"  GROUP BY (DP.id,DP.dni_candidato, DP.candidato, DP.organizacion_politica," + SELECT_candidato+ ") ORDER BY conteo " + self[i]             
         return subquery            
     elif valor == "8":  #valor inmuebles
-      subquery = " SELECT SUM (BI.autovaluo) AS conteo, DP.dni_candidato FROM bien_inmueble AS BI JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_inmueble = 'SI' AND  "+   WHERE_candidato +"  GROUP BY (DP.dni_candidato)  "
+      subquery = " SELECT DP.id, SUM (BI.autovaluo) AS conteo, DP.dni_candidato FROM bien_inmueble AS BI JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_inmueble = 'SI' AND  "+   WHERE_candidato +"  GROUP BY (DP.id,DP.dni_candidato)  "
       if len(self) >1 or normnob1 == True :
         subquery_list.append(subquery)
       else: 
-        subquery = " SELECT SUM (BI.autovaluo) AS conteo, DP.dni_candidato,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato +"  FROM bien_inmueble AS BI JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_inmueble = 'SI' AND " + WHERE_candidato+ " GROUP BY (DP.dni_candidato, DP.candidato, DP.organizacion_politica, "+ SELECT_candidato +" ) ORDER BY conteo " + self[i]
+        subquery = " SELECT  DP.id,SUM (BI.autovaluo) AS conteo, DP.dni_candidato,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato +"  FROM bien_inmueble AS BI JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_inmueble = 'SI' AND " + WHERE_candidato+ " GROUP BY (DP.dni_candidato, DP.candidato, DP.organizacion_politica, DP.id, "+ SELECT_candidato +" ) ORDER BY conteo " + self[i]
         return subquery 
     elif valor == "9" : # cantidad muebles
-      subquery = " SELECT COUNT(BM.dni_candidato) AS conteo, DP.dni_candidato FROM bien_mueble AS BM JOIN  datos_personales AS DP USING (dni_candidato)WHERE tiene_bien_mueble  = 'SI' AND  "+  WHERE_candidato +  " GROUP BY (DP.dni_candidato) " 
+      subquery = " SELECT DP.id,COUNT(BM.dni_candidato) AS conteo, DP.dni_candidato FROM bien_mueble AS BM JOIN  datos_personales AS DP USING (dni_candidato)WHERE tiene_bien_mueble  = 'SI' AND  "+  WHERE_candidato +  " GROUP BY (DP.id,DP.dni_candidato) " 
       if len(self) >1 or normnob1 == True :
         subquery_list.append(subquery)
       else: 
-        subquery = " SELECT COUNT(BM.dni_candidato) AS conteo, DP.dni_candidato,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato+ " FROM bien_mueble AS BM JOIN  datos_personales AS DP USING (dni_candidato)WHERE tiene_bien_mueble  = 'SI' AND  " +  WHERE_candidato+ " GROUP BY (DP.dni_candidato, DP.candidato, DP.organizacion_politica, "+SELECT_candidato+"  ) ORDER BY conteo "+self [i]                
+        subquery = " SELECT DP.id,COUNT(BM.dni_candidato) AS conteo, DP.dni_candidato,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato+ " FROM bien_mueble AS BM JOIN  datos_personales AS DP USING (dni_candidato)WHERE tiene_bien_mueble  = 'SI' AND  " +  WHERE_candidato+ " GROUP BY (DP.id,DP.dni_candidato, DP.candidato, DP.organizacion_politica, "+SELECT_candidato+"  ) ORDER BY conteo "+self [i]                
         return subquery
     elif valor == "10"  : #valor muebles
-      subquery = " SELECT SUM (BM.valor ) AS conteo, DP.dni_candidato FROM bien_mueble AS BM JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_bien_mueble = 'SI' AND " + WHERE_candidato+ " GROUP BY (DP.dni_candidato)  " 
+      subquery = " SELECT DP.id, SUM (BM.valor ) AS conteo, DP.dni_candidato FROM bien_mueble AS BM JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_bien_mueble = 'SI' AND " + WHERE_candidato+ " GROUP BY (DP.id,DP.dni_candidato)  " 
       if len(self) >1 or normnob1 == True :
         subquery_list.append(subquery)
       else: 
-        subquery = " SELECT SUM (BM.valor ) AS conteo, DP.dni_candidato,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato+" FROM bien_mueble AS BM JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_bien_mueble = 'SI' AND "  + WHERE_candidato+ " GROUP BY (DP.dni_candidato, DP.candidato, DP.organizacion_politica, "+ SELECT_candidato+" ) ORDER BY conteo  " + self[i]
+        subquery = " SELECT DP.id,SUM (BM.valor ) AS conteo, DP.dni_candidato,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato+" FROM bien_mueble AS BM JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_bien_mueble = 'SI' AND "  + WHERE_candidato+ " GROUP BY (DP.id,DP.dni_candidato, DP.candidato, DP.organizacion_politica, "+ SELECT_candidato+" ) ORDER BY conteo  " + self[i]
         return subquery
     elif valor == "11": #renuncias
-      subquery = " SELECT COUNT(R.dni_candidato) AS conteo, DP.dni_candidato FROM renuncia AS R JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_info_por_declarar = 'SI' AND  "+WHERE_candidato+" GROUP BY (DP.dni_candidato)  "
+      subquery = " SELECT DP.id,COUNT(R.dni_candidato) AS conteo, DP.dni_candidato FROM renuncia AS R JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_info_por_declarar = 'SI' AND  "+WHERE_candidato+" GROUP BY (DP.id,DP.dni_candidato)  "
       if len(self) >1 or normnob1 == True:
         subquery_list.append(subquery)
       else: 
@@ -128,7 +128,7 @@ def function_filtro_normal(self, stack_, SELECT_candidato,WHERE_candidato ):
     if self[0] != "":
       print("self[0]: ",self[0])
       if(self[0] == 'maestro_doctor'):
-        query_total = "SELECT DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica, "+  SELECT_candidato+ "  FROM  estudio_postgrado AS EP   JOIN  datos_personales AS DP USING   (dni_candidato) WHERE ((EP.es_maestro= 'SI' ) OR (EP.es_doctor = 'SI')) AND  "+ WHERE_candidato
+        query_total = "SELECT DISTINCT DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica, "+  SELECT_candidato+ "  FROM  estudio_postgrado AS EP   JOIN  datos_personales AS DP USING   (dni_candidato) WHERE ((EP.es_maestro= 'SI' ) OR (EP.es_doctor = 'SI')) AND  "+ WHERE_candidato
         return query_total
       else:
         tabla = ""
@@ -143,48 +143,48 @@ def function_filtro_normal(self, stack_, SELECT_candidato,WHERE_candidato ):
           tabla = 'estudio_universitario'
         elif(self[0] == 'concluyo_estudio_postgrado'):
           tabla = 'estudio_postgrado'
-        retorno = "SELECT DP.id, DP.dni_candidato,DP.candidato, DP.organizacion_politica, "+ SELECT_candidato +"  FROM " + tabla + \
+        retorno = "SELECT DISTINCT DP.id, DP.dni_candidato,DP.candidato, DP.organizacion_politica, "+ SELECT_candidato +"  FROM " + tabla + \
           " AS EB JOIN    datos_personales AS DP USING (dni_candidato)  WHERE EB." +  self[0] + " = 'SI' AND "+ WHERE_candidato
         self[0] = ""
         return retorno
     if self[4] != "":
-      retorno = "SELECT DP.id, DP.dni_candidato,  DP.candidato, DP.organizacion_politica,  "+ SELECT_candidato +",  DP.dni_candidato FROM   sentencia_obligacion AS SO JOIN  datos_personales AS DP USING (dni_candidato) WHERE SO.tiene_info_por_declarar = 'SI' AND  (SO.materia_sentencia = '"+self[
+      retorno = "SELECT DISTINCT DP.id, DP.dni_candidato,  DP.candidato, DP.organizacion_politica,  "+ SELECT_candidato +",  DP.dni_candidato FROM   sentencia_obligacion AS SO JOIN  datos_personales AS DP USING (dni_candidato) WHERE SO.tiene_info_por_declarar = 'SI' AND  (SO.materia_sentencia = '"+self[
         4]+"' ) AND  " + WHERE_candidato
       self[4] = ""
       return retorno
     if self[5] == "NO":
-      retorno = "SELECT DP.id, DP.dni_candidato, DP.candidato, DP.organizacion_politica,  "+SELECT_candidato+"  FROM sentencia_obligacion AS SO JOIN  datos_personales AS DP USING (dni_candidato) WHERE SO.tiene_info_por_declarar = 'NO'  AND "+ WHERE_candidato
+      retorno = "SELECT DISTINCT DP.id, DP.dni_candidato, DP.candidato, DP.organizacion_politica,  "+SELECT_candidato+"  FROM sentencia_obligacion AS SO JOIN  datos_personales AS DP USING (dni_candidato) WHERE SO.tiene_info_por_declarar = 'NO'  AND "+ WHERE_candidato
       self[5] = ""
       return retorno
     if self[12] != "":
-      retorno = "SELECT DP.id,  DP.dni_candidato,DP.candidato, DP.organizacion_politica, "+ SELECT_candidato+"  FROM tabla_edad AS TE JOIN    datos_personales AS DP USING (dni_candidato) WHERE TE.edad BETWEEN " + (self[12])[:2] + " AND " + ( self[12])[3:5] + " AND  "+WHERE_candidato
+      retorno = "SELECT DISTINCT DP.id,  DP.dni_candidato,DP.candidato, DP.organizacion_politica, "+ SELECT_candidato+"  FROM tabla_edad AS TE JOIN    datos_personales AS DP USING (dni_candidato) WHERE TE.edad BETWEEN " + (self[12])[:2] + " AND " + ( self[12])[3:5] + " AND  "+WHERE_candidato
       self[12] = ""
       return retorno
     if self[13] == "SI":
-      retorno = "SELECT DP.id, DP.dni_candidato, DP.candidato, Dp.organizacion_politica, " + SELECT_candidato+"   FROM datos_personales AS DP  WHERE    departamento_nacimiento = '"+ self[15]+"' AND "+WHERE_candidato 
+      retorno = "SELECT  DISTINCT DP.id, DP.dni_candidato, DP.candidato, Dp.organizacion_politica, " + SELECT_candidato+"   FROM datos_personales AS DP  WHERE    departamento_nacimiento = '"+ self[15]+"' AND "+WHERE_candidato 
       self[13] = ""
       return retorno
     if self[14] != "":
-      retorno = "SELECT DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica,  "+ SELECT_candidato +"  FROM datos_personales AS DP  WHERE pais_nacimiento   <>'PERÚ' and pais_nacimiento <>'PERU'AND  "+ WHERE_candidato
+      retorno = "SELECT DISTINCT  DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica,  "+ SELECT_candidato +"  FROM datos_personales AS DP  WHERE pais_nacimiento   <>'PERÚ' and pais_nacimiento <>'PERU'AND  "+ WHERE_candidato
       self[14] = ""
       return retorno
     if self[16] != "":
-      retorno = "SELECT DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica,  "+ SELECT_candidato +"  FROM  datos_personales AS DP  WHERE cargo_eleccion = '"+ self[16]+"' "
+      retorno = "SELECT  DISTINCT DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica,  "+ SELECT_candidato +"  FROM  datos_personales AS DP  WHERE cargo_eleccion = '"+ self[16]+"' "
       self[16] = ""
       return retorno
     if self[17] != "":
-      retorno = "SELECT DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica, "+SELECT_candidato+" FROM  datos_personales AS DP WHERE organizacion_politica  = '" +self[17]+"' AND  "+ WHERE_candidato
+      retorno = "SELECT DISTINCT  DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica, "+SELECT_candidato+" FROM  datos_personales AS DP WHERE organizacion_politica  = '" +self[17]+"' AND  "+ WHERE_candidato
       self[17] = ""
       return retorno
     if self[18] != "":
-      retorno = "SELECT DP.id,   DP.dni_candidato,DP.candidato, DP.organizacion_politica, "+SELECT_candidato+" FROM  datos_personales AS DP WHERE distrito_elec = '" + self[18] + "' AND  "+ WHERE_candidato
+      retorno = "SELECT  DISTINCT DP.id,   DP.dni_candidato,DP.candidato, DP.organizacion_politica, "+SELECT_candidato+" FROM  datos_personales AS DP WHERE distrito_elec = '" + self[18] + "' AND  "+ WHERE_candidato
       self[18] = ""
       return retorno
   elif stack_ == True:
     if self[0] != "":
       print("self[0]: ",self[0])
       if(self[0] == 'maestro_doctor'):
-        query_total = "SELECT DP.dni_candidato FROM  estudio_postgrado AS EP   JOIN  datos_personales AS DP USING   (dni_candidato) WHERE (EP.es_maestro= 'SI' OR EP.es_doctor = 'SI') AND " + WHERE_candidato
+        query_total = "SELECT  DISTINCT  DP.dni_candidato FROM  estudio_postgrado AS EP   JOIN  datos_personales AS DP USING   (dni_candidato) WHERE (EP.es_maestro= 'SI' OR EP.es_doctor = 'SI') AND " + WHERE_candidato
         return query_total
       else:
         tabla = ""
@@ -195,43 +195,42 @@ def function_filtro_normal(self, stack_, SELECT_candidato,WHERE_candidato ):
         elif(self[0] == 'concluyo_estudio_no_universitario'):
           tabla = 'estudio_no_universitario'
         elif(self[0] == 'concluyo_estudio_universitario'):
-          print("ASDADSADSADSADASADSAD")
           tabla = 'estudio_universitario'
         elif(self[0] == 'concluyo_estudio_postgrado'):
           tabla = 'estudio_postgrado'
-        retorno = "SELECT  DP.dni_candidato FROM " + tabla +" AS EB JOIN    datos_personales AS DP USING (dni_candidato)  WHERE EB." +  self[0] + " = 'SI' AND  " + WHERE_candidato
+        retorno = "SELECT DISTINCT  DP.dni_candidato FROM " + tabla +" AS EB JOIN    datos_personales AS DP USING (dni_candidato)  WHERE EB." +  self[0] + " = 'SI' AND  " + WHERE_candidato
         self[0] = ""
         return retorno
     if self[4] != "":
-      retorno = "SELECT DP.dni_candidato  FROM   sentencia_obligacion AS SO JOIN  datos_personales AS DP USING (dni_candidato) WHERE SO.tiene_info_por_declarar = 'SI' AND  (SO.materia_sentencia = '"+self[4]+"' ) AND  "+WHERE_candidato
+      retorno = "SELECT  DISTINCT DP.dni_candidato  FROM   sentencia_obligacion AS SO JOIN  datos_personales AS DP USING (dni_candidato) WHERE SO.tiene_info_por_declarar = 'SI' AND  (SO.materia_sentencia = '"+self[4]+"' ) AND  "+WHERE_candidato
       self[4] = ""
       return retorno
     if self[5] == "NO":
-      retorno = "SELECT DP.dni_candidato FROM sentencia_obligacion AS SO JOIN  datos_personales AS DP USING (dni_candidato) WHERE SO.tiene_info_por_declarar = 'NO' "
+      retorno = "SELECT DISTINCT  DP.dni_candidato FROM sentencia_obligacion AS SO JOIN  datos_personales AS DP USING (dni_candidato) WHERE SO.tiene_info_por_declarar = 'NO' "
       self[5] = ""
       return retorno
     if self[12] != "":
-      retorno = "SELECT  DP.dni_candidato FROM tabla_edad AS TE JOIN    datos_personales AS DP USING (dni_candidato) WHERE TE.edad BETWEEN " + (self[12])[:2] + " AND " + ( self[12])[3:5] + " AND "+ WHERE_candidato
+      retorno = "SELECT  DISTINCT  DP.dni_candidato FROM tabla_edad AS TE JOIN    datos_personales AS DP USING (dni_candidato) WHERE TE.edad BETWEEN " + (self[12])[:2] + " AND " + ( self[12])[3:5] + " AND "+ WHERE_candidato
       self[12] = ""
       return retorno
     if self[13] == "SI":
-      retorno = "SELECT DP.dni_candidato FROM  datos_personales AS DP WHERE   departamento_nacimiento = '"+ self[15]+"' AND  "+WHERE_candidato 
+      retorno = "SELECT DISTINCT  DP.dni_candidato FROM  datos_personales AS DP WHERE   departamento_nacimiento = '"+ self[15]+"' AND  "+WHERE_candidato 
       self[13] = ""
       return retorno
     if self[14] != "":
-      retorno = "SELECT   DP.dni_candidato FROM datos_personales AS DP WHERE pais_nacimiento   <>'PERÚ' and pais_nacimiento <>'PERU'AND  "+WHERE_candidato
+      retorno = "SELECT   DISTINCT  DP.dni_candidato FROM datos_personales AS DP WHERE pais_nacimiento   <>'PERÚ' and pais_nacimiento <>'PERU'AND  "+WHERE_candidato
       self[14] = ""
       return retorno
     if self[16] != "":
-      retorno = "SELECT   DP.dni_candidato FROM  datos_personales AS DP WHERE cargo_eleccion = '" + self[16]+"' "
+      retorno = "SELECT   DISTINCT  DP.dni_candidato FROM  datos_personales AS DP WHERE cargo_eleccion = '" + self[16]+"' "
       self[16] = ""
       return retorno
     if self[17] != "":
-      retorno = "SELECT   DP.dni_candidato FROM  datos_personales AS DP WHERE organizacion_politica  = '" +self[17]+"' AND  "+WHERE_candidato
+      retorno = "SELECT DISTINCT    DP.dni_candidato FROM  datos_personales AS DP WHERE organizacion_politica  = '" +self[17]+"' AND  "+WHERE_candidato
       self[17] = ""
       return retorno
     if self[18] != "":
-      retorno = "SELECT   DP.dni_candidato FROM  datos_personales AS DP WHERE distrito_elec = '" + self[18] + "' AND  (cargo_eleccion = 'CONGRESISTA DE LA REPÚBLICA' ) "
+      retorno = "SELECT  DISTINCT   DP.dni_candidato FROM  datos_personales AS DP WHERE distrito_elec = '" + self[18] + "' AND  (cargo_eleccion = 'CONGRESISTA DE LA REPÚBLICA' ) "
       self[18] = ""
       return retorno
 
@@ -339,7 +338,7 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
 
       for i in range(1, len(lista_filtros_normales)):
           query = query +" INTERSECT "+ function_filtro_normal(lista_valores, True, SELECT_candidato,WHERE_candidato )
-      query_total = "SELECT  DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica,   " + SELECT_candidato+ "   FROM  ( "+query + " ) AS QN JOIN datos_personales AS DP USING (dni_candidato)"   
+      query_total = "SELECT  DISTINCT DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica,   " + SELECT_candidato+ "   FROM  ( "+query + " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) WHERE " + WHERE_candidato  
   elif len(lista_filtros_normales)==1 and len(lista_filtros_ob_new)>1:
     query_total_filtros_normales = ""
     query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato,WHERE_candidato )
@@ -355,7 +354,7 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
         quitar = lista_filtros_ob_new[i][index_-2:]
       aux = lista_filtros_ob_new[i].replace("("+quitar, "")
       lista_filtros_ob_new[i] = aux
-    query_total = " SELECT DP.id,  " + SELECT_candidato + ",  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE " + WHERE_candidato+ "  GROUP BY (conteo,DP.id,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato +") ORDER BY conteo " + lista_filtros_ob_new[0]
+    query_total = " SELECT DISTINCT DP.id,  " + SELECT_candidato + ",  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE " + WHERE_candidato+ "  GROUP BY (conteo,DP.id,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato +") ORDER BY conteo " + lista_filtros_ob_new[0]
   elif ((len(lista_filtros_normales)>1 and len(lista_filtros_ob_new) ==  1))  or  (len(lista_filtros_normales)==1 and len(lista_filtros_ob_new)==1):
     query_total_filtros_normales = ""
     query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato,WHERE_candidato )
@@ -369,7 +368,7 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
       quitar = lista_filtros_ob_new[i][index_-1:]
       aux = lista_filtros_ob_new[i].replace("("+quitar, "")
       lista_filtros_ob_new[i] = aux
-    query_total = " SELECT DP.id,  " + SELECT_candidato + ",  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE "+ WHERE_candidato+"  GROUP BY (conteo,DP.id,  DP.candidato, DP.organizacion_politica,  "+SELECT_candidato +" ) ORDER BY conteo " + lista_filtros_ob_new[0]
+    query_total = " SELECT DISTINCT  DP.id,  " + SELECT_candidato + ",  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE "+ WHERE_candidato+"  GROUP BY (conteo,DP.id,  DP.candidato, DP.organizacion_politica,  "+SELECT_candidato +" ) ORDER BY conteo " + lista_filtros_ob_new[0]
   elif len(lista_filtros_normales)>1 and len(lista_filtros_ob_new)>1:
     query_total_filtros_normales = ""
     query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato,WHERE_candidato )
