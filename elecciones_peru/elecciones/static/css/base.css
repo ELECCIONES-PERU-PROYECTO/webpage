@@ -506,8 +506,8 @@ textarea {
 @media screen and (max-width:768px) {
 	.row {
 		width: auto;
-		padding-left: 30px;
-		padding-right: 30px;
+		/* padding-left: 30px;
+		padding-right: 30px; */
 	}
 
 	.row .row {
@@ -552,10 +552,10 @@ textarea {
  * --------------------------------------------------------------- 
  */
 @media screen and (max-width:600px) {
-	.row {
+	/* .row {
 		padding-left: 25px;
 		padding-right: 25px;
-	}
+	} */
 
 	.row .row {
 		margin-left: -10px;
