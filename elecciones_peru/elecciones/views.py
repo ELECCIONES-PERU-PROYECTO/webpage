@@ -338,7 +338,7 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
 
       for i in range(1, len(lista_filtros_normales)):
           query = query +" INTERSECT "+ function_filtro_normal(lista_valores, True, SELECT_candidato,WHERE_candidato )
-      query_total = "SELECT  DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica,   " + SELECT_candidato+ "   FROM  ( "+query + " ) AS QN JOIN datos_personales AS DP USING (dni_candidato)"   
+      query_total = "SELECT  DISTINCT DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica,   " + SELECT_candidato+ "   FROM  ( "+query + " ) AS QN JOIN datos_personales AS DP USING (dni_candidato)"   
   elif len(lista_filtros_normales)==1 and len(lista_filtros_ob_new)>1:
     query_total_filtros_normales = ""
     query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato,WHERE_candidato )
@@ -354,7 +354,7 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
         quitar = lista_filtros_ob_new[i][index_-2:]
       aux = lista_filtros_ob_new[i].replace("("+quitar, "")
       lista_filtros_ob_new[i] = aux
-    query_total = " SELECT DP.id,  " + SELECT_candidato + ",  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE " + WHERE_candidato+ "  GROUP BY (conteo,DP.id,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato +") ORDER BY conteo " + lista_filtros_ob_new[0]
+    query_total = " SELECT DISTINCT DP.id,  " + SELECT_candidato + ",  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE " + WHERE_candidato+ "  GROUP BY (conteo,DP.id,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato +") ORDER BY conteo " + lista_filtros_ob_new[0]
   elif ((len(lista_filtros_normales)>1 and len(lista_filtros_ob_new) ==  1))  or  (len(lista_filtros_normales)==1 and len(lista_filtros_ob_new)==1):
     query_total_filtros_normales = ""
     query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato,WHERE_candidato )
@@ -368,7 +368,7 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
       quitar = lista_filtros_ob_new[i][index_-1:]
       aux = lista_filtros_ob_new[i].replace("("+quitar, "")
       lista_filtros_ob_new[i] = aux
-    query_total = " SELECT DP.id,  " + SELECT_candidato + ",  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE "+ WHERE_candidato+"  GROUP BY (conteo,DP.id,  DP.candidato, DP.organizacion_politica,  "+SELECT_candidato +" ) ORDER BY conteo " + lista_filtros_ob_new[0]
+    query_total = " SELECT DISTINCT  DP.id,  " + SELECT_candidato + ",  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE "+ WHERE_candidato+"  GROUP BY (conteo,DP.id,  DP.candidato, DP.organizacion_politica,  "+SELECT_candidato +" ) ORDER BY conteo " + lista_filtros_ob_new[0]
   elif len(lista_filtros_normales)>1 and len(lista_filtros_ob_new)>1:
     query_total_filtros_normales = ""
     query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato,WHERE_candidato )
