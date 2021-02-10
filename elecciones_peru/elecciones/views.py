@@ -403,6 +403,7 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
 
 
 def filter_function_orga(request, filtro_id, info_extra, orden):
+  #- before column name mean descending order without - mean ascending. 
   query_total = "select * from datos_personales;"
   print("filtro_id: ",filtro_id)
   print("info_extra: ",info_extra)
@@ -414,10 +415,9 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
     print("var1: ", var1)
     print("var2: ", var2)
     # le falta PK
-    query_total = "SELECT  COUNT (*),partido FROM tabla_edad WHERE edad BETWEEN " +var1+ " AND " +var2+" GROUP BY (partido)"    
+    #query_total = "SELECT  COUNT (*),partido FROM tabla_edad WHERE edad BETWEEN " +var1+ " AND " +var2+" GROUP BY (partido)"    
     #query_total = "SELECT  dni_candidato, candidato, organizacion_politica, cargo_eleccion FROM datos_personales "
 
-  #if filtro_id == "primaria" or filtro_id == "secundaria"or filtro_id == "tecnicos"or filtro_id == "nouni"or filtro_id == "uni"or filtro_id == "postgrado"or filtro_id == "maestrodoctor":
   elif filtro_id == "primaria":
     query_total = "SELECT id, COUNT (dni_candidato) AS conteo, organizacion_politica FROM educacion_basica WHERE concluyo_primaria  = 'SI' GROUP BY (organizacion_politica,id) ORDER BY (conteo) " + orden
 
@@ -440,7 +440,7 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
     query_total = "SELECT id, COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_postgrado WHERE ( es_maestro  = 'SI' OR es_doctor = 'SI') GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
 
   elif filtro_id == "genero":
-    query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM datos_personales  WHERE  sexo = '" + info_extra+ "' GROUP BY (organizacion_politica,id ) ORDER BY (conteo) " + orden
+    query_total = "SELECT COUNT (DP.dni_candidato) AS conteo, OP.organizacion_politica FROM datos_personales AS DP JOIN organizaciones_politicas AS OP USING(organizacion_politica) WHERE  sexo = '" + info_extra+ "' GROUP BY (OP.organizacion_politica) ORDER BY (conteo) " + orden
 
   elif filtro_id == "penal_obligaciones_in":
     query_total = "SELECT id,SUM(conteo) AS total, organizacion_politica FROM (SELECT  COUNT(dni_candidato) AS conteo, organizacion_politica  FROM sentencia_penal   WHERE  tiene_info_por_declarar  = 'SI' GROUP BY (organizacion_politica) UNION ALL SELECT  COUNT(dni_candidato) AS conteo, organizacion_politica  FROM sentencia_obligacion   WHERE  tiene_info_por_declarar  = 'SI' GROUP BY (organizacion_politica)) TABLA GROUP BY partido ORDER BY total " +orden 
@@ -474,9 +474,8 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
 
   print("-------LLEGA A FINAL CASI DE LA FUNCION------------")
   print("query_total: ",query_total)
-  #candidatos = DatosPersonales.objects.raw("SELECT * FROM datos_personales")
+  ##candidatos = DatosPersonales.objects.raw("SELECT * FROM datos_personales")
   candidatos = DatosPersonales.objects.raw(query_total)
-
   # Paginator 
   paginator = Paginator(candidatos, 20)
   page_number = request.GET.get('page')
