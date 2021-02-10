@@ -534,30 +534,22 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   elif cargo_postula_dato == "PRIMER":
       cargo_postula_dato = "PRIMER VICEPRESIDENTE DE LA REPÚBLICA"
 
-  query_exp_lab =   " SELECT DISTINCT DP.id, centro_laboral,tiene_experiencia_laboral, ocupacion,ruc_empresa_laboral, direccion_laboral, desde_anhio,hasta_anhio,pais_laboral,departamento_laboral,provincia_laboral  FROM experiencia_laboral AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'"
-  query_edu_basica = " SELECT * from educacion_basica where dni_candidato ='"+dni_hoja_de_vida+"' LIMIT 1"
-  #query_if_basica = "SELECT DISTINCT DP.id, EP.tiene_experiencia_laboral  FROM experiencia_laboral AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'""
-
-  #print ("query_exp_lab: ",  query_exp_lab)
-  #print("dni_hoja_de_vida: ",dni_hoja_de_vida)     
-  
-  print ("query_exp_lab: ",  query_exp_lab)
-
   print("dni_hoja_de_vida: ",dni_hoja_de_vida)     
   nombre_ = DatosPersonales.objects.raw("SELECT id, candidato FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "' LIMIT 1")
   datos_personales_ = DatosPersonales.objects.raw("SELECT DISTINCT * FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "' LIMIT 1 ")
   cargo_eleccion_ = DatosPersonales.objects.raw("SELECT  id,cargo_eleccion FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "'")  
-  experiencia_laboral_ = ExperienciaLaboral.objects.raw(query_exp_lab)  #formacion_academica_ = 
-  edubasica_ = EducacionBasica.objects.raw(query_edu_basica)
+  
+  ifexpe_ = ExperienciaLaboral.objects.raw("SELECT DISTINCT DP.id, EP.tiene_experiencia_laboral FROM experiencia_laboral AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
+  experiencia_laboral_ = ExperienciaLaboral.objects.raw("SELECT DISTINCT DP.id, centro_laboral, tiene_experiencia_laboral, ocupacion,ruc_empresa_laboral, direccion_laboral, desde_anhio,hasta_anhio,pais_laboral,departamento_laboral,provincia_laboral FROM experiencia_laboral AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+  
+  edubasica_ = EducacionBasica.objects.raw("SELECT * from educacion_basica where dni_candidato ='"+dni_hoja_de_vida+"' LIMIT 1")
   
   edu_tecnic_ = EstudioTecnico.objects.raw("SELECT DISTINCT DP.id, EP.tiene_estudio_tecnico FROM estudio_tecnico AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE EP.centro_estudio_tecnico != 'null' AND  DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
   estudios_en_institutos_ = EstudioTecnico.objects.raw("SELECT DISTINCT DP.id, carrera_tecnica, centro_estudio_tecnico, concluyo_estudio_tecnico, comentario_estudio_tecnico FROM estudio_tecnico AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
-
   edu_uni_ = EstudioUniversitario.objects.raw("SELECT DISTINCT DP.id, EP.tiene_estudio_universitario  FROM estudio_universitario AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
   estudio_univs = EstudioUniversitario.objects.raw("SELECT DISTINCT DP.id, carrera_universitaria, anhio_obtencion_universitario, universidad, concluyo_estudio_universitario, comentario_estudio_universitario FROM estudio_universitario AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
     
-
   edu_no_uni_ = EstudioNoUniversitario.objects.raw("SELECT DISTINCT DP.id, EP.tiene_estudio_no_universitario  FROM estudio_no_universitario AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
   estudios_no_universitarios_ = EstudioNoUniversitario.objects.raw("SELECT DISTINCT DP.id, centro_estudio_no_universitario, concluyo_estudio_no_universitario FROM estudio_no_universitario AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
@@ -567,39 +559,37 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   carg_eleccion_pop_ = CargoEleccion.objects.raw("SELECT DISTINCT DP.id, CE.tiene_info_por_declarar FROM cargo_eleccion AS CE  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
   cargo_eleccion_popular_ = CargoEleccion.objects.raw("SELECT DISTINCT DP.id, CE.tiene_info_por_declarar, CE.org_politica_cargo, CE.organizacion_politica, CE.desde_anhio, CE.hasta_anhio, CE.comentario FROM cargo_eleccion AS CE RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
-
   #renuncias_ = Renuncia.objects.raw("SELECT DISTINCT DP.id, EP.tiene_info_por_declarar FROM renuncia AS EP RI")
   renuncias_ = Renuncia.objects.raw("SELECT DISTINCT DP.id, EP.organización_renuncia, EP.comentario FROM renuncia AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
   print("SELECT DISTINCT DP.id, EP.tiene_info_por_declarar, EP.organización_renuncia, EP.comentario FROM renuncia AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
   ifreuncia_ = Renuncia.objects.raw("SELECT DISTINCT DP.id, EP.tiene_info_por_declarar FROM renuncia AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
-  if_penal_ = SentenciaPenal.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_info_por_declarar FROM sentencia_penal AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
-  sentencia_penales_ = SentenciaPenal.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_info_por_declarar, EP.fallo_penal, EP.cumplimiento_del_fallo, EP.modalidad_penal  ,EP.n_experiente_penal, EP.fecha_sentencia_penal, EP.organo_judicial FROM sentencia_penal AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+  if_penal_ = SentenciaPenal.objects.raw("SELECT DISTINCT DP.id, EP.tiene_info_por_declarar FROM sentencia_penal AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
+  sentencia_penales_ = SentenciaPenal.objects.raw("SELECT DISTINCT DP.id, EP.tiene_info_por_declarar, EP.fallo_penal, EP.cumplimiento_del_fallo, EP.modalidad_penal  ,EP.n_experiente_penal, EP.fecha_sentencia_penal, EP.organo_judicial FROM sentencia_penal AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
-  if_oblig_ = SentenciaObligacion.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_info_por_declarar FROM sentencia_obligacion AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
-  sentencia_obliga_ = SentenciaObligacion.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_info_por_declarar, EP.materia_sentencia, EP.fallo_obliga, EP.n_experiente_obliga, EP.organo_judicial FROM sentencia_obligacion AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+  if_oblig_ = SentenciaObligacion.objects.raw("SELECT DISTINCT DP.id, EP.tiene_info_por_declarar FROM sentencia_obligacion AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
+  sentencia_obliga_ = SentenciaObligacion.objects.raw("SELECT DISTINCT DP.id, EP.tiene_info_por_declarar, EP.materia_sentencia, EP.fallo_obliga, EP.n_experiente_obliga, EP.organo_judicial FROM sentencia_obligacion AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
   # si es que tiene ingresos, solo da DP.id, EP.tiene_ingresos 
   if_ingreso_ = Ingreso.objects.raw("SELECT DISTINCT DP.id, EP.tiene_ingresos FROM ingreso AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
   # el ingreso en cierto año da columnas EP.anhio_ingresos, EP.total_ingresos
-  ingresos_ = Ingreso.objects.raw(" SELECT DISTINCT DP.id, EP.anhio_ingresos, EP.total_ingresos FROM ingreso AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+  ingresos_ = Ingreso.objects.raw("SELECT DISTINCT DP.id, EP.anhio_ingresos, EP.total_ingresos FROM ingreso AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
   # si es que tiene que declarar bienes inmuebles solo da dp.id, 
-  if_bien_inmueble_ = BienInmueble.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_inmueble FROM bien_inmueble AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
+  if_bien_inmueble_ = BienInmueble.objects.raw("SELECT DISTINCT DP.id, EP.tiene_inmueble FROM bien_inmueble AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
   # los bienes inmuebles da columnas EP.tipo_inmueble, EP.direccion_inmueble,EP.esta_inscrito_sunarp, EP.partida_inmueble_sunarp ,EP.comentario_inmueble  
-  bienes_inmuebles_ = BienInmueble.objects.raw(" SELECT DISTINCT DP.id, EP.tipo_inmueble, EP.direccion_inmueble,EP.esta_inscrito_sunarp, EP.partida_inmueble_sunarp ,EP.comentario_inmueble FROM bien_inmueble AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+  bienes_inmuebles_ = BienInmueble.objects.raw("SELECT DISTINCT DP.id, EP.tiene_inmueble, EP.tipo_inmueble, EP.direccion_inmueble,EP.esta_inscrito_sunarp, EP.partida_inmueble_sunarp ,EP.comentario_inmueble FROM bien_inmueble AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
  
-  if_bien_mueble_ = BienMueble.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_bien_mueble FROM bien_mueble AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
-  bienes_muebles_ = BienMueble.objects.raw(" SELECT DISTINCT DP.id, EP.vehiculo, EP.placa,EP.valor, EP.caracteristicas_vehiculo ,EP.comentario_vehiculo FROM bien_mueble AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+  if_bien_mueble_ = BienMueble.objects.raw("SELECT DISTINCT DP.id, EP.tiene_bien_mueble FROM bien_mueble AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
+  bienes_muebles_ = BienMueble.objects.raw("SELECT DISTINCT DP.id, EP.tiene_bien_mueble, EP.vehiculo, EP.placa,EP.valor, EP.caracteristicas_vehiculo ,EP.comentario_vehiculo FROM bien_mueble AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
-  informacio_adicional_ = InformacionAdicional.objects.raw(" SELECT DISTINCT DP.id, EP.tiene_info_adicional, EP.info FROM informacion_adicional AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
-
-  print(" SELECT DISTINCT DP.id, EP.tiene_info_adicional, EP.info FROM informacion_adicional AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+  informacio_adicional_ = InformacionAdicional.objects.raw("SELECT DISTINCT DP.id, EP.tiene_info_adicional, EP.info FROM informacion_adicional AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
   return render(request, 'elecciones/index.html', {
                   'nombre': nombre_,
                   'datos_personales': datos_personales_,
                   'cargo_eleccion': cargo_eleccion_,
+                  'ifexpe': ifexpe_,
                   'experiencia_laboral': experiencia_laboral_,
                   'educacion_basica': edubasica_,
                   'estudio_tecnico': edu_tecnic_,
