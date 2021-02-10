@@ -73,135 +73,182 @@
 	</section>
 	
 	<section id="about">
+		<div class="col-twelve resume-header">
+			<h2>1. Datos personales</h2>
+		</div>
+			<!--
+		<div class="intro-info">
+			<img src="images/profile-pic.jpg" alt="Profile Picture">
+		</div>   
+		-->
 		<div class="row section-intro">
-			<div class="col-twelve">
-				<h1>Datos personales</h1>
-				<!--
-			<div class="intro-info">
-
-				<img src="images/profile-pic.jpg" alt="Profile Picture">
-			</div>   
-			-->
-		</div>
-		</div>
-		<!-- /section-intro -->
-		<div class="row about-content">
-			<div class="col-six tab-full">
-				<br>
-				<h3>Perfil: </h3> 
-				{% for candidato in datos_personales %}
-				<ul class="info-list"> 
-					{% for candidato in cargo_eleccion %}
-					<li> 
-						{% if cargo_eleccion|length > 1 %} 
-						<strong>- Cargo al que postula:</strong> <span>{{candidato.cargo_eleccion}}</span> 
-						{% else %} 
-						<strong>Cargo al que postula:</strong> <span>{{candidato.cargo_eleccion}}</span> 
-						{% endif %} 
-					</li> 
-						{% endfor %}
-					<li> <strong>Organización política:</strong> <span>{{candidato.organizacion_politica}}</span> </li>
-					<li> <strong>Fecha de nacimiento:</strong> <span>{{candidato.fecha_nacimiento}}</span> </li>
-					<li> <strong>Sexo:</strong> <span>{{candidato.sexo}}</span> </li>
-					<li> <strong>DNI:</strong> <span>{{candidato.dni_candidato}}</span> </li>
-					{% if candidato.carnet_extranjeria %} 
-						<li> <strong>Canet de extranjería:</strong> <span>{{candidato.carnet_extranjeria}}</span> </li>
-					{% endif %}
-				</ul>
-				<!-- /info-list -->
+			<div class="col-twelve resume-header">
+				<div class="blocktext">
+					<div id="grid-sentencias" class="uk-text-center" uk-grid>
+						<div class="uk-width-1-2@m uk-width-1-1@s">
+							<ul class="info-list uk-text-left">
+								<div class="uk-margin-small-bottom">
+									{% for candidato in datos_personales %}
+										{% if candidato.url %}
+											<img src="{{ candidato.url }}" width="170px" alt="{{ candidato.candidato }}" class="uk-margin-bottom">
+										{% else %}
+											<img src="{% static "images/candidato_img.png" %}" width="170px" alt="{{ candidato.candidato }}" class="uk-margin-bottom">
+										{% endif %}
+										<li style="text-decoration: underline;">
+											<strong>
+												Datos Personales
+											</strong>
+										</li>
+										{% if candidato.nombres %}
+											<li>
+												<strong>Nombres</strong>
+												<br>
+												{{candidato.candidato}}
+											</li>
+										{% endif %}
+										{% if candidato.dni_candidato %}
+											<li> 
+												<strong>DNI</strong>
+												<br>
+												{{candidato.dni_candidato}}
+											</li>
+										{% endif %}
+										{% if candidato.fecha_nacimiento %}
+											<li> 
+												<strong>Fecha de nacimiento</strong>
+												<br>
+												{{candidato.fecha_nacimiento}}
+											</li>
+										{% endif %}
+										{% if candidato.sexo %}
+											<li>
+												<strong>Sexo</strong>
+												<br>
+												{{candidato.sexo}}
+											</li>
+										{% endif %}
+										{% if candidato.carnet_extranjeria %} 
+											<li> 
+												<strong>Canet de extranjería</strong>
+												<br>
+												{{candidato.carnet_extranjeria}}
+											</li>
+										{% endif %}
+									{% endfor %}
+								</div>
+							</ul>
+						</div>
+						<div class="uk-width-1-2@m uk-width-1-1@s">
+							<ul class="info-list uk-text-left">
+								<div class="uk-margin-small-bottom">
+									{% for candidato in datos_personales %}
+										<li style="text-decoration: underline;">
+											<strong>
+												Cargos
+											</strong>
+										</li>
+										{% for candidato in cargo_eleccion %}
+											<li>
+												{% if cargo_eleccion|length > 1 %} 
+													<strong>Cargo al que postula</strong>
+													<br>
+													{{candidato.cargo_eleccion}}
+												{% else %} 
+													<strong>Cargo al que postula</strong>
+													<br>
+													{{candidato.cargo_eleccion}}
+												{% endif %}
+											</li> 
+										{% endfor %}
+										{% if candidato.organizacion_politica %}
+											<li>
+												<strong>Organización política</strong>
+												<br>
+												{{candidato.organizacion_politica}}
+											</li>
+										{% endif %}
+									{% endfor %}
+								</div>
+								<div class="uk-margin-small-bottom">
+									<li style="text-decoration: underline;">
+										<strong>
+											Origen
+										</strong>
+									</li>
+									{% for candidato in datos_personales %}
+										{% if candidato.pais_nacimiento %} 
+											<li> 
+												<strong>País de nacimiento</strong>
+												<br>
+												{{candidato.pais_nacimiento}}
+											</li>
+										{% endif %}
+										{% if candidato.departamento_nacimiento %} 
+											<li> 
+												<strong>Departamento de nacimiento</strong>
+												<br>
+												{{candidato.departamento_nacimiento}}
+											</li>
+										{% endif %}
+										{% if candidato.provincia_nacimiento %} 
+											<li> 
+												<strong>Provincia de nacimiento</strong>
+												<br>
+												{{candidato.provincia_nacimiento}}
+											</li>
+										{% endif %}
+										{% if candidato.distrito_nacimiento %} 
+											<li> 
+												<strong>Distrito de nacimiento</strong>
+												<br>
+												{{candidato.distrito_nacimiento}}
+											</li>
+										{% endif %}
+									{% endfor%}
+								</div>
+								<div class="uk-margin-small-bottom">
+									<li style="text-decoration: underline;">
+										<strong>
+											Domicilio
+										</strong>
+									</li>
+									{% for candidato in datos_personales %}
+										{% if candidato.departamento_domicilio %} 
+											<li> 
+												<strong>Departamento de domicilio</strong>
+												<br>
+												{{candidato.departamento_domicilio}}
+											</li>
+										{% endif %}
+										{% if candidato.provincia_domicilio %} 
+											<li> 
+												<strong>Provincia de domicilio</strong>
+												<br>
+												{{candidato.provincia_domicilio}}
+											</li>
+										{% endif %}
+										{% if candidato.distrito_domicilio %} 
+											<li> 
+												<strong>Distrito de domicilio</strong>
+												<br>
+												{{candidato.distrito_domicilio}}
+											</li>
+										{% endif %}
+										{% if candidato.direccion_domicilio %} 
+											<li> 
+												<strong>Dirección de domicilio</strong>
+												<br>
+												{{candidato.direccion_domicilio}}
+											</li>
+										{% endif %}
+									{% endfor %}
+								</div>
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="col-six tab-full">
-				<br>
-				<br>
-				<ul class="info-list">
-					<li> <strong>Lugar de nacimiento:</strong>
-						<br>
-						<ul>
-							<tr>
-								<th><strong>País:</strong></th>
-								<th>{{candidato.pais_nacimiento}} </th>
-							</tr>
-							<br>
-							<tr>
-								<th><strong>Departamento:</strong></th>
-								<th>{{candidato.departamento_nacimiento}} </th>
-							</tr>
-							<br>
-							<tr>
-								<th><strong>Provincia:</strong></th>
-								<th>{{candidato.provincia_nacimiento}} </th>
-							</tr>
-							<br>
-							<tr>
-								<th><strong>Distrito:</strong></th>
-								<th>{{candidato.distrito_nacimiento}}</th>
-							</tr>
-						</ul>
-					</li>
-				</ul>
-				<ul class="info-list">
-					<li> <strong>Lugar de domicilio:</strong>
-						<br>
-						<ul>
-							<tr>
-								<th><strong>Departamento:</strong></th>
-								<th>{{candidato.departamento_domicilio}}</th>
-							</tr>
-							<br>
-							<tr>
-								<th><strong>Provincia:</strong></th>
-								<th>{{candidato.provincia_domicilio}}</th>
-							</tr>
-							<br>
-							<tr>
-								<th><strong>Distrito:</strong></th>
-								<th>{{candidato.distrito_domicilio}}</th>
-							</tr>
-							<br>
-							<tr>
-								<th><strong>Dirección:</strong></th>
-								<th>{{candidato.direccion_domicilio}}</th>
-							</tr>
-						</ul>
-					</li> 
-					{% endfor %} </ul>
-				<!--
-   			<h3>Skills</h3>
-   			<p>Lorem ipsum Qui veniam ut consequat ex ullamco nulla in non ut esse in magna sint minim officia consectetur nisi commodo ea magna pariatur nisi cillum.</p>
-
-				<ul class="skill-bars">
-				   <li>
-				   	<div class="progress percent90"><span>90%</span></div>
-				   	<strong>HTML5</strong>
-				   </li>
-				   <li>
-				   	<div class="progress percent85"><span>85%</span></div>
-				   	<strong>CSS3</strong>
-				   </li>
-				   <li>
-				   	<div class="progress percent70"><span>70%</span></div>
-				   	<strong>JQuery</strong>
-				   </li>
-				   <li>
-				   	<div class="progress percent95"><span>95%</span></div>
-				   	<strong>PHP</strong>
-				   </li>
-				   <li>
-
-				   	<div class="progress percent75"><span>75%</span></div>
-				   	<strong>Wordpress</strong>
-				   </li>
-      
-				</ul>
-			</div>
 		</div>
-   	<div class="row button-section">
-   		<div class="col-twelve">
-   			<a href="#contact" title="Hire Me" class="button stroke smoothscroll">Hire Me</a>
-   			<a href="#" title="Download CV" class="button button-primary">Download CV</a>
-   		</div>   		
-   	</div>
--->
 	</section>
 
 	<section id="experiencia" class="grey-section">
@@ -235,39 +282,39 @@
 												<p>{{experiencia.desde_anhio}} - {{experiencia.hasta_anhio}} </p>
 											</div>
 											<div class="timeline-content">
-												<ul class="info-list">
+												<ul class="info-list uk-text-left">
 													{% if experiencia.centro_laboral %}
-														<li class="uk-text-left">
+														<li>
 															<strong>Centro Laboral</strong>
 															{{experiencia.centro_laboral}}
 														</li>
 													{% endif %}
 													{% if experiencia.direccion_laboral %}
-														<li class="uk-text-left">
+														<li>
 															<strong>Dirección del centro laboral</strong>
 															{{experiencia.direccion_laboral}}
 														</li>
 													{% endif %}
 													{% if experiencia.ruc_empresa_laboral %}
-														<li class="uk-text-left">
+														<li>
 															<strong>RUC de la empresa</strong>
 															{{experiencia.ruc_empresa_laboral}}
 														</li>
 													{% endif %}
 													{% if experiencia.pais_laboral %}
-														<li class="uk-text-left">
+														<li>
 															<strong>País</strong>
 															{{experiencia.pais_laboral}}
 														</li>
 													{% endif %}
 													{% if experiencia.departamento_laboral %}
-														<li class="uk-text-left">
+														<li>
 															<strong>Departamento</strong>
 															{{experiencia.departamento_laboral}}
 														</li>
 													{% endif %}
 													{% if experiencia.provincia_laboral %}
-														<li class="uk-text-left">
+														<li>
 															<strong>Provincia</strong>
 															{{experiencia.provincia_laboral}}
 														</li>
@@ -316,6 +363,7 @@
 						</ul>
 					{% endfor %} 
 				</div>
+				<hr>
 			</div>
 			<div class="col-twelve">
 				<div class="blocktext formacion">
@@ -352,16 +400,16 @@
 												{% endif %}
 											</div>
 											<div class="timeline-content">
-												<ul class="info-list">
+												<ul class="info-list uk-text-left">
 													{% if estudioinsti.centro_estudio_tecnico != "NULL" %}
-													<li class="uk-text-left">
+													<li>
 														<strong>Centro de estudios</strong>
 														<br>
 														{{estudioinsti.centro_estudio_tecnico}}
 													</li>
 													{% endif %}
 													{% if estudioinsti.comentario_estudio_tecnico != "NULL"%}
-													<li class="uk-text-left">
+													<li>
 														<strong>Comentario</strong>
 														<br>
 														{{estudioinsti.comentario_estudio_tecnico}}
@@ -379,6 +427,7 @@
 						</div>
 					{% endif %}
 				</div>
+				<hr>
 			</div>
 			<div class="col-twelve">
 				<div class="blocktext formacion">
@@ -412,9 +461,9 @@
 											{% endif %}
 										</div>
 										<div class="timeline-content">
-											<ul class="info-list">
+											<ul class="info-list uk-text-left">
 												{% if estudios_no.centro_estudio_no_universitario != "NULL" %}
-												<li class="uk-text-left">
+												<li>
 													<strong>Centro de estudios no universitarios</strong>
 													<br>
 													{{estudios_no.centro_estudio_no_universitario}}
@@ -429,6 +478,7 @@
 					</div>
 				</div>
 			</div>
+			<hr>
 			</div>
 			<div class="col-twelve">
 				<div class="blocktext formacion">
@@ -457,16 +507,16 @@
 										<p>Concluyó estudios: {{estudios_unv.concluyo_estudio_universitario}}</p>
 									</div>
 									<div class="timeline-content">
-										<ul class="info-list uk-margin-small-bottom">
+										<ul class="info-list uk-text-left uk-margin-small-bottom">
 											{% if estudios_unv.universidad %}
-											<li class="uk-text-left">
+											<li>
 												<strong>Centro de estudios universitarios</strong>
 												<br>
 												{{estudios_unv.universidad}}
 											</li>
 											{% endif %} 
 											{% if estudios_unv.anhio_obtencion_universitario %}
-											<li class="uk-text-left">
+											<li>
 												<strong>Año de obtención</strong>
 												<br>
 												{{estudios_unv.anhio_obtencion_universitario}}
@@ -480,6 +530,7 @@
 						</div>
 					</div>
 				</div>
+				<hr>
 			</div>
 			<div class="col-twelve">
 				<div class="blocktext formacion">
@@ -510,30 +561,30 @@
 											<p>Concluyó estudios: {{estudios_post.concluyo_estudio_postgrado}}</p>  
 										</div>
 										<div class="timeline-content">
-											<ul class="info-list">
+											<ul class="info-list uk-text-left">
 												{% if estudios_post.centro_estudio_postgrado != "NULL" %}
-												<li class="uk-text-left">
+												<li>
 													<strong>Centro de estudios de postgrado</strong>
 													<br>
 													{{estudios_post.centro_estudio_postgrado}}
 												</li>
 												{% endif %}
 												{% if estudios_post.anhio_obtencion_postgrado %}
-													<li class="uk-text-left">
+													<li>
 														<strong>Año de obtención</strong>
 														<br>
 														{{estudios_post.anhio_obtencion_postgrado}}
 													</li>
 												{% endif %}
 												{% if estudios_post.es_egresado_postgrado %}
-													<li class="uk-text-left">
+													<li>
 														<strong>Es egresado</strong>
 														<br>
 														{{estudios_post.es_egresado_postgrado}} 
 													</li>
 													{% endif %}
 												{% if estudios_post.comentario_estudio_postgrado %}
-													<li class="uk-text-left">
+													<li>
 														<strong>Comentario </strong>
 														<br>
 														{{estudios_post.comentario_estudio_postgrado}} 
@@ -547,6 +598,7 @@
 						</div>
 					</div>		
 				</div>
+				<hr>
 			</div>
 		</div>
 	</section>
@@ -643,8 +695,8 @@
 												</ul>
 											</div>
 											<div class="timeline-content">
-												<ul class="info-list">
-													<li class="uk-text-left">
+												<ul class="info-list uk-text-left">
+													<li>
 															<strong>Comentario </strong>
 															<br>
 															{% if renuncia.comentario != "" %}
@@ -673,7 +725,7 @@
 			</div>
 			<div class="col-twelve resume-header">
 				<div id="grid-sentencias" class="uk-text-center" uk-grid>
-					<div class="uk-width-1-2@m uk-width-1-1@s uk-padding-small" >
+					<div class="uk-width-1-2@m uk-width-1-1@s" >
 						<div>
 							<div class="col-twelve resume-header uk-margin-top">
 								<h2>Sentencia Penal</h2>
@@ -692,40 +744,40 @@
 							{% endfor %}
 							{% for sentencia in setencia_penales %}
 								{% if sentencia.tiene_info_por_declarar == "SI" %}
-									<ul class="info-list">
+									<ul class="info-list uk-text-left">
 									{% if sentencia.fallo_pena %}
-										<li class="uk-text-left">
-											<strong>Fallo o pena:</strong>
+										<li>
+											<strong>Fallo o pena</strong>
 											{{sentencia.fallo_pena}}
 										</li>
 									{% endif %}
 									{% if sentencia.cumplimiento_del_fallo %}
-										<li class="uk-text-left">
-											<strong>Cumplimiento del fallo:</strong>
+										<li>
+											<strong>Cumplimiento del fallo</strong>
 											{{sentencia.cumplimiento_del_fallo}}
 										</li>
 									{% endif %}
 									{% if sentencia.modalidad_penal %}
-										<li class="uk-text-left">
-											<strong>Modalidad:</strong>
+										<li>
+											<strong>Modalidad</strong>
 											{{sentencia.modalidad_penal}}
 										</li>
 									{% endif %}
 									{% if sentencia.n_experiente_penal %}
-										<li class="uk-text-left">
-											<strong>N° expediente:</strong>
+										<li>
+											<strong>N° expediente</strong>
 											{{sentencia.n_experiente_penal}}
 										</li>
 									{% endif %}
 									{% if sentencia.fecha_sentencia_penal %}
-										<li class="uk-text-left">
-											<strong>Fecha sentencia firme:</strong>
+										<li>
+											<strong>Fecha sentencia firme</strong>
 											{{sentencia.fecha_sentencia_penal}}
 										</li>
 									{% endif %}
 									{% if sentencia.organo_judicial %}
-										<li class="uk-text-left">
-											<strong>Órgano judicial:</strong>
+										<li>
+											<strong>Órgano judicial</strong>
 											{{sentencia.organo_judicial}}
 										</li> 
 									{% endif %}
@@ -734,7 +786,7 @@
 							{% endfor %}
 						</div>
 					</div>
-					<div class="uk-width-1-2@m uk-width-1-1@s uk-padding-small">
+					<div class="uk-width-1-2@m uk-width-1-1@s">
 						<div>
 							<div class="col-twelve resume-header uk-margin-top">
 								<h2>Sentencia por Obligación</h2>
@@ -755,22 +807,22 @@
 								{% if sentencia.tiene_info_por_declarar == "SI" %}
 									<div class="uk-margin-medium-bottom">
 										<h3>Materia de la demanda</h3>
-										<ul class="info-list">
+										<ul class="info-list uk-text-left">
 										{% if sentencia.fallo_obliga %}
-											<li class="uk-text-left">
-												<strong>Fallo o pena:</strong>
+											<li>
+												<strong>Fallo o pena</strong>
 												{{sentencia.fallo_obliga}}
 											</li>
 										{% endif %}
 										{% if sentencia.n_experiente_penal %}
-											<li class="uk-text-left">
-												<strong>N° expediente:</strong>
+											<li>
+												<strong>N° expediente</strong>
 												{{sentencia.n_experiente_penal}}
 											</li>
 										{% endif %}
 										{% if sentencia.organo_judicial %}
-											<li class="uk-text-left">
-												<strong>Órgano judicial:</strong>
+											<li>
+												<strong>Órgano judicial</strong>
 												{{sentencia.organo_judicial}}
 											</li>
 										{% endif %}
@@ -849,6 +901,7 @@
 													{% if bien_inmu.esta_inscrito_sunarp %}
 														<li>
 															<strong>¿El bien inmueble esta inscrito en sunarp?</strong>
+															<br>
 															{{bien_inmu.esta_inscrito_sunarp}}
 														</li>
 													{% endif %}
@@ -861,21 +914,21 @@
 												</ul>
 											</div>
 											<div class="timeline-content">
-												<ul class="info-list">
+												<ul class="info-list uk-text-left">
 													{% if bien_inmu.partida_inmueble_sunarp %}
-														<li class="uk-text-left">
+														<li>
 															<strong>Partida del inmueble en sunarp</strong>
 															{{bien_inmu.partida_inmueble_sunarp}}
 														</li>
 													{% endif %}
 													{% if bien_inmu.direccion_inmueble  %}
-														<li class="uk-text-left">
+														<li>
 															<strong>Dirección de inmueble</strong>
 															{{bien_inmu.direccion_inmueble}}
 														</li>
 													{% endif %}
 													{% if bien_inmu.comentario_inmueble %}
-														<li class="uk-text-left">
+														<li>
 															<strong>Comentarios</strong>
 															{{bien_inmu.comentario_inmueble}}
 														</li>
@@ -935,21 +988,21 @@
 												</ul>
 											</div>
 											<div class="timeline-content">
-												<ul class="info-list">
+												<ul class="info-list uk-text-left">
 													{% if bien_mueb.valor %}
-														<li class="uk-text-left">
+														<li>
 															<strong>Valor </strong>
 															{{bien_mueb.valor}}
 														</li>
 													{% endif %}
 													{% if bien_mueb.caracteristicas_vehiculo  %}
-														<li class="uk-text-left">
+														<li>
 															<strong>Características del vehículo</strong>
 															{{bien_mueb.caracteristicas_vehiculo}}
 														</li>
 													{% endif %}
 													{% if bien_mueb.comentario_vehiculo %}
-														<li class="uk-text-left">
+														<li>
 															<strong>Comentarios</strong>
 															{{bien_mueb.comentario_vehiculo}}
 														</li>
