@@ -606,7 +606,7 @@
 				<br> 
 				{% for renuncia in ifreuncia %}
 					<div class="blocktext">
-						<div class="row">
+						<div class="uk-flex uk-flex-center">
 							<div class="col-md-6">
 								<h3 class="form-control">¿Tiene que información por declarar? </h3> 
 							</div>
@@ -621,7 +621,7 @@
 				<div class="timeline-wrap">
 					{% for renuncia in renuncias %}
 						{% if renuncia.tiene_info_por_declarar != "NO" %}
-							<div class="timeline-block">
+							<div class="timeline-block uk-flex uk-flex-center">
 								<div class="timeline-ico"> 
 									<i class="fa fa-briefcase"></i> 
 								</div>
