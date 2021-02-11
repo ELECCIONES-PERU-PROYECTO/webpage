@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
+{% extends "elecciones/base.html" %}
+{% block title %}Análisis Gráficos{% endblock %}
+{% load static %}
+{% block css %}
+
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Información general</title>
-		<link rel="icon" href="img/favicon.ico">
+		<link rel="icon" href="{% static "graphic_images/favicon.ico">
 		<!-- CSS FILES -->
 		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/uikit@latest/dist/css/uikit.min.css">
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="css/card.css">
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 		<style>
@@ -46,9 +46,21 @@
 			#header.uk-sticky-below {
 				box-shadow: 0 2px 14px 0 rgba(0,0,0,0.07);
 			}
+			/*
 			
 			.uk-overlay-primary{
 				background: rgb(171 134 134 / 80%);
+			}
+			*/
+
+			/*BLACK */
+			.uk-overlay-primary {
+				background: rgb(0 0 0);
+			}
+
+			.uk-h3, h3 {
+				
+				text-align: center;
 			}
 			
 		.square{
@@ -95,25 +107,9 @@
 
 
 		</style>
+	{% endblock %}
+	{% block content %}
 
-
-
-		<script>
-			flexFont = function () {
-				var divs = document.getElementsByClassName("flexFont");
-				for(var i = 0; i < divs.length; i++) {
-					var relFontsize = divs[i].offsetWidth*0.05;
-					divs[i].style.fontSize = relFontsize+'px';
-				}
-			};
-
-			window.onload = function(event) {
-				flexFont();
-			};
-			window.onresize = function(event) {
-				flexFont();
-			};
-		</script>
 	</head>
 	<body>
 		<!--HEADER-->
@@ -135,7 +131,7 @@
 						</ul>
 					</div>
 					<div class="uk-navbar-center nav-overlay">
-						<a class="uk-navbar-item uk-logo" href="#" title="Logo"><img src="img/n-logo.png" alt="Logo"></a>
+						<a class="uk-navbar-item uk-logo" href="#" title="Logo"><img src="{% static "graphic_images/n-logo.PNG" %}" %}" alt="Logo"></a>
 					</div>
 					<div class="uk-navbar-right nav-overlay">
 						<!--
@@ -185,7 +181,7 @@
 		<section class="uk-section uk-section-small">
 			<div class="uk-container">
 				<div class="uk-height-medium uk-cover-container uk-border-rounded">
-					<img src="img/PERU.png" alt="Alt img" data-uk-cover>
+					<img src="{% static "graphic_images/PERU.PNG" %}" %}" alt="Alt img" data-uk-cover>
 					<div class="uk-overlay uk-overlay-primary uk-position-cover uk-flex uk-flex-center uk-flex-middle uk-light uk-text-center">
 						<div data-uk-scrollspy="cls: uk-animation-slide-bottom-small">
 						<!--	<span style="letter-spacing: 0.2em; font-size: 0.725rem">FEATURED ARTICLE</span> -->
@@ -226,16 +222,16 @@
 												<div>
 													<h3>GENERAL</h3>
 
-													<a class="uk-inline" href="img/genero_todo.PNG" data-caption="Caption 1">
-														<img src="img/genero_todo.PNG" alt="">
+													<a class="uk-inline" href="{% static "graphic_images/genero_todo.PNG" %}" %}" data-caption="Caption 1">
+														<img src="{% static "graphic_images/genero_todo.PNG" %}" alt="">
 													</a>
 												</div>
 												<div>
 													<h3>POR ORGANIZACIONES POLÍTICAS</h3>
 													
 													<!---->
-													<a class="uk-inline" href="img/partido_genero.PNG" data-caption="Caption 2">
-														<img src="img/partido_genero.PNG" alt="">
+													<a class="uk-inline" href="{% static "graphic_images/partido_genero.PNG" %}" data-caption="Caption 2">
+														<img src="{% static "graphic_images/partido_genero.PNG" %}" alt="">
 													</a>
 												</div>
 											</div>						
@@ -252,16 +248,16 @@
 											<div>
 												<h3>GENERAL</h3>
 
-												<a class="uk-inline" href="img/edad_todo.PNG" data-caption="Caption 2">
-													<img src="img/edad_todo.PNG" alt="">
+												<a class="uk-inline" href="{% static "graphic_images/edad_todo.PNG" %}" data-caption="Caption 2">
+													<img src="{% static "graphic_images/edad_todo.PNG" %}" alt="">
 												</a>
 											</div>
 
 											<div>
 												<h3>POR ORGANIZACIONES POLÍTICAS</h3>
 
-												<a class="uk-inline" href="img/edad_partido.PNG" data-caption="Caption 1">
-													<img src="img/edad_partido.PNG" alt="">
+												<a class="uk-inline" href="{% static "graphic_images/edad_partido.PNG" %}" data-caption="Caption 1">
+													<img src="{% static "graphic_images/edad_partido.PNG" %}" alt="">
 												</a>
 											</div>
 											
@@ -270,12 +266,6 @@
 								</li>
 								<li>
 								<a class="uk-accordion-title" href="#">Lugar de nacimiento</a>
-
-								<br>
-
-								
-
-
 									
 									
 								</li>
@@ -289,16 +279,16 @@
 											<div>
 												<h3>GENERAL</h3>
 
-												<a class="uk-inline" href="img/laboral_todo.PNG" data-caption="Caption 2">
-													<img  src="img/laboral_todo.PNG" alt="">
+												<a class="uk-inline" href="{% static "graphic_images/laboral_todo.PNG" %}" data-caption="Caption 2">
+													<img  src="{% static "graphic_images/laboral_todo.PNG" %}" alt="">
 												</a>
 											</div>
 
 											<div>
 												<h3>POR ORGANIZACIONES POLÍTICAS</h3>
 								
-												<a class="uk-inline" href="img/laboral_partido.PNG"  data-caption="Caption 1">
-													<img src="img/laboral_partido.PNG"  alt="">
+												<a class="uk-inline" href="{% static "graphic_images/laboral_partido.PNG" %}"  data-caption="Caption 1">
+													<img src="{% static "graphic_images/laboral_partido.PNG" %}"  alt="">
 												</a>
 												
 											</div>
@@ -339,16 +329,16 @@
 											<div>
 												<h3>GENERAL</h3>
 
-												<a class="uk-inline" href="img/cargo_popular_todo.PNG" data-caption="Caption 2">
-													<img  src="img/cargo_popular_todo.PNG" alt="">
+												<a class="uk-inline" href="{% static "graphic_images/cargo_popular_todo.PNG" %}" data-caption="Caption 2">
+													<img  src="{% static "graphic_images/cargo_popular_todo.PNG" %}" alt="">
 												</a>
 											</div>
 
 											<div>
 												<h3>POR ORGANIZACIONES POLÍTICAS</h3>
 								
-												<a class="uk-inline" href="img/cargo_popular_partido.PNG"  data-caption="Caption 1">
-													<img src="img/cargo_popular_partido.PNG"  alt="">
+												<a class="uk-inline" href="{% static "graphic_images/cargo_popular_partido.PNG" %}"  data-caption="Caption 1">
+													<img src="{% static "graphic_images/cargo_popular_partido.PNG" %}"  alt="">
 												</a>
 												
 											</div>
@@ -367,16 +357,16 @@
 											<div>
 												<h3>GENERAL</h3>
 
-												<a class="uk-inline" href="img/renuncia_todo.PNG" data-caption="Caption 2">
-													<img  src="img/renuncia_todo.PNG" alt="">
+												<a class="uk-inline" href="{% static "graphic_images/renuncia_todo.PNG" %}" data-caption="Caption 2">
+													<img  src="{% static "graphic_images/renuncia_todo.PNG" %}" alt="">
 												</a>
 											</div>
 
 											<div>
 												<h3>POR ORGANIZACIONES POLÍTICAS</h3>
 								
-												<a class="uk-inline" href="img/renuncia_partido.PNG"  data-caption="Caption 1">
-													<img src="img/renuncia_partido.PNG"  alt="">
+												<a class="uk-inline" href="{% static "graphic_images/renuncia_partido.PNG" %}"  data-caption="Caption 1">
+													<img src="{% static "graphic_images/renuncia_partido.PNG" %}"  alt="">
 												</a>
 												
 											</div>
@@ -409,16 +399,16 @@
 											<div>
 												<h3>GENERAL</h3>
 
-												<a class="uk-inline" href="img/sentencias_todo.PNG" data-caption="Caption 2">
-													<img  src="img/sentencias_todo.PNG" alt="">
+												<a class="uk-inline" href="{% static "graphic_images/sentencias_todo.PNG" %}" data-caption="Caption 2">
+													<img  src="{% static "graphic_images/sentencias_todo.PNG" %}" alt="">
 												</a>
 											</div>
 
 											<div>
 												<h3>POR ORGANIZACIONES POLÍTICAS</h3>
 								
-												<a class="uk-inline" href="img/sentencias_partido.PNG"  data-caption="Caption 1">
-													<img src="img/sentencias_partido.PNG"  alt="">
+												<a class="uk-inline" href="{% static "graphic_images/sentencias_partido.PNG" %}"  data-caption="Caption 1">
+													<img src="{% static "graphic_images/sentencias_partido.PNG" %}"  alt="">
 												</a>
 												
 											</div>
@@ -463,8 +453,8 @@
 														<div>
 															<h3>GENERAL</h3>
 			
-															<a class="uk-inline" href="img/ingreso_todo.PNG" data-caption="Caption 2">
-																<img src="img/ingreso_todo.PNG" alt="">
+															<a class="uk-inline" href="{% static "graphic_images/ingreso_todo.PNG" %}" data-caption="Caption 2">
+																<img src="{% static "graphic_images/ingreso_todo.PNG" %}" alt="">
 															</a>
 														</div>
 			
@@ -486,8 +476,8 @@
 														<div>
 															<h3>POR PARTIDO</h3>
 			
-															<a class="uk-inline" href="img/ingreso_partido.PNG" data-caption="Caption 2">
-																<img src="img/ingreso_partido.PNG" alt="">
+															<a class="uk-inline" href="{% static "graphic_images/ingreso_partido.PNG" %}" data-caption="Caption 2">
+																<img src="{% static "graphic_images/ingreso_partido.PNG" %}" alt="">
 															</a>
 														</div>												
 													</div>										
@@ -500,13 +490,121 @@
 								<li>
 									<a class="uk-accordion-title " href="#">Bienes Inmuebles</a>
 									<div class="uk-accordion-content">
-										<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor reprehenderit.</p>
+
+										<br>
+										<ul uk-tab>
+											<li><a href="#">GENERAL</a></li>
+											<li><a href="#">POR PARTIDOS</a></li>
+										</ul>
+										
+										<ul class="uk-switcher uk-margin">
+											<li>
+												
+												<div class="uk-accordion-content  ">
+		
+		
+													<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
+
+														<div>
+															<h3>GENERAL</h3>
+			
+															<a class="uk-inline" href="{% static "graphic_images/inmuebles_todo_si_no.PNG" %}" data-caption="Caption 2">
+																<img  src="{% static "graphic_images/inmuebles_todo_si_no.PNG" %}" alt="">
+															</a>
+														</div>
+			
+														<div>
+															<h3>GENERAL</h3>
+											
+															<a class="uk-inline" href="{% static "graphic_images/inmuebles_todo2.PNG" %}"  data-caption="Caption 1">
+																<img src="{% static "graphic_images/inmuebles_todo2.PNG" %}"  alt="">
+															</a>
+															
+														</div>
+														
+													</div>
+		
+											</li>
+		
+		
+											<li>
+												<div class="uk-accordion-content  uk-container-small">
+		
+		
+													<div class="uk-child-width-3-4@m "  uk-grid uk-lightbox="animation: slide">
+			
+														<div>
+															<h3>POR PARTIDO</h3>
+			
+															<a class="uk-inline" href="{% static "graphic_images/inmuebles_partidos.PNG" %}" data-caption="Caption 2">
+																<img src="{% static "graphic_images/inmuebles_partidos.PNG" %}" alt="">
+															</a>
+														</div>												
+													</div>										
+												</div>
+										</ul>
+
+										
 									</div>
 								</li>
 								<li>
 									<a class="uk-accordion-title" href="#">Bienes Muebles</a>
 									<div class="uk-accordion-content">
-										<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
+
+										<br>
+										<ul uk-tab>
+											<li><a href="#">GENERAL</a></li>
+											<li><a href="#">POR PARTIDOS</a></li>
+										</ul>
+										
+										<ul class="uk-switcher uk-margin">
+											<li>
+												
+												<div class="uk-accordion-content  ">
+		
+		
+													<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
+
+														<div>
+															<h3>GENERAL</h3>
+			
+															<a class="uk-inline" href="{% static "graphic_images/mueble_todo2.PNG" %}" data-caption="Caption 2">
+																<img  src="{% static "graphic_images/mueble_todo2.PNG" %}" alt="">
+															</a>
+														</div>
+			
+														<div>
+															<h3>GENERAL</h3>
+											
+															<a class="uk-inline" href="{% static "graphic_images/muebles_todo.PNG" %}"  data-caption="Caption 1">
+																<img src="{% static "graphic_images/muebles_todo.PNG" %}"  alt="">
+															</a>
+															
+														</div>
+														
+													</div>
+		
+											</li>
+		
+		
+											<li>
+												<div class="uk-accordion-content  uk-container-small">
+		
+		
+													<div class="uk-child-width-3-4@m "  uk-grid uk-lightbox="animation: slide">
+			
+														<div>
+															<h3>POR PARTIDO</h3>
+			
+															<a class="uk-inline" href="{% static "graphic_images/muebles_partidos.PNG" %}" data-caption="Caption 2">
+																<img src="{% static "graphic_images/muebles_partidos.PNG" %}" alt="">
+															</a>
+														</div>												
+													</div>										
+												</div>
+										</ul>
+
+										
 									</div>
 								</li>
 							</ul>
@@ -527,28 +625,59 @@
 									<a class="uk-accordion-title" href="#">Formación Académica</a>
 
 									<div class="uk-accordion-content">
-										<h3>PARTICIPACIÓN SEGÚN CARGOS DE ELECCIÓN POPULAR</h3>
+
+										<br>
+										<ul uk-tab>
+											<li><a href="#">GENERAL</a></li>
+											<li><a href="#">POR PARTIDOS</a></li>
+										</ul>
 										
-										<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
-
-											<div>
-												<h3>GENERAL</h3>
-
-												<a class="uk-inline" href="img/edu_todo.PNG" data-caption="Caption 2">
-													<img  src="img/edu_todo.PNG" alt="">
-												</a>
-											</div>
-
-											<div>
-												<h3>POR ORGANIZACIONES POLÍTICAS</h3>
-								
-												<a class="uk-inline" href="img/edu_todo2.PNG"  data-caption="Caption 1">
-													<img src="img/edu_todo2.PNG"  alt="">
-												</a>
+										<ul class="uk-switcher uk-margin">
+											<li>
 												
-											</div>
+												<div class="uk-accordion-content  ">
+		
+		
+													<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
+
+														<div>
+															<h3>GENERAL</h3>
+			
+															<a class="uk-inline" href="{% static "graphic_images/edu_todo.PNG" %}" data-caption="Caption 2">
+																<img  src="{% static "graphic_images/edu_todo.PNG" %}" alt="">
+															</a>
+														</div>
+			
+														<div>
+															<h3>GENERAL</h3>
 											
-										</div>
+															<a class="uk-inline" href="{% static "graphic_images/edu_max_todo.PNG" %}"  data-caption="Caption 1">
+																<img src="{% static "graphic_images/edu_max_todo.PNG" %}"  alt="">
+															</a>
+															
+														</div>
+														
+													</div>
+		
+											</li>
+		
+		
+											<li>
+												<div class="uk-accordion-content  uk-container-small">
+		
+		
+													<div class="uk-child-width-3-4@m "  uk-grid uk-lightbox="animation: slide">
+			
+														<div>
+															<h3>POR PARTIDO</h3>
+			
+															<a class="uk-inline" href="{% static "graphic_images/edu_partidos.PNG" %}" data-caption="Caption 2">
+																<img src="{% static "graphic_images/edu_partidos.PNG" %}" alt="">
+															</a>
+														</div>												
+													</div>										
+												</div>
+										</ul>
 
 										
 									</div>
@@ -718,10 +847,26 @@
 		<!-- JS FILES -->
 		<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit-icons.min.js"></script>
+		<script>
+			flexFont = function () {
+				var divs = document.getElementsByClassName("flexFont");
+				for(var i = 0; i < divs.length; i++) {
+					var relFontsize = divs[i].offsetWidth*0.05;
+					divs[i].style.fontSize = relFontsize+'px';
+				}
+			};
+
+			window.onload = function(event) {
+				flexFont();
+			};
+			window.onresize = function(event) {
+				flexFont();
+			};
+		</script>
 		
 	</body>
 </html>
-
+{% endblock %}
 <!--POR SI ACA-->
 										<!--<div class="uk-text-center" uk-grid>
 												<div >
@@ -729,8 +874,8 @@
 										
 														<div class="uk-width-1-3@m" uk-lightbox="animation: slide">
 														
-														<a class="uk-inline" href="img/all_gender.PNG" width="200" height="200" alt="Alt text" class="lazy">
-															<img src="img/all_gender.PNG" alt="">
+														<a class="uk-inline" href="{% static "graphic_images/all_gender.PNG" %}" width="200" height="200" alt="Alt text" class="lazy">
+															<img src="{% static "graphic_images/all_gender.PNG" %}" alt="">
 														</a>
 													
 														</div>
@@ -740,8 +885,8 @@
 													
 													<div class="uk-width-expand@m uk-lightbox="animation: slide">
 														
-														<a class="uk-inline" href="img/partido_gender.PNG"  alt="Alt text" class="lazy">
-															<img src="img/partido_gender.PNG" alt="">
+														<a class="uk-inline" href="{% static "graphic_images/partido_gender.PNG" %}"  alt="Alt text" class="lazy">
+															<img src="{% static "graphic_images/partido_gender.PNG" %}" alt="">
 														</a>
 													
 														</div>
@@ -756,7 +901,7 @@
 											<tr>
 												<td>
 												<figure>
-													<img src="img/presi_gender.PNG" width="700" height="700" alt="Alt text" class="lazy" >
+													<img src="{% static "graphic_images/presi_gender.PNG" %}" width="700" height="700" alt="Alt text" class="lazy" >
 												</figure>
 												</td>
 												<td>
