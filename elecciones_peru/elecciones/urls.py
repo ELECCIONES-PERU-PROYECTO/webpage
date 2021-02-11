@@ -5,6 +5,7 @@ from . import views
 app_name = 'elecciones'
 urlpatterns = [
   path('', views.mainpage),
+  path('analisis-graficos', views.analisisGraficos),
   #path('candidatos', views.candidatos),
   path('candidatos', views.candidatos),
   path('candidato/hojadevida/<str:dni_hoja_de_vida>/<str:cargo_postula_dato>', views.hojadevida_by_dni),

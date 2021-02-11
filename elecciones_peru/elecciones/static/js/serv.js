@@ -29,7 +29,6 @@ async function getUrl_datos() {
 
 async function getUrl_orga(){
   //path('candidatos/<str:filtro_id>/<str:organizacion>/<str:infoextra>/<str:orden>')
-
   try {
     const response = await axios.get('/candidatos/?filtro_id='+filtro_id+"/?info_extra="+info_extra+"/?orden="+orden)
     //const response = await axios.get('/candidatos/opc_edad/30-50/ASC')
