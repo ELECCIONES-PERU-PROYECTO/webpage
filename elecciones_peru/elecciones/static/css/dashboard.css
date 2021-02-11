@@ -3,6 +3,10 @@
 	background-color: #b62222;
 }
 
+#orden_genero_container {
+	display: none;
+}
+
 /* -- No hover -- */
 .no-text-styles-hover:hover {
 	text-decoration: none;
