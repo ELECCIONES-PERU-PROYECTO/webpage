@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Información general</title>
+		<link rel="icon" href="img/favicon.ico">
+		<!-- CSS FILES -->
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/uikit@latest/dist/css/uikit.min.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/card.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+		<style>
+			nav.nav-scroll {
+				position: relative;
+				z-index: 2;
+				height: 2rem;
+				box-sizing: border-box;
+				overflow-y: hidden;
+				padding: 1rem;
+				border-top: 1px solid rgba(0,0,0,0.075);
+				line-height: 1em;
+			}
+			nav.nav-scroll > ul {
+				overflow-x: auto;
+				text-align: center;
+				white-space: nowrap;
+				-webkit-overflow-scrolling: touch;
+				padding-bottom: 1rem;
+			}
+			nav.nav-scroll > ul > li > a {
+				font-weight: 500;
+			}
+			.news-slide > li > .uk-card {
+				box-shadow: none;
+				border:  1px solid rgba(0,0,0,0.075);
+			}
+			h1, h2, h3, h4, h5, h6 {
+				font-weight: 700;
+			}
+			.uk-logo > img {
+				height: 58px;
+			}
+			#header.uk-sticky-below {
+				box-shadow: 0 2px 14px 0 rgba(0,0,0,0.07);
+			}
+			
+			.uk-overlay-primary{
+				background: rgb(171 134 134 / 80%);
+			}
+			
+		.square{
+			counter-reset: list-counter;
+			list-style: none;
+			
+		}
+		.square li{
+			margin: 1.5em 0; 
+			font-family: 'Poppins', sans-serif;  
+		}
+		.square li:before{
+			content: counter(list-counter);
+			counter-increment: list-counter;
+			width: 1em;
+			height: 1em;
+			padding: .5em;
+			margin-right: 1em;
+			border: .25em solid #ccc;
+			background: #000;
+			color: #fff;
+			font-family: arial;
+			font-weight: bold;
+			text-align: center;
+			display: inline-block;
+			font-family: 'Poppins', sans-serif;  
+			
+		}
+		.prueba{
+			color: #000000;
+			font-size:20px;
+			font-weight: bolder;
+		}
+
+
+
+		.flexFont {
+			height:8em;
+			width:103%;
+			background-color:#eeeeee;
+			padding:1%;
+			margin: 20px;
+		}
+
+
+		</style>
+
+
+
+		<script>
+			flexFont = function () {
+				var divs = document.getElementsByClassName("flexFont");
+				for(var i = 0; i < divs.length; i++) {
+					var relFontsize = divs[i].offsetWidth*0.05;
+					divs[i].style.fontSize = relFontsize+'px';
+				}
+			};
+
+			window.onload = function(event) {
+				flexFont();
+			};
+			window.onresize = function(event) {
+				flexFont();
+			};
+		</script>
+	</head>
+	<body>
+		<!--HEADER-->
+		<header id="header" style="background-color: #fff;" data-uk-sticky="show-on-up: true; animation: uk-animation-fade; media: @l">
+			<div class="uk-container">
+				<nav id="navbar" data-uk-navbar="mode: click;">
+					<div class="uk-navbar-left nav-overlay uk-visible@m">
+						<ul class="uk-navbar-nav">
+							<li>
+								<a href="#" title="Subscribe">INICIO</a>
+							</li>
+							<li>
+								<a href="#" title="Subscribe">FILTROS</a>
+							</li>
+							<!--<li>
+								<a href="#" title="Sign Up">Sign Up</a>
+							</li>
+						-->
+						</ul>
+					</div>
+					<div class="uk-navbar-center nav-overlay">
+						<a class="uk-navbar-item uk-logo" href="#" title="Logo"><img src="img/n-logo.png" alt="Logo"></a>
+					</div>
+					<div class="uk-navbar-right nav-overlay">
+						<!--
+						<a class="uk-navbar-toggle uk-visible@m" data-uk-search-icon data-uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
+						-->
+						<div class="uk-navbar-item">
+							<a class="uk-visible@s" style="margin-right: 4px" href="#" data-uk-icon="facebook"></a>
+							<a class="uk-visible@s" style="margin-right: 4px" href="#" data-uk-icon="twitter"></a>
+							<a class="uk-visible@s" style="margin-right: 4px" href="#" data-uk-icon="instagram"></a>
+							<a class="uk-navbar-toggle uk-hidden@m" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-nav"></a>
+						</div>
+						
+					</div>
+					<div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
+						<div class="uk-navbar-item uk-width-expand">
+							<form class="uk-search uk-search-navbar uk-width-1-1">
+								<input class="uk-search-input" type="search" placeholder="Search...">
+							</form>
+						</div>
+						<a class="uk-navbar-toggle" data-uk-close data-uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<!--/HEADER-->
+		<!-- NAVIGATION -->
+		<!--
+		<div class="uk-container">
+			<nav class="nav-scroll">
+				<ul class="uk-subnav uk-flex uk-flex-between uk-flex-nowrap">
+					<li class="uk-active"><a href="#">World</a></li>
+					<li><a href="#">Politics</a></li>
+					<li><a href="#">Technology</a></li>
+					<li><a href="#">Trends</a></li>
+					<li><a href="#">Social Media</a></li>
+					<li><a href="#">People</a></li>
+					<li><a href="#">Science</a></li>
+					<li><a href="#">Opinion</a></li>
+					<li><a href="#">Culture</a></li>
+					<li><a href="#">Community</a></li>
+				</ul>
+			</nav>
+		</div>
+		-->
+		<!-- /NAVIGATION -->
+		<!-- HERO -->
+		<section class="uk-section uk-section-small">
+			<div class="uk-container">
+				<div class="uk-height-medium uk-cover-container uk-border-rounded">
+					<img src="img/PERU.png" alt="Alt img" data-uk-cover>
+					<div class="uk-overlay uk-overlay-primary uk-position-cover uk-flex uk-flex-center uk-flex-middle uk-light uk-text-center">
+						<div data-uk-scrollspy="cls: uk-animation-slide-bottom-small">
+						<!--	<span style="letter-spacing: 0.2em; font-size: 0.725rem">FEATURED ARTICLE</span> -->
+							<h1 class="uk-margin-top uk-margin-small-bottom uk-margin-remove-adjacent">ELECCIONES GENERALES 2021</h1>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit dolore magna aliqua.</p>
+							<a href="#" class="uk-button uk-button-default uk-margin-top">INFORMATE</a>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</section>
+		
+		<!-- HERO -->
+
+		<!--CONTENT-->
+		<div class="uk-section uk-section-default">
+			<div class="uk-container">
+				<div class="uk-grid" data-ukgrid>
+					<div class="uk-width-3-3@m">
+						<h4 class="uk-heading-line uk-text-bold"><span></span></h4>
+						<article class="uk-section uk-section-small uk-padding-remove-top">
+							<header>
+								<h2 class="uk-margin-remove-adjacent uk-text-bold uk-margin-small-bottom"><a title="Fusce facilisis tempus magna ac dignissim." class="uk-link-reset" href="#">DATOS SOCIODEMOGRAFICOS</a></h2>
+								<!--<p class="uk-article-meta">Written on March 23, 2019. Posted in <a href="#">Blog</a> | <span data-uk-icon="icon: future"></span> Takes 7 min reading.</p>-->
+							</header>
+							<p class="paragraph">Ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+							<ul uk-accordion="multiple: true ">
+								<li class="uk-open">
+									<a class="uk-accordion-title" href="#">Sexo</a>
+									<div class="uk-accordion-content">
+										<div class="uk-accordion-content">
+											<h3>PARTICIPACIÓN POR SEXO</h3>
+	
+											<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
+
+												<div>
+													<h3>GENERAL</h3>
+
+													<a class="uk-inline" href="img/genero_todo.PNG" data-caption="Caption 1">
+														<img src="img/genero_todo.PNG" alt="">
+													</a>
+												</div>
+												<div>
+													<h3>POR ORGANIZACIONES POLÍTICAS</h3>
+													
+													<!---->
+													<a class="uk-inline" href="img/partido_genero.PNG" data-caption="Caption 2">
+														<img src="img/partido_genero.PNG" alt="">
+													</a>
+												</div>
+											</div>						
+										</div>
+									</div>
+								</li>
+								<li>
+									<a class="uk-accordion-title " href="#">Edad</a>
+									<div class="uk-accordion-content">
+										<h3>PARTICIPACIÓN SEGÚN RANGOS DE EDAD</h3>
+										
+										<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
+
+											<div>
+												<h3>GENERAL</h3>
+
+												<a class="uk-inline" href="img/edad_todo.PNG" data-caption="Caption 2">
+													<img src="img/edad_todo.PNG" alt="">
+												</a>
+											</div>
+
+											<div>
+												<h3>POR ORGANIZACIONES POLÍTICAS</h3>
+
+												<a class="uk-inline" href="img/edad_partido.PNG" data-caption="Caption 1">
+													<img src="img/edad_partido.PNG" alt="">
+												</a>
+											</div>
+											
+										</div>
+									</div>
+								</li>
+								<li>
+								<a class="uk-accordion-title" href="#">Lugar de nacimiento</a>
+
+								<br>
+
+								
+
+
+									
+									
+								</li>
+								<li>
+									<a class="uk-accordion-title" href="#">Experiencia Laboral</a>
+									<div class="uk-accordion-content">
+										<h3>PARTICIPACIÓN SEGÚN EXPERIENCIA LABORAL</h3>
+										
+										<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
+
+											<div>
+												<h3>GENERAL</h3>
+
+												<a class="uk-inline" href="img/laboral_todo.PNG" data-caption="Caption 2">
+													<img  src="img/laboral_todo.PNG" alt="">
+												</a>
+											</div>
+
+											<div>
+												<h3>POR ORGANIZACIONES POLÍTICAS</h3>
+								
+												<a class="uk-inline" href="img/laboral_partido.PNG"  data-caption="Caption 1">
+													<img src="img/laboral_partido.PNG"  alt="">
+												</a>
+												
+											</div>
+											
+										</div>
+									</div>
+								
+								</li>
+							</ul>
+
+							<br>
+							<!--
+							<figure>
+								<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAyAAAAEsCAYAAAA7Ldc6AAADuUlEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMA3p/4AAaxRls8AAAAASUVORK5CYII=" data-src="https://picsum.photos/800/300/?random=1" width="1500" height="300"  alt="Alt text" class="lazy" data-uk-img>
+								<figcaption class="uk-padding-small uk-text-center uk-text-muted">Caption of the image</figcaption>
+							</figure>
+							-->
+							
+							<!--<a href="#" title="Read More" class="uk-button uk-button-default uk-button-small">READ MORE</a>-->
+							<hr>
+						</article>
+						<article class="uk-section uk-section-small uk-padding-remove-top">
+							<header>
+								<h2 class="uk-margin-remove-adjacent uk-text-bold uk-margin-small-bottom"><a title="Ultricies eget, tempor sit amet, ante" class="uk-link-reset" href="#">PARTICIPACIÓN POLÍTICA</a></h2>
+								<!--<p class="uk-article-meta">Written on March 22, 2019. Posted in <a href="#">Blog</a> | <span data-uk-icon="icon: future"></span> Takes 7 min reading.</p>-->
+							</header>
+						
+							<p class="paragraph">Ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+							<ul uk-accordion="multiple: true" >
+								<li class="uk-open">
+									<a class="uk-accordion-title" href="#">Cargos previos por elección popular</a>
+									<div class="uk-accordion-content">
+										<h3>PARTICIPACIÓN SEGÚN CARGOS DE ELECCIÓN POPULAR</h3>
+										
+										<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
+
+											<div>
+												<h3>GENERAL</h3>
+
+												<a class="uk-inline" href="img/cargo_popular_todo.PNG" data-caption="Caption 2">
+													<img  src="img/cargo_popular_todo.PNG" alt="">
+												</a>
+											</div>
+
+											<div>
+												<h3>POR ORGANIZACIONES POLÍTICAS</h3>
+								
+												<a class="uk-inline" href="img/cargo_popular_partido.PNG"  data-caption="Caption 1">
+													<img src="img/cargo_popular_partido.PNG"  alt="">
+												</a>
+												
+											</div>
+											
+										</div>
+										
+									</div>
+								</li>
+								<li>
+									<a class="uk-accordion-title " href="#">Renuncia a otras organizaciones políticas</a>
+									<div class="uk-accordion-content">
+										<h3>PARTICIPACIÓN SEGÚN CARGOS DE ELECCIÓN POPULAR</h3>
+										
+										<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
+
+											<div>
+												<h3>GENERAL</h3>
+
+												<a class="uk-inline" href="img/renuncia_todo.PNG" data-caption="Caption 2">
+													<img  src="img/renuncia_todo.PNG" alt="">
+												</a>
+											</div>
+
+											<div>
+												<h3>POR ORGANIZACIONES POLÍTICAS</h3>
+								
+												<a class="uk-inline" href="img/renuncia_partido.PNG"  data-caption="Caption 1">
+													<img src="img/renuncia_partido.PNG"  alt="">
+												</a>
+												
+											</div>
+											
+										</div>
+									</div>
+								</li>
+							</ul>
+
+							<br>
+				
+						
+							<hr>
+						</article>
+						<article class="uk-section uk-section-small uk-padding-remove-top">
+							<header>
+								<h2 class="uk-margin-remove-adjacent uk-text-bold uk-margin-small-bottom"><a title="Donec eu libero sit amet quam egestas semper" class="uk-link-reset" href="#">SENTENCIAS JUDICIALES</a></h2>
+								<!--<p class="uk-article-meta">Written on March 21, 2019. Posted in <a href="#">Blog</a> | <span data-uk-icon="icon: future"></span> Takes 7 min reading.</p>-->
+							</header>
+							<p class="paragraph">Ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+							<ul uk-accordion="multiple: true ">
+								<li class="uk-open">
+									<a class="uk-accordion-title" href="#">Sentencias Penales y por Obligaciones</a>
+									<div class="uk-accordion-content">
+										<h3>PARTICIPACIÓN SEGÚN CARGOS DE ELECCIÓN POPULAR</h3>
+										
+										<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
+
+											<div>
+												<h3>GENERAL</h3>
+
+												<a class="uk-inline" href="img/sentencias_todo.PNG" data-caption="Caption 2">
+													<img  src="img/sentencias_todo.PNG" alt="">
+												</a>
+											</div>
+
+											<div>
+												<h3>POR ORGANIZACIONES POLÍTICAS</h3>
+								
+												<a class="uk-inline" href="img/sentencias_partido.PNG"  data-caption="Caption 1">
+													<img src="img/sentencias_partido.PNG"  alt="">
+												</a>
+												
+											</div>
+											
+										</div>
+
+										
+									</div>
+								</li>
+								
+							</ul>
+						<br>
+						
+						</article>
+
+						<article class="uk-section uk-section-small uk-padding-remove-top">
+							<header>
+								<h2 class="uk-margin-remove-adjacent uk-text-bold uk-margin-small-bottom"><a title="Donec eu libero sit amet quam egestas semper" class="uk-link-reset" href="#">ESTADO FINANCIERO</a></h2>
+								<!--<p class="uk-article-meta">Written on March 21, 2019. Posted in <a href="#">Blog</a> | <span data-uk-icon="icon: future"></span> Takes 7 min reading.</p>-->
+							</header>
+							<p class="paragraph">Ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+							<ul uk-accordion="multiple: true ">
+								<li class="uk-open">
+									<a class="uk-accordion-title" href="#">Ingresos</a>
+									<div class="uk-accordion-content">
+
+										<br>
+										<ul uk-tab>
+											<li><a href="#">GENERAL</a></li>
+											<li><a href="#">POR PARTIDOS</a></li>
+										</ul>
+										
+										<ul class="uk-switcher uk-margin">
+											<li>
+												
+												<div class="uk-accordion-content  uk-container-small	">
+		
+		
+													<div class="uk-child-width-3-4@m "  uk-grid uk-lightbox="animation: slide">
+			
+														<div>
+															<h3>GENERAL</h3>
+			
+															<a class="uk-inline" href="img/ingreso_todo.PNG" data-caption="Caption 2">
+																<img src="img/ingreso_todo.PNG" alt="">
+															</a>
+														</div>
+			
+														
+													</div>
+			
+												
+												</div>
+		
+											</li>
+		
+		
+											<li>
+												<div class="uk-accordion-content  uk-container-small">
+		
+		
+													<div class="uk-child-width-3-4@m "  uk-grid uk-lightbox="animation: slide">
+			
+														<div>
+															<h3>POR PARTIDO</h3>
+			
+															<a class="uk-inline" href="img/ingreso_partido.PNG" data-caption="Caption 2">
+																<img src="img/ingreso_partido.PNG" alt="">
+															</a>
+														</div>												
+													</div>										
+												</div>
+										</ul>
+
+										
+									</div>
+								</li>
+								<li>
+									<a class="uk-accordion-title " href="#">Bienes Inmuebles</a>
+									<div class="uk-accordion-content">
+										<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor reprehenderit.</p>
+									</div>
+								</li>
+								<li>
+									<a class="uk-accordion-title" href="#">Bienes Muebles</a>
+									<div class="uk-accordion-content">
+										<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
+									</div>
+								</li>
+							</ul>
+							
+							<br>
+						
+						</article>
+
+						<article class="uk-section uk-section-small uk-padding-remove-top">
+							<header>
+								<h2 class="uk-margin-remove-adjacent uk-text-bold uk-margin-small-bottom"><a title="Donec eu libero sit amet quam egestas semper" class="uk-link-reset" href="#">FORMACIÓN ACADÉMICA</a></h2>
+								<!--<p class="uk-article-meta">Written on March 21, 2019. Posted in <a href="#">Blog</a> | <span data-uk-icon="icon: future"></span> Takes 7 min reading.</p>-->
+							</header>
+							<p class="paragraph">Ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+							<ul uk-accordion="multiple: true ">
+								<li class="uk-open">
+									<a class="uk-accordion-title" href="#">Formación Académica</a>
+
+									<div class="uk-accordion-content">
+										<h3>PARTICIPACIÓN SEGÚN CARGOS DE ELECCIÓN POPULAR</h3>
+										
+										<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
+
+											<div>
+												<h3>GENERAL</h3>
+
+												<a class="uk-inline" href="img/edu_todo.PNG" data-caption="Caption 2">
+													<img  src="img/edu_todo.PNG" alt="">
+												</a>
+											</div>
+
+											<div>
+												<h3>POR ORGANIZACIONES POLÍTICAS</h3>
+								
+												<a class="uk-inline" href="img/edu_todo2.PNG"  data-caption="Caption 1">
+													<img src="img/edu_todo2.PNG"  alt="">
+												</a>
+												
+											</div>
+											
+										</div>
+
+										
+									</div>
+
+						
+								</li>
+							</ul>
+						<br>
+						
+						</article>
+
+					</div>
+
+					<div class="uk-tile uk-tile-small uk-tile-muted uk-border-rounded">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in.
+				</div>
+					<!--
+					<div class="uk-width-1-3@m">
+						
+						<h4 class="uk-heading-line uk-text-bold"><span>Archive</span></h4>
+						<ul class="uk-list">
+							<li><a href="">March</a></li>
+							<li><a href="">February</a></li>
+							<li><a href="">January</a></li>
+							<li><a href="">December <small>(2017)</small></a></li>
+							<li><a href="">November <small>(2017)</small></a></li>
+							<li><a href="">October <small>(2017)</small></a></li>
+							<li><a href="">September <small>(2017)</small></a></li>
+							<li><a href="">August <small>(2017)</small></a></li>
+						</ul>						
+					</div>
+					-->
+				</div>
+			</div>
+		</div>
+
+				<!-- FEATURED -->
+				<div class="uk-container">
+					<h4 class="uk-heading-line uk-text-bold"><span>Featured</span></h4>
+					<div data-uk-slider="velocity: 5">
+						<div class="uk-position-relative">
+							<div class="uk-slider-container">
+								<ul class="uk-slider-items uk-child-width-1-2@m uk-grid uk-grid-medium news-slide">
+									<li>
+										<div class="uk-card uk-card-default uk-card-body uk-card-small uk-flex uk-flex-middle uk-card-default uk-border-rounded">
+											<div class="uk-grid uk-grid-medium uk-flex uk-flex-middle" data-uk-grid>
+												<div class="uk-width-1-3@s uk-width-2-5@m uk-height-1-1">
+													<img src="https://picsum.photos/500/500/?random=1" alt="">
+												</div>
+												<div class="uk-width-2-3@s uk-width-3-5@m">
+													<span class="uk-label uk-label-warning" style="font-size: 0.75rem">Trends</span>
+													<h3 class="uk-card-title uk-margin-small-top uk-margin-remove-bottom">
+													<a class="uk-link-reset" href="#">Short Blog Title</a>
+													</h3>
+													<span class="uk-article-meta">Published 12th August 2019</span>
+													<p class="uk-margin-small">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do...</p>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="uk-card uk-card-default uk-card-body uk-card-small uk-flex uk-flex-middle uk-card-default uk-border-rounded">
+											<div class="uk-grid uk-grid-medium uk-flex uk-flex-middle" data-uk-grid>
+												<div class="uk-width-1-3@s uk-width-2-5@m uk-height-1-1">
+													<img src="https://picsum.photos/500/500/?random=2" alt="">
+												</div>
+												<div class="uk-width-2-3@s uk-width-3-5@m">
+													<span class="uk-label uk-label-warning" style="font-size: 0.75rem">Trends</span>
+													<h3 class="uk-card-title uk-margin-small-top uk-margin-remove-bottom">
+													<a class="uk-link-reset" href="#">Short Blog Title</a>
+													</h3>
+													<span class="uk-article-meta">Published 12th August 2019</span>
+													<p class="uk-margin-small">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do...</p>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="uk-card uk-card-default uk-card-body uk-card-small uk-flex uk-flex-middle uk-card-default uk-border-rounded">
+											<div class="uk-grid uk-grid-medium uk-flex uk-flex-middle" data-uk-grid>
+												<div class="uk-width-1-3@s uk-width-2-5@m uk-height-1-1">
+													<img src="https://picsum.photos/500/500/?random=3" alt="">
+												</div>
+												<div class="uk-width-2-3@s uk-width-3-5@m">
+													<span class="uk-label uk-label-warning" style="font-size: 0.75rem">Trends</span>
+													<h3 class="uk-card-title uk-margin-small-top uk-margin-remove-bottom">
+													<a class="uk-link-reset" href="#">Short Blog Title</a>
+													</h3>
+													<span class="uk-article-meta">Published 12th August 2019</span>
+													<p class="uk-margin-small">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do...</p>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="uk-card uk-card-default uk-card-body uk-card-small uk-flex uk-flex-middle uk-card-default uk-border-rounded">
+											<div class="uk-grid uk-grid-medium uk-flex uk-flex-middle" data-uk-grid>
+												<div class="uk-width-1-3@s uk-width-2-5@m uk-height-1-1">
+													<img src="https://picsum.photos/500/500/?random=4" alt="">
+												</div>
+												<div class="uk-width-2-3@s uk-width-3-5@m">
+													<span class="uk-label uk-label-warning" style="font-size: 0.75rem">Trends</span>
+													<h3 class="uk-card-title uk-margin-small-top uk-margin-remove-bottom">
+													<a class="uk-link-reset" href="#">Short Blog Title</a>
+													</h3>
+													<span class="uk-article-meta">Published 12th August 2019</span>
+													<p class="uk-margin-small">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do...</p>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+								
+							</div>
+							<div class="uk-hidden@l uk-light">
+								<a class="uk-position-center-left uk-position-small" href="#" data-uk-slidenav-previous data-uk-slider-item="previous"></a>
+								<a class="uk-position-center-right uk-position-small" href="#" data-uk-slidenav-next data-uk-slider-item="next"></a>
+							</div>
+							<div class="uk-visible@l">
+								<a class="uk-position-center-left-out uk-position-small" href="#" data-uk-slidenav-previous data-uk-slider-item="previous"></a>
+								<a class="uk-position-center-right-out uk-position-small" href="#" data-uk-slidenav-next data-uk-slider-item="next"></a>
+							</div>
+						</div>
+						<ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"><li></li></ul>
+					</div>
+				</div>
+
+				<!-- /FEATURED -->
+		<!--/CONTENT-->
+		
+		
+		<!--FOOTER-->
+		<footer class="uk-section uk-section-small uk-section-muted">
+			<div class="uk-container">
+				<p class="uk-text-small uk-text-center">Perú Informado 2021</p>
+			</div>
+		</footer>
+		<!--/FOOTER-->
+		<!-- OFFCANVAS -->
+		<div id="offcanvas-nav" data-uk-offcanvas="flip: true; overlay: true">
+			<div class="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide">
+				<button class="uk-offcanvas-close uk-close" type="button" data-uk-close></button>
+				<ul class="uk-nav uk-nav-default">
+					<li class="uk-active"><a href="#">Active</a></li>
+					<li class="uk-parent">
+						<a href="#">Parent</a>
+						<ul class="uk-nav-sub">
+							<li><a href="#">Sub item</a></li>
+							<li><a href="#">Sub item</a></li>
+						</ul>
+					</li>
+					<li class="uk-nav-header">Header</li>
+					<li><a href="#js-options"><span class="uk-margin-small-right" data-uk-icon="icon: table"></span> Item</a></li>
+					<li><a href="#"><span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span> Item</a></li>
+					<li class="uk-nav-divider"></li>
+					<li><a href="#"><span class="uk-margin-small-right" data-uk-icon="icon: trash"></span> Item</a></li>
+				</ul>
+				<!--<h3>Title</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				-->
+			</div>
+		</div>
+		<!-- /OFFCANVAS -->
+		<!-- JS FILES -->
+		<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit-icons.min.js"></script>
+		
+	</body>
+</html>
+
+<!--POR SI ACA-->
+										<!--<div class="uk-text-center" uk-grid>
+												<div >
+													<div class="uk-card uk-card-body uk-width-auto@m  uk-align-left">
+										
+														<div class="uk-width-1-3@m" uk-lightbox="animation: slide">
+														
+														<a class="uk-inline" href="img/all_gender.PNG" width="200" height="200" alt="Alt text" class="lazy">
+															<img src="img/all_gender.PNG" alt="">
+														</a>
+													
+														</div>
+													</div>
+												</div>
+												<div class= " uk-card uk-card-body uk-width-auto@m uk-align-right">
+													
+													<div class="uk-width-expand@m uk-lightbox="animation: slide">
+														
+														<a class="uk-inline" href="img/partido_gender.PNG"  alt="Alt text" class="lazy">
+															<img src="img/partido_gender.PNG" alt="">
+														</a>
+													
+														</div>
+												</div>
+							
+											</div>
+										-->			
+
+<!--TABLE OPTION-->
+<!--
+	<table>
+											<tr>
+												<td>
+												<figure>
+													<img src="img/presi_gender.PNG" width="700" height="700" alt="Alt text" class="lazy" >
+												</figure>
+												</td>
+												<td>
+													<div style="background-color: #fff;" class="uk-tile uk-tile-small uk-tile-muted uk-border-rounded">
+					
+													<div class= "try uk-align-center uk-margin-auto@s	">
+														<p>3 CANDIDATAS MUJERES A LA PRESIDENCIA DEL PERÚ</p>
+													  </div>
+													</div>
+													
+												<div style="background-color: rgb(89, 255, 52);" class="uk-tile-right uk-tile-small uk-tile-muted uk-border-rounded prueba">
+													SOLO 3 CANDIDATAS MUJERES A LA PRESIDENCIA DEL PERÚ
+												</div>
+											</td>
+												
+										</tr>
+									</table>
+-->
