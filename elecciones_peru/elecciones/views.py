@@ -416,8 +416,8 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
     print("var1: ", var1)
     print("var2: ", var2)
     # le falta PK
-    #query_total = "SELECT  COUNT (*),partido FROM tabla_edad WHERE edad BETWEEN " +var1+ " AND " +var2+" GROUP BY (partido)"    
-    #query_total = "SELECT  dni_candidato, candidato, organizacion_politica, cargo_eleccion FROM datos_personales "
+    #query_total = " SELECT  COUNT (*),partido FROM tabla_edad WHERE edad BETWEEN " +var1+ " AND " +var2+" GROUP BY (partido)"    
+    #query_total = " SELECT  dni_candidato, candidato, organizacion_politica, cargo_eleccion FROM datos_personales "
   
   elif filtro_id == "primaria":
     #query_total = "SELECT id, COUNT (dni_candidato) AS conteo, organizacion_politica FROM educacion_basica WHERE concluyo_primaria  = 'SI' GROUP BY (organizacion_politica,id) ORDER BY (conteo) " + orden
