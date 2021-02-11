@@ -3,27 +3,21 @@
 {% load static %}
 {% block css %}
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/css/uikit.min.css" />
-	<!-- <link href="{% static "css/dashboard.css" %}" rel="stylesheet"> -->
   <link type="text/css" href="{% static "css/main.css" %}" rel="stylesheet">
 	<link type="text/css" href="{% static "css/base.css" %}" rel="stylesheet">
-	<link type="text/css" href="{% static "css/vendor.css" %}" rel="stylesheet">
-	<!-- <link type="text/css" href="{% static "css/cards.css" %}" rel="stylesheet"> -->
-	<!-- <link type="text/css" href="{% static "css/cardshdv.css" %}" rel="stylesheet"> -->
-	<!-- <link type="text/css" href="{% static "css/table.css" %}" rel="stylesheet"> -->
-	<!-- <link type="text/css" href="{% static "css/slider.css" %}" rel="stylesheet"> -->
 {% endblock %}
 {% block content %}
 </head>
 <body id="top">
-	<!-- header 
+	<!-- header
 	================================================== -->
 	<header>
 		<div class="row">
 			<div class="top-bar"> <a class="menu-toggle" href="#"><span>Menu</span></a>
-				<div class="logo"> <a href="index.html">Perú Informado</a> </div>
+				<div class="logo"> <a href="hdv.html">Perú Informado</a> </div>
 				<nav id="main-nav-wrap">
 					<ul class="main-navigation">
-						<li class="current"><a class="smoothscroll" href="#intro" title="">Inicio</a></li>
+						<li class="current"><a class="smoothscroll" href="#intro" title="">INICIO</a></li>
 						<li><a class="smoothscroll" href="#about" title="">1. DATOS PERSONALES</a></li>
 						<li><a class="smoothscroll" href="#experiencia" title="">2. EXPERIENCIA LABORAL</a></li>
 						<li><a class="smoothscroll" href="#formacion" title="">3. FORMACIÓN ACADÉMICA</a></li>
@@ -39,27 +33,27 @@
 			</div>
 		</div>
 	</header>
-	
+
 	<section id="intro">
 		<div class="intro-overlay"></div>
 		<div class="intro-content">
 			<div class="row">
 				<div class="col-twelve">
 					{% for n in nombre %}
-						<h1>{{n.candidato}}</h1> 
+						<h1>{{n.candidato}}</h1>
 					{% endfor %}
 					<br>
 					<!--
 					<p class="intro-position">
 						<span>Front-end Developer</span>
-						<span>UI/UX Designer</span > 
+						<span>UI/UX Designer</span >
 					</p>
 					-->
 					<a class="button stroke smoothscroll" href="#about" title="">Conoce al candidato</a> </div>
 			</div>
 		</div>
 		<!--
-    <ul class="intro-social">        
+    <ul class="intro-social">
       <li><a href="#"><i class="fa fa-facebook"></i></a></li>
       <li><a href="#"><i class="fa fa-behance"></i></a></li>
       <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -68,7 +62,7 @@
     </ul>
   -->
 	</section>
-	
+
 	<section id="about">
 		<div class="col-twelve resume-header">
 			<h2>1. Datos personales</h2>
@@ -76,7 +70,7 @@
 			<!--
 		<div class="intro-info">
 			<img src="images/profile-pic.jpg" alt="Profile Picture">
-		</div>   
+		</div>
 		-->
 		<div class="row section-intro">
 			<div class="col-twelve resume-header">
@@ -106,7 +100,7 @@
 											</li>
 										{% endif %}
 										{% if candidato.dni_candidato %}
-											<li> 
+											<li>
 												<strong>DNI</strong>
 												<br>
 												<span>
@@ -115,7 +109,7 @@
 											</li>
 										{% endif %}
 										{% if candidato.fecha_nacimiento %}
-											<li> 
+											<li>
 												<strong>Fecha de nacimiento</strong>
 												<br>
 												<span>
@@ -132,8 +126,8 @@
 												</span>
 											</li>
 										{% endif %}
-										{% if candidato.carnet_extranjeria %} 
-											<li> 
+										{% if candidato.carnet_extranjeria %}
+											<li>
 												<strong>Canet de extranjería</strong>
 												<br>
 												<span>
@@ -156,20 +150,20 @@
 										</li>
 										{% for candidato in cargo_eleccion %}
 											<li>
-												{% if cargo_eleccion|length > 1 %} 
+												{% if cargo_eleccion|length > 1 %}
 													<strong>Cargo al que postula</strong>
 													<br>
 													<span>
 														{{candidato.cargo_eleccion}}
 													</span>
-												{% else %} 
+												{% else %}
 													<strong>Cargo al que postula</strong>
 													<br>
 													<span>
 														{{candidato.cargo_eleccion}}
 													</span>
 												{% endif %}
-											</li> 
+											</li>
 										{% endfor %}
 										{% if candidato.organizacion_politica %}
 											<li>
@@ -189,8 +183,8 @@
 										</strong>
 									</li>
 									{% for candidato in datos_personales %}
-										{% if candidato.pais_nacimiento %} 
-											<li> 
+										{% if candidato.pais_nacimiento %}
+											<li>
 												<strong>País de nacimiento</strong>
 												<br>
 												<span>
@@ -198,8 +192,8 @@
 												</span>
 											</li>
 										{% endif %}
-										{% if candidato.departamento_nacimiento %} 
-											<li> 
+										{% if candidato.departamento_nacimiento %}
+											<li>
 												<strong>Departamento de nacimiento</strong>
 												<br>
 												<span>
@@ -207,8 +201,8 @@
 												</span>
 											</li>
 										{% endif %}
-										{% if candidato.provincia_nacimiento %} 
-											<li> 
+										{% if candidato.provincia_nacimiento %}
+											<li>
 												<strong>Provincia de nacimiento</strong>
 												<br>
 												<span>
@@ -216,8 +210,8 @@
 												</span>
 											</li>
 										{% endif %}
-										{% if candidato.distrito_nacimiento %} 
-											<li> 
+										{% if candidato.distrito_nacimiento %}
+											<li>
 												<strong>Distrito de nacimiento</strong>
 												<br>
 												<span>
@@ -234,8 +228,8 @@
 										</strong>
 									</li>
 									{% for candidato in datos_personales %}
-										{% if candidato.departamento_domicilio %} 
-											<li> 
+										{% if candidato.departamento_domicilio %}
+											<li>
 												<strong>Departamento de domicilio</strong>
 												<br>
 												<span>
@@ -243,8 +237,8 @@
 												</span>
 											</li>
 										{% endif %}
-										{% if candidato.provincia_domicilio %} 
-											<li> 
+										{% if candidato.provincia_domicilio %}
+											<li>
 												<strong>Provincia de domicilio</strong>
 												<br>
 												<span>
@@ -252,8 +246,8 @@
 												</span>
 											</li>
 										{% endif %}
-										{% if candidato.distrito_domicilio %} 
-											<li> 
+										{% if candidato.distrito_domicilio %}
+											<li>
 												<strong>Distrito de domicilio</strong>
 												<br>
 												<span>
@@ -261,8 +255,8 @@
 												</span>
 											</li>
 										{% endif %}
-										{% if candidato.direccion_domicilio %} 
-											<li> 
+										{% if candidato.direccion_domicilio %}
+											<li>
 												<strong>Dirección de domicilio</strong>
 												<br>
 												<span>
@@ -281,7 +275,7 @@
 	</section>
 
 	<section id="experiencia" class="grey-section">
-		<div class="col-twelve resume-header"> 
+		<div class="col-twelve resume-header">
 			<h2>2. Experiencia Laboral</h2>
 		</div>
 		<div class="row section-intro">
@@ -369,7 +363,7 @@
 								{% endfor %}
 							</div>
 						</div>
-					</div>		
+					</div>
 				</div>
 			</div>
 		</div>
@@ -380,7 +374,7 @@
 			<div class="col-twelve resume-header">
 				<h2>3. Formación Académica</h2>
 			</div>
-			<div class="col-twelve"> 
+			<div class="col-twelve">
 				<div class="blocktext formacion">
 					<h2 class="form-control uk-margin-small-bottom">Educación Básica Regular</h2>
 					{% for basica in educacion_basica %}
@@ -396,7 +390,7 @@
 									<span>
 										{{basica.concluyo_primaria}}
 									</span>
-								{% endif %} 
+								{% endif %}
 							</li>
 							<li>
 								<strong>¿Concluyó estudios secundarios?</strong>
@@ -409,17 +403,17 @@
 									<span>
 										{{basica.concluyo_secundaria}}
 									</span>
-								{% endif %} 
+								{% endif %}
 							</li>
 						</ul>
-					{% endfor %} 
+					{% endfor %}
 				</div>
 				<hr>
 			</div>
 			<div class="col-twelve">
 				<div class="blocktext formacion">
 					<h2 class="form-control uk-margin-small-bottom">Estudios Técnicos</h2>
-					{% for estudio in estudio_tecnico %} 
+					{% for estudio in estudio_tecnico %}
 						<ul class="info-list uk-margin-small-bottom">
 							<li>
 								<strong>¿Tiene estudios técnicos?</strong>
@@ -432,26 +426,26 @@
 									<span>
 										NO
 									</span>
-								{% endif %} 
+								{% endif %}
 							</li>
 						</ul>
-					{% endfor %} 
+					{% endfor %}
 					{% if estudios_en_institutos%}
 						<div class="row">
 							<div class="col-twelve">
-								<div class="timeline-wrap"> 
+								<div class="timeline-wrap">
 									{% for estudioinsti in estudios_en_institutos %}
 										{% if estudioinsti.carrera_tecnica != "NULL" %}
 											<div class="timeline-block">
 												<div class="timeline-ico">
-													<i class="fa fa-graduation-cap"></i> 
+													<i class="fa fa-graduation-cap"></i>
 												</div>
 											<div class="timeline-header">
 												{% if estudioinsti.carrera_tecnica != "NULL" %}
 													<h3>{{estudioinsti.carrera_tecnica}}</h3>
 												{% endif %}
 												{% if estudioinsti.concluyo_estudio_tecnico != "NULL" %}
-													<p>Concluyó estudios: {{estudioinsti.concluyo_estudio_tecnico}}</p>  
+													<p>Concluyó estudios: {{estudioinsti.concluyo_estudio_tecnico}}</p>
 												{% endif %}
 											</div>
 											<div class="timeline-content">
@@ -479,7 +473,7 @@
 										</div>
 									{% endif %}
 									<!-- /timeline-block -->
-									{% endfor %} 
+									{% endfor %}
 								</div>
 								<!-- /timeline-wrap -->
 							</div>
@@ -504,23 +498,23 @@
 									<span>
 										NO
 									</span>
-								{% endif %} 
+								{% endif %}
 							</li>
 						</ul>
-					{% endfor %} 
+					{% endfor %}
 					<div class="row">
 						<div class="col-twelve">
-							<div class="timeline-wrap"> 
+							<div class="timeline-wrap">
 							{% for estudios_no in estudios_no_universitarios %}
 								{% if estudios_no.concluyo_estudio_no_universitario %}
 									<div class="timeline-block">
-										<div class="timeline-ico"> 
-											<i class="fa fa-graduation-cap"></i> 
+										<div class="timeline-ico">
+											<i class="fa fa-graduation-cap"></i>
 										</div>
 										<div class="timeline-header">
 											<h3>{{estudios_no.carrera_no_universitaria}}</h3>
 											{% if estudios_no.concluyo_estudio_no_universitario %}
-											<p>Concluyó estudios: {{estudios_no.concluyo_estudio_no_universitario}}</p>  
+											<p>Concluyó estudios: {{estudios_no.concluyo_estudio_no_universitario}}</p>
 											{% endif %}
 										</div>
 										<div class="timeline-content">
@@ -538,7 +532,7 @@
 										</div>
 									</div>
 								{% endif %}
-							{% endfor %} 
+							{% endfor %}
 						</div>
 					</div>
 				</div>
@@ -561,13 +555,13 @@
 								<span>
 									NO
 								</span>
-								{% endif %} 
+								{% endif %}
 							</li>
 						</ul>
 					{% endfor %}
 					<div class="row">
 						<div class="col-twelve">
-							<div class="timeline-wrap"> 
+							<div class="timeline-wrap">
 								{% for estudios_unv in estudios_en_la_u %}
 								<div class="timeline-block">
 									<div class="timeline-ico"> <i class="fa fa-graduation-cap"></i> </div>
@@ -585,7 +579,7 @@
 													{{estudios_unv.universidad}}
 												</span>
 											</li>
-											{% endif %} 
+											{% endif %}
 											{% if estudios_unv.anhio_obtencion_universitario %}
 											<li>
 												<strong>Año de obtención</strong>
@@ -594,11 +588,11 @@
 													{{estudios_unv.anhio_obtencion_universitario}}
 												</span>
 											</li>
-											{% endif %} 
+											{% endif %}
 										</ul>
 									</div>
 								</div>
-								{% endfor %} 
+								{% endfor %}
 							</div>
 						</div>
 					</div>
@@ -621,7 +615,7 @@
 									<span>
 										NO
 									</span>
-								{% endif %} 
+								{% endif %}
 							</li>
 						</ul>
 					{% endfor %}
@@ -635,7 +629,7 @@
 										</div>
 										<div class="timeline-header">
 											<h3>{{estudios_post.especialidad}}</h3>
-											<p>Concluyó estudios: {{estudios_post.concluyo_estudio_postgrado}}</p>  
+											<p>Concluyó estudios: {{estudios_post.concluyo_estudio_postgrado}}</p>
 										</div>
 										<div class="timeline-content">
 											<ul class="info-list uk-text-left">
@@ -662,7 +656,7 @@
 														<strong>Es egresado</strong>
 														<br>
 														<span>
-															{{estudios_post.es_egresado_postgrado}} 
+															{{estudios_post.es_egresado_postgrado}}
 														</span>
 													</li>
 													{% endif %}
@@ -671,7 +665,7 @@
 														<strong>Comentario </strong>
 														<br>
 														<span>
-															{{estudios_post.comentario_estudio_postgrado}} 
+															{{estudios_post.comentario_estudio_postgrado}}
 														</span>
 													</li>
 												{% endif %}
@@ -679,9 +673,9 @@
 										</div>
 									</div> <!-- /timeline-block -->
 								{% endfor %}
-							</div> <!-- /timeline-wrap --> 
+							</div> <!-- /timeline-wrap -->
 						</div>
-					</div>		
+					</div>
 				</div>
 			</div>
 		</div>
@@ -711,15 +705,15 @@
 							{%  endfor %}
 						</li>
 					</ul>
-				</div> 
+				</div>
 			</div>
 			<div class="col-twelve">
 				<div class="timeline-wrap">
 					{% for cargo in cargo_eleccion_popular %}
 						{% if cargo.tiene_info_por_declarar == "SI" %}
 							<div class="timeline-block">
-								<div class="timeline-ico"> 
-									<i class="fa fa-briefcase"></i> 
+								<div class="timeline-ico">
+									<i class="fa fa-briefcase"></i>
 								</div>
 								<div class="timeline-header">
 									<h3>{{cargo.cargo}}</h3>
@@ -732,7 +726,7 @@
 											<br>
 											{% if cargo.comentario %}
 												<span>
-													{{cargo.comentario}} 
+													{{cargo.comentario}}
 												</span>
 											{% else %}
 												<span>
@@ -751,7 +745,7 @@
 	</section>
 
 	<section id="renuncias">
-		<div class="col-twelve resume-header"> 
+		<div class="col-twelve resume-header">
 			<h2>5. Renuncias efectuadas a otros partidos</h2>
 		</div>
 		<div class="row section-intro">
@@ -812,12 +806,12 @@
 								{% endfor %}
 							</div>
 						</div>
-					</div>		
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	
+
 	<section id="sentencias" class="grey-section">
 		<div class="row resume-timeline">
 			<div class="col-twelve resume-header">
@@ -842,7 +836,7 @@
 											</span>
 										</li>
 									</ul>
-								</div> 
+								</div>
 							{% endfor %}
 							{% for sentencia in setencia_penales %}
 								{% if sentencia.tiene_info_por_declarar == "SI" %}
@@ -893,7 +887,7 @@
 											<span>
 												{{sentencia.organo_judicial}}
 											</span>
-										</li> 
+										</li>
 									{% endif %}
 									</ul>
 								{% endif %}
@@ -917,7 +911,7 @@
 										</span>
 									</li>
 								</ul>
-							</div> 
+							</div>
 							{% endfor %}
 							{% for sentencia in sentencia_obliga %}
 								{% if sentencia.tiene_info_por_declarar == "SI" %}
@@ -976,7 +970,7 @@
 							</span>
 						</li>
 					</ul>
-				{% endfor %} 
+				{% endfor %}
 				{% for ingreso_ in ingresos %}
 					{% if renuncia.tiene_info_por_declarar != "NO" %}
 						<ul class="info-list">
@@ -1000,7 +994,7 @@
 	</section>
 
 	<section id="bienes-inmuebles" class="grey-section">
-		<div class="col-twelve resume-header"> 
+		<div class="col-twelve resume-header">
 			<h2>8. Bienes Inmuebles</h2>
 		</div>
 		<div class="row section-intro">
@@ -1080,14 +1074,14 @@
 								{% endfor %}
 							</div>
 						</div>
-					</div>		
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<section id="bienes-muebles">
-		<div class="col-twelve resume-header"> 
+		<div class="col-twelve resume-header">
 			<h2>9. Bienes Muebles</h2>
 		</div>
 		<div class="row section-intro">
@@ -1166,7 +1160,7 @@
 								{% endfor %}
 							</div>
 						</div>
-					</div>		
+					</div>
 				</div>
 			</div>
 		</div>
@@ -1210,7 +1204,7 @@
 	</div>
 
 	<script src="{% static "js/jquery-2.1.3.min.js"%}"></script>
-	<script src="{% static "js/plugins.js"%}"></script>
+	<!-- <script src="{% static "js/plugins.js"%}"></script> -->
 	<script src="{% static "js/main.js"%}"></script>
 	<script src="{% static "js/modernizr.js"%}"></script>
 	<script src="{% static "js/place.min.js"%}"></script>
