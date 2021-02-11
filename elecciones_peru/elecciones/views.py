@@ -419,11 +419,10 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
     #query_total = "SELECT  COUNT (*),partido FROM tabla_edad WHERE edad BETWEEN " +var1+ " AND " +var2+" GROUP BY (partido)"    
     #query_total = "SELECT  dni_candidato, candidato, organizacion_politica, cargo_eleccion FROM datos_personales "
   
-  
   elif filtro_id == "primaria":
     #query_total = "SELECT id, COUNT (dni_candidato) AS conteo, organizacion_politica FROM educacion_basica WHERE concluyo_primaria  = 'SI' GROUP BY (organizacion_politica,id) ORDER BY (conteo) " + orden
     query_total ="SELECT OP.organizacion_politica ,COUNT (DP.dni_candidato) AS conteo FROM datos_personales AS DP JOIN organizaciones_politicas AS OP  USING(organizacion_politica) WHERE  sexo = 'MASCULINO' GROUP BY (OP.organizacion_politica) ORDER BY (conteo) DESC"
-    #candidatos = 
+    candidatos = OrganizacionPolitica.objects.raw ("SELECT OP.organizacion_politica ,COUNT (DP.dni_candidato) AS conteo FROM datos_personales AS DP JOIN organizaciones_politicas AS OP  USING(organizacion_politica) WHERE  sexo = 'MASCULINO' GROUP BY (OP.organizacion_politica) ORDER BY (conteo) DESC")
   
   elif filtro_id == "secundaria":
     query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM educacion_basica WHERE concluyo_secundaria  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden

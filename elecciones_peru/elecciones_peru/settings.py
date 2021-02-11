@@ -79,7 +79,8 @@ WSGI_APPLICATION = 'elecciones_peru.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db_partidos',
+        #'NAME': 'db_partidos',
+        'NAME': 'db_partidos2020',
         'USER': 'usr_esteban',
         'PASSWORD': 'utec2021',
         'HOST': 'postgresql-18527-0.cloudclusters.net',
