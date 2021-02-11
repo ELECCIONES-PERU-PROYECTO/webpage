@@ -53,10 +53,13 @@ function button_filter_org(){
     } else if(filtro_id=="penal_obligaciones_in"){
         url = url+"/"+filtro_id+"/"+filtro_info+"/unk"
     } else if(filtro_id=="penal_cant"){
-        url = url+"/"+filtro_id+"/"+filtro_info+"/unk"
-    } else if(filtro_id=="civil_cant"){
-        url = url+"/"+filtro_id+"/"+filtro_info+"/unk"
-    } else if(filtro_id=="opc_si"){
+        //url = url+"/"+filtro_id+"/"+filtro_info+"/unk"
+        url = url+"/"+filtro_id+"/unk/" + filtro_info
+      } else if(filtro_id=="civil_cant"){
+        //url = url+"/"+filtro_id+"/"+filtro_info+"/unk"
+        url = url+"/"+filtro_id+"/unk/" + filtro_info
+
+      } else if(filtro_id=="opc_si"){
       url = url+"/"+filtro_id+"/"+filtro_info
       console.log(url)
     }else if(filtro_id=="opc_no"){

@@ -407,6 +407,8 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
   print("filtro_id: ",filtro_id)
   print("info_extra: ",info_extra)
   print("orden: ",orden)
+  candidatos = DatosPersonales.objects.first()
+
   if filtro_id =="opc_edad":
     rango = info_extra.find("-")
     var1 = info_extra[0:rango:+1] 
@@ -416,10 +418,13 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
     # le falta PK
     #query_total = "SELECT  COUNT (*),partido FROM tabla_edad WHERE edad BETWEEN " +var1+ " AND " +var2+" GROUP BY (partido)"    
     #query_total = "SELECT  dni_candidato, candidato, organizacion_politica, cargo_eleccion FROM datos_personales "
-
+  
+  
   elif filtro_id == "primaria":
-    query_total = "SELECT id, COUNT (dni_candidato) AS conteo, organizacion_politica FROM educacion_basica WHERE concluyo_primaria  = 'SI' GROUP BY (organizacion_politica,id) ORDER BY (conteo) " + orden
-
+    #query_total = "SELECT id, COUNT (dni_candidato) AS conteo, organizacion_politica FROM educacion_basica WHERE concluyo_primaria  = 'SI' GROUP BY (organizacion_politica,id) ORDER BY (conteo) " + orden
+    query_total ="SELECT OP.organizacion_politica ,COUNT (DP.dni_candidato) AS conteo FROM datos_personales AS DP JOIN organizaciones_politicas AS OP  USING(organizacion_politica) WHERE  sexo = 'MASCULINO' GROUP BY (OP.organizacion_politica) ORDER BY (conteo) DESC"
+    #candidatos = 
+  
   elif filtro_id == "secundaria":
     query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM educacion_basica WHERE concluyo_secundaria  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
 
@@ -457,7 +462,7 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
 #    query_total = "S"
 
   elif filtro_id =="elecvsnacimiento_name":
-    query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica  FROM datos_personales  WHERE departamento_nacimiento <> distrito_elec AND  distrito_elec <> 'PERUANOS RESIDENTES EN EL EXTRANJERO' AND distrito_elec <> 'LIMA PROVINCIAS' GROUP BY (organizacion_politica) ORDER BY (conteo) "+orden
+    query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica  FROM datos_personales  WHERE departamento_nacimiento <> distrito_elec AND  distrito_elec <> 'PERUANOS RESIDENTES EN EL EXTRANJERO' AND distrito_elec <> 'LIMA PROVINCIAS' GROUP BY (organizacion_politica,id) ORDER BY (conteo) "+orden
 
   elif filtro_id =="2019priv":
     query_total =  "SELECT id,total_ingresos, organizacion_politica FROM financiamiento_privado  WHERE  estado   = '"+info_extra+"' AND  anhio = '2019' GROUP BY (organizacion_politica,total_ingresos) ORDER BY total_ingresos "+orden
@@ -474,7 +479,8 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
   print("-------LLEGA A FINAL CASI DE LA FUNCION------------")
   print("query_total: ",query_total)
   ##candidatos = DatosPersonales.objects.raw("SELECT * FROM datos_personales")
-  candidatos = DatosPersonales.objects.raw(query_total)
+  #candidatos = DatosPersonales.objects.raw(query_total)
+  #candidatos = organizacion_politicas.objects(query_total)
   # Paginator 
   paginator = Paginator(candidatos, 20)
   page_number = request.GET.get('page')
