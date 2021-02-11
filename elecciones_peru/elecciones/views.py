@@ -589,7 +589,7 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
 
   informacio_adicional_ = InformacionAdicional.objects.raw("SELECT DISTINCT DP.id, EP.tiene_info_adicional, EP.info FROM informacion_adicional AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
-  return render(request, 'elecciones/index.html', {
+  return render(request, 'elecciones/hdv.html', {
                   'nombre': nombre_,
                   'datos_personales': datos_personales_,
                   'cargo_eleccion': cargo_eleccion_,

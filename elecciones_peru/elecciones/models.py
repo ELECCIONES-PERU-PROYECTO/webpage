@@ -305,8 +305,7 @@ class FinanciamientoPrivado(models.Model):
   class Meta:
     db_table = 'financiamiento_privado'
 
-  
-  
+
 class FinanciamientoPublico(models.Model):
   id = models.CharField(max_length=10, primary_key=True)
   organizacion_politica = models.CharField(max_length=250)
@@ -317,3 +316,9 @@ class FinanciamientoPublico(models.Model):
     db_table = 'financiamiento_publico'
 
 
+class OrganizacionPolitica(models.Model):
+  nombre = models.CharField(max_length=200, primary_key=True)
+  url = models.CharField(max_length=200, default="-", editable = False)
+
+  class Meta:
+    db_table = 'organizacion_politica'
