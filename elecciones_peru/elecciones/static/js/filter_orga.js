@@ -24,16 +24,17 @@ let data_org = {
 }
 
 function button_filter_org(){
-  if(filtro_id==""){
-    setTimeout(function(){
-      UIkit.notification('Marque al menos un filtro');
-    }, 1000);
-    return "again"
-  }
-
-  let url = "http://127.0.0.1:8000/elecciones/candidatos"
-
+  // if(filtro_id==""){
+  //   setTimeout(function(){
+  //     UIkit.notification('Marque al menos un filtro');
+  //   }, 1000);
+  //   return "again"
+  // }
   
+  let url = "http://127.0.0.1:8000/elecciones/candidatos/test"
+  
+  
+  window.location = url
 }
 
 function quitar_todas_selecciones(id_){

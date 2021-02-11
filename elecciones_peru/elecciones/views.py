@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .models import *
 from itertools import chain
 
@@ -497,13 +497,6 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
                 'elecciones/dashboard.html',
                 {'page': page_obj})
 
-def test_query(request, nivel_academico):
-  print("test_query: NIVEL ACADEMICO ", nivel_academico)
-  test = DatosPersonales.objects.raw(
-    "select * from datos_personales;"
-  )
-  return render(request,'elecciones/dashboard.html',{'test': test})
-
 def candidatos(request):
   candidatos = DatosPersonales.objects.raw(
     "select * from datos_personales;"
@@ -622,3 +615,22 @@ def mainpage(request):
 
 def analisisGraficos(request):
   return render(request,'elecciones/graphics.html',{})
+
+def test(request):
+  print('////////////////////////////')
+  print(request.method)
+  print('////////////////////////////')
+  if request.method == 'POST': 
+    firstName = request.POST.get('firstName') 
+    lastName = request.POST.get('lastName') 
+    # Note.objects.create(
+    #     title=title,
+    #     note=note
+    # )
+    return JsonResponse({"status": firstName}) 
+  return JsonResponse({"status": 'xs'}) 
+    # return render(request,'elecciones/test.html',
+    #   { 'firstName': firstName,
+    #     'lastName': lastName
+    #   }
+    # )
