@@ -27,7 +27,20 @@
           --------------------------------------------
         -->
         <div class="left-nav-wrap" id="filtros_candidatos">
-          <ul id="presidenciales" name="tipo_candidato_filter" class="uk-nav uk-nav-default uk-nav-parent-icon uk-margin-medium-top" data-uk-nav>
+          <ul class="uk-nav uk-nav-default uk-nav-parent-icon uk-margin-medium-top uk-hidden@m" data-uk-nav>
+            <li class="uk-nav-header">Opciones de Filtro</li>
+            <li class="filtertype"><a href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a></li>
+            <li>
+              <a href="#" onclick="activar_candidatos(this.text)">Candidatos Congresales</a>
+            </li>
+            <li class="filtertype">
+              <a href="#" onclick="activar_candidatos(this.text)">Candidatos Parlamento Andino</a>
+            </li class="filtertype">
+            <li class="filtertype">
+              <a href="#" onclick="activar_organizaciones(this)">Partidos Políticos</a>
+            </li>
+          </ul>
+          <ul id="presidenciales" name="tipo_candidato_filter" class="uk-nav uk-nav-default uk-nav-parent-icon uk-margin-small-top" data-uk-nav>
             <li class="uk-nav-header">Filtros</li>
             <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel Académico</a>
               <ul>
@@ -54,7 +67,6 @@
             </li>
             <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cargos previos</a>
               <ul>
-                <!-- <button onclick="quitar_seleccion_cargos_pervios()">Decartar</button> -->
                 <form>
                   <fieldset class="uk-fieldset uk-padding-small uk-flex">
                     <div class="uk-width-1-1@s">
@@ -135,25 +147,25 @@
                               Materia de la demanda
                             </label>
                             <div class="uk-flex uk-flex-middle">
-                              <input type="radio" id="mat_deman_fam_ali" name="opc_mat_demanda" value="FamiliaAli" onclick="get_sentencias_oblig_mat()">
+                              <input type="radio" id="mat_deman_fam_alimen" name="opc_mat_demanda" value="FamiliaAli" onclick="get_sentencias_oblig_mat()">
                               <label for="mat_deman_fam_alimen" class="uk-text-muted uk-margin-small-left">
                                 Familia/Alimentaria
                               </label>
                             </div>
                             <div class="uk-flex uk-flex-middle">
-                              <input type="radio" id="mat_deman_contrac" name="opc_mat_demanda" value="CONTRACTUAL" onclick="get_sentencias_oblig_mat()">
+                              <input type="radio" id="mat_deman_contract" name="opc_mat_demanda" value="CONTRACTUAL" onclick="get_sentencias_oblig_mat()">
                               <label for="mat_deman_contract" class="uk-text-muted uk-margin-small-left">
                                 Contractual
                               </label>
                             </div>
                             <div class="uk-flex uk-flex-middle">
-                              <input type="radio" id="mat_deman_lab" name="opc_mat_demanda" value="LABORAL" onclick="get_sentencias_oblig_mat()">
+                              <input type="radio" id="mat_deman_laboral" name="opc_mat_demanda" value="LABORAL" onclick="get_sentencias_oblig_mat()">
                               <label for="mat_deman_laboral" class="uk-text-muted uk-margin-small-left">
                                 Laboral
                               </label>
                             </div>
                             <div class="uk-flex uk-flex-middle">
-                              <input type="radio" id="mat_deman_vio" name="opc_mat_demanda" value="VIOLENCIA" onclick="get_sentencias_oblig_mat()">
+                              <input type="radio" id="mat_deman_violencia" name="opc_mat_demanda" value="VIOLENCIA" onclick="get_sentencias_oblig_mat()">
                               <label for="mat_deman_violencia" class="uk-text-muted uk-margin-small-left">
                                 Violencia Familiar
                               </label>
@@ -227,7 +239,7 @@
                         </label>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="cant_mueble_asc" name="cant_muebles"  onclick="get_bienes_rentas(this)" value="ASC">
-                          <label for="cant_muebles_asc" class="uk-text-muted uk-margin-small-left">
+                          <label for="cant_mueble_asc" class="uk-text-muted uk-margin-small-left">
                             Ascendente
                           </label>
                         </div>
@@ -262,7 +274,6 @@
             </li>
             <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Renuncias</a>
               <ul>
-                <!-- <button  onclick="quitar_seleccion_renuncia()">Decartar</button> -->
                 <form>
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-between">
@@ -319,7 +330,6 @@
             </li> -->
             <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Edad</a>
               <ul>
-                <!-- <button  onclick="quitar_seleccion_edad()">Decartar</button> -->
                 <form>
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-between">
@@ -328,20 +338,20 @@
                           Rango de edades
                         </label>
                         <div class="uk-flex uk-flex-middle">
-                          <input type="radio" id="rango_edad1" name="rango_edad" onclick="get_edad()" value="18-30">
-                          <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                          <input type="radio" id="rango_edad_18_30" name="rango_edad" onclick="get_edad()" value="18-30">
+                          <label for="rango_edad_18_30" class="uk-text-muted uk-margin-small-left">
                             18 - 30
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle">
-                          <input type="radio" id="rango_edad2" name="rango_edad" onclick="get_edad()" value="30-50">
-                          <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                          <input type="radio" id="rango_edad_30_50" name="rango_edad" onclick="get_edad()" value="30-50">
+                          <label for="rango_edad_30_50" class="uk-text-muted uk-margin-small-left">
                             30 - 50
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle">
-                          <input type="radio" id="rango_edad3" name="rango_edad" onclick="get_edad()" value="50-70">
-                          <label for="rango_edad" class="uk-text-muted uk-margin-small-left">
+                          <input type="radio" id="rango_edad_50_70" name="rango_edad" onclick="get_edad()" value="50-70">
+                          <label for="rango_edad_50_70" class="uk-text-muted uk-margin-small-left">
                             50 - 70
                           </label>
                         </div>
@@ -354,7 +364,6 @@
             </li>
             <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Oriundo</a>
               <ul>
-                <!-- <button  onclick="quitar_seleccion_oriundo()">Decartar</button> -->
                 <form>
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-between">
@@ -364,13 +373,13 @@
                         </label>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="oriundo_si" name="oriundo_input" value="SI" onclick="get_oriundo()">
-                          <label for="oriundo_" class="uk-text-muted uk-margin-small-left">
+                          <label for="oriundo_si" class="uk-text-muted uk-margin-small-left">
                             Sí
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle">
-                          <input type="radio" id="oriundo_" name="oriundo_input" value="NO"  onclick="get_oriundo()">
-                          <label for="oriundo_" class="uk-text-muted uk-margin-small-left">
+                          <input type="radio" id="oriundo_no" name="oriundo_input" value="NO"  onclick="get_oriundo()">
+                          <label for="oriundo_no" class="uk-text-muted uk-margin-small-left">
                             No
                           </label>
                         </div>
@@ -524,12 +533,24 @@
           --------------------------------------------
           --------------------------------------------
         -->
-        <div class="left-nav-wrap" id="filtros_organizaciones" style="display:none"  >
+        <div class="left-nav-wrap" id="filtros_organizaciones" style="display:none">
+          <ul class="uk-nav uk-nav-default uk-nav-parent-icon uk-margin-medium-top uk-hidden@m" data-uk-nav>
+            <li class="uk-nav-header">Opciones de Filtro</li>
+            <li class="filtertype"><a href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a></li>
+            <li>
+              <a href="#" onclick="activar_candidatos(this.text)">Candidatos Congresales</a>
+            </li>
+            <li class="filtertype">
+              <a href="#" onclick="activar_candidatos(this.text)">Candidatos Parlamento Andino</a>
+            </li class="filtertype">
+            <li class="filtertype">
+              <a href="#" onclick="activar_organizaciones(this)">Partidos Políticos</a>
+            </li>
+          </ul>
           <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
             <li class="uk-nav-header">Filtros</li>
             <li class="uk-parent" id="opc_edad" name="orga_filtro"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Edad</a>
             <ul>
-              <!-- <button  onclick="quitar_todas_selecciones(this)">Descartar</button> -->
               <form>
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex uk-flex-between">
@@ -564,7 +585,6 @@
           </li>
           <li class="uk-parent" id="opc_genero" name="orga_filtro"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Género</a>
             <ul>
-              <!-- <button  onclick="quitar_todas_selecciones(this)">Descartar</button> -->
               <form>
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex">
