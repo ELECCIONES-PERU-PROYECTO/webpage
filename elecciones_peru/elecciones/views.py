@@ -431,30 +431,36 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
     # candidatos = OrganizacionPolitica.objects.raw ("SELECT OP.organizacion_politica ,COUNT (DP.dni_candidato) AS conteo FROM datos_personales AS DP JOIN organizaciones_politicas AS OP  USING(organizacion_politica) WHERE  sexo = 'MASCULINO' GROUP BY (OP.organizacion_politica) ORDER BY (conteo) DESC")
   
   elif filtro_id == "primaria":
-    #query_total = "SELECT id, COUNT (dni_candidato) AS conteo, organizacion_politica FROM educacion_basica WHERE concluyo_primaria  = 'SI' GROUP BY (organizacion_politica,id) ORDER BY (conteo) " + orden
-    query_total =" SELECT OP.organizacion_politica , OP.url , COUNT (DP.dni_candidato) AS conteo FROM datos_personales AS DP JOIN organizaciones_politicas AS OP USING(organizacion_politica) WHERE sexo = 'MASCULINO' GROUP BY (OP.organizacion_politica) ORDER BY (conteo) DESC "
+    #query_total = " SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM educacion_basica WHERE concluyo_secundaria  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
+    query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM educacion_basica  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE concluyo_primaria  = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) "+orden
     #query_total = " SELECT nombre , url from organizacion_politica"
     
   elif filtro_id == "secundaria":
-    query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM educacion_basica WHERE concluyo_secundaria  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
+    query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM educacion_basica  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE concluyo_secundaria  = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) "+orden
 
   elif filtro_id == "tecnicos":
-    query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_tecnico WHERE concluyo_estudio_tecnico  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
+    query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM estudio_tecnico  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE concluyo_estudio_tecnico = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) "+orden
+    #query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_tecnico WHERE concluyo_estudio_tecnico  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
   
   elif filtro_id == "nouni":
-    query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_no_universitario WHERE concluyo_estudio_no_universitario  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
+    query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM estudio_no_universitario  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE concluyo_estudio_no_universitario = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) "+orden
+    #query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_no_universitario WHERE concluyo_estudio_no_universitario  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
   
   elif filtro_id == "uni":
-    query_total = "SELECT id, COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_universitario WHERE concluyo_estudio_universitario  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
+    #query_total = "SELECT id, COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_universitario WHERE concluyo_estudio_universitario  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
+    query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM estudio_universitario  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE concluyo_estudio_universitario = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) "+orden
   
   elif filtro_id == "postgrado":
-    query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_postgrado WHERE concluyo_estudio_postgrado  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
+    #query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_postgrado WHERE concluyo_estudio_postgrado  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
+    query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM estudio_postgrado  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE concluyo_estudio_postgrado = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) "+orden
 
   elif filtro_id == "maestrodoctor":
-    query_total = "SELECT id, COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_postgrado WHERE ( es_maestro  = 'SI' OR es_doctor = 'SI') GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
+    #query_total = "SELECT id, COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_postgrado WHERE ( es_maestro  = 'SI' OR es_doctor = 'SI') GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
+    query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM estudio_postgrado  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE ( es_maestro  = 'SI' OR es_doctor = 'SI') GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) "+orden
 
   elif filtro_id == "genero":
-    query_total = "SELECT COUNT (DP.dni_candidato) AS conteo, OP.organizacion_politica FROM datos_personales AS DP JOIN organizaciones_politicas AS OP USING(organizacion_politica) WHERE  sexo = '" + info_extra+ "' GROUP BY (OP.organizacion_politica) ORDER BY (conteo) " + orden
+    #query_total = "SELECT COUNT (DP.dni_candidato) AS conteo, OP.organizacion_politica FROM datos_personales AS DP JOIN organizaciones_politicas AS OP USING(organizacion_politica) WHERE  sexo = '" + info_extra+ "' GROUP BY (OP.organizacion_politica) ORDER BY (conteo) " + orden
+    query_total =" SELECT OP.organizacion_politica , OP.url , COUNT (DP.dni_candidato) AS conteo FROM datos_personales AS DP JOIN organizaciones_politicas AS OP USING(organizacion_politica) WHERE sexo = '"+info_extra+"' GROUP BY (OP.organizacion_politica) ORDER BY (conteo)  "+ orden
 
   elif filtro_id == "penal_obligaciones_in":
     query_total = "SELECT id,SUM(conteo) AS total, organizacion_politica FROM (SELECT  COUNT(dni_candidato) AS conteo, organizacion_politica  FROM sentencia_penal   WHERE  tiene_info_por_declarar  = 'SI' GROUP BY (organizacion_politica) UNION ALL SELECT  COUNT(dni_candidato) AS conteo, organizacion_politica  FROM sentencia_obligacion   WHERE  tiene_info_por_declarar  = 'SI' GROUP BY (organizacion_politica)) TABLA GROUP BY partido ORDER BY total " +orden 
