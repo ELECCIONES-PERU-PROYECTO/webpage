@@ -9,6 +9,10 @@
 #orden_edad_container{
 	display: none;
 }
+#home-cont{
+	padding-top: 2.5%;
+	margin-left: 2%;
+}
 /* -- No hover -- */
 .no-text-styles-hover:hover {
 	text-decoration: none;
