@@ -538,19 +538,19 @@
                         Rango de edades
                       </label>
                       <div class="uk-flex uk-flex-middle">
-                        <input type="radio" id="rango_edad_18_30" name="opc_edad" onclick="set_valor(this)" value="18-30">
+                        <input type="radio" id="rango_edad_18_30" data-info = "rango_edad_18_30"  name="opc_edad" onclick="set_valor(this)" value="18-30">
                         <label for="rango_edad_18_30" class="uk-text-muted uk-margin-small-left">
                           18 - 30
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle">
-                        <input type="radio" id="rango_edad_30_50" name="opc_edad" onclick="set_valor(this)" value="30-50">
+                        <input type="radio" id="rango_edad_30_50" data-info = "rango_edad_30_50" name="opc_edad" onclick="set_valor(this)" value="30-50">
                         <label for="rango_edad_30_50" class="uk-text-muted uk-margin-small-left">
                           30 - 50
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle">
-                        <input type="radio" id="rango_edad_50_70" name="opc_edad" onclick="set_valor(this)" value="50-70">
+                        <input type="radio" id="rango_edad_50_70" data-info="rango_edad_50_70" name="opc_edad" onclick="set_valor(this)" value="50-70">
                         <label for="rango_edad_50_70" class="uk-text-muted uk-margin-small-left">
                           50 - 70
                         </label>
@@ -854,7 +854,7 @@
                       <label class="uk-text-muted uk-text-bold">
                         2019
                       </label>
-                      <div class="uk-width-1-1@s">
+                      <div class="uk-width-1-1@s" id="hide2019" >
                         <div class="uk-margin-small-bottom">
                           <label class="uk-text-muted">
                             Estado de Presentación:
@@ -893,19 +893,19 @@
                       <label class="uk-text-muted uk-text-bold">
                         2018                    
                       </label>
-                      <div class="uk-width-1-1@s">
+                      <div class="uk-width-1-1@s" id="hide2018">
                         <div class="uk-margin-small-bottom">
                           <label class="uk-text-muted">
                             Estado de Presentación:
                           </label>
                           <div class="uk-flex uk-flex-middle">
-                            <input type="radio" id="2018_est_si" name="2018_est_present" onclick="set_valor(this)" value="PRESENTO">
+                            <input type="radio" id="2018_est_si"  name="2018_est_present" onclick="set_valor(this)" value="PRESENTO">
                             <label for="2018_est_si" class="uk-text-muted uk-margin-small-left">
                               Presentaron
                             </label>
                           </div>
                           <div class="uk-flex uk-flex-middle">
-                            <input type="radio" id="2018_est_no" name="2018_est_present" onclick="" value="NO PRESENTO">
+                            <input type="radio" id="2018_est_no" name="2018_est_present" onclick="set_valor(this)" value="NO PRESENTO">
                             <label for="2018_est_no" class="uk-text-muted uk-margin-small-left">
                               No presentaron
                             </label>
@@ -932,7 +932,7 @@
                       <label class="uk-text-muted uk-text-bold">
                         2017                      
                       </label>
-                      <div class="uk-width-1-1@s">
+                      <div class="uk-width-1-1@s" id="hide2017">
                         <div class="uk-margin-small-bottom">
                           <label class="uk-text-muted">
                             Estado de Presentación:
@@ -1058,8 +1058,15 @@
       <hr>
     </div> -->
     <!-- todos los candidatos -->
-    {% if page %}
-      <div class="uk-container uk-container-expand uk-margin-top">
+
+    {% if organizaciones_return %}
+        {% for organizacion in  organizaciones_return %}
+        <img src="{{ organizacion.url }}" width="155px" height="215px" alt="{{ candidato.candidato }}">
+
+        {% endfor %}
+    {% elif page %}
+
+    <div class="uk-container uk-container-expand uk-margin-top">
         {% for candidato in page %}
         <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-flex-middle uk-width-3-4@xl uk-width-1-1@m uk-width-3-4@s uk-flex-center uk-margin-bottom uk-margin-auto" uk-grid>
           <div class="uk-text-center uk-padding-remove">
@@ -1096,7 +1103,7 @@
           </div>
         </div>
         {% endfor %}
-      </div>
+    </div>
       {% include "elecciones/pagination.html" with page=page %}
     {% else %}
       <div class="uk-container uk-text-center no-results-container">

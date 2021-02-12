@@ -261,8 +261,8 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
     SELECT_candidato = " DP.cargo_eleccion "
     WHERE_candidato = " (DP.cargo_eleccion = 'REPRESENTANTE ANTE EL PARLAMENTO ANDINO') "
 
-  print("SELECT_candidato: ", SELECT_candidato)
-  print("WHERE_candidato: ", WHERE_candidato)
+  #print("SELECT_candidato: ", SELECT_candidato)
+  #print("WHERE_candidato: ", WHERE_candidato)
   lista_filtros_normales = list()
   lista_filtros_ob = list()
   lista_val_new = list()
@@ -325,6 +325,8 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
     print("Lista de filtros normales esta vacia")
     query_normal = ""
     query_total = function_filtros_ob(lista_filtros_ob_new,query_normal,False, SELECT_candidato,WHERE_candidato )
+  
+  
   elif len(lista_filtros_ob_new) == 0:
     print("Lista de filtros ob esta vacio")
     print("lista_filtros_normales: ",lista_filtros_normales)
@@ -339,6 +341,9 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
       for i in range(1, len(lista_filtros_normales)):
           query = query +" INTERSECT "+ function_filtro_normal(lista_valores, True, SELECT_candidato,WHERE_candidato )
       query_total = "SELECT  DISTINCT DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica,   " + SELECT_candidato+ "   FROM  ( "+query + " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) WHERE " + WHERE_candidato  
+  
+
+  
   elif len(lista_filtros_normales)==1 and len(lista_filtros_ob_new)>1:
     query_total_filtros_normales = ""
     query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato,WHERE_candidato )
@@ -355,6 +360,8 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
       aux = lista_filtros_ob_new[i].replace("("+quitar, "")
       lista_filtros_ob_new[i] = aux
     query_total = " SELECT DISTINCT DP.id,  " + SELECT_candidato + ",  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE " + WHERE_candidato+ "  GROUP BY (conteo,DP.id,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato +") ORDER BY conteo " + lista_filtros_ob_new[0]
+  
+  
   elif ((len(lista_filtros_normales)>1 and len(lista_filtros_ob_new) ==  1))  or  (len(lista_filtros_normales)==1 and len(lista_filtros_ob_new)==1):
     query_total_filtros_normales = ""
     query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato,WHERE_candidato )
@@ -369,6 +376,8 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
       aux = lista_filtros_ob_new[i].replace("("+quitar, "")
       lista_filtros_ob_new[i] = aux
     query_total = " SELECT DISTINCT  DP.id,  " + SELECT_candidato + ",  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE "+ WHERE_candidato+"  GROUP BY (conteo,DP.id,  DP.candidato, DP.organizacion_politica,  "+SELECT_candidato +" ) ORDER BY conteo " + lista_filtros_ob_new[0]
+  
+  
   elif len(lista_filtros_normales)>1 and len(lista_filtros_ob_new)>1:
     query_total_filtros_normales = ""
     query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato,WHERE_candidato )
@@ -407,7 +416,7 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
   print("filtro_id: ",filtro_id)
   print("info_extra: ",info_extra)
   print("orden: ",orden)
-  candidatos = DatosPersonales.objects.first()
+  candidatos = ""
 
   if filtro_id =="opc_edad":
     rango = info_extra.find("-")
@@ -423,8 +432,9 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
   
   elif filtro_id == "primaria":
     #query_total = "SELECT id, COUNT (dni_candidato) AS conteo, organizacion_politica FROM educacion_basica WHERE concluyo_primaria  = 'SI' GROUP BY (organizacion_politica,id) ORDER BY (conteo) " + orden
-    query_total ="SELECT OP.organizacion_politica ,COUNT (DP.dni_candidato) AS conteo FROM datos_personales AS DP JOIN organizaciones_politicas AS OP  USING(organizacion_politica) WHERE  sexo = 'MASCULINO' GROUP BY (OP.organizacion_politica) ORDER BY (conteo) DESC"
-  
+    query_total =" SELECT OP.organizacion_politica , OP.url , COUNT (DP.dni_candidato) AS conteo FROM datos_personales AS DP JOIN organizaciones_politicas AS OP USING(organizacion_politica) WHERE sexo = 'MASCULINO' GROUP BY (OP.organizacion_politica) ORDER BY (conteo) DESC "
+    #query_total = " SELECT nombre , url from organizacion_politica"
+    
   elif filtro_id == "secundaria":
     query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM educacion_basica WHERE concluyo_secundaria  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
 
@@ -479,10 +489,11 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
   print("query_total: ",query_total)
   ##candidatos = DatosPersonales.objects.raw("SELECT * FROM datos_personales")
   #candidatos = DatosPersonales.objects.raw(query_total)
-  #candidatos = organizacion_politicas.objects(query_total)
+  candidatos = OrganizacionesPoliticas.objects.raw(query_total)
   # Paginator 
   paginator = Paginator(candidatos, 20)
   page_number = request.GET.get('page')
+  #page_number = request.GET.get('page')
 
   try:
       page_obj = paginator.get_page(page_number)
@@ -495,7 +506,10 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
 
   return render(request,
                 'elecciones/dashboard.html',
-                {'page': page_obj})
+                {
+                  'page': page_obj,
+                  'organizaciones_return': page_obj
+                } )
 
 def candidatos(request):
   candidatos = DatosPersonales.objects.raw(
