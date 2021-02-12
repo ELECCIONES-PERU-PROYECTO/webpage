@@ -86,7 +86,7 @@ a, a:visited {
 	transition: all 0.3s ease-in-out;
 }
 a:hover, a:focus, a:active {
-	color: #FF0077;
+	color: #B62222;
 	outline: 0;
 }
 
@@ -284,7 +284,7 @@ ul.disc li::before {
 	width: 8px;
 	height: 8px;
 	border-radius: 50%;
-	background: #FF0077;
+	background: #B62222;
 	position: absolute;
 	left: -17px;
 	top: 11px;
@@ -292,7 +292,7 @@ ul.disc li::before {
 }
 dt {
 	margin: 0;
-	color: #FF0077;
+	color: #B62222;
 }
 dd {
 	margin: 0 0 0 2rem;
@@ -404,7 +404,7 @@ img.pull-left {
 	border-top: 11px solid rgba(255, 255, 255, 0.1);
 	border-right: 11px solid rgba(255, 255, 255, 0.1);
 	border-bottom: 11px solid rgba(255, 255, 255, 0.1);
-	border-left: 11px solid #FF0077;
+	border-left: 11px solid #B62222;
 	-webkit-animation: load 1.1s infinite linear;
 	animation: load 1.1s infinite linear;
 	display: block;
@@ -527,7 +527,7 @@ input[type="password"]:focus,
 textarea:focus,
 select:focus {
 	color: #cc005f;
-	border-bottom: 1px solid #FF0077;
+	border-bottom: 1px solid #B62222;
 }
 label, legend {
 	font-family: "poppins-bold", sans-serif;
@@ -668,8 +668,8 @@ button.stroke.large, .button.stroke.large {
 	line-height: 5.4rem !important;
 }
 button.stroke:hover, .button.stroke:hover {
-	border: 3px solid #FF0077;
-	color: #FF0077;
+	border: 3px solid #B62222;
+	color: #B62222;
 }
 button::-moz-focus-inner, input::-moz-focus-inner {
 	border: 0;
@@ -857,7 +857,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 	color: #252525;
 }
 .stats-tabs li a:hover {
-	color: #FF0077;
+	color: #B62222;
 }
 .stats-tabs li a em {
 	display: block;
@@ -1047,7 +1047,7 @@ header .logo a {
 }
 .menu-toggle span {
 	display: block;
-	background-color: #cc2525;
+	background-color: #B62222;
 	width: 24px;
 	height: 3px;
 	margin-top: -1.5px;
@@ -1161,12 +1161,12 @@ header .logo a {
 	border: none;
 }
 .main-navigation li a:hover {
-	color: #FF0077;
+	color: #B62222;
 	padding-left: 1rem;
 }
 .main-navigation li.current > a {
 	background: none;
-	color: #FF0077;
+	color: #B62222;
 }
 
 
@@ -1689,6 +1689,13 @@ header .logo a {
 	}
 	.intro-content h1 {
 		margin-bottom: .6rem;
+		font-size: 4.5rem;
+	}
+
+	#go-top a {
+		height: 5.2rem;
+    width: 5.3rem;
+    line-height: 5rem;
 	}
 	.intro-content h5 {
 		font-size: 1.5rem;
@@ -1849,11 +1856,11 @@ header .logo a {
 	text-decoration: none;
 	border: 0 none;
 	display: block;
-	height: 6.6rem;
-	width: 6rem;
-	line-height: 6.6rem;
+	height: 6rem;
+	width: 6.6rem;
+	line-height: 6rem;
 	text-align: center;
-	background: #af0c0c;
+	background: #B62222;
 	color: #FFFFFF;
 	text-align: center;
 	text-transform: uppercase;
@@ -1862,6 +1869,7 @@ header .logo a {
 	-webkit-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
+	border-radius: 50%;
 }
 #go-top a i {
 	font-size: 1.6rem;
