@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .models import *
 from itertools import chain
 
@@ -157,7 +157,7 @@ def function_filtro_normal(self, stack_, SELECT_candidato,WHERE_candidato ):
       self[5] = ""
       return retorno
     if self[12] != "":
-      retorno = "SELECT DISTINCT DP.id,  DP.dni_candidato,DP.candidato, DP.organizacion_politica, "+ SELECT_candidato+"  FROM tabla_edad AS TE JOIN    datos_personales AS DP USING (dni_candidato) WHERE TE.edad BETWEEN " + (self[12])[:2] + " AND " + ( self[12])[3:5] + " AND  "+WHERE_candidato
+      retorno = "SELECT DISTINCT DP.id,  DP.dni_candidato,DP.candidato, DP.organizacion_politica, "+ SELECT_candidato+"  FROM tabla_edad AS TE JOIN  datos_personales AS DP USING (dni_candidato) WHERE TE.edad BETWEEN " + (self[12])[:2] + " AND " + ( self[12])[3:5] + " AND  "+WHERE_candidato
       self[12] = ""
       return retorno
     if self[13] == "SI":
@@ -400,10 +400,10 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
                 'elecciones/dashboard.html',
                 {'page': page_obj}) 
 
-
 def filter_function_orga(request, filtro_id, info_extra, orden):
   #- before column name mean descending order without - mean ascending. 
   query_total = "select * from datos_personales;"
+  print("################################xd###########################")
   print("filtro_id: ",filtro_id)
   print("info_extra: ",info_extra)
   print("orden: ",orden)
@@ -419,10 +419,11 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
     #query_total = "SELECT  COUNT (*),partido FROM tabla_edad WHERE edad BETWEEN " +var1+ " AND " +var2+" GROUP BY (partido)"    
     #query_total = "SELECT  dni_candidato, candidato, organizacion_politica, cargo_eleccion FROM datos_personales "
   
+    # candidatos = OrganizacionPolitica.objects.raw ("SELECT OP.organizacion_politica ,COUNT (DP.dni_candidato) AS conteo FROM datos_personales AS DP JOIN organizaciones_politicas AS OP  USING(organizacion_politica) WHERE  sexo = 'MASCULINO' GROUP BY (OP.organizacion_politica) ORDER BY (conteo) DESC")
+  
   elif filtro_id == "primaria":
     #query_total = "SELECT id, COUNT (dni_candidato) AS conteo, organizacion_politica FROM educacion_basica WHERE concluyo_primaria  = 'SI' GROUP BY (organizacion_politica,id) ORDER BY (conteo) " + orden
     query_total ="SELECT OP.organizacion_politica ,COUNT (DP.dni_candidato) AS conteo FROM datos_personales AS DP JOIN organizaciones_politicas AS OP  USING(organizacion_politica) WHERE  sexo = 'MASCULINO' GROUP BY (OP.organizacion_politica) ORDER BY (conteo) DESC"
-    candidatos = OrganizacionPolitica.objects.raw ("SELECT OP.organizacion_politica ,COUNT (DP.dni_candidato) AS conteo FROM datos_personales AS DP JOIN organizaciones_politicas AS OP  USING(organizacion_politica) WHERE  sexo = 'MASCULINO' GROUP BY (OP.organizacion_politica) ORDER BY (conteo) DESC")
   
   elif filtro_id == "secundaria":
     query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM educacion_basica WHERE concluyo_secundaria  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
@@ -458,7 +459,6 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
     query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM datos_personales  WHERE departamento_nacimiento = '"+ info_extra+"' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
   
   #elif filtro_id =="opc_no":
-#    query_total = "S"
 
   elif filtro_id =="elecvsnacimiento_name":
     query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica  FROM datos_personales  WHERE departamento_nacimiento <> distrito_elec AND  distrito_elec <> 'PERUANOS RESIDENTES EN EL EXTRANJERO' AND distrito_elec <> 'LIMA PROVINCIAS' GROUP BY (organizacion_politica,id) ORDER BY (conteo) "+orden
@@ -497,14 +497,6 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
                 'elecciones/dashboard.html',
                 {'page': page_obj})
 
-
-def test_query(request, nivel_academico):
-  print("test_query: NIVEL ACADEMICO ", nivel_academico)
-  test = DatosPersonales.objects.raw(
-    "select * from datos_personales;"
-  )
-  return render(request,'elecciones/dashboard.html',{'test': test})
-
 def candidatos(request):
   candidatos = DatosPersonales.objects.raw(
     "select * from datos_personales;"
@@ -516,12 +508,10 @@ def candidatos(request):
 
 def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   #expertiencia laboral = ExperienciaLaboral.objects.raw()
-
   # if cargo_postula_dato == "favicon.png":
   #     return
   # print("dni_hoja_de_vida: ",dni_hoja_de_vida)
   # print("----cargo_eleccion_-----: ",cargo_postula_dato)
-
   #if (len(dni_hoja_de_vida)>8 or len(cargo_eleccion_)>13):
   #    return 
   if cargo_postula_dato == "PRIMER":
@@ -625,3 +615,22 @@ def mainpage(request):
 
 def analisisGraficos(request):
   return render(request,'elecciones/graphics.html',{})
+
+def test(request):
+  print('////////////////////////////')
+  print(request.method)
+  print('////////////////////////////')
+  if request.method == 'POST': 
+    firstName = request.POST.get('firstName') 
+    lastName = request.POST.get('lastName') 
+    # Note.objects.create(
+    #     title=title,
+    #     note=note
+    # )
+    return JsonResponse({"status": firstName}) 
+  return JsonResponse({"status": 'xs'}) 
+    # return render(request,'elecciones/test.html',
+    #   { 'firstName': firstName,
+    #     'lastName': lastName
+    #   }
+    # )

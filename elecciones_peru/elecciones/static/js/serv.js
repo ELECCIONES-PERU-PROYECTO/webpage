@@ -32,7 +32,6 @@ async function getUrl_orga(){
   try {
     const response = await axios.get('/candidatos/?filtro_id='+filtro_id+"/?info_extra="+info_extra+"/?orden="+orden)
     //const response = await axios.get('/candidatos/opc_edad/30-50/ASC')
-
     console.log(response)
   } catch (error) {
     console.error(error)
@@ -62,15 +61,15 @@ async function mainpage(){
 // Test
 async function test() {
   try {
-    const response = await axios.post('/candidatos/test', data)
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-    console.log(response);
+    const response = await axios.post('/candidatos/test', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      firstName: 'Fred',
+      lastName: 'Flintstone'
+    }) 
+    console.log(response)
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
 }
