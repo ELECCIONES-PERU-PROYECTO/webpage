@@ -576,6 +576,23 @@
                           50 - 70
                         </label>
                       </div>
+                      <div id="orden_edad_container">
+                        <label class="uk-text-muted" style="margin-top: 10px">
+                          Ordenar de manera
+                        </label>
+                        <div class="uk-flex uk-flex-middle">
+                          <input type="radio" id="org_edad_ord_asc"  name="edad_orden" onclick="set_valor(this)" value="ASC">
+                          <label for="org_edad_ord_asc" class="uk-text-muted uk-margin-small-left">
+                            Ascendente
+                          </label>
+                        </div>
+                        <div class="uk-flex uk-flex-middle">
+                          <input type="radio" id="org_edad_ord_desc" name="edad_orden" onclick="set_valor(this)" value="DESC">
+                          <label for="org_edad_ord_desc" class="uk-text-muted uk-margin-small-left">
+                            Descendente
+                          </label>
+                        </div>
+                      </div>
                     </div>
                     <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
                   </div>
@@ -832,6 +849,39 @@
                           Descendente
                         </label>
                       </div>
+                      <div id="org_desplegable_oriundo" class="uk-flex uk-flex-column uk-padding-small uk-padding-remove-top" >
+                        <label class="uk-text-muted">
+                          Departamento de nacimiento
+                        </label>
+                        <select class="uk-select" id="org_desplegable_oriundo_"  onchange="set_valor(this)">
+                          <option value="default">Elige el departamento</option>
+                         <option value="AMAZONAS">Amazonas</option>
+                          <option value="ANCASH">Ancash</option>
+                          <option value="APURIMAC">Apurimac</option>
+                          <option value="AREQUIPA">Arequipa</option>
+                          <option value="AYACUCHO">Ayacucho</option>
+                          <option value="CAJAMARCA">Cajamarca</option>
+                          <option value="CALLAO">Callao</option>
+                          <option value="CUSCO">Cusco</option>
+                          <option value="HUANCAVELICA">Huancavelica</option>
+                          <option value="HUANUCO">Huanuco</option>
+                          <option value="ICA">Ica</option>
+                          <option value="JUNIN">Junin</option>
+                          <option value="LA LIBERTAD">La Libertad</option>
+                          <option value="LAMBAYEQUE">Lambayeque</option>
+                          <option value="LIMA">Lima</option>
+                          <option value="LORETO">Loreto</option>
+                          <option value="MADRE DE DIOS">Madre de Dios</option>
+                          <option value="MOQUEGUA">Moquegua</option>
+                          <option value="PASCO">Pasco</option>
+                          <option value="PIURA">Piura</option>
+                          <option value="PUNO">Puno</option>
+                          <option value="SAN MARTIN">San Martin</option>
+                          <option value="TACNA">Tacna</option>
+                          <option value="TUMBES">Tumbes</option>
+                          <option value="UCAYALI">Ucayali</option> 
+                        </select>
+                      </div>
                     </div>
                     <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
                   </div>
@@ -846,13 +896,13 @@
                   <div class="uk-width-1-1@s uk-flex uk-flex-between">
                     <div class="uk-flex uk-flex-column">
                       <div class="uk-flex uk-flex-middle">
-                        <input type="radio" id="postulan_dif_distrito_asc" name="postulan_dif_distrito_orden" onclick="set_valor(this)" value="ASC">
+                        <input type="radio" id="postulan_dif_distrito_asc" name="elecvsnacimiento_name" onclick="set_valor(this)" value="ASC">
                         <label for="postulan_dif_distrito_asc" class="uk-text-muted uk-margin-small-left">
                           Ascendente
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle">
-                        <input type="radio" id="postulan_dif_distrito_desc" name="postulan_dif_distrito_orden" onclick="set_valor(this)" value="DESC">
+                        <input type="radio" id="postulan_dif_distrito_desc" name="elecvsnacimiento_name" onclick="set_valor(this)" value="DESC">
                         <label for="postulan_dif_distrito_desc" class="uk-text-muted uk-margin-small-left">
                           Descendente
                         </label>
@@ -874,19 +924,19 @@
                       <label class="uk-text-muted uk-text-bold">
                         2019
                       </label>
-                      <div class="uk-width-1-1@s" id="hide2019" >
+                      <div class="uk-width-1-1@s" id="2019_est_present" >
                         <div class="uk-margin-small-bottom">
                           <label class="uk-text-muted">
                             Estado de Presentación:
                           </label>
                           <div class="uk-flex uk-flex-middle">
-                            <input type="radio" id="2019_est_si" name="2019_est_present" onclick="set_valor(this)" value="PRESENTO">
+                            <input type="radio" id="2019_est_si" name="2019_est_present" onclick="set_valor(this)" value="PRESENTÓ">
                             <label for="2019_est_si" class="uk-text-muted uk-margin-small-left">
                               Presentaron
                             </label>
                           </div>
                           <div class="uk-flex uk-flex-middle">
-                            <input type="radio" id="2019_est_no" name="2019_est_present" onclick="set_valor(this)" value="NO PRESENTA">
+                            <input type="radio" id="2019_est_no" name="2019_est_present" onclick="set_valor(this)" value="NO PRESENTÓ">
                             <label for="2019_est_no" class="uk-text-muted uk-margin-small-left">
                               No presentaron
                             </label>
@@ -897,13 +947,13 @@
                             Ingresos Declarados
                           </label>
                           <div class="uk-flex uk-flex-middle">
-                            <input type="radio" id="2019_ingre_dec_asc" name="2019_ingre_dec" onclick="set_valor(this)" value="ASC">
+                            <input type="radio" id="2019_ingre_dec_asc" name="2019_ingre_dec" value="ASC">
                             <label for="2019_ingre_dec_asc" class="uk-text-muted uk-margin-small-left">
                               Ascendente
                             </label>
                           </div>
                           <div class="uk-flex uk-flex-middle">
-                            <input type="radio" id="2019_ingre_dec_desc" name="2019_ingre_dec"  onclick="set_valor(this)" value="DESC">
+                            <input type="radio" id="2019_ingre_dec_desc" name="2019_ingre_dec"  value="DESC">
                             <label for="2019_ingre_dec_desc" class="uk-text-muted uk-margin-small-left">
                               Descendente
                             </label>
@@ -913,19 +963,19 @@
                       <label class="uk-text-muted uk-text-bold">
                         2018                    
                       </label>
-                      <div class="uk-width-1-1@s" id="hide2018">
+                      <div class="uk-width-1-1@s" id="2018_est_present">
                         <div class="uk-margin-small-bottom">
                           <label class="uk-text-muted">
                             Estado de Presentación:
                           </label>
                           <div class="uk-flex uk-flex-middle">
-                            <input type="radio" id="2018_est_si"  name="2018_est_present" onclick="set_valor(this)" value="PRESENTO">
+                            <input type="radio" id="2018_est_si"  name="2018_est_present" onclick="set_valor(this)" value="PRESENTÓ">
                             <label for="2018_est_si" class="uk-text-muted uk-margin-small-left">
                               Presentaron
                             </label>
                           </div>
                           <div class="uk-flex uk-flex-middle">
-                            <input type="radio" id="2018_est_no" name="2018_est_present" onclick="set_valor(this)" value="NO PRESENTO">
+                            <input type="radio" id="2018_est_no" name="2018_est_present" onclick="set_valor(this)" value="NO PRESENTÓ">
                             <label for="2018_est_no" class="uk-text-muted uk-margin-small-left">
                               No presentaron
                             </label>
@@ -936,13 +986,13 @@
                             Ingresos Declarados
                           </label>
                           <div class="uk-flex uk-flex-middle">
-                            <input type="radio" id="2018_ingre_dec_asc" name="2018_ingre_dec" onclick="set_valor(this)" value="ASC">
+                            <input type="radio" id="2018_ingre_dec_asc" name="2018_ingre_dec"  value="ASC">
                             <label for="2018_ingre_dec_asc" class="uk-text-muted uk-margin-small-left">
                               Ascendente
                             </label>
                           </div>
                           <div class="uk-flex uk-flex-middle">
-                            <input type="radio" id="2018_ingre_dec_desc" name="2018_ingre_dec" onclick="set_valor(this)" value="DESC">
+                            <input type="radio" id="2018_ingre_dec_desc" name="2018_ingre_dec" value="DESC">
                             <label for="2018_ingre_dec_desc" class="uk-text-muted uk-margin-small-left">
                               Descendente
                             </label>
@@ -952,19 +1002,19 @@
                       <label class="uk-text-muted uk-text-bold">
                         2017                      
                       </label>
-                      <div class="uk-width-1-1@s" id="hide2017">
+                      <div class="uk-width-1-1@s" id="2017_est_present">
                         <div class="uk-margin-small-bottom">
                           <label class="uk-text-muted">
                             Estado de Presentación:
                           </label>
                           <div class="uk-flex uk-flex-middle">
-                            <input type="radio" id="2017_est_si" name="2017_est_present" onclick="set_valor(this)" value="PRESENTO">
+                            <input type="radio" id="2017_est_si" name="2017_est_present" onclick="set_valor(this)" value="PRESENTÓ">
                             <label for="2017_est_si" class="uk-text-muted uk-margin-small-left">
                               Presentaron
                             </label>
                           </div>
                           <div class="uk-flex uk-flex-middle">
-                            <input type="radio" id="2017_est_no" name="2017_est_present" onclick="set_valor(this)" value="NO PRESENTO">
+                            <input type="radio" id="2017_est_no" name="2017_est_present" onclick="set_valor(this)" value="NO PRESENTÓ">
                             <label for="2017_est_no" class="uk-text-muted uk-margin-small-left">
                               No presentaron
                             </label>
@@ -975,13 +1025,13 @@
                             Ingresos Declarados
                           </label>
                           <div class="uk-flex uk-flex-middle">
-                            <input type="radio" id="2017_ingre_dec_asc" name="2017_ingre_dec"  onclick="set_valor(this)" value="ASC">
+                            <input type="radio" id="2017_ingre_dec_asc" name="2017_ingre_dec"  value="ASC">
                             <label for="2017_ingre_dec_asc" class="uk-text-muted uk-margin-small-left">
                               Ascendente
                             </label>
                           </div>
                           <div class="uk-flex uk-flex-middle">
-                            <input type="radio" id="2017_ingre_dec_desc" name="2017_ingre_dec" onclick="set_valor(this)" value="DESC">
+                            <input type="radio" id="2017_ingre_dec_desc" name="2017_ingre_dec" value="DESC">
                             <label for="2017_ingre_dec_desc" class="uk-text-muted uk-margin-small-left">
                               Descendente
                             </label>
