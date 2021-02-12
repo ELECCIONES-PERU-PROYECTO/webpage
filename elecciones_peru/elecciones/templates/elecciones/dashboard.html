@@ -389,7 +389,7 @@
                           </label>
                           <select class="uk-select" id="desplegable_oriundo_" onchange="onchange_desple_oriundo()">
                             <option value="default">Elige el departamento</option>
-                           <option value="AMAZONAS">Amazonas</option>
+                            <option value="AMAZONAS">Amazonas</option>
                             <option value="ANCASH">Ancash</option>
                             <option value="APURIMAC">Apurimac</option>
                             <option value="AREQUIPA">Arequipa</option>
@@ -559,20 +559,20 @@
                         Rango de edades
                       </label>
                       <div class="uk-flex uk-flex-middle">
-                        <input type="radio" id="rango_edad_18_30" data-info = "rango_edad_18_30"  name="opc_edad" onclick="set_valor(this)" value="18-30">
-                        <label for="rango_edad_18_30" class="uk-text-muted uk-margin-small-left">
+                        <input type="radio" id="org_rango_edad_18_30" data-info = "rango_edad_18_30"  name="opc_edad" onclick="set_valor(this)" value="18-30">
+                        <label for="org_rango_edad_18_30" class="uk-text-muted uk-margin-small-left">
                           18 - 30
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle">
-                        <input type="radio" id="rango_edad_30_50" data-info = "rango_edad_30_50" name="opc_edad" onclick="set_valor(this)" value="30-50">
-                        <label for="rango_edad_30_50" class="uk-text-muted uk-margin-small-left">
+                        <input type="radio" id="org_rango_edad_30_50" data-info = "rango_edad_30_50" name="opc_edad" onclick="set_valor(this)" value="30-50">
+                        <label for="org_rango_edad_30_50" class="uk-text-muted uk-margin-small-left">
                           30 - 50
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle">
-                        <input type="radio" id="rango_edad_50_70" data-info="rango_edad_50_70" name="opc_edad" onclick="set_valor(this)" value="50-70">
-                        <label for="rango_edad_50_70" class="uk-text-muted uk-margin-small-left">
+                        <input type="radio" id="org_rango_edad_50_70" data-info="rango_edad_50_70" name="opc_edad" onclick="set_valor(this)" value="50-70">
+                        <label for="org_rango_edad_50_70" class="uk-text-muted uk-margin-small-left">
                           50 - 70
                         </label>
                       </div>
@@ -1084,17 +1084,17 @@
         {% for organizacion in organizaciones_return %}
         <div class="uk-card uk-card-default uk-card-hover uk-card-body" style="width: 260px; height: 300px; margin: 1rem;" >
           <div class="uk-text-center uk-padding-remove uk-margin-small-bottom">
-              <img src="{{ organizacion.url }}" width="155px" height="215px" alt="{{ candidato.candidato }}">
+              <img src="{{ organizacion.url }}" width="155px" height="215px" alt="{{ organizacion.organizacion_politica }}">
           </div>
           <div class="uk-width-expand@m uk-padding-right candidato-card">
-            <div class="uk-text-small uk-margin-remove">
+            <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
               <p class="uk-text-muted uk-margin-remove uk-text-center">Nombre de la organización</p>
               <p class="uk-margin-remove uk-text-center">{{ organizacion.organizacion_politica }}</p>
             </div>
           </div>
         </div>
       {% endfor %}
-    </div>
+      </div>
     {% elif page %}
       <div class="uk-container uk-margin-top uk-margin-bottom">
           {% for candidato in page %}
@@ -1107,16 +1107,16 @@
               {% endif %}
             </div>
             <div class="uk-width-expand@m uk-padding-right uk-padding-small candidato-card">
-              <div class="uk-grid uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-margin-remove uk-grid-match" uk-grid>
-                <div class="uk-text-small uk-margin-remove">
+              <div class="uk-grid uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-margin-remove" uk-grid>
+                <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
                   <p class="uk-text-muted uk-margin-remove">Nombres</p>
                   {{ candidato.candidato }}
                 </div>
-                <div class="uk-text-small uk-margin-remove">
+                <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
                   <p class="uk-text-muted uk-margin-remove">Partido</p>
                   {{ candidato.organizacion_politica }}
                 </div>
-                <div class="uk-text-small uk-margin-remove">
+                <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
                   {% if candidato.cargo_eleccion != "CONGRESISTA DE LA REPÚBLICA" %}
                     <p class="uk-text-muted uk-margin-remove">Cargo</p>
                     {{ candidato.cargo_eleccion }}
@@ -1125,7 +1125,7 @@
                     {{ candidato.distrito_elec }}
                   {% endif %}
                 </div>
-                <div class="uk-text-small uk-margin-remove">
+                <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
                   <p class="uk-text-muted uk-margin-remove">Hoja de Vida</p>
                   <a onclick="verHojadeVida(this)" class="dni_id" id={{candidato.dni_candidato}} name="{{candidato.cargo_eleccion}}" style="width: fit-content; height: fit-content;">Ver hoja de vida</a>
                 </div>
@@ -1138,8 +1138,7 @@
     {% else %}
       <div class="uk-container uk-text-center no-results-container">
         <span uk-icon="icon: settings; ratio: 2.3"></span>
-        <h5 class="uk-text-large uk-text-light uk-margin-remove">
-          Escoge al menos un filro para que aparezcan los resultados.
+        <h5 id="text_info" class="uk-text-large uk-text-light uk-margin-remove">
         </h5>
       </div>
     {% endif %}
@@ -1153,4 +1152,15 @@
   <script src="{% static "js/display_filter.js"%}"></script>
   <script src="{% static "js/filter_orga.js"%}"></script>
   <script src="{% static "js/serv.js"%}"></script>
+  <script>
+    let url = window.location.href
+    let text = url.split("/")
+    let text_info = document.getElementById('text_info')
+    
+    if(text[text.length - 1] === "candidatos" || text[text.length - 1] === "candidatos#") {
+      text_info.textContent = "Escoge al menos un filro para que aparezcan los resultados."
+    } else {
+      text_info.textContent = "No se encontraron resultados para esta búsqueda"
+    }
+  </script>
 {% endblock %}
