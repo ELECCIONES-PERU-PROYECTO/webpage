@@ -199,7 +199,6 @@ function set_valor(element){
   } else if(element.name =="2017_presente" || element.name =="2017_ingre"){
     filtro_id = "2017priv"
   }
-
   if(element.id == "oriundo" && element.value == "NO"){
     select = document.getElementsByName("uwuselectoriundo")
     select[0].selectedIndex = 0
