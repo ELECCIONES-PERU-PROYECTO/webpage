@@ -559,20 +559,20 @@
                         Rango de edades
                       </label>
                       <div class="uk-flex uk-flex-middle">
-                        <input type="radio" id="rango_edad_18_30" data-info = "rango_edad_18_30"  name="opc_edad" onclick="set_valor(this)" value="18-30">
-                        <label for="rango_edad_18_30" class="uk-text-muted uk-margin-small-left">
+                        <input type="radio" id="org_rango_edad_18_30" data-info = "rango_edad_18_30"  name="opc_edad" onclick="set_valor(this)" value="18-30">
+                        <label for="org_rango_edad_18_30" class="uk-text-muted uk-margin-small-left">
                           18 - 30
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle">
-                        <input type="radio" id="rango_edad_30_50" data-info = "rango_edad_30_50" name="opc_edad" onclick="set_valor(this)" value="30-50">
-                        <label for="rango_edad_30_50" class="uk-text-muted uk-margin-small-left">
+                        <input type="radio" id="org_rango_edad_30_50" data-info = "rango_edad_30_50" name="opc_edad" onclick="set_valor(this)" value="30-50">
+                        <label for="org_rango_edad_30_50" class="uk-text-muted uk-margin-small-left">
                           30 - 50
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle">
-                        <input type="radio" id="rango_edad_50_70" data-info="rango_edad_50_70" name="opc_edad" onclick="set_valor(this)" value="50-70">
-                        <label for="rango_edad_50_70" class="uk-text-muted uk-margin-small-left">
+                        <input type="radio" id="org_rango_edad_50_70" data-info="rango_edad_50_70" name="opc_edad" onclick="set_valor(this)" value="50-70">
+                        <label for="org_rango_edad_50_70" class="uk-text-muted uk-margin-small-left">
                           50 - 70
                         </label>
                       </div>
@@ -1084,7 +1084,7 @@
         {% for organizacion in organizaciones_return %}
         <div class="uk-card uk-card-default uk-card-hover uk-card-body" style="width: 260px; height: 300px; margin: 1rem;" >
           <div class="uk-text-center uk-padding-remove uk-margin-small-bottom">
-              <img src="{{ organizacion.url }}" width="155px" height="215px" alt="{{ candidato.candidato }}">
+              <img src="{{ organizacion.url }}" width="155px" height="215px" alt="{{ organizacion.organizacion_politica }}">
           </div>
           <div class="uk-width-expand@m uk-padding-right candidato-card">
             <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
@@ -1157,7 +1157,7 @@
     let text = url.split("/")
     let text_info = document.getElementById('text_info')
     
-    if(text[text.length - 1] === "candidatos") {
+    if(text[text.length - 1] === "candidatos" || text[text.length - 1] === "candidatos#") {
       text_info.textContent = "Escoge al menos un filro para que aparezcan los resultados."
     } else {
       text_info.textContent = "No se encontraron resultados para esta búsqueda"
