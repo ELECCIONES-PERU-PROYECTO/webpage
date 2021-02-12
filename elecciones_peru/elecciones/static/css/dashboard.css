@@ -6,7 +6,9 @@
 #orden_genero_container {
 	display: none;
 }
-
+#orden_edad_container{
+	display: none;
+}
 /* -- No hover -- */
 .no-text-styles-hover:hover {
 	text-decoration: none;

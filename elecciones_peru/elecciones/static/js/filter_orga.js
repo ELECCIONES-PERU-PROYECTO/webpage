@@ -3,25 +3,34 @@ let filtro_info = ""
 let orden = ""
 let info_extra= ""
 
+function mark_filters(){
+  setTimeout(function(){
+    UIkit.notification('Marque al menos un filtro');
+  }, 1000);
+  return "again"
+}
+
 function button_filter_org(){
     if(filtro_id==""){
-      setTimeout(function(){
-        UIkit.notification('Marque al menos un filtro');
-      }, 1000);
-      return "again"
+      mark_filters();
     }
 
     let url = "http://127.0.0.1:8000/elecciones/candidatos"
-    if(filtro_id=="opc_edad"){
+    if(filtro_id=="edad"){
       let rango=""
       inputs_edad = document.getElementsByName("opc_edad")
+      orden_edad_ = document.getElementsByName("edad_orden")
       for(let i = 0 ; i < inputs_edad.length; i++){
         if(inputs_edad[i].checked){
           rango = inputs_edad[i].value
         }
       }
-      console.log("rango: ",rango)
-      url = url+"/"+filtro_id+"/"+rango+"/"+"unk"
+      for(let i = 0 ;i < orden_edad_.length; i++){
+        filtro_info = orden_edad_[i].value
+      }
+      
+
+      url = url+"/"+filtro_id+"/"+rango+"/"+filtro_info
       console.log(url)
     } else if(filtro_id=="genero"){
       let inputs_genero = document.getElementsByName("opc_genero")
@@ -39,6 +48,12 @@ function button_filter_org(){
       }
       info_extra = genero
       //filtro_orden = orden
+      if(orden==""){
+        setTimeout(function(){
+          UIkit.notification('Marque orden');
+        }, 1000);
+        return;
+      }
       url = url+"/"+ filtro_id+"/"+genero+"/"+orden
       console.log(url)
     } else if(filtro_id=="primaria" || filtro_id == "secundaria" || 
@@ -50,77 +65,61 @@ function button_filter_org(){
 
         url = url+"/"+filtro_id+"/unk"+"/"+orden
         console.log(url)
-    } else if(filtro_id=="penal_obligaciones_in"){
-        url = url+"/"+filtro_id+"/"+filtro_info+"/unk"
-    } else if(filtro_id=="penal_cant"){
+    } else if(filtro_id=="cant_sen_penal_obliga"){
+        url = url+"/"+filtro_id+"/unk/"+filtro_info
+    } else if(filtro_id=="cant_sen_penal"){
         //url = url+"/"+filtro_id+"/"+filtro_info+"/unk"
         url = url+"/"+filtro_id+"/unk/" + filtro_info
-      } else if(filtro_id=="civil_cant"){
+      } else if(filtro_id=="cant_sen_civil"){
         //url = url+"/"+filtro_id+"/"+filtro_info+"/unk"
         url = url+"/"+filtro_id+"/unk/" + filtro_info
 
-      } else if(filtro_id=="opc_si"){
-      url = url+"/"+filtro_id+"/"+filtro_info
-      console.log(url)
-    }else if(filtro_id=="opc_no"){
-      url = url+"/"+filtro_id+"/unk/"+filtro_info
+      } else if(filtro_id=="org_oriundo"){
+      url = url+"/"+filtro_id+"/"+info_extra+"/"+filtro_info
       console.log(url)
     }else if(filtro_id=="elecvsnacimiento_name"){
       url = url+"/"+filtro_id+"/unk/"+filtro_info
       console.log(url)
     }else if(filtro_id=="2019priv" ){
       console.log("2019_priv: --> filtro_info : ",filtro_info)
-      let bool_presento=""
-      let orden_=""
-      let bool_presento_inputs = document.getElementsByName("2019_presente")
-      let orden_inputs = document.getElementsByName("2019_ingre")
-      for(let i = 0 ; i < bool_presento_inputs.length; i++){
-        if(bool_presento_inputs[i].checked == true)
-          bool_presento = bool_presento_inputs[i].value  
+      //let orden_=""
+      
+      let inputs = document.getElementsByName("2019_ingre_dec")
+      for(let i = 0 ; i < inputs.length; i++){
+        if(inputs[i].checked == true)
+          orden = inputs[i].value  
       }
-      for(let i = 0 ; i < orden_inputs.length; i++){
-        if(orden_inputs[i].checked == true)
-          orden_ = orden_inputs[i].value  
-      }
-
-      url = url+"/"+filtro_id+"/"+bool_presento+"/"+orden_
+      
+      
+      url = url+"/"+filtro_id+"/"+filtro_info+"/"+orden
       console.log(url)
     } else if(filtro_id=="2018priv" ){
       console.log("2018_priv: --> filtro_info : ",filtro_info)
-      let bool_presento=""
-      let orden_=""
-      let bool_presento_inputs = document.getElementsByName("2018_presente")
-      let orden_inputs = document.getElementsByName("2018_ingre")
-      for(let i = 0 ; i < bool_presento_inputs.length; i++){
-        if(bool_presento_inputs[i].checked == true)
-          bool_presento = bool_presento_inputs[i].value  
-      }
-      for(let i = 0 ; i < orden_inputs.length; i++){
-        if(orden_inputs[i].checked == true)
-          orden_ = orden_inputs[i].value  
+   
+      let inputs = document.getElementsByName("2018_ingre_dec")
+      for(let i = 0 ; i < inputs.length; i++){
+        if(inputs[i].checked == true)
+        orden = inputs[i].value  
       }
 
-      url = url+"/"+filtro_id+"/"+bool_presento+"/"+orden_
+
+      url = url+"/"+filtro_id+"/"+filtro_info+"/"+orden
       console.log(url)
     } else if(filtro_id=="2017priv" ){
-        console.log("2018_priv: --> filtro_info : ",filtro_info)
-        let bool_presento=""
-        let orden_=""
-        let bool_presento_inputs = document.getElementsByName("2017_presente")
-        let orden_inputs = document.getElementsByName("2017_ingre")
-        for(let i = 0 ; i < bool_presento_inputs.length; i++){
-          if(bool_presento_inputs[i].checked == true)
-            bool_presento = bool_presento_inputs[i].value  
-        }
-        for(let i = 0 ; i < orden_inputs.length; i++){
-          if(orden_inputs[i].checked == true)
-            orden_ = orden_inputs[i].value  
+        let inputs = document.getElementsByName("2017_ingre_dec")
+        for(let i = 0 ; i < inputs.length; i++){
+          if(inputs[i].checked == true)
+            orden = inputs[i].value  
         }
 
-        url = url+"/"+filtro_id+"/"+bool_presento+"/"+orden_
+
+        url = url+"/"+filtro_id+"/"+filtro_info+"/"+orden
         console.log(url)
-    } else if(filtro_id=="publico_orden"){
-      url = url+"/"+filtro_id+"/"+filtro_info
+    } else if(filtro_id=="monto_quinque"){
+
+      orden = filtro_info;
+ 
+      url = url+"/"+filtro_id+"/unk/"+orden
       console.log(url)
     }
     console.log(url)
@@ -129,33 +128,64 @@ function button_filter_org(){
 }
 
 function quitar_todas_selecciones(id_){
+  let gen_or_cont = document.getElementById("orden_genero_container")
+  let edad_or_cont = document.getElementById("orden_edad_container")
+  console.log("id_: ",id_)
   let lista_inputs_all = document.getElementsByTagName("input")
   for(let i = 0 ; i<lista_inputs_all.length; i++){
-    if(lista_inputs_all[i].id == id_){
+    if(id_ == "org_desplegable_oriundo_" && lista_inputs_all[i].name =="org_oriundo"){
+      continue
+    }
+     if (id_== lista_inputs_all[i].id  ){
+        console.log("------------------------------------")
+       console.log("lista_inputs_all[i].id: ", lista_inputs_all[i].id)
+       console.log("------------------------------------")
+
       continue
     }
     lista_inputs_all[i].checked = false
   }
   let litsta_selects = document.getElementsByTagName("select")
   for(let i = 0 ; i<litsta_selects.length; i++){
-    if(litsta_selects[i].id == id_){
-      continue
+    //if(litsta_selects[i].id == id_){
+    //  continue
+    //}
+    console.log("dentro de funcion id_: ",id_ )
+    if(id_ == "org_oriundo" || id_ =="org_desplegable_oriundo_"){
+      return;
     }
+    console.log("elimina")
     litsta_selects[i].selectedIndex = 0
   }
+  gen_or_cont.style.display = "none"
+  edad_or_cont.style.display="none"
+  document.getElementById("2019_est_present").style.display="block"
+  document.getElementById("2018_est_present").style.display="block"
+  document.getElementById("2017_est_present").style.display="block"
+
   filtro_id= ""
   filtro_info=""
+  orden = ""
+  info_extra= ""
 }
 
 //list.length = 0
 //EDAD
 function set_valor(element){
   console.log("element.id : ",element.id)
-  quitar_todas_selecciones(element.id)
+  if(element.id == "org_desplegable_oriundo_" ){
+    let select = document.getElementById("org_desplegable_oriundo_")
+    info_extra = select.options[select.selectedIndex].value
+    return
+  }
+  if(element.name != "genero_orden" && element.name != "edad_orden" && element.name !="2019_ingre_dec" && element.name !="2018_ingre_dec" && element.name !="2017_ingre_dec"){
+    quitar_todas_selecciones(element.id)
 
-  filtro_id = element.name
-  filtro_info = element.value
+  }
 
+    filtro_id = element.name
+    filtro_info = element.value
+  
   if(element.name == "opc_educacion"){
     inputs_educacion = document.getElementsByName("opc_educacion")
     for(let i = 0 ; i < inputs_educacion.length; i++){
@@ -190,19 +220,42 @@ function set_valor(element){
         }
       }
     }
-  } else if(element.name == "opc_genero" || element.name == "genero_orden"){
+  } 
+  else if (element.name=="opc_edad" || element.name == "edad_orden"){
+    filtro_id = "edad"
+    let gen_or_cont = document.getElementById("orden_edad_container")
+    let gen = document.getElementsByName("opc_edad")
+    
+    if(gen[0].checked || gen[1].checked|| gen[2].checked) 
+    gen_or_cont.style.display = "block"
+    else 
+    gen_or_cont.style.display = "none"
+  }
+  else if(element.name == "opc_genero" || element.name == "genero_orden"){
     filtro_id = "genero"
-  } else if(element.name =="2019_presente" || element.name =="2019_ingre"){
+    let gen_or_cont = document.getElementById("orden_genero_container")
+    let gen = document.getElementsByName("opc_genero")
+    
+    if(gen[0].checked || gen[1].checked ) 
+    gen_or_cont.style.display = "block"
+    else 
+    gen_or_cont.style.display = "none"
+  } else if(element.name =="2019_est_present" || element.name =="2019_ingre_dec"){
     filtro_id = "2019priv"
-  } else if(element.name =="2018_presente" || element.name =="2018_ingre"){
+    document.getElementById("2018_est_present").style.display="none"
+    document.getElementById("2017_est_present").style.display="none"
+  } else if(element.name =="2018_est_present" || element.name =="2018_ingre_dec"){
     filtro_id = "2018priv"
-  } else if(element.name =="2017_presente" || element.name =="2017_ingre"){
+    document.getElementById("2019_est_present").style.display="none"
+    document.getElementById("2017_est_present").style.display="none"
+  } else if(element.name =="2017_est_present" || element.name =="2017_ingre_dec"){
     filtro_id = "2017priv"
+    document.getElementById("2019_est_present").style.display="none"
+    document.getElementById("2018_est_present").style.display="none"
   }
-  if(element.id == "oriundo" && element.value == "NO"){
-    select = document.getElementsByName("uwuselectoriundo")
-    select[0].selectedIndex = 0
-  }
+
   console.log("filtro_id: ",filtro_id)
   console.log("filtro_info: ",filtro_info)
+  console.log("info_extra: ",info_extra)
+
 }
