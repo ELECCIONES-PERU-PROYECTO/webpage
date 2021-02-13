@@ -2,116 +2,16 @@
 {% block title %}Análisis Gráficos{% endblock %}
 {% load static %}
 {% block css %}
-
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Información general</title>
-		<link rel="icon" href="{% static "graphic_images/favicon.ico">
-		<!-- CSS FILES -->
-		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/uikit@latest/dist/css/uikit.min.css">
-		<link rel="preconnect" href="https://fonts.gstatic.com">
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
-		<link rel="preconnect" href="https://fonts.gstatic.com">
-		<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-		<style>
-			nav.nav-scroll {
-				position: relative;
-				z-index: 2;
-				height: 2rem;
-				box-sizing: border-box;
-				overflow-y: hidden;
-				padding: 1rem;
-				border-top: 1px solid rgba(0,0,0,0.075);
-				line-height: 1em;
-			}
-			nav.nav-scroll > ul {
-				overflow-x: auto;
-				text-align: center;
-				white-space: nowrap;
-				-webkit-overflow-scrolling: touch;
-				padding-bottom: 1rem;
-			}
-			nav.nav-scroll > ul > li > a {
-				font-weight: 500;
-			}
-			.news-slide > li > .uk-card {
-				box-shadow: none;
-				border:  1px solid rgba(0,0,0,0.075);
-			}
-			h1, h2, h3, h4, h5, h6 {
-				font-weight: 700;
-			}
-			.uk-logo > img {
-				height: 58px;
-			}
-			#header.uk-sticky-below {
-				box-shadow: 0 2px 14px 0 rgba(0,0,0,0.07);
-			}
-			/*
-			
-			.uk-overlay-primary{
-				background: rgb(171 134 134 / 80%);
-			}
-			*/
-
-			/*BLACK */
-			.uk-overlay-primary {
-				background: rgb(0 0 0);
-			}
-
-			.uk-h3, h3 {
-				
-				text-align: center;
-			}
-			
-		.square{
-			counter-reset: list-counter;
-			list-style: none;
-			
-		}
-		.square li{
-			margin: 1.5em 0; 
-			font-family: 'Poppins', sans-serif;  
-		}
-		.square li:before{
-			content: counter(list-counter);
-			counter-increment: list-counter;
-			width: 1em;
-			height: 1em;
-			padding: .5em;
-			margin-right: 1em;
-			border: .25em solid #ccc;
-			background: #000;
-			color: #fff;
-			font-family: arial;
-			font-weight: bold;
-			text-align: center;
-			display: inline-block;
-			font-family: 'Poppins', sans-serif;  
-			
-		}
-		.prueba{
-			color: #000000;
-			font-size:20px;
-			font-weight: bolder;
-		}
-
-
-
-		.flexFont {
-			height:8em;
-			width:103%;
-			background-color:#eeeeee;
-			padding:1%;
-			margin: 20px;
-		}
-
-
-		</style>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/uikit@latest/dist/css/uikit.min.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+	<link type="text/css" href="{% static "css/graphics.css" %}" rel="stylesheet">
 	{% endblock %}
 	{% block content %}
-
 	</head>
-	<body>
+	<body id="top">
 		<!--HEADER-->
 		<header id="header" style="background-color: #fff;" data-uk-sticky="show-on-up: true; animation: uk-animation-fade; media: @l">
 			<div class="uk-container">
@@ -119,10 +19,10 @@
 					<div class="uk-navbar-left nav-overlay uk-visible@m">
 						<ul class="uk-navbar-nav">
 							<li>
-								<a href="#" title="Subscribe">INICIO</a>
+								<a href="http://127.0.0.1:8000/elecciones/" title="Subscribe">INICIO</a>
 							</li>
 							<li>
-								<a href="#" title="Subscribe">FILTROS</a>
+								<a href="http://127.0.0.1:8000/elecciones/candidatos" title="Subscribe">FILTROS</a>
 							</li>
 							<!--<li>
 								<a href="#" title="Sign Up">Sign Up</a>
@@ -131,7 +31,7 @@
 						</ul>
 					</div>
 					<div class="uk-navbar-center nav-overlay">
-						<a class="uk-navbar-item uk-logo" href="#" title="Logo"><img src="{% static "graphic_images/n-logo.PNG" %}" %}" alt="Logo"></a>
+						<a class="uk-navbar-item uk-logo" href="#" title="Logo"><img src="{% static "images/graphic_images/n-logo.png" %}" alt="Logo"></a>
 					</div>
 					<div class="uk-navbar-right nav-overlay">
 						<!--
@@ -178,22 +78,20 @@
 		-->
 		<!-- /NAVIGATION -->
 		<!-- HERO -->
-		<section class="uk-section uk-section-small">
-			<div class="uk-container">
-				<div class="uk-height-medium uk-cover-container uk-border-rounded">
-					<img src="{% static "graphic_images/PERU.PNG" %}" %}" alt="Alt img" data-uk-cover>
-					<div class="uk-overlay uk-overlay-primary uk-position-cover uk-flex uk-flex-center uk-flex-middle uk-light uk-text-center">
-						<div data-uk-scrollspy="cls: uk-animation-slide-bottom-small">
-						<!--	<span style="letter-spacing: 0.2em; font-size: 0.725rem">FEATURED ARTICLE</span> -->
-							<h1 class="uk-margin-top uk-margin-small-bottom uk-margin-remove-adjacent">ELECCIONES GENERALES 2021</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit dolore magna aliqua.</p>
-							<a href="#" class="uk-button uk-button-default uk-margin-top">INFORMATE</a>
-						</div>
+		<div class="uk-container uk-padding-remove uk-container-expand">
+			<div class="uk-height-medium uk-cover-container uk-border-rounded">
+				<img src="{% static "images/graphic_images/PERU.png" %}" alt="peru imagen" data-uk-cover>
+				<div class="uk-overlay uk-overlay-primary uk-position-cover uk-flex uk-flex-center uk-flex-middle uk-light uk-text-center">
+					<div data-uk-scrollspy="cls: uk-animation-slide-bottom-small">
+					<!--	<span style="letter-spacing: 0.2em; font-size: 0.725rem">FEATURED ARTICLE</span> -->
+						<h1 class="uk-margin-remove-top uk-margin-small-bottom uk-margin-remove-adjacent">ELECCIONES GENERALES 2021</h1>
+						<p class="uk-margin-small-bottom">Lorem ipsum dolor sit amet, consectetur adipiscing elit dolore magna aliqua.</p>
+						<a href="#" class="uk-button uk-button-default uk-margin-small-top">INFORMATE</a>
 					</div>
-					
 				</div>
+				
 			</div>
-		</section>
+		</div>
 		
 		<!-- HERO -->
 
@@ -202,20 +100,19 @@
 			<div class="uk-container">
 				<div class="uk-grid" data-ukgrid>
 					<div class="uk-width-3-3@m">
-						<h4 class="uk-heading-line uk-text-bold"><span></span></h4>
-						<article class="uk-section uk-section-small uk-padding-remove-top">
+						<article id="content_graphics" class="uk-section uk-section-small uk-padding-remove-top uk-margin-medium-bottom">
 							<header>
-								<h2 class="uk-margin-remove-adjacent uk-text-bold uk-margin-small-bottom"><a title="Fusce facilisis tempus magna ac dignissim." class="uk-link-reset" href="#">DATOS SOCIODEMOGRAFICOS</a></h2>
+								<h3 class="uk-margin-remove-adjacent uk-text-bold uk-text-center uk-margin-small-bottom">
+									DATOS SOCIODEMOGRAFICOS
+								</h3>
 								<!--<p class="uk-article-meta">Written on March 23, 2019. Posted in <a href="#">Blog</a> | <span data-uk-icon="icon: future"></span> Takes 7 min reading.</p>-->
 							</header>
 							<p class="paragraph">Ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 
 							<ul uk-accordion="multiple: true ">
-								<li class="uk-open">
-									<a class="uk-accordion-title" href="#">Sexo</a>
-									<div class="uk-accordion-content">
-
-										<br>
+								<li>
+									<a class="uk-accordion-title uk-text-bold" href="#">Sexo</a>
+									<div class="uk-accordion-content uk-margin-medium-top">
 										<ul uk-tab>
 											<li><a href="#">GENERAL Y POR PARTIDOS</a></li>
 											<li><a href="#">DETALLE PARTIDOS</a></li>
@@ -225,23 +122,21 @@
 											<li>
 												
 												<div class="uk-accordion-content  ">
-		
-		
 													<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
 
 														<div>
-															<h3>GENERAL</h3>
+															<h4 class="uk-text-center">GENERAL</h4>
 			
-															<a class="uk-inline" href="{% static "graphic_images/genero_todo.PNG" %}" data-caption="Caption 2">
-																<img  src="{% static "graphic_images/genero_todo.PNG" %}" alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/genero_todo.png" %}" data-caption="Caption 2">
+																<img  src="{% static "images/graphic_images/genero_todo.png" %}" alt="">
 															</a>
 														</div>
 			
 														<div>
-															<h3>POR PARTIDOS</h3>
+															<h4 class="uk-text-center">POR PARTIDOS</h4>
 											
-															<a class="uk-inline" href="{% static "graphic_images/genero_tabla.PNG" %}"  data-caption="Caption 1">
-																<img src="{% static "graphic_images/genero_tabla.PNG" %}"  alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/genero_tabla.png" %}"  data-caption="Caption 1">
+																<img src="{% static "images/graphic_images/genero_tabla.png" %}"  alt="">
 															</a>
 															
 														</div>
@@ -249,19 +144,18 @@
 													</div>
 		
 											</li>
-		
-		
+
 											<li>
 												<div class="uk-accordion-content ">
 		
 		
-													<div class="uk-child-width-1-2@m "  uk-grid uk-lightbox="animation: slide">
+													<div class="uk-child-width-1-2@m uk-flex-center"  uk-grid uk-lightbox="animation: slide">
 			
 														<div>
-															<h3>POR PARTIDO</h3>
+															<h4 class="uk-text-center">POR PARTIDO</h4>
 			
-															<a class="uk-inline" href="{% static "graphic_images/partido_genero.PNG" %}" data-caption="Caption 2">
-																<img src="{% static "graphic_images/partido_genero.PNG" %}" alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/partido_genero.png" %}" data-caption="Caption 2">
+																<img src="{% static "images/graphic_images/partido_genero.png" %}" alt="">
 															</a>
 														</div>												
 													</div>										
@@ -275,10 +169,8 @@
 									
 								</li>
 								<li>
-									<a class="uk-accordion-title " href="#">Edad</a>
-									<div class="uk-accordion-content">
-
-										<br>
+									<a class="uk-accordion-title uk-text-bold" href="#">Edad</a>
+									<div class="uk-accordion-content uk-margin-medium-top">
 										<ul uk-tab>
 											<li><a href="#">GENERAL Y POR PARTIDOS</a></li>
 											<li><a href="#">DETALLE PARTIDOS</a></li>
@@ -293,18 +185,18 @@
 													<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
 
 														<div>
-															<h3>GENERAL</h3>
+															<h4 class="uk-text-center">GENERAL</h4>
 			
-															<a class="uk-inline" href="{% static "graphic_images/edad_todo.PNG" %}" data-caption="Caption 2">
-																<img  src="{% static "graphic_images/edad_todo.PNG" %}" alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/edad_todo.png" %}" data-caption="Caption 2">
+																<img  src="{% static "images/graphic_images/edad_todo.png" %}" alt="">
 															</a>
 														</div>
 			
 														<div>
-															<h3>POR PARTIDOS</h3>
+															<h4 class="uk-text-center">POR PARTIDOS</h4>
 											
-															<a class="uk-inline" href="{% static "graphic_images/edad_partido.PNG" %}"  data-caption="Caption 1">
-																<img src="{% static "graphic_images/edad_partido.PNG" %}"  alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/edad_partido.png" %}"  data-caption="Caption 1">
+																<img src="{% static "images/graphic_images/edad_partido.png" %}"  alt="">
 															</a>
 															
 														</div>
@@ -318,13 +210,13 @@
 												<div class="uk-accordion-content  ">
 		
 		
-													<div class="uk-child-width-1-2@m "  uk-grid uk-lightbox="animation: slide">
+													<div class="uk-child-width-1-2@m uk-flex-center"  uk-grid uk-lightbox="animation: slide">
 			
 														<div>
-															<h3>POR PARTIDO</h3>
+															<h4 class="uk-text-center">POR PARTIDO</h4>
 			
-															<a class="uk-inline" href="{% static "graphic_images/edad_tabla.PNG" %}" data-caption="Caption 2">
-																<img src="{% static "graphic_images/edad_tabla.PNG" %}" alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/edad_tabla.png" %}" data-caption="Caption 2">
+																<img src="{% static "images/graphic_images/edad_tabla.png" %}" alt="">
 															</a>
 														</div>												
 													</div>										
@@ -336,24 +228,24 @@
 									</div>
 
 									<!--
-									<div class="uk-accordion-content">
+									<div class="uk-accordion-content uk-margin-medium-top">
 										<h3>PARTICIPACIÓN SEGÚN RANGOS DE EDAD</h3>
 										
 										<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
 
 											<div>
-												<h3>GENERAL</h3>
+												<h4 class="uk-text-center">GENERAL</h4>
 
-												<a class="uk-inline" href="{% static "graphic_images/edad_todo.PNG" %}" data-caption="Caption 2">
-													<img src="{% static "graphic_images/edad_todo.PNG" %}" alt="">
+												<a class="uk-inline" href="{% static "images/graphic_images/edad_todo.png" %}" data-caption="Caption 2">
+													<img src="{% static "images/graphic_images/edad_todo.png" %}" alt="">
 												</a>
 											</div>
 
 											<div>
 												<h3>POR ORGANIZACIONES POLÍTICAS</h3>
 
-												<a class="uk-inline" href="{% static "graphic_images/edad_partido.PNG" %}" data-caption="Caption 1">
-													<img src="{% static "graphic_images/edad_partido.PNG" %}" alt="">
+												<a class="uk-inline" href="{% static "images/graphic_images/edad_partido.png" %}" data-caption="Caption 1">
+													<img src="{% static "images/graphic_images/edad_partido.png" %}" alt="">
 												</a>
 											</div>
 											
@@ -361,16 +253,14 @@
 									</div>-->
 								</li>
 								<li>
-								<a class="uk-accordion-title" href="#">Lugar de nacimiento</a>
+								<a class="uk-accordion-title uk-text-bold" href="#">Lugar de nacimiento</a>
 									
 									
 								</li>
 								<li>
-									<a class="uk-accordion-title" href="#">Experiencia Laboral</a>
+									<a class="uk-accordion-title uk-text-bold" href="#">Experiencia Laboral</a>
 
-									<div class="uk-accordion-content">
-
-										<br>
+									<div class="uk-accordion-content uk-margin-medium-top">
 										<ul uk-tab>
 											<li><a href="#">GENERAL Y POR PARTIDOS</a></li>
 											<li><a href="#">DETALLE PARTIDOS</a></li>
@@ -385,18 +275,18 @@
 													<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
 
 														<div>
-															<h3>GENERAL</h3>
+															<h4 class="uk-text-center">GENERAL</h4>
 			
-															<a class="uk-inline" href="{% static "graphic_images/laboral_todo.PNG" %}" data-caption="Caption 2">
-																<img  src="{% static "graphic_images/laboral_todo.PNG" %}" alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/laboral_todo.png" %}" data-caption="Caption 2">
+																<img  src="{% static "images/graphic_images/laboral_todo.png" %}" alt="">
 															</a>
 														</div>
 			
 														<div>
-															<h3>POR PARTIDOS</h3>
+															<h4 class="uk-text-center">POR PARTIDOS</h4>
 											
-															<a class="uk-inline" href="{% static "graphic_images/laboral_partido.PNG" %}"  data-caption="Caption 1">
-																<img src="{% static "graphic_images/laboral_partido.PNG" %}"  alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/laboral_partido.png" %}"  data-caption="Caption 1">
+																<img src="{% static "images/graphic_images/laboral_partido.png" %}"  alt="">
 															</a>
 															
 														</div>
@@ -410,13 +300,13 @@
 												<div class="uk-accordion-content  ">
 		
 		
-													<div class="uk-child-width-1-2@m "  uk-grid uk-lightbox="animation: slide">
+													<div class="uk-child-width-1-2@m uk-flex-center"  uk-grid uk-lightbox="animation: slide">
 			
 														<div>
-															<h3>POR PARTIDO</h3>
+															<h4 class="uk-text-center">POR PARTIDO</h4>
 			
-															<a class="uk-inline" href="{% static "graphic_images/laboral_tabla.PNG" %}" data-caption="Caption 2">
-																<img src="{% static "graphic_images/laboral_tabla.PNG" %}" alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/laboral_tabla.png" %}" data-caption="Caption 2">
+																<img src="{% static "images/graphic_images/laboral_tabla.png" %}" alt="">
 															</a>
 														</div>												
 													</div>										
@@ -426,9 +316,7 @@
 										
 									</div>
 									<!--
-									<div class="uk-accordion-content">
-
-										<br>
+									<div class="uk-accordion-content uk-margin-medium-top">
 										<ul uk-tab>
 											<li><a href="#">GENERAL Y POR PARTIDOS</a></li>
 											<li><a href="#">DETALLE PARTIDOS</a></li>
@@ -443,18 +331,18 @@
 													<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
 
 														<div>
-															<h3>GENERAL</h3>
+															<h4 class="uk-text-center">GENERAL</h4>
 			
-															<a class="uk-inline" href="{% static "graphic_images/laboral_todo.PNG" %}" data-caption="Caption 2">
-																<img  src="{% static "graphic_images/laboral_todo.PNG" %}" alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/laboral_todo.png" %}" data-caption="Caption 2">
+																<img  src="{% static "images/graphic_images/laboral_todo.png" %}" alt="">
 															</a>
 														</div>
 			
 														<div>
-															<h3>POR PARTIDOS</h3>
+															<h4 class="uk-text-center">POR PARTIDOS</h4>
 											
-															<a class="uk-inline" href="{% static "graphic_images/laboral_partido.PNG" %}"  data-caption="Caption 1">
-																<img src="{% static "graphic_images/laboral_partido.PNG" %}"  alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/laboral_partido.png" %}"  data-caption="Caption 1">
+																<img src="{% static "images/graphic_images/laboral_partido.png" %}"  alt="">
 															</a>
 															
 														</div>
@@ -468,13 +356,13 @@
 												<div class="uk-accordion-content  ">
 		
 		
-													<div class="uk-child-width-1-2@m "  uk-grid uk-lightbox="animation: slide">
+													<div class="uk-child-width-1-2@m uk-flex-center"  uk-grid uk-lightbox="animation: slide">
 			
 														<div>
-															<h3>POR PARTIDO</h3>
+															<h4 class="uk-text-center">POR PARTIDO</h4>
 			
-															<a class="uk-inline" href="{% static "graphic_images/edad_tabla.PNG" %}" data-caption="Caption 2">
-																<img src="{% static "graphic_images/edad_tabla.PNG" %}" alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/edad_tabla.png" %}" data-caption="Caption 2">
+																<img src="{% static "images/graphic_images/edad_tabla.png" %}" alt="">
 															</a>
 														</div>												
 													</div>										
@@ -484,24 +372,24 @@
 										
 									
 									<!--
-									<div class="uk-accordion-content">
+									<div class="uk-accordion-content uk-margin-medium-top">
 										<h3>PARTICIPACIÓN SEGÚN EXPERIENCIA LABORAL</h3>
 										
 										<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
 
 											<div>
-												<h3>GENERAL</h3>
+												<h4 class="uk-text-center">GENERAL</h4>
 
-												<a class="uk-inline" href="{% static "graphic_images/laboral_todo.PNG" %}" data-caption="Caption 2">
-													<img  src="{% static "graphic_images/laboral_todo.PNG" %}" alt="">
+												<a class="uk-inline" href="{% static "images/graphic_images/laboral_todo.png" %}" data-caption="Caption 2">
+													<img  src="{% static "images/graphic_images/laboral_todo.png" %}" alt="">
 												</a>
 											</div>
 
 											<div>
 												<h3>POR ORGANIZACIONES POLÍTICAS</h3>
 								
-												<a class="uk-inline" href="{% static "graphic_images/laboral_partido.PNG" %}"  data-caption="Caption 1">
-													<img src="{% static "graphic_images/laboral_partido.PNG" %}"  alt="">
+												<a class="uk-inline" href="{% static "images/graphic_images/laboral_partido.png" %}"  data-caption="Caption 1">
+													<img src="{% static "images/graphic_images/laboral_partido.png" %}"  alt="">
 												</a>
 												
 											</div>
@@ -521,22 +409,21 @@
 							-->
 							
 							<!--<a href="#" title="Read More" class="uk-button uk-button-default uk-button-small">READ MORE</a>-->
-							<hr>
 						</article>
 
-						<article class="uk-section uk-section-small uk-padding-remove-top">
+						<article class="uk-section uk-section-small uk-padding-remove-top uk-margin-medium-bottom">
 							<header>
-								<h2 class="uk-margin-remove-adjacent uk-text-bold uk-margin-small-bottom"><a title="Fusce facilisis tempus magna ac dignissim." class="uk-link-reset" href="#">PARTICIPACIÓN POLÍTICA</a></h2>
+								<h3 class="uk-margin-remove-adjacent uk-text-bold uk-text-center uk-margin-small-bottom">
+									PARTICIPACIÓN POLÍTICA
+								</h3>
 								<!--<p class="uk-article-meta">Written on March 23, 2019. Posted in <a href="#">Blog</a> | <span data-uk-icon="icon: future"></span> Takes 7 min reading.</p>-->
 							</header>
 							<p class="paragraph">Ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 
 							<ul uk-accordion="multiple: true ">
-								<li class="uk-open">
-									<a class="uk-accordion-title" href="#">Cargos previos por elección popular</a>
-									<div class="uk-accordion-content">
-
-										<br>
+								<li>
+									<a class="uk-accordion-title uk-text-bold" href="#">Cargos previos por elección popular</a>
+									<div class="uk-accordion-content uk-margin-medium-top">
 										<ul uk-tab>
 											<li><a href="#">GENERAL Y POR PARTIDOS</a></li>
 											<li><a href="#">DETALLE PARTIDOS</a></li>
@@ -551,18 +438,18 @@
 													<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
 
 														<div>
-															<h3>GENERAL</h3>
+															<h4 class="uk-text-center">GENERAL</h4>
 			
-															<a class="uk-inline" href="{% static "graphic_images/cargo_popular_todo.PNG" %}" data-caption="Caption 2">
-																<img  src="{% static "graphic_images/cargo_popular_todo.PNG" %}" alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/cargo_popular_todo.png" %}" data-caption="Caption 2">
+																<img  src="{% static "images/graphic_images/cargo_popular_todo.png" %}" alt="">
 															</a>
 														</div>
 			
 														<div>
-															<h3>POR PARTIDOS</h3>
+															<h4 class="uk-text-center">POR PARTIDOS</h4>
 											
-															<a class="uk-inline" href="{% static "graphic_images/cargo_popular_partido.PNG" %}"  data-caption="Caption 1">
-																<img src="{% static "graphic_images/cargo_popular_partido.PNG" %}"  alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/cargo_popular_partido.png" %}"  data-caption="Caption 1">
+																<img src="{% static "images/graphic_images/cargo_popular_partido.png" %}"  alt="">
 															</a>
 															
 														</div>
@@ -576,13 +463,13 @@
 												<div class="uk-accordion-content ">
 		
 		
-													<div class="uk-child-width-1-2@m "  uk-grid uk-lightbox="animation: slide">
+													<div class="uk-child-width-1-2@m uk-flex-center"  uk-grid uk-lightbox="animation: slide">
 			
 														<div>
-															<h3>POR PARTIDO</h3>
+															<h4 class="uk-text-center">POR PARTIDO</h4>
 			
-															<a class="uk-inline" href="{% static "graphic_images/cargo_popular_tabla.PNG" %}" data-caption="Caption 2">
-																<img src="{% static "graphic_images/cargo_popular_tabla.PNG" %}" alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/cargo_popular_tabla.png" %}" data-caption="Caption 2">
+																<img src="{% static "images/graphic_images/cargo_popular_tabla.png" %}" alt="">
 															</a>
 														</div>												
 													</div>										
@@ -596,10 +483,8 @@
 									
 								</li>
 								<li>
-									<a class="uk-accordion-title " href="#">Renuncia a otras organizaciones políticas</a>
-									<div class="uk-accordion-content">
-
-										<br>
+									<a class="uk-accordion-title uk-text-bold" href="#">Renuncia a otras organizaciones políticas</a>
+									<div class="uk-accordion-content uk-margin-medium-top">
 										<ul uk-tab>
 											<li><a href="#">GENERAL Y POR PARTIDOS</a></li>
 											<li><a href="#">DETALLE PARTIDOS</a></li>
@@ -614,18 +499,18 @@
 													<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
 
 														<div>
-															<h3>GENERAL</h3>
+															<h4 class="uk-text-center">GENERAL</h4>
 			
-															<a class="uk-inline" href="{% static "graphic_images/renuncia_todo.PNG" %}" data-caption="Caption 2">
-																<img  src="{% static "graphic_images/renuncia_todo.PNG" %}" alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/renuncia_todo.png" %}" data-caption="Caption 2">
+																<img  src="{% static "images/graphic_images/renuncia_todo.png" %}" alt="">
 															</a>
 														</div>
 			
 														<div>
-															<h3>POR PARTIDOS</h3>
+															<h4 class="uk-text-center">POR PARTIDOS</h4>
 											
-															<a class="uk-inline" href="{% static "graphic_images/renuncia_partido.PNG" %}"  data-caption="Caption 1">
-																<img src="{% static "graphic_images/renuncia_partido.PNG" %}"  alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/renuncia_partido.png" %}"  data-caption="Caption 1">
+																<img src="{% static "images/graphic_images/renuncia_partido.png" %}"  alt="">
 															</a>
 															
 														</div>
@@ -639,16 +524,18 @@
 												<div class="uk-accordion-content  ">
 		
 		
-													<div class="uk-child-width-1-2@m "  uk-grid uk-lightbox="animation: slide">
+													<div class="uk-child-width-1-2@m uk-flex-center"  uk-grid uk-lightbox="animation: slide">
 			
 														<div>
-															<h3>POR PARTIDO</h3>
+															<h4 class="uk-text-center">POR PARTIDO</h4>
 			
-															<a class="uk-inline" href="{% static "graphic_images/edad_tabla.PNG" %}" data-caption="Caption 2">
-																<img src="{% static "graphic_images/edad_tabla.PNG" %}" alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/edad_tabla.png" %}" data-caption="Caption 2">
+																<img src="{% static "images/graphic_images/edad_tabla.png" %}" alt="">
 															</a>
 														</div>												
-													</div>										
+													</div>	
+													
+													
 												</div>
 											</li>	
 										</ul>
@@ -672,22 +559,21 @@
 							-->
 							
 							<!--<a href="#" title="Read More" class="uk-button uk-button-default uk-button-small">READ MORE</a>-->
-							<hr>
 						</article>
 
-						<article class="uk-section uk-section-small uk-padding-remove-top">
+						<article class="uk-section uk-section-small uk-padding-remove-top uk-margin-medium-bottom">
 							<header>
-								<h2 class="uk-margin-remove-adjacent uk-text-bold uk-margin-small-bottom"><a title="Fusce facilisis tempus magna ac dignissim." class="uk-link-reset" href="#">SENTENCIAS JUDICIALES</a></h2>
+								<h3 class="uk-margin-remove-adjacent uk-text-bold uk-text-center uk-margin-small-bottom">
+									SENTENCIAS JUDICIALES
+								</h3>
 								<!--<p class="uk-article-meta">Written on March 23, 2019. Posted in <a href="#">Blog</a> | <span data-uk-icon="icon: future"></span> Takes 7 min reading.</p>-->
 							</header>
 							<p class="paragraph">Ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 
 							<ul uk-accordion="multiple: true ">
-								<li class="uk-open">
-									<a class="uk-accordion-title" href="#">Sentencias penales y por obligaciones</a>
-									<div class="uk-accordion-content">
-
-										<br>
+								<li>
+									<a class="uk-accordion-title uk-text-bold" href="#">Sentencias penales y por obligaciones</a>
+									<div class="uk-accordion-content uk-margin-medium-top">
 										<ul uk-tab>
 											<li><a href="#">GENERAL Y POR PARTIDOS</a></li>
 											<li><a href="#">DETALLE PARTIDOS</a></li>
@@ -702,18 +588,18 @@
 													<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
 
 														<div>
-															<h3>GENERAL</h3>
+															<h4 class="uk-text-center">GENERAL</h4>
 			
-															<a class="uk-inline" href="{% static "graphic_images/sentencias_todo.PNG" %}" data-caption="Caption 2">
-																<img  src="{% static "graphic_images/sentencias_todo.PNG" %}" alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/sentencias_todo.png" %}" data-caption="Caption 2">
+																<img  src="{% static "images/graphic_images/sentencias_todo.png" %}" alt="">
 															</a>
 														</div>
 			
 														<div>
-															<h3>POR PARTIDOS</h3>
+															<h4 class="uk-text-center">POR PARTIDOS</h4>
 											
-															<a class="uk-inline" href="{% static "graphic_images/sentencias_partido.PNG" %}"  data-caption="Caption 1">
-																<img src="{% static "graphic_images/sentencias_partido.PNG" %}"  alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/sentencias_partido.png" %}"  data-caption="Caption 1">
+																<img src="{% static "images/graphic_images/sentencias_partido.png" %}"  alt="">
 															</a>
 															
 														</div>
@@ -727,13 +613,13 @@
 												<div class="uk-accordion-content ">
 		
 		
-													<div class="uk-child-width-1-2@m "  uk-grid uk-lightbox="animation: slide">
+													<div class="uk-child-width-1-2@m uk-flex-center"  uk-grid uk-lightbox="animation: slide">
 			
 														<div>
-															<h3>POR PARTIDO</h3>
+															<h4 class="uk-text-center">POR PARTIDO</h4>
 			
-															<a class="uk-inline" href="{% static "graphic_images/cargo_popular_tabla.PNG" %}" data-caption="Caption 2">
-																<img src="{% static "graphic_images/cargo_popular_tabla.PNG" %}" alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/cargo_popular_tabla.png" %}" data-caption="Caption 2">
+																<img src="{% static "images/graphic_images/cargo_popular_tabla.png" %}" alt="">
 															</a>
 														</div>												
 													</div>										
@@ -761,26 +647,25 @@
 							-->
 							
 							<!--<a href="#" title="Read More" class="uk-button uk-button-default uk-button-small">READ MORE</a>-->
-							<hr>
 						</article>
 
 						
 
 					
 
-						<article class="uk-section uk-section-small uk-padding-remove-top">
+						<article class="uk-section uk-section-small uk-padding-remove-top uk-margin-medium-bottom">
 							<header>
-								<h2 class="uk-margin-remove-adjacent uk-text-bold uk-margin-small-bottom"><a title="Donec eu libero sit amet quam egestas semper" class="uk-link-reset" href="#">ESTADO FINANCIERO</a></h2>
+								<h3 class="uk-margin-remove-adjacent uk-text-bold uk-text-center uk-margin-small-bottom">
+									ESTADO FINANCIERO
+								</h3>
 								<!--<p class="uk-article-meta">Written on March 21, 2019. Posted in <a href="#">Blog</a> | <span data-uk-icon="icon: future"></span> Takes 7 min reading.</p>-->
 							</header>
 							<p class="paragraph">Ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 
 							<ul uk-accordion="multiple: true ">
-								<li class="uk-open">
-									<a class="uk-accordion-title" href="#">Ingresos</a>
-									<div class="uk-accordion-content">
-
-										<br>
+								<li>
+									<a class="uk-accordion-title uk-text-bold" href="#">Ingresos</a>
+									<div class="uk-accordion-content uk-margin-medium-top">
 										<ul uk-tab>
 											<li><a href="#">GENERAL</a></li>
 											<li><a href="#">POR PARTIDOS</a></li>
@@ -795,10 +680,10 @@
 													<div class="uk-child-width-3-4@m "  uk-grid uk-lightbox="animation: slide">
 			
 														<div>
-															<h3>GENERAL</h3>
+															<h4 class="uk-text-center">GENERAL</h4>
 			
-															<a class="uk-inline" href="{% static "graphic_images/ingreso_todo.PNG" %}" data-caption="Caption 2">
-																<img src="{% static "graphic_images/ingreso_todo.PNG" %}" alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/ingreso_todo.png" %}" data-caption="Caption 2">
+																<img src="{% static "images/graphic_images/ingreso_todo.png" %}" alt="">
 															</a>
 														</div>
 			
@@ -812,19 +697,30 @@
 		
 		
 											<li>
-												<div class="uk-accordion-content  uk-container-small">
+												<div class="uk-accordion-content  ">
 		
 		
-													<div class="uk-child-width-3-4@m "  uk-grid uk-lightbox="animation: slide">
+													<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
+
+														<div>
+															<h4 class="uk-text-center">POR PARTIDOS</h4>
+			
+															<a class="uk-inline" href="{% static "images/graphic_images/ingreso_partido.png" %}" data-caption="Caption 2">
+																<img src="{% static "images/graphic_images/ingreso_partido.png" %}" alt="">
+															</a>
+														</div>
 			
 														<div>
-															<h3>POR PARTIDO</h3>
-			
-															<a class="uk-inline" href="{% static "graphic_images/ingreso_partido.PNG" %}" data-caption="Caption 2">
-																<img src="{% static "graphic_images/ingreso_partido.PNG" %}" alt="">
+															<h4 class="uk-text-center">POR PARTIDOS</h4>
+											
+															<a class="uk-inline" href="{% static "graphic_images/ingreso_tabla.PNG" %}"  data-caption="Caption 1">
+																<img src="{% static "graphic_images/ingreso_tabla.PNG" %}"  alt="">
 															</a>
-														</div>												
-													</div>										
+															
+														</div>
+														
+													</div>
+
 												</div>
 										</ul>
 
@@ -832,10 +728,8 @@
 									</div>
 								</li>
 								<li>
-									<a class="uk-accordion-title " href="#">Bienes Inmuebles</a>
-									<div class="uk-accordion-content">
-
-										<br>
+									<a class="uk-accordion-title uk-text-bold" href="#">Bienes Inmuebles</a>
+									<div class="uk-accordion-content uk-margin-medium-top">
 										<ul uk-tab>
 											<li><a href="#">GENERAL</a></li>
 											<li><a href="#">POR PARTIDOS</a></li>
@@ -850,18 +744,18 @@
 													<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
 
 														<div>
-															<h3>GENERAL</h3>
+															<h4 class="uk-text-center">GENERAL</h4>
 			
-															<a class="uk-inline" href="{% static "graphic_images/inmuebles_todo_si_no.PNG" %}" data-caption="Caption 2">
-																<img  src="{% static "graphic_images/inmuebles_todo_si_no.PNG" %}" alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/inmuebles_todo_si_no.png" %}" data-caption="Caption 2">
+																<img  src="{% static "images/graphic_images/inmuebles_todo_si_no.png" %}" alt="">
 															</a>
 														</div>
 			
 														<div>
-															<h3>GENERAL</h3>
+															<h4 class="uk-text-center">GENERAL</h4>
 											
-															<a class="uk-inline" href="{% static "graphic_images/inmuebles_todo2.PNG" %}"  data-caption="Caption 1">
-																<img src="{% static "graphic_images/inmuebles_todo2.PNG" %}"  alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/inmuebles_todo2.png" %}"  data-caption="Caption 1">
+																<img src="{% static "images/graphic_images/inmuebles_todo2.png" %}"  alt="">
 															</a>
 															
 														</div>
@@ -872,18 +766,25 @@
 		
 		
 											<li>
-												<div class="uk-accordion-content  uk-container-small">
+												<div class="uk-accordion-content ">
 		
 		
-													<div class="uk-child-width-3-4@m "  uk-grid uk-lightbox="animation: slide">
+													<div class="uk-child-width-1-2@m "  uk-grid uk-lightbox="animation: slide">
 			
 														<div>
-															<h3>POR PARTIDO</h3>
+															<h4 class="uk-text-center">POR PARTIDO</h4>
 			
-															<a class="uk-inline" href="{% static "graphic_images/inmuebles_partidos.PNG" %}" data-caption="Caption 2">
-																<img src="{% static "graphic_images/inmuebles_partidos.PNG" %}" alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/inmuebles_partidos.png" %}" data-caption="Caption 2">
+																<img src="{% static "images/graphic_images/inmuebles_partidos.png" %}" alt="">
 															</a>
-														</div>												
+														</div>
+														<div>
+															<h4 class="uk-text-center">POR PARTIDO</h4>
+			
+															<a class="uk-inline" href="{% static "graphic_images/inmuebles_tabla.PNG" %}" data-caption="Caption 2">
+																<img src="{% static "graphic_images/inmuebles_tabla.PNG" %}" alt="">
+															</a>
+														</div>															
 													</div>										
 												</div>
 										</ul>
@@ -892,10 +793,8 @@
 									</div>
 								</li>
 								<li>
-									<a class="uk-accordion-title" href="#">Bienes Muebles</a>
-									<div class="uk-accordion-content">
-
-										<br>
+									<a class="uk-accordion-title uk-text-bold" href="#">Bienes Muebles</a>
+									<div class="uk-accordion-content uk-margin-medium-top">
 										<ul uk-tab>
 											<li><a href="#">GENERAL</a></li>
 											<li><a href="#">POR PARTIDOS</a></li>
@@ -910,18 +809,18 @@
 													<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
 
 														<div>
-															<h3>GENERAL</h3>
+															<h4 class="uk-text-center">GENERAL</h4>
 			
-															<a class="uk-inline" href="{% static "graphic_images/mueble_todo2.PNG" %}" data-caption="Caption 2">
-																<img  src="{% static "graphic_images/mueble_todo2.PNG" %}" alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/mueble_todo2.png" %}" data-caption="Caption 2">
+																<img  src="{% static "images/graphic_images/mueble_todo2.png" %}" alt="">
 															</a>
 														</div>
 			
 														<div>
-															<h3>GENERAL</h3>
+															<h4 class="uk-text-center">GENERAL</h4>
 											
-															<a class="uk-inline" href="{% static "graphic_images/muebles_todo.PNG" %}"  data-caption="Caption 1">
-																<img src="{% static "graphic_images/muebles_todo.PNG" %}"  alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/muebles_todo.png" %}"  data-caption="Caption 1">
+																<img src="{% static "images/graphic_images/muebles_todo.png" %}"  alt="">
 															</a>
 															
 														</div>
@@ -938,18 +837,18 @@
 													<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
 
 														<div>
-															<h3>GENERAL</h3>
+															<h4 class="uk-text-center">GENERAL</h4>
 			
-															<a class="uk-inline" href="{% static "graphic_images/muebles_partidos.PNG" %}" data-caption="Caption 2">
-																<img  src="{% static "graphic_images/muebles_partidos.PNG" %}" alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/muebles_partidos.png" %}" data-caption="Caption 2">
+																<img  src="{% static "images/graphic_images/muebles_partidos.png" %}" alt="">
 															</a>
 														</div>
 			
 														<div>
-															<h3>GENERAL</h3>
+															<h4 class="uk-text-center">GENERAL</h4>
 											
-															<a class="uk-inline" href="{% static "graphic_images/muebles_tabla.PNG" %}"  data-caption="Caption 1">
-																<img src="{% static "graphic_images/muebles_tabla.PNG" %}"  alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/muebles_tabla.png" %}"  data-caption="Caption 1">
+																<img src="{% static "images/graphic_images/muebles_tabla.png" %}"  alt="">
 															</a>
 															
 														</div>
@@ -967,20 +866,20 @@
 						
 						</article>
 
-						<article class="uk-section uk-section-small uk-padding-remove-top">
+						<article class="uk-section uk-section-small uk-padding-remove-top uk-margin-medium-bottom">
 							<header>
-								<h2 class="uk-margin-remove-adjacent uk-text-bold uk-margin-small-bottom"><a title="Donec eu libero sit amet quam egestas semper" class="uk-link-reset" href="#">FORMACIÓN ACADÉMICA</a></h2>
+								<h3 class="uk-margin-remove-adjacent uk-text-bold uk-text-center uk-margin-small-bottom">
+									FORMACIÓN ACADÉMICA
+								</h3>
 								<!--<p class="uk-article-meta">Written on March 21, 2019. Posted in <a href="#">Blog</a> | <span data-uk-icon="icon: future"></span> Takes 7 min reading.</p>-->
 							</header>
 							<p class="paragraph">Ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 
 							<ul uk-accordion="multiple: true ">
-								<li class="uk-open">
-									<a class="uk-accordion-title" href="#">Formación Académica</a>
+								<li>
+									<a class="uk-accordion-title uk-text-bold" href="#">Formación Académica</a>
 
-									<div class="uk-accordion-content">
-
-										<br>
+									<div class="uk-accordion-content uk-margin-medium-top">
 										<ul uk-tab>
 											<li><a href="#">GENERAL</a></li>
 											<li><a href="#">POR PARTIDOS</a></li>
@@ -995,18 +894,18 @@
 													<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
 
 														<div>
-															<h3>GENERAL</h3>
+															<h4 class="uk-text-center">GENERAL</h4>
 			
-															<a class="uk-inline" href="{% static "graphic_images/edu_todo.PNG" %}" data-caption="Caption 2">
-																<img  src="{% static "graphic_images/edu_todo.PNG" %}" alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/edu_todo.png" %}" data-caption="Caption 2">
+																<img  src="{% static "images/graphic_images/edu_todo.png" %}" alt="">
 															</a>
 														</div>
 			
 														<div>
-															<h3>GENERAL</h3>
+															<h4 class="uk-text-center">GENERAL</h4>
 											
-															<a class="uk-inline" href="{% static "graphic_images/edu_max_todo.PNG" %}"  data-caption="Caption 1">
-																<img src="{% static "graphic_images/edu_max_todo.PNG" %}"  alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/edu_max_todo.png" %}"  data-caption="Caption 1">
+																<img src="{% static "images/graphic_images/edu_max_todo.png" %}"  alt="">
 															</a>
 															
 														</div>
@@ -1017,19 +916,29 @@
 		
 		
 											<li>
-												<div class="uk-accordion-content  uk-container-small">
+												<div class="uk-accordion-content ">
 		
 		
-													<div class="uk-child-width-3-4@m "  uk-grid uk-lightbox="animation: slide">
+													<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
+
+														<div>
+															<h4 class="uk-text-center">GENERAL</h4>
+			
+															<a class="uk-inline" href="{% static "images/graphic_images/edu_partidos.png" %}" data-caption="Caption 2">
+																<img src="{% static "images/graphic_images/edu_partidos.png" %}" alt="">
+															</a>
+														</div>
 			
 														<div>
-															<h3>POR PARTIDO</h3>
-			
-															<a class="uk-inline" href="{% static "graphic_images/edu_partidos.PNG" %}" data-caption="Caption 2">
-																<img src="{% static "graphic_images/edu_partidos.PNG" %}" alt="">
+															<h4 class="uk-text-center">GENERAL</h4>
+											
+															<a class="uk-inline" href="{% static "graphic_images/edu_tabla.PNG" %}"  data-caption="Caption 1">
+																<img src="{% static "graphic_images/edu_tabla.PNG" %}"  alt="">
 															</a>
-														</div>												
-													</div>										
+															
+														</div>
+														
+													</div>									
 												</div>
 										</ul>
 
@@ -1201,6 +1110,7 @@
 				-->
 			</div>
 		</div>
+		<div id="go-top"><a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a></div>
 		<!-- /OFFCANVAS -->
 		<!-- JS FILES -->
 		<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit.min.js"></script>
@@ -1221,9 +1131,8 @@
 				flexFont();
 			};
 		</script>
-		
-	</body>
-</html>
+		<script src="{% static "js/jquery-2.1.3.min.js"%}"></script>
+		<script src="{% static "js/graphics.js"%}"></script>
 {% endblock %}
 <!--POR SI ACA-->
 										<!--<div class="uk-text-center" uk-grid>
@@ -1232,8 +1141,8 @@
 										
 														<div class="uk-width-1-3@m" uk-lightbox="animation: slide">
 														
-														<a class="uk-inline" href="{% static "graphic_images/all_gender.PNG" %}" width="200" height="200" alt="Alt text" class="lazy">
-															<img src="{% static "graphic_images/all_gender.PNG" %}" alt="">
+														<a class="uk-inline" href="{% static "images/graphic_images/all_gender.png" %}" width="200" height="200" alt="Alt text" class="lazy">
+															<img src="{% static "images/graphic_images/all_gender.png" %}" alt="">
 														</a>
 													
 														</div>
@@ -1243,8 +1152,8 @@
 													
 													<div class="uk-width-expand@m uk-lightbox="animation: slide">
 														
-														<a class="uk-inline" href="{% static "graphic_images/partido_gender.PNG" %}"  alt="Alt text" class="lazy">
-															<img src="{% static "graphic_images/partido_gender.PNG" %}" alt="">
+														<a class="uk-inline" href="{% static "images/graphic_images/partido_gender.png" %}"  alt="Alt text" class="lazy">
+															<img src="{% static "images/graphic_images/partido_gender.png" %}" alt="">
 														</a>
 													
 														</div>
@@ -1259,7 +1168,7 @@
 											<tr>
 												<td>
 												<figure>
-													<img src="{% static "graphic_images/presi_gender.PNG" %}" width="700" height="700" alt="Alt text" class="lazy" >
+													<img src="{% static "images/graphic_images/presi_gender.png" %}" width="700" height="700" alt="Alt text" class="lazy" >
 												</figure>
 												</td>
 												<td>

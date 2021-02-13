@@ -1200,8 +1200,15 @@
                   {% endif %}
                 </div>
                 <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
-                  <p class="uk-text-muted uk-margin-remove">Hoja de Vida</p>
-                  <a onclick="verHojadeVida(this)" class="dni_id" id={{candidato.dni_candidato}} name="{{candidato.cargo_eleccion}}" style="width: fit-content; height: fit-content;">Ver hoja de vida</a>
+                  <p class="uk-text-muted" style="margin: 0 0 .5rem 0;">Hoja de Vida</p>
+                  <a onclick="verHojadeVida(this)" 
+                    class="dni_id hoja_de_vida_btn" 
+                    id={{candidato.dni_candidato}} 
+                    name="{{candidato.cargo_eleccion}}" 
+                    style="width: fit-content; height: fit-content;"
+                  >
+                    Ver hoja de vida
+                  </a>
                 </div>
               </div>
             </div>
@@ -1229,10 +1236,11 @@
   <script>
     let url = window.location.href
     let text = url.split("/")
+    
     let text_info = document.getElementById('text_info')
     
     if(text[text.length - 1] === "candidatos" || text[text.length - 1] === "candidatos#") {
-      text_info.textContent = "Escoge al menos un filro para que aparezcan los resultados."
+      text_info.textContent = "Escoge al menos un filtro para que aparezcan los resultados."
     } else {
       text_info.textContent = "No se encontraron resultados para esta búsqueda"
     }
