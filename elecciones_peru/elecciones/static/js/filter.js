@@ -409,6 +409,14 @@ function quitar_seleccion_cargos_pervios(){
 
 
 /* FILTRO SENTENCIAS */
+function mostrar_tiposentencias(){
+  let div_opc_sentencias = document.getElementById("mostrar_sentencias") 
+  div_opc_sentencias.style.display="block"
+  div_opc_sentencias.style.paddingLeft="10px"
+  
+}
+
+
 function togglePenal_opciones(element){
   if(element.checked == true){
   mostrar = document.getElementById("div_opc_cant_sentencias")
@@ -431,9 +439,13 @@ function toggleObligacion_opciones(element){
 function get_sentencias_penal_cant(){
   if(filtro_penal_cant == false){
     filtro_penal_cant = true
+  
     cant_filtros_ob++
     cant_filtros++
     lista_orden_filtros.push(3)
+    if(filtro_senten_no_tiene == true){
+      quitar_notiene_senten()
+    }
     console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
     console.log("cant_filtros_ob: ",cant_filtros_ob)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
@@ -455,6 +467,9 @@ function get_sentencias_oblig_cant(){
     cant_filtros_ob++
     cant_filtros++
     lista_orden_filtros.push(4)
+    if(filtro_senten_no_tiene==true){
+      quitar_notiene_senten()
+    }
     console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
     console.log("cant_filtros_ob: ",cant_filtros_ob)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
@@ -502,6 +517,7 @@ function quitar_seleccion_sentencias(){
   document.getElementById("por_obligaciones").checked = false
   document.getElementById("penal_cbx").checked = false
   document.getElementById("no_tiene").checked = false
+  document.getElementById("si-sentencia").checked = false
 
   if(filtro_penal_cant  == true){
     document.getElementById("penal_cbx").checked = false
@@ -575,23 +591,17 @@ function quitar_seleccion_sentencias(){
     console.log("cant_filtros: ",cant_filtros)
   }
 
-  if(no_tiene_val == "NO") {
-    no_tiene_val = ""
-    cant_filtros--
-    cant_filtros_normales--
-    console.log("Procedo a quitar el 6")
-    const index = lista_orden_filtros.indexOf(6)
-
-    if (index > -1) {
-      lista_orden_filtros.splice(index, 1)
-    }
+  if(filtro_senten_no_tiene == true) {
+    quitar_notiene_senten();
   }
 
-  document.getElementById("mostrar_sentencias").style="" 
+  document.getElementById("mostrar_sentencias").style="display:none" 
 }
 
 function noTiene_opcion(element){
-  if (element.checked == true){  
+  if (filtro_senten_no_tiene == false)
+  {
+    filtro_senten_no_tiene = true
     if(filtro_penal_cant  == true){
       document.getElementById("penal_cbx").checked = false
       orden_cant_sentencia = ""
@@ -668,7 +678,7 @@ function noTiene_opcion(element){
       console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
       console.log("cant_filtros: ",cant_filtros)
     }
-
+    
     let  mostrar1 = document.getElementById("mostrar_sentencias")
     mostrar1.style = "display:none"
     document.getElementById("div_opc_cant_sentencias").style="display:none"
@@ -678,21 +688,29 @@ function noTiene_opcion(element){
     cant_filtros++
     cant_filtros_normales++
     impresion_peque()
-  } else if (element.checked == false){
-    let  mostrar1 = document.getElementById("mostrar_sentencias")
-    mostrar1.style = ""
-    no_tiene_val = ""
-    cant_filtros--
-    cant_filtros_normales--
-    console.log("Procedo a quitar el 6")
-    const index = lista_orden_filtros.indexOf(6)
-
-    if (index > -1) {
-      lista_orden_filtros.splice(index, 1)
-    }
   }
+
+ 
+  
+  
+  
+
+  
 }
 
+function quitar_notiene_senten(){
+  let  mostrar1 = document.getElementById("mostrar_sentencias")
+  mostrar1.style = ""
+  no_tiene_val = ""
+  cant_filtros--
+  cant_filtros_normales--
+  console.log("Procedo a quitar el 6")
+  const index = lista_orden_filtros.indexOf(6)
+
+  if (index > -1) {
+    lista_orden_filtros.splice(index, 1)
+  }
+}
 
 /* FILTRO BIENES Y RENTAS */
 function get_bienes_rentas(element){
@@ -755,6 +773,8 @@ function get_bienes_rentas(element){
       break;
   }
 }
+
+
 
 function quitar_seleccion_b_r(){
     if(filtro_ingres_cant){
