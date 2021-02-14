@@ -123,8 +123,7 @@ function button_filter_org(){
       console.log(url)
     }
     console.log(url)
-    window.location = url 
-    getUrl_orga()  
+    window.location = url   
 }
 
 function quitar_todas_selecciones(id_){

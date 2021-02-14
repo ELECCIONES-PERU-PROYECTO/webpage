@@ -48,7 +48,6 @@
             <li class="uk-nav-header">Filtros</li>
             <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel Académico</a>
               <ul>
-                <!-- <button  onclick="quitar_seleccion_academico()">Decartar</button> -->
                 <form>
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-middle">
@@ -193,7 +192,6 @@
             </li>
             <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Bienes y Rentas</a>
               <ul>
-                <!-- <button  onclick="quitar_seleccion_b_r()">Decartar</button> -->
                 <form>
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-between">
@@ -873,7 +871,7 @@
                         </label>
                         <select class="uk-select" id="org_desplegable_oriundo_"  onchange="set_valor(this)">
                           <option value="default">Elige el departamento</option>
-                         <option value="AMAZONAS">Amazonas</option>
+                          <option value="AMAZONAS">Amazonas</option>
                           <option value="ANCASH">Ancash</option>
                           <option value="APURIMAC">Apurimac</option>
                           <option value="AREQUIPA">Arequipa</option>
@@ -1126,8 +1124,11 @@
               <a href="#" onclick="activar_organizaciones(this)">Partidos Políticos</a>
             </li>
             <hr class="uk-divider-vertical" style="height:40px">
-            <div class="uk-container" id="home-cont"><a href="/elecciones"  class="uk-icon-link" uk-icon="home"></a>
-            </div>
+            <li>
+              <a href="/elecciones">
+                Inicio
+              </a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -1151,17 +1152,22 @@
     <!-- todos los candidatos -->
 
     {% if organizaciones_return %}
-      <div class="uk-container uk-container-expand uk-margin-top uk-margin-bottom uk-flex uk-flex-center uk-flex-wrap">
+      <div class="uk-container uk-container-expand uk-margin-top uk-margin-bottom uk-flex uk-flex-center uk-flex-column uk-flex-wrap">
         {% for organizacion in organizaciones_return %}
-        <div class="uk-card uk-card-default uk-card-hover uk-card-body" style="width: 260px; height: 300px; margin: 1rem;" >
-          <div class="uk-text-center uk-padding-remove uk-margin-small-bottom">
-              <img src="{{ organizacion.url }}" width="155px" height="215px" alt="{{ organizacion.organizacion_politica }}">
+        <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-flex-middle uk-width-1-2@xl uk-width-1-1@m uk-width-3-4@s uk-flex-center uk-margin-bottom uk-margin-auto" uk-grid>
+          <div class="uk-text-center uk-padding-remove">
+            <img src="{{ organizacion.url }}" width="155px" height="215px" alt="{{ organizacion.organizacion_politica }}">
           </div>
-          <div class="uk-width-expand@m uk-padding-right candidato-card">
-            <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
-              <p class="uk-text-muted uk-margin-remove uk-text-center">Nombre de la organización</p>
-              <p class="uk-margin-remove uk-text-center">{{ organizacion.organizacion_politica }}</p>
-              <p class="uk-margin-remove uk-text-center">{{ organizacion.conteo }} candidatos</p>
+          <div class="uk-width-expand@m uk-padding-right uk-padding-small candidato-card">
+            <div class="uk-grid uk-grid-small uk-child-width-1-1@s uk-child-width-1-2@m uk-margin-remove" uk-grid>
+              <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
+                <p class="uk-text-muted uk-margin-remove">Nombre de la organización</p>
+                {{ organizacion.organizacion_politica }}
+              </div>
+              <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
+                <p class="uk-text-muted uk-margin-remove">Cantidad de candidatos</p>
+                {{ organizacion.conteo }} candidatos
+              </div>
             </div>
           </div>
         </div>
@@ -1237,10 +1243,12 @@
     
     let text_info = document.getElementById('text_info')
     
-    if(text[text.length - 1] === "candidatos" || text[text.length - 1] === "candidatos#") {
-      text_info.textContent="Escoge al menos un filtro para que aparezcan los resultados."
-    } else {
-      text_info.textContent="No se encontraron resultados para esta búsqueda"
+    if(text_info) {
+      if(text[text.length - 1] === "candidatos" || text[text.length - 1] === "candidatos#") {
+        text_info.textContent="Escoge al menos un filtro para que aparezcan los resultados."
+      } else {
+        text_info.textContent="No se encontraron resultados para esta búsqueda"
+      }
     }
   </script>
 {% endblock %}
