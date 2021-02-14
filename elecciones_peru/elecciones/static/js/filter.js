@@ -782,7 +782,6 @@ function quitar_seleccion_b_r(){
       cant_filtros--
       cant_filtros_ob--
       const index = lista_orden_filtros.indexOf(7)
-
       if(index > -1) {
         lista_orden_filtros.splice(index, 1)
       }
