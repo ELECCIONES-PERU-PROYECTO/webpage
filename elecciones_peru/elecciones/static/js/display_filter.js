@@ -62,12 +62,18 @@ function activar_candidatos(text){
     }
 }
 
+function mostrar_tiposentencias(){
+    document.getElementById("si-sentencia").checked = true
+    let div_opc_sentencias = document.getElementById("mostrar_sentencias") 
+    div_opc_sentencias.style.display="block"
+    div_opc_sentencias.style.paddingLeft="10px"
+}
+
 function mostrar_input_ingreso(item){
     if (item.checked == true){
         document.getElementById("inputs-ingreso").style.display="block"
     }else{
         document.getElementById("inputs-ingreso").style.display="none"
-
     }
 }
 
@@ -87,6 +93,10 @@ function mostrar_input_mueb(item){
 
     }
 }
+
+
+
+
 
 let dni_hoja_de_vida = ""
 let cargo_postula_dato = ""
