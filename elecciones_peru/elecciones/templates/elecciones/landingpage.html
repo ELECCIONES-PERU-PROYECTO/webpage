@@ -8,6 +8,7 @@
 		
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/uikit@latest/dist/css/uikit.min.css">
 	<link type="text/css" href="{% static "css/landing.css" %}" rel="stylesheet">
+	<link type="text/css" href="{% static "css/loader.css" %}" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -439,11 +440,17 @@
 			</div>
 		</div>
 		<!-- /OFFCANVAS -->
-		
+
+		<div id="preloader">
+			<div id="loader"></div>
+		</div>
+
 		<!-- JS FILES -->
+		<script src="{% static "js/jquery-2.1.3.min.js"%}"></script>
+		<script src="{% static "js/loader.js"%}"></script>
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit-icons.min.js"></script>
-		<script src="{% static "js/navbar.js"%}"></script>
+		<script src="{% static "js/filter_options.js"%}"></script>
 		<script src="{% static "js/serv.js"%}"></script>
 {% endblock %}
