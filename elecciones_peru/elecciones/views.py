@@ -22,10 +22,10 @@ def function_filtros_ob(self, query_normal, normnob1, SELECT_candidato, WHERE_ca
 
     if valor == "1":
       if len(self) > 1 or normnob1 == True: #cargos previos
-        subquery = " SELECT DP.id,CE.total_anhio_eleccion AS conteo, DP.dni_candidato FROM cargo_eleccion AS CE JOIN  datos_personales AS DP USING (dni_candidato) WHERE CE.tiene_info_por_declarar  = 'SI' AND "+ WHERE_candidato+ " GROUP BY (DP.id, DP.dni_candidato,  conteo)  "       
+        subquery = " SELECT DP.id, SUM(CE.total_anhio_eleccion) AS conteo, DP.dni_candidato FROM cargo_eleccion AS CE JOIN  datos_personales AS DP USING (dni_candidato) WHERE CE.tiene_info_por_declarar  = 'SI' AND "+ WHERE_candidato+ " GROUP BY (DP.id, DP.dni_candidato)  "       
         subquery_list.append(subquery)
       else:
-        subquery = " SELECT DP.id, CE.total_anhio_eleccion AS conteo, DP.dni_candidato,   DP.candidato, DP.organizacion_politica, "  +  SELECT_candidato + " FROM cargo_eleccion AS CE JOIN  datos_personales AS DP USING (dni_candidato) WHERE CE.tiene_info_por_declarar  = 'SI' AND "  + WHERE_candidato + "  GROUP BY (  Dp.id, DP.dni_candidato,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato+ ", CE.total_anhio_eleccion) ORDER BY conteo " +self[i]
+        subquery = " SELECT DP.id, SUM( CE.total_anhio_eleccion )AS conteo, DP.dni_candidato,   DP.candidato, DP.organizacion_politica, "  +  SELECT_candidato + " FROM cargo_eleccion AS CE JOIN  datos_personales AS DP USING (dni_candidato) WHERE CE.tiene_info_por_declarar  = 'SI' AND "  + WHERE_candidato + "  GROUP BY (  Dp.id, DP.dni_candidato,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato+ ") ORDER BY conteo " +self[i]
         return subquery
     elif valor == "2":# cant sentencia penal 
       if len(self) >1 or normnob1 == True :
