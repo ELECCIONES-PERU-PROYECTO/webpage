@@ -183,8 +183,9 @@ def function_filtro_normal(self, stack_, SELECT_candidato,WHERE_candidato ):
   elif stack_ == True:
     if self[0] != "":
       print("self[0]: ",self[0])
-      if(self[0] == 'maestro_doctor'):
+      if( self[0] == 'maestro_doctor'):
         query_total = "SELECT  DISTINCT  DP.dni_candidato FROM  estudio_postgrado AS EP   JOIN  datos_personales AS DP USING   (dni_candidato) WHERE (EP.es_maestro= 'SI' OR EP.es_doctor = 'SI') AND " + WHERE_candidato
+        self[0] = ""
         return query_total
       else:
         tabla = ""
@@ -332,12 +333,13 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
     print("lista_filtros_normales: ",lista_filtros_normales)
     #caso solo 1 filtro de normales
     if len(lista_filtros_normales) == 1:
+      print("if len(lista_filtros_normales) == 1:")
       query_total = query_total + function_filtro_normal(lista_valores, False, SELECT_candidato,WHERE_candidato )
     elif len(lista_filtros_normales) > 1: 
       query = ""
       print("len(lista_filtros_normales)  > 1")
       query = query + function_filtro_normal(lista_valores, True, SELECT_candidato,WHERE_candidato )
-
+      print("query: ",query)
       for i in range(1, len(lista_filtros_normales)):
           query = query +" INTERSECT "+ function_filtro_normal(lista_valores, True, SELECT_candidato,WHERE_candidato )
       query_total = "SELECT  DISTINCT DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica,   " + SELECT_candidato+ "   FROM  ( "+query + " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) WHERE " + WHERE_candidato  
