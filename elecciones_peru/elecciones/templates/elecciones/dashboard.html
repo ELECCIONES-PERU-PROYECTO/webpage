@@ -1113,15 +1113,17 @@
         </div>
         <div class="uk-navbar-right">  
           <ul class="uk-navbar-nav uk-visible@m" id="opciones_candidatos" > 
-            <li class="filtertype"><a href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a></li>
+            <li>
+              <a href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a>
+            </li>
             <li>
               <a href="#" onclick="activar_candidatos(this.text)">Candidatos Congresales</a>
             </li>
-            <li class="filtertype">
+            <li>
               <a href="#" onclick="activar_candidatos(this.text)">Candidatos Parlamento Andino</a>
-            </li class="filtertype">
-            <li class="filtertype">
-              <a href="#" onclick="activar_organizaciones(this)">Partidos Políticos</a>
+            </li>
+            <li>
+              <a href="#" onclick="activar_organizaciones(this.text)">Partidos Políticos</a>
             </li>
             <hr class="uk-divider-vertical" style="height:40px">
             <li>
@@ -1234,6 +1236,7 @@
   <script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit-icons.min.js"></script>
   <script src="{% static "js/filter.js"%}"></script>
+  <script src="{% static "js/navbar.js"%}"></script>
   <script src="{% static "js/display_filter.js"%}"></script>
   <script src="{% static "js/filter_orga.js"%}"></script>
   <script src="{% static "js/serv.js"%}"></script>
