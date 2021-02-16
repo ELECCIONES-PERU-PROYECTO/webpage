@@ -490,16 +490,16 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
     query_total = " SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM datos_personales  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE departamento_nacimiento <> distrito_elec AND  distrito_elec <> 'PERUANOS RESIDENTES EN EL EXTRANJERO' AND distrito_elec <> 'LIMA PROVINCIAS' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) "+orden
 
   elif filtro_id =="2019priv":
-    query_total =  "SELECT total_ingresos AS conteo, OP.organizacion_politica FROM financiamiento_privado AS EB  JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE  estado   = '"+info_extra+"' AND  anhio = '2019' GROUP BY (OP.organizacion_politica,conteo,OP.url) ORDER BY (conteo) "+orden
+    query_total =  "SELECT total_ingresos AS monto, OP.organizacion_politica FROM financiamiento_privado AS EB  JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE  estado   = '"+info_extra+"' AND  anhio = '2019' GROUP BY (OP.organizacion_politica,monto,OP.url) ORDER BY (monto) "+orden
 
   elif filtro_id =="2018priv":
-    query_total =  "SELECT total_ingresos AS conteo, OP.organizacion_politica FROM financiamiento_privado AS EB  JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE  estado   = '"+info_extra+"' AND  anhio = '2018' GROUP BY (OP.organizacion_politica,conteo,OP.url) ORDER BY (conteo) "+orden
+    query_total =  "SELECT total_ingresos AS monto, OP.organizacion_politica FROM financiamiento_privado AS EB  JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE  estado   = '"+info_extra+"' AND  anhio = '2018' GROUP BY (OP.organizacion_politica,monto,OP.url) ORDER BY (monto) "+orden
 
   elif filtro_id =="2017priv":
-    query_total =  "SELECT total_ingresos AS conteo, OP.organizacion_politica FROM financiamiento_privado AS EB  JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE  estado   = '"+info_extra+"' AND  anhio = '2017' GROUP BY (OP.organizacion_politica,conteo,OP.url) ORDER BY (conteo) "+orden
+    query_total =  "SELECT total_ingresos AS monto, OP.organizacion_politica FROM financiamiento_privado AS EB  JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE  estado   = '"+info_extra+"' AND  anhio = '2017' GROUP BY (OP.organizacion_politica,monto,OP.url) ORDER BY (monto) "+orden
 
   elif filtro_id =="monto_quinque":
-    query_total =  " SELECT monto_quinquenal AS conteo, OP.organizacion_politica, EB.num_votos_congresales FROM financiamiento_publico AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) GROUP BY (EB.num_votos_congresales,OP.organizacion_politica,conteo,OP.url) ORDER BY (conteo) "+orden
+    query_total =  " SELECT monto_quinquenal AS monto, OP.organizacion_politica, EB.num_votos_congresales FROM financiamiento_publico AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) GROUP BY (EB.num_votos_congresales,OP.organizacion_politica,monto,OP.url) ORDER BY (monto) "+orden
 
   print("-------LLEGA A FINAL CASI DE LA FUNCION------------")
   print("query_total: ",query_total)
