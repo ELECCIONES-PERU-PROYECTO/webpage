@@ -23,12 +23,24 @@
 								<a href="http://127.0.0.1:8000/elecciones/" title="Subscribe">INICIO</a>
 							</li>
 							<li>
-								<a href="http://127.0.0.1:8000/elecciones/candidatos" title="Subscribe">FILTROS</a>
+								<a class="text-nav" href="#" data-uk-icon="chevron-down">Filtros</a>
+								<div class="uk-navbar-dropdown">
+									<ul class="uk-nav uk-navbar-dropdown-nav">
+										<li>
+											<a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
+										</li>
+										<li>
+											<a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Congresales</a>
+										</li>
+										<li>
+											<a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
+										</li>
+										<li>
+											<a class="text-nav" href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
+										</li>
+									</ul>
+								</div>
 							</li>
-							<!--<li>
-								<a href="#" title="Sign Up">Sign Up</a>
-							</li>
-						-->
 						</ul>
 					</div>
 					<div class="uk-navbar-center nav-overlay">
