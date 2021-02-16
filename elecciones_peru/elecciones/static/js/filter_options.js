@@ -8,9 +8,23 @@ window.onload = function(){
   }
 }
 
+let a_visited
+
+function clearNavOptions() {
+  let all_nav_opt = document.getElementsByClassName("nav_opt")
+  for (let i=0; i<all_nav_opt.length; i++)
+    all_nav_opt[i].style.color = "white"
+}
+
 function activar_organizaciones(text){
   if(text == "Partidos Políticos" || text == "Organización Política")
-    window.location = "http://127.0.0.1:8000/elecciones/candidatos"
+    if(text == "Organización Política")
+      window.location = "http://127.0.0.1:8000/elecciones/candidatos"
+
+  clearNavOptions()
+  a_visited = document.getElementsByClassName("orga_opt")
+  for(let i=0; i<a_visited.length; i++)
+    a_visited[i].style.color = "#B62222"
 
   let new_data = {data_filtro:'organizaciones', tipo_candiato_s : ''}
   sessionStorage.setItem('data_filtro',JSON.stringify(new_data))
@@ -34,10 +48,14 @@ function activar_candidatos(text){
   if(opc_candidatos)
   opc_candidatos.style.display = ""
 
-
   if(text == "Candidatos Congresales" || text == "Congresales"){
     if(text == "Congresales")
       window.location = "http://127.0.0.1:8000/elecciones/candidatos"
+    
+    clearNavOptions()
+    a_visited = document.getElementsByClassName("cong_opt")
+    for(let i=0; i<a_visited.length; i++)
+      a_visited[i].style.color = "#B62222"
 
     let data = { tipo_filtro :'candidatos', tipo_candiato_s : 'Candidatos Congresales' }
     sessionStorage.setItem('data_filtro',JSON.stringify(data))
@@ -57,10 +75,16 @@ function activar_candidatos(text){
     if(tip_cand_filter)
       tip_cand_filter.id = "congresales"      
   }
+
   if(text == "Candidatos Presidenciales" || text == "Presidencial"){
     if(text == "Presidencial") 
       window.location = "http://127.0.0.1:8000/elecciones/candidatos" 
 
+    clearNavOptions()
+    a_visited = document.getElementsByClassName("pres_opt")
+    for(let i=0; i<a_visited.length; i++)
+      a_visited[i].style.color = "#B62222"
+    
     let data = { tipo_filtro :'candidatos', tipo_candiato_s : 'Candidatos Presidenciales' }
     sessionStorage.setItem('data_filtro',JSON.stringify(data))
     let div3 = document.getElementById("filtros_organizaciones")
@@ -79,10 +103,16 @@ function activar_candidatos(text){
     if(tip_cand_filter)
       tip_cand_filter.id = "presidenciales"
   }
+
   if(text == "Candidatos Parlamento Andino" || text == "Parlamento Andino"){
     if(text == "Parlamento Andino")
       window.location = "http://127.0.0.1:8000/elecciones/candidatos" 
 
+    clearNavOptions()
+    a_visited = document.getElementsByClassName("parl_opt")
+    for(let i=0; i<a_visited.length; i++)
+      a_visited[i].style.color = "#B62222"
+    
     let data = { tipo_filtro :'candidatos', tipo_candiato_s : 'Candidatos Parlamento Andino' }
     sessionStorage.setItem('data_filtro',JSON.stringify(data))
     let div3 = document.getElementById("filtros_organizaciones")

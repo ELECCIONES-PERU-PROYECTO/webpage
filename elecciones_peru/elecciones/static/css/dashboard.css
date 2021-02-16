@@ -1,6 +1,6 @@
 /* -- Colors -- */
 .bg_red {
-	background-color: #b62222;
+	background-color: #B62222;
 }
 
 .hoja_de_vida_btn {
@@ -15,6 +15,14 @@
 .hoja_de_vida_btn:hover {
 	text-decoration: none;
 	color: white;
+}
+
+ul.uk-navbar-nav li.nav-options a {
+	color: #fff;
+}
+
+ul.uk-navbar-nav li.nav-options a:hover {
+	color: #B62222;
 }
 
 #orden_genero_container {

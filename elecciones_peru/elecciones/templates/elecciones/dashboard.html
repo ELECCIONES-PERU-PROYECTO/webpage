@@ -33,20 +33,22 @@
         -->
         <div class="left-nav-wrap" id="filtros_candidatos">
           <ul class="uk-nav uk-nav-default uk-nav-parent-icon uk-margin-medium-top uk-hidden@m" data-uk-nav>
-            <li class="uk-nav-header">Opciones de Filtro</li>
-            <li class="filtertype"><a href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a></li>
-            <li>
-              <a href="#" onclick="activar_candidatos(this.text)">Candidatos Congresales</a>
+            <li class="uk-nav-header">Tipos de búsqueda</li>
+            <li class="nav-options">
+              <a class="nav_opt pres_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a>
             </li>
-            <li class="filtertype">
-              <a href="#" onclick="activar_candidatos(this.text)">Candidatos Parlamento Andino</a>
-            </li class="filtertype">
-            <li class="filtertype">
-              <a href="#" onclick="activar_organizaciones(this)">Partidos Políticos</a>
+            <li class="nav-options">
+              <a class="nav_opt cong_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Congresales</a>
+            </li>
+            <li class="nav-options">
+              <a class="nav_opt parl_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Parlamento Andino</a>
+            </li>
+            <li class="nav-options">
+              <a class="nav_opt orga_opt" href="#" onclick="activar_organizaciones(this.text)">Partidos Políticos</a>
             </li>
           </ul>
           <ul id="presidenciales" name="tipo_candidato_filter" class="uk-nav uk-nav-default uk-nav-parent-icon uk-margin-small-top" data-uk-nav>
-            <li class="uk-nav-header">Filtros</li>
+            <li class="uk-nav-header">Opciones de búsqueda</li>
             <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel Académico</a>
               <ul>
                 <form>
@@ -248,7 +250,7 @@
                           </label>
                         </div>
                       </div>
-                      <label><input type="checkbox" onchange="mostrar_input_mueb(this)">Sí tiene inmuebles</label>
+                      <label><input type="checkbox" onchange="mostrar_input_mueb(this)">Sí tiene muebles</label>
                       <div id="inputs-mueb" style =" display :none">
                         <label class="uk-text-muted" >
                           Ordenar según la cantidad de muebles 
@@ -552,16 +554,18 @@
         -->
         <div class="left-nav-wrap" id="filtros_organizaciones" style="display:none">
           <ul class="uk-nav uk-nav-default uk-nav-parent-icon uk-margin-medium-top uk-hidden@m" data-uk-nav>
-            <li class="uk-nav-header">Opciones de Filtro</li>
-            <li class="filtertype"><a href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a></li>
-            <li>
-              <a href="#" onclick="activar_candidatos(this.text)">Candidatos Congresales</a>
+            <li class="uk-nav-header">Tipos de búsqueda</li>
+            <li class="nav-options">
+              <a class="nav_opt pres_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a>
             </li>
-            <li class="filtertype">
-              <a href="#" onclick="activar_candidatos(this.text)">Candidatos Parlamento Andino</a>
-            </li class="filtertype">
-            <li class="filtertype">
-              <a href="#" onclick="activar_organizaciones(this)">Partidos Políticos</a>
+            <li class="nav-options">
+              <a class="nav_opt cong_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Congresales</a>
+            </li>
+            <li class="nav-options">
+              <a class="nav_opt parl_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Parlamento Andino</a>
+            </li>
+            <li class="nav-options">
+              <a class="nav_opt orga_opt" href="#" onclick="activar_organizaciones(this.text)">Partidos Políticos</a>
             </li>
           </ul>
           <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
@@ -1107,27 +1111,28 @@
           <ul class="uk-navbar-nav uk-hidden@m">
             <li class="uk-active uk-flex uk-flex-middle">
               <a class="uk-padding-remove uk-flex uk-flex-row-reverse filtros-text" data-uk-toggle href="#offcanvas-nav" data-uk-tooltip>
-                <span class="uk-margin-small-left">Filtros</span>
+                <span class="uk-margin-small-left">Opciones de Búsqueda</span>
               </a>
             </li>
           </ul>
         </div>
         <div class="uk-navbar-right">  
-          <ul class="uk-navbar-nav uk-visible@m" id="opciones_candidatos" > 
-            <li>
-              <a href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a>
+          <ul class="uk-navbar-nav uk-visible@m" id="opciones_candidatos"> 
+            <li class="nav-options">
+              <a class="nav_opt pres_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a>
             </li>
-            <li>
-              <a href="#" onclick="activar_candidatos(this.text)">Candidatos Congresales</a>
+            <li class="nav-options">
+              <a class="nav_opt cong_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Congresales</a>
             </li>
-            <li>
-              <a href="#" onclick="activar_candidatos(this.text)">Candidatos Parlamento Andino</a>
+            <li class="nav-options">
+              <a class="nav_opt parl_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Parlamento Andino</a>
             </li>
-            <li>
-              <a href="#" onclick="activar_organizaciones(this.text)">Partidos Políticos</a>
+            <li class="nav-options">
+              <a class="nav_opt orga_opt" href="#" onclick="activar_organizaciones(this
+              )">Partidos Políticos</a>
             </li>
             <hr class="uk-divider-vertical" style="height:40px">
-            <li>
+            <li class="nav-options">
               <a href="/elecciones">
                 Inicio
               </a>
