@@ -793,24 +793,24 @@
 			</div>
 			<div class="col-twelve">
 				<div class="timeline-wrap">
-					{% for cargo in cargo_eleccion_popular %}
-						{% if cargo.tiene_info_por_declarar == "SI" %}
+					{% for cargo_ in cargo_eleccion_popular %}
+						{% if cargo_.tiene_info_por_declarar == "SI" %}
 							<div class="timeline-block">
 								<div class="timeline-ico">
 									<i class="fa fa-briefcase"></i>
 								</div>
 								<div class="timeline-header">
-									<h3>{{cargo.cargo}}</h3>
-									<p>{{cargo.desde_anhio}} - {{cargo.hasta_anhio}} </p>
+									<h3>{{cargo_.cargo}}ssss</h3>
+									<p>{{cargo_.desde_anhio}} - {{cargo_.hasta_anhio}} </p>
 								</div>
 								<div class="timeline-content">
 									<ul class="info-list">
 										<li>
 											<strong>Comentario</strong>
 											<br>
-											{% if cargo.comentario %}
+											{% if cargo_.comentario %}
 												<span>
-													{{cargo.comentario}}
+													{{cargo_.comentario}}
 												</span>
 											{% else %}
 												<span>
