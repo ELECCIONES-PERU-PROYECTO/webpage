@@ -23,7 +23,23 @@
 								<a href="http://127.0.0.1:8000/elecciones/" title="Subscribe">INICIO</a>
 							</li>
 							<li>
-								<a href="http://127.0.0.1:8000/elecciones/candidatos" title="Subscribe">FILTROS</a>
+								<a href="#" data-uk-icon="chevron-down">Búsqueda Avanzada</a>
+								<div class="uk-navbar-dropdown">
+									<ul class="uk-nav uk-navbar-dropdown-nav">
+										<li>
+											<a href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
+										</li>
+										<li>
+											<a href="#" onclick="activar_candidatos(this.text)">Congresales</a>
+										</li>
+										<li>
+											<a href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
+										</li>
+										<li>
+											<a href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
+										</li>
+									</ul>
+								</div>
 							</li>
 							<!--<li>
 								<a href="#" title="Sign Up">Sign Up</a>
@@ -1139,6 +1155,7 @@
 		<script src="{% static "js/jquery-2.1.3.min.js"%}"></script>
 		<script src="{% static "js/graphics.js"%}"></script>
 		<script src="{% static "js/loader.js"%}"></script>
+		<script src="{% static "js/filter_options.js"%}"></script>
 {% endblock %}
 <!--POR SI ACA-->
 										<!--<div class="uk-text-center" uk-grid>
