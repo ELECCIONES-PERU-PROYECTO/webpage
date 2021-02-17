@@ -55,6 +55,16 @@ ul.uk-navbar-nav li.nav-options a:hover {
 	justify-content: center;
 }
 
+.uk-background-secondary {
+    background-color: rgb(9 19 81);
+}
+
+#left-col {
+
+    background-color: rgb(9 19 81);
+
+}
+
 /* -- Top navigation -- */
 #top-head {
 	z-index: 9;

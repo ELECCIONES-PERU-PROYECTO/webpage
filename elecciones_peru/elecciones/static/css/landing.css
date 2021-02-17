@@ -58,11 +58,45 @@
 }
 
 
+
+.uk-background-secondary {
+    background-color: rgb(9 19 81) !important;
+}
+
+
+.uk-section-secondary {
+    background: rgb(34 34 34)  !important;
+}
+
+#content{
+	background: rgb(34 34 34)  !important;
+
+}
+
+#content h2{
+	color: #ffffff;
+}
+
+
+#content .subtitle-text {
+    color: #ffffff !important;
+}
+
 section[name="top_section"]{
 	padding-top: 30px !important;
 
 }
 
+#offcanvas-nav{
+	background-color:rgb(34 34 34)  !important;
+}
+
+.uk-nav-header{
+	background-color:rgb(34 34 34)  !important;
+}
+.top-wrap::before, .overlay-wrap::before {
+    background-color: rgb(98 84 84 / 50%)  !important;
+}
 
 h1, h2, h3, h4, h5, h6, .h01, .h02, .h03, .h04, .h05, .h06 {
 	font-family: "poppins-semibold", sans-serif;
