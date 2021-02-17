@@ -87,6 +87,11 @@ section[name="top_section"]{
 
 }
 
+
+
+.uk-background-secondary {
+    background-color: rgb(34 34 34) !important;
+}
 #offcanvas-nav{
 	background-color:rgb(34 34 34)  !important;
 }
@@ -143,7 +148,7 @@ a[name="button_section"]{
 	letter-spacing: .2rem;
 	border-radius: 4px;
 	overflow: hidden;
-	background-color: #000000 !important;
+	background-color: rgb(157 20 20) !important;
 	padding: 15px 20px !important;
 	margin: 1rem 0;
 	color: #fff;
