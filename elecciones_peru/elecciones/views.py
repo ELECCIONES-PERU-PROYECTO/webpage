@@ -649,18 +649,5 @@ def test(request):
   print('////////////////////////////')
   print(request.method)
   print('////////////////////////////')
-  if request.method == 'POST': 
-    firstName = request.POST.get('firstName') 
-    lastName = request.POST.get('lastName') 
-    # Note.objects.create(
-    #     title=title,
-    #     note=note
-    # )
-    return JsonResponse({"status": firstName}) 
-  return JsonResponse({"status": 'xs'}) 
-    # return render(request,'elecciones/test.html',
-    #   { 'firstName': firstName,
-    #     'lastName': lastName
-    #   }
-    # )
+
     
