@@ -1174,12 +1174,18 @@
               </div>
               <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
                 {%  if organizacion.conteo %}
+                  <p class="uk-text-muted uk-margin-remove">Cantidad de candidatos que cumplen con los opciones de búsqueda</p>
+                  {{ organizacion.conteo }} candidatos
+                {% elif organizacion.monto %}
+                    <p class="uk-text-muted uk-margin-remove">Ingreso</p>
+                    {{ organizacion.monto }} soles
+                    {% else %}
+                      <p class="uk-text-muted uk-margin-remove">Ingreso</p>
+                      0 soles
+                {% endif %}
+                <!--
                 <p class="uk-text-muted uk-margin-remove">Cantidad de candidatos que cumplen con los opciones de búsqueda</p>
-                 {{ organizacion.conteo }} candidatos
-                 {% else %}
-                 <p class="uk-text-muted uk-margin-remove">Cantidad de candidatos que cumplen con los opciones de búsqueda</p>
-                  No presentan monto alguno en el año indicado 
-                 {% endif %}
+                No presentan monto alguno en el año indicado--> 
               </div>
             </div>
           </div>
