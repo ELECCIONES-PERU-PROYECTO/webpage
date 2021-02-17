@@ -49,9 +49,9 @@
           </ul>
           <ul id="presidenciales" name="tipo_candidato_filter" class="uk-nav uk-nav-default uk-nav-parent-icon uk-margin-small-top" data-uk-nav>
             <li class="uk-nav-header">Opciones de búsqueda</li>
-            <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel Académico</a>
+            <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel Académico</a>
               <ul>
-                <form>
+                <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-middle">
                       <select class="uk-select uk-margin-small-right" id="nivel_academico" style="width: 85%" onchange="get_nivel_academico()">
@@ -71,9 +71,9 @@
                 </form>
               </ul>
             </li>
-            <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cargos previos</a>
+            <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cargos previos</a>
               <ul>
-                <form>
+                <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small uk-flex">
                     <div class="uk-width-1-1@s">
                       <div class="uk-flex uk-flex-column">
@@ -102,10 +102,10 @@
                 </form>
               </ul>
             </li>
-            <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Sentencias</a>
+            <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Sentencias</a>
               <ul>
                 <!-- <button  onclick="quitar_seleccion_sentencias()">Decartar</button> -->
-                <form>
+                <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small uk-flex uk-flex-between">
                     <div>
                       <div>
@@ -193,9 +193,9 @@
                 </form>
               </ul>
             </li>
-            <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Bienes y Rentas</a>
+            <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Bienes y Rentas</a>
               <ul>
-                <form>
+                <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-between">
                       <div class="uk-flex uk-flex-column" style="width: 90%">
@@ -291,9 +291,9 @@
                 </form>
               </ul>
             </li>
-            <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Renuncia a otras organizaciones políticas</a>
+            <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Renuncia a otras organizaciones políticas</a>
               <ul>
-                <form>
+                <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-between">
                       <div class="uk-flex uk-flex-column" style="width: 80%">
@@ -320,9 +320,9 @@
               </ul>
             </li>
             <!--Solo para CONGRESO Y PARLAMENTO -->
-            <!-- <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Genero</a>
+            <!-- <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Genero</a>
               <ul>
-                <form>
+                <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s">
                       <div class="uk-flex uk-flex-column">
@@ -347,9 +347,9 @@
                 </form>
               </ul>
             </li> -->
-            <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Edad</a>
+            <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Edad</a>
               <ul>
-                <form>
+                <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-between">
                       <div class="uk-flex uk-flex-column">
@@ -381,9 +381,9 @@
                 </form>
               </ul>
             </li>
-            <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Oriundo</a>
+            <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Oriundo</a>
               <ul>
-                <form>
+                <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-between">
                       <div class="uk-flex uk-flex-column">
@@ -442,10 +442,10 @@
                 </form>
               </ul>
             </li>
-            <li class="uk-parent" id="postula_presidentes"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cargo al que Postula</a>
+            <li class="uk-parent" id="postula_presidentes"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cargo al que Postula</a>
               <ul>
                 <!-- <button  onclick="quitar_seleccion_postula()">Decartar</button> -->
-                <form>
+                <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-middle">
                       <select class="uk-select uk-margin-small-right" id="cargo_postula" style="width: 85%" onchange="get_cargo_postula()">
@@ -460,10 +460,10 @@
                 </form>
               </ul>
             </li>
-            <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Organización Política</a>
+            <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Organización Política</a>
               <ul>
                 <!-- <button  onclick="quitar_seleccion_org_politica()">Decartar</button> -->
-                <form>
+                <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-middle">
                       <select class="uk-select uk-margin-small-right" id="select_org_politica" style="width: 85%" onchange="get_org_politica()">
@@ -495,9 +495,9 @@
                 </form>
               </ul>
             </li>
-            <li class="uk-parent" id="distrito_congreso" style="display: none"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Distrito Electoral</a>
+            <li class="uk-parent" id="distrito_congreso" style="display: none"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Distrito Electoral</a>
               <ul>
-                <form>
+                <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-between">
                       <div class="uk-flex uk-flex-column" style="width: 85%">
@@ -569,10 +569,10 @@
             </li>
           </ul>
           <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
-            <li class="uk-nav-header">Filtros</li>
-            <li class="uk-parent" id="opc_edad" name="orga_filtro"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Edad</a>
+            <li class="uk-nav-header">Opciones de Búsqueda</li>
+            <li class="uk-parent" id="opc_edad" name="orga_filtro"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Edad</a>
             <ul>
-              <form>
+              <form class="filter_options">
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex uk-flex-between">
                     <div class="uk-flex uk-flex-column">
@@ -621,9 +621,9 @@
               </form>
             </ul>
           </li>
-          <li class="uk-parent" id="opc_genero" name="orga_filtro"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Género</a>
+          <li class="uk-parent" id="opc_genero" name="orga_filtro"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Género</a>
             <ul>
-              <form>
+              <form class="filter_options">
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex">
                     <div class="uk-flex uk-flex-column">
@@ -666,11 +666,11 @@
               </form>
             </ul>
           </li> 
-          <li class="uk-parent" name="orga_filtro" id="opc_educacion"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel Académico</a>
+          <li class="uk-parent" name="orga_filtro" id="opc_educacion"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel Académico</a>
             <ul>
-              <form>
+              <form class="filter_options">
                 <fieldset class="uk-fieldset uk-padding-small">
-                  <div class="uk-width-1-1@s uk-flex ">
+                  <div class="uk-width-1-1@s uk-flex uk-flex-between">
                     <div class="uk-flex uk-flex-column">
                       <label class="uk-text-muted">
                         Estudios primarios
@@ -785,9 +785,9 @@
               </form>
             </ul>
           </li>
-            <li class="uk-parent" name="orga_filtro" id="opc_sentencia"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Sentencias</a>
+            <li class="uk-parent" name="orga_filtro" id="opc_sentencia"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Sentencias</a>
             <ul>
-              <form>
+              <form class="filter_options">
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex">
                     <div class="uk-flex uk-flex-column" style="width: 85%;">
@@ -849,9 +849,9 @@
               </form>
             </ul>
           </li>
-          <li class="uk-parent" name="orga_filtro" id="opc_oriundo" ><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Oriundo</a>
+          <li class="uk-parent" name="orga_filtro" id="opc_oriundo" ><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Oriundo</a>
             <ul>
-              <form>
+              <form class="filter_options">
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex uk-flex-between">
                     <div class="uk-flex uk-flex-column">
@@ -910,9 +910,9 @@
               </form>
             </ul>
           </li>
-          <li class="uk-parent" name="orga_filtro" id="dist_electo" ><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cuantos candidatos del partido postulan por un distrito electoral diferente al de su nacimiento</a>
+          <li class="uk-parent" name="orga_filtro" id="dist_electo" ><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cuantos candidatos del partido postulan por un distrito electoral diferente al de su nacimiento</a>
             <ul>
-              <form>
+              <form class="filter_options">
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex uk-flex-between">
                     <div class="uk-flex uk-flex-column">
@@ -936,9 +936,9 @@
             </ul>
           </li>
           <li class="uk-nav-header uk-margin-remove">Financiamiento 2017, 2018, 2019</li>
-          <li class="uk-parent" name="orga_filtro" id="privado"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Finan. Privado</a>
+          <li class="uk-parent" name="orga_filtro" id="privado"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Finan. Privado</a>
             <ul>
-              <form>
+              <form class="filter_options">
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex uk-flex-between">
                     <div class="uk-flex uk-flex-column">
@@ -1066,9 +1066,9 @@
               </form>
             </ul>
           </li>
-          <li class="uk-parent" name="orga_filtro" id="publico_div"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Finan. Público</a>
+          <li class="uk-parent" name="orga_filtro" id="publico_div"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Finan. Público</a>
             <ul>
-              <form>
+              <form class="filter_options">
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex uk-flex-between">
                     <div class="uk-flex uk-flex-column">
@@ -1234,10 +1234,10 @@
       </div>
       {% include "elecciones/pagination.html" with page=page %}
     {% else %}
-      <div class="uk-container uk-text-center no-results-container">
+      <div class="uk-container uk-padding uk-text-center no-results-container">
         <span uk-icon="icon: settings; ratio: 2.3"></span>
-        <h5 id="text_info" class="uk-text-large uk-text-light uk-margin-remove">
-        </h5>
+        <h5 id="text_info" class="uk-text-large uk-text-light uk-margin-remove-top"></h5>
+        <img id="web_gif" alt="explicacion gif">
       </div>
     {% endif %}
   </div>
@@ -1261,10 +1261,20 @@
     let text = url.split("/")
     
     let text_info = document.getElementById('text_info')
+    let img_gif = document.getElementById('web_gif')
     
     if(text_info) {
       if(text[text.length - 1] === "candidatos" || text[text.length - 1] === "candidatos#") {
         text_info.textContent="Escoge al menos un filtro para que aparezcan los resultados."
+        text_info.style.marginBottom = "1rem"
+
+        if(window.innerWidth > 960) 
+          img_gif.src = "https://i.ibb.co/BZJRX79/web-use.gif"
+        else {
+          img_gif.src = "https://i.ibb.co/2yhT7J6/mobile-use.gif"
+          img_gif.style.width = "70%"
+          img_gif.style.margin = "auto"
+        }
       } else {
         text_info.textContent="No se encontraron resultados para esta búsqueda"
       }
