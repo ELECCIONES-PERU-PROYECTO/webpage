@@ -558,7 +558,7 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
       cargo_postula_dato = "PRIMER VICEPRESIDENTE DE LA REPÚBLICA"
 
   print("dni_hoja_de_vida: ",dni_hoja_de_vida)     
-  nombre_ = DatosPersonales.objects.raw("SELECT id, candidato FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "' LIMIT 1")
+  nombre_ = DatosPersonales.objects.raw("SELECT DP.id, DP.candidato, OP.url FROM datos_personales as DP INNER JOIN organizaciones_politicas as OP on DP.organizacion_politica = OP.organizacion_politica AND dni_candidato = '" +dni_hoja_de_vida+  "' LIMIT 1")
   datos_personales_ = DatosPersonales.objects.raw("SELECT DISTINCT * FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "' LIMIT 1 ")
   cargo_eleccion_ = DatosPersonales.objects.raw("SELECT  id,cargo_eleccion FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "'")  
   

@@ -118,27 +118,26 @@
 		</nav>
 	</header>
 
-	<section id="intro">
+	{% for n in nombre %}
+	<section id="intro" style="background-image: url({{n.url}});">
 		<div class="intro-overlay"></div>
 		<div class="intro-content">
 			<div class="row">
 				<div class="uk-padding-small">
-					{% for n in nombre %}
 						<h1>{{n.candidato}}</h1>
-					{% endfor %}
-					<br>
-					<!--
+						<br>
+						<!--
 					<p class="intro-position">
 						<span>Front-end Developer</span>
 						<span>UI/UX Designer</span >
-					</p>
+						</p>
 					-->
 					<a class="button stroke smoothscroll" href="#about" title="">Conoce al candidato</a> </div>
+				</div>
 			</div>
-		</div>
-		<!--
-    <ul class="intro-social">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+			<!--
+				<ul class="intro-social">
+					<li><a href="#"><i class="fa fa-facebook"></i></a></li>
       <li><a href="#"><i class="fa fa-behance"></i></a></li>
       <li><a href="#"><i class="fa fa-twitter"></i></a></li>
       <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
@@ -146,7 +145,8 @@
     </ul>
   -->
 	</section>
-
+	{% endfor %}
+	
 	<section id="about">
 		<div class="col-twelve resume-header">
 			<h2>1. Datos personales</h2>
@@ -1067,7 +1067,7 @@
 							<li class="uk-text-center">
 								<strong>Total ingresos</strong>
 								<span>
-									{{ingreso_.total_ingresos}}
+									S/{{ingreso_.total_ingresos}} soles
 								</span>
 							</li>
 						</ul>
