@@ -199,7 +199,7 @@
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-between">
                       <div class="uk-flex uk-flex-column" style="width: 90%">
-                        <label><input type="checkbox" onchange="mostrar_input_ingreso(this)">Sí tiene ingresos</label>
+                        <label><input type="checkbox" onchange="mostrar_input_ingreso(this)">Tiene ingresos</label>
                         <div id="inputs-ingreso" style="display: none; margin-left: 10px;">
                         <label>
                           Ordenar según el monto de ingreso
@@ -217,7 +217,7 @@
                           </label>
                         </div>
                       </div>
-                      <label><input type="checkbox" onchange="mostrar_input_inmub(this)">Sí tiene bienes inmuebles</label>
+                      <label><input type="checkbox" onchange="mostrar_input_inmub(this)">Tiene bienes inmuebles</label>
                       <div id="inputs-canti-inmu" style="display: none; margin-left: 10px;">
                         <label>
                           Ordenar según la cantidad bienes inmuebles 
@@ -250,7 +250,7 @@
                           </label>
                         </div>
                       </div>
-                      <label><input type="checkbox" onchange="mostrar_input_mueb(this)">Sí tiene bienes muebles</label>
+                      <label><input type="checkbox" onchange="mostrar_input_mueb(this)">Tiene bienes muebles</label>
                       <div id="inputs-mueb" style ="display :none; margin-left: 10px;">
                         <label >
                           Ordenar según la cantidad de muebles 
@@ -1175,7 +1175,7 @@ Ordenar e                       Estudios primarios
               </div>
               <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
                 {%  if organizacion.conteo %}
-                  <p class="uk-text-muted uk-margin-remove">Cantidad de candidatos que cumplen con los opciones de búsqueda</p>
+                  <p class="uk-text-muted uk-margin-remove">Cantidad de candidatos que cumplen con las opciones de búsqueda</p>
                   {{ organizacion.conteo }} candidatos
                 {% elif organizacion.monto %}
                     <p class="uk-text-muted uk-margin-remove">Ingreso</p>
