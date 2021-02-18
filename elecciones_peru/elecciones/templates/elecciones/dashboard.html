@@ -34,11 +34,11 @@
         <div class="left-nav-wrap" id="filtros_candidatos">
           <ul class="uk-nav uk-nav-default uk-nav-parent-icon uk-margin-medium-top uk-hidden@m" data-uk-nav>
             <li class="uk-nav-header">Tipos de búsqueda</li>
-            <li class="nav-options">
-              <a class="nav_opt pres_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a>
+            <li class="nav-options pres_opt">
+              <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a>
             </li>
-            <li class="nav-options">
-              <a class="nav_opt cong_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Congresales</a>
+            <li class="nav-options cong_opt">
+              <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Congresales</a>
             </li>
             <li class="nav-options">
               <a class="nav_opt parl_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Parlamento Andino</a>
@@ -555,17 +555,17 @@
         <div class="left-nav-wrap" id="filtros_organizaciones" style="display:none">
           <ul class="uk-nav uk-nav-default uk-nav-parent-icon uk-margin-medium-top uk-hidden@m" data-uk-nav>
             <li class="uk-nav-header">Tipos de búsqueda</li>
-            <li class="nav-options">
-              <a class="nav_opt pres_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a>
+            <li class="nav-options pres_opt">
+              <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a>
             </li>
-            <li class="nav-options">
-              <a class="nav_opt cong_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Congresales</a>
+            <li class="nav-options cong_opt">
+              <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Congresales</a>
             </li>
-            <li class="nav-options">
-              <a class="nav_opt parl_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Parlamento Andino</a>
+            <li class="nav-options parl_opt">
+              <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Parlamento Andino</a>
             </li>
-            <li class="nav-options">
-              <a class="nav_opt orga_opt" href="#" onclick="activar_organizaciones(this.text)">Partidos Políticos</a>
+            <li class="nav-options orga_opt">
+              <a class="nav_opt" href="#" onclick="activar_organizaciones(this.text)">Partidos Políticos</a>
             </li>
           </ul>
           <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
@@ -1118,18 +1118,17 @@
         </div>
         <div class="uk-navbar-right">  
           <ul class="uk-navbar-nav uk-visible@m" id="opciones_candidatos"> 
-            <li class="nav-options">
-              <a class="nav_opt pres_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a>
+            <li class="nav-options pres_opt">
+              <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a>
             </li>
-            <li class="nav-options">
-              <a class="nav_opt cong_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Congresales</a>
+            <li class="nav-options cong_opt">
+              <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Congresales</a>
             </li>
-            <li class="nav-options">
-              <a class="nav_opt parl_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Parlamento Andino</a>
+            <li class="nav-options parl_opt">
+              <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Parlamento Andino</a>
             </li>
-            <li class="nav-options">
-              <a class="nav_opt orga_opt" href="#" onclick="activar_organizaciones(this
-              )">Partidos Políticos</a>
+            <li class="nav-options orga_opt">
+              <a class="nav_opt" href="#" onclick="activar_organizaciones(this)">Partidos Políticos</a>
             </li>
             <li class="nav-options">
               <a class="nav_opt" href="/elecciones">
@@ -1173,12 +1172,18 @@
               </div>
               <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
                 {%  if organizacion.conteo %}
+                  <p class="uk-text-muted uk-margin-remove">Cantidad de candidatos que cumplen con los opciones de búsqueda</p>
+                  {{ organizacion.conteo }} candidatos
+                {% elif organizacion.monto %}
+                    <p class="uk-text-muted uk-margin-remove">Ingreso</p>
+                    {{ organizacion.monto }} soles
+                    {% else %}
+                      <p class="uk-text-muted uk-margin-remove">Ingreso</p>
+                      0 soles
+                {% endif %}
+                <!--
                 <p class="uk-text-muted uk-margin-remove">Cantidad de candidatos que cumplen con los opciones de búsqueda</p>
-                 {{ organizacion.conteo }} candidatos
-                 {% else %}
-                 <p class="uk-text-muted uk-margin-remove">Cantidad de candidatos que cumplen con los opciones de búsqueda</p>
-                  No presentan monto alguno en el año indicado 
-                 {% endif %}
+                No presentan monto alguno en el año indicado--> 
               </div>
             </div>
           </div>
