@@ -1069,7 +1069,7 @@ header .logo a {
 /* navigation panel */
 #main-nav-wrap {
 	display: block;
-	width: 25%;
+	/* width: 25%; */
 	font-family: "poppins-medium", sans-serif;
 	font-size: 1.5rem;
 	position: absolute;
@@ -1082,7 +1082,7 @@ header .logo a {
 	background: #000000;
 	padding: 0 30px 42px;
 	margin: 0;
-	width: 100%;
+	width: 190px;
 	height: auto;
 	clear: both;
 	display: none;
@@ -1424,7 +1424,7 @@ header .logo a {
 {
 	position: relative;
 	left: .05rem;
-	top: .2rem;
+	top: -0.1rem;
 }
 
 .timeline-header
@@ -1486,9 +1486,6 @@ header .logo a {
 	html {
 		font-size: 9.411764705882353px;
 	}
-	header .top-bar {
-		left: 60px;
-	}
 	.intro-info {
 		margin-right: 0;
 		margin-left: 0;
@@ -1529,9 +1526,6 @@ header .logo a {
 	}
 	.section-intro h1 {
 		font-size: 3rem;
-	}
-	header .top-bar {
-		left: 50px;
 	}
 	.timeline-wrap::before
 	{
@@ -1623,9 +1617,6 @@ header .logo a {
 		font-size: 1.5rem;
 		letter-spacing: .3rem;
 	}
-	header .top-bar {
-		left: 35px;
-	}
 	#intro {
 		min-height: 600px;
 	}
@@ -1711,9 +1702,6 @@ header .logo a {
 @media only screen and (max-width:400px) {
 	html {
 		font-size: 9.411764705882353px;
-	}
-	header .top-bar {
-		left: 25px;
 	}
 	.section-intro h1 {
 		font-size: 2.4rem;

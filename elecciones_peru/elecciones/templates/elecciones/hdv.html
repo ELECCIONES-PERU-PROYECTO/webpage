@@ -69,11 +69,8 @@
 				<div class="top-bar"> 
 					<div class="uk-container uk-flex">
 						<div class="uk-navbar-left">
-							<div class="logo"> <a href="hdv.html">Perú Informado</a> </div>
-						</div>
-						<div class="uk-navbar-right">
 							<ul class="uk-navbar-nav">
-								<li><a class="text-nav" href="http://127.0.0.1:8000/elecciones/">Inicio</a></li>
+							  <li><a class="text-nav" href="http://127.0.0.1:8000/elecciones/">Inicio</a></li>
 								<li><a class="text-nav" href="http://127.0.0.1:8000/elecciones/analisis-graficos">Analítica</a></li>
 								<li>
 									<a class="text-nav" href="#" data-uk-icon="chevron-down">Filtros</a>
@@ -95,6 +92,8 @@
 									</div>
 								</li>
 							</ul>
+						</div>
+						<div class="uk-navbar-right">
 							<a class="menu-toggle" href="#"><span>Menu</span></a>
 							<nav id="main-nav-wrap">
 								<ul class="main-navigation">
@@ -774,7 +773,7 @@
 				<div class="blocktext">
 					<ul class="info-list uk-margin-small-bottom">
 						<li>
-							<strong>¿Tiene cargos de elección popularr?</strong>
+							<strong>¿Tiene cargos de elección popular?</strong>
 							<br>
 							{% for cargo in carg_eleccion_pop %}
 								{% if cargo.tiene_info_por_declarar != "SI" %}
@@ -800,7 +799,7 @@
 									<i class="fa fa-briefcase"></i>
 								</div>
 								<div class="timeline-header">
-									<h3>{{cargo_.cargo}}ssss</h3>
+									<h3>{{cargo_.cargo}}</h3>
 									<p>{{cargo_.desde_anhio}} - {{cargo_.hasta_anhio}} </p>
 								</div>
 								<div class="timeline-content">
@@ -837,7 +836,7 @@
 				<div class="blocktext">
 					<ul class="info-list uk-margin-small-bottom">
 						<li>
-							<strong>¿Tiene que información por declarar?</strong>
+							<strong>¿Tiene información por declarar?</strong>
 							<br>
 							{% for renuncia in ifreuncia %}
 								<span>
@@ -1217,7 +1216,7 @@
 														<li>
 															<strong>Valor </strong>
 															<span>
-																{{bien_mueb.valor}}
+																S/{{bien_mueb.valor}} soles
 															</span>
 														</li>
 													{% endif %}
