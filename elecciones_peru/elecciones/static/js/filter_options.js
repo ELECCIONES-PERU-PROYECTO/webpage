@@ -13,7 +13,7 @@ let a_visited
 function clearNavOptions() {
   let all_nav_opt = document.getElementsByClassName("nav-options")
   for (let i=0; i<all_nav_opt.length; i++)
-    all_nav_opt[i].style.background = "black"
+    all_nav_opt[i].style.background = "#A2C2A"
 }
 
 function activar_organizaciones(text){
