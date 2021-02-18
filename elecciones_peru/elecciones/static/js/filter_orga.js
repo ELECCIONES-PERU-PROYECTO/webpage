@@ -19,7 +19,7 @@ function button_filter_org(){
     mark_filters();
   }
 
-  let url = "http://127.0.0.1:8000/elecciones/candidatos"
+  let url = URL + "/" + VIEW
   if(filtro_id=="edad"){
     let rango=""
     inputs_edad = document.getElementsByName("opc_edad")

@@ -1226,10 +1226,9 @@ Ordenar e                       Estudios primarios
                 <div class="uk-text-small uk-flex uk-flex-middle" style="margin: 0 0 0.5rem 0;">
                   <a onclick="verHojadeVida(this)" 
                     class="dni_id hoja_de_vida_btn" 
-                    id={{candidato.dni_candidato}} 
+                    id="{{candidato.dni_candidato}}"
                     name="{{candidato.cargo_eleccion}}" 
-                    style="width: fit-content; height: fit-content;"
-                  >
+                    style="width: fit-content; height: fit-content;">
                     Ver hoja de vida
                   </a>
                 </div>
@@ -1270,7 +1269,7 @@ Ordenar e                       Estudios primarios
     let img_gif = document.getElementById('web_gif')
     
     if(text_info) {
-      if(text[text.length - 1] === "candidatos" || text[text.length - 1] === "candidatos#") {
+      if(text[text.length - 1] === "filtros" || text[text.length - 1] === "filtros#") {
         text_info.textContent="Escoge al menos un filtro para que aparezcan los resultados."
         text_info.style.marginBottom = "1rem"
 

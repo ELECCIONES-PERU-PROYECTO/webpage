@@ -110,7 +110,7 @@ function SendJSON() {
     "dist_electoral" : "",
     "tipo_candidato_" : ""
   }
-  window.location = 'http://127.0.0.1:8000/elecciones/candidatos/test'
+  window.location = URL + VIEW + "/test"
 }
 
 function button_filter(){
@@ -139,7 +139,7 @@ function button_filter(){
     }, 1000)
     return 
   }
-  let url = "http://127.0.0.1:8000/elecciones/candidatos"
+  let url = URL + "/" + VIEW
   let x = 1
   
   for(let i = 0; i < lista_orden_filtros.length; i++){
