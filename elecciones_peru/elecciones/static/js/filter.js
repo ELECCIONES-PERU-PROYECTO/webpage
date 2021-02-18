@@ -1,3 +1,5 @@
+// let btn_fil_cand = document.getElementById("filtrar_cand")
+// btn_fil_cand.disable = false
 
 let cant_filtros = 0
 let lista_orden_filtros = []
@@ -112,6 +114,7 @@ function SendJSON() {
 }
 
 function button_filter(){
+  // btn_fil_cand.disable = true
   tipo_candidato_ = document.getElementsByName("tipo_candidato_filter")[0].id
 
   let lista_valores = [
