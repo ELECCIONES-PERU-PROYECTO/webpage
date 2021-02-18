@@ -13,7 +13,7 @@ let a_visited
 function clearNavOptions() {
   let all_nav_opt = document.getElementsByClassName("nav-options")
   for (let i=0; i<all_nav_opt.length; i++)
-    all_nav_opt[i].style.background = "black"
+    all_nav_opt[i].style.background = "none"
 }
 
 function activar_organizaciones(text){
@@ -24,7 +24,7 @@ function activar_organizaciones(text){
   clearNavOptions()
   a_visited = document.getElementsByClassName("orga_opt")
   for(let i=0; i<a_visited.length; i++)
-    a_visited[i].style.background = "#B62222"
+    a_visited[i].style.background = "#8e0707"
 
   let new_data = {data_filtro:'organizaciones', tipo_candiato_s : ''}
   sessionStorage.setItem('data_filtro',JSON.stringify(new_data))
@@ -55,7 +55,7 @@ function activar_candidatos(text){
     clearNavOptions()
     a_visited = document.getElementsByClassName("cong_opt")
     for(let i=0; i<a_visited.length; i++)
-      a_visited[i].style.background = "#B62222"
+      a_visited[i].style.background = "#8e0707"
 
     let data = { tipo_filtro :'candidatos', tipo_candiato_s : 'Candidatos Congresales' }
     sessionStorage.setItem('data_filtro',JSON.stringify(data))
@@ -83,7 +83,7 @@ function activar_candidatos(text){
     clearNavOptions()
     a_visited = document.getElementsByClassName("pres_opt")
     for(let i=0; i<a_visited.length; i++)
-      a_visited[i].style.background = "#B62222"
+      a_visited[i].style.background = "#8e0707"
     
     let data = { tipo_filtro :'candidatos', tipo_candiato_s : 'Candidatos Presidenciales' }
     sessionStorage.setItem('data_filtro',JSON.stringify(data))
@@ -111,7 +111,7 @@ function activar_candidatos(text){
     clearNavOptions()
     a_visited = document.getElementsByClassName("parl_opt")
     for(let i=0; i<a_visited.length; i++)
-      a_visited[i].style.background = "#B62222"
+      a_visited[i].style.background = "#8e0707"
     
     let data = { tipo_filtro :'candidatos', tipo_candiato_s : 'Candidatos Parlamento Andino' }
     sessionStorage.setItem('data_filtro',JSON.stringify(data))

@@ -139,7 +139,7 @@
 										<p>Ut enim ad minim veniam, quis nostrud magna aliqua exercitation. <a href="">VER MÁS.</a></p>
 									</div>
 								-->	
-								<button class="uk-button uk-button-default uk-button-small button-click-aqui" id="Presidencial" onclick="activar_candidatos(this.text)">Click Aquí</button>
+								<button class="uk-button uk-button-default uk-button-small button-click-aqui" id="Presidencial" onclick="activar_candidatos(this.id)">Click Aquí</button>
 							</div>
 						</div>
 					</li>
@@ -154,7 +154,7 @@
 								<p class="subtitle-text">
 									Conoce a los candidatos congresales de los 27 distritos electorales. 
 								</p>
-									<button class="uk-button uk-button-default uk-button-small button-click-aqui" id="Congresales" onclick="activar_candidatos(this.text)">Click Aquí</button>
+									<button class="uk-button uk-button-default uk-button-small button-click-aqui" id="Congresales" onclick="activar_candidatos(this.id)">Click Aquí</button>
 									<!--
 									<div>
 										<h4>Great stuff</h4>
@@ -217,7 +217,7 @@
 										<p>Ut enim ad minim veniam, quis nostrud magna aliqua exercitation. <a href="">VER MÁS.</a></p>
 									</div>
 								-->	
-								<button class="uk-button uk-button-default uk-button-small button-click-aqui" id="Organización Política" onclick="activar_organizaciones(this.id)">Click Aquí</button>
+								<button class="uk-button uk-button-default uk-button-small button-click-aqui" id="Organización Política" onclick="activar_candidatos(this.id)">Click Aquí</button>
 							</div>
 						</div>
 					</li>
@@ -444,12 +444,26 @@
 		<!-- JS FILES -->
 		<script src="{% static "js/jquery-2.1.3.min.js"%}"></script>
 		<script src="{% static "js/loader.js"%}"></script>
+		<script src="{% static "js/filter_options.js"%}"></script>
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit-icons.min.js"></script>
-		<script src="{% static "js/filter_options.js"%}"></script>
 		<script src="{% static "js/serv.js"%}"></script>
 		<script>
-			
+			// let dat = {
+			// 	nombre : "grace",
+			// 	age : 19
+			// }
+			// function siu() {
+			// 	console.log("su")
+			// 	axios.post('/xde', {"body": dat}, {
+			// 		headers: {
+			// 			'Content-Type': 'application/json'
+			// 		}
+			// 	})
+			// 	.then(res => {
+			// 		console.log(res)
+			// 	})
+			// }
 		</script>
 {% endblock %}
