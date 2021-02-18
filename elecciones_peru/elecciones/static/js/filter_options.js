@@ -19,7 +19,7 @@ function clearNavOptions() {
 function activar_organizaciones(text){
   if(text == "Partidos Políticos" || text == "Organización Política")
     if(text == "Organización Política")
-      window.location = "http://127.0.0.1:8000/elecciones/candidatos"
+      window.location = URL + "/" + VIEW
 
   clearNavOptions()
   a_visited = document.getElementsByClassName("orga_opt")
@@ -50,7 +50,7 @@ function activar_candidatos(text){
 
   if(text == "Candidatos Congresales" || text == "Congresales"){
     if(text == "Congresales")
-      window.location = "http://127.0.0.1:8000/elecciones/candidatos"
+      window.location = URL + "/" + VIEW
     
     clearNavOptions()
     a_visited = document.getElementsByClassName("cong_opt")
@@ -78,7 +78,7 @@ function activar_candidatos(text){
 
   if(text == "Candidatos Presidenciales" || text == "Presidencial"){
     if(text == "Presidencial") 
-      window.location = "http://127.0.0.1:8000/elecciones/candidatos" 
+      window.location = URL + "/" + VIEW
 
     clearNavOptions()
     a_visited = document.getElementsByClassName("pres_opt")
@@ -106,7 +106,7 @@ function activar_candidatos(text){
 
   if(text == "Candidatos Parlamento Andino" || text == "Parlamento Andino"){
     if(text == "Parlamento Andino")
-      window.location = "http://127.0.0.1:8000/elecciones/candidatos" 
+      window.location = URL + "/" + VIEW
 
     clearNavOptions()
     a_visited = document.getElementsByClassName("parl_opt")
