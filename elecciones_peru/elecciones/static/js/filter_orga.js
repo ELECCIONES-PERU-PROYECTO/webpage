@@ -1,3 +1,6 @@
+// let btn_fil_org = document.getElementById("filtrar_org")
+// btn_fil_org.disable = false
+
 let filtro_id = ""
 let filtro_info = ""
 let orden = ""
@@ -11,119 +14,120 @@ function mark_filters(){
 }
 
 function button_filter_org(){
-    if(filtro_id==""){
-      mark_filters();
+  // btn_fil_org.disable = true
+  if(filtro_id==""){
+    mark_filters();
+  }
+
+  let url = "http://127.0.0.1:8000/elecciones/candidatos"
+  if(filtro_id=="edad"){
+    let rango=""
+    inputs_edad = document.getElementsByName("opc_edad")
+    orden_edad_ = document.getElementsByName("edad_orden")
+    for(let i = 0 ; i < inputs_edad.length; i++){
+      if(inputs_edad[i].checked){
+        rango = inputs_edad[i].value
+      }
+    }
+    for(let i = 0 ;i < orden_edad_.length; i++){
+      filtro_info = orden_edad_[i].value
+    }
+    
+
+    url = url+"/"+filtro_id+"/"+rango+"/"+filtro_info
+    console.log(url)
+  } else if(filtro_id=="genero"){
+    let inputs_genero = document.getElementsByName("opc_genero")
+    let inputs_orden = document.getElementsByName("genero_orden")
+    let genero = ""
+    for(let i = 0 ; i < inputs_genero.length; i++){
+      if(inputs_genero[i].checked){
+        genero = inputs_genero[i].value
+      }
+    }
+    for(let i = 0 ; i < inputs_orden.length; i++){
+      if(inputs_orden[i].checked){
+        orden = inputs_orden[i].value
+      }
+    }
+    info_extra = genero
+    //filtro_orden = orden
+    if(orden==""){
+      setTimeout(function(){
+        UIkit.notification('Marque orden');
+      }, 1000);
+      return;
+    }
+    url = url+"/"+ filtro_id+"/"+genero+"/"+orden
+    console.log(url)
+  } else if(filtro_id=="primaria" || filtro_id == "secundaria" || 
+            filtro_id == "tecnicos"  ||filtro_id == "nouni"|| 
+            filtro_id == "uni" ||   filtro_id =="postgrado" || 
+            filtro_id=="maestrodoctor"  
+            ) {
+      let orden = filtro_info
+
+      url = url+"/"+filtro_id+"/unk"+"/"+orden
+      console.log(url)
+  } else if(filtro_id=="cant_sen_penal_obliga"){
+      url = url+"/"+filtro_id+"/unk/"+filtro_info
+  } else if(filtro_id=="cant_sen_penal"){
+      //url = url+"/"+filtro_id+"/"+filtro_info+"/unk"
+      url = url+"/"+filtro_id+"/unk/" + filtro_info
+    } else if(filtro_id=="cant_sen_civil"){
+      //url = url+"/"+filtro_id+"/"+filtro_info+"/unk"
+      url = url+"/"+filtro_id+"/unk/" + filtro_info
+
+    } else if(filtro_id=="org_oriundo"){
+    url = url+"/"+filtro_id+"/"+info_extra+"/"+filtro_info
+    console.log(url)
+  }else if(filtro_id=="elecvsnacimiento_name"){
+    url = url+"/"+filtro_id+"/unk/"+filtro_info
+    console.log(url)
+  }else if(filtro_id=="2019priv" ){
+    console.log("2019_priv: --> filtro_info : ",filtro_info)
+    //let orden_=""
+    
+    let inputs = document.getElementsByName("2019_ingre_dec")
+    for(let i = 0 ; i < inputs.length; i++){
+      if(inputs[i].checked == true)
+        orden = inputs[i].value  
+    }
+    
+    
+    url = url+"/"+filtro_id+"/"+filtro_info+"/"+orden
+    console.log(url)
+  } else if(filtro_id=="2018priv" ){
+    console.log("2018_priv: --> filtro_info : ",filtro_info)
+  
+    let inputs = document.getElementsByName("2018_ingre_dec")
+    for(let i = 0 ; i < inputs.length; i++){
+      if(inputs[i].checked == true)
+      orden = inputs[i].value  
     }
 
-    let url = "http://127.0.0.1:8000/elecciones/candidatos"
-    if(filtro_id=="edad"){
-      let rango=""
-      inputs_edad = document.getElementsByName("opc_edad")
-      orden_edad_ = document.getElementsByName("edad_orden")
-      for(let i = 0 ; i < inputs_edad.length; i++){
-        if(inputs_edad[i].checked){
-          rango = inputs_edad[i].value
-        }
-      }
-      for(let i = 0 ;i < orden_edad_.length; i++){
-        filtro_info = orden_edad_[i].value
-      }
-      
 
-      url = url+"/"+filtro_id+"/"+rango+"/"+filtro_info
-      console.log(url)
-    } else if(filtro_id=="genero"){
-      let inputs_genero = document.getElementsByName("opc_genero")
-      let inputs_orden = document.getElementsByName("genero_orden")
-      let genero = ""
-      for(let i = 0 ; i < inputs_genero.length; i++){
-        if(inputs_genero[i].checked){
-          genero = inputs_genero[i].value
-        }
-      }
-      for(let i = 0 ; i < inputs_orden.length; i++){
-        if(inputs_orden[i].checked){
-          orden = inputs_orden[i].value
-        }
-      }
-      info_extra = genero
-      //filtro_orden = orden
-      if(orden==""){
-        setTimeout(function(){
-          UIkit.notification('Marque orden');
-        }, 1000);
-        return;
-      }
-      url = url+"/"+ filtro_id+"/"+genero+"/"+orden
-      console.log(url)
-    } else if(filtro_id=="primaria" || filtro_id == "secundaria" || 
-              filtro_id == "tecnicos"  ||filtro_id == "nouni"|| 
-              filtro_id == "uni" ||   filtro_id =="postgrado" || 
-              filtro_id=="maestrodoctor"  
-              ) {
-        let orden = filtro_info
-
-        url = url+"/"+filtro_id+"/unk"+"/"+orden
-        console.log(url)
-    } else if(filtro_id=="cant_sen_penal_obliga"){
-        url = url+"/"+filtro_id+"/unk/"+filtro_info
-    } else if(filtro_id=="cant_sen_penal"){
-        //url = url+"/"+filtro_id+"/"+filtro_info+"/unk"
-        url = url+"/"+filtro_id+"/unk/" + filtro_info
-      } else if(filtro_id=="cant_sen_civil"){
-        //url = url+"/"+filtro_id+"/"+filtro_info+"/unk"
-        url = url+"/"+filtro_id+"/unk/" + filtro_info
-
-      } else if(filtro_id=="org_oriundo"){
-      url = url+"/"+filtro_id+"/"+info_extra+"/"+filtro_info
-      console.log(url)
-    }else if(filtro_id=="elecvsnacimiento_name"){
-      url = url+"/"+filtro_id+"/unk/"+filtro_info
-      console.log(url)
-    }else if(filtro_id=="2019priv" ){
-      console.log("2019_priv: --> filtro_info : ",filtro_info)
-      //let orden_=""
-      
-      let inputs = document.getElementsByName("2019_ingre_dec")
+    url = url+"/"+filtro_id+"/"+filtro_info+"/"+orden
+    console.log(url)
+  } else if(filtro_id=="2017priv" ){
+      let inputs = document.getElementsByName("2017_ingre_dec")
       for(let i = 0 ; i < inputs.length; i++){
         if(inputs[i].checked == true)
           orden = inputs[i].value  
       }
-      
-      
-      url = url+"/"+filtro_id+"/"+filtro_info+"/"+orden
-      console.log(url)
-    } else if(filtro_id=="2018priv" ){
-      console.log("2018_priv: --> filtro_info : ",filtro_info)
-   
-      let inputs = document.getElementsByName("2018_ingre_dec")
-      for(let i = 0 ; i < inputs.length; i++){
-        if(inputs[i].checked == true)
-        orden = inputs[i].value  
-      }
 
 
       url = url+"/"+filtro_id+"/"+filtro_info+"/"+orden
       console.log(url)
-    } else if(filtro_id=="2017priv" ){
-        let inputs = document.getElementsByName("2017_ingre_dec")
-        for(let i = 0 ; i < inputs.length; i++){
-          if(inputs[i].checked == true)
-            orden = inputs[i].value  
-        }
+  } else if(filtro_id=="monto_quinque"){
 
+    orden = filtro_info;
 
-        url = url+"/"+filtro_id+"/"+filtro_info+"/"+orden
-        console.log(url)
-    } else if(filtro_id=="monto_quinque"){
-
-      orden = filtro_info;
- 
-      url = url+"/"+filtro_id+"/unk/"+orden
-      console.log(url)
-    }
+    url = url+"/"+filtro_id+"/unk/"+orden
     console.log(url)
-    window.location = url   
+  }
+  console.log(url)
+  window.location = url   
 }
 
 function quitar_todas_selecciones(id_){

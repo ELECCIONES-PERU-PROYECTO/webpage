@@ -18,7 +18,9 @@ ul#opciones_candidatos li.nav-options a.nav_opt {
 	font-size: 16px;
 }
 
-.aside_options {
+.aside_options, 
+#filtros_candidatos li.nav-options a.nav_opt, 
+#filtros_organizaciones li.nav-options a.nav_opt {
 	font-size: 18px;
 }
 
@@ -138,7 +140,7 @@ ul.uk-navbar-nav li.nav-options a {
 
 /* Trash Icon */
 .filter_options a.trash_icon {
-	color: rgba(0,0,0,0.08);
+	color: #fff;
 }
 
 /* Drop arrow */
