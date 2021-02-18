@@ -54,7 +54,7 @@
                 <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-middle">
-                      <select class="uk-select uk-margin-small-right" id="nivel_academico" style="width: 85%" onchange="get_nivel_academico()">
+                      <select class="uk-select opt_select uk-margin-small-right" id="nivel_academico" style="width: 85%" onchange="get_nivel_academico()">
                       <option value="default">Elegir Nivel Academico</option>
                         <option value="concluyo_primaria">Concluyó primaria</option>
                         <option value="concluyo_secundaria">Concluyó secundaria</option>
@@ -65,7 +65,7 @@
                         <option value="maestro_doctor">Maestro o Doctor</option>
                       </optgroup>
                       </select>
-                      <a onclick="quitar_seleccion_academico()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
+                      <a onclick="quitar_seleccion_academico()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                     </div>
                   </fieldset>
                 </form>
@@ -77,18 +77,18 @@
                   <fieldset class="uk-fieldset uk-padding-small uk-flex">
                     <div class="uk-width-1-1@s">
                       <div class="uk-flex uk-flex-column">
-                        <label class="uk-text-muted">
+                        <label>
                           Cantidad de cargos de elección popular
                         </label>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="anhio_servicio_asc" name="anhio_servicio" onclick="get_cargos_previos()" value="ASC">
-                          <label for="anhio_servicio_asc" class="uk-text-muted">
+                          <label for="anhio_servicio_asc">
                             De menor a mayor
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="anhio_servicio_desc" name="anhio_servicio" onclick="get_cargos_previos()" value="DESC">
-                          <label for="anhio_servicio_desc" class="uk-text-muted">
+                          <label for="anhio_servicio_desc">
                             De mayor a menor
                           </label>
                         </div>
@@ -97,7 +97,7 @@
                         Ver Experiencia Laboral
                       </button> -->
                     </div>
-                    <a onclick="quitar_seleccion_cargos_pervios()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
+                    <a onclick="quitar_seleccion_cargos_pervios()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                   </fieldset>
                 </form>
               </ul>
@@ -116,18 +116,18 @@
                             <label><input type="checkbox" id="penal_cbx" value="penal_val" onchange="togglePenal_opciones(this)">Penal</label>
                           </div>
                           <div id="div_opc_cant_sentencias" style="display: none">
-                            <label class="uk-text-muted">
+                            <label>
                               Cantidad de Sentencias
                             </label>
                             <div class="uk-flex uk-flex-middle">
                               <input type="radio" id="cant_senten_asc" name="cant_senten" value="ASC" onclick="get_sentencias_penal_cant()">
-                              <label for="cant_senten_asc" class="uk-text-muted">
+                              <label for="cant_senten_asc">
                                 De menor a mayor
                               </label>
                             </div>
                             <div class="uk-flex uk-flex-middle uk-margin-small-bottom">
                               <input type="radio" id="cant_senten_desc" name="cant_senten" value="DESC" onclick="get_sentencias_penal_cant()">
-                              <label for="cant_senten_desc" class="uk-text-muted">
+                              <label for="cant_senten_desc">
                                 De mayor a menor
                               </label>
                             </div>
@@ -137,45 +137,45 @@
                               <label><input type="checkbox" id="por_obligaciones" value="por_obligaciones_val" onchange="toggleObligacion_opciones(this)">Por obligaciones</label>
                             </div>
                             <div id="div_opc_obligaciones" style="display: none">
-                              <label class="uk-text-muted">
+                              <label>
                                 Cantidad de Sentencias
                               </label>
                               <div class="uk-flex uk-flex-middle">
                                 <input type="radio" id="cant_senten_asc_oblig" name="cant_senten_oblig" value="ASC" onclick="get_sentencias_oblig_cant()">
-                                <label for="cant_senten_asc_oblig" class="uk-text-muted">
+                                <label for="cant_senten_asc_oblig">
                                   De menor a mayor
                                 </label>
                               </div>
                               <div class="uk-flex uk-flex-middle">
                                 <input type="radio" id="cant_senten_desc_oblig" name="cant_senten_oblig" value="DESC" onclick="get_sentencias_oblig_cant()">
-                                <label for="cant_senten_desc_oblig" class="uk-text-muted">
+                                <label for="cant_senten_desc_oblig">
                                   De mayor a menor
                                 </label>
                               </div>
-                              <label class="uk-text-muted">
+                              <label>
                                 Materia de la demanda
                               </label>
                               <div class="uk-flex uk-flex-middle">
                                 <input type="radio" id="mat_deman_fam_alimen" name="opc_mat_demanda" value="FamiliaAli" onclick="get_sentencias_oblig_mat()">
-                                <label for="mat_deman_fam_alimen" class="uk-text-muted">
+                                <label for="mat_deman_fam_alimen">
                                   Familia/Alimentaria
                                 </label>
                               </div>
                               <div class="uk-flex uk-flex-middle">
                                 <input type="radio" id="mat_deman_contract" name="opc_mat_demanda" value="CONTRACTUAL" onclick="get_sentencias_oblig_mat()">
-                                <label for="mat_deman_contract" class="uk-text-muted">
+                                <label for="mat_deman_contract">
                                   Contractual
                                 </label>
                               </div>
                               <div class="uk-flex uk-flex-middle">
                                 <input type="radio" id="mat_deman_laboral" name="opc_mat_demanda" value="LABORAL" onclick="get_sentencias_oblig_mat()">
-                                <label for="mat_deman_laboral" class="uk-text-muted">
+                                <label for="mat_deman_laboral">
                                   Laboral
                                 </label>
                               </div>
                               <div class="uk-flex uk-flex-middle uk-margin-small-bottom">
                                 <input type="radio" id="mat_deman_violencia" name="opc_mat_demanda" value="VIOLENCIA" onclick="get_sentencias_oblig_mat()">
-                                <label for="mat_deman_violencia" class="uk-text-muted">
+                                <label for="mat_deman_violencia">
                                   Violencia Familiar
                                 </label>
                               </div>
@@ -188,7 +188,7 @@
                         <label><input type="radio" id="no_tiene" value="no_tiene_val"  name ="ifsentencias" onclick="noTiene_opcion(this)">No tiene</label>
                       </div>
                     </div>
-                    <a onclick="quitar_seleccion_sentencias()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
+                    <a onclick="quitar_seleccion_sentencias()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                   </fieldset>
                 </form>
               </ul>
@@ -201,91 +201,91 @@
                       <div class="uk-flex uk-flex-column" style="width: 90%">
                         <label><input type="checkbox" onchange="mostrar_input_ingreso(this)">Sí tiene ingresos</label>
                         <div id="inputs-ingreso" style="display: none;">
-                        <label class="uk-text-muted">
+                        <label>
                           Ordenar según el monto de ingreso
                         </label>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="cant_ingreso_asc" name="cant_ingreso" onclick="get_bienes_rentas(this)" value="ASC">
-                          <label for="cant_ingreso_asc" class="uk-text-muted">
+                          <label for="cant_ingreso_asc">
                             De menor a mayor
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle uk-margin-small-bottom">
                           <input type="radio" id="cant_ingreso_desc" name="cant_ingreso" onclick="get_bienes_rentas(this)" value="DESC">
-                          <label for="cant_ingreso_desc" class="uk-text-muted">
+                          <label for="cant_ingreso_desc">
                             De mayor a menor
                           </label>
                         </div>
                       </div>
                       <label><input type="checkbox" onchange="mostrar_input_inmub(this)">Sí tiene inmuebles</label>
                       <div id="inputs-canti-inmu" style="display: none;">
-                        <label class="uk-text-muted">
+                        <label>
                           Ordenar según la cantidad bienes inmuebles 
                         </label>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="cant_inmueble_asc" name="cant_inmuebles" onclick="get_bienes_rentas(this)" value="ASC">
-                          <label for="cant_inmueble_asc" class="uk-text-muted">
+                          <label for="cant_inmueble_asc">
                             De menor a mayor
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="cant_inmueble_desc" name="cant_inmuebles"  onclick="get_bienes_rentas(this)" value="DESC">
-                          <label for="cant_inmueble_desc" class="uk-text-muted">
+                          <label for="cant_inmueble_desc">
                             De mayor a menor
                           </label>
                         </div>
-                        <label class="uk-text-muted" >
+                        <label >
                           Ordenar según el valor de inmuebles 
                         </label>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="valor_inmueble_asc" name="valor_inmuebles" onclick="get_bienes_rentas(this)" value="ASC">
-                          <label for="valor_inmueble_asc" class="uk-text-muted">
+                          <label for="valor_inmueble_asc">
                             De menor a mayor
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle uk-margin-small-bottom">
                           <input type="radio" id="valor_inmueble_desc" name="valor_inmuebles" onclick="get_bienes_rentas(this)" value="DESC">
-                          <label for="valor_inmueble_desc" class="uk-text-muted">
+                          <label for="valor_inmueble_desc">
                             De mayor a menor
                           </label>
                         </div>
                       </div>
                       <label><input type="checkbox" onchange="mostrar_input_mueb(this)">Sí tiene muebles</label>
                       <div id="inputs-mueb" style =" display :none">
-                        <label class="uk-text-muted" >
+                        <label >
                           Ordenar según la cantidad de muebles 
                         </label>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="cant_mueble_asc" name="cant_muebles"  onclick="get_bienes_rentas(this)" value="ASC">
-                          <label for="cant_mueble_asc" class="uk-text-muted">
+                          <label for="cant_mueble_asc">
                             De menor a mayor
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="cant_mueble_desc" name="cant_muebles" onclick="get_bienes_rentas(this)" value="DESC">
-                          <label for="cant_mueble_desc" class="uk-text-muted">
+                          <label for="cant_mueble_desc">
                             De mayor a menor
                           </label>
                         </div>
 
-                        <label class="uk-text-muted">
+                        <label>
                           Ordenar según el valor de muebles 
                         </label>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="valor_mueble_asc" name="valor_muebles" onclick="get_bienes_rentas(this)" value="ASC">
-                          <label for="valor_mueble_asc" class="uk-text-muted">
+                          <label for="valor_mueble_asc">
                             De menor a mayor
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="valor_mueble_desc" name="valor_muebles" onclick="get_bienes_rentas(this)" value="DESC">
-                          <label for="valor_mueble_desc" class="uk-text-muted">
+                          <label for="valor_mueble_desc">
                             De mayor a menor
                           </label>
                         </div>
                       </div>
                       </div>
-                      <a onclick="quitar_seleccion_b_r()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
+                      <a onclick="quitar_seleccion_b_r()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                     </div>
                   </fieldset>
                 </form>
@@ -297,23 +297,23 @@
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-between">
                       <div class="uk-flex uk-flex-column" style="width: 80%">
-                        <label class="uk-text-muted">
+                        <label>
                           Ordenar según la cantidad de renuncias del candidato
                         </label>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="cantidad_renuncia_asc" name="cantidad_renuncia" onclick="get_renuncia()" value="ASC">
-                          <label for="cantidad_renuncia_asc" class="uk-text-muted">
+                          <label for="cantidad_renuncia_asc">
                             De menor a mayor
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="cantidad_renuncia_desc" name="cantidad_renuncia" onclick="get_renuncia()" value="DESC">
-                          <label for="cantidad_renuncia_desc" class="uk-text-muted">
+                          <label for="cantidad_renuncia_desc">
                             De mayor a menor
                           </label>
                         </div>
                       </div>
-                      <a onclick="quitar_seleccion_renuncia()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1" style="font-size: 20px;"></a>
+                      <a onclick="quitar_seleccion_renuncia()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1" style="font-size: 20px;"></a>
                     </div>
                   </fieldset>
                 </form>
@@ -326,18 +326,18 @@
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s">
                       <div class="uk-flex uk-flex-column">
-                        <label class="uk-text-muted">
+                        <label>
                           Género
                         </label>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="tipo_genero" name="opcion_genero" value="tipo_genero">
-                          <label for="tipo_genero" class="uk-text-muted">
+                          <label for="tipo_genero">
                             Fememino
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="tipo_genero" name="opcion_genero" value="tipo_genero">
-                          <label for="tipo_sentencia" class="uk-text-muted">
+                          <label for="tipo_sentencia">
                             Masculino
                           </label>
                         </div>
@@ -353,29 +353,29 @@
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-between">
                       <div class="uk-flex uk-flex-column">
-                        <label class="uk-text-muted">
+                        <label>
                           Rango de edades
                         </label>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="rango_edad_18_30" name="rango_edad" onclick="get_edad()" value="18-29">
-                          <label for="rango_edad_18_30" class="uk-text-muted">
+                          <label for="rango_edad_18_30">
                             18 - 29
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="rango_edad_30_50" name="rango_edad" onclick="get_edad()" value="30-59">
-                          <label for="rango_edad_30_50" class="uk-text-muted">
+                          <label for="rango_edad_30_50">
                             30 - 59
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="rango_edad_50_70" name="rango_edad" onclick="get_edad()" value="60-85">
-                          <label for="rango_edad_50_70" class="uk-text-muted">
+                          <label for="rango_edad_50_70">
                             60 a más
                           </label>
                         </div>
                       </div>
-                      <a onclick="quitar_seleccion_edad()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
+                      <a onclick="quitar_seleccion_edad()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                     </div>
                   </fieldset>
                 </form>
@@ -387,26 +387,26 @@
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-between">
                       <div class="uk-flex uk-flex-column">
-                        <label class="uk-text-muted">
+                        <label>
                           Nació en Perú
                         </label>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="oriundo_si" name="oriundo_input" value="SI" onclick="get_oriundo()">
-                          <label for="oriundo_si" class="uk-text-muted">
+                          <label for="oriundo_si">
                             Sí
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="oriundo_no" name="oriundo_input" value="NO"  onclick="get_oriundo()">
-                          <label for="oriundo_no" class="uk-text-muted">
+                          <label for="oriundo_no">
                             No
                           </label>
                         </div>
                         <div id="desplegable_oriundo" class="uk-flex uk-flex-column uk-padding-small uk-padding-remove-top" style="display: none" >
-                          <label class="uk-text-muted">
+                          <label>
                             Departamento de nacimiento
                           </label>
-                          <select class="uk-select" id="desplegable_oriundo_" onchange="onchange_desple_oriundo()">
+                          <select class="uk-select opt_select" id="desplegable_oriundo_" onchange="onchange_desple_oriundo()">
                             <option value="default">Elige el departamento</option>
                             <option value="AMAZONAS">Amazonas</option>
                             <option value="ANCASH">Ancash</option>
@@ -436,7 +436,7 @@
                           </select>
                         </div>
                       </div>
-                      <a onclick="quitar_seleccion_oriundo()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
+                      <a onclick="quitar_seleccion_oriundo()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                     </div>
                   </fieldset>
                 </form>
@@ -448,13 +448,13 @@
                 <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-middle">
-                      <select class="uk-select uk-margin-small-right" id="cargo_postula" style="width: 85%" onchange="get_cargo_postula()">
+                      <select class="uk-select opt_select uk-margin-small-right" id="cargo_postula" style="width: 85%" onchange="get_cargo_postula()">
                       <option value="default">Elegir cargo</option>
                         <option value="PRIMER VICEPRESIDENTE DE LA REPÚBLICA">Primer Vicepresidente</option>
                         <option value="SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA">Segundo Vicepresidente</option>
                         <option value="PRESIDENTE DE LA REPÚBLICA">Presidente de la República</option>
                       </select>
-                      <a onclick="quitar_seleccion_postula()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
+                      <a onclick="quitar_seleccion_postula()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                     </div>
                   </fieldset>
                 </form>
@@ -466,7 +466,7 @@
                 <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-middle">
-                      <select class="uk-select uk-margin-small-right" id="select_org_politica" style="width: 85%" onchange="get_org_politica()">
+                      <select class="uk-select opt_select uk-margin-small-right" id="select_org_politica" style="width: 85%" onchange="get_org_politica()">
                         <option value="default">Elegir Organización Política</option>
                         <option value="ACCION POPULAR">Accion Popular</option>
                         <option value="ALIANZA PARA EL PROGRESO">Alianza Para el progreso</option>
@@ -489,7 +489,7 @@
                         <option value="UNION POR EL PERU">Union por el Peru</option>
                         <option value="VICTORIA NACIONAL">Victoria Nacional</option>
                       </select>
-                      <a onclick="quitar_seleccion_org_politica()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
+                      <a onclick="quitar_seleccion_org_politica()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                     </div>
                   </fieldset>
                 </form>
@@ -501,7 +501,7 @@
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-between">
                       <div class="uk-flex uk-flex-column" style="width: 85%">
-                        <select class="uk-select" id="dist_electo" onchange="get_distrito_electoral()">
+                        <select class="uk-select opt_select" id="dist_electo" onchange="get_distrito_electoral()">
                           <option value="default">Elegir Distrito Electoral</option>
                           <option value="AMAZONAS">Amazonas</option>
                           <option value="ANCASH">Ancash</option>
@@ -532,7 +532,7 @@
                           <option value="UCAYALI">Ucayali</option> 
                         </select>
                       </div>
-                    <a onclick="quitar_seleccion_distrito()" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
+                    <a onclick="quitar_seleccion_distrito()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                     </div>
                   </fieldset>
                 </form>
@@ -576,46 +576,46 @@
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex uk-flex-between">
                     <div class="uk-flex uk-flex-column">
-                      <label class="uk-text-muted">
+                      <label>
                         Rango de edades
                       </label>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="org_rango_edad_18_30" data-info="rango_edad_18_30"  name="opc_edad" onclick="set_valor(this)" value="18-29">
-                        <label for="org_rango_edad_18_30" class="uk-text-muted">
+                        <label for="org_rango_edad_18_30">
                           18 - 29
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="org_rango_edad_30_50" data-info="rango_edad_30_50" name="opc_edad" onclick="set_valor(this)" value="30-59">
-                        <label for="org_rango_edad_30_50" class="uk-text-muted">
+                        <label for="org_rango_edad_30_50">
                           30 - 59
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="org_rango_edad_50_70" data-info="rango_edad_50_70" name="opc_edad" onclick="set_valor(this)" value="60-85">
-                        <label for="org_rango_edad_50_70" class="uk-text-muted">
+                        <label for="org_rango_edad_50_70">
                           60 a más
                         </label>
                       </div>
                       <div id="orden_edad_container">
-                        <label class="uk-text-muted" style="margin-top: 10px">
+                        <label style="margin-top: 10px">
                           Ordenar de manera
                         </label>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="org_edad_ord_asc"  name="edad_orden" onclick="set_valor(this)" value="ASC">
-                          <label for="org_edad_ord_asc" class="uk-text-muted">
+                          <label for="org_edad_ord_asc">
                             De menor a mayor
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="org_edad_ord_desc" name="edad_orden" onclick="set_valor(this)" value="DESC">
-                          <label for="org_edad_ord_desc" class="uk-text-muted">
+                          <label for="org_edad_ord_desc">
                             De mayor a menor
                           </label>
                         </div>
                       </div>
                     </div>
-                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
+                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                   </div>
                 </fieldset>
               </form>
@@ -627,40 +627,40 @@
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex">
                     <div class="uk-flex uk-flex-column">
-                      <label class="uk-text-muted">
+                      <label>
                       Mujeres y hombres por partido  
                       </label>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="org_gen_masc" name="opc_genero" onclick="set_valor(this)" value="MASCULINO">
-                        <label for="org_gen_masc" class="uk-text-muted">
+                        <label for="org_gen_masc">
                           Masculino
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="org_gen_fem" name="opc_genero" onclick="set_valor(this)" value="FEMENINO">
-                        <label for="org_gen_fem" class="uk-text-muted">
+                        <label for="org_gen_fem">
                           Fememino
                         </label>
                       </div>
                       <div id="orden_genero_container">
-                        <label class="uk-text-muted" style="margin-top: 10px">
+                        <label style="margin-top: 10px">
                           Ordenar de manera
                         </label>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="org_ord_asc"  name="genero_orden" onclick="set_valor(this)" value="ASC">
-                          <label for="org_ord_asc" class="uk-text-muted">
+                          <label for="org_ord_asc">
                             De menor a mayor
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="org_ord_desc" name="genero_orden" onclick="set_valor(this)" value="DESC">
-                          <label for="org_ord_desc" class="uk-text-muted">
+                          <label for="org_ord_desc">
                             De mayor a menor
                           </label>
                         </div>
                       </div>
                     </div>
-                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
+                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                   </div>
                 </fieldset>
               </form>
@@ -672,114 +672,114 @@
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex uk-flex-between">
                     <div class="uk-flex uk-flex-column">
-                      <label class="uk-text-muted">
+                      <label>
                         Estudios primarios
                       </label>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="org_est_prim_asc" name="opc_educacion" onclick="set_valor(this)" value="ASC">
-                        <label for="org_est_prim_asc" class="uk-text-muted">
+                        <label for="org_est_prim_asc">
                           De menor a mayor
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="org_est_prim_desc" name="opc_educacion" onclick="set_valor(this)" value="DESC">
-                        <label for="org_est_prim_desc" class="uk-text-muted">
+                        <label for="org_est_prim_desc">
                           De mayor a menor
                         </label>
                       </div>
-                      <label class="uk-text-muted" style="margin-top: 10px">
+                      <label style="margin-top: 10px">
                         Estudios secundarios
                       </label>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="org_est_sec_asc" name="opc_educacion" onclick="set_valor(this)" value="ASC">
-                        <label for="org_est_sec_asc" class="uk-text-muted">
+                        <label for="org_est_sec_asc">
                           De menor a mayor
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="org_est_sec_desc" name="opc_educacion"  onclick="set_valor(this)" value="DESC">
-                        <label for="org_est_sec_desc" class="uk-text-muted">
+                        <label for="org_est_sec_desc">
                           De mayor a menor
                         </label>
                       </div>
-                      <label class="uk-text-muted" style="margin-top: 10px">
+                      <label style="margin-top: 10px">
                         Estudios técnicos 
                       </label>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="org_est_tec_asc" name="opc_educacion" onclick="set_valor(this)" value="ASC">
-                        <label for="org_est_tec_asc" class="uk-text-muted">
+                        <label for="org_est_tec_asc">
                           De menor a mayor
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="org_est_tec_desc" name="opc_educacion" onclick="set_valor(this)" value="DESC">
-                        <label for="org_est_tec_desc" class="uk-text-muted">
+                        <label for="org_est_tec_desc">
                           De mayor a menor
                         </label>
                       </div>
-                      <label class="uk-text-muted" style="margin-top: 10px">
+                      <label style="margin-top: 10px">
                         Estudios no universitarios
                       </label>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="org_est_no_univ_asc" name="opc_educacion"  onclick="set_valor(this)" value="ASC">
-                        <label for="org_est_no_univ_asc" class="uk-text-muted">
+                        <label for="org_est_no_univ_asc">
                           De menor a mayor
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle">
                         
                         <input type="radio" id="org_est_no_univ_desc" name="opc_educacion" onclick="set_valor(this)" value="DESC">
-                        <label for="org_est_no_univ_desc" class="uk-text-muted">
+                        <label for="org_est_no_univ_desc">
                           De mayor a menor
                         </label>
                       </div>
-                      <label class="uk-text-muted" style="margin-top: 10px">
+                      <label style="margin-top: 10px">
                         Estudios universitarios 
                       </label>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="org_est_univ_asc" name="opc_educacion" onclick="set_valor(this)" value="ASC">
-                        <label for="org_est_univ_asc" class="uk-text-muted">
+                        <label for="org_est_univ_asc">
                           De menor a mayor
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="org_est_univ_desc" name="opc_educacion" onclick="set_valor(this)" value="DESC">
-                        <label for="org_est_univ_desc" class="uk-text-muted">
+                        <label for="org_est_univ_desc">
                           De mayor a menor
                         </label>
                       </div>
-                      <label class="uk-text-muted" style="margin-top: 10px">
+                      <label style="margin-top: 10px">
                         Concluyó postgrado 
                       </label>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="org_post_asc" name="opc_educacion" onclick="set_valor(this)" value="ASC">
-                        <label for="org_post_asc" class="uk-text-muted">
+                        <label for="org_post_asc">
                           De menor a mayor
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="org_post_desc" name="opc_educacion" onclick="set_valor(this)" value="DESC">
-                        <label for="org_post_desc" class="uk-text-muted">
+                        <label for="org_post_desc">
                           De mayor a menor
                         </label>
                       </div>
-                        <label class="uk-text-muted" style="margin-top: 10px">
+                        <label style="margin-top: 10px">
                         Maestro o Doctor 
                       </label>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="org_doc_asc" name="opc_educacion" onclick="set_valor(this)" value="ASC">
-                        <label for="org_doc_asc" class="uk-text-muted">
+                        <label for="org_doc_asc">
                           De menor a mayor
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="org_doc_desc" name="opc_educacion" onclick="set_valor(this)" value="DESC">
-                        <label for="org_doc_desc" class="uk-text-muted">
+                        <label for="org_doc_desc">
                           De mayor a menor
                         </label>
                       </div>
                     </div>
-                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
+                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                   </div>
                 </fieldset>
               </form>
@@ -792,58 +792,58 @@
                   <div class="uk-width-1-1@s uk-flex">
                     <div class="uk-flex uk-flex-column" style="width: 85%;">
                       <div class="uk-margin-small-bottom">
-                        <label for="penal_obligaciones_" class="uk-text-muted">
+                        <label for="penal_obligaciones_">
                           Cantidad Sentencia Penal (penal y obligaciones)
                         </label>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="cant_sen_penal_obliga_asc" name="cant_sen_penal_obliga" onclick="set_valor(this)" value="ASC">
-                          <label for="cant_sen_penal_obliga_asc" class="uk-text-muted">
+                          <label for="cant_sen_penal_obliga_asc">
                             De menor a mayor
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="cant_sen_penal_obliga_desc" name="cant_sen_penal_obliga" onclick="set_valor(this)" value="DESC">
-                          <label for="cant_sen_penal_obliga_desc" class="uk-text-muted">
+                          <label for="cant_sen_penal_obliga_desc">
                             De mayor a menor
                           </label>
                         </div>
                       </div>
                       <div class="uk-margin-small-bottom">
-                        <label class="uk-text-muted">
+                        <label>
                           Cantidad de Sentencia Penal
                         </label>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="cant_sen_penal_asc" name="cant_sen_penal" onclick="set_valor(this)" value="ASC">
-                          <label for="cant_sen_penal_asc" class="uk-text-muted">
+                          <label for="cant_sen_penal_asc">
                             De menor a mayor
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="cant_sen_penal_desc" name="cant_sen_penal" onclick="set_valor(this)" value="DESC">
-                          <label for="cant_sen_penal_desc" class="uk-text-muted">
+                          <label for="cant_sen_penal_desc">
                             De mayor a menor
                           </label>
                         </div>
                       </div>
                       <div>
-                        <label class="uk-text-muted">
+                        <label>
                           Cantidad de Sentencia civil
                         </label>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="cant_sen_civil_asc" name="cant_sen_civil" onclick="set_valor(this)" value="ASC">
-                          <label for="cant_sen_civil_asc" class="uk-text-muted">
+                          <label for="cant_sen_civil_asc">
                             De menor a mayor
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle">
                           <input type="radio" id="cant_sen_civil_desc" name="cant_sen_civil" onclick="set_valor(this)" value="DESC">
-                          <label for="cant_sen_civil_desc" class="uk-text-muted">
+                          <label for="cant_sen_civil_desc">
                           De mayor a menor
                           </label>
                         </div>
                       </div>
                     </div>
-                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
+                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                   </div>
                 </fieldset>
               </form>
@@ -855,26 +855,26 @@
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex uk-flex-between">
                     <div class="uk-flex uk-flex-column">
-                      <label class="uk-text-muted">
+                      <label>
                         Ordenar de manera
                       </label>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="org_oriundo_asc" name="org_oriundo" value="ASC" onclick="set_valor(this)">
-                        <label for="org_oriundo_asc" class="uk-text-muted">
+                        <label for="org_oriundo_asc">
                           De menor a mayor
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="org_oriundo_desc" name="org_oriundo" value="DESC"  onclick="set_valor(this)">
-                        <label for="org_oriundo_desc" class="uk-text-muted">
+                        <label for="org_oriundo_desc">
                           De mayor a menor
                         </label>
                       </div>
                       <div id="org_desplegable_oriundo" class="uk-flex uk-flex-column uk-padding-small uk-padding-remove-top uk-margin-small-top">
-                        <label class="uk-text-muted">
+                        <label>
                           Departamento de nacimiento
                         </label>
-                        <select class="uk-select" id="org_desplegable_oriundo_"  onchange="set_valor(this)">
+                        <select class="uk-select opt_select" id="org_desplegable_oriundo_"  onchange="set_valor(this)">
                           <option value="default">Elige el departamento</option>
                           <option value="AMAZONAS">Amazonas</option>
                           <option value="ANCASH">Ancash</option>
@@ -904,7 +904,7 @@
                         </select>
                       </div>
                     </div>
-                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
+                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                   </div>
                 </fieldset>
               </form>
@@ -918,18 +918,18 @@
                     <div class="uk-flex uk-flex-column">
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="postulan_dif_distrito_asc" name="elecvsnacimiento_name" onclick="set_valor(this)" value="ASC">
-                        <label for="postulan_dif_distrito_asc" class="uk-text-muted">
+                        <label for="postulan_dif_distrito_asc">
                           De menor a mayor
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="postulan_dif_distrito_desc" name="elecvsnacimiento_name" onclick="set_valor(this)" value="DESC">
-                        <label for="postulan_dif_distrito_desc" class="uk-text-muted">
+                        <label for="postulan_dif_distrito_desc">
                           De mayor a menor
                         </label>
                       </div>
                     </div>
-                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
+                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                   </div>
                 </fieldset>
               </form>
@@ -947,35 +947,35 @@
                       </label>
                       <div class="uk-width-1-1@s" id="2019_est_present" >
                         <div class="uk-margin-small-bottom">
-                          <label class="uk-text-muted">
+                          <label>
                             Estado de Presentación:
                           </label>
                           <div class="uk-flex uk-flex-middle">
                             <input type="radio" id="2019_est_si" name="2019_est_present" onclick="set_valor(this)" value="PRESENTÓ">
-                            <label for="2019_est_si" class="uk-text-muted">
+                            <label for="2019_est_si">
                               Presentaron
                             </label>
                           </div>
                           <div class="uk-flex uk-flex-middle">
                             <input type="radio" id="2019_est_no" name="2019_est_present" onclick="set_valor(this)" value="NO PRESENTÓ">
-                            <label for="2019_est_no" class="uk-text-muted">
+                            <label for="2019_est_no">
                               No presentaron
                             </label>
                           </div>
                         </div>
                         <div class="uk-margin-small-bottom">
-                          <label class="uk-text-muted" style="margin-top: 10px">
+                          <label style="margin-top: 10px">
                             Ingresos Declarados
                           </label>
                           <div class="uk-flex uk-flex-middle">
                             <input type="radio" id="2019_ingre_dec_asc" name="2019_ingre_dec" value="ASC">
-                            <label for="2019_ingre_dec_asc" class="uk-text-muted">
+                            <label for="2019_ingre_dec_asc">
                               De menor a mayor
                             </label>
                           </div>
                           <div class="uk-flex uk-flex-middle">
                             <input type="radio" id="2019_ingre_dec_desc" name="2019_ingre_dec"  value="DESC">
-                            <label for="2019_ingre_dec_desc" class="uk-text-muted">
+                            <label for="2019_ingre_dec_desc">
                               De mayor a menor
                             </label>
                           </div>
@@ -986,35 +986,35 @@
                       </label>
                       <div class="uk-width-1-1@s" id="2018_est_present">
                         <div class="uk-margin-small-bottom">
-                          <label class="uk-text-muted">
+                          <label>
                             Estado de Presentación:
                           </label>
                           <div class="uk-flex uk-flex-middle">
                             <input type="radio" id="2018_est_si"  name="2018_est_present" onclick="set_valor(this)" value="PRESENTÓ">
-                            <label for="2018_est_si" class="uk-text-muted">
+                            <label for="2018_est_si">
                               Presentaron
                             </label>
                           </div>
                           <div class="uk-flex uk-flex-middle">
                             <input type="radio" id="2018_est_no" name="2018_est_present" onclick="set_valor(this)" value="NO PRESENTÓ">
-                            <label for="2018_est_no" class="uk-text-muted">
+                            <label for="2018_est_no">
                               No presentaron
                             </label>
                           </div>
                         </div>
                         <div class="uk-margin-small-bottom">
-                          <label class="uk-text-muted">
+                          <label>
                             Ingresos Declarados
                           </label>
                           <div class="uk-flex uk-flex-middle">
                             <input type="radio" id="2018_ingre_dec_asc" name="2018_ingre_dec"  value="ASC">
-                            <label for="2018_ingre_dec_asc" class="uk-text-muted">
+                            <label for="2018_ingre_dec_asc">
                               De menor a mayor
                             </label>
                           </div>
                           <div class="uk-flex uk-flex-middle">
                             <input type="radio" id="2018_ingre_dec_desc" name="2018_ingre_dec" value="DESC">
-                            <label for="2018_ingre_dec_desc" class="uk-text-muted">
+                            <label for="2018_ingre_dec_desc">
                               De mayor a menor
                             </label>
                           </div>
@@ -1025,42 +1025,42 @@
                       </label>
                       <div class="uk-width-1-1@s" id="2017_est_present">
                         <div class="uk-margin-small-bottom">
-                          <label class="uk-text-muted">
+                          <label>
                             Estado de Presentación:
                           </label>
                           <div class="uk-flex uk-flex-middle">
                             <input type="radio" id="2017_est_si" name="2017_est_present" onclick="set_valor(this)" value="PRESENTÓ">
-                            <label for="2017_est_si" class="uk-text-muted">
+                            <label for="2017_est_si">
                               Presentaron
                             </label>
                           </div>
                           <div class="uk-flex uk-flex-middle">
                             <input type="radio" id="2017_est_no" name="2017_est_present" onclick="set_valor(this)" value="NO PRESENTÓ">
-                            <label for="2017_est_no" class="uk-text-muted">
+                            <label for="2017_est_no">
                               No presentaron
                             </label>
                           </div>
                         </div>
                         <div>
-                          <label class="uk-text-muted">
+                          <label>
                             Ingresos Declarados
                           </label>
                           <div class="uk-flex uk-flex-middle">
                             <input type="radio" id="2017_ingre_dec_asc" name="2017_ingre_dec"  value="ASC">
-                            <label for="2017_ingre_dec_asc" class="uk-text-muted">
+                            <label for="2017_ingre_dec_asc">
                               De menor a mayor
                             </label>
                           </div>
                           <div class="uk-flex uk-flex-middle">
                             <input type="radio" id="2017_ingre_dec_desc" name="2017_ingre_dec" value="DESC">
-                            <label for="2017_ingre_dec_desc" class="uk-text-muted">
+                            <label for="2017_ingre_dec_desc">
                               De mayor a menor
                             </label>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
+                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                   </div>
                 </fieldset>
               </form>
@@ -1072,23 +1072,23 @@
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex uk-flex-between">
                     <div class="uk-flex uk-flex-column">
-                      <label class="uk-text-muted">
+                      <label>
                         Monto quinquenal asignado
                       </label>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="monto_quinque_asc" name="monto_quinque" onclick="set_valor(this)" value="ASC">
-                        <label for="monto_quinque_asc" class="uk-text-muted">
+                        <label for="monto_quinque_asc">
                           De menor a mayor
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle">
                         <input type="radio" id="monto_quinque_desc" name="monto_quinque" onclick="set_valor(this)" value="DESC">
-                        <label for="monto_quinque_desc" class="uk-text-muted">
+                        <label for="monto_quinque_desc">
                           De mayor a menor
                         </label>
                       </div>   
                     </div>
-                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link" uk-icon="icon: trash; ratio: 1"></a>
+                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                   </div>
                 </fieldset>
               </form>
@@ -1107,8 +1107,8 @@
   <header id="top-head" class="uk-position-fixed">
     <div class="uk-container uk-container-expand uk-background-secondary">
       <nav class="uk-navbar uk-light" data-uk-navbar="mode:click; duration: 250" >
-        <div class="uk-navbar-left">
-          <ul class="uk-navbar-nav uk-hidden@m">
+        <div class="uk-navbar-left uk-hidden@m">
+          <ul class="uk-navbar-nav">
             <li class="uk-active uk-flex uk-flex-middle">
               <a class="uk-padding-remove uk-flex uk-flex-row-reverse filtros-text" data-uk-toggle href="#offcanvas-nav" data-uk-tooltip>
                 <span class="uk-margin-small-left">Opciones de Búsqueda</span>
@@ -1131,9 +1131,8 @@
               <a class="nav_opt orga_opt" href="#" onclick="activar_organizaciones(this
               )">Partidos Políticos</a>
             </li>
-            <hr class="uk-divider-vertical" style="height:40px">
             <li class="nav-options">
-              <a href="/elecciones">
+              <a class="nav_opt" href="/elecciones">
                 Inicio
               </a>
             </li>
@@ -1147,7 +1146,7 @@
   <!-- CONTENT -->
   <div id="content" data-uk-height-viewport="expand: true">
     <!-- <div class="uk-container uk-container-expand uk-margin-bottom">
-      <label class="uk-text-muted">
+      <label>
         Agrupar por
       </label>
         <ul class="uk-subnav uk-subnav-pill uk-grid uk-grid-medium uk-child-width-1-1 uk-child-width-1-3@s uk-child-width-1-4@m uk-child-width-1-4@l uk-child-width-1-5@xl" data-uk-grid">
@@ -1217,7 +1216,7 @@
                   {% endif %}
                 </div>
                 <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
-                  <p class="uk-text-muted" style="margin: 0 0 .5rem 0;">Hoja de Vida</p>
+                  <p style="margin: 0 0 .5rem 0;">Hoja de Vida</p>
                   <a onclick="verHojadeVida(this)" 
                     class="dni_id hoja_de_vida_btn" 
                     id={{candidato.dni_candidato}} 
