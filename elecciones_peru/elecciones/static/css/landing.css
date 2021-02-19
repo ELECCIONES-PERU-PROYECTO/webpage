@@ -166,3 +166,9 @@ a[name="button_section"]{
 	color: #ffffff;
 }
 
+
+#initial .subtitle-text {
+    color: #ffffff !important;
+    font-weight: 35;
+    font-family: 'Poppins', sans-serif;
+}

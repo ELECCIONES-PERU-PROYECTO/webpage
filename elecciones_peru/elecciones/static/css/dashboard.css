@@ -24,6 +24,8 @@ ul#opciones_candidatos li.nav-options a.nav_opt {
 	font-size: 18px;
 }
 
+
+
 #offcanvas-nav .filter_options select, #offcanvas-nav  .filter_options label {
 	font-size: 16px;
 	color: #fff;
@@ -304,4 +306,11 @@ ul.uk-navbar-nav li.nav-options a {
 	position: relative;
 	height: 300px;
 	margin: 0 auto;
+}
+
+
+.uk-accordion-title {
+
+    font-size: 1.4rem;
+   
 }

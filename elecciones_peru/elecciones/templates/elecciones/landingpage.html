@@ -27,15 +27,15 @@
 					<nav class="uk-navbar uk-navbar-contai	ner uk-navbar-transparent" data-uk-navbar>
 						<div class="uk-navbar-left">
 							<div class="uk-navbar-item uk-padding-remove-horizontal">
-								<a class="uk-logo" title="Logo" href=""><img src="../../static/images/marketing-logo.svg" alt="Logo"></a>
+								<a class="uk-logo" title="Logo" href=""><img src="../../static/images/ELEGIMOS-01.png" alt="Logo"></a>
 							</div>
 						</div>
 						<div class="uk-navbar-right">
 							<ul class="uk-navbar-nav uk-visible@s">
 								<!-- <li class="uk-active uk-visible@m"><a href="" data-uk-icon="home"></a></li> -->
-								<li><a style="font-size: 23px; font-weight:500;" href="http://127.0.0.1:8000/analisis-graficos">Análisis de datos</a></li>
+								<li><a style="font-size: 22px; color:#ffffff; font-weight:500;" href="http://127.0.0.1:8000/analisis-graficos">Análisis de datos</a></li>
 								<li>
-									<a style="font-size: 23px; font-weight:500;" href="#" data-uk-icon="chevron-down">Búsqueda Avanzada</a>
+									<a style="font-size: 22px; color:#ffffff; font-weight:500;" href="#" data-uk-icon="chevron-down">Búsqueda Avanzada</a>
 									<div class="uk-navbar-dropdown">
 										<ul class="uk-nav uk-navbar-dropdown-nav">
 											<li>
@@ -63,13 +63,16 @@
 			<div class="uk-cover-container uk-light uk-flex uk-flex-middle top-wrap-height">
 				<!-- TOP CONTAINER -->
 				<div class="uk-container uk-flex-auto top-container uk-position-relative uk-margin-medium-top" data-uk-parallax="y: 0,50; easing:0; opacity:0.2">
-					<div class="uk-width-1-2@s" data-uk-scrollspy="cls: uk-animation-slide-right-medium; target: > *; delay: 150">
+					<div id="initial" class="uk-width-1-2@s" data-uk-scrollspy="cls: uk-animation-slide-right-medium; target: > *; delay: 150">
 						<!--<h6 class="uk-text-primary uk-margin-small-bottom">RESEARCH</h6>-->
 						<h1 style="font-size: 45px; font-family: 'Poppins', sans-serif; font-weight:650;"  class="uk-margin-remove-top"> ELEGIMOS</h1></strong>
-						<p class="subtitle-text uk-visible@s"> </p>
-						<a href="#" title="Ver más" onclick="siu()" class="uk-button uk-button-primary uk-border-pill" data-uk-scrollspy-class="uk-animation-fade">
+						<p class="subtitle-text "> Buscamos ayudar a que tomemos decisiones informadas. 
+							Te ayudamos a identificar lo que buscas mediante gráficas y criterios personalizadas. 
+							Eligamos a los gestores que nuestro país requiere en las Elecciones Generales 2021.
+							 </p>
+						<!--<a href="#" title="Ver más" onclick="siu()" class="uk-button uk-button-primary uk-border-pill" data-uk-scrollspy-class="uk-animation-fade">
 							INFORMACIÓN GENERAL
-						</a>
+						</a>-->
 					</div>
 				</div>
 				<!-- /TOP CONTAINER -->
@@ -84,17 +87,17 @@
 				<!-- /TOP IMAGE -->
 			</div>
 			<div class="uk-position-bottom-center uk-position-medium uk-position-z-index uk-text-center">
-				<a href="#content" data-uk-scroll="duration: 500" data-uk-icon="icon: arrow-down; ratio: 2"></a>
+				<a href="#first" data-uk-scroll="duration: 500" data-uk-icon="icon: arrow-down; ratio: 2"></a>
 			</div>
 		</div>
 		<!-- /TOP -->
 		<section class="uk-section uk-section-large">
 			<div class="uk-container">
-				<div class="uk-grid uk-child-width-1-2@m uk-flex-middle">
+				<div id="first" class="uk-grid uk-child-width-1-2@m uk-flex-middle">
 					<div>
 						<!--<h6>SIMPLIFY THINGS</h6>-->
 						<h2 style="font-family: 'Poppins', sans-serif;"  class="uk-margin-small-top uk-h1">MIRAMOS A TODOS</h2>
-						<p class="subtitle-text uk-margin-medium-bottom">
+						<p   class="subtitle-text uk-margin-medium-bottom">
 							En esta sección encontrará información que permite efectuar comparaciones generales entre las organizaciones políticas 
 							y una visión panorámica de los candidatos participantes en las elecciones 2021.
 							
@@ -113,18 +116,23 @@
 				<br>
 				<br>
 				<h2 style="font-family: 'Poppins', sans-serif;"  class="uk-margin-small-top uk-h1">EVALÚA A TUS CANDIDATOS</h2>
-				<p class="subtitle-text">En esta sección podrá asignar diversos criterios y opciones, para identificar a los candidatos que cumplan con lo que busca.
+				<p style= "text-align: justify;" class="subtitle-text">En esta sección podrá asignar diversos criterios y opciones, para identificar a los candidatos que cumplan con lo que busca.
 					En su búsqueda podrá seleccionar uno o más criterios, tales como definir rangos de edad, identificar si el cantidato tiene sentencias penales, definir el nivel académico deseado, entre otros.
-					Así mismo, encontrará  opciones que permiten ordenear a los candidatos según 
+					<br>
+					<br>
+					Así mismo, encontrará  opciones que permiten ordenear a los candidatos según las opciones que defina en order de mayor a menor o viceversa, opciones como el monto de ingresos, la cantidad de bienes 
+					inmubles que tenga y mucho más.
+					<br>
+					<br> 
 
-					Acorta la búsqueda según tus preferencias y visualizar con mayor detalle a los candidatos.
+					Acorta la búsqueda según tus preferencias y visualiza con mayor detalle a los candidatos en sus hojas de vida
 				</p>
 				<div class="uk-section uk-section-small uk-padding-remove-top">
-					<ul class="uk-subnav uk-subnav-pill uk-flex uk-flex-center" data-uk-switcher="connect: .uk-switcher; animation: uk-animation-fade">
-						<li><a  name="button_section" class="uk-border-pill" href="#content" data-uk-scroll="duration: 200">Presidencial</a></li>
-						<li><a name="button_section" class="uk-border-pill" href="#content" data-uk-scroll="duration: 200">Congresal</a></li>
-						<li><a name="button_section" class="uk-border-pill" href="#content" data-uk-scroll="duration: 200">Parlamento Andino</a></li>
-						<li><a name="button_section" class="uk-border-pill" href="#content" data-uk-scroll="duration: 200">Organización Política</a></li>
+					<ul id ="return" class="uk-subnav uk-subnav-pill uk-flex uk-flex-center" data-uk-switcher="connect: .uk-switcher; animation: uk-animation-fade">
+						<li><a  style="font-size: 17px; font-family: 'Poppins', sans-serif; font-weight: 500;" name="button_section" class="uk-border-pill" href="#return" data-uk-scroll="duration: 200">Presidencial</a></li>
+						<li><a  style="font-size: 17px; font-family: 'Poppins', sans-serif; font-weight: 500;" name="button_section" class="uk-border-pill" href="#return" data-uk-scroll="duration: 200">Congresal</a></li>
+						<li><a  style="font-size: 17px; font-family: 'Poppins', sans-serif; font-weight: 500;" name="button_section" class="uk-border-pill" href="#return" data-uk-scroll="duration: 200">Parlamento Andino</a></li>
+						<li><a  style="font-size: 17px; font-family: 'Poppins', sans-serif; font-weight: 500;" name="button_section" class="uk-border-pill" href="#return" data-uk-scroll="duration: 200">Organización Política</a></li>
 					</ul>
 				</div>
 
@@ -213,9 +221,7 @@
 								<!--<h6 class="uk-text-primary">MAIN REASONS</h6>-->
 								<h2  style="font-family: 'Poppins', sans-serif;" class="uk-margin-small-top ">Organizaciones políticas elecciones 2021</h2>
 								<p class="subtitle-text">
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-									tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-									quis nostrud exercitation.
+									Conoce a las organizaciones políticas que participan en la capaña electoral.
 								</p>
 								<!--
 									<div>
@@ -242,14 +248,15 @@
 						<!--<h6>SIMPLIFY THINGS</h6>-->
 						<h2 style="font-family: 'Poppins', sans-serif;"  class="uk-margin-small-top uk-h1">INTELIGENCIA ARTIFICIAL APLICADA A LOS CANDIDATOS</h2>
 						<p class="subtitle-text uk-margin-medium-bottom">
-							Realizamos un analisis mediante Inteligencia Artificial para identificar las emociones que transmiten cada cadidato, en base a las fotográfias presentadas al Jurado Nacional de Elecciones.				
+							Realizamos un análisis mediante inteligencia artificial para identificar las emociones que transmiten cada cadidato, en base a las fotográfias presentadas al Jurado Nacional de Elecciones.				
 						</p>
 						<!--<h2 style="text-align:center; font-family: 'Poppins', sans-serif;">Próximamente</h2>-->
 						<h2 style="font-family: 'Poppins', sans-serif; color:#b62222">Próximamente</h2>
+						
 						<!--<a href="#" class="uk-button uk-button-primary uk-border-pill" data-uk-icon="arrow-right">Ver más</a>-->
 					</div>
 					
-					<div data-uk-scrollspy="cls: uk-animation-fade">
+					<div style="margin-top: 20px;" data-uk-scrollspy="cls: uk-animation-fade">
 						<img src="../../static/images/AI2.jpg" data-src="images/AI2.jpg" data-uk-img alt="Image">
 					</div>
 
@@ -282,13 +289,15 @@
 										<h2 style="font-weight: bold;"class="uk-text-meta">José de la Torre Ugarte </h2>
 									</div>
 								</li>
-								<!--
+								
 								<li>
 									<div data-uk-slider-parallax="opacity: 0.2,1,0.2">
-										<h2 class="uk-margin-small-top ">"Aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur"</h2>
-										<p class="uk-text-meta">Lorena Smith, founder of Some Cool Startup</p>
+										<h1 style="font-family: 'Poppins', sans-serif;" class="uk-margin-small-top " class="uk-margin-small-top ">25 departamentos, 
+											<br>
+											1 sólo Perú</h1>
 									</div>
 								</li>
+								<!--
 								<li>
 									<div data-uk-slider-parallax="opacity: 0.2,1,0.2">
 										<h2 class="uk-margin-small-top ">"Irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur"</h2>
@@ -409,10 +418,10 @@
 					-->	
 									
 					<div class="uk-width-1-6@m">
-						<h5>NOSOTROS</h5>
+						<h5>CONTÁCTANOS</h5>
 						<ul class="uk-list">
-							<li>Contáctanos<li>
-								<ul>Correo: elegimos.pe@gmail.com</ul>
+							<li style="font-size: medium;">Correo: elegimos.pe@gmail.com<li>
+						
 						</ul>
 					</div>
 							
