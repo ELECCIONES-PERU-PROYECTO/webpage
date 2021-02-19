@@ -273,9 +273,8 @@ function get_nivel_academico(){
 
     /*Agregar <li> al a la lista de filtros seleccionados */
     // var data = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
-    // console.log("DATA JSON",data)
     // const index = data.indexOf(1)
-    // if( index == -1 || data == null){
+    // if(index == -1 || data.length == 0){
     //   console.log("El badge academico no esta")
     //   agregar_badge_academico()
 

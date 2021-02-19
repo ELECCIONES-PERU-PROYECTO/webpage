@@ -1,4 +1,12 @@
 
+window.onload = function () {
+  if (sessionStorage.getItem("hasCodeRunBefore") === null) {
+    let data = []
+    sessionStorage.setItem('data_filtros_seleccionados', JSON.stringify(data))
+    sessionStorage.setItem("hasCodeRunBefore", true);
+  }
+}
+
 window.onload =  function(){
   var data = JSON.parse(sessionStorage.getItem('data_filtro'))
   if (data != null){
