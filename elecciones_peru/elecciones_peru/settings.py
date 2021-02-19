@@ -84,11 +84,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         #'NAME': 'db_partidos',
-        'NAME': 'db_partidos2020',
-        'USER': 'usr_esteban',
-        'PASSWORD': 'utec2021',
-        'HOST': 'postgresql-18527-0.cloudclusters.net',
-        'PORT': '18562',
+        'NAME': 'proyecto_elecciones',
+        'USER': 'postgres',
+        'PASSWORD': '1234567',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
