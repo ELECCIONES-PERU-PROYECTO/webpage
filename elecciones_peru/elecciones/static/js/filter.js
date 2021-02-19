@@ -1,6 +1,5 @@
 // let btn_fil_cand = document.getElementById("filtrar_cand")
 // btn_fil_cand.disable = false
-
 let cant_filtros = 0
 let lista_orden_filtros = []
 
@@ -133,13 +132,19 @@ function button_filter(){
 
   if(lista_orden_filtros.length == 0){
 		setTimeout(function(){
-			UIkit.notification('Escoja al menos un filtro')
+			UIkit.notification({
+        message: 'Escoja al menos un filtro', 
+        status: 'warning'
+    })
     }, 1000)
     return 
   }
   else if(lista_valores[13] != "" && lista_valores[15] == ""){
 		setTimeout(function(){
-			UIkit.notification('Especifique el distrito de nacimiento del filtro "Oriundo"')
+			UIkit.notification({
+        message: 'Especifique el distrito de nacimiento del filtro "Oriundo"',
+        status: 'warning'
+      })
     }, 1000)
     return 
   }
