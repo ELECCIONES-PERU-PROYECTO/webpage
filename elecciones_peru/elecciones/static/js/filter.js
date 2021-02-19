@@ -149,8 +149,10 @@ function button_filter(){
     return 
   }
   let url = URL + "/" + VIEW
+
+  console.log("URL XDDDDDDDDDDDDDD",url)
+
   let x = 1
-  
 
   for(let i = 0; i < lista_orden_filtros.length; i++){
     if(lista_orden_filtros[i] == 1){
@@ -270,16 +272,17 @@ function get_nivel_academico(){
     lista_orden_filtros.push(1)
 
     /*Agregar <li> al a la lista de filtros seleccionados */
-    var data = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
-    const index = data.indexOf(1)
-    if( index == -1 || data == null){
-      console.log("El badge academico no esta")
-      agregar_badge_academico()
+    // var data = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
+    // console.log("DATA JSON",data)
+    // const index = data.indexOf(1)
+    // if( index == -1 || data == null){
+    //   console.log("El badge academico no esta")
+    //   agregar_badge_academico()
 
-    }else{
-      console.log("el badge academico esta")
+    // }else{
+    //   console.log("el badge academico esta")
 
-    }
+    // }
     /*          */
 
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
@@ -328,23 +331,23 @@ function quitar_seleccion_academico(){
 function get_cargos_previos(){
   let anhio_servicio_list = document.getElementsByName("anhio_servicio")
 
-if(filtro_cargo == false) {  
-  cant_filtros++
-  cant_filtros_ob++
-  filtro_cargo = true
-  lista_orden_filtros.push(2)
-  console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
+  if(filtro_cargo == false) {  
+    cant_filtros++
+    cant_filtros_ob++
+    filtro_cargo = true
+    lista_orden_filtros.push(2)
+    console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
 
-  console.log(cant_filtros)
+    console.log(cant_filtros)
 
-  for(let i = 0; i < anhio_servicio_list.length; i++) {
-    if(anhio_servicio_list[i].checked) {
-      cargos_previos_order = anhio_servicio_list[i].value
-      console.log("cargos_previos_order: ", cargos_previos_order)
-      return
+    for(let i = 0; i < anhio_servicio_list.length; i++) {
+      if(anhio_servicio_list[i].checked) {
+        cargos_previos_order = anhio_servicio_list[i].value
+        console.log("cargos_previos_order: ", cargos_previos_order)
+        return
+      }
     }
   }
-}
 
   for(let i = 0; i < anhio_servicio_list.length; i++) {
     if(anhio_servicio_list[i].checked) {
