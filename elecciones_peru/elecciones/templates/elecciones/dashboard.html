@@ -47,6 +47,11 @@
               <a class="nav_opt" href="#" onclick="activar_organizaciones(this.text)">Partidos Políticos</a>
             </li>
           </ul>
+          <ul class="uk-nav uk-nav-default uk-nav-parent-icon uk-margin-medium-top uk-hidden@m" data-uk-nav>
+            <!--
+              En desarrollo mostrar filtros seleccionados uwu
+            -->
+          </ul>
           <ul id="presidenciales" name="tipo_candidato_filter" class="uk-nav uk-nav-default uk-nav-parent-icon uk-margin-small-top" data-uk-nav>
             <li class="uk-nav-header">Opciones de búsqueda</li>
             <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel académico</a>
@@ -1138,6 +1143,17 @@ Ordenar e                       Estudios primarios
                 Inicio
               </a>
             </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="uk-container uk-container-expand uk-background-secondary">
+      <nav class="uk-navbar uk-light" data-uk-navbar="mode:click; duration: 250" >
+        <div class="uk-navbar-right">  
+          <ul class="uk-navbar-nav uk-visible@m" id="filtros_seleccionados"> 
+            <!--<li>
+              <span class="uk-badge"> <NOMBRE DE FILTRO>  </span>
+            </li>-->
           </ul>
         </div>
       </nav>

@@ -1,4 +1,5 @@
-window.onload = function(){
+
+window.onload =  function(){
   var data = JSON.parse(sessionStorage.getItem('data_filtro'))
   if (data != null){
     if(data['tipo_filtro'] == "candidatos")
@@ -7,6 +8,29 @@ window.onload = function(){
     activar_organizaciones()
   }
 }
+
+window.onload =  function(){
+  console.log("agregar_filtros_selecs")
+
+  var data = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
+  console.log(data)
+  if (data != null){
+    console.log("agregar_filtros_selecs")
+    agregar_filtros_selecs(data)
+  }
+}
+
+function agregar_filtros_selecs(data){
+  console.log("agregar_filtros_selecs")
+  for(let i = 0 ;i < data.length ; i++){
+    if (data[i] == "1"){
+      agregar_badge_academico()
+      console.log("uww")
+    } 
+  }
+}
+
+
 
 let a_visited
 
