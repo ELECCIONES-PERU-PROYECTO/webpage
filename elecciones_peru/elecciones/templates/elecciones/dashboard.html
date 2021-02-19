@@ -161,7 +161,7 @@
                                 </label>
                               </div>
                               <label>
-                                Materia de la demanda
+                                Materia de la demanda por obligación
                               </label>
                               <div class="uk-flex uk-flex-middle uk-margin-small-left">
                                 <input type="radio" id="mat_deman_fam_alimen" name="opc_mat_demanda" value="FamiliaAli" onclick="get_sentencias_oblig_mat()">
@@ -306,7 +306,7 @@
                     <div class="uk-width-1-1@s uk-flex uk-flex-between">
                       <div class="uk-flex uk-flex-column" style="width: 80%">
                         <label>
-                          Ordenar según la cantidad de renuncias del candidato
+                          Ordenar según la cantidad de renuncias
                         </label>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
                           <input type="radio" id="cantidad_renuncia_asc" name="cantidad_renuncia" onclick="get_renuncia()" value="ASC">
@@ -367,19 +367,19 @@
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
                           <input type="radio" id="rango_edad_18_30" name="rango_edad" onclick="get_edad()" value="18-29">
                           <label for="rango_edad_18_30">
-                            18 - 29
+                            18 - 29 años
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
                           <input type="radio" id="rango_edad_30_50" name="rango_edad" onclick="get_edad()" value="30-59">
                           <label for="rango_edad_30_50">
-                            30 - 59
+                            30 - 59 años
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
                           <input type="radio" id="rango_edad_50_70" name="rango_edad" onclick="get_edad()" value="60-85">
                           <label for="rango_edad_50_70">
-                            60 a más
+                            60 a más años
                           </label>
                         </div>
                       </div>
@@ -585,29 +585,29 @@
                   <div class="uk-width-1-1@s uk-flex uk-flex-between">
                     <div class="uk-flex uk-flex-column">
                       <label>
-                        Rango de edades
+                        Ordenar los partidos según la cantidad candidatos en el rango de edad 
                       </label>
                       <div class="uk-flex uk-flex-middle uk-margin-small-left">
                         <input type="radio" id="org_rango_edad_18_30" data-info="rango_edad_18_30"  name="opc_edad" onclick="set_valor(this)" value="18-29">
                         <label for="org_rango_edad_18_30">
-                          18 - 29
+                          18 - 29 años
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle uk-margin-small-left">
                         <input type="radio" id="org_rango_edad_30_50" data-info="rango_edad_30_50" name="opc_edad" onclick="set_valor(this)" value="30-59">
                         <label for="org_rango_edad_30_50">
-                          30 - 59
+                          30 - 59 años
                         </label>
                       </div>
                       <div class="uk-flex uk-flex-middle uk-margin-small-left">
                         <input type="radio" id="org_rango_edad_50_70" data-info="rango_edad_50_70" name="opc_edad" onclick="set_valor(this)" value="60-85">
                         <label for="org_rango_edad_50_70">
-                          60 a más
+                          60 a más años
                         </label>
                       </div>
                       <div id="orden_edad_container" style="margin-top: 10px; margin-left: 15px;">
                         <label>
-                          Ordenar de manera
+                          Ordenar:
                         </label>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
                           <input type="radio" id="org_edad_ord_asc"  name="edad_orden" onclick="set_valor(this)" value="ASC">
@@ -636,7 +636,7 @@
                   <div class="uk-width-1-1@s uk-flex">
                     <div class="uk-flex uk-flex-column">
                       <label>
-                      Mujeres y hombres por partido  
+                      Ordenar los partidos según la cantidad candidatos de género femenino o masculino 
                       </label>
                       <div class="uk-flex uk-flex-middle uk-margin-small-left">
                         <input type="radio" id="org_gen_masc" name="opc_genero" onclick="set_valor(this)" value="MASCULINO">
@@ -652,7 +652,7 @@
                       </div>
                       <div id="orden_genero_container" style="margin-top: 10px; margin-left: 15px;">
                         <label>
-                          Ordenar de manera
+                          Ordenar:
                         </label>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
                           <input type="radio" id="org_ord_asc"  name="genero_orden" onclick="set_valor(this)" value="ASC">
@@ -680,9 +680,16 @@
               <form class="filter_options">
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex uk-flex-between">
+                    
                     <div class="uk-flex uk-flex-column">
                       <label>
-Ordenar e                       Estudios primarios
+                        Ordenar los partidos según la cantidad de candidatos 
+                        que tengan determinado nivel de estudio
+                      </label>
+                      <br>
+                      <label>
+                          Estudios primarios
+                          Ordenar:
                       </label>
                       <div class="uk-flex uk-flex-middle uk-margin-small-left">
                         <input type="radio" id="org_est_prim_asc" name="opc_educacion" onclick="set_valor(this)" value="ASC">
@@ -697,7 +704,8 @@ Ordenar e                       Estudios primarios
                         </label>
                       </div>
                       <label style="margin-top: 10px">
-                        Ordenar estudios secundarios
+                        Estudios secundarios
+                        Ordenar:
                       </label>
                       <div class="uk-flex uk-flex-middle uk-margin-small-left">
                         <input type="radio" id="org_est_sec_asc" name="opc_educacion" onclick="set_valor(this)" value="ASC">
@@ -712,7 +720,8 @@ Ordenar e                       Estudios primarios
                         </label>
                       </div>
                       <label style="margin-top: 10px">
-                        Ordenar estudios técnicos 
+                        Estudios técnicos 
+                        Ordenar:
                       </label>
                       <div class="uk-flex uk-flex-middle uk-margin-small-left">
                         <input type="radio" id="org_est_tec_asc" name="opc_educacion" onclick="set_valor(this)" value="ASC">
@@ -727,7 +736,8 @@ Ordenar e                       Estudios primarios
                         </label>
                       </div>
                       <label style="margin-top: 10px">
-                        Ordenar estudios no universitarios
+                        Estudios no universitarios
+                        Ordenar:
                       </label>
                       <div class="uk-flex uk-flex-middle uk-margin-small-left">
                         <input type="radio" id="org_est_no_univ_asc" name="opc_educacion"  onclick="set_valor(this)" value="ASC">
@@ -743,7 +753,8 @@ Ordenar e                       Estudios primarios
                         </label>
                       </div>
                       <label style="margin-top: 10px">
-                        Ordenar estudios universitarios 
+                        Estudios universitarios 
+                        Ordenar:
                       </label>
                       <div class="uk-flex uk-flex-middle uk-margin-small-left">
                         <input type="radio" id="org_est_univ_asc" name="opc_educacion" onclick="set_valor(this)" value="ASC">
@@ -758,7 +769,8 @@ Ordenar e                       Estudios primarios
                         </label>
                       </div>
                       <label style="margin-top: 10px">
-                        Ordenar estudios de postgrado 
+                        Estudios de postgrado 
+                        Ordenar:
                       </label>
                       <div class="uk-flex uk-flex-middle uk-margin-small-left">
                         <input type="radio" id="org_post_asc" name="opc_educacion" onclick="set_valor(this)" value="ASC">
@@ -773,7 +785,8 @@ Ordenar e                       Estudios primarios
                         </label>
                       </div>
                         <label style="margin-top: 10px">
-                        Ordenar estudios de maestro o doctor 
+                        Magister o doctorado
+                        Ordenar:
                       </label>
                       <div class="uk-flex uk-flex-middle uk-margin-small-left">
                         <input type="radio" id="org_doc_asc" name="opc_educacion" onclick="set_valor(this)" value="ASC">
@@ -802,7 +815,8 @@ Ordenar e                       Estudios primarios
                     <div class="uk-flex uk-flex-column" style="width: 85%;">
                       <div class="uk-margin-small-bottom">
                         <label for="penal_obligaciones_">
-                          Ordenar cantidad sentencia penal (penal y obligaciones)
+                          Ordenar los partidos según la cantidad 
+                          de sentencias (penal y obligaciones)
                         </label>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
                           <input type="radio" id="cant_sen_penal_obliga_asc" name="cant_sen_penal_obliga" onclick="set_valor(this)" value="ASC">
@@ -819,7 +833,8 @@ Ordenar e                       Estudios primarios
                       </div>
                       <div class="uk-margin-small-bottom">
                         <label>
-                          Ordenar cantidad de sentencia penal
+                          Ordenar según la cantidad 
+                          de sentencias penales
                         </label>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
                           <input type="radio" id="cant_sen_penal_asc" name="cant_sen_penal" onclick="set_valor(this)" value="ASC">
@@ -836,7 +851,8 @@ Ordenar e                       Estudios primarios
                       </div>
                       <div>
                         <label>
-                          Ordenar cantidad de sentencia civil
+                          Ordenar según la cantidad
+                          de sentencias por obligaciones
                         </label>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
                           <input type="radio" id="cant_sen_civil_asc" name="cant_sen_civil" onclick="set_valor(this)" value="ASC">
@@ -865,7 +881,8 @@ Ordenar e                       Estudios primarios
                   <div class="uk-width-1-1@s uk-flex uk-flex-between">
                     <div class="uk-flex uk-flex-column">
                       <label>
-                        Ordenar
+                        Ordenar según la cantidad de candidatos
+                        por partido nacidos en el lugar
                       </label>
                       <div class="uk-flex uk-flex-middle uk-margin-small-left">
                         <input type="radio" id="org_oriundo_asc" name="org_oriundo" value="ASC" onclick="set_valor(this)">
@@ -920,7 +937,8 @@ Ordenar e                       Estudios primarios
             </ul>
           </li>
           <li class="uk-parent" name="orga_filtro" id="dist_electo" ><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>
-            Cuántos candidatos del partido postulan por un distrito electoral diferente al de su nacimiento
+            Ordenar los partidos según la cantidad de candidatos Congresales
+            que postulan por un distrito electoral diferente al de su nacimiento
           </a>
             <ul>
               <form class="filter_options">
@@ -959,7 +977,7 @@ Ordenar e                       Estudios primarios
                       <div class="uk-width-1-1@s" id="2019_est_present" >
                         <div class="uk-margin-small-bottom">
                           <label>
-                            Estado de Presentación:
+                            Estado de presentación:
                           </label>
                           <div class="uk-flex uk-flex-middle uk-margin-small-left">
                             <input type="radio" id="2019_est_si" name="2019_est_present" onclick="set_valor(this)" value="PRESENTÓ">
@@ -976,7 +994,7 @@ Ordenar e                       Estudios primarios
                         </div>
                         <div class="uk-margin-small-bottom">
                           <label style="margin-top: 10px">
-                            Ordenar Ingresos Declarados
+                            Ordenar los partidos según el monto de ingresos declarados
                           </label>
                           <div class="uk-flex uk-flex-middle uk-margin-small-left">
                             <input type="radio" id="2019_ingre_dec_asc" name="2019_ingre_dec" value="ASC">
@@ -998,7 +1016,7 @@ Ordenar e                       Estudios primarios
                       <div class="uk-width-1-1@s" id="2018_est_present">
                         <div class="uk-margin-small-bottom">
                           <label>
-                            Estado de Presentación:
+                            Estado de presentación:
                           </label>
                           <div class="uk-flex uk-flex-middle uk-margin-small-left">
                             <input type="radio" id="2018_est_si"  name="2018_est_present" onclick="set_valor(this)" value="PRESENTÓ">
@@ -1015,7 +1033,7 @@ Ordenar e                       Estudios primarios
                         </div>
                         <div class="uk-margin-small-bottom">
                           <label>
-                            Ordenar Ingresos Declarados
+                            Ordenar los partidos según el monto de ingresos declarados
                           </label>
                           <div class="uk-flex uk-flex-middle uk-margin-small-left">
                             <input type="radio" id="2018_ingre_dec_asc" name="2018_ingre_dec"  value="ASC">
@@ -1037,7 +1055,7 @@ Ordenar e                       Estudios primarios
                       <div class="uk-width-1-1@s" id="2017_est_present">
                         <div class="uk-margin-small-bottom">
                           <label>
-                            Estado de Presentación:
+                            Estado de presentación:
                           </label>
                           <div class="uk-flex uk-flex-middle uk-margin-small-left">
                             <input type="radio" id="2017_est_si" name="2017_est_present" onclick="set_valor(this)" value="PRESENTÓ">
@@ -1054,7 +1072,7 @@ Ordenar e                       Estudios primarios
                         </div>
                         <div>
                           <label>
-                            Ordenar Ingresos Declarados
+                            Ordenar los partidos según el monto de ingresos declarados
                           </label>
                           <div class="uk-flex uk-flex-middle uk-margin-small-left">
                             <input type="radio" id="2017_ingre_dec_asc" name="2017_ingre_dec"  value="ASC">
@@ -1084,7 +1102,7 @@ Ordenar e                       Estudios primarios
                   <div class="uk-width-1-1@s uk-flex uk-flex-between">
                     <div class="uk-flex uk-flex-column">
                       <label>
-                        Ordenar Monto quinquenal asignado
+                        Ordenar los partidos según el monto quinquenal asignado
                       </label>
                       <div class="uk-flex uk-flex-middle uk-margin-small-left">
                         <input type="radio" id="monto_quinque_asc" name="monto_quinque" onclick="set_valor(this)" value="ASC">
@@ -1131,16 +1149,16 @@ Ordenar e                       Estudios primarios
         <div class="uk-navbar-right">  
           <ul class="uk-navbar-nav uk-visible@m" id="opciones_candidatos"> 
             <li class="nav-options pres_opt">
-              <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a>
+              <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">CANDIDATOS PRESIDENCIALES</a>
             </li>
             <li class="nav-options cong_opt">
-              <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Congresales</a>
+              <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">CANDIDATOS CONGRESALES</a>
             </li>
             <li class="nav-options parl_opt">
-              <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Parlamento Andino</a>
+              <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">CANDIDATOS PARLAMENTO ANDINO </a>
             </li>
             <li class="nav-options orga_opt">
-              <a class="nav_opt" href="#" onclick="activar_organizaciones(this)">Partidos Políticos</a>
+              <a class="nav_opt" href="#" onclick="activar_organizaciones(this)">PARTIDOS POLÍTICOS</a>
             </li>
             <li class="nav-options">
               <a class="nav_opt" href="/">
