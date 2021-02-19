@@ -55,6 +55,7 @@
           <ul id="presidenciales" name="tipo_candidato_filter" class="uk-nav uk-nav-default uk-nav-parent-icon uk-margin-small-top" data-uk-nav>
             <li class="uk-nav-header">Opciones de búsqueda</li>
             <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel académico</a>
+            
               <ul>
                 <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
@@ -76,15 +77,17 @@
                 </form>
               </ul>
             </li>
-            <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cargos previos</a>
+            <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cargos por elecciones pasadas</a>
               <ul>
                 <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small uk-flex">
                     <div class="uk-width-1-1@s">
                       <div class="uk-flex uk-flex-column">
                         <label>
-                          Cantidad de cargos de elección popular
+                          Ordenar a los candidatos según la cantidad de cargos de elección popular
+                          que hayan tenido:
                         </label>
+                        <br>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
                           <input type="radio" id="anhio_servicio_asc" name="anhio_servicio" onclick="get_cargos_previos()" value="ASC">
                           <label for="anhio_servicio_asc">
@@ -114,11 +117,11 @@
                   <fieldset class="uk-fieldset uk-padding-small uk-flex uk-flex-between">
                     <div>
                       <div>
-                        <label><input type="radio" id="si-sentencia" name ="ifsentencias" onclick="mostrar_tiposentencias(this)">Sí tiene</label>
+                        <label><input type="radio" id="si-sentencia" name ="ifsentencias" onclick="mostrar_tiposentencias(this)">Tiene sentencias</label>
                         <div id="mostrar_sentencias" style="display: none;">
                         <div class="uk-width-1-1@s uk-flex uk-flex-column">
                           <div>
-                            <label><input type="checkbox" id="penal_cbx" value="penal_val" onchange="togglePenal_opciones(this)">Penal</label>
+                            <label><input type="checkbox" id="penal_cbx" value="penal_val" onchange="togglePenal_opciones(this)">Sentencia penal</label>
                           </div>
                           <div id="div_opc_cant_sentencias" style="display: none">
                             <label>
@@ -139,7 +142,7 @@
                           </div>
                           <div>
                             <div>
-                              <label><input type="checkbox" id="por_obligaciones" value="por_obligaciones_val" onchange="toggleObligacion_opciones(this)">Por obligaciones</label>
+                              <label><input type="checkbox" id="por_obligaciones" value="por_obligaciones_val" onchange="toggleObligacion_opciones(this)">Sentencia por obligación</label>
                             </div>
                             <div id="div_opc_obligaciones" style="display: none">
                               <label>
@@ -190,7 +193,7 @@
                         </div>
                       </div>
                       <div>
-                        <label><input type="radio" id="no_tiene" value="no_tiene_val"  name ="ifsentencias" onclick="noTiene_opcion(this)">No tiene</label>
+                        <label><input type="radio" id="no_tiene" value="no_tiene_val"  name ="ifsentencias" onclick="noTiene_opcion(this)">No tiene sentencias</label>
                       </div>
                     </div>
                     <a onclick="quitar_seleccion_sentencias()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
@@ -672,6 +675,7 @@
             </ul>
           </li> 
           <li class="uk-parent" name="orga_filtro" id="opc_educacion"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel académico</a>
+            
             <ul>
               <form class="filter_options">
                 <fieldset class="uk-fieldset uk-padding-small">
