@@ -1,6 +1,5 @@
 // let btn_fil_cand = document.getElementById("filtrar_cand")
 // btn_fil_cand.disable = false
-
 let cant_filtros = 0
 let lista_orden_filtros = []
 
@@ -86,33 +85,6 @@ let filtro_distrito = false          //17
 let cant_filtros_normales = 0
 let cant_filtros_ob = 0
 
-function SendJSON() {
-  console.log("Empacando datos")
-  let data = {
-    "nivel_academico" : "concluyo_secundaria",
-    "cargos_previos_order" : "DESC",
-    "orden_cant_sentencia" : "",
-    "orden_cant_sentencia_oblig" : "",
-    "mat_demanda" : "",
-    "no_tiene_val" : "",
-    "orden_cant_ingreso" : "",
-    "orden_cant_inmueble" : "",
-    "orden_valor_inmueble" : "",
-    "orden_cant_mueble" : "",
-    "orden_valor_mueble" : "",
-    "orden_renuncias" : "",
-    "rango_edad_val" : "",
-    "nac_per_si" : "",
-    "nac_per_no" : "",
-    "departamento_nacimiento" : "",
-    "cargo_postula" : "",
-    "org_politica" : "",
-    "dist_electoral" : "",
-    "tipo_candidato_" : ""
-  }
-  window.location = URL + VIEW + "/test"
-}
-
 function button_filter(){
   // btn_fil_cand.disable = true
   tipo_candidato_ = document.getElementsByName("tipo_candidato_filter")[0].id
@@ -129,13 +101,19 @@ function button_filter(){
 
   if(lista_orden_filtros.length == 0){
 		setTimeout(function(){
-			UIkit.notification('Escoja al menos un filtro')
+			UIkit.notification({
+        message: 'Escoja al menos un filtro', 
+        status: 'warning'
+    })
     }, 1000)
     return 
   }
   else if(lista_valores[13] != "" && lista_valores[15] == ""){
 		setTimeout(function(){
-			UIkit.notification('Especifique el distrito de nacimiento del filtro "Oriundo"')
+			UIkit.notification({
+        message: 'Especifique el distrito de nacimiento del filtro "Oriundo"',
+        status: 'warning'
+      })
     }, 1000)
     return 
   }

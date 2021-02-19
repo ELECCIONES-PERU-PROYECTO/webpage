@@ -8,7 +8,10 @@ let info_extra= ""
 
 function mark_filters(){
   setTimeout(function(){
-    UIkit.notification('Marque al menos un filtro');
+    UIkit.notification({
+      message: 'Marque al menos un filtro', 
+      status: 'warning'
+  })
   }, 1000);
   return "again"
 }
@@ -54,7 +57,10 @@ function button_filter_org(){
     //filtro_orden = orden
     if(orden==""){
       setTimeout(function(){
-        UIkit.notification('Marque orden');
+        UIkit.notification({
+          message: 'Marque orden', 
+          status: 'warning'
+      });
       }, 1000);
       return;
     }

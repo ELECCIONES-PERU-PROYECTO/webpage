@@ -1195,46 +1195,47 @@ Ordenar e                       Estudios primarios
       </div>
     {% elif page %}
       <div class="uk-container uk-margin-top uk-margin-bottom">
-          {% for candidato in page %}
-          <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-flex-middle uk-width-3-4@xl uk-width-1-1@m uk-width-3-4@s uk-flex-center uk-margin-bottom uk-margin-auto" uk-grid>
-            <div class="uk-text-center uk-padding-remove">
-              {% if candidato.url %}
-                <img src="{{ candidato.url }}" width="155px" height="215px" alt="{{ candidato.candidato }}">
-              {% else %}
-                <img src="{% static "images/candidato_img.png" %}" width="155px" height="215px" alt="{{ candidato.candidato }}">
-              {% endif %}
-            </div>
-            <div class="uk-width-expand@m uk-padding-right uk-padding-small candidato-card">
-              <div class="uk-grid uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-margin-remove" uk-grid>
-                <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
-                  <p class="uk-text-muted uk-margin-remove">Nombres</p>
-                  {{ candidato.candidato }}
-                </div>
-                <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
-                  <p class="uk-text-muted uk-margin-remove">Partido</p>
-                  {{ candidato.organizacion_politica }}
-                </div>
-                <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
-                  {% if candidato.cargo_eleccion != "CONGRESISTA DE LA REPÚBLICA" %}
-                    <p class="uk-text-muted uk-margin-remove">Cargo</p>
-                    {{ candidato.cargo_eleccion }}
-                  {% else %}
-                    <p class="uk-text-muted uk-margin-remove">Distrito Electoral</p>
-                    {{ candidato.distrito_elec }}
-                  {% endif %}
-                </div>
-                <div class="uk-text-small uk-flex uk-flex-middle" style="margin: 0 0 0.5rem 0;">
-                  <a onclick="verHojadeVida(this)" 
-                    class="dni_id hoja_de_vida_btn" 
-                    id="{{candidato.dni_candidato}}"
-                    name="{{candidato.cargo_eleccion}}" 
-                    style="width: fit-content; height: fit-content;">
-                    Ver hoja de vida
-                  </a>
-                </div>
+        div
+        {% for candidato in page %}
+        <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-flex-middle uk-width-3-4@xl uk-width-1-1@m uk-width-3-4@s uk-flex-center uk-margin-bottom uk-margin-auto" uk-grid>
+          <div class="uk-text-center uk-padding-remove">
+            {% if candidato.url %}
+              <img src="{{ candidato.url }}" width="155px" height="215px" alt="{{ candidato.candidato }}">
+            {% else %}
+              <img src="{% static "images/candidato_img.png" %}" width="155px" height="215px" alt="{{ candidato.candidato }}">
+            {% endif %}
+          </div>
+          <div class="uk-width-expand@m uk-padding-right uk-padding-small candidato-card">
+            <div class="uk-grid uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-margin-remove" uk-grid>
+              <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
+                <p class="uk-text-muted uk-margin-remove">Nombres</p>
+                {{ candidato.candidato }}
+              </div>
+              <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
+                <p class="uk-text-muted uk-margin-remove">Partido</p>
+                {{ candidato.organizacion_politica }}
+              </div>
+              <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
+                {% if candidato.cargo_eleccion != "CONGRESISTA DE LA REPÚBLICA" %}
+                  <p class="uk-text-muted uk-margin-remove">Cargo</p>
+                  {{ candidato.cargo_eleccion }}
+                {% else %}
+                  <p class="uk-text-muted uk-margin-remove">Distrito Electoral</p>
+                  {{ candidato.distrito_elec }}
+                {% endif %}
+              </div>
+              <div class="uk-text-small uk-flex uk-flex-middle" style="margin: 0 0 0.5rem 0;">
+                <a onclick="verHojadeVida(this)" 
+                  class="dni_id hoja_de_vida_btn" 
+                  id="{{candidato.dni_candidato}}"
+                  name="{{candidato.cargo_eleccion}}" 
+                  style="width: fit-content; height: fit-content;">
+                  Ver hoja de vida
+                </a>
               </div>
             </div>
           </div>
+        </div>
         {% endfor %}
       </div>
       {% include "elecciones/pagination.html" with page=page %}
@@ -1270,7 +1271,7 @@ Ordenar e                       Estudios primarios
     let img_gif = document.getElementById('web_gif')
     
     if(text_info) {
-      if(text[text.length - 1] === "filtros" || text[text.length - 1] === "filtros#") {
+      if(text[text.length - 1] === VIEW || text[text.length - 1] === VIEW + "#") {
         text_info.textContent="Escoge al menos un filtro para que aparezcan los resultados."
         text_info.style.marginBottom = "1rem"
 
