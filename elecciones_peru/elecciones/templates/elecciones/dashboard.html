@@ -59,7 +59,7 @@
               <ul>
                 <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
-                    <div class="uk-width-1-1@s uk-flex uk-flex-middle uk-margin-small-left">
+                    <div class="uk-width-1-1 uk-flex uk-flex-middle uk-margin-small-left" style="width: 95%">
                       <select class="uk-select opt_select uk-margin-small-right" id="nivel_academico" style="width: 85%" onchange="get_nivel_academico()">
                         <option value="default" disabled selected>Elegir Nivel académico</option>
                         <option value="concluyo_primaria">Concluyó primaria</option>
@@ -81,8 +81,8 @@
               <ul>
                 <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small uk-flex">
-                    <div class="uk-width-1-1@s">
-                      <div class="uk-flex uk-flex-column">
+                    <div class="uk-width-1-1">
+                      <div class="uk-flex uk-flex-column" style="width: 95%">
                         <label>
                           Ordenar a los candidatos según la cantidad de cargos de elección popular
                           que hayan tenido:
@@ -115,15 +115,15 @@
                 <!-- <button  onclick="quitar_seleccion_sentencias()">Decartar</button> -->
                 <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small uk-flex uk-flex-between">
-                    <div>
-                      <div>
+                    <div class="uk-width-1-1">
+                      <div style="width: 95%">
                         <label><input type="radio" id="si-sentencia" name ="ifsentencias" onclick="mostrar_tiposentencias(this)">Tiene sentencias</label>
                         <div id="mostrar_sentencias" style="display: none;">
                         <div class="uk-width-1-1@s uk-flex uk-flex-column">
                           <div>
                             <label><input type="checkbox" id="penal_cbx" value="penal_val" onchange="togglePenal_opciones(this)">Sentencia penal</label>
                           </div>
-                          <div id="div_opc_cant_sentencias" style="display: none">
+                          <div id="div_opc_cant_sentencias" style="display: none; margin-left: 10px">
                             <label>
                               Cantidad de Sentencias
                             </label>
@@ -144,7 +144,7 @@
                             <div>
                               <label><input type="checkbox" id="por_obligaciones" value="por_obligaciones_val" onchange="toggleObligacion_opciones(this)">Sentencia por obligación</label>
                             </div>
-                            <div id="div_opc_obligaciones" style="display: none">
+                            <div id="div_opc_obligaciones" style="display: none; margin-left: 10px">
                               <label>
                                 Cantidad de Sentencias
                               </label>
@@ -205,8 +205,8 @@
               <ul>
                 <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
-                    <div class="uk-width-1-1@s uk-flex uk-flex-between">
-                      <div class="uk-flex uk-flex-column" style="width: 90%">
+                    <div class="uk-flex uk-flex-between uk-width-1-1">
+                      <div class="uk-flex uk-flex-column" style="width: 95%">
                         <label><input type="checkbox" onchange="mostrar_input_ingreso(this)">Tiene ingresos</label>
                         <div id="inputs-ingreso" style="display: none; margin-left: 10px;">
                         <label>
@@ -303,8 +303,8 @@
               <ul>
                 <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
-                    <div class="uk-width-1-1@s uk-flex uk-flex-between">
-                      <div class="uk-flex uk-flex-column" style="width: 80%">
+                    <div class="uk-flex uk-flex-between uk-width-1-1">
+                      <div class="uk-flex uk-flex-column" style="width: 95%">
                         <label>
                           Ordenar según la cantidad de renuncias
                         </label>
@@ -359,8 +359,8 @@
               <ul>
                 <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
-                    <div class="uk-width-1-1@s uk-flex uk-flex-between">
-                      <div class="uk-flex uk-flex-column">
+                    <div class="uk-flex uk-flex-between uk-width-1-1">
+                      <div class="uk-flex uk-flex-column" style="width: 95%">
                         <label>
                           Rango de edades
                         </label>
@@ -393,8 +393,8 @@
               <ul>
                 <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
-                    <div class="uk-width-1-1@s uk-flex uk-flex-between">
-                      <div class="uk-flex uk-flex-column">
+                    <div class="uk-flex uk-flex-between uk-width-1-1">
+                      <div class="uk-flex uk-flex-column" style="width: 95%">
                         <label>
                           Nació en Perú
                         </label>
@@ -455,8 +455,8 @@
                 <!-- <button  onclick="quitar_seleccion_postula()">Decartar</button> -->
                 <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
-                    <div class="uk-width-1-1@s uk-flex uk-flex-middle uk-margin-small-left">
-                      <select class="uk-select opt_select uk-margin-small-right" id="cargo_postula" style="width: 85%" onchange="get_cargo_postula()">
+                    <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                      <select class="uk-select opt_select uk-margin-small-right" id="cargo_postula" style="width: 95%" onchange="get_cargo_postula()">
                         <option value="default" disabled selected>Elegir cargo</option>
                         <option value="PRIMER VICEPRESIDENTE DE LA REPÚBLICA">Primer Vicepresidente</option>
                         <option value="SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA">Segundo Vicepresidente</option>
@@ -473,8 +473,8 @@
                 <!-- <button  onclick="quitar_seleccion_org_politica()">Decartar</button> -->
                 <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
-                    <div class="uk-width-1-1@s uk-flex uk-flex-middle uk-margin-small-left">
-                      <select class="uk-select opt_select uk-margin-small-right" id="select_org_politica" style="width: 85%" onchange="get_org_politica()">
+                    <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                      <select class="uk-select opt_select uk-margin-small-right" id="select_org_politica" style="width: 95%" onchange="get_org_politica()">
                         <option value="default" disabled selected>Elegir Organización Política</option>
                         <option value="ACCION POPULAR">Acción Popular</option>
                         <option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -508,8 +508,8 @@
                 <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-between">
-                      <div class="uk-flex uk-flex-column" style="width: 85%">
-                        <select class="uk-select opt_select" id="dist_electo" onchange="get_distrito_electoral()">
+                      <div class="uk-flex uk-flex-column">
+                        <select class="uk-select opt_select" style="width: 95%" id="dist_electo" onchange="get_distrito_electoral()">
                           <option value="default" disabled selected>Elegir Distrito Electoral</option>
                           <option value="AMAZONAS">Amazonas</option>
                           <option value="ANCASH">Ancash</option>
@@ -583,7 +583,7 @@
               <form class="filter_options">
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex uk-flex-between">
-                    <div class="uk-flex uk-flex-column">
+                    <div class="uk-flex uk-flex-column" style="width: 95%">
                       <label>
                         Ordenar los partidos según la cantidad candidatos en el rango de edad 
                       </label>
@@ -634,7 +634,7 @@
               <form class="filter_options">
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex">
-                    <div class="uk-flex uk-flex-column">
+                    <div class="uk-flex uk-flex-column" style="width: 95%">
                       <label>
                       Ordenar los partidos según la cantidad candidatos de género femenino o masculino 
                       </label>
@@ -680,8 +680,7 @@
               <form class="filter_options">
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex uk-flex-between">
-                    
-                    <div class="uk-flex uk-flex-column">
+                    <div class="uk-flex uk-flex-column" style="width: 95%">
                       <label>
                         Ordenar los partidos según la cantidad de candidatos 
                         que tengan determinado nivel de estudio
@@ -812,7 +811,7 @@
               <form class="filter_options">
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex">
-                    <div class="uk-flex uk-flex-column" style="width: 85%;">
+                    <div class="uk-flex uk-flex-column" style="width: 95%;">
                       <div class="uk-margin-small-bottom">
                         <label for="penal_obligaciones_">
                           Ordenar los partidos según la cantidad 
@@ -879,7 +878,7 @@
               <form class="filter_options">
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex uk-flex-between">
-                    <div class="uk-flex uk-flex-column">
+                    <div class="uk-flex uk-flex-column" style="width: 95%">
                       <label>
                         Ordenar los partidos según la cantidad de candidatos
                         por partido nacidos en el lugar
@@ -944,7 +943,7 @@
               <form class="filter_options">
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex uk-flex-between">
-                    <div class="uk-flex uk-flex-column">
+                    <div class="uk-flex uk-flex-column" style="width: 95%">
                       <label>
                         Ordenar los partidos en orden
                       </label>
@@ -974,7 +973,7 @@
               <form class="filter_options">
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex uk-flex-between">
-                    <div class="uk-flex uk-flex-column">
+                    <div class="uk-flex uk-flex-column" style="width: 95%">
                       <label class="uk-text-muted uk-text-bold">
                         2019
                       </label>
@@ -1104,7 +1103,7 @@
               <form class="filter_options">
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex uk-flex-between">
-                    <div class="uk-flex uk-flex-column">
+                    <div class="uk-flex uk-flex-column" style="width: 95%">
                       <label>
                         Ordenar los partidos según el monto quinquenal asignado
                       </label>
