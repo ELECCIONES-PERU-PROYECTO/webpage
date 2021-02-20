@@ -1,36 +1,12 @@
-
-/*window.onload = function () {
-  //console.log("hasCodeRunBefore still false")
-  //if (sessionStorage.getItem("hasCodeRunBefore") === null) {
-  //  let data = []
-  //  console.log("hasCodeRunBefore = true")
-  //  sessionStorage.setItem('data_filtros_seleccionados', JSON.stringify(data))
-  //  sessionStorage.setItem("hasCodeRunBefore", true);
-  //}
-}
-
-window.onload =  function(){
-  //var data = JSON.parse(sessionStorage.getItem('data_filtro'))
-  //if (data != null){
-  //  if(data['tipo_filtro'] == "candidatos")
-  //  activar_candidatos(data['tipo_candiato_s'])
-  //  else
-  //  activar_organizaciones()
-  //}
-}
-
-window.onload =  function(){
-  //console.log("agregar_filtros_selecs")
-//
-  //var data = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
-  //console.log(data)
-  //if (data != null){
-  //  console.log("agregar_filtros_selecs")
-  //  agregar_filtros_selecs(data)
-  //}
-}
-*/
+/*igual al inicio un enter (ver linea 212)*/
 window.onload = function(){
+  console.log("agregar_filtros_selecs")
+  var data1 = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
+  console.log(data1)
+  if (data1 != null){
+    console.log("data1", data1)
+    agregar_filtros_selecs(data1)
+  }
   console.log("hasCodeRunBefore still false")
   if (sessionStorage.getItem("hasCodeRunBefore") === null) {
     let data = []
@@ -45,18 +21,7 @@ window.onload = function(){
     else
     activar_organizaciones()
   }
-  console.log("agregar_filtros_selecs")
-
-  var data1 = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
-  console.log(data1)
-  if (data1 != null){
-    console.log("data1", data1)
-    agregar_filtros_selecs(data1)
-  }
 }
-
-
-
 
 function agregar_filtros_selecs(data){
   console.log("agregar_filtros_selecs")
@@ -118,7 +83,6 @@ function agregar_filtros_selecs(data){
     
   }
 }
-
 
 let a_visited
 
@@ -245,3 +209,4 @@ function activar_candidatos(text){
       tip_cand_filter.id = "parlamento"
   }
 }
+/*siempre deja un enter sobrando porque algunos browsers esperan que exista un enter al final*/

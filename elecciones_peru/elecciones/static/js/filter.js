@@ -696,7 +696,7 @@ function noTiene_opcion(){
       lista_orden_filtros.push(6)
       cant_filtros++
       cant_filtros_normales++
-      impresion_peque()
+      
     }
 
 }
@@ -713,7 +713,7 @@ function get_bienes_rentas(element){
         cant_filtros_ob++
         lista_orden_filtros.push(7)
         console.log("push 7")
-        impresion_peque()
+        
       }
       orden_cant_ingreso = element.value
       break;
@@ -724,7 +724,7 @@ function get_bienes_rentas(element){
         cant_filtros_ob++
         lista_orden_filtros.push(8)
         console.log("push 8")
-        impresion_peque()
+        
       }
       orden_cant_inmueble = element.value
       break;
@@ -735,7 +735,7 @@ function get_bienes_rentas(element){
         cant_filtros_ob++
         lista_orden_filtros.push(9)
         console.log("push 9")
-        impresion_peque()
+        
       }
       orden_valor_inmueble = element.value
       break;
@@ -746,7 +746,7 @@ function get_bienes_rentas(element){
           cant_filtros_ob++
           lista_orden_filtros.push(10)
           console.log("push 10")
-          impresion_peque()
+          
         }
         orden_cant_mueble = element.value
         break;
@@ -757,7 +757,7 @@ function get_bienes_rentas(element){
         cant_filtros_ob++
         lista_orden_filtros.push(11)
         console.log("push 11")
-        impresion_peque()
+        
       }
       orden_valor_mueble = element.value
       break;
