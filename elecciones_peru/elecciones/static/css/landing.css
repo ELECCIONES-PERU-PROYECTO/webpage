@@ -171,8 +171,8 @@ a[name="button_section"]{
 	border-radius: 20px;
 	color: #b62222;
 	cursor: default;
-	font-size: 16px;
-	background: rgba(182, 34, 34, 0.35);
+	font-size: 20px;
+	background:	rgba(214 106 106 / 35%);
 }
 
 .container_frases {
