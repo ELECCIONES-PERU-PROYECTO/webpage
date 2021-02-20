@@ -128,7 +128,6 @@ function button_filter(){
     departamento_nacimiento, cargo_postula, org_politica, 
     dist_electoral, tipo_candidato_
   ]
-  sessionStorage.setItem('data_filtros_seleccionados', JSON.stringify(lista_orden_filtros))
 
   if(lista_orden_filtros.length == 0){
 		setTimeout(function(){
@@ -153,6 +152,8 @@ function button_filter(){
   console.log("URL XDDDDDDDDDDDDDD",url)
 
   let x = 1
+  
+  sessionStorage.setItem('data_filtros_seleccionados', JSON.stringify(lista_orden_filtros))
 
   for(let i = 0; i < lista_orden_filtros.length; i++){
     if(lista_orden_filtros[i] == 1){
@@ -259,7 +260,12 @@ function button_filter(){
 
   return
 }
-
+function quitar_badges(){
+  let badges = document.getElementsByName("badges-filtros-selec")
+  for(let i =0 ;i < badges.length ; i++){
+    ul_filt_selec.removeChild(badges[i])
+  }
+}
 
 /* Funciones de filtros (gets y quitar seleccion) algunos filtros tienen una funcion extra*/
 /* FILTRO ACADEMICO */
@@ -271,18 +277,17 @@ function get_nivel_academico(){
     console.log(lista_orden_filtros)
     lista_orden_filtros.push(1)
 
-    /*Agregar <li> al a la lista de filtros seleccionados */
-    // var data = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
-    // const index = data.indexOf(1)
-    // if(index == -1 || data.length == 0){
-    //   console.log("El badge academico no esta")
-    //   agregar_badge_academico()
-
-    // }else{
-    //   console.log("el badge academico esta")
-
-    // }
-    /*          */
+    ///*Agregar <li> al a la lista de filtros seleccionados */
+    //var data = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
+    //const index = data.indexOf(1)
+    //if(index == -1 || data.length == 0){
+    //  console.log("El badge academico no esta")
+    //  agregar_badge_academico("badge-academico","Nivel Académico")
+//
+    //}else{
+    //  console.log("el badge academico esta")
+    //}
+    ///*          */
 
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
     console.log("cant_filtros: ",cant_filtros)
@@ -295,11 +300,11 @@ function get_nivel_academico(){
   console.log("nivel_academico: ", nivel_academico)
 }
 
-function agregar_badge_academico(){
+function agregar_badge(badge_text){
   var node = document.createElement("LI");     
   node.className= "uk-badge"
-  node.id="badge-academico"
-  node.textContent= "Nivel Académico"
+  node.name = "badges-filtros-selec"
+  node.textContent = badge_text
   ul_filt_selec.appendChild(node)
 }
 
@@ -309,8 +314,8 @@ function quitar_seleccion_academico(){
     cant_filtros_normales--
     cant_filtros--
     
-    let remove = document.getElementById("badge-academico")
-    ul_filt_selec.removeChild(remove)
+    //let remove = document.getElementById("badge-academico")
+    //ul_filt_selec.removeChild(remove)
 
     const index = lista_orden_filtros.indexOf(1)
     if (index > -1) {
@@ -330,12 +335,24 @@ function quitar_seleccion_academico(){
 function get_cargos_previos(){
   let anhio_servicio_list = document.getElementsByName("anhio_servicio")
 
-  if(filtro_cargo == false) {  
-    cant_filtros++
-    cant_filtros_ob++
-    filtro_cargo = true
-    lista_orden_filtros.push(2)
-    console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
+if(filtro_cargo == false) {  
+  cant_filtros++
+  cant_filtros_ob++
+  filtro_cargo = true
+  lista_orden_filtros.push(2)
+  
+  ///*Agregar <li> al a la lista de filtros seleccionados */
+  //var data = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
+  //const index = data.indexOf(2)
+  //if(index == -1 || data.length == 0){
+  //  console.log("El badge academico no esta")
+  //  agregar_badge_academico("badge-elecciones-pasadas","Cargos por Elecciones pasadas")
+  //}else{
+  //  console.log("El badge elecc pasadas esta")
+  //}
+  /*          */  
+  
+  console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
 
     console.log(cant_filtros)
 
@@ -406,6 +423,15 @@ function get_sentencias_penal_cant(){
     cant_filtros_ob++
     cant_filtros++
     lista_orden_filtros.push(3)
+    //var data = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
+    //const index = data.indexOf(3)
+    //if(index == -1 || data.length == 0){
+    //  console.log("El badge academico no esta")
+    //  agregar_badge_academico(lista_orden_filtros)
+    //}else{
+    //  console.log("El badge elecc pasadas esta")
+    //}
+
     console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
     console.log("cant_filtros_ob: ",cant_filtros_ob)
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
