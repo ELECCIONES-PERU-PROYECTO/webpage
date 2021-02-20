@@ -1162,7 +1162,7 @@
               <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Parlamento Andino</a>
             </li>
             <li class="nav-options orga_opt">
-              <a class="nav_opt" href="#" onclick="activar_organizaciones(this)">Partidos Políticos</a>
+              <a class="nav_opt" href="#" onclick="activar_organizaciones(this.text)">Partidos Políticos</a>
             </li>
             <li class="nav-options">
               <a class="nav_opt" href="/">
@@ -1237,7 +1237,6 @@
       </div>
     {% elif page %}
       <div class="uk-container uk-margin-top uk-margin-bottom">
-        div
         {% for candidato in page %}
         <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-flex-middle uk-width-3-4@xl uk-width-1-1@m uk-width-3-4@s uk-flex-center uk-margin-bottom uk-margin-auto" uk-grid>
           <div class="uk-text-center uk-padding-remove">

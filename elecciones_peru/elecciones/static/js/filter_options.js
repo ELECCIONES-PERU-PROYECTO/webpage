@@ -120,7 +120,6 @@ function agregar_filtros_selecs(data){
 }
 
 
-
 let a_visited
 
 function clearNavOptions() {
@@ -166,6 +165,7 @@ function activar_candidatos(text){
       window.location = URL + "/" + VIEW
     
     clearNavOptions()
+    
     a_visited = document.getElementsByClassName("cong_opt")
     for(let i=0; i<a_visited.length; i++)
       a_visited[i].style.background = "#8e0707"

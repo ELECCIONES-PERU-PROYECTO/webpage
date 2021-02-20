@@ -148,9 +148,15 @@ function button_filter(){
     return 
   }
   let url = URL + "/" + VIEW
+
+  console.log("URL XDDDDDDDDDDDDDD",url)
+
   let x = 1
+<<<<<<< HEAD
   
   sessionStorage.setItem('data_filtros_seleccionados', JSON.stringify(lista_orden_filtros))
+=======
+>>>>>>> b8e6f7d514e0c025ada192b58acc3134e6671615
 
   for(let i = 0; i < lista_orden_filtros.length; i++){
     if(lista_orden_filtros[i] == 1){
@@ -274,6 +280,7 @@ function get_nivel_academico(){
     console.log(lista_orden_filtros)
     lista_orden_filtros.push(1)
 
+<<<<<<< HEAD
     ///*Agregar <li> al a la lista de filtros seleccionados */
     //var data = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
     //const index = data.indexOf(1)
@@ -285,6 +292,20 @@ function get_nivel_academico(){
     //  console.log("el badge academico esta")
     //}
     ///*          */
+=======
+    /*Agregar <li> al a la lista de filtros seleccionados */
+    // var data = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
+    // const index = data.indexOf(1)
+    // if(index == -1 || data.length == 0){
+    //   console.log("El badge academico no esta")
+    //   agregar_badge_academico()
+
+    // }else{
+    //   console.log("el badge academico esta")
+
+    // }
+    /*          */
+>>>>>>> b8e6f7d514e0c025ada192b58acc3134e6671615
 
     console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
     console.log("cant_filtros: ",cant_filtros)
@@ -332,6 +353,7 @@ function quitar_seleccion_academico(){
 function get_cargos_previos(){
   let anhio_servicio_list = document.getElementsByName("anhio_servicio")
 
+<<<<<<< HEAD
 if(filtro_cargo == false) {  
   cant_filtros++
   cant_filtros_ob++
@@ -350,17 +372,25 @@ if(filtro_cargo == false) {
   /*          */  
   
   console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
+=======
+  if(filtro_cargo == false) {  
+    cant_filtros++
+    cant_filtros_ob++
+    filtro_cargo = true
+    lista_orden_filtros.push(2)
+    console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
+>>>>>>> b8e6f7d514e0c025ada192b58acc3134e6671615
 
-  console.log(cant_filtros)
+    console.log(cant_filtros)
 
-  for(let i = 0; i < anhio_servicio_list.length; i++) {
-    if(anhio_servicio_list[i].checked) {
-      cargos_previos_order = anhio_servicio_list[i].value
-      console.log("cargos_previos_order: ", cargos_previos_order)
-      return
+    for(let i = 0; i < anhio_servicio_list.length; i++) {
+      if(anhio_servicio_list[i].checked) {
+        cargos_previos_order = anhio_servicio_list[i].value
+        console.log("cargos_previos_order: ", cargos_previos_order)
+        return
+      }
     }
   }
-}
 
   for(let i = 0; i < anhio_servicio_list.length; i++) {
     if(anhio_servicio_list[i].checked) {
