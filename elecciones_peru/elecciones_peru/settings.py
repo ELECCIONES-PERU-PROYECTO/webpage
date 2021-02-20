@@ -68,9 +68,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         #'NAME': 'db_partidos',
-        'NAME': 'db_partidos2020',
+        'NAME': 'proyecto_elecciones',
         'USER': 'postgres',
-        'PASSWORD': 'Manzana12345678',
+        'PASSWORD': '1234567',
         'HOST': 'localhost',
         'PORT': '5432',
     }

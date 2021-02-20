@@ -1,40 +1,121 @@
 
-window.onload = function () {
+/*window.onload = function () {
+  //console.log("hasCodeRunBefore still false")
+  //if (sessionStorage.getItem("hasCodeRunBefore") === null) {
+  //  let data = []
+  //  console.log("hasCodeRunBefore = true")
+  //  sessionStorage.setItem('data_filtros_seleccionados', JSON.stringify(data))
+  //  sessionStorage.setItem("hasCodeRunBefore", true);
+  //}
+}
+
+window.onload =  function(){
+  //var data = JSON.parse(sessionStorage.getItem('data_filtro'))
+  //if (data != null){
+  //  if(data['tipo_filtro'] == "candidatos")
+  //  activar_candidatos(data['tipo_candiato_s'])
+  //  else
+  //  activar_organizaciones()
+  //}
+}
+
+window.onload =  function(){
+  //console.log("agregar_filtros_selecs")
+//
+  //var data = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
+  //console.log(data)
+  //if (data != null){
+  //  console.log("agregar_filtros_selecs")
+  //  agregar_filtros_selecs(data)
+  //}
+}
+*/
+window.onload = function(){
+  console.log("hasCodeRunBefore still false")
   if (sessionStorage.getItem("hasCodeRunBefore") === null) {
     let data = []
+    console.log("hasCodeRunBefore = true")
     sessionStorage.setItem('data_filtros_seleccionados', JSON.stringify(data))
     sessionStorage.setItem("hasCodeRunBefore", true);
   }
-}
-
-window.onload =  function(){
-  var data = JSON.parse(sessionStorage.getItem('data_filtro'))
-  if (data != null){
-    if(data['tipo_filtro'] == "candidatos")
-    activar_candidatos(data['tipo_candiato_s'])
+  var data_ = JSON.parse(sessionStorage.getItem('data_filtro'))
+  if (data_ != null){
+    if(data_ ['tipo_filtro'] == "candidatos")
+    activar_candidatos(data_ ['tipo_candiato_s'])
     else
     activar_organizaciones()
   }
-}
-
-window.onload =  function(){
   console.log("agregar_filtros_selecs")
 
-  var data = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
-  console.log(data)
-  if (data != null){
-    console.log("agregar_filtros_selecs")
-    agregar_filtros_selecs(data)
+  var data1 = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
+  console.log(data1)
+  if (data1 != null){
+    console.log("data1", data1)
+    agregar_filtros_selecs(data1)
   }
 }
 
+
+
+
 function agregar_filtros_selecs(data){
   console.log("agregar_filtros_selecs")
+  quitar_badges()
   for(let i = 0 ;i < data.length ; i++){
     if (data[i] == "1"){
-      agregar_badge_academico()
+      agregar_badge("Nivel Académico")
       console.log("uww")
-    } 
+    }
+    else if( data[i]=="2"){
+      agregar_badge("Cargos por Elecciones pasadas")
+    }
+    else if( data[i]=="3"){
+      agregar_badge("Cantidad de Sentencias Penales")
+    }
+    else if( data[i]=="4"){
+      agregar_badge("Cantidad de Sentencias por Obligaciones")
+    }
+    else if( data[i]=="5"){
+      agregar_badge("Cantidad de Sentencias Materia")
+    }
+    else if( data[i]=="6"){
+      agregar_badge("No tiene sentencias")
+    }
+    else if( data[i]=="7"){
+      agregar_badge("Cantidad de Ingresos")
+    }
+    else if( data[i]=="8"){
+      agregar_badge("Cantidad de Inmuebles")
+    }
+    else if( data[i]=="9"){
+      agregar_badge("Valor de Inmuebles")
+    }    
+    else if( data[i]=="10"){
+      agregar_badge("Cantidad de Muebles")
+    }
+    else if( data[i]=="11"){
+      agregar_badge("Valor de Muebles")
+    }
+    else if( data[i]=="12"){
+      agregar_badge("Renuncias de Otros Partidos")
+    }
+    else if( data[i]=="13"){
+      agregar_badge("Rango de Edad")
+    }
+    else if( data[i]=="14"){
+      //arreglar text
+      agregar_badge("Oriundo de Cierto Departamento")
+    }
+    else if( data[i]=="15"){
+      agregar_badge("Cargo al que Postula")
+    }
+    else if( data[i]=="16"){
+      agregar_badge("Organización Política")
+    }
+    else if( data[i]=="17"){
+      agregar_badge("Distrito Electoral")
+    }
+    
   }
 }
 
