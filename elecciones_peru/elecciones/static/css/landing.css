@@ -65,7 +65,7 @@
 }
 
 #content{
-	background: #ebebeb !important;
+	background:  rgb(34 34 34)  !important;
 }
 
 section[name="top_section"]{
@@ -147,14 +147,14 @@ a[name="button_section"]{
 }
 
 .button-click-aqui {
-  background-color: #b62222;
+  background-color: rgb(182 34 34);
 	color: #ffffff;
 	padding: .5rem 1rem;
 	border-radius: 4px;
 }
 
 .button-click-aqui:hover {
-	background-color: #b62222;
+	background-color: rgb(182 34 34);
 	color: #ffffff;
 }
 
