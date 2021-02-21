@@ -147,7 +147,7 @@ ul.uk-navbar-nav li.nav-options a {
 #left-col ul.uk-nav-default li.uk-nav-header {
 	padding:  20px 20px 8px 20px;
 	color: #fff;
-	font-size: 16px;
+	font-size: 18px;
 }
 #left-col ul.uk-nav-default > li > a:hover, #left-col ul.uk-nav-default > li.uk-open > a {
 	border-left: 2px solid #fff;
@@ -247,7 +247,7 @@ ul.uk-navbar-nav li.nav-options a {
 		margin-left: 285px;
 	}
 	#top-head {
-		left:285px;
+		left: 15px;
 	}
 }
 
@@ -268,10 +268,12 @@ ul.uk-navbar-nav li.nav-options a {
 	#offcanvas-nav {
 		display: none;
 	}
-
 	/* -- Filtros Text -- */
 	ul.uk-navbar-nav li a.filtros-text {
 		min-height: 52px;
+	}
+	.spacer_mob {
+		height: 15px;
 	}
 }
 

@@ -19,36 +19,31 @@
 				<nav id="navbar" data-uk-navbar="mode: click;">
 					<div class="uk-navbar-left nav-overlay uk-visible@m">
 						<ul class="uk-navbar-nav">
+							<li><a class="text-nav" href="http://127.0.0.1:8000/">Inicio</a></li>
+							<li><a class="text-nav" href="http://127.0.0.1:8000/analisis-graficos">Analítica</a></li>
 							<li>
-								<a style="font-size: 20px; color: #000000; font-weight:600;"  href="http://127.0.0.1:8000/" title="Subscribe">INICIO</a>
-							</li>
-							<li>
-								<a style="font-size: 20px; color: #000000; font-weight:600;" href="#" data-uk-icon="chevron-down">Búsqueda Avanzada</a>
+								<a class="text-nav" href="#" data-uk-icon="chevron-down">Filtros</a>
 								<div class="uk-navbar-dropdown">
 									<ul class="uk-nav uk-navbar-dropdown-nav">
 										<li>
-											<a style="font-size: 19px; font-weight:500;" href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
+											<a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
 										</li>
 										<li>
-											<a style="font-size: 19px; font-weight:500;"href="#" onclick="activar_candidatos(this.text)">Congresales</a>
+											<a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Congresales</a>
 										</li>
 										<li>
-											<a style="font-size: 19px; font-weight:500;" href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
+											<a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
 										</li>
 										<li>
-											<a style="font-size: 19px; font-weight:500;" href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
+											<a class="text-nav" href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
 										</li>
 									</ul>
 								</div>
 							</li>
-							<!--<li>
-								<a href="#" title="Sign Up">Sign Up</a>
-							</li>
-						-->
 						</ul>
 					</div>
 					<div class="uk-navbar-center nav-overlay">
-						<a class="uk-navbar-item uk-logo" href="#" title="Logo"><img src="{% static "images/ELEGIMOS-01.png" %}" alt="Logo"></a>
+						<a class="uk-navbar-item uk-logo" href="#" title="Logo"><img src="{% static "images/logos/ELEGIMOS_negro.png" %}" alt="Logo"></a>
 					</div>
 					<div class="uk-navbar-right nav-overlay">
 						<!--
