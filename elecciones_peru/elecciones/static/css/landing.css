@@ -1,7 +1,6 @@
 .body{
 	font-family: 'Poppins', sans-serif;
 }
-
 .nav {
 	position: absolute;
 	top: 15px;
@@ -60,12 +59,8 @@
 	background-color: #b62222 !important;
 }
 
-.uk-section-secondary {
-	background: rgb(34 34 34)  !important;
-}
-
 #content{
-	background:  rgb(34 34 34)  !important;
+	background: #ebebeb;
 }
 
 section[name="top_section"]{
@@ -164,6 +159,7 @@ a[name="button_section"]{
 
 #initial .subtitle-text {
 	color: #ffffff;
+	line-height: 22px;
 }
 
 .pill_proxi {
@@ -182,6 +178,7 @@ a[name="button_section"]{
 ul.uk-navbar-nav li a.nav_options {
 	color:#ffffff; 
 	font-size: 16px;
+	font-weight: 500;
 }
 
 @media (max-width: 960px){
@@ -193,6 +190,9 @@ ul.uk-navbar-nav li a.nav_options {
 		font-size: 1.1rem;
 		margin: 0;
 	}
+	.subtitle-text {
+		font-size: 17px;
+	}
 }
 
 @media screen and (max-width: 699px){
@@ -202,5 +202,11 @@ ul.uk-navbar-nav li a.nav_options {
     display: flex;
     align-content: center;
 		text-align: center;
+	}
+	.subtitle-text {
+		font-size: 16px;
+	}
+	.uk-subnav-pill>li.pil_li_option.uk-active>a {
+		margin: .5rem 0;
 	}
 }
