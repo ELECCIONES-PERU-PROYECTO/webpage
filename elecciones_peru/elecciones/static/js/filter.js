@@ -305,7 +305,8 @@ function agregar_badge(badge_text){
   node.className= "option_badge"
   node.name = "badges-filtros-selec"
   node.textContent = badge_text
-  ul_filt_selec.appendChild(node)
+  if(ul_filt_selec)
+    ul_filt_selec.appendChild(node)
 }
 
 function quitar_seleccion_academico(){
