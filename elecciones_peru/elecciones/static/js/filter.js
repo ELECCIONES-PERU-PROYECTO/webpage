@@ -301,8 +301,8 @@ function get_nivel_academico(){
 }
 
 function agregar_badge(badge_text){
-  var node = document.createElement("LI");     
-  node.className= "uk-badge"
+  var node = document.createElement("li")
+  node.className= "option_badge"
   node.name = "badges-filtros-selec"
   node.textContent = badge_text
   ul_filt_selec.appendChild(node)

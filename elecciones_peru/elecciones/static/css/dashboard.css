@@ -1,12 +1,25 @@
 /* -- Colors -- */
 .bg_red {
-    background-color: rgb(255 255 255);
+	background-color: rgb(255 255 255);
+}
+
+.seleccion_container {
+	padding: 1rem 0;
+}
+
+.option_badge {
+	margin: 0 .5rem;
+	border: 1px solid rgba(182, 34, 34, 0.50);
+	color: #666;
+	font-size: 13px;
+	border-radius: 15px;
+	padding: 0 0.5rem;
 }
 
 .hoja_de_vida_btn {
 	width: fit-content;
 	height: fit-content;
-	background: #B62222;
+	background: #b62222;
 	padding: 0.4rem;
 	color: white;
 	border-radius: 6px;
