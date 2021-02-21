@@ -1177,21 +1177,6 @@
 
   <!-- CONTENT -->
   <div id="content" data-uk-height-viewport="expand: true">
-    <!-- SELECCTION -->
-    <div class="uk-container uk-container-expand seleccion_container">
-      <h5 class="uk-margin-small-bottom">
-        Opciones de búsqueda que seleccionaste:
-      </h5>
-      <nav class="uk-navbar uk-light" data-uk-navbar="mode:click; duration: 250" >
-        <ul class="uk-navbar-nav" id="filtros_seleccionados"> 
-          <!--<li>
-            <span class="uk-badge"> <NOMBRE DE FILTRO>  </span>
-          </li>-->
-        </ul>
-      </nav>
-    </div>
-    <!--/SELECCTION-->
-
     <!-- <div class="uk-container uk-container-expand uk-margin-bottom">
       <label>
         Agrupar por
@@ -1206,6 +1191,20 @@
     <!-- todos los candidatos -->
 
     {% if organizaciones_return %}
+      <!-- SELECCTION -->
+      <div class="uk-container uk-container-expand seleccion_container">
+        <h5 class="uk-margin-small-bottom">
+          Opciones de búsqueda que seleccionaste:
+        </h5>
+        <nav class="uk-navbar uk-light" data-uk-navbar="mode:click; duration: 250" >
+          <ul class="uk-navbar-nav" id="filtros_seleccionados"> 
+            <!--<li>
+              <span class="uk-badge"> <NOMBRE DE FILTRO>  </span>
+            </li>-->
+          </ul>
+        </nav>
+      </div>
+      <!--/SELECCTION-->
       <div class="uk-container uk-container-expand uk-margin-top uk-margin-bottom uk-flex uk-flex-center uk-flex-column uk-flex-wrap">
         {% for organizacion in organizaciones_return %}
         <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-flex-middle uk-width-1-2@xl uk-width-1-1@m uk-width-3-4@s uk-flex-center uk-margin-bottom uk-margin-auto" uk-grid>
@@ -1239,6 +1238,20 @@
       {% endfor %}
       </div>
     {% elif page %}
+      <!-- SELECCTION -->
+      <div class="uk-container uk-container-expand seleccion_container">
+        <h5 class="uk-margin-small-bottom">
+          Opciones de búsqueda que seleccionaste:
+        </h5>
+        <nav class="uk-navbar uk-light" data-uk-navbar="mode:click; duration: 250" >
+          <ul class="uk-navbar-nav" id="filtros_seleccionados"> 
+            <!--<li>
+              <span class="uk-badge"> <NOMBRE DE FILTRO>  </span>
+            </li>-->
+          </ul>
+        </nav>
+      </div>
+      <!--/SELECCTION-->
       <div class="uk-container uk-margin-top uk-margin-bottom">
         {% for candidato in page %}
         <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-flex-middle uk-width-3-4@xl uk-width-1-1@m uk-width-3-4@s uk-flex-center uk-margin-bottom uk-margin-auto" uk-grid>
