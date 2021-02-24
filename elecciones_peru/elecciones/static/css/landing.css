@@ -101,7 +101,7 @@ li.pil_li_option a.pil_option:hover {
 
 .uk-subnav-pill>li.pil_li_option.uk-active>a {
 	color: rgba(250, 250, 250);
-	font-weight: bold;
+	font-weight: 500;
 }
 
 p.lead {
