@@ -35,7 +35,7 @@
 								<!-- <li class="uk-active uk-visible@m"><a href="" data-uk-icon="home"></a></li> -->
 								<li><a class="nav_options" href="{% url 'elecciones:analisisGraficos' %}">Análisis de datos</a></li>
 								<li>
-									<a class="nav_options" href="#" data-uk-icon="chevron-down">Búsqueda Avanzada</a>
+									<a class="nav_options" href="#" data-uk-icon="chevron-down">Búsqueda</a>
 									<div class="uk-navbar-dropdown">
 										<ul class="uk-nav uk-navbar-dropdown-nav">
 											<li>
@@ -70,9 +70,6 @@
 							Te ayudamos a identificar lo que buscas mediante gráficas y criterios personalizadas. 
 							Eligamos a los gestores que nuestro país requiere en las Elecciones Generales 2021.
 						</p>
-						<!--<a href="#" title="Ver más" onclick="siu()" class="uk-button uk-button-primary uk-border-pill" data-uk-scrollspy-class="uk-animation-fade">
-							INFORMACIÓN GENERAL
-						</a>-->
 					</div>
 				</div>
 				<!-- /TOP CONTAINER -->
@@ -109,20 +106,18 @@
 		</section>
 		<section id="content" name="top_section" class="uk-section uk-section-default">
 			<div class="uk-container">
-				<br>
-				<br>
 				<h2 class="uk-margin-small-top uk-text-center uk-text-uppercase">
 					Evalúa a tus candidatos
 				</h2>
-				<p class="subtitle-text uk-text-center">
+				<p class="subtitle-text uk-text-center uk-margin-small-bottom">
 					En esta sección podrá asignar diversos criterios y opciones, para identificar a los candidatos que cumplan con lo que busca.
 					En su búsqueda podrá seleccionar uno o más criterios, tales como definir rangos de edad, identificar si el cantidato tiene sentencias penales, definir el nivel académico deseado, entre otros.
 				</p>
-				<p class="subtitle-text uk-text-center">
+				<p class="subtitle-text uk-text-center uk-margin-small-bottom">
 					Así mismo, encontrará  opciones que permiten ordenear a los candidatos según las opciones que defina en order de mayor a menor o viceversa, opciones como el monto de ingresos, la cantidad de bienes 
 					inmubles que tenga y mucho más.
 				</p>
-				<p class="subtitle-text uk-text-center">
+				<p class="subtitle-text uk-text-center uk-margin-small-bottom">
 					Acorta la búsqueda según tus preferencias y visualiza con mayor detalle a los candidatos en sus hojas de vida
 				</p>
 				<div id="return" class="uk-section uk-section-small uk-margin-small-top">
@@ -178,17 +173,7 @@
 								<p class="subtitle-text uk-margin-small-bottom">
 									Conoce a los candidatos congresales de los 27 distritos electorales. 
 								</p>
-									<button class="uk-button uk-button-default uk-button-medium button-click-aqui" id="Congresales" onclick="activar_candidatos(this.id)">Click Aquí</button>
-									<!--
-									<div>
-										<h4>Great stuff</h4>
-										<p>Ut enim ad minim veniam, quis nostrud magna aliqua exercitation. <a href="">VER MÁS.</a></p>
-									</div>
-									<div>
-										<h4>Data analysis</h4>
-										<p>Ut enim ad minim veniam, quis nostrud magna aliqua exercitation. <a href="">VER MÁS.</a></p>
-									</div>
-								-->
+									<button class="uk-button uk-button-default uk-button-small button-click-aqui" id="Congresales" onclick="activar_candidatos(this.id)">Click Aquí</button>
 							</div>
 						</div>
 					</li>
@@ -308,6 +293,15 @@
 				</div>
 			</div>
 		</section>
+
+		<section class="info_data">
+			<div class="uk-container-expand">
+				Recopilamos toda la información de
+
+				para que puedas elegir informado
+			</div>
+		</section>
+
 		<!-- BOTTOM -->
 		<!--
 		<section class="uk-section uk-section-default">
@@ -396,9 +390,9 @@
 						<h5 class="uk-text-uppercase">¿Quiénes somos?</h5>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud cillum dolore eu fugiat nulla contact to: <a href="#" title="">info@company.com</a></p>
 						<div>
-							<a href="" class="uk-icon-button" data-uk-icon="twitter"></a>
-							<a href="" class="uk-icon-button" data-uk-icon="facebook"></a>
-							<a href="" class="uk-icon-button" data-uk-icon="instagram"></a>
+							<a href="https://twitter.com/ElegimosP" class="uk-icon-button" data-uk-icon="twitter"></a>
+							<a href="https://www.facebook.com/Elegimos.pe" class="uk-icon-button" data-uk-icon="facebook"></a>
+							<a href="https://www.instagram.com/elegimos.pe/" class="uk-icon-button" data-uk-icon="instagram"></a>
 						</div>
 					</div>
 					<!--
@@ -438,7 +432,7 @@
 						<!--<span style="font-size: 23px; font-weight:500;" class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>-->
 					</li>
 					
-					<li class="uk-text-uppercase uk-nav-header nav_options">Búsqueda Avanzada</li>
+					<li class="uk-text-uppercase uk-nav-header nav_options">Búsqueda</li>
 					<li>
 						<a href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
 					</li>
