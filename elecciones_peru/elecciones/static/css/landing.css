@@ -159,7 +159,7 @@ a[name="button_section"]{
 
 #initial .subtitle-text {
 	color: #ffffff;
-	line-height: 22px;
+	line-height: 24px;
 }
 
 .pill_proxi {
@@ -208,5 +208,9 @@ ul.uk-navbar-nav li a.nav_options {
 	}
 	.uk-subnav-pill>li.pil_li_option.uk-active>a {
 		margin: .5rem 0;
+	}
+	#initial .subtitle-text {
+		color: #ffffff;
+		line-height: 22px;
 	}
 }

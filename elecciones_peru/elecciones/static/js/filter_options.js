@@ -25,7 +25,8 @@ window.onload = function(){
 
 function agregar_filtros_selecs(data){
   console.log("agregar_filtros_selecs")
-  quitar_badges()
+  if(typeof badges !== "undefined")
+    quitar_badges()
   for(let i = 0 ;i < data.length ; i++){
     if (data[i] == "1"){
       agregar_badge("Nivel Académico")

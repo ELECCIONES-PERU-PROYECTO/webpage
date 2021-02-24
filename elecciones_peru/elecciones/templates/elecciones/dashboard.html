@@ -1,5 +1,5 @@
 {% extends "elecciones/base.html" %}
-{% block title %}Elecciones{% endblock %}
+{% block title %}Opciones de Búsqueda{% endblock %}
 {% load static %}
 {% block content %}
 {% block css %}
@@ -34,7 +34,7 @@
         <div class="left-nav-wrap" id="filtros_candidatos">
           <ul class="uk-nav uk-padding-small uk-nav-parent-icon" style="padding-bottom: 0;" data-uk-nav>
             <li class="uk-nav-header uk-margin-small-top">
-              <a href="/" class="uk-padding-remove">
+              <a href="{% url 'elecciones:mainpage' %}" class="uk-padding-remove">
                 <img src="{% static "images/logos/ELEGIMOS_blanco.png" %}" alt="logo">
               </a>
             </li>
@@ -565,7 +565,7 @@
         <div class="left-nav-wrap" id="filtros_organizaciones" style="display:none">
           <ul class="uk-nav uk-padding-small uk-nav-parent-icon" style="padding-bottom: 0;" data-uk-nav>
             <li class="uk-nav-header uk-margin-small-top">
-              <a href="/" class="uk-padding-remove">
+              <a href="{% url 'elecciones:mainpage' %}" class="uk-padding-remove">
                 <img src="{% static "images/logos/ELEGIMOS_blanco.png" %}" alt="logo">
               </a>
             </li>
@@ -1174,7 +1174,7 @@
               <a class="nav_opt" href="#" onclick="activar_organizaciones(this.text)">Partidos Políticos</a>
             </li>
             <li class="nav-options">
-              <a class="nav_opt" href="/">
+              <a class="nav_opt" href="{% url 'elecciones:mainpage' %}">
                 Inicio
               </a>
             </li>

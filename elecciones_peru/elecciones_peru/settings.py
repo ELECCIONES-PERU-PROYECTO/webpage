@@ -11,30 +11,31 @@ from pathlib import Path
 from django.core.management.utils import get_random_secret_key
 import mimetypes
 import os
-
+import sys
 
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = Path(__file__).resolve().parent.parent
 
 mimetypes.add_type("text/css", ".css", True)
 
-DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
+# DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", "False") == "True"
+# DEBUG = os.getenv("DEBUG", "False") == "True"
+DEBUG = True
 
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1, localhost, elegimos.pe").split(",")
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1, localhost, elegimos.pe, nex.ieh.mybluehost.me").split(",")
 
-CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
-SESSION_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
 
-SECURE_SSL_REDIRECT = True
+# SECURE_SSL_REDIRECT = True
 
 # Investigar
 # SECURE_HSTS_SECONDS = True
@@ -81,9 +82,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         #'NAME': 'db_partidos',
-        'NAME': 'elegimos_db',
+        'NAME': 'elecciones_peru',
         'USER': 'postgres',
-        'PASSWORD': '1234567',
+        'PASSWORD': 'pvta',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -113,5 +114,5 @@ USE_L10N = True
 USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = '/static/'
