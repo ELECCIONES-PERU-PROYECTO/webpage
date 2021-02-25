@@ -60,8 +60,17 @@
 }
 
 #content{
-	background: #ebebeb;
+	background: #222222;
 }
+
+#content h2 {
+	color: #ffffff;	
+}
+#content p {
+	color: #ffffff;	
+}
+
+
 
 section[name="top_section"]{
 	padding-top: 30px !important;
@@ -215,3 +224,4 @@ ul.uk-navbar-nav li a.nav_options {
 		line-height: 22px;
 	}
 }
+
