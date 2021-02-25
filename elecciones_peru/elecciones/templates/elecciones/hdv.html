@@ -595,35 +595,37 @@
 						<div class="col-twelve">
 							<div class="timeline-wrap">
 								{% for estudios_unv in estudios_en_la_u %}
-								<div class="timeline-block">
-									<div class="timeline-ico"> <i class="fa fa-graduation-cap"></i> </div>
-									<div class="timeline-header">
-										<h3>{{estudios_unv.carrera_universitaria}}</h3>
-										<p>Concluyó estudios: {{estudios_unv.concluyo_estudio_universitario}}</p>
-									</div>
-									<div class="timeline-content">
-										<ul class="info-list uk-text-left uk-margin-small-bottom">
-											{% if estudios_unv.universidad %}
-											<li>
-												<strong>Centro de estudios universitarios</strong>
-												<br>
-												<span>
-													{{estudios_unv.universidad}}
-												</span>
-											</li>
-											{% endif %}
-											{% if estudios_unv.anhio_obtencion_universitario %}
-											<li>
-												<strong>Año de obtención</strong>
-												<br>
-												<span>
-													{{estudios_unv.anhio_obtencion_universitario}}
-												</span>
-											</li>
-											{% endif %}
-										</ul>
-									</div>
-								</div>
+									{% if estudios_unv.tiene_estudio_universitario == "SI" %}
+										<div class="timeline-block">
+											<div class="timeline-ico"> <i class="fa fa-graduation-cap"></i> </div>
+											<div class="timeline-header">
+												<h3>{{estudios_unv.carrera_universitaria}}</h3>
+												<p>Concluyó estudios: {{estudios_unv.concluyo_estudio_universitario}}</p>
+											</div>
+											<div class="timeline-content">
+												<ul class="info-list uk-text-left uk-margin-small-bottom">
+													{% if estudios_unv.universidad %}
+													<li>
+														<strong>Centro de estudios universitarios</strong>
+														<br>
+														<span>
+															{{estudios_unv.universidad}}
+														</span>
+													</li>
+													{% endif %}
+													{% if estudios_unv.anhio_obtencion_universitario %}
+													<li>
+														<strong>Año de obtención</strong>
+														<br>
+														<span>
+															{{estudios_unv.anhio_obtencion_universitario}}
+														</span>
+													</li>
+													{% endif %}
+												</ul>
+											</div>
+										</div>
+									{% endif %}
 								{% endfor %}
 							</div>
 						</div>
@@ -655,57 +657,59 @@
 						<div class="col-twelve">
 							<div class="timeline-wrap">
 								{% for estudios_post in estudios_en_postgrado %}
-									<div class="timeline-block">
-										<div class="timeline-ico">
-											<i class="fa fa-graduation-cap"></i>
-										</div>
-										<div class="timeline-header">
-											<h3>{{estudios_post.especialidad}}</h3>
-											<p>Concluyó estudios: {{estudios_post.concluyo_estudio_postgrado}}</p>
-										</div>
-										<div class="timeline-content">
-											<ul class="info-list uk-text-left">
-												{% if estudios_post.centro_estudio_postgrado != "NULL" %}
-												<li>
-													<strong>Centro de estudios de postgrado</strong>
-													<br>
-													<span>
-														{{estudios_post.centro_estudio_postgrado}}
-													</span>
-												</li>
-												{% endif %}
-												{% if estudios_post.anhio_obtencion_postgrado %}
+									{% if estudios_post.tiene_postgrado == "SI" %}
+										<div class="timeline-block">
+											<div class="timeline-ico">
+												<i class="fa fa-graduation-cap"></i>
+											</div>
+											<div class="timeline-header">
+												<h3>{{estudios_post.especialidad}}</h3>
+												<p>Concluyó estudios: {{estudios_post.concluyo_estudio_postgrado}}</p>
+											</div>
+											<div class="timeline-content">
+												<ul class="info-list uk-text-left">
+													{% if estudios_post.centro_estudio_postgrado != "NULL" %}
 													<li>
-														<strong>Año de obtención</strong>
+														<strong>Centro de estudios de postgrado</strong>
 														<br>
 														<span>
-															{{estudios_post.anhio_obtencion_postgrado}}
-														</span>
-													</li>
-												{% endif %}
-												{% if estudios_post.es_egresado_postgrado %}
-													<li>
-														<strong>Es egresado</strong>
-														<br>
-														<span>
-															{{estudios_post.es_egresado_postgrado}}
+															{{estudios_post.centro_estudio_postgrado}}
 														</span>
 													</li>
 													{% endif %}
-												{% if estudios_post.comentario_estudio_postgrado %}
-													<li>
-														<strong>Comentario </strong>
-														<br>
-														<span>
-															{{estudios_post.comentario_estudio_postgrado}}
-														</span>
-													</li>
-												{% endif %}
-											</ul>
+													{% if estudios_post.anhio_obtencion_postgrado %}
+														<li>
+															<strong>Año de obtención</strong>
+															<br>
+															<span>
+																{{estudios_post.anhio_obtencion_postgrado}}
+															</span>
+														</li>
+													{% endif %}
+													{% if estudios_post.es_egresado_postgrado %}
+														<li>
+															<strong>Es egresado</strong>
+															<br>
+															<span>
+																{{estudios_post.es_egresado_postgrado}}
+															</span>
+														</li>
+														{% endif %}
+													{% if estudios_post.comentario_estudio_postgrado %}
+														<li>
+															<strong>Comentario </strong>
+															<br>
+															<span>
+																{{estudios_post.comentario_estudio_postgrado}}
+															</span>
+														</li>
+													{% endif %}
+												</ul>
+											</div>
 										</div>
-									</div> <!-- /timeline-block -->
+									{% endif %}
 								{% endfor %}
-							</div> <!-- /timeline-wrap -->
+							</div>
 						</div>
 					</div>
 				</div>
