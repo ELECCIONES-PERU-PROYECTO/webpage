@@ -1,2 +1,2 @@
-const URL = "http://127.0.0.1:8000"
+const URL = "https://elegimos.softbutterfly.io"
 const VIEW = "busqueda"
