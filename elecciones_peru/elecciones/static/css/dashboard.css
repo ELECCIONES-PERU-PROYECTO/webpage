@@ -15,7 +15,7 @@
 }
 
 .option_badge {
-	margin: 0 .5rem;
+	margin: .2rem .5rem;
 	border: 1px solid rgba(182, 34, 34, 0.50);
 	color: #666;
 	font-size: 15px;
@@ -240,6 +240,9 @@ ul.uk-navbar-nav li.nav-options a {
 	transition: margin 0.2s cubic-bezier(.4,0,.2,1);
 }
 
+#filtros_seleccionados {
+	flex-wrap: wrap;
+}
 
 @media screen and (min-width: 960px){
 	#content {
@@ -274,6 +277,11 @@ ul.uk-navbar-nav li.nav-options a {
 	}
 	.spacer_mob {
 		height: 15px;
+	}
+
+	#filtros_seleccionados {
+		flex-direction: column;
+		margin: auto;
 	}
 }
 
