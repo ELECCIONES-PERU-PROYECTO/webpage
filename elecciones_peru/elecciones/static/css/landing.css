@@ -79,7 +79,7 @@ section[name="top_section"]{
     background-color: rgb(98 84 84 / 50%)  !important;
 }
 
-h1, h2, h3, h4, h5, h6, a, p, li, span {
+h1, h2, h3, h4, h5, h6, a, p, li, span, button {
 	font-family: 'Poppins', sans-serif;
 	font-style: normal;
 	text-rendering: optimizeLegibility;
@@ -151,6 +151,7 @@ a[name="button_section"]{
 .button-click-aqui:hover {
 	background-color: rgb(182 34 34);
 	color: #ffffff;
+	text-decoration: none;
 }
 
 /* .uk-navbar-dropdown.uk-open {

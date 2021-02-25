@@ -24,64 +24,67 @@ window.onload = function(){
 }
 
 function agregar_filtros_selecs(data){
-  console.log("agregar_filtros_selecs")
+  let url = window.location.href
+  let text = url.split("/")
+
   if(typeof badges !== "undefined")
     quitar_badges()
-  for(let i = 0 ;i < data.length ; i++){
-    if (data[i] == "1"){
-      agregar_badge("Nivel Académico")
-      console.log("uww")
+  if(text[3] == "busqueda") {
+    for(let i = 0 ;i < data.length ; i++){
+      if (data[i] == "1"){
+        agregar_badge("Nivel Académico")
+      }
+      else if( data[i]=="2"){
+        agregar_badge("Cargos por Elecciones pasadas")
+      }
+      else if( data[i]=="3"){
+        agregar_badge("Cantidad de Sentencias Penales")
+      }
+      else if( data[i]=="4"){
+        agregar_badge("Cantidad de Sentencias por Obligaciones")
+      }
+      else if( data[i]=="5"){
+        agregar_badge("Cantidad de Sentencias Materia")
+      }
+      else if( data[i]=="6"){
+        agregar_badge("No tiene sentencias")
+      }
+      else if( data[i]=="7"){
+        agregar_badge("Cantidad de Ingresos")
+      }
+      else if( data[i]=="8"){
+        agregar_badge("Cantidad de Inmuebles")
+      }
+      else if( data[i]=="9"){
+        agregar_badge("Valor de Inmuebles")
+      }    
+      else if( data[i]=="10"){
+        agregar_badge("Cantidad de Muebles")
+      }
+      else if( data[i]=="11"){
+        agregar_badge("Valor de Muebles")
+      }
+      else if( data[i]=="12"){
+        agregar_badge("Renuncias de Otros Partidos")
+      }
+      else if( data[i]=="13"){
+        agregar_badge("Rango de Edad")
+      }
+      else if( data[i]=="14"){
+        //arreglar text
+        agregar_badge("Oriundo de Cierto Departamento")
+      }
+      else if( data[i]=="15"){
+        agregar_badge("Cargo al que Postula")
+      }
+      else if( data[i]=="16"){
+        agregar_badge("Organización Política")
+      }
+      else if( data[i]=="17"){
+        agregar_badge("Distrito Electoral")
+      }
+      
     }
-    else if( data[i]=="2"){
-      agregar_badge("Cargos por Elecciones pasadas")
-    }
-    else if( data[i]=="3"){
-      agregar_badge("Cantidad de Sentencias Penales")
-    }
-    else if( data[i]=="4"){
-      agregar_badge("Cantidad de Sentencias por Obligaciones")
-    }
-    else if( data[i]=="5"){
-      agregar_badge("Cantidad de Sentencias Materia")
-    }
-    else if( data[i]=="6"){
-      agregar_badge("No tiene sentencias")
-    }
-    else if( data[i]=="7"){
-      agregar_badge("Cantidad de Ingresos")
-    }
-    else if( data[i]=="8"){
-      agregar_badge("Cantidad de Inmuebles")
-    }
-    else if( data[i]=="9"){
-      agregar_badge("Valor de Inmuebles")
-    }    
-    else if( data[i]=="10"){
-      agregar_badge("Cantidad de Muebles")
-    }
-    else if( data[i]=="11"){
-      agregar_badge("Valor de Muebles")
-    }
-    else if( data[i]=="12"){
-      agregar_badge("Renuncias de Otros Partidos")
-    }
-    else if( data[i]=="13"){
-      agregar_badge("Rango de Edad")
-    }
-    else if( data[i]=="14"){
-      //arreglar text
-      agregar_badge("Oriundo de Cierto Departamento")
-    }
-    else if( data[i]=="15"){
-      agregar_badge("Cargo al que Postula")
-    }
-    else if( data[i]=="16"){
-      agregar_badge("Organización Política")
-    }
-    else if( data[i]=="17"){
-      agregar_badge("Distrito Electoral")
-    }
-    
   }
 }
 
