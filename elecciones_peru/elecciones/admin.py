@@ -284,3 +284,35 @@ class FinanciamientoPrivadoAdmin(admin.ModelAdmin):
 @admin.register(FinanciamientoPublico)
 class FinanciamientoPublicoAdmin(admin.ModelAdmin):
   pass
+
+class TablaEdadResource(resources.ModelResource):
+  from .models import TablaEdad
+
+  class Meta:
+    model = TablaEdad
+
+@admin.register(TablaEdad)  
+
+class TablaEdadAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+  resource_class = TablaEdadResource
+  list_display = (
+    'edad',
+    'organizacion_politica',
+    'dni',
+  )
+
+
+class OrganizacionesPoliticasResource(resources.ModelResource):
+  from .models import OrganizacionesPoliticas
+
+  class Meta:
+    model = OrganizacionesPoliticas
+
+@admin.register(OrganizacionesPoliticas)  
+
+class OrganizacionesPoliticasAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+  resource_class = OrganizacionesPoliticasResource
+  list_display = (
+    'organizacion_politica',
+    'url',
+  )
