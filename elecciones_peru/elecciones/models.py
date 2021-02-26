@@ -1,38 +1,5 @@
 from django.db import models
 # test_datos = DatosPersonales(organizacion_politica='MRTA', distrito_elec='dist_test', dni_candidato='87654321', carnet_extranjeria='13456678', apellido_paterno='si' , candidato='esteban si no' , apellido_materno='no', nombres='esteban', sexo='no sabe', fecha_nacimiento='18/34/45', pais_nacimiento='peru', departamento_nacimiento='peru', provincia_nacimiento='peru', distrito_nacimiento='peru' , departamento_domicilio='peru', provincia_domicilio='peru', distrito_domicilio='peru', direccion_domicilio='peru', cargo_eleccion='niu')
-class DatosPersonales(models.Model):
-  id = models.CharField(max_length=10, primary_key=True)
-  organizacion_politica = models.CharField(max_length=250)
-  distrito_elec = models.CharField(max_length=100)
-  dni_candidato = models.CharField(max_length=8)
-  candidato = models.CharField(max_length=250)
-  carnet_extranjeria = models.CharField(max_length=12, default='-')
-  apellido_paterno = models.CharField(max_length=100)
-  apellido_materno = models.CharField(max_length=100)
-  nombres = models.CharField(max_length=150)
-  sexo = models.CharField(max_length=10)
-  fecha_nacimiento = models.CharField(max_length=40)
-  pais_nacimiento = models.CharField(max_length=80)
-  departamento_nacimiento = models.CharField(max_length=80)
-  provincia_nacimiento = models.CharField(max_length=80)
-  distrito_nacimiento = models.CharField(max_length=100)
-  departamento_domicilio = models.CharField(max_length=80)
-  provincia_domicilio = models.CharField(max_length=80)
-  distrito_domicilio = models.CharField(max_length=80)
-  direccion_domicilio = models.CharField(max_length=200)
-  cargo_eleccion = models.CharField(max_length=200)
-  url = models.CharField(max_length=200, default="-", editable = False)
-  def get_edu_join(self , EducacionBasica):
-    #print("dsa")
-    print(self.id)
-    return EducacionBasica.filter(dni_candidato = self.dni_candidato)    
-  def get_experienciaLaboral(self):
-    from ExperenciaLaboral.models import ExperienciaLaboral
-    return ExperienciaLaboral.ojects.filter(dni_candidato=self.dni_candidato)
-  class Meta:
-    db_table = 'datos_personales'
-    unique_together = ('dni_candidato', 'cargo_eleccion',)
-
 
 class ExperienciaLaboral(models.Model):
   id = models.CharField(max_length=10, primary_key=True)
@@ -54,6 +21,44 @@ class ExperienciaLaboral(models.Model):
 
   class Meta:
     db_table = 'experiencia_laboral'
+
+
+class DatosPersonales(models.Model):
+  id = models.CharField(max_length=10, primary_key=True)
+  organizacion_politica = models.CharField(max_length=250)
+  distrito_elec = models.CharField(max_length=100)
+  dni_candidato = models.CharField(max_length=8)
+  candidato = models.CharField(max_length=250)
+  carnet_extranjeria = models.CharField(max_length=12, default='-')
+  apellido_paterno = models.CharField(max_length=100)
+  apellido_materno = models.CharField(max_length=100)
+  nombres = models.CharField(max_length=150)
+  sexo = models.CharField(max_length=10)
+  fecha_nacimiento = models.CharField(max_length=40)
+  pais_nacimiento = models.CharField(max_length=80)
+  departamento_nacimiento = models.CharField(max_length=80)
+  provincia_nacimiento = models.CharField(max_length=80)
+  distrito_nacimiento = models.CharField(max_length=100)
+  departamento_domicilio = models.CharField(max_length=80)
+  provincia_domicilio = models.CharField(max_length=80)
+  distrito_domicilio = models.CharField(max_length=80)
+  direccion_domicilio = models.CharField(max_length=200)
+  cargo_eleccion = models.CharField(max_length=200)
+  url = models.CharField(max_length=200, default="-", editable=False)
+
+  def get_edu_join(self, EducacionBasica):
+    # print("dsa")
+    print(self.id)
+    return EducacionBasica.filter(dni_candidato=self.dni_candidato)
+
+  def get_experienciaLaboral(self):
+    return ExperienciaLaboral.objects.filter(dni_candidato=self.dni_candidato)
+
+  class Meta:
+    db_table = 'datos_personales'
+    unique_together = ('dni_candidato', 'cargo_eleccion',)
+  def __str__(self):
+    return str(self.id)
 
 
 class EducacionBasica(models.Model):
@@ -323,10 +328,10 @@ class OrganizacionesPoliticas(models.Model):
   class Meta:
     db_table = 'organizaciones_politicas'
 
-#class TablaEdad(models.Model):
-#  edad = models.IntegerField()
-#  organizacion_politica = models.CharField(max_length = 250,default="-",editable=False)
-#  dni = models.CharField(max_length = 8,primary_key=True)
-#
-#  class Meta:
-#    db_table = 'tabla_edad'
+class TablaEdad(models.Model):
+  edad = models.IntegerField()
+  organizacion_politica = models.CharField(max_length = 250,default="-",editable=False)
+  dni = models.CharField(max_length = 8,primary_key=True)
+
+  class Meta:
+    db_table = 'tabla_edad'

@@ -1,8 +1,15 @@
 from django.contrib import admin
 from .models import *
+from import_export.admin import ImportExportModelAdmin
+from import_export import resources
+class DatosPersonalesResource(resources.ModelResource):
+  from .models import DatosPersonales
+  class Meta:
+    model = DatosPersonales
 
 @admin.register(DatosPersonales)
-class DatosPersonalesAdmin(admin.ModelAdmin):
+class DatosPersonalesAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+  resource_class = DatosPersonalesResource
   list_display = (
     'organizacion_politica',
     'distrito_elec',
@@ -31,9 +38,13 @@ class DatosPersonalesAdmin(admin.ModelAdmin):
     'pais_nacimiento',
     'cargo_eleccion',
   )
-
+class ExperienciaLaboralResource(resources.ModelResource):
+  from .models import ExperienciaLaboral
+  class Meta:
+    model = ExperienciaLaboral
 @admin.register(ExperienciaLaboral)
-class ExperienciaLaboralAdmin(admin.ModelAdmin):
+class ExperienciaLaboralAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+  resource_class = ExperienciaLaboralResource
   list_display = (
     'organizacion_politica',
     'distrito_elec',
@@ -51,9 +62,14 @@ class ExperienciaLaboralAdmin(admin.ModelAdmin):
     'provincia_laboral',
     'distrito_laboral',
   )
+class EducacionBasicaResource(resources.ModelResource):
+  from .models import EducacionBasica
+  class Meta:
+    model = EducacionBasica
 
 @admin.register(EducacionBasica)
-class EducacionBasicaAdmin(admin.ModelAdmin):
+class EducacionBasicaAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+  resource_class = EducacionBasicaResource
   list_display = (
     'organizacion_politica',
     'distrito_elec',
@@ -66,8 +82,14 @@ class EducacionBasicaAdmin(admin.ModelAdmin):
     'concluyo_secundaria',
   )
 
+class EstudioTecnicoResource(resources.ModelResource):
+  from .models import EstudioTecnico
+  class Meta:
+    model = EstudioTecnico
+
 @admin.register(EstudioTecnico)
-class EstudioTecnicoAdmin(admin.ModelAdmin):
+class EstudioTecnicoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+  resource_class = EstudioTecnicoResource
   list_display = (
     'organizacion_politica',
     'distrito_elec',
@@ -254,3 +276,11 @@ class InformacionAdicionalAdmin(admin.ModelAdmin):
     'tiene_info_adicional',
     'info',
   )
+from .models import FinanciamientoPrivado, FinanciamientoPublico
+@admin.register(FinanciamientoPrivado)
+class FinanciamientoPrivadoAdmin(admin.ModelAdmin):
+  pass
+
+@admin.register(FinanciamientoPublico)
+class FinanciamientoPublicoAdmin(admin.ModelAdmin):
+  pass
