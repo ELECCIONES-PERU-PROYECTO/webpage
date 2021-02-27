@@ -305,7 +305,7 @@ a#video_explanation {
 	}
 
 	#left-col {
-		position: sticky;
+		position: relative;
 	}
 }
 
