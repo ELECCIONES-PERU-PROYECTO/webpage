@@ -793,7 +793,11 @@
 							<br>
 							{% for renuncia in ifreuncia %}
 								<span>
-									{{renuncia.tiene_info_por_declarar}}
+									{% if renuncia.tiene_info_por_declarar == "SI" %}
+										{{renuncia.tiene_info_por_declarar}}
+									{% else %}
+										NO
+									{%  endif %}
 								</span>
 							{%  endfor %}
 						</li>
