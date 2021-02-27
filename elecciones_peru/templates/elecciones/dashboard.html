@@ -15,16 +15,9 @@
 <body data-uk-filter="target: .js-filter">
   <!-- OFFCANVAS -->
   <div id="offcanvas-nav" class="uk-position-fixed" data-uk-offcanvas="flip: true; overlay: true; esc-close: true">
-    <div class="uk-offcanvas-bar candidatos-sidebar uk-offcanvas-bar-animation uk-offcanvas-slide">
+    <div class="uk-offcanvas-bar candidatos-sidebar uk-offcanvas-bar-animation uk-offcanvas-slide uk-padding-remove">
       <button class="uk-offcanvas-close uk-close uk-icon uk-hidden@m" type="button" data-uk-close></button>
       <aside id="left-col" class="uk-light">
-        <!-- <div class="left-logo uk-flex uk-flex-middle uk-margin-small-left">
-          <img class="custom-logo" src="img/dashboard-logo.svg" alt="">
-        </div> -->
-    
-        <!-- <div class="left-content-box content-box-dark">
-        </div> -->
-        
         <!--------------------------------------------
           --------------------------------------------
           MOSTRAR TODO
@@ -1310,7 +1303,9 @@
       <div class="uk-container uk-padding uk-text-center no-results-container">
         <span uk-icon="icon: settings; ratio: 2.3"></span>
         <h5 id="text_info" class="uk-text-large uk-text-light uk-margin-remove-top"></h5>
-        <img id="web_gif" alt="explicacion gif">
+        <div uk-lightbox video-autoplay="true">
+          <a id="video_explanation" class="uk-button uk-button-default" href="" data-attrs="width: 1380; height: 920;" data-caption="YouTube">Instrucciones de uso</a>
+        </div>
       </div>
     {% endif %}
   </div>
@@ -1335,7 +1330,7 @@
     let text = url.split("/")
     
     let text_info = document.getElementById('text_info')
-    let img_gif = document.getElementById('web_gif')
+    let video_expl = document.getElementById('video_explanation')
     
     if(text_info) {
       if(text[text.length - 1] === VIEW || text[text.length - 1] === VIEW + "#") {
@@ -1343,11 +1338,11 @@
         text_info.style.marginBottom = "1rem"
 
         if(window.innerWidth > 960) 
-          img_gif.src = "https://i.ibb.co/BZJRX79/web-use.gif"
+          video_expl.href = "https://www.youtube.com/watch?v=BTHaY6tmFRs"
         else {
-          img_gif.src = "https://i.ibb.co/2yhT7J6/mobile-use.gif"
-          img_gif.style.width = "70%"
-          img_gif.style.margin = "auto"
+          video_expl.href = "https://www.youtube.com/watch?v=aBOD_hcpquI"
+          video_expl.style.width = "70%"
+          video_expl.style.margin = "auto"
         }
       } else {
         text_info.textContent="No se encontraron resultados para esta búsqueda"
