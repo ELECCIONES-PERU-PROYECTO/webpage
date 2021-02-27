@@ -27,7 +27,7 @@
         <div class="left-nav-wrap" id="filtros_candidatos">
           <ul class="uk-nav uk-padding-small uk-nav-parent-icon" style="padding-bottom: 0;" data-uk-nav>
             <li class="uk-nav-header uk-margin-small-top">
-              <a href="{% url 'elecciones:mainpage' %}" class="uk-padding-remove">
+              <a href="{% url 'elecciones:mainpage' %}" class="uk-padding-remove uk-text-center">
                 <img style="max-width: 80%;" src="{% static "images/logos/ELEGIMOS_blanco.png" %}" alt="logo">
               </a>
             </li>
@@ -35,7 +35,7 @@
           <ul class="uk-nav uk-nav-default uk-nav-parent-icon uk-hidden@m" data-uk-nav>
             <li class="uk-nav-header">Tipos de búsqueda</li>
             <li class="nav-options pres_opt mob_opt">
-              <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Presidencieles</a>
+              <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a>
             </li>
             <li class="nav-options cong_opt mob_opt">
               <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Congresales</a>

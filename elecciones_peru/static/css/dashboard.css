@@ -8,7 +8,7 @@
 }
 
 .uk-close.uk-icon {
-	border: 1px solid #222;
+	border: 1px solid #fff;
 	border-radius: 15px;
 	top: 10px;
 	right: 10px;
@@ -118,6 +118,13 @@ ul.uk-navbar-nav li.nav-options a {
 	left: 0;
 	top: 0px;
 	background: #f7f7f7;
+	overflow-x: hidden;
+}
+
+a#video_explanation {
+	width: auto !important;
+	border: 1px solid #a0a0a0;
+	padding: 0 1rem;
 }
 
 /* Smaller Header */
