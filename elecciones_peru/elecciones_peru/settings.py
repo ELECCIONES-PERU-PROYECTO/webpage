@@ -9,11 +9,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 from django.core.management.utils import get_random_secret_key
-from decouple import config
-import dj_database_url
 import mimetypes
 import os
 import sys
+
 
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -90,22 +89,26 @@ WSGI_APPLICATION = 'elecciones_peru.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+'''
 DATABASES = {
     'default' : {
-        'ENGINE' : 'django.db.backends.postgresql',
-        'NAME' : 'elecciones_peru',
+        'ENGINE' : 'django.db.backends.postgresql_psycopg2',
+        'NAME' : '',
         'USER' : 'postgres',
-        'PASSWORD' : 'pvta',
+        'PASSWORD' : '',
         'HOST' : 'localhost',
-        'PORT' : 5432,
+        'PORT' : 5433,
     }
 }
+'''
+import dj_database_url
+from decouple import config
 
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         default=config('DATABASE_URL')
-#     )
-# }
+DATABASES = {
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+}
 
 
 # Password validation
