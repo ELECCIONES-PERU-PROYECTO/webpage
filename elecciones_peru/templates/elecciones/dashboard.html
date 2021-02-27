@@ -558,7 +558,7 @@
         <div class="left-nav-wrap" id="filtros_organizaciones" style="display:none">
           <ul class="uk-nav uk-padding-small uk-nav-parent-icon" style="padding-bottom: 0;" data-uk-nav>
             <li class="uk-nav-header uk-margin-small-top">
-              <a href="{% url 'elecciones:mainpage' %}" class="uk-padding-remove">
+              <a href="{% url 'elecciones:mainpage' %}" class="uk-padding-remove uk-text-center">
                 <img style="max-width:80%" src="{% static "images/logos/ELEGIMOS_blanco.png" %}" alt="logo">
               </a>
             </li>
@@ -566,7 +566,7 @@
           <ul class="uk-nav uk-nav-default uk-nav-parent-icon uk-hidden@m" data-uk-nav>
             <li class="uk-nav-header">Tipos de búsqueda</li>
             <li class="nav-options pres_opt mob_opt">
-              <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Presidencixles</a>
+              <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a>
             </li>
             <li class="nav-options cong_opt mob_opt">
               <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Congresales</a>
@@ -1195,7 +1195,7 @@
 
     {% if organizaciones_return %}
       <!-- SELECCTION -->
-      <div class="uk-container uk-container-expand seleccion_container">
+      <div class="uk-container uk-container-expand seleccion_container" style="padding-top: 3rem;">
         <h5 class="uk-margin-small-bottom">
           Opciones de búsqueda que seleccionaste:
         </h5>
@@ -1242,7 +1242,7 @@
       </div>
     {% elif page %}
       <!-- SELECCTION -->
-      <div class="uk-container uk-container-expand seleccion_container">
+      <div class="uk-container uk-container-expand seleccion_container" style="padding-top: 3rem;">
         <h5 class="uk-margin-small-bottom">
           Opciones de búsqueda que seleccionaste:
         </h5>

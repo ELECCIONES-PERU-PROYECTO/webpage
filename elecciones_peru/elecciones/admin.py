@@ -323,10 +323,11 @@ class TablaEdadAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     'edad',
     'organizacion_politica',
     'dni',
+    'id',
   )
 
   list_filter = (
-    'id',
+    'edad',
   )
 
 
