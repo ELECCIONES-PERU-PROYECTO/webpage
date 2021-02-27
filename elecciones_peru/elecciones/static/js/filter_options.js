@@ -7,10 +7,8 @@ window.onload = function(){
     console.log("data1", data1)
     agregar_filtros_selecs(data1)
   }
-  console.log("hasCodeRunBefore still false")
   if (sessionStorage.getItem("hasCodeRunBefore") === null) {
     let data = []
-    console.log("hasCodeRunBefore = true")
     sessionStorage.setItem('data_filtros_seleccionados', JSON.stringify(data))
     sessionStorage.setItem("hasCodeRunBefore", true);
   }
