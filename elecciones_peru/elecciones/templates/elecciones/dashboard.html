@@ -1,5 +1,5 @@
 {% extends "elecciones/base.html" %}
-{% block title %}Elecciones{% endblock %}
+{% block title %}Opciones de Búsqueda{% endblock %}
 {% load static %}
 {% block content %}
 {% block css %}
@@ -32,7 +32,14 @@
           --------------------------------------------
         -->
         <div class="left-nav-wrap" id="filtros_candidatos">
-          <ul class="uk-nav uk-nav-default uk-nav-parent-icon uk-margin-medium-top uk-hidden@m" data-uk-nav>
+          <ul class="uk-nav uk-padding-small uk-nav-parent-icon" style="padding-bottom: 0;" data-uk-nav>
+            <li class="uk-nav-header uk-margin-small-top">
+              <a href="{% url 'elecciones:mainpage' %}" class="uk-padding-remove">
+                <img style="max-width: 80%;" src="{% static "images/logos/ELEGIMOS_blanco.png" %}" alt="logo">
+              </a>
+            </li>
+          </ul>
+          <ul class="uk-nav uk-nav-default uk-nav-parent-icon uk-hidden@m" data-uk-nav>
             <li class="uk-nav-header">Tipos de búsqueda</li>
             <li class="nav-options pres_opt mob_opt">
               <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Presidencieles</a>
@@ -47,15 +54,10 @@
               <a class="nav_opt" href="#" onclick="activar_organizaciones(this.text)">Partidos Políticos</a>
             </li>
           </ul>
-          <ul class="uk-nav uk-nav-default uk-nav-parent-icon uk-margin-medium-top uk-hidden@m" data-uk-nav>
-            <!--
-              En desarrollo mostrar filtros seleccionados uwu
-            -->
-          </ul>
-          <ul id="presidenciales" name="tipo_candidato_filter" class="uk-nav uk-nav-default uk-nav-parent-icon uk-margin-small-top" data-uk-nav>
-            <li class="uk-nav-header">Opciones de búsqueda</li>
+          <div class="spacer_mob"></div>
+          <ul id="presidenciales" name="tipo_candidato_filter" class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
+            <li class="uk-nav-header uk-padding-small-top">Opciones de búsqueda</li>
             <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel académico</a>
-            
               <ul>
                 <form class="filter_options">
                   <fieldset class="uk-fieldset uk-padding-small">
@@ -561,7 +563,14 @@
           --------------------------------------------
         -->
         <div class="left-nav-wrap" id="filtros_organizaciones" style="display:none">
-          <ul class="uk-nav uk-nav-default uk-nav-parent-icon uk-margin-medium-top uk-hidden@m" data-uk-nav>
+          <ul class="uk-nav uk-padding-small uk-nav-parent-icon" style="padding-bottom: 0;" data-uk-nav>
+            <li class="uk-nav-header uk-margin-small-top">
+              <a href="{% url 'elecciones:mainpage' %}" class="uk-padding-remove">
+                <img style="max-width:80%" src="{% static "images/logos/ELEGIMOS_blanco.png" %}" alt="logo">
+              </a>
+            </li>
+          </ul>
+          <ul class="uk-nav uk-nav-default uk-nav-parent-icon uk-hidden@m" data-uk-nav>
             <li class="uk-nav-header">Tipos de búsqueda</li>
             <li class="nav-options pres_opt mob_opt">
               <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Presidencixles</a>
@@ -576,8 +585,9 @@
               <a class="nav_opt" href="#" onclick="activar_organizaciones(this.text)">Partidos Políticos</a>
             </li>
           </ul>
+          <div class="spacer_mob"></div>
           <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
-            <li class="uk-nav-header">Opciones de Búsqueda</li>
+            <li class="uk-nav-header uk-margin-small-top">Opciones de Búsqueda</li>
             <li class="uk-parent" id="opc_edad" name="orga_filtro"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Edad</a>
             <ul>
               <form class="filter_options">
@@ -629,14 +639,14 @@
               </form>
             </ul>
           </li>
-          <li class="uk-parent" id="opc_genero" name="orga_filtro"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Género</a>
+          <li class="uk-parent" id="opc_genero" name="orga_filtro"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Sexo</a>
             <ul>
               <form class="filter_options">
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex">
                     <div class="uk-flex uk-flex-column" style="width: 95%">
                       <label>
-                      Ordenar los partidos según la cantidad candidatos de género femenino o masculino 
+                      Ordenar los partidos según la cantidad candidatos de sexo femenino o masculino 
                       </label>
                       <div class="uk-flex uk-flex-middle uk-margin-small-left">
                         <input type="radio" id="org_gen_masc" name="opc_genero" onclick="set_valor(this)" value="MASCULINO">
@@ -1144,7 +1154,7 @@
             <li class="uk-active uk-flex uk-flex-middle uk-margin-small-left">
               <a class="uk-padding-remove uk-flex filtros-text" data-uk-toggle href="#offcanvas-nav" data-uk-tooltip>
                 <span data-uk-icon="icon: menu" class="uk-margin-small-right"></span>
-                <span class="uk-margin-small-left">Opciones de Búsqueda</span>
+                <span>Opciones de Búsqueda</span>
               </a>
             </li>
           </ul>
@@ -1164,7 +1174,7 @@
               <a class="nav_opt" href="#" onclick="activar_organizaciones(this.text)">Partidos Políticos</a>
             </li>
             <li class="nav-options">
-              <a class="nav_opt" href="/">
+              <a class="nav_opt" href="{% url 'elecciones:mainpage' %}">
                 Inicio
               </a>
             </li>
@@ -1172,20 +1182,9 @@
         </div>
       </nav>
     </div>
-    <div class="uk-container uk-container-expand uk-background-secondary">
-      <nav class="uk-navbar uk-light" data-uk-navbar="mode:click; duration: 250" >
-        <div class="uk-navbar-right">  
-          <ul class="uk-navbar-nav uk-visible@m" id="filtros_seleccionados"> 
-            <!--<li>
-              <span class="uk-badge"> <NOMBRE DE FILTRO>  </span>
-            </li>-->
-          </ul>
-        </div>
-      </nav>
-    </div>
   </header>
   <!--/HEADER-->
-  <!-- /LEFT BAR -->
+
   <!-- CONTENT -->
   <div id="content" data-uk-height-viewport="expand: true">
     <!-- <div class="uk-container uk-container-expand uk-margin-bottom">
@@ -1202,6 +1201,20 @@
     <!-- todos los candidatos -->
 
     {% if organizaciones_return %}
+      <!-- SELECCTION -->
+      <div class="uk-container uk-container-expand seleccion_container">
+        <h5 class="uk-margin-small-bottom">
+          Opciones de búsqueda que seleccionaste:
+        </h5>
+        <nav class="uk-navbar uk-light" data-uk-navbar="mode:click; duration: 250" >
+          <ul class="uk-navbar-nav" id="filtros_seleccionados"> 
+            <!--<li>
+              <span class="uk-badge"> <NOMBRE DE FILTRO>  </span>
+            </li>-->
+          </ul>
+        </nav>
+      </div>
+      <!--/SELECCTION-->
       <div class="uk-container uk-container-expand uk-margin-top uk-margin-bottom uk-flex uk-flex-center uk-flex-column uk-flex-wrap">
         {% for organizacion in organizaciones_return %}
         <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-flex-middle uk-width-1-2@xl uk-width-1-1@m uk-width-3-4@s uk-flex-center uk-margin-bottom uk-margin-auto" uk-grid>
@@ -1235,6 +1248,20 @@
       {% endfor %}
       </div>
     {% elif page %}
+      <!-- SELECCTION -->
+      <div class="uk-container uk-container-expand seleccion_container">
+        <h5 class="uk-margin-small-bottom">
+          Opciones de búsqueda que seleccionaste:
+        </h5>
+        <nav class="uk-navbar uk-light" data-uk-navbar="mode:click; duration: 250" >
+          <ul class="uk-navbar-nav" id="filtros_seleccionados"> 
+            <!--<li>
+              <span class="uk-badge"> <NOMBRE DE FILTRO>  </span>
+            </li>-->
+          </ul>
+        </nav>
+      </div>
+      <!--/SELECCTION-->
       <div class="uk-container uk-margin-top uk-margin-bottom">
         {% for candidato in page %}
         <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-flex-middle uk-width-3-4@xl uk-width-1-1@m uk-width-3-4@s uk-flex-center uk-margin-bottom uk-margin-auto" uk-grid>

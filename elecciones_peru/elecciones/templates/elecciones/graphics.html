@@ -14,50 +14,43 @@
 	</head>
 	<body id="top">
 		<!--HEADER-->
-		<header id="header" style="background-color: #fff;" data-uk-sticky="show-on-up: true; animation: uk-animation-fade; media: @l">
+		<header id="header" style="background-color: #fff;" data-uk-sticky="animation: uk-animation-fade;">
 			<div class="uk-container">
 				<nav id="navbar" data-uk-navbar="mode: click;">
-					<div class="uk-navbar-left nav-overlay uk-visible@m">
-						<ul class="uk-navbar-nav">
+					<div class="uk-navbar-left nav-overlay">
+					</div>
+					<div class="uk-navbar-center nav-overlay">
+						<a class="uk-navbar-item uk-logo" href="{% url 'elecciones:mainpage' %}" title="Logo">
+							<img class="uk-visible@s" src="{% static "images/logos/ELEGIMOS_negro.png" %}" alt="Logo">
+							<img class="uk-hidden@s" src="{% static "images/logos/ELEGIMOS_favicon.png" %}" alt="Logo">
+						</a>
+					</div>
+					<div class="uk-navbar-right nav-overlay">
+						<ul class="uk-navbar-nav uk-visible@m">
+							<li><a class="text-nav" href="{% url 'elecciones:mainpage' %}">Inicio</a></li>
 							<li>
-								<a style="font-size: 20px; color: #000000; font-weight:600;"  href="http://127.0.0.1:8000/" title="Subscribe">INICIO</a>
-							</li>
-							<li>
-								<a style="font-size: 20px; color: #000000; font-weight:600;" href="#" data-uk-icon="chevron-down">Búsqueda Avanzada</a>
+								<a class="text-nav" href="#" data-uk-icon="chevron-down">Búsqueda</a>
 								<div class="uk-navbar-dropdown">
 									<ul class="uk-nav uk-navbar-dropdown-nav">
 										<li>
-											<a style="font-size: 19px; font-weight:500;" href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
+											<a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
 										</li>
 										<li>
-											<a style="font-size: 19px; font-weight:500;"href="#" onclick="activar_candidatos(this.text)">Congresales</a>
+											<a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Congresales</a>
 										</li>
 										<li>
-											<a style="font-size: 19px; font-weight:500;" href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
+											<a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
 										</li>
 										<li>
-											<a style="font-size: 19px; font-weight:500;" href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
+											<a class="text-nav" href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
 										</li>
 									</ul>
 								</div>
 							</li>
-							<!--<li>
-								<a href="#" title="Sign Up">Sign Up</a>
-							</li>
-						-->
 						</ul>
-					</div>
-					<div class="uk-navbar-center nav-overlay">
-						<a class="uk-navbar-item uk-logo" href="#" title="Logo"><img src="{% static "images/ELEGIMOS-01.png" %}" alt="Logo"></a>
-					</div>
-					<div class="uk-navbar-right nav-overlay">
-						<!--
-						<a class="uk-navbar-toggle uk-visible@m" data-uk-search-icon data-uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
-						-->
 						<div class="uk-navbar-item">
 							<a class="uk-navbar-toggle uk-hidden@m" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-nav"></a>
 						</div>
-						
 					</div>
 					<div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
 						<div class="uk-navbar-item uk-width-expand">
@@ -98,9 +91,11 @@
 				<div class="uk-overlay uk-overlay-primary uk-position-cover uk-flex uk-flex-center uk-flex-middle uk-light uk-text-center">
 					<div data-uk-scrollspy="cls: uk-animation-slide-bottom-small">
 					<!--	<span style="letter-spacing: 0.2em; font-size: 0.725rem">FEATURED ARTICLE</span> -->
-						<h1 class="uk-margin-remove-top uk-margin-small-bottom uk-margin-remove-adjacent">ELECCIONES GENERALES 2021</h1>
-						<p class="uk-margin-small-bottom">Lorem ipsum dolor sit amet, consectetur adipiscing elit dolore magna aliqua.</p>
-						<a href="#" class="uk-button uk-button-default uk-margin-small-top">INFORMATE</a>
+						<h1 style= "line-height: 60px;" class="uk-margin-remove-top uk-margin-small-bottom uk-margin-remove-adjacent">ELECCIONES GENERALES 2021</h1>
+						
+						<p style= "line-height: 30px;"class="uk-margin-small-bottom">Encuentra información sobre el panorama general de los candidatos y por partidos.</p>
+						<p class="uk-margin-small-bottom">¡Haz click en en nombre de la sección que quieras visualizar!</p>
+						<!--<a href="#" class="uk-button uk-button-default uk-margin-small-top">INFÓRMATE</a>-->
 					</div>
 				</div>
 				
@@ -166,7 +161,7 @@
 													<div class="uk-child-width-1-2@m uk-flex-center"  uk-grid uk-lightbox="animation: slide">
 			
 														<div>
-															<h4 class="uk-text-center">POR PARTIDO</h4>
+															<h4 class="uk-text-center">POR PARTIDOS</h4>
 			
 															<a class="uk-inline" href="{% static "images/graphic_images/partido_genero.png" %}" data-caption="Caption 2">
 																<img src="{% static "images/graphic_images/partido_genero.png" %}" alt="">
@@ -227,7 +222,7 @@
 													<div class="uk-child-width-1-2@m uk-flex-center"  uk-grid uk-lightbox="animation: slide">
 			
 														<div>
-															<h4 class="uk-text-center">POR PARTIDO</h4>
+															<h4 class="uk-text-center">POR PARTIDOS</h4>
 			
 															<a class="uk-inline" href="{% static "images/graphic_images/edad_tabla.png" %}" data-caption="Caption 2">
 																<img src="{% static "images/graphic_images/edad_tabla.png" %}" alt="">
@@ -266,9 +261,7 @@
 										</div>
 									</div>-->
 								</li>
-								<li>
-								<!-- <a class="uk-accordion-title uk-text-bold" href="#">Lugar de nacimiento</a> -->
-								</li>
+								
 								<li>
 									<a class="uk-accordion-title uk-text-bold" href="#">Experiencia Laboral</a>
 									<div class="uk-accordion-content uk-margin-medium-top">
@@ -281,8 +274,6 @@
 											<li>
 												
 												<div class="uk-accordion-content  ">
-		
-		
 													<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
 
 														<div>
@@ -305,16 +296,15 @@
 													</div>
 		
 											</li>
-		
-		
+
 											<li>
-												<div class="uk-accordion-content  ">
+												<div class="uk-accordion-content ">
 		
 		
 													<div class="uk-child-width-1-2@m uk-flex-center"  uk-grid uk-lightbox="animation: slide">
 			
 														<div>
-															<h4 class="uk-text-center">POR PARTIDO</h4>
+															<h4 class="uk-text-center">POR PARTIDOS</h4>
 			
 															<a class="uk-inline" href="{% static "images/graphic_images/laboral_tabla.png" %}" data-caption="Caption 2">
 																<img src="{% static "images/graphic_images/laboral_tabla.png" %}" alt="">
@@ -322,95 +312,19 @@
 														</div>												
 													</div>										
 												</div>
-										</ul>
-
-										
-									</div>
-									<!--
-									<div class="uk-accordion-content uk-margin-medium-top">
-										<ul uk-tab>
-											<li><a href="#">GENERAL Y POR PARTIDOS</a></li>
-											<li><a href="#">DETALLE PARTIDOS</a></li>
-										</ul>
-										
-										<ul class="uk-switcher uk-margin">
-											<li>
-												
-												<div class="uk-accordion-content  ">
-		
-		
-													<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
-
-														<div>
-															<h4 class="uk-text-center">GENERAL</h4>
-			
-															<a class="uk-inline" href="{% static "images/graphic_images/laboral_todo.png" %}" data-caption="Caption 2">
-																<img  src="{% static "images/graphic_images/laboral_todo.png" %}" alt="">
-															</a>
-														</div>
-			
-														<div>
-															<h4 class="uk-text-center">POR PARTIDOS</h4>
-											
-															<a class="uk-inline" href="{% static "images/graphic_images/laboral_partido.png" %}"  data-caption="Caption 1">
-																<img src="{% static "images/graphic_images/laboral_partido.png" %}"  alt="">
-															</a>
-															
-														</div>
-														
-													</div>
-		-->
 											</li>
-		
-		
-											<li>
-												<div class="uk-accordion-content  ">
-		
-		
-													<div class="uk-child-width-1-2@m uk-flex-center"  uk-grid uk-lightbox="animation: slide">
-			
-														<div>
-															<h4 class="uk-text-center">POR PARTIDO</h4>
-			
-															<a class="uk-inline" href="{% static "images/graphic_images/edad_tabla.png" %}" data-caption="Caption 2">
-																<img src="{% static "images/graphic_images/edad_tabla.png" %}" alt="">
-															</a>
-														</div>												
-													</div>										
-												</div>
 										</ul>
 
 										
-									
-									<!--
-									<div class="uk-accordion-content uk-margin-medium-top">
-										<h3>PARTICIPACIÓN SEGÚN EXPERIENCIA LABORAL</h3>
-										
-										<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
-
-											<div>
-												<h4 class="uk-text-center">GENERAL</h4>
-
-												<a class="uk-inline" href="{% static "images/graphic_images/laboral_todo.png" %}" data-caption="Caption 2">
-													<img  src="{% static "images/graphic_images/laboral_todo.png" %}" alt="">
-												</a>
-											</div>
-
-											<div>
-												<h3>POR ORGANIZACIONES POLÍTICAS</h3>
-								
-												<a class="uk-inline" href="{% static "images/graphic_images/laboral_partido.png" %}"  data-caption="Caption 1">
-													<img src="{% static "images/graphic_images/laboral_partido.png" %}"  alt="">
-												</a>
-												
-											</div>
-											
-										</div>
 									</div>
-								-->
+									
+									
 								</li>
-							</ul>
 
+								<!---->
+								
+		
+							</ul>
 							<br>
 							<!--
 							<figure>
@@ -477,7 +391,7 @@
 													<div class="uk-child-width-1-2@m uk-flex-center"  uk-grid uk-lightbox="animation: slide">
 			
 														<div>
-															<h4 class="uk-text-center">POR PARTIDO</h4>
+															<h4 class="uk-text-center">POR PARTIDOS</h4>
 			
 															<a class="uk-inline" href="{% static "images/graphic_images/cargo_popular_tabla.png" %}" data-caption="Caption 2">
 																<img src="{% static "images/graphic_images/cargo_popular_tabla.png" %}" alt="">
@@ -538,7 +452,7 @@
 													<div class="uk-child-width-1-2@m uk-flex-center"  uk-grid uk-lightbox="animation: slide">
 			
 														<div>
-															<h4 class="uk-text-center">POR PARTIDO</h4>
+															<h4 class="uk-text-center">POR PARTIDOS</h4>
 			
 															<a class="uk-inline" href="{% static "images/graphic_images/renuncia_tabla.png" %}" data-caption="Caption 2">
 																<img src="{% static "images/graphic_images/renuncia_tabla.png" %}" alt="">
@@ -627,7 +541,7 @@
 													<div class="uk-child-width-1-2@m uk-flex-center"  uk-grid uk-lightbox="animation: slide">
 			
 														<div>
-															<h4 class="uk-text-center">POR PARTIDO</h4>
+															<h4 class="uk-text-center">POR PARTIDOS</h4>
 			
 															<a class="uk-inline" href="{% static "images/graphic_images/sentencias_tabla.png" %}" data-caption="Caption 2">
 																<img src="{% static "images/graphic_images/sentencias_tabla.png" %}" alt="">
@@ -724,8 +638,8 @@
 														<div>
 															<h4 class="uk-text-center">POR PARTIDOS</h4>
 											
-															<a class="uk-inline" href="{% static "graphic_images/ingreso_tabla.PNG" %}"  data-caption="Caption 1">
-																<img src="{% static "graphic_images/ingreso_tabla.PNG" %}"  alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/ingreso_tabla.PNG" %}"  data-caption="Caption 1">
+																<img src="{% static "images/graphic_images/ingreso_tabla.PNG" %}"  alt="">
 															</a>
 															
 														</div>
@@ -783,14 +697,14 @@
 													<div class="uk-child-width-1-2@m "  uk-grid uk-lightbox="animation: slide">
 			
 														<div>
-															<h4 class="uk-text-center">POR PARTIDO</h4>
+															<h4 class="uk-text-center">POR PARTIDOS</h4>
 			
 															<a class="uk-inline" href="{% static "images/graphic_images/inmuebles_partidos.png" %}" data-caption="Caption 2">
 																<img src="{% static "images/graphic_images/inmuebles_partidos.png" %}" alt="">
 															</a>
 														</div>
 														<div>
-															<h4 class="uk-text-center">POR PARTIDO</h4>
+															<h4 class="uk-text-center">POR PARTIDOS</h4>
 			
 															<a class="uk-inline" href="{% static "images/graphic_images/inmuebles_tabla.png" %}" data-caption="Caption 2">
 																<img src="{% static "images/graphic_images/inmuebles_tabla.png" %}" alt="">
@@ -943,8 +857,8 @@
 														<div>
 															<h4 class="uk-text-center">GENERAL</h4>
 											
-															<a class="uk-inline" href="{% static "graphic_images/edu_tabla.PNG" %}"  data-caption="Caption 1">
-																<img src="{% static "graphic_images/edu_tabla.PNG" %}"  alt="">
+															<a class="uk-inline" href="{% static "images/graphic_images/edu_tabla.PNG" %}"  data-caption="Caption 1">
+																<img src="{% static "images/graphic_images/edu_tabla.PNG" %}"  alt="">
 															</a>
 															
 														</div>
@@ -1096,7 +1010,7 @@
 		<!--FOOTER-->
 		<footer class="uk-section uk-section-small uk-section-muted">
 			<div class="uk-container">
-				<p class="uk-text-small uk-text-center">© Perú Informado 2021</p>
+				<p class="uk-text-small uk-text-center">Copyright © Perú Informado 2021</p>
 			</div>
 		</footer>
 		<!--/FOOTER-->
@@ -1107,15 +1021,15 @@
 				<ul class="uk-nav uk-nav-default">
 					<li style="font-size: 21px; font-weight:500; color:#ffffff" class="uk-nav-header">Opciones</li>
 					<li>
-						<a style="font-size: 20px; font-weight:500; color:#ffffff" href="http://127.0.0.1:8000/">
+						<a style="font-size: 20px; font-weight:500; color:#ffffff" href="{% url 'elecciones:mainpage' %}">
 							<span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
 							Inicio
 					</a>
 				</li>
 					<li>
-						<a style="font-size: 20px; font-weight:500; color:#ffffff" href="http://127.0.0.1:8000/busqueda">
+						<a style="font-size: 20px; font-weight:500; color:#ffffff" href="{% url 'elecciones:candidatos' %}">
 							<span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
-							Búsqueda Avanzada
+							Búsqueda
 						</a>
 					</li>
 				</ul>

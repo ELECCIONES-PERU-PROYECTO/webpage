@@ -1,12 +1,34 @@
 /* -- Colors -- */
 .bg_red {
-    background-color: rgb(255 255 255);
+	background-color: rgb(255 255 255);
+}
+
+.seleccion_container {
+	padding: 1rem 0;
+}
+
+.uk-close.uk-icon {
+	border: 1px solid #222;
+	border-radius: 15px;
+	top: 10px;
+	right: 10px;
+}
+
+.option_badge {
+	margin: .2rem .5rem;
+	border: 1px solid rgba(182, 34, 34, 0.50);
+	color: #666;
+	font-size: 15px;
+	border-radius: 15px;
+	padding: .3rem .5rem;
+	line-height: 13px;
+	text-align: center;
 }
 
 .hoja_de_vida_btn {
 	width: fit-content;
 	height: fit-content;
-	background: #B62222;
+	background: #b62222;
 	padding: 0.4rem;
 	color: white;
 	border-radius: 6px;
@@ -44,10 +66,8 @@ ul.uk-navbar-nav li.nav-options a {
 	color: #fff;
 }
 
-
-
 .uk-text-bold {
-    color: #000000  !important;
+	color: #000000  !important;
 }
 
 #orden_genero_container {
@@ -127,7 +147,7 @@ ul.uk-navbar-nav li.nav-options a {
 #left-col ul.uk-nav-default li.uk-nav-header {
 	padding:  20px 20px 8px 20px;
 	color: #fff;
-	font-size: 16px;
+	font-size: 18px;
 }
 #left-col ul.uk-nav-default > li > a:hover, #left-col ul.uk-nav-default > li.uk-open > a {
 	border-left: 2px solid #fff;
@@ -220,6 +240,9 @@ ul.uk-navbar-nav li.nav-options a {
 	transition: margin 0.2s cubic-bezier(.4,0,.2,1);
 }
 
+#filtros_seleccionados {
+	flex-wrap: wrap;
+}
 
 @media screen and (min-width: 960px){
 	#content {
@@ -227,7 +250,7 @@ ul.uk-navbar-nav li.nav-options a {
 		margin-left: 285px;
 	}
 	#top-head {
-		left:285px;
+		left: 285px;
 	}
 }
 
@@ -248,10 +271,17 @@ ul.uk-navbar-nav li.nav-options a {
 	#offcanvas-nav {
 		display: none;
 	}
-
 	/* -- Filtros Text -- */
 	ul.uk-navbar-nav li a.filtros-text {
 		min-height: 52px;
+	}
+	.spacer_mob {
+		height: 15px;
+	}
+
+	#filtros_seleccionados {
+		flex-direction: column;
+		margin: auto;
 	}
 }
 

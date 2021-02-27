@@ -1,7 +1,6 @@
 .body{
 	font-family: 'Poppins', sans-serif;
 }
-
 .nav {
 	position: absolute;
 	top: 15px;
@@ -60,13 +59,18 @@
 	background-color: #b62222 !important;
 }
 
-.uk-section-secondary {
-	background: rgb(34 34 34)  !important;
+#content{
+	background: #222222;
 }
 
-#content{
-	background: #ebebeb !important;
+#content h2 {
+	color: #ffffff;	
 }
+#content p {
+	color: #ffffff;	
+}
+
+
 
 section[name="top_section"]{
 	padding-top: 30px !important;
@@ -84,7 +88,7 @@ section[name="top_section"]{
     background-color: rgb(98 84 84 / 50%)  !important;
 }
 
-h1, h2, h3, h4, h5, h6, a, p, li, span {
+h1, h2, h3, h4, h5, h6, a, p, li, span, button {
 	font-family: 'Poppins', sans-serif;
 	font-style: normal;
 	text-rendering: optimizeLegibility;
@@ -106,7 +110,7 @@ li.pil_li_option a.pil_option:hover {
 
 .uk-subnav-pill>li.pil_li_option.uk-active>a {
 	color: rgba(250, 250, 250);
-	font-weight: bold;
+	font-weight: 500;
 }
 
 p.lead {
@@ -147,15 +151,16 @@ a[name="button_section"]{
 }
 
 .button-click-aqui {
-  background-color: #b62222;
+  background-color: rgb(182 34 34);
 	color: #ffffff;
 	padding: .5rem 1rem;
 	border-radius: 4px;
 }
 
 .button-click-aqui:hover {
-	background-color: #b62222;
+	background-color: rgb(182 34 34);
 	color: #ffffff;
+	text-decoration: none;
 }
 
 /* .uk-navbar-dropdown.uk-open {
@@ -164,6 +169,7 @@ a[name="button_section"]{
 
 #initial .subtitle-text {
 	color: #ffffff;
+	line-height: 24px;
 }
 
 .pill_proxi {
@@ -171,7 +177,7 @@ a[name="button_section"]{
 	border-radius: 20px;
 	color: #b62222;
 	cursor: default;
-	font-size: 20px;
+	font-size: 16px;
 	background:	rgba(214 106 106 / 35%);
 }
 
@@ -182,6 +188,7 @@ a[name="button_section"]{
 ul.uk-navbar-nav li a.nav_options {
 	color:#ffffff; 
 	font-size: 16px;
+	font-weight: 500;
 }
 
 @media (max-width: 960px){
@@ -193,6 +200,9 @@ ul.uk-navbar-nav li a.nav_options {
 		font-size: 1.1rem;
 		margin: 0;
 	}
+	.subtitle-text {
+		font-size: 17px;
+	}
 }
 
 @media screen and (max-width: 699px){
@@ -203,4 +213,15 @@ ul.uk-navbar-nav li a.nav_options {
     align-content: center;
 		text-align: center;
 	}
+	.subtitle-text {
+		font-size: 16px;
+	}
+	.uk-subnav-pill>li.pil_li_option.uk-active>a {
+		margin: .5rem 0;
+	}
+	#initial .subtitle-text {
+		color: #ffffff;
+		line-height: 22px;
+	}
 }
+

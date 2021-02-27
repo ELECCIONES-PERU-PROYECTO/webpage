@@ -757,19 +757,6 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 	content: none;
 }
 
-/** 
- * Stats Tab
- * ---------
- * markup:
- *
- * <ul class="stats-tabs">
- *		<li><a href="#">[value]<em>[name]</em></a></li>
- *	</ul>
- *
- * Extend this object into your markup.
- *
- * ---------------------------------------------------------------------
- */
 .stats-tabs {
 	padding: 0;
 	margin: 3rem 0;
@@ -975,7 +962,8 @@ header .logo a {
  * ------------------------------------------------------------------- 
  */
 .top-bar .uk-navbar-nav li a.text-nav {
-	font-size: 14px;
+	font-size: 16px;
+	font-weight: 500;
 }
 .menu-toggle {
 	float: left;
@@ -988,7 +976,7 @@ header .logo a {
 }
 .menu-toggle span {
 	display: block;
-	background-color: #B62222;
+	background-color: #fff;
 	width: 24px;
 	height: 3px;
 	margin-top: -1.5px;
@@ -1658,16 +1646,22 @@ header .logo a {
 		padding: 0 0 .2rem 0;
 	}
 	.info-list li strong {
-		font-size: 1.2rem;
+		font-size: 1.4rem;
 	}
 	.info-list li strong.about-title {
 		font-size: 1.5rem;
 	}
 	.info-list li span {
-		font-size: 1.2rem;
+		font-size: 1.4rem;
 	}
 	.blocktext h2 {
 		font-size: 2.1rem;
+	}
+	.top-bar .uk-navbar-nav li a.text-nav {
+		font-size: 13px;
+	}
+	.menu-toggle {
+		
 	}
 }
 
@@ -1771,8 +1765,8 @@ header .logo a {
  */
 #go-top {
 	position: fixed;
-	bottom: 0;
-	right: 0;
+	bottom: 15px;
+	right: 15px;
 	z-index: 600;
 	display: none;
 }

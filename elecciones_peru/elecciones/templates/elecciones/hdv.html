@@ -1,5 +1,5 @@
 {% extends "elecciones/base.html" %}
-{% block title %}Perú Informado{% endblock %}
+{% block title %}Hoja de vida{% endblock %}
 {% load static %}
 {% block css %}
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/css/uikit.min.css" />
@@ -12,57 +12,6 @@
 <body id="top">
 	<!-- header
 	================================================== -->
-	<!-- <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
-    <nav class="uk-navbar-container" uk-navbar="dropbar: true;" style="position: relative; z-index: 980;">
-			<div class="top-bar"> <a class="menu-toggle" href="#"><span>Menu</span></a>
-				<nav id="main-nav-wrap">
-					<ul class="main-navigation">
-						<li class="current"><a class="smoothscroll" href="#intro" title="">INICIO</a></li>
-						<li><a class="smoothscroll" href="#about" title="">1. DATOS PERSONALES</a></li>
-						<li><a class="smoothscroll" href="#experiencia" title="">2. EXPERIENCIA LABORAL</a></li>
-						<li><a class="smoothscroll" href="#formacion" title="">3. FORMACIÓN ACADÉMICA</a></li>
-						<li><a class="smoothscroll" href="#cargos" title="">4. CARGOS DE ELECCIÓN POPULAR</a></li>
-						<li><a class="smoothscroll" href="#renuncias" title="">5. RENUNCIAS EFECTUADAS A OTROS PARTIDOS</a></li>
-						<li><a class="smoothscroll" href="#sentencias" title="">6. RELACIÓN DE SENTENCIAS</a></li>
-						<li><a class="smoothscroll" href="#ingresos" title="">7. INGRESOS</a></li>
-						<li><a class="smoothscroll" href="#bienes-inmuebles" title="">8. BIENES INMUEBLES</a></li>
-						<li><a class="smoothscroll" href="#bienes-muebles" title="">9. BIENES MUEBLES</a></li>
-						<li><a class="smoothscroll" href="#informacion-adicional" title="">10. INFORMACIÓN ADICIONAL</a></li>
-					</ul>
-				</nav>
-			</div>
-			<div class="uk-navbar-left">
-				<ul class="uk-navbar-nav">
-					<li><a href="http://127.0.0.1:8000/elecciones/">Inicio</a></li>
-					<li><a href="http://127.0.0.1:8000/elecciones/analisis-graficos">Analítica</a></li>
-				</ul>
-			</div>
-			<div class="uk-navbar-right">
-				<ul class="uk-navbar-nav uk-visible@s">
-					<li>
-						<a href="#" data-uk-icon="chevron-down">Búsqueda Avanzada</a>
-						<div class="uk-navbar-dropdown">
-							<ul class="uk-nav uk-navbar-dropdown-nav">
-								<li>
-									<a href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
-								</li>
-								<li>
-									<a href="#" onclick="activar_candidatos(this.text)">Congresales</a>
-								</li>
-								<li>
-									<a href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
-								</li>
-								<li>
-									<a href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-				</ul>
-			</div>
-    </nav>
-	</div> -->
-
 	<header>
 		<nav class="uk-navbar-container" uk-navbar>
 			<div class="row uk-margin-remove">
@@ -70,10 +19,10 @@
 					<div class="uk-container uk-flex">
 						<div class="uk-navbar-left">
 							<ul class="uk-navbar-nav">
-							  <li><a class="text-nav" href="http://127.0.0.1:8000/">Inicio</a></li>
-								<li><a class="text-nav" href="http://127.0.0.1:8000/analisis-graficos">Analítica</a></li>
+								<li><a class="text-nav" href="{% url 'elecciones:mainpage' %}">Inicio</a></li>
+								<li><a class="text-nav"href="{% url 'elecciones:analisisGraficos' %}">Analítica</a></li>
 								<li>
-									<a class="text-nav" href="#" data-uk-icon="chevron-down">Filtros</a>
+									<a class="text-nav" href="#" data-uk-icon="chevron-down">Búsqueda</a>
 									<div class="uk-navbar-dropdown">
 										<ul class="uk-nav uk-navbar-dropdown-nav">
 											<li>
@@ -646,35 +595,37 @@
 						<div class="col-twelve">
 							<div class="timeline-wrap">
 								{% for estudios_unv in estudios_en_la_u %}
-								<div class="timeline-block">
-									<div class="timeline-ico"> <i class="fa fa-graduation-cap"></i> </div>
-									<div class="timeline-header">
-										<h3>{{estudios_unv.carrera_universitaria}}</h3>
-										<p>Concluyó estudios: {{estudios_unv.concluyo_estudio_universitario}}</p>
-									</div>
-									<div class="timeline-content">
-										<ul class="info-list uk-text-left uk-margin-small-bottom">
-											{% if estudios_unv.universidad %}
-											<li>
-												<strong>Centro de estudios universitarios</strong>
-												<br>
-												<span>
-													{{estudios_unv.universidad}}
-												</span>
-											</li>
-											{% endif %}
-											{% if estudios_unv.anhio_obtencion_universitario %}
-											<li>
-												<strong>Año de obtención</strong>
-												<br>
-												<span>
-													{{estudios_unv.anhio_obtencion_universitario}}
-												</span>
-											</li>
-											{% endif %}
-										</ul>
-									</div>
-								</div>
+									{% if estudios_unv.tiene_estudio_universitario == "SI" %}
+										<div class="timeline-block">
+											<div class="timeline-ico"> <i class="fa fa-graduation-cap"></i> </div>
+											<div class="timeline-header">
+												<h3>{{estudios_unv.carrera_universitaria}}</h3>
+												<p>Concluyó estudios: {{estudios_unv.concluyo_estudio_universitario}}</p>
+											</div>
+											<div class="timeline-content">
+												<ul class="info-list uk-text-left uk-margin-small-bottom">
+													{% if estudios_unv.universidad %}
+													<li>
+														<strong>Centro de estudios universitarios</strong>
+														<br>
+														<span>
+															{{estudios_unv.universidad}}
+														</span>
+													</li>
+													{% endif %}
+													{% if estudios_unv.anhio_obtencion_universitario %}
+													<li>
+														<strong>Año de obtención</strong>
+														<br>
+														<span>
+															{{estudios_unv.anhio_obtencion_universitario}}
+														</span>
+													</li>
+													{% endif %}
+												</ul>
+											</div>
+										</div>
+									{% endif %}
 								{% endfor %}
 							</div>
 						</div>
@@ -706,57 +657,59 @@
 						<div class="col-twelve">
 							<div class="timeline-wrap">
 								{% for estudios_post in estudios_en_postgrado %}
-									<div class="timeline-block">
-										<div class="timeline-ico">
-											<i class="fa fa-graduation-cap"></i>
-										</div>
-										<div class="timeline-header">
-											<h3>{{estudios_post.especialidad}}</h3>
-											<p>Concluyó estudios: {{estudios_post.concluyo_estudio_postgrado}}</p>
-										</div>
-										<div class="timeline-content">
-											<ul class="info-list uk-text-left">
-												{% if estudios_post.centro_estudio_postgrado != "NULL" %}
-												<li>
-													<strong>Centro de estudios de postgrado</strong>
-													<br>
-													<span>
-														{{estudios_post.centro_estudio_postgrado}}
-													</span>
-												</li>
-												{% endif %}
-												{% if estudios_post.anhio_obtencion_postgrado %}
+									{% if estudios_post.tiene_postgrado == "SI" %}
+										<div class="timeline-block">
+											<div class="timeline-ico">
+												<i class="fa fa-graduation-cap"></i>
+											</div>
+											<div class="timeline-header">
+												<h3>{{estudios_post.especialidad}}</h3>
+												<p>Concluyó estudios: {{estudios_post.concluyo_estudio_postgrado}}</p>
+											</div>
+											<div class="timeline-content">
+												<ul class="info-list uk-text-left">
+													{% if estudios_post.centro_estudio_postgrado != "NULL" %}
 													<li>
-														<strong>Año de obtención</strong>
+														<strong>Centro de estudios de postgrado</strong>
 														<br>
 														<span>
-															{{estudios_post.anhio_obtencion_postgrado}}
-														</span>
-													</li>
-												{% endif %}
-												{% if estudios_post.es_egresado_postgrado %}
-													<li>
-														<strong>Es egresado</strong>
-														<br>
-														<span>
-															{{estudios_post.es_egresado_postgrado}}
+															{{estudios_post.centro_estudio_postgrado}}
 														</span>
 													</li>
 													{% endif %}
-												{% if estudios_post.comentario_estudio_postgrado %}
-													<li>
-														<strong>Comentario </strong>
-														<br>
-														<span>
-															{{estudios_post.comentario_estudio_postgrado}}
-														</span>
-													</li>
-												{% endif %}
-											</ul>
+													{% if estudios_post.anhio_obtencion_postgrado %}
+														<li>
+															<strong>Año de obtención</strong>
+															<br>
+															<span>
+																{{estudios_post.anhio_obtencion_postgrado}}
+															</span>
+														</li>
+													{% endif %}
+													{% if estudios_post.es_egresado_postgrado %}
+														<li>
+															<strong>Es egresado</strong>
+															<br>
+															<span>
+																{{estudios_post.es_egresado_postgrado}}
+															</span>
+														</li>
+														{% endif %}
+													{% if estudios_post.comentario_estudio_postgrado %}
+														<li>
+															<strong>Comentario </strong>
+															<br>
+															<span>
+																{{estudios_post.comentario_estudio_postgrado}}
+															</span>
+														</li>
+													{% endif %}
+												</ul>
+											</div>
 										</div>
-									</div> <!-- /timeline-block -->
+									{% endif %}
 								{% endfor %}
-							</div> <!-- /timeline-wrap -->
+							</div>
 						</div>
 					</div>
 				</div>
