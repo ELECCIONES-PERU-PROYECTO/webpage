@@ -577,7 +577,11 @@ function quitar_seleccion_sentencias_menosno_tiene(){
     console.log("cant_filtros: ",cant_filtros)
   }
   document.getElementById("por_obligaciones").checked = false
+  let element_ = document.getElementById("div_opc_obligaciones")
+  toggleObligacion_opciones(element_)
   document.getElementById("penal_cbx").checked = false
+  let element = document.getElementById("penal_cbx");
+  togglePenal_opciones(element);
   /*if(no_tiene_val == "NO") {
     no_tiene_val = ""
     cant_filtros--
@@ -683,8 +687,11 @@ function quitar_seleccion_sentencias(){
       lista_orden_filtros.splice(index, 1)
     }
   }
-
-  document.getElementById("mostrar_sentencias").style="" 
+  let element = document.getElementById("penal_cbx");
+  togglePenal_opciones(element);
+  let element_ = document.getElementById("por_obligaciones")
+  toggleObligacion_opciones(element_)
+  document.getElementById("mostrar_sentencias").style="display: none;" 
 }
 
 function noTiene_opcion(){
