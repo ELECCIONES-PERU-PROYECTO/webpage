@@ -1,16 +1,16 @@
 /*igual al inicio un enter (ver linea 212)*/
 window.onload = function(){
-  console.log("agregar_filtros_selecs")
+  // console.log("agregar_filtros_selecs")
   var data1 = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
-  console.log(data1)
+  // console.log(data1)
   if (data1 != null){
-    console.log("data1", data1)
+    // console.log("data1", data1)
     agregar_filtros_selecs(data1)
   }
-  console.log("hasCodeRunBefore still false")
+  // console.log("hasCodeRunBefore still false")
   if (sessionStorage.getItem("hasCodeRunBefore") === null) {
     let data = []
-    console.log("hasCodeRunBefore = true")
+    // console.log("hasCodeRunBefore = true")
     sessionStorage.setItem('data_filtros_seleccionados', JSON.stringify(data))
     sessionStorage.setItem("hasCodeRunBefore", true);
   }

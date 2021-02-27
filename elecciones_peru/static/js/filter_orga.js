@@ -10,7 +10,7 @@ function mark_filters(){
   setTimeout(function(){
     UIkit.notification({
       message: 'Marque al menos un filtro', 
-      status: 'warning'
+      status: 'danger'
   })
   }, 1000);
   return "again"
@@ -38,7 +38,7 @@ function button_filter_org(){
     
 
     url = url+"/"+filtro_id+"/"+rango+"/"+filtro_info
-    console.log(url)
+    // console.log(url)
   } else if(filtro_id=="genero"){
     let inputs_genero = document.getElementsByName("opc_genero")
     let inputs_orden = document.getElementsByName("genero_orden")
@@ -59,13 +59,13 @@ function button_filter_org(){
       setTimeout(function(){
         UIkit.notification({
           message: 'Marque orden', 
-          status: 'warning'
+          status: 'danger'
       });
       }, 1000);
       return;
     }
     url = url+"/"+ filtro_id+"/"+genero+"/"+orden
-    console.log(url)
+    // console.log(url)
   } else if(filtro_id=="primaria" || filtro_id == "secundaria" || 
             filtro_id == "tecnicos"  ||filtro_id == "nouni"|| 
             filtro_id == "uni" ||   filtro_id =="postgrado" || 
@@ -74,7 +74,7 @@ function button_filter_org(){
       let orden = filtro_info
 
       url = url+"/"+filtro_id+"/unk"+"/"+orden
-      console.log(url)
+      // console.log(url)
   } else if(filtro_id=="cant_sen_penal_obliga"){
       url = url+"/"+filtro_id+"/unk/"+filtro_info
   } else if(filtro_id=="cant_sen_penal"){
@@ -86,12 +86,12 @@ function button_filter_org(){
 
     } else if(filtro_id=="org_oriundo"){
     url = url+"/"+filtro_id+"/"+info_extra+"/"+filtro_info
-    console.log(url)
+    // console.log(url)
   }else if(filtro_id=="elecvsnacimiento_name"){
     url = url+"/"+filtro_id+"/unk/"+filtro_info
-    console.log(url)
+    // console.log(url)
   }else if(filtro_id=="2019priv" ){
-    console.log("2019_priv: --> filtro_info : ",filtro_info)
+    // console.log("2019_priv: --> filtro_info : ",filtro_info)
     //let orden_=""
     
     let inputs = document.getElementsByName("2019_ingre_dec")
@@ -102,9 +102,9 @@ function button_filter_org(){
     
     
     url = url+"/"+filtro_id+"/"+filtro_info+"/"+orden
-    console.log(url)
+    // console.log(url)
   } else if(filtro_id=="2018priv" ){
-    console.log("2018_priv: --> filtro_info : ",filtro_info)
+    // console.log("2018_priv: --> filtro_info : ",filtro_info)
   
     let inputs = document.getElementsByName("2018_ingre_dec")
     for(let i = 0 ; i < inputs.length; i++){
@@ -114,7 +114,7 @@ function button_filter_org(){
 
 
     url = url+"/"+filtro_id+"/"+filtro_info+"/"+orden
-    console.log(url)
+    // console.log(url)
   } else if(filtro_id=="2017priv" ){
       let inputs = document.getElementsByName("2017_ingre_dec")
       for(let i = 0 ; i < inputs.length; i++){
@@ -124,31 +124,31 @@ function button_filter_org(){
 
 
       url = url+"/"+filtro_id+"/"+filtro_info+"/"+orden
-      console.log(url)
+      // console.log(url)
   } else if(filtro_id=="monto_quinque"){
 
     orden = filtro_info;
 
     url = url+"/"+filtro_id+"/unk/"+orden
-    console.log(url)
+    // console.log(url)
   }
-  console.log(url)
+  // console.log(url)
   window.location = url   
 }
 
 function quitar_todas_selecciones(id_){
   let gen_or_cont = document.getElementById("orden_genero_container")
   let edad_or_cont = document.getElementById("orden_edad_container")
-  console.log("id_: ",id_)
+  // console.log("id_: ",id_)
   let lista_inputs_all = document.getElementsByTagName("input")
   for(let i = 0 ; i<lista_inputs_all.length; i++){
     if(id_ == "org_desplegable_oriundo_" && lista_inputs_all[i].name =="org_oriundo"){
       continue
     }
      if (id_== lista_inputs_all[i].id  ){
-        console.log("------------------------------------")
-       console.log("lista_inputs_all[i].id: ", lista_inputs_all[i].id)
-       console.log("------------------------------------")
+        // console.log("------------------------------------")
+       // console.log("lista_inputs_all[i].id: ", lista_inputs_all[i].id)
+       // console.log("------------------------------------")
 
       continue
     }
@@ -159,11 +159,11 @@ function quitar_todas_selecciones(id_){
     //if(litsta_selects[i].id == id_){
     //  continue
     //}
-    console.log("dentro de funcion id_: ",id_ )
+    // console.log("dentro de funcion id_: ",id_ )
     if(id_ == "org_oriundo" || id_ =="org_desplegable_oriundo_"){
       return;
     }
-    console.log("elimina")
+    // console.log("elimina")
     litsta_selects[i].selectedIndex = 0
   }
   gen_or_cont.style.display = "none"
@@ -181,7 +181,7 @@ function quitar_todas_selecciones(id_){
 //list.length = 0
 //EDAD
 function set_valor(element){
-  console.log("element.id : ",element.id)
+  // console.log("element.id : ",element.id)
   if(element.id == "org_desplegable_oriundo_" ){
     let select = document.getElementById("org_desplegable_oriundo_")
     info_extra = select.options[select.selectedIndex].value
@@ -263,8 +263,8 @@ function set_valor(element){
     document.getElementById("2018_est_present").style.display="none"
   }
 
-  console.log("filtro_id: ",filtro_id)
-  console.log("filtro_info: ",filtro_info)
-  console.log("info_extra: ",info_extra)
+  // console.log("filtro_id: ",filtro_id)
+  // console.log("filtro_info: ",filtro_info)
+  // console.log("info_extra: ",info_extra)
 
 }

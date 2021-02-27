@@ -32,14 +32,14 @@ let dni_hoja_de_vida = ""
 let cargo_postula_dato = ""
 
 function verHojadeVida(element){
-  console.log(URL)
+  // console.log(URL)
   dni_hoja_de_vida = element.id
   //cargo_postula_dato = element.dataset.cargo_postula
   cargo_postula_dato = element.name
   //cargo_postula_dato = element.dataset.cargopostulacion
   // console.log("cargo_postula_dato: ",cargo_postula_dato)
   let url_ = URL + "/candidato/hojadevida/"+dni_hoja_de_vida+"/"+cargo_postula_dato
-  console.log(url_)
+  // console.log(url_)
   window.open(url_);
   // window.location = url_
 }
