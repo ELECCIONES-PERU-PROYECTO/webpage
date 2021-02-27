@@ -38,6 +38,7 @@ class DatosPersonalesAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     'pais_nacimiento',
     'cargo_eleccion',
   )
+
 class ExperienciaLaboralResource(resources.ModelResource):
   from .models import ExperienciaLaboral
   class Meta:
@@ -61,6 +62,9 @@ class ExperienciaLaboralAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     'departamento_laboral',
     'provincia_laboral',
     'distrito_laboral',
+  )
+  list_filter = (
+    'id',
   )
 class EducacionBasicaResource(resources.ModelResource):
   from .models import EducacionBasica
@@ -179,8 +183,14 @@ class CargoEleccionAdmin(admin.ModelAdmin):
     'comentario',
   )
 
+class RenunciaResource(resources.ModelResource):
+  from .models import Renuncia
+
+  class Meta:
+    model = Renuncia
+
 @admin.register(Renuncia)
-class RenunciaAdmin(admin.ModelAdmin):
+class RenunciaAdmin(ImportExportModelAdmin, admin.ModelAdmin):
   list_display = (
     'organizacion_politica',
     'distrito_elec',
@@ -190,6 +200,10 @@ class RenunciaAdmin(admin.ModelAdmin):
     'organización_renuncia',
     'comentario',
   )
+  list_filter = (
+    'id',
+  )
+
 
 @admin.register(SentenciaPenal)
 class SentenciaPenalAdmin(admin.ModelAdmin):
@@ -235,8 +249,15 @@ class IngresoAdmin(admin.ModelAdmin):
     'total_ingresos',
   )
 
+
+class BienInmuebleResource(resources.ModelResource):
+  from .models import BienInmueble
+
+  class Meta:
+    model = BienInmueble
+
 @admin.register(BienInmueble)
-class BienInmuebleAdmin(admin.ModelAdmin):
+class BienInmuebleAdmin(ImportExportModelAdmin, admin.ModelAdmin):
   list_display = (
     'organizacion_politica',
     'distrito_elec',
@@ -249,6 +270,9 @@ class BienInmuebleAdmin(admin.ModelAdmin):
     'partida_inmueble_sunarp',
     'autovaluo',
     'comentario_inmueble',
+  )
+  list_filter = (
+    'id',
   )
 
 @admin.register(BienMueble)
@@ -299,6 +323,10 @@ class TablaEdadAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     'edad',
     'organizacion_politica',
     'dni',
+  )
+
+  list_filter = (
+    'id',
   )
 
 
