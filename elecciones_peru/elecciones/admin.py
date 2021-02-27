@@ -179,8 +179,15 @@ class CargoEleccionAdmin(admin.ModelAdmin):
     'comentario',
   )
 
+
+class RenunciaResource(resources.ModelResource):
+  from .models import Renuncia
+
+  class Meta:
+    model = Renuncia
+
 @admin.register(Renuncia)
-class RenunciaAdmin(admin.ModelAdmin):
+class RenunciaAdmin(ImportExportModelAdmin, admin.ModelAdmin):
   list_display = (
     'organizacion_politica',
     'distrito_elec',
@@ -190,6 +197,7 @@ class RenunciaAdmin(admin.ModelAdmin):
     'organización_renuncia',
     'comentario',
   )
+
 
 @admin.register(SentenciaPenal)
 class SentenciaPenalAdmin(admin.ModelAdmin):
