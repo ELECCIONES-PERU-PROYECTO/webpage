@@ -119,6 +119,7 @@ ul.uk-navbar-nav li.nav-options a {
 	top: 0px;
 	background: #f7f7f7;
 	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch;
 }
 
 a#video_explanation {
@@ -147,6 +148,7 @@ a#video_explanation {
   top: 0px;
   bottom:0;
   overflow-x: hidden;
+	-webkit-overflow-scrolling: touch;
   overflow-y: auto;
   background-color: #8e0707;
 	/* box-shadow: inset -1px 0 0 #dbdbdb; */
