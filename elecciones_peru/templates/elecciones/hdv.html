@@ -802,7 +802,7 @@
 						<div class="col-twelve">
 							<div class="timeline-wrap">
 								{% for renuncia in renuncias %}
-									{% if renuncia.tiene_info_por_declarar != "NO" %}
+									{% if renuncia.tiene_info_por_declarar == "SI" %}
 										<div class="timeline-block inmueble" style="height: 10rem;">
 											<div class="timeline-ico">
 												<i class="fa fa-briefcase"></i>
