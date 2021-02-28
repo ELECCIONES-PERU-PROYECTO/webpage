@@ -129,15 +129,7 @@ function button_filter(){
     dist_electoral, tipo_candidato_
   ]
 
-  if(lista_valores[2] == "" || lista_valores[3] == ""){
-		setTimeout(function(){
-			UIkit.notification({
-        message: 'Especifique el orden en el filtro "Sentencias"',
-        status: 'danger'
-      })
-    }, 1000)
-    return 
-  } else if(lista_orden_filtros.length == 0){
+  if(lista_orden_filtros.length == 0){
 		setTimeout(function(){
 			UIkit.notification({
         message: 'Escoja al menos un filtro', 
