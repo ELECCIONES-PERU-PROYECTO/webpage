@@ -228,6 +228,8 @@ function activar_candidatos(text){
     if(tip_cand_filter)
       tip_cand_filter.id = "parlamento"
   }
-  console.log(text)
+  if (text == "Organización Política"){
+    activar_organizaciones(text);
+  }
 }
 /*siempre deja un enter sobrando porque algunos browsers esperan que exista un enter al final*/
