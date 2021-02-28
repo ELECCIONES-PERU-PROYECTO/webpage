@@ -133,7 +133,7 @@ function button_filter(){
 		setTimeout(function(){
 			UIkit.notification({
         message: 'Escoja al menos un filtro', 
-        status: 'danger'
+        status: 'warning'
     })
     }, 1000)
     return 
