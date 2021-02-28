@@ -92,6 +92,14 @@ WSGI_APPLICATION = 'elecciones_peru.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 
+DATABASES = {
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+}
+
+
+
 # DATABASES = {
 #     'default' : {
 #         'ENGINE' : 'django.db.backends.postgresql',
@@ -109,7 +117,6 @@ DATABASES = {
         default=config('DATABASE_URL')
     )
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

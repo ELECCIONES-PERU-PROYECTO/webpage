@@ -89,7 +89,7 @@ let cant_filtros_ob = 0
 let ul_filt_selec = document.getElementById("filtros_seleccionados")
 
 function SendJSON() {
-  console.log("Empacando datos")
+  // console.log("Empacando datos")
   let data = {
     "nivel_academico" : "concluyo_secundaria",
     "cargos_previos_order" : "DESC",
@@ -142,14 +142,14 @@ function button_filter(){
 		setTimeout(function(){
 			UIkit.notification({
         message: 'Especifique el distrito de nacimiento del filtro "Oriundo"',
-        status: 'warning'
+        status: 'danger'
       })
     }, 1000)
     return 
   }
   let url = URL + "/" + VIEW
 
-  console.log("URL XDDDDDDDDDDDDDD",url)
+  // console.log("URL XDDDDDDDDDDDDDD",url)
 
   let x = 1
   
@@ -209,14 +209,14 @@ function button_filter(){
       x++
     }
     else if(lista_orden_filtros[i] == 14){
-      console.log("i ",i)
+      // console.log("i ",i)
       if (lista_valores[13] == ""){
         lista_valores[14] = lista_valores[14] + "(" + x
-        console.log("lista_valores[13] ",lista_valores[13])
+        // console.log("lista_valores[13] ",lista_valores[13])
         x++
       } else {
         lista_valores[13] = lista_valores[13] + "(" + x
-        console.log("lista_valores[13] ",lista_valores[13])
+        // console.log("lista_valores[13] ",lista_valores[13])
         x++
       }
     }
@@ -242,7 +242,7 @@ function button_filter(){
     }
   }
   
-  console.log("LISTA FINAL DE VALORES ", lista_valores)
+  // console.log("LISTA FINAL DE VALORES ", lista_valores)
 
   // Apendea los valores de la lista de valores a la url
   for (let i = 0; i < lista_valores.length; i++){
@@ -254,7 +254,7 @@ function button_filter(){
     }
   }
 
-  console.log(url)
+  // console.log(url)
 
   window.location = url 
 
@@ -274,30 +274,30 @@ function get_nivel_academico(){
     filtro_academico = true
     cant_filtros++
     cant_filtros_normales++
-    console.log(lista_orden_filtros)
+    // console.log(lista_orden_filtros)
     lista_orden_filtros.push(1)
 
     ///*Agregar <li> al a la lista de filtros seleccionados */
     //var data = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
     //const index = data.indexOf(1)
     //if(index == -1 || data.length == 0){
-    //  console.log("El badge academico no esta")
+    // console.log("El badge academico no esta")
     //  agregar_badge_academico("badge-academico","Nivel Académico")
 //
     //}else{
-    //  console.log("el badge academico esta")
+    // console.log("el badge academico esta")
     //}
     ///*          */
 
-    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: ",cant_filtros)
+    // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros: ",cant_filtros)
   }
   let nivel_academico_ = document.getElementById("nivel_academico")
   let nivel_academico_value = nivel_academico_.options[nivel_academico_.selectedIndex].value
   nivel_academico = nivel_academico_value
-  console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-  console.log("cant_filtros: ",cant_filtros)
-  console.log("nivel_academico: ", nivel_academico)
+  // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+  // console.log("cant_filtros: ",cant_filtros)
+  // console.log("nivel_academico: ", nivel_academico)
 }
 
 function agregar_badge(badge_text){
@@ -323,10 +323,10 @@ function quitar_seleccion_academico(){
       lista_orden_filtros.splice(index, 1)
     }
 
-    console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-    console.log("cant_filtros_ob: ",cant_filtros_ob)
-    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: ",cant_filtros)
+    // console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
+    // console.log("cant_filtros_ob: ",cant_filtros_ob)
+    // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros: ",cant_filtros)
     document.getElementById("nivel_academico").selectedIndex = 0
     nivel_academico = ""
   }
@@ -346,21 +346,21 @@ if(filtro_cargo == false) {
   //var data = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
   //const index = data.indexOf(2)
   //if(index == -1 || data.length == 0){
-  //  console.log("El badge academico no esta")
+  // console.log("El badge academico no esta")
   //  agregar_badge_academico("badge-elecciones-pasadas","Cargos por Elecciones pasadas")
   //}else{
-  //  console.log("El badge elecc pasadas esta")
+  // console.log("El badge elecc pasadas esta")
   //}
   /*          */  
   
-  console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
+  // console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
 
-    console.log(cant_filtros)
+    // console.log(cant_filtros)
 
     for(let i = 0; i < anhio_servicio_list.length; i++) {
       if(anhio_servicio_list[i].checked) {
         cargos_previos_order = anhio_servicio_list[i].value
-        console.log("cargos_previos_order: ", cargos_previos_order)
+        // console.log("cargos_previos_order: ", cargos_previos_order)
         return
       }
     }
@@ -369,7 +369,7 @@ if(filtro_cargo == false) {
   for(let i = 0; i < anhio_servicio_list.length; i++) {
     if(anhio_servicio_list[i].checked) {
       cargos_previos_order =  anhio_servicio_list[i].value
-      console.log("cargos_previos_order: ", cargos_previos_order)
+      // console.log("cargos_previos_order: ", cargos_previos_order)
     }
   }
 }
@@ -389,11 +389,11 @@ function quitar_seleccion_cargos_pervios(){
       lista_orden_filtros.splice(index, 1)
     }
 
-    console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
+    // console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
     cargos_previos_order = ""
-    console.log("cant_filtros_ob: ",cant_filtros_ob)
-    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: ",cant_filtros)
+    // console.log("cant_filtros_ob: ",cant_filtros_ob)
+    // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros: ",cant_filtros)
   }
 }
 
@@ -427,23 +427,23 @@ function get_sentencias_penal_cant(){
     //var data = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
     //const index = data.indexOf(3)
     //if(index == -1 || data.length == 0){
-    //  console.log("El badge academico no esta")
+    // console.log("El badge academico no esta")
     //  agregar_badge_academico(lista_orden_filtros)
     //}else{
-    //  console.log("El badge elecc pasadas esta")
+    // console.log("El badge elecc pasadas esta")
     //}
 
-    console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-    console.log("cant_filtros_ob: ",cant_filtros_ob)
-    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: ",cant_filtros)
+    // console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
+    // console.log("cant_filtros_ob: ",cant_filtros_ob)
+    // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros: ",cant_filtros)
   }
   mostrar_tiposentencias()
   let cant_senten_list = document.getElementsByName("cant_senten")
   for(let i = 0; i < cant_senten_list.length; i++) {
     if(cant_senten_list[i].checked) {
       orden_cant_sentencia = cant_senten_list[i].value
-      console.log("orden_cant_sentencia: ", orden_cant_sentencia)
+      // console.log("orden_cant_sentencia: ", orden_cant_sentencia)
     }
   }
 }
@@ -455,15 +455,15 @@ function get_sentencias_oblig_cant(){
     cant_filtros_ob++
     cant_filtros++
     lista_orden_filtros.push(4)
-    console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-    console.log("cant_filtros_ob: ",cant_filtros_ob)
-    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: ",cant_filtros)
+    // console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
+    // console.log("cant_filtros_ob: ",cant_filtros_ob)
+    // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros: ",cant_filtros)
     let cant_senten_oblig_list = document.getElementsByName("cant_senten_oblig")
     for(let i = 0; i < cant_senten_oblig_list.length; i++) {
       if(cant_senten_oblig_list[i].checked) {
         orden_cant_sentencia_oblig = cant_senten_oblig_list[i].value
-        console.log("orden_cant_sentencia_oblig: ", orden_cant_sentencia_oblig)
+        // console.log("orden_cant_sentencia_oblig: ", orden_cant_sentencia_oblig)
       }
     }
   }
@@ -471,7 +471,7 @@ function get_sentencias_oblig_cant(){
   for(let i = 0; i < cant_senten_oblig_list.length; i++) {
     if(cant_senten_oblig_list[i].checked) {
       orden_cant_sentencia_oblig = cant_senten_oblig_list[i].value
-      console.log("orden_cant_sentencia_oblig: ", orden_cant_sentencia_oblig)
+      // console.log("orden_cant_sentencia_oblig: ", orden_cant_sentencia_oblig)
     }
   }
 }
@@ -483,10 +483,10 @@ function get_sentencias_oblig_mat(){
     cant_filtros_normales++
     cant_filtros++
     lista_orden_filtros.push(5)
-    console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-    console.log("cant_filtros_ob: ",cant_filtros_ob)
-    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: ",cant_filtros)
+    // console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
+    // console.log("cant_filtros_ob: ",cant_filtros_ob)
+    // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros: ",cant_filtros)
   }
 
   let cant_mat_list = document.getElementsByName("opc_mat_demanda")
@@ -494,7 +494,7 @@ function get_sentencias_oblig_mat(){
   for(let i = 0; i < cant_mat_list.length; i++) {
     if(cant_mat_list[i].checked) {
       mat_demanda = cant_mat_list[i].value
-      console.log("mat_demanda: ", mat_demanda)
+      // console.log("mat_demanda: ", mat_demanda)
     }
   }
 }
@@ -520,10 +520,10 @@ function quitar_seleccion_sentencias_menosno_tiene(){
       }
     document.getElementById("div_opc_cant_sentencias").style.display="none"
     }
-    console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-    console.log("cant_filtros_ob: ",cant_filtros_ob)
-    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: ",cant_filtros)
+    // console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
+    // console.log("cant_filtros_ob: ",cant_filtros_ob)
+    // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros: ",cant_filtros)
   }
   if(filtro_oblig_cant  == true){
     document.getElementById("por_obligaciones").checked = false
@@ -545,10 +545,10 @@ function quitar_seleccion_sentencias_menosno_tiene(){
       }
     document.getElementById("div_opc_obligaciones").style.display="none"
     }
-    console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-    console.log("cant_filtros_ob: ",cant_filtros_ob)
-    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: ",cant_filtros)
+    // console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
+    // console.log("cant_filtros_ob: ",cant_filtros_ob)
+    // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros: ",cant_filtros)
   }
 
   if(filtro_oblig_mat  == true){
@@ -571,10 +571,10 @@ function quitar_seleccion_sentencias_menosno_tiene(){
       }
     }
     
-    console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-    console.log("cant_filtros_ob: ",cant_filtros_ob)
-    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: ",cant_filtros)
+    // console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
+    // console.log("cant_filtros_ob: ",cant_filtros_ob)
+    // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros: ",cant_filtros)
   }
   document.getElementById("por_obligaciones").checked = false
   let element_ = document.getElementById("div_opc_obligaciones")
@@ -586,7 +586,7 @@ function quitar_seleccion_sentencias_menosno_tiene(){
     no_tiene_val = ""
     cant_filtros--
     cant_filtros_normales--
-    console.log("Procedo a quitar el 6")
+    // console.log("Procedo a quitar el 6")
     const index = lista_orden_filtros.indexOf(6)
 
     if (index > -1) {
@@ -620,10 +620,10 @@ function quitar_seleccion_sentencias(){
         inputs[i].checked = false
       }
     }
-    console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-    console.log("cant_filtros_ob: ",cant_filtros_ob)
-    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: ",cant_filtros)
+    // console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
+    // console.log("cant_filtros_ob: ",cant_filtros_ob)
+    // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros: ",cant_filtros)
   }
   if(filtro_oblig_cant  == true){
     document.getElementById("por_obligaciones").checked = false
@@ -644,10 +644,10 @@ function quitar_seleccion_sentencias(){
         inputs[i].checked = false
       }
     }
-    console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-    console.log("cant_filtros_ob: ",cant_filtros_ob)
-    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: ",cant_filtros)
+    // console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
+    // console.log("cant_filtros_ob: ",cant_filtros_ob)
+    // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros: ",cant_filtros)
   }
 
   if(filtro_oblig_mat  == true){
@@ -669,10 +669,10 @@ function quitar_seleccion_sentencias(){
         inputs[i].checked = false
       }
     }
-    console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-    console.log("cant_filtros_ob: ",cant_filtros_ob)
-    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: ",cant_filtros)
+    // console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
+    // console.log("cant_filtros_ob: ",cant_filtros_ob)
+    // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros: ",cant_filtros)
   }
 
   if(filtro_senten_no_tiene == true) {
@@ -680,7 +680,7 @@ function quitar_seleccion_sentencias(){
     no_tiene_val = ""
     cant_filtros--
     cant_filtros_normales--
-    console.log("Procedo a quitar el 6")
+    // console.log("Procedo a quitar el 6")
     const index = lista_orden_filtros.indexOf(6)
 
     if (index > -1) {
@@ -712,7 +712,7 @@ function noTiene_opcion(){
 
 /* FILTRO BIENES Y RENTAS */
 function get_bienes_rentas(element){
-  console.log("element.name: ",element.name)
+  // console.log("element.name: ",element.name)
   switch(element.name) {
     case "cant_ingreso":
       if(filtro_ingres_cant == false){
@@ -720,7 +720,7 @@ function get_bienes_rentas(element){
         cant_filtros++
         cant_filtros_ob++
         lista_orden_filtros.push(7)
-        console.log("push 7")
+        // console.log("push 7")
         
       }
       orden_cant_ingreso = element.value
@@ -731,7 +731,7 @@ function get_bienes_rentas(element){
         cant_filtros++
         cant_filtros_ob++
         lista_orden_filtros.push(8)
-        console.log("push 8")
+        // console.log("push 8")
         
       }
       orden_cant_inmueble = element.value
@@ -742,7 +742,7 @@ function get_bienes_rentas(element){
         cant_filtros++
         cant_filtros_ob++
         lista_orden_filtros.push(9)
-        console.log("push 9")
+        // console.log("push 9")
         
       }
       orden_valor_inmueble = element.value
@@ -753,7 +753,7 @@ function get_bienes_rentas(element){
           cant_filtros++
           cant_filtros_ob++
           lista_orden_filtros.push(10)
-          console.log("push 10")
+          // console.log("push 10")
           
         }
         orden_cant_mueble = element.value
@@ -764,7 +764,7 @@ function get_bienes_rentas(element){
         cant_filtros++
         cant_filtros_ob++
         lista_orden_filtros.push(11)
-        console.log("push 11")
+        // console.log("push 11")
         
       }
       orden_valor_mueble = element.value
@@ -850,15 +850,15 @@ function get_renuncia(){
     filtro_renuncias = true
     cant_filtros++
     cant_filtros_ob++
-    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: ",cant_filtros)
+    // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros: ",cant_filtros)
     lista_orden_filtros.push(12)
   }
   let inputs = document.getElementsByName("cantidad_renuncia")
   for(let i  = 0; i < inputs.length; i++){
     if(inputs[i].checked){
       orden_renuncias = inputs[i].value
-      console.log("orden_renuncias, ", orden_renuncias)
+      // console.log("orden_renuncias, ", orden_renuncias)
     }
   }
 }
@@ -869,9 +869,9 @@ function quitar_seleccion_renuncia(){
     let inputs = document.getElementsByName("cantidad_renuncia")
     cant_filtros--
     cant_filtros_ob--
-    console.log("cant_filtros_ob: ", cant_filtros_ob)
-    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: ",cant_filtros)
+    // console.log("cant_filtros_ob: ", cant_filtros_ob)
+    // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros: ",cant_filtros)
 
     for(let i = 0; i < inputs.length; i++){
       inputs[i].checked = false
@@ -892,15 +892,15 @@ function get_edad(){
     filtro_edad = true
     cant_filtros_normales++
     lista_orden_filtros.push(13)
-    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
     cant_filtros++
-    console.log("cant_filtros: ",cant_filtros)
+    // console.log("cant_filtros: ",cant_filtros)
   }
   let inputs = document.getElementsByName("rango_edad")
   for(let i = 0; i < inputs.length; i++){
     if(inputs[i].checked){
       rango_edad_val = inputs[i].value
-      console.log("rango_edad_val: ",rango_edad_val)
+      // console.log("rango_edad_val: ",rango_edad_val)
     }
   }
 }
@@ -909,9 +909,9 @@ function quitar_seleccion_edad(){
   if(filtro_edad == true){
     cant_filtros--
     cant_filtros_normales--
-    console.log("cant_filtros_ob: ", cant_filtros_ob)
-    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: ",cant_filtros)
+    // console.log("cant_filtros_ob: ", cant_filtros_ob)
+    // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros: ",cant_filtros)
     filtro_edad = false
     
     const index = lista_orden_filtros.indexOf(13)
@@ -933,12 +933,12 @@ function get_oriundo(){
   if(filtro_oriundo == false){
     filtro_oriundo = true
     cant_filtros_normales++
-    console.log("cant_filtros_normales: ", cant_filtros_normales)
-    console.log("cant_filtros_new: ",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros_normales: ", cant_filtros_normales)
+    // console.log("cant_filtros_new: ",cant_filtros_ob+cant_filtros_normales)    
     cant_filtros++
-    console.log("cant_filtros: ",cant_filtros)
+    // console.log("cant_filtros: ",cant_filtros)
     lista_orden_filtros.push(14)
-    console.log("lista_orden_filtros.length: ",lista_orden_filtros.length)
+    // console.log("lista_orden_filtros.length: ",lista_orden_filtros.length)
   }
 
   let oriundo_inputs = document.getElementsByName("oriundo_input")
@@ -947,14 +947,14 @@ function get_oriundo(){
     document.getElementById("desplegable_oriundo").style = "display:none"
     nac_per_no = "NO"
     nac_per_si = ""
-    console.log("nac_per_no: ",nac_per_no)
+    // console.log("nac_per_no: ",nac_per_no)
     document.getElementById("nivel_academico").selectedIndex = 0
     return   
   } else if(oriundo_inputs[0].checked == true){
     document.getElementById("desplegable_oriundo").style = ""
     if(nac_per_si == ""){
       nac_per_si = "SI"
-      console.log("nac_per_si: ",nac_per_si)
+      // console.log("nac_per_si: ",nac_per_si)
       nac_per_no = ""
     }
   }
@@ -965,7 +965,7 @@ function onchange_desple_oriundo(){
     let dpt_desplegable = document.getElementById("desplegable_oriundo_")
     let dpt_ = dpt_desplegable.options[dpt_desplegable.selectedIndex].value
     departamento_nacimiento = dpt_
-    console.log("departamento_nacimiento: ",departamento_nacimiento)
+    // console.log("departamento_nacimiento: ",departamento_nacimiento)
     if( departamento_nacimiento ==  "default"){
       quitar_seleccion_oriundo()
     }
@@ -976,10 +976,10 @@ function quitar_seleccion_oriundo(){
   if(filtro_oriundo == true) {
     filtro_oriundo = false
     cant_filtros_normales--
-    console.log("cant_filtros_normales: ",cant_filtros_normales)
+    // console.log("cant_filtros_normales: ",cant_filtros_normales)
     cant_filtros--
-    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: ",cant_filtros)
+    // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros: ",cant_filtros)
     oriundo = document.getElementById("desplegable_oriundo")
     oriundo.style = "display:none"
     const index = lista_orden_filtros.indexOf(14)
@@ -998,7 +998,7 @@ function quitar_seleccion_oriundo(){
     departamento_nacimiento = ""
     nac_per_no = ""
     nac_per_si = ""
-    console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
+    // console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
   }
 }
 
@@ -1010,10 +1010,10 @@ function get_cargo_postula(){
     cant_filtros_normales++
     cant_filtros++
     lista_orden_filtros.push(15)
-    console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-    console.log("cant_filtros_ob: ",cant_filtros_ob)
-    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: ",cant_filtros)
+    // console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
+    // console.log("cant_filtros_ob: ",cant_filtros_ob)
+    // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros: ",cant_filtros)
   }
   let postula_desplegable = document.getElementById("cargo_postula")
   let postula_value = postula_desplegable.options[postula_desplegable.selectedIndex].value
@@ -1024,9 +1024,9 @@ function get_cargo_postula(){
     quitar_seleccion_postula()
   }
 
-  console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-  console.log("cant_filtros: ",cant_filtros)
-  console.log("cargo_postula: ", cargo_postula)
+  // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+  // console.log("cant_filtros: ",cant_filtros)
+  // console.log("cargo_postula: ", cargo_postula)
 }
 
 function quitar_seleccion_postula(){
@@ -1052,8 +1052,8 @@ function get_org_politica(){
     filtro_organizacion = true
     cant_filtros_normales++
     lista_orden_filtros.push(16)
-    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: ", cant_filtros)
+    // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros: ", cant_filtros)
   }
 
   let org_politica_ = document.getElementById("select_org_politica")
@@ -1065,16 +1065,16 @@ function get_org_politica(){
     quitar_seleccion_org_politica()
   }
 
-  console.log("org_politica: ", org_politica)
+  // console.log("org_politica: ", org_politica)
 }
 
 function quitar_seleccion_org_politica(){
   if(filtro_organizacion == true){
     cant_filtros--
-    console.log("cant_filtros: ",cant_filtros)
+    // console.log("cant_filtros: ",cant_filtros)
     cant_filtros_normales--
-    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros_normales: ",cant_filtros_normales) 
+    // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros_normales: ",cant_filtros_normales) 
     filtro_organizacion = false
     let select_ = document.getElementById("select_org_politica")
     select_.selectedIndex = 0
@@ -1095,15 +1095,15 @@ function get_distrito_electoral(){
     cant_filtros_normales++
     cant_filtros++
     lista_orden_filtros.push(17)
-    console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-    console.log("cant_filtros: ", cant_filtros)
+    // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+    // console.log("cant_filtros: ", cant_filtros)
   }
 
   let distrito_ = document.getElementById("dist_electo")
   let distrito_value = distrito_.options[distrito_.selectedIndex].value
 
-  console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
-  console.log("cant_filtros: ",cant_filtros)
+  // console.log("cant_filtros_new",cant_filtros_ob+cant_filtros_normales)    
+  // console.log("cant_filtros: ",cant_filtros)
 
   //get del valor
   dist_electoral = distrito_value
@@ -1111,7 +1111,7 @@ function get_distrito_electoral(){
   if(dist_electoral == "default"){
     quitar_seleccion_distrito()
   }
-  console.log("dist_electoral: ", dist_electoral) 
+  // console.log("dist_electoral: ", dist_electoral) 
 }
 
 function quitar_seleccion_distrito(){
