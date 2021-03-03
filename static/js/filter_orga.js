@@ -99,13 +99,13 @@ function button_filter_org(){
       if(inputs[i].checked == true)
         orden = inputs[i].value  
     }
-    
+    if(orden == "") orden = "ASC";
     
     url = url+"/"+filtro_id+"/"+filtro_info+"/"+orden
     // console.log(url)
   } else if(filtro_id=="2018priv" ){
     // console.log("2018_priv: --> filtro_info : ",filtro_info)
-  
+    if(orden == "") orden = "ASC";
     let inputs = document.getElementsByName("2018_ingre_dec")
     for(let i = 0 ; i < inputs.length; i++){
       if(inputs[i].checked == true)
@@ -122,7 +122,7 @@ function button_filter_org(){
           orden = inputs[i].value  
       }
 
-
+      if(orden == "") orden = "ASC";
       url = url+"/"+filtro_id+"/"+filtro_info+"/"+orden
       // console.log(url)
   } else if(filtro_id=="monto_quinque"){
