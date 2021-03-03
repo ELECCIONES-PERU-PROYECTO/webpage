@@ -645,6 +645,9 @@ def mainpage(request):
 def analisisGraficos(request):
   return render(request,'elecciones/graphics.html',{})
 
+def analisisGraficosPresi(request):
+  return render(request, 'elecciones/graphics-presi.html',{})
+
 def test(request):
   print('////////////////////////////')
   print(request.method)
