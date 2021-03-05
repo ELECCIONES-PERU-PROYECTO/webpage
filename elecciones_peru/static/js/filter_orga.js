@@ -17,7 +17,6 @@ function mark_filters(){
 }
 
 function button_filter_org(){
-  // btn_fil_org.disable = true
   if(filtro_id==""){
     mark_filters();
   }
@@ -27,8 +26,8 @@ function button_filter_org(){
   let url = URL + "/" + VIEW
   if(filtro_id=="edad"){
     let rango=""
-    inputs_edad = document.getElementsByName("opc_edad")
-    orden_edad_ = document.getElementsByName("edad_orden")
+    inputs_edad = document.getElementsByName("org_rango_edad")
+    orden_edad_ = document.getElementsByName("org_edad_orden")
     for(let i = 0 ; i < inputs_edad.length; i++){
       if(inputs_edad[i].checked){
         rango = inputs_edad[i].value
@@ -42,8 +41,8 @@ function button_filter_org(){
     url = url+"/"+filtro_id+"/"+rango+"/"+filtro_info
     // console.log(url)
   } else if(filtro_id=="genero"){
-    let inputs_genero = document.getElementsByName("opc_genero")
-    let inputs_orden = document.getElementsByName("genero_orden")
+    let inputs_genero = document.getElementsByName("org_opc_genero")
+    let inputs_orden = document.getElementsByName("org_genero_orden")
     let genero = ""
     for(let i = 0 ; i < inputs_genero.length; i++){
       if(inputs_genero[i].checked){
@@ -89,7 +88,7 @@ function button_filter_org(){
     } else if(filtro_id=="org_oriundo"){
     url = url+"/"+filtro_id+"/"+info_extra+"/"+filtro_info
     // console.log(url)
-  }else if(filtro_id=="elecvsnacimiento_name"){
+  }else if(filtro_id=="org_distrito_electoral"){
     url = url+"/"+filtro_id+"/unk/"+filtro_info
     // console.log(url)
   }else if(filtro_id=="2019priv" ){
@@ -147,7 +146,7 @@ function quitar_todas_selecciones(id_){
     if(id_ == "org_desplegable_oriundo_" && lista_inputs_all[i].name =="org_oriundo"){
       continue
     }
-     if (id_== lista_inputs_all[i].id  ){
+    if (id_== lista_inputs_all[i].id  ){
         // console.log("------------------------------------")
        // console.log("lista_inputs_all[i].id: ", lista_inputs_all[i].id)
        // console.log("------------------------------------")
@@ -180,8 +179,6 @@ function quitar_todas_selecciones(id_){
   info_extra= ""
 }
 
-//list.length = 0
-//EDAD
 function set_valor(element){
   // console.log("element.id : ",element.id)
   if(element.id == "org_desplegable_oriundo_" ){
@@ -189,7 +186,7 @@ function set_valor(element){
     info_extra = select.options[select.selectedIndex].value
     return
   }
-  if(element.name != "genero_orden" && element.name != "edad_orden" && element.name !="2019_ingre_dec" && element.name !="2018_ingre_dec" && element.name !="2017_ingre_dec"){
+  if(element.name != "org_genero_orden" && element.name != "org_edad_orden" && element.name !="2019_ingre_dec" && element.name !="2018_ingre_dec" && element.name !="2017_ingre_dec"){
     quitar_todas_selecciones(element.id)
 
   }
@@ -197,8 +194,8 @@ function set_valor(element){
     filtro_id = element.name
     filtro_info = element.value
   
-  if(element.name == "opc_educacion"){
-    inputs_educacion = document.getElementsByName("opc_educacion")
+  if(element.name == "org_opc_educacion"){
+    inputs_educacion = document.getElementsByName("org_opc_educacion")
     for(let i = 0 ; i < inputs_educacion.length; i++){
       if(inputs_educacion[i].checked == true){
         if(i ==0 || i==1){
@@ -232,20 +229,20 @@ function set_valor(element){
       }
     }
   } 
-  else if (element.name=="opc_edad" || element.name == "edad_orden"){
+  else if (element.name=="org_rango_edad" || element.name == "org_edad_orden"){
     filtro_id = "edad"
     let gen_or_cont = document.getElementById("orden_edad_container")
-    let gen = document.getElementsByName("opc_edad")
+    let gen = document.getElementsByName("org_rango_edad")
     
     if(gen[0].checked || gen[1].checked|| gen[2].checked) 
     gen_or_cont.style.display = "block"
     else 
     gen_or_cont.style.display = "none"
   }
-  else if(element.name == "opc_genero" || element.name == "genero_orden"){
+  else if(element.name == "org_opc_genero" || element.name == "org_genero_orden"){
     filtro_id = "genero"
     let gen_or_cont = document.getElementById("orden_genero_container")
-    let gen = document.getElementsByName("opc_genero")
+    let gen = document.getElementsByName("org_opc_genero")
     
     if(gen[0].checked || gen[1].checked ) 
     gen_or_cont.style.display = "block"
@@ -264,9 +261,4 @@ function set_valor(element){
     document.getElementById("2019_est_present").style.display="none"
     document.getElementById("2018_est_present").style.display="none"
   }
-
-  // console.log("filtro_id: ",filtro_id)
-  // console.log("filtro_info: ",filtro_info)
-  // console.log("info_extra: ",info_extra)
-
 }
