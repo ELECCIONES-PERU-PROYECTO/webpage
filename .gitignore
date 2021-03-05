@@ -1,0 +1,5 @@
+elecciones_peru/datos/
+elecciones_peru/elecciones_peru/__init__.py
+elecciones_peru/elecciones/__init__.py
+elecciones_peru/dump_elecciones.sql
+elecciones_peru/elecciones_peru/settings.py

@@ -1,8 +1,15 @@
 from django.contrib import admin
 from .models import *
+from import_export.admin import ImportExportModelAdmin
+from import_export import resources
+class DatosPersonalesResource(resources.ModelResource):
+  from .models import DatosPersonales
+  class Meta:
+    model = DatosPersonales
 
 @admin.register(DatosPersonales)
-class DatosPersonalesAdmin(admin.ModelAdmin):
+class DatosPersonalesAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+  resource_class = DatosPersonalesResource
   list_display = (
     'organizacion_politica',
     'distrito_elec',
@@ -32,8 +39,13 @@ class DatosPersonalesAdmin(admin.ModelAdmin):
     'cargo_eleccion',
   )
 
+class ExperienciaLaboralResource(resources.ModelResource):
+  from .models import ExperienciaLaboral
+  class Meta:
+    model = ExperienciaLaboral
 @admin.register(ExperienciaLaboral)
-class ExperienciaLaboralAdmin(admin.ModelAdmin):
+class ExperienciaLaboralAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+  resource_class = ExperienciaLaboralResource
   list_display = (
     'organizacion_politica',
     'distrito_elec',
@@ -51,9 +63,17 @@ class ExperienciaLaboralAdmin(admin.ModelAdmin):
     'provincia_laboral',
     'distrito_laboral',
   )
+  list_filter = (
+    'id',
+  )
+class EducacionBasicaResource(resources.ModelResource):
+  from .models import EducacionBasica
+  class Meta:
+    model = EducacionBasica
 
 @admin.register(EducacionBasica)
-class EducacionBasicaAdmin(admin.ModelAdmin):
+class EducacionBasicaAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+  resource_class = EducacionBasicaResource
   list_display = (
     'organizacion_politica',
     'distrito_elec',
@@ -66,8 +86,14 @@ class EducacionBasicaAdmin(admin.ModelAdmin):
     'concluyo_secundaria',
   )
 
+class EstudioTecnicoResource(resources.ModelResource):
+  from .models import EstudioTecnico
+  class Meta:
+    model = EstudioTecnico
+
 @admin.register(EstudioTecnico)
-class EstudioTecnicoAdmin(admin.ModelAdmin):
+class EstudioTecnicoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+  resource_class = EstudioTecnicoResource
   list_display = (
     'organizacion_politica',
     'distrito_elec',
@@ -157,8 +183,14 @@ class CargoEleccionAdmin(admin.ModelAdmin):
     'comentario',
   )
 
+class RenunciaResource(resources.ModelResource):
+  from .models import Renuncia
+
+  class Meta:
+    model = Renuncia
+
 @admin.register(Renuncia)
-class RenunciaAdmin(admin.ModelAdmin):
+class RenunciaAdmin(ImportExportModelAdmin, admin.ModelAdmin):
   list_display = (
     'organizacion_politica',
     'distrito_elec',
@@ -168,6 +200,10 @@ class RenunciaAdmin(admin.ModelAdmin):
     'organización_renuncia',
     'comentario',
   )
+  list_filter = (
+    'id',
+  )
+
 
 @admin.register(SentenciaPenal)
 class SentenciaPenalAdmin(admin.ModelAdmin):
@@ -213,8 +249,15 @@ class IngresoAdmin(admin.ModelAdmin):
     'total_ingresos',
   )
 
+
+class BienInmuebleResource(resources.ModelResource):
+  from .models import BienInmueble
+
+  class Meta:
+    model = BienInmueble
+
 @admin.register(BienInmueble)
-class BienInmuebleAdmin(admin.ModelAdmin):
+class BienInmuebleAdmin(ImportExportModelAdmin, admin.ModelAdmin):
   list_display = (
     'organizacion_politica',
     'distrito_elec',
@@ -227,6 +270,9 @@ class BienInmuebleAdmin(admin.ModelAdmin):
     'partida_inmueble_sunarp',
     'autovaluo',
     'comentario_inmueble',
+  )
+  list_filter = (
+    'id',
   )
 
 @admin.register(BienMueble)
@@ -253,4 +299,49 @@ class InformacionAdicionalAdmin(admin.ModelAdmin):
     'candidato',
     'tiene_info_adicional',
     'info',
+  )
+from .models import FinanciamientoPrivado, FinanciamientoPublico
+@admin.register(FinanciamientoPrivado)
+class FinanciamientoPrivadoAdmin(admin.ModelAdmin):
+  pass
+
+@admin.register(FinanciamientoPublico)
+class FinanciamientoPublicoAdmin(admin.ModelAdmin):
+  pass
+
+class TablaEdadResource(resources.ModelResource):
+  from .models import TablaEdad
+
+  class Meta:
+    model = TablaEdad
+
+@admin.register(TablaEdad)  
+
+class TablaEdadAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+  resource_class = TablaEdadResource
+  list_display = (
+    'edad',
+    'organizacion_politica',
+    'dni',
+    'id',
+  )
+
+  list_filter = (
+    'edad',
+  )
+
+
+class OrganizacionesPoliticasResource(resources.ModelResource):
+  from .models import OrganizacionesPoliticas
+
+  class Meta:
+    model = OrganizacionesPoliticas
+
+@admin.register(OrganizacionesPoliticas)  
+
+class OrganizacionesPoliticasAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+  resource_class = OrganizacionesPoliticasResource
+  list_display = (
+    'organizacion_politica',
+    'url',
   )
