@@ -60,6 +60,9 @@ function filter_candidatos() {
 
   let x = 1
   let tiene_sent = document.getElementById("si-sentencia")
+  let sent_penal = document.getElementById("penal_cbx")
+  let sent_por_oblig = document.getElementById("por_obligaciones")
+
   let n_academic = document.getElementsByName("nivel_academico")[0]
   let anhio_servicio_list = document.getElementsByName("anhio_servicio")
   let cant_senten_list = document.getElementsByName("cant_senten")
@@ -105,18 +108,35 @@ function filter_candidatos() {
   }
 
   if(tiene_sent.checked) {
-    if(!filtro_penal_cant || !filtro_oblig_cant || !filtro_oblig_mat) {
-      console.log("no se marcaron");
-      setTimeout(function(){
-        UIkit.notification({
-          message: 'Especifique el el tipo de sentencia',
-          status: 'danger'
-        })
-      }, 1000)
-      return
+    if(sent_penal.checked) {
+      if(!filtro_penal_cant) {
+        console.log("no se marcaron");
+        setTimeout(function(){
+          UIkit.notification({
+            message: 'Especifique el el tipo de sentencia',
+            status: 'danger'
+          })
+        }, 1000)
+        return
+      }
+    }
+    if(sent_por_oblig.checked) {
+      if(!filtro_oblig_cant && !filtro_oblig_mat) {
+        console.log("no se marcaron");
+        setTimeout(function(){
+          UIkit.notification({
+            message: 'Especifique el el tipo de sentencia',
+            status: 'danger'
+          })
+        }, 1000)
+        return
+      }
     }
   }
+ 
 
+  // TODO: Add validator for Bienes y Rentas
+  
   sessionStorage.setItem('data_filtros_seleccionados', JSON.stringify(lista_orden_filtros))
 
   for(let i = 0; i < lista_orden_filtros.length; i++) {
