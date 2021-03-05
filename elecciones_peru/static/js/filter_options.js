@@ -161,8 +161,11 @@ function activar_candidatos(text){
     if(post_presis)
       post_presis.style = "display : none"
     let tip_cand_filter = document.getElementsByName("tipo_candidato_filter")[0]
-    if(tip_cand_filter)
+    let tip_cand = document.getElementsByName("tipo_filter")[0]
+    if(tip_cand_filter) {
       tip_cand_filter.id = "congresales"      
+      tip_cand.value = "congresales"
+    }
   }
 
   if(text == "Candidatos Presidenciales" || text == "Presidencial"){
@@ -193,8 +196,11 @@ function activar_candidatos(text){
     if(post_presis)
       post_presis.style = ""
     let tip_cand_filter = document.getElementsByName("tipo_candidato_filter")[0]
-    if(tip_cand_filter)
+    let tip_cand = document.getElementsByName("tipo_filter")[0]
+    if(tip_cand_filter) {
       tip_cand_filter.id = "presidenciales"
+      tip_cand.value = "presidenciales"
+    }
   }
 
   if(text == "Candidatos Parlamento Andino" || text == "Parlamento Andino"){
@@ -225,8 +231,11 @@ function activar_candidatos(text){
     if(post_presis)
       post_presis.style = "display : none"
     let tip_cand_filter = document.getElementsByName("tipo_candidato_filter")[0]
-    if(tip_cand_filter)
+    let tip_cand = document.getElementsByName("tipo_filter")[0]
+    if(tip_cand_filter) {
       tip_cand_filter.id = "parlamento"
+      tip_cand.value = "parlamento"
+    }
   }
 }
 /*siempre deja un enter sobrando porque algunos browsers esperan que exista un enter al final*/

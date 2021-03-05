@@ -46,8 +46,6 @@ ul#opciones_candidatos li.nav-options a.nav_opt {
 	font-size: 18px;
 }
 
-
-
 #offcanvas-nav .filter_options select, #offcanvas-nav  .filter_options label {
 	font-size: 16px;
 	color: #fff;
@@ -158,7 +156,7 @@ a#video_explanation {
   transition: height 0.3s ease-out;
 }
 /* Left bar links */
-#left-col ul.uk-nav-default > li > a {
+#left-col ul.uk-nav.uk-nav-default > li.uk-parent > a.aside_options {
 	padding: 8px 20px;
 	border-left: 2px solid transparent;
 	transition: all 0.15s ease-out;
@@ -169,7 +167,7 @@ a#video_explanation {
 	color: #fff;
 	font-size: 18px;
 }
-#left-col ul.uk-nav-default > li > a:hover, #left-col ul.uk-nav-default > li.uk-open > a {
+#left-col ul.uk-nav.uk-nav-default > li.uk-parent > a.aside_options:hover, #left-col ul.uk-nav-default > li.uk-open > a {
 	border-left: 2px solid #fff;
 	padding-left: 30px;
 	color: #fff;
@@ -288,6 +286,10 @@ a#video_explanation {
 }
 
 @media screen and (max-width: 959px){
+	.nav-options {
+		padding: 0 20px;
+	}
+
 	#offcanvas-nav {
 		display: none;
 	}

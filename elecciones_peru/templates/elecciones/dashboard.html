@@ -18,12 +18,7 @@
     <div class="uk-offcanvas-bar candidatos-sidebar uk-offcanvas-bar-animation uk-offcanvas-slide uk-padding-remove">
       <button class="uk-offcanvas-close uk-close uk-icon uk-hidden@m" type="button" data-uk-close></button>
       <aside id="left-col" class="uk-light">
-        <!--------------------------------------------
-          --------------------------------------------
-          MOSTRAR TODO
-          --------------------------------------------
-          --------------------------------------------
-        -->
+        
         <div class="left-nav-wrap" id="filtros_candidatos">
           <ul class="uk-nav uk-padding-small uk-nav-parent-icon" style="padding-bottom: 0;" data-uk-nav>
             <li class="uk-nav-header uk-margin-small-top">
@@ -47,15 +42,16 @@
               <a class="nav_opt" href="#" onclick="activar_organizaciones(this.text)">Partidos Políticos</a>
             </li>
           </ul>
-          <div class="spacer_mob"></div>
-          <ul id="presidenciales" name="tipo_candidato_filter" class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
-            <li class="uk-nav-header uk-padding-small-top">Opciones de búsqueda</li>
-            <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel académico</a>
-              <ul>
-                <form class="filter_options">
+          <!-- <div class="spacer_mob"></div> -->
+          <form method="GET" class="filter_options" id="form_candidatos">
+            <ul id="presidenciales" name="tipo_candidato_filter" class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
+              <input value="presidenciales" disable name="tipo_filter" class="uk-hidden">
+              <li class="uk-nav-header" style="margin-top: 0">Opciones de búsqueda</li>
+              <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel académico</a>
+                <ul>
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1 uk-flex uk-flex-middle uk-margin-small-left" style="width: 95%">
-                      <select class="uk-select opt_select uk-margin-small-right" id="nivel_academico" style="width: 85%" onchange="get_nivel_academico()">
+                      <select class="uk-select opt_select uk-margin-small-right" name="nivel_academico" id="nivel_academico" style="width: 85%" onchange="get_nivel_academico()">
                         <option value="default" disabled selected>Elegir Nivel académico</option>
                         <option value="concluyo_primaria">Concluyó primaria</option>
                         <option value="concluyo_secundaria">Concluyó secundaria</option>
@@ -69,12 +65,10 @@
                       <a onclick="quitar_seleccion_academico()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                     </div>
                   </fieldset>
-                </form>
-              </ul>
-            </li>
-            <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cargos por elecciones pasadas</a>
-              <ul>
-                <form class="filter_options">
+                </ul>
+              </li>
+              <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cargos por elecciones pasadas</a>
+                <ul>
                   <fieldset class="uk-fieldset uk-padding-small uk-flex">
                     <div class="uk-width-1-1">
                       <div class="uk-flex uk-flex-column" style="width: 95%">
@@ -96,23 +90,17 @@
                           </label>
                         </div>
                       </div>
-                      <!-- <button class="uk-button uk-button-link uk-text-capitalize" style="text-decoration: none; margin-bottom: 10px;">
-                        Ver Experiencia Laboral
-                      </button> -->
                     </div>
                     <a onclick="quitar_seleccion_cargos_pervios()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                   </fieldset>
-                </form>
-              </ul>
-            </li>
-            <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Sentencias</a>
-              <ul>
-                <!-- <button  onclick="quitar_seleccion_sentencias()">Decartar</button> -->
-                <form class="filter_options">
+                </ul>
+              </li>
+              <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Sentencias</a>
+                <ul>
                   <fieldset class="uk-fieldset uk-padding-small uk-flex uk-flex-between">
                     <div class="uk-width-1-1">
                       <div style="width: 95%">
-                        <label><input type="radio" id="si-sentencia" name ="ifsentencias" onclick="mostrar_tiposentencias(this)">Tiene sentencias</label>
+                        <label><input type="radio" id="si-sentencia" value="si" name="ifsentencias" onclick="mostrar_tiposentencias(this)">Tiene sentencias</label>
                         <div id="mostrar_sentencias" style="display: none;">
                         <div class="uk-width-1-1@s uk-flex uk-flex-column">
                           <div>
@@ -188,17 +176,15 @@
                         </div>
                       </div>
                       <div>
-                        <label><input type="radio" id="no_tiene" value="no_tiene_val"  name ="ifsentencias" onclick="noTiene_opcion(this)">No tiene sentencias</label>
+                        <label><input type="radio" id="no_tiene" value="no" name="ifsentencias" onclick="noTiene_opcion(this)">No tiene sentencias</label>
                       </div>
                     </div>
                     <a onclick="quitar_seleccion_sentencias()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                   </fieldset>
-                </form>
-              </ul>
-            </li>
-            <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Bienes y rentas</a>
-              <ul>
-                <form class="filter_options">
+                </ul>
+              </li>
+              <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Bienes y rentas</a>
+                <ul>
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-flex uk-flex-between uk-width-1-1">
                       <div class="uk-flex uk-flex-column" style="width: 95%">
@@ -270,7 +256,6 @@
                             De mayor a menor
                           </label>
                         </div>
-
                         <label>
                           Ordenar según el valor de muebles 
                         </label>
@@ -291,12 +276,10 @@
                       <a onclick="quitar_seleccion_b_r()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                     </div>
                   </fieldset>
-                </form>
-              </ul>
-            </li>
-            <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Renuncia a otras organizaciones políticas</a>
-              <ul>
-                <form class="filter_options">
+                </ul>
+              </li>
+              <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Renuncia a otras organizaciones políticas</a>
+                <ul>
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-flex uk-flex-between uk-width-1-1">
                       <div class="uk-flex uk-flex-column" style="width: 95%">
@@ -319,40 +302,10 @@
                       <a onclick="quitar_seleccion_renuncia()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1" style="font-size: 20px;"></a>
                     </div>
                   </fieldset>
-                </form>
-              </ul>
-            </li>
-            <!--Solo para CONGRESO Y PARLAMENTO -->
-            <!-- <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Genero</a>
-              <ul>
-                <form class="filter_options">
-                  <fieldset class="uk-fieldset uk-padding-small">
-                    <div class="uk-width-1-1@s">
-                      <div class="uk-flex uk-flex-column">
-                        <label>
-                          Género
-                        </label>
-                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="tipo_genero" name="opcion_genero" value="tipo_genero">
-                          <label for="tipo_genero">
-                            Fememino
-                          </label>
-                        </div>
-                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="tipo_genero" name="opcion_genero" value="tipo_genero">
-                          <label for="tipo_sentencia">
-                            Masculino
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                  </fieldset>
-                </form>
-              </ul>
-            </li> -->
-            <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Edad</a>
-              <ul>
-                <form class="filter_options">
+                </ul>
+              </li>
+              <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Edad</a>
+                <ul>
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-flex uk-flex-between uk-width-1-1">
                       <div class="uk-flex uk-flex-column" style="width: 95%">
@@ -381,12 +334,10 @@
                       <a onclick="quitar_seleccion_edad()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                     </div>
                   </fieldset>
-                </form>
-              </ul>
-            </li>
-            <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Oriundo</a>
-              <ul>
-                <form class="filter_options">
+                </ul>
+              </li>
+              <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Oriundo</a>
+                <ul>
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-flex uk-flex-between uk-width-1-1">
                       <div class="uk-flex uk-flex-column" style="width: 95%">
@@ -409,7 +360,7 @@
                           <label>
                             Departamento de nacimiento
                           </label>
-                          <select class="uk-select opt_select" id="desplegable_oriundo_" onchange="onchange_desple_oriundo()">
+                          <select class="uk-select opt_select" name="departamento_nacimiento" id="desplegable_oriundo_">
                             <option value="default" disabled selected>Elige el departamento</option>
                             <option value="AMAZONAS">Amazonas</option>
                             <option value="ANCASH">Ancash</option>
@@ -442,16 +393,13 @@
                       <a onclick="quitar_seleccion_oriundo()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                     </div>
                   </fieldset>
-                </form>
-              </ul>
-            </li>
-            <li class="uk-parent" id="postula_presidentes"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cargo al que Postula</a>
-              <ul>
-                <!-- <button  onclick="quitar_seleccion_postula()">Decartar</button> -->
-                <form class="filter_options">
+                </ul>
+              </li>
+              <li class="uk-parent" id="postula_presidentes"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Cargo al que Postula</a>
+                <ul>
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                      <select class="uk-select opt_select uk-margin-small-right" id="cargo_postula" style="width: 95%" onchange="get_cargo_postula()">
+                      <select class="uk-select opt_select uk-margin-small-right" name="cargo_al_que_postula" id="cargo_postula" style="width: 95%" onchange="get_cargo_postula()">
                         <option value="default" disabled selected>Elegir cargo</option>
                         <option value="PRIMER VICEPRESIDENTE DE LA REPÚBLICA">Primer Vicepresidente</option>
                         <option value="SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA">Segundo Vicepresidente</option>
@@ -460,16 +408,13 @@
                       <a onclick="quitar_seleccion_postula()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                     </div>
                   </fieldset>
-                </form>
-              </ul>
-            </li>
-            <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Organización política</a>
-              <ul>
-                <!-- <button  onclick="quitar_seleccion_org_politica()">Decartar</button> -->
-                <form class="filter_options">
+                </ul>
+              </li>
+              <li class="uk-parent"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Organización política</a>
+                <ul>
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                      <select class="uk-select opt_select uk-margin-small-right" id="select_org_politica" style="width: 95%" onchange="get_org_politica()">
+                      <select class="uk-select opt_select uk-margin-small-right" name="org_politica" id="select_org_politica" style="width: 95%" onchange="get_org_politica()">
                         <option value="default" disabled selected>Elegir Organización Política</option>
                         <option value="ACCION POPULAR">Acción Popular</option>
                         <option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -495,16 +440,14 @@
                       <a onclick="quitar_seleccion_org_politica()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                     </div>
                   </fieldset>
-                </form>
-              </ul>
-            </li>
-            <li class="uk-parent" id="distrito_congreso" style="display: none"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Distrito electoral</a>
-              <ul>
-                <form class="filter_options">
+                </ul>
+              </li>
+              <li class="uk-parent" id="distrito_congreso" style="display: none"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Distrito electoral</a>
+                <ul>
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-between">
                       <div class="uk-flex uk-flex-column">
-                        <select class="uk-select opt_select" style="width: 95%" id="dist_electo" onchange="get_distrito_electoral()">
+                        <select class="uk-select opt_select" style="width: 95%" name="dist_electoral" id="dist_electo" onchange="get_distrito_electoral()">
                           <option value="default" disabled selected>Elegir Distrito Electoral</option>
                           <option value="AMAZONAS">Amazonas</option>
                           <option value="ANCASH">Ancash</option>
@@ -538,23 +481,15 @@
                     <a onclick="quitar_seleccion_distrito()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                     </div>
                   </fieldset>
-                </form>
-              </ul>
-            </li>
-          </ul>
-          <div class="uk-margin uk-text-center">
-            <button id="filtrar_cand" class="uk-button bg_red uk-text-bold" onClick="button_filter()">Filtrar</button>
-            <!-- <button class="uk-button uk-text-bold" onClick="SendJSON()">Test</button> -->
-          </div>
-          <!-- <button class="uk-button uk-button-secondary" onClick="imprimir()">Imprimir</button> -->
+                </ul>
+              </li>
+            </ul>
+            <div class="uk-margin uk-text-center">
+              <input type="button" id="filtrar_cand" onclick="filter_candidatos()" class="uk-button bg_red uk-text-bold" value="Filtrar"> 
+            </div>
+          </form>
         </div>
-    
-        <!--------------------------------------------
-          --------------------------------------------
-          PARTIDOS Y DEPARTAMENTOS
-          --------------------------------------------
-          --------------------------------------------
-        -->
+
         <div class="left-nav-wrap" id="filtros_organizaciones" style="display:none">
           <ul class="uk-nav uk-padding-small uk-nav-parent-icon" style="padding-bottom: 0;" data-uk-nav>
             <li class="uk-nav-header uk-margin-small-top">
@@ -578,240 +513,234 @@
               <a class="nav_opt" href="#" onclick="activar_organizaciones(this.text)">Partidos Políticos</a>
             </li>
           </ul>
-          <div class="spacer_mob"></div>
-          <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
-            <li class="uk-nav-header uk-margin-small-top">Opciones de Búsqueda</li>
-            <li class="uk-parent" id="opc_edad" name="orga_filtro"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Edad</a>
-            <ul>
-              <form class="filter_options">
-                <fieldset class="uk-fieldset uk-padding-small">
-                  <div class="uk-width-1-1@s uk-flex uk-flex-between">
-                    <div class="uk-flex uk-flex-column" style="width: 95%">
-                      <label>
-                        Ordenar los partidos según la cantidad candidatos en el rango de edad 
-                      </label>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="org_rango_edad_18_30" data-info="rango_edad_18_30"  name="opc_edad" onclick="set_valor(this)" value="18-29">
-                        <label for="org_rango_edad_18_30">
-                          18 - 29 años
-                        </label>
-                      </div>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="org_rango_edad_30_50" data-info="rango_edad_30_50" name="opc_edad" onclick="set_valor(this)" value="30-59">
-                        <label for="org_rango_edad_30_50">
-                          30 - 59 años
-                        </label>
-                      </div>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="org_rango_edad_50_70" data-info="rango_edad_50_70" name="opc_edad" onclick="set_valor(this)" value="60-85">
-                        <label for="org_rango_edad_50_70">
-                          60 a más años
-                        </label>
-                      </div>
-                      <div id="orden_edad_container" style="margin-top: 10px; margin-left: 15px;">
+          <!-- <div class="spacer_mob"></div> -->
+          <form class="filter_options">
+            <input value="org_politca" disable name="tipo_filter" class="uk-hidden">
+            <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
+              <li class="uk-nav-header" name="tipo_candidato_">Opciones de Búsqueda</li>
+              <li class="uk-parent" id="org_rango_edad"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Edad</a>
+                <ul>
+                  <fieldset class="uk-fieldset uk-padding-small">
+                    <div class="uk-width-1-1@s uk-flex uk-flex-between">
+                      <div class="uk-flex uk-flex-column" style="width: 95%">
                         <label>
-                          Ordenar:
+                          Ordenar los partidos según la cantidad candidatos en el rango de edad 
                         </label>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="org_edad_ord_asc"  name="edad_orden" onclick="set_valor(this)" value="ASC">
-                          <label for="org_edad_ord_asc">
+                          <input type="radio" id="org_rango_edad_18_30" data-info="rango_edad_18_30"  name="org_rango_edad" onclick="set_valor(this)" value="18-29">
+                          <label for="org_rango_edad_18_30">
+                            18 - 29 años
+                          </label>
+                        </div>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          <input type="radio" id="org_rango_edad_30_50" data-info="rango_edad_30_50" name="org_rango_edad" onclick="set_valor(this)" value="30-59">
+                          <label for="org_rango_edad_30_50">
+                            30 - 59 años
+                          </label>
+                        </div>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          <input type="radio" id="org_rango_edad_50_70" data-info="rango_edad_50_70" name="org_rango_edad" onclick="set_valor(this)" value="60-85">
+                          <label for="org_rango_edad_50_70">
+                            60 a más años
+                          </label>
+                        </div>
+                        <div id="orden_edad_container" style="margin-top: 10px; margin-left: 15px;">
+                          <label>
+                            Ordenar:
+                          </label>
+                          <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                            <input type="radio" id="org_edad_ord_asc"  name="org_edad_orden" onclick="set_valor(this)" value="ASC">
+                            <label for="org_edad_ord_asc">
+                              De menor a mayor
+                            </label>
+                          </div>
+                          <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                            <input type="radio" id="org_edad_ord_desc" name="org_edad_orden" onclick="set_valor(this)" value="DESC">
+                            <label for="org_edad_ord_desc">
+                              De mayor a menor
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
+                    </div>
+                  </fieldset>
+                </ul>
+              </li>
+              <li class="uk-parent" id="org_opc_genero"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Sexo</a>
+                <ul>
+                  <fieldset class="uk-fieldset uk-padding-small">
+                    <div class="uk-width-1-1@s uk-flex">
+                      <div class="uk-flex uk-flex-column" style="width: 95%">
+                        <label>
+                        Ordenar los partidos según la cantidad candidatos de sexo femenino o masculino 
+                        </label>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          <input type="radio" id="org_gen_masc" name="org_opc_genero" onclick="set_valor(this)" value="MASCULINO">
+                          <label for="org_gen_masc">
+                            Masculino
+                          </label>
+                        </div>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          <input type="radio" id="org_gen_fem" name="org_opc_genero" onclick="set_valor(this)" value="FEMENINO">
+                          <label for="org_gen_fem">
+                            Fememino
+                          </label>
+                        </div>
+                        <div id="orden_genero_container" style="margin-top: 10px; margin-left: 15px;">
+                          <label>
+                            Ordenar:
+                          </label>
+                          <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                            <input type="radio" id="org_ord_asc"  name="org_genero_orden" onclick="set_valor(this)" value="ASC">
+                            <label for="org_ord_asc">
+                              De menor a mayor
+                            </label>
+                          </div>
+                          <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                            <input type="radio" id="org_ord_desc" name="org_genero_orden" onclick="set_valor(this)" value="DESC">
+                            <label for="org_ord_desc">
+                              De mayor a menor
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
+                    </div>
+                  </fieldset>
+                </ul>
+              </li> 
+              <li class="uk-parent" id="org_opc_educacion"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel académico</a>
+                <ul>
+                  <fieldset class="uk-fieldset uk-padding-small">
+                    <div class="uk-width-1-1@s uk-flex uk-flex-between">
+                      <div class="uk-flex uk-flex-column" style="width: 95%">
+                        <label>
+                          Ordenar los partidos según la cantidad de candidatos 
+                          que tengan determinado nivel de estudio
+                        </label>
+                        <br>
+                        <label>
+                            Estudios primarios
+                            Ordenar:
+                        </label>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          <input type="radio" id="org_est_prim_asc" name="org_opc_educacion" onclick="set_valor(this)" value="ASC">
+                          <label for="org_est_prim_asc">
                             De menor a mayor
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="org_edad_ord_desc" name="edad_orden" onclick="set_valor(this)" value="DESC">
-                          <label for="org_edad_ord_desc">
+                          <input type="radio" id="org_est_prim_desc" name="org_opc_educacion" onclick="set_valor(this)" value="DESC">
+                          <label for="org_est_prim_desc">
                             De mayor a menor
                           </label>
                         </div>
-                      </div>
-                    </div>
-                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
-                  </div>
-                </fieldset>
-              </form>
-            </ul>
-          </li>
-          <li class="uk-parent" id="opc_genero" name="orga_filtro"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Sexo</a>
-            <ul>
-              <form class="filter_options">
-                <fieldset class="uk-fieldset uk-padding-small">
-                  <div class="uk-width-1-1@s uk-flex">
-                    <div class="uk-flex uk-flex-column" style="width: 95%">
-                      <label>
-                      Ordenar los partidos según la cantidad candidatos de sexo femenino o masculino 
-                      </label>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="org_gen_masc" name="opc_genero" onclick="set_valor(this)" value="MASCULINO">
-                        <label for="org_gen_masc">
-                          Masculino
-                        </label>
-                      </div>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="org_gen_fem" name="opc_genero" onclick="set_valor(this)" value="FEMENINO">
-                        <label for="org_gen_fem">
-                          Fememino
-                        </label>
-                      </div>
-                      <div id="orden_genero_container" style="margin-top: 10px; margin-left: 15px;">
-                        <label>
-                          Ordenar:
-                        </label>
-                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="org_ord_asc"  name="genero_orden" onclick="set_valor(this)" value="ASC">
-                          <label for="org_ord_asc">
-                            De menor a mayor
-                          </label>
-                        </div>
-                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="org_ord_desc" name="genero_orden" onclick="set_valor(this)" value="DESC">
-                          <label for="org_ord_desc">
-                            De mayor a menor
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
-                  </div>
-                </fieldset>
-              </form>
-            </ul>
-          </li> 
-          <li class="uk-parent" name="orga_filtro" id="opc_educacion"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Nivel académico</a>
-            
-            <ul>
-              <form class="filter_options">
-                <fieldset class="uk-fieldset uk-padding-small">
-                  <div class="uk-width-1-1@s uk-flex uk-flex-between">
-                    <div class="uk-flex uk-flex-column" style="width: 95%">
-                      <label>
-                        Ordenar los partidos según la cantidad de candidatos 
-                        que tengan determinado nivel de estudio
-                      </label>
-                      <br>
-                      <label>
-                          Estudios primarios
-                          Ordenar:
-                      </label>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="org_est_prim_asc" name="opc_educacion" onclick="set_valor(this)" value="ASC">
-                        <label for="org_est_prim_asc">
-                          De menor a mayor
-                        </label>
-                      </div>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="org_est_prim_desc" name="opc_educacion" onclick="set_valor(this)" value="DESC">
-                        <label for="org_est_prim_desc">
-                          De mayor a menor
-                        </label>
-                      </div>
-                      <label style="margin-top: 10px">
-                        Estudios secundarios
-                        Ordenar:
-                      </label>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="org_est_sec_asc" name="opc_educacion" onclick="set_valor(this)" value="ASC">
-                        <label for="org_est_sec_asc">
-                          De menor a mayor
-                        </label>
-                      </div>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="org_est_sec_desc" name="opc_educacion"  onclick="set_valor(this)" value="DESC">
-                        <label for="org_est_sec_desc">
-                          De mayor a menor
-                        </label>
-                      </div>
-                      <label style="margin-top: 10px">
-                        Estudios técnicos 
-                        Ordenar:
-                      </label>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="org_est_tec_asc" name="opc_educacion" onclick="set_valor(this)" value="ASC">
-                        <label for="org_est_tec_asc">
-                          De menor a mayor
-                        </label>
-                      </div>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="org_est_tec_desc" name="opc_educacion" onclick="set_valor(this)" value="DESC">
-                        <label for="org_est_tec_desc">
-                          De mayor a menor
-                        </label>
-                      </div>
-                      <label style="margin-top: 10px">
-                        Estudios no universitarios
-                        Ordenar:
-                      </label>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="org_est_no_univ_asc" name="opc_educacion"  onclick="set_valor(this)" value="ASC">
-                        <label for="org_est_no_univ_asc">
-                          De menor a mayor
-                        </label>
-                      </div>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        
-                        <input type="radio" id="org_est_no_univ_desc" name="opc_educacion" onclick="set_valor(this)" value="DESC">
-                        <label for="org_est_no_univ_desc">
-                          De mayor a menor
-                        </label>
-                      </div>
-                      <label style="margin-top: 10px">
-                        Estudios universitarios 
-                        Ordenar:
-                      </label>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="org_est_univ_asc" name="opc_educacion" onclick="set_valor(this)" value="ASC">
-                        <label for="org_est_univ_asc">
-                          De menor a mayor
-                        </label>
-                      </div>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="org_est_univ_desc" name="opc_educacion" onclick="set_valor(this)" value="DESC">
-                        <label for="org_est_univ_desc">
-                          De mayor a menor
-                        </label>
-                      </div>
-                      <label style="margin-top: 10px">
-                        Estudios de postgrado 
-                        Ordenar:
-                      </label>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="org_post_asc" name="opc_educacion" onclick="set_valor(this)" value="ASC">
-                        <label for="org_post_asc">
-                          De menor a mayor
-                        </label>
-                      </div>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="org_post_desc" name="opc_educacion" onclick="set_valor(this)" value="DESC">
-                        <label for="org_post_desc">
-                          De mayor a menor
-                        </label>
-                      </div>
                         <label style="margin-top: 10px">
-                        Magister o doctorado
-                        Ordenar:
-                      </label>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="org_doc_asc" name="opc_educacion" onclick="set_valor(this)" value="ASC">
-                        <label for="org_doc_asc">
-                          De menor a mayor
+                          Estudios secundarios
+                          Ordenar:
                         </label>
-                      </div>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="org_doc_desc" name="opc_educacion" onclick="set_valor(this)" value="DESC">
-                        <label for="org_doc_desc">
-                          De mayor a menor
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          <input type="radio" id="org_est_sec_asc" name="org_opc_educacion" onclick="set_valor(this)" value="ASC">
+                          <label for="org_est_sec_asc">
+                            De menor a mayor
+                          </label>
+                        </div>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          <input type="radio" id="org_est_sec_desc" name="org_opc_educacion"  onclick="set_valor(this)" value="DESC">
+                          <label for="org_est_sec_desc">
+                            De mayor a menor
+                          </label>
+                        </div>
+                        <label style="margin-top: 10px">
+                          Estudios técnicos 
+                          Ordenar:
                         </label>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          <input type="radio" id="org_est_tec_asc" name="org_opc_educacion" onclick="set_valor(this)" value="ASC">
+                          <label for="org_est_tec_asc">
+                            De menor a mayor
+                          </label>
+                        </div>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          <input type="radio" id="org_est_tec_desc" name="org_opc_educacion" onclick="set_valor(this)" value="DESC">
+                          <label for="org_est_tec_desc">
+                            De mayor a menor
+                          </label>
+                        </div>
+                        <label style="margin-top: 10px">
+                          Estudios no universitarios
+                          Ordenar:
+                        </label>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          <input type="radio" id="org_est_no_univ_asc" name="org_opc_educacion"  onclick="set_valor(this)" value="ASC">
+                          <label for="org_est_no_univ_asc">
+                            De menor a mayor
+                          </label>
+                        </div>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          
+                          <input type="radio" id="org_est_no_univ_desc" name="org_opc_educacion" onclick="set_valor(this)" value="DESC">
+                          <label for="org_est_no_univ_desc">
+                            De mayor a menor
+                          </label>
+                        </div>
+                        <label style="margin-top: 10px">
+                          Estudios universitarios 
+                          Ordenar:
+                        </label>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          <input type="radio" id="org_est_univ_asc" name="org_opc_educacion" onclick="set_valor(this)" value="ASC">
+                          <label for="org_est_univ_asc">
+                            De menor a mayor
+                          </label>
+                        </div>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          <input type="radio" id="org_est_univ_desc" name="org_opc_educacion" onclick="set_valor(this)" value="DESC">
+                          <label for="org_est_univ_desc">
+                            De mayor a menor
+                          </label>
+                        </div>
+                        <label style="margin-top: 10px">
+                          Estudios de postgrado 
+                          Ordenar:
+                        </label>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          <input type="radio" id="org_post_asc" name="org_opc_educacion" onclick="set_valor(this)" value="ASC">
+                          <label for="org_post_asc">
+                            De menor a mayor
+                          </label>
+                        </div>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          <input type="radio" id="org_post_desc" name="org_opc_educacion" onclick="set_valor(this)" value="DESC">
+                          <label for="org_post_desc">
+                            De mayor a menor
+                          </label>
+                        </div>
+                          <label style="margin-top: 10px">
+                          Magister o doctorado
+                          Ordenar:
+                        </label>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          <input type="radio" id="org_doc_asc" name="org_opc_educacion" onclick="set_valor(this)" value="ASC">
+                          <label for="org_doc_asc">
+                            De menor a mayor
+                          </label>
+                        </div>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          <input type="radio" id="org_doc_desc" name="org_opc_educacion" onclick="set_valor(this)" value="DESC">
+                          <label for="org_doc_desc">
+                            De mayor a menor
+                          </label>
+                        </div>
                       </div>
+                      <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                     </div>
-                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
-                  </div>
-                </fieldset>
-              </form>
-            </ul>
-          </li>
-            <li class="uk-parent" name="orga_filtro" id="opc_sentencia"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Sentencias</a>
-            <ul>
-              <form class="filter_options">
+                  </fieldset>
+                </ul>
+              </li>
+              <li class="uk-parent" id="opc_sentencia"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Sentencias</a>
+              <ul>
                 <fieldset class="uk-fieldset uk-padding-small">
                   <div class="uk-width-1-1@s uk-flex">
                     <div class="uk-flex uk-flex-column" style="width: 95%;">
@@ -873,266 +802,258 @@
                     <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                   </div>
                 </fieldset>
-              </form>
-            </ul>
-          </li>
-          <li class="uk-parent" name="orga_filtro" id="opc_oriundo" ><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Oriundo</a>
-            <ul>
-              <form class="filter_options">
-                <fieldset class="uk-fieldset uk-padding-small">
-                  <div class="uk-width-1-1@s uk-flex uk-flex-between">
-                    <div class="uk-flex uk-flex-column" style="width: 95%">
-                      <label>
-                        Ordenar los partidos según la cantidad de candidatos
-                        por partido nacidos en el lugar
-                      </label>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="org_oriundo_asc" name="org_oriundo" value="ASC" onclick="set_valor(this)">
-                        <label for="org_oriundo_asc">
-                          De menor a mayor
-                        </label>
-                      </div>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="org_oriundo_desc" name="org_oriundo" value="DESC"  onclick="set_valor(this)">
-                        <label for="org_oriundo_desc">
-                          De mayor a menor
-                        </label>
-                      </div>
-                      <div id="org_desplegable_oriundo" class="uk-flex uk-flex-column uk-padding-small uk-padding-remove-top uk-margin-small-top">
+              </ul>
+              </li>
+              <li class="uk-parent" id="opc_oriundo" ><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Oriundo</a>
+                <ul>
+                  <fieldset class="uk-fieldset uk-padding-small">
+                    <div class="uk-width-1-1@s uk-flex uk-flex-between">
+                      <div class="uk-flex uk-flex-column" style="width: 95%">
                         <label>
-                          Departamento de nacimiento
+                          Ordenar los partidos según la cantidad de candidatos
+                          por partido nacidos en el lugar
                         </label>
-                        <select class="uk-select opt_select" id="org_desplegable_oriundo_"  onchange="set_valor(this)">
-                          <option value="default" disabled selected>Elige el departamento</option>
-                          <option value="AMAZONAS">Amazonas</option>
-                          <option value="ANCASH">Ancash</option>
-                          <option value="APURIMAC">Apurimac</option>
-                          <option value="AREQUIPA">Arequipa</option>
-                          <option value="AYACUCHO">Ayacucho</option>
-                          <option value="CAJAMARCA">Cajamarca</option>
-                          <option value="CALLAO">Callao</option>
-                          <option value="CUSCO">Cusco</option>
-                          <option value="HUANCAVELICA">Huancavelica</option>
-                          <option value="HUANUCO">Huanuco</option>
-                          <option value="ICA">Ica</option>
-                          <option value="JUNIN">Junin</option>
-                          <option value="LA LIBERTAD">La Libertad</option>
-                          <option value="LAMBAYEQUE">Lambayeque</option>
-                          <option value="LIMA">Lima</option>
-                          <option value="LORETO">Loreto</option>
-                          <option value="MADRE DE DIOS">Madre de Dios</option>
-                          <option value="MOQUEGUA">Moquegua</option>
-                          <option value="PASCO">Pasco</option>
-                          <option value="PIURA">Piura</option>
-                          <option value="PUNO">Puno</option>
-                          <option value="SAN MARTIN">San Martin</option>
-                          <option value="TACNA">Tacna</option>
-                          <option value="TUMBES">Tumbes</option>
-                          <option value="UCAYALI">Ucayali</option> 
-                        </select>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          <input type="radio" id="org_oriundo_asc" name="org_oriundo" value="ASC" onclick="set_valor(this)">
+                          <label for="org_oriundo_asc">
+                            De menor a mayor
+                          </label>
+                        </div>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          <input type="radio" id="org_oriundo_desc" name="org_oriundo" value="DESC"  onclick="set_valor(this)">
+                          <label for="org_oriundo_desc">
+                            De mayor a menor
+                          </label>
+                        </div>
+                        <div id="org_desplegable_oriundo" class="uk-flex uk-flex-column uk-padding-small uk-padding-remove-top uk-margin-small-top">
+                          <label>
+                            Departamento de nacimiento
+                          </label>
+                          <select class="uk-select opt_select" id="org_desplegable_oriundo_" name="org_departamento_oriundo"  onchange="set_valor(this)">
+                            <option value="default" disabled selected>Elige el departamento</option>
+                            <option value="AMAZONAS">Amazonas</option>
+                            <option value="ANCASH">Ancash</option>
+                            <option value="APURIMAC">Apurimac</option>
+                            <option value="AREQUIPA">Arequipa</option>
+                            <option value="AYACUCHO">Ayacucho</option>
+                            <option value="CAJAMARCA">Cajamarca</option>
+                            <option value="CALLAO">Callao</option>
+                            <option value="CUSCO">Cusco</option>
+                            <option value="HUANCAVELICA">Huancavelica</option>
+                            <option value="HUANUCO">Huanuco</option>
+                            <option value="ICA">Ica</option>
+                            <option value="JUNIN">Junin</option>
+                            <option value="LA LIBERTAD">La Libertad</option>
+                            <option value="LAMBAYEQUE">Lambayeque</option>
+                            <option value="LIMA">Lima</option>
+                            <option value="LORETO">Loreto</option>
+                            <option value="MADRE DE DIOS">Madre de Dios</option>
+                            <option value="MOQUEGUA">Moquegua</option>
+                            <option value="PASCO">Pasco</option>
+                            <option value="PIURA">Piura</option>
+                            <option value="PUNO">Puno</option>
+                            <option value="SAN MARTIN">San Martin</option>
+                            <option value="TACNA">Tacna</option>
+                            <option value="TUMBES">Tumbes</option>
+                            <option value="UCAYALI">Ucayali</option> 
+                          </select>
+                        </div>
                       </div>
+                      <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                     </div>
-                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
-                  </div>
-                </fieldset>
-              </form>
-            </ul>
-          </li>
-          <li class="uk-parent" name="orga_filtro" id="dist_electo" ><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>
-            Candidatos Congresales
-            que postulan por un distrito electoral diferente al de su nacimiento
-          </a>
-            <ul>
-              <form class="filter_options">
-                <fieldset class="uk-fieldset uk-padding-small">
-                  <div class="uk-width-1-1@s uk-flex uk-flex-between">
-                    <div class="uk-flex uk-flex-column" style="width: 95%">
-                      <label>
-                        Ordenar los partidos en orden
-                      </label>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        
-                        <input type="radio" id="postulan_dif_distrito_asc" name="elecvsnacimiento_name" onclick="set_valor(this)" value="ASC">
-                        <label for="postulan_dif_distrito_asc">
-                          De menor a mayor
+                  </fieldset>
+                </ul>
+              </li>
+              <li class="uk-parent" id="dist_electo" ><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>
+                Candidatos Congresales
+                que postulan por un distrito electoral diferente al de su nacimiento
+              </a>
+                <ul>
+                  <fieldset class="uk-fieldset uk-padding-small">
+                    <div class="uk-width-1-1@s uk-flex uk-flex-between">
+                      <div class="uk-flex uk-flex-column" style="width: 95%">
+                        <label>
+                          Ordenar los partidos en orden
                         </label>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          
+                          <input type="radio" id="postulan_dif_distrito_asc" name="org_distrito_electoral" onclick="set_valor(this)" value="ASC">
+                          <label for="postulan_dif_distrito_asc">
+                            De menor a mayor
+                          </label>
+                        </div>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          <input type="radio" id="postulan_dif_distrito_desc" name="org_distrito_electoral" onclick="set_valor(this)" value="DESC">
+                          <label for="postulan_dif_distrito_desc">
+                            De mayor a menor
+                          </label>
+                        </div>
                       </div>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="postulan_dif_distrito_desc" name="elecvsnacimiento_name" onclick="set_valor(this)" value="DESC">
-                        <label for="postulan_dif_distrito_desc">
-                          De mayor a menor
-                        </label>
-                      </div>
+                      <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                     </div>
-                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
-                  </div>
-                </fieldset>
-              </form>
-            </ul>
-          </li>
-          <li class="uk-nav-header uk-margin-remove">Financiamiento 2017, 2018, 2019</li>
-          <li class="uk-parent" name="orga_filtro" id="privado"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Finan. Privado</a>
-            <ul>
-              <form class="filter_options">
-                <fieldset class="uk-fieldset uk-padding-small">
-                  <div class="uk-width-1-1@s uk-flex uk-flex-between">
-                    <div class="uk-flex uk-flex-column" style="width: 95%">
-                      <label class="uk-text-muted uk-text-bold">
-                        2019
-                      </label>
-                      <div class="uk-width-1-1@s" id="2019_est_present" >
-                        <div class="uk-margin-small-bottom">
-                          <label>
-                            Estado de presentación:
-                          </label>
-                          <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                            <input type="radio" id="2019_est_si" name="2019_est_present" onclick="set_valor(this)" value="PRESENTÓ">
-                            <label for="2019_est_si">
-                              Presentaron
-                            </label>
-                          </div>
-                          <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                            <input type="radio" id="2019_est_no" name="2019_est_present" onclick="set_valor(this)" value="NO PRESENTÓ">
-                            <label for="2019_est_no">
-                              No presentaron
-                            </label>
-                          </div>
-                        </div>
-                        <div class="uk-margin-small-bottom">
-                          <label style="margin-top: 10px">
-                            Ordenar los partidos según el monto de ingresos declarados
-                          </label>
-                          <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                            <input type="radio" id="2019_ingre_dec_asc" name="2019_ingre_dec" value="ASC">
-                            <label for="2019_ingre_dec_asc">
-                              De menor a mayor
-                            </label>
-                          </div>
-                          <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                            <input type="radio" id="2019_ingre_dec_desc" name="2019_ingre_dec"  value="DESC">
-                            <label for="2019_ingre_dec_desc">
-                              De mayor a menor
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                      <label class="uk-text-muted uk-text-bold">
-                        2018                    
-                      </label>
-                      <div class="uk-width-1-1@s" id="2018_est_present">
-                        <div class="uk-margin-small-bottom">
-                          <label>
-                            Estado de presentación:
-                          </label>
-                          <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                            <input type="radio" id="2018_est_si"  name="2018_est_present" onclick="set_valor(this)" value="PRESENTÓ">
-                            <label for="2018_est_si">
-                              Presentaron
-                            </label>
-                          </div>
-                          <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                            <input type="radio" id="2018_est_no" name="2018_est_present" onclick="set_valor(this)" value="NO PRESENTÓ">
-                            <label for="2018_est_no">
-                              No presentaron
-                            </label>
-                          </div>
-                        </div>
-                        <div class="uk-margin-small-bottom">
-                          <label>
-                            Ordenar los partidos según el monto de ingresos declarados
-                          </label>
-                          <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                            <input type="radio" id="2018_ingre_dec_asc" name="2018_ingre_dec"  value="ASC">
-                            <label for="2018_ingre_dec_asc">
-                              De menor a mayor
-                            </label>
-                          </div>
-                          <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                            <input type="radio" id="2018_ingre_dec_desc" name="2018_ingre_dec" value="DESC">
-                            <label for="2018_ingre_dec_desc">
-                              De mayor a menor
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                      <label class="uk-text-muted uk-text-bold">
-                        2017                      
-                      </label>
-                      <div class="uk-width-1-1@s" id="2017_est_present">
-                        <div class="uk-margin-small-bottom">
-                          <label>
-                            Estado de presentación:
-                          </label>
-                          <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                            <input type="radio" id="2017_est_si" name="2017_est_present" onclick="set_valor(this)" value="PRESENTÓ">
-                            <label for="2017_est_si">
-                              Presentaron
-                            </label>
-                          </div>
-                          <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                            <input type="radio" id="2017_est_no" name="2017_est_present" onclick="set_valor(this)" value="NO PRESENTÓ">
-                            <label for="2017_est_no">
-                              No presentaron
-                            </label>
-                          </div>
-                        </div>
-                        <div>
-                          <label>
-                            Ordenar los partidos según el monto de ingresos declarados
-                          </label>
-                          <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                            <input type="radio" id="2017_ingre_dec_asc" name="2017_ingre_dec"  value="ASC">
-                            <label for="2017_ingre_dec_asc">
-                              De menor a mayor
-                            </label>
-                          </div>
-                          <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                            <input type="radio" id="2017_ingre_dec_desc" name="2017_ingre_dec" value="DESC">
-                            <label for="2017_ingre_dec_desc">
-                              De mayor a menor
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
-                  </div>
-                </fieldset>
-              </form>
-            </ul>
-          </li>
-          <li class="uk-parent" name="orga_filtro" id="publico_div"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Finan. Público</a>
-            <ul>
-              <form class="filter_options">
-                <fieldset class="uk-fieldset uk-padding-small">
-                  <div class="uk-width-1-1@s uk-flex uk-flex-between">
-                    <div class="uk-flex uk-flex-column" style="width: 95%">
-                      <label>
-                        Ordenar los partidos según el monto quinquenal asignado
-                      </label>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="monto_quinque_asc" name="monto_quinque" onclick="set_valor(this)" value="ASC">
-                        <label for="monto_quinque_asc">
-                          De menor a mayor
+                  </fieldset>
+                </ul>
+              </li>
+              <li class="uk-nav-header uk-margin-remove">Financiamiento 2017, 2018, 2019</li>
+              <li class="uk-parent" id="privado"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Finan. Privado</a>
+                <ul>
+                  <fieldset class="uk-fieldset uk-padding-small">
+                    <div class="uk-width-1-1@s uk-flex uk-flex-between">
+                      <div class="uk-flex uk-flex-column" style="width: 95%">
+                        <label class="uk-text-muted uk-text-bold">
+                          2019
                         </label>
-                      </div>
-                      <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                        <input type="radio" id="monto_quinque_desc" name="monto_quinque" onclick="set_valor(this)" value="DESC">
-                        <label for="monto_quinque_desc">
-                          De mayor a menor
+                        <div class="uk-width-1-1@s" id="2019_est_present" >
+                          <div class="uk-margin-small-bottom">
+                            <label>
+                              Estado de presentación:
+                            </label>
+                            <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                              <input type="radio" id="2019_est_si" name="2019_est_present" onclick="set_valor(this)" value="PRESENTÓ">
+                              <label for="2019_est_si">
+                                Presentaron
+                              </label>
+                            </div>
+                            <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                              <input type="radio" id="2019_est_no" name="2019_est_present" onclick="set_valor(this)" value="NO PRESENTÓ">
+                              <label for="2019_est_no">
+                                No presentaron
+                              </label>
+                            </div>
+                          </div>
+                          <div class="uk-margin-small-bottom">
+                            <label style="margin-top: 10px">
+                              Ordenar los partidos según el monto de ingresos declarados
+                            </label>
+                            <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                              <input type="radio" id="2019_ingre_dec_asc" name="2019_ingre_dec" value="ASC">
+                              <label for="2019_ingre_dec_asc">
+                                De menor a mayor
+                              </label>
+                            </div>
+                            <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                              <input type="radio" id="2019_ingre_dec_desc" name="2019_ingre_dec"  value="DESC">
+                              <label for="2019_ingre_dec_desc">
+                                De mayor a menor
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <label class="uk-text-muted uk-text-bold">
+                          2018                    
                         </label>
-                      </div>   
+                        <div class="uk-width-1-1@s" id="2018_est_present">
+                          <div class="uk-margin-small-bottom">
+                            <label>
+                              Estado de presentación:
+                            </label>
+                            <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                              <input type="radio" id="2018_est_si" name="2018_est_present" onclick="set_valor(this)" value="PRESENTÓ">
+                              <label for="2018_est_si">
+                                Presentaron
+                              </label>
+                            </div>
+                            <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                              <input type="radio" id="2018_est_no" name="2018_est_present" onclick="set_valor(this)" value="NO PRESENTÓ">
+                              <label for="2018_est_no">
+                                No presentaron
+                              </label>
+                            </div>
+                          </div>
+                          <div class="uk-margin-small-bottom">
+                            <label>
+                              Ordenar los partidos según el monto de ingresos declarados
+                            </label>
+                            <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                              <input type="radio" id="2018_ingre_dec_asc" name="2018_ingre_dec"  value="ASC">
+                              <label for="2018_ingre_dec_asc">
+                                De menor a mayor
+                              </label>
+                            </div>
+                            <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                              <input type="radio" id="2018_ingre_dec_desc" name="2018_ingre_dec" value="DESC">
+                              <label for="2018_ingre_dec_desc">
+                                De mayor a menor
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <label class="uk-text-muted uk-text-bold">
+                          2017                      
+                        </label>
+                        <div class="uk-width-1-1@s" id="2017_est_present">
+                          <div class="uk-margin-small-bottom">
+                            <label>
+                              Estado de presentación:
+                            </label>
+                            <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                              <input type="radio" id="2017_est_si" name="2017_est_present" onclick="set_valor(this)" value="PRESENTÓ">
+                              <label for="2017_est_si">
+                                Presentaron
+                              </label>
+                            </div>
+                            <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                              <input type="radio" id="2017_est_no" name="2017_est_present" onclick="set_valor(this)" value="NO PRESENTÓ">
+                              <label for="2017_est_no">
+                                No presentaron
+                              </label>
+                            </div>
+                          </div>
+                          <div>
+                            <label>
+                              Ordenar los partidos según el monto de ingresos declarados
+                            </label>
+                            <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                              <input type="radio" id="2017_ingre_dec_asc" name="2017_ingre_dec"  value="ASC">
+                              <label for="2017_ingre_dec_asc">
+                                De menor a mayor
+                              </label>
+                            </div>
+                            <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                              <input type="radio" id="2017_ingre_dec_desc" name="2017_ingre_dec" value="DESC">
+                              <label for="2017_ingre_dec_desc">
+                                De mayor a menor
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                     </div>
-                    <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
-                  </div>
-                </fieldset>
-              </form>
+                  </fieldset>
+                </ul>
+              </li>
+              <li class="uk-parent" id="publico_div"><a class="aside_options" href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Finan. Público</a>
+                <ul>
+                  <fieldset class="uk-fieldset uk-padding-small">
+                    <div class="uk-width-1-1@s uk-flex uk-flex-between">
+                      <div class="uk-flex uk-flex-column" style="width: 95%">
+                        <label>
+                          Ordenar los partidos según el monto quinquenal asignado
+                        </label>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          <input type="radio" id="monto_quinque_asc" name="monto_quinque" onclick="set_valor(this)" value="ASC">
+                          <label for="monto_quinque_asc">
+                            De menor a mayor
+                          </label>
+                        </div>
+                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                          <input type="radio" id="monto_quinque_desc" name="monto_quinque" onclick="set_valor(this)" value="DESC">
+                          <label for="monto_quinque_desc">
+                            De mayor a menor
+                          </label>
+                        </div>   
+                      </div>
+                      <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
+                    </div>
+                  </fieldset>
+                </ul>
+              </li>
             </ul>
-          </li>
-        </ul>
-        <div class="uk-margin uk-text-center">
-          <button id="filtrar_org" class="uk-button bg_red uk-text-bold" onclick="button_filter_org()">Filtrar</button>
-        </div>
+            <div class="uk-margin uk-text-center">
+              <input id="filtrar_org" type="submit" class="uk-button bg_red uk-text-bold" value="Filtrar">
+            </div>
+          </form>
         </div>
       </aside>
     </div>
@@ -1195,20 +1116,17 @@
 
     {% if organizaciones_return %}
       <!-- SELECCTION -->
-      <div class="uk-container uk-container-expand seleccion_container" style="padding-top: 3rem;">
+      <!-- <div class="uk-container uk-container-expand seleccion_container" style="padding-top: 3rem;">
         <h5 class="uk-margin-small-bottom">
           Opciones de búsqueda que seleccionaste:
         </h5>
         <nav class="uk-navbar uk-light" data-uk-navbar="mode:click; duration: 250" >
           <ul class="uk-navbar-nav" id="filtros_seleccionados"> 
-            <!--<li>
-              <span class="uk-badge"> <NOMBRE DE FILTRO>  </span>
-            </li>-->
           </ul>
         </nav>
-      </div>
+      </div> -->
       <!--/SELECCTION-->
-      <div class="uk-container uk-container-expand uk-margin-top uk-margin-bottom uk-flex uk-flex-center uk-flex-column uk-flex-wrap">
+      <div class="uk-container uk-container-expand uk-margin-top uk-margin-bottom uk-flex uk-flex-center uk-flex-column uk-flex-wrap" style="padding-top: 3rem;">
         {% for organizacion in organizaciones_return %}
         <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-flex-middle uk-width-1-2@xl uk-width-1-1@m uk-width-3-4@s uk-flex-center uk-margin-bottom uk-margin-auto" uk-grid>
           <div class="uk-text-center uk-padding-remove">

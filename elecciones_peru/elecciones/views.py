@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse, JsonResponse
-from .models import *
+from django.db.models import Q
 from itertools import chain
+from .models import *
 
 def function_filtros_ob(self, query_normal, normnob1, SELECT_candidato, WHERE_candidato):
   query_total = ""
@@ -235,15 +236,20 @@ def function_filtro_normal(self, stack_, SELECT_candidato,WHERE_candidato ):
       self[18] = ""
       return retorno
 
-def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_sentencia, orden_cant_sentencia_oblig, mat_demanda, no_tiene_val, orden_cant_ingreso,orden_cant_inmueble,orden_valor_inmueble,orden_cant_mueble, orden_valor_mueble,orden_renuncias, rango_edad_val,nac_per_si, nac_per_no, departamento_nacimiento,cargo_postula, org_politica, dist_electoral, tipo_candidato_):
+def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_sentencia, orden_cant_sentencia_oblig, mat_demanda, no, orden_cant_ingreso,orden_cant_inmueble,orden_valor_inmueble,orden_cant_mueble, orden_valor_mueble,orden_renuncias, rango_edad_val,nac_per_si, nac_per_no, departamento_nacimiento,cargo_postula, org_politica, dist_electoral, tipo_candidato_):
   lista_valores = [nivel_academico, cargos_previos_order, orden_cant_sentencia,
-    orden_cant_sentencia_oblig, mat_demanda, no_tiene_val, orden_cant_ingreso,orden_cant_inmueble,orden_valor_inmueble,
+    orden_cant_sentencia_oblig, mat_demanda, no, orden_cant_ingreso,orden_cant_inmueble,orden_valor_inmueble,
     orden_cant_mueble, orden_valor_mueble,orden_renuncias, rango_edad_val,nac_per_si, nac_per_no, departamento_nacimiento,
     cargo_postula, org_politica, dist_electoral, tipo_candidato_
   ]
 
   if lista_valores[4] != "unk":
     index = lista_valores[4].find("(")
+    aux = lista_valores[4][index:len(lista_valores[4]) :+1]
+    lista_valores[4] = "FAMILIA / ALIMENTARIA"+aux
+
+  if mat_demanda != "":
+    index = mat_demanda.find("(")
     aux = lista_valores[4][index:len(lista_valores[4]) :+1]
     lista_valores[4] = "FAMILIA / ALIMENTARIA"+aux
   
@@ -485,7 +491,7 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
     #query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM datos_personales  WHERE departamento_nacimiento = '"+ info_extra+"' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
     query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM datos_personales  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE departamento_nacimiento = '"+ info_extra+"' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) "+orden
   
-  elif filtro_id =="elecvsnacimiento_name":
+  elif filtro_id =="org_distrito_electoral":
     #query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica  FROM datos_personales  WHERE departamento_nacimiento <> distrito_elec AND  distrito_elec <> 'PERUANOS RESIDENTES EN EL EXTRANJERO' AND distrito_elec <> 'LIMA PROVINCIAS' GROUP BY (organizacion_politica,id) ORDER BY (conteo) "+orden
     query_total = " SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM datos_personales  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE departamento_nacimiento <> distrito_elec AND  distrito_elec <> 'PERUANOS RESIDENTES EN EL EXTRANJERO' AND distrito_elec <> 'LIMA PROVINCIAS' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) "+orden
 
@@ -647,9 +653,58 @@ def analisisGraficos(request):
   return render(request,'elecciones/graphics.html',{})
 
 def test(request):
-  print('////////////////////////////')
-  print(request.method)
-  print('////////////////////////////')
+  candidato = DatosPersonales.objects.filter(Q(dni_candidato = request.GET.get("dni")))
+  
+  print(candidato)
+  # print(candidato.candidato)
+  return render(request,'elecciones/test.html', 
+    { 'candidato' : candidato }
+  ) 
+
+def test_filtros_candidatos(request):
+  tipo_filter = request.GET.get("tipo_filter")
+  # Candidatos
+  niv_academico = request.GET.get("nivel_academico")
+  anhios_cargos_elecciones_pasadas = request.GET.get("anhio_servicio")
+  tiene_sentencias = request.GET.get("ifsentencias") # si o no
+  tipo_sentencia = request.GET.get("tipo_sentencia")
+  cant_senten_penal = request.GET.get("cant_senten_penal")
+  cant_senten_por_oblig = request.GET.get("cant_senten_oblig")
+  mat_demanda = request.GET.get("opc_mat_demanda")
+  bienes_rentas = request.GET.get("opc_mat_demanda")
+  orden_cant_ingresos = request.GET.get("cant_ingreso")
+  orden_cant_inmuebles = request.GET.get("cant_inmuebles")
+  orden_valor_inmuebles = request.GET.get("valor_inmuebles")
+  orden_cant_muebles = request.GET.get("cant_muebles")
+  orden_valor_muebles = request.GET.get("valor_muebles")
+  orden_cantidad_renuncia_a_otros_partidos = request.GET.get("cantidad_renuncia")
+  rango_edad = request.GET.get("rango_edad")
+  nacio_en_peru = request.GET.get("oriundo_input")
+  departamento_nacimiento = request.GET.get("departamento_nacimiento")
+  cargo_al_que_postula = request.GET.get("cargo_al_que_postula")
+  org_politica_al_que_postula = request.GET.get("org_politica")
+  dist_electoral = request.GET.get("dist_electoral")
+  # Org Politica
+  org_rango_edad = request.GET.get("org_rango_edad")
+  org_edad_orden = request.GET.get("org_edad_orden")
+  org_opc_genero = request.GET.get("org_opc_genero")
+  org_genero_orden = request.GET.get("org_genero_orden")
+  org_opc_educacion = request.GET.get("org_opc_educacion")
+  org_cant_sen_penal_obliga = request.GET.get("cant_sen_penal_obliga")
+  org_cant_sen_penal = request.GET.get("cant_sen_penal")
+  org_cant_sen_civil = request.GET.get("cant_sen_civil")
+  org_oriundo = request.GET.get("org_oriundo")
+  org_departamento_oriundo = request.GET.get("org_departamento_oriundo")
+  org_distrito_electoral = request.GET.get("org_distrito_electoral")
+  org_2019_finan_priv_presento = request.GET.get("2019_est_present")
+  org_2019_finan_priv_orden_ingreso = request.GET.get("2019_ingre_dec")
+  org_2019_finan_priv_presento = request.GET.get("2018_est_present")
+  org_2018_finan_priv_orden_ingreso = request.GET.get("2018_ingre_dec")
+  org_2017_finan_priv_presento = request.GET.get("2017_est_present")
+  org_2017_finan_priv_orden_ingreso = request.GET.get("2017_ingre_dec")
+  org_finan_pub_orden_monto_quinquenal = request.GET.get("monto_quinque")
+
+
 
 def subir_data(request):
   # Leer el archivo 'datos.csv' con reader() y
@@ -1135,11 +1190,9 @@ def subir_data(request):
   print("Tiempo Total : ", final)
   return HttpResponse("")
 
-
 def eliminar(lista):
   for objeto in lista:
     objeto.delete()
-
 
 def eliminar_data(request):
   from .models import TablaEdad
@@ -1163,7 +1216,6 @@ def eliminar_data(request):
   eliminar(SentenciaObligacion.objects.all())
   eliminar(SentenciaPenal.objects.all())
   return HttpResponse('')
-
 
 def corregir_data(request):
   for o in BienInmueble.objects.all():
@@ -1196,3 +1248,4 @@ def corregir_data(request):
       pass
 
   return HttpResponse('bien')
+
