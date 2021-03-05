@@ -560,7 +560,8 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   print("dni_hoja_de_vida: ",dni_hoja_de_vida)     
   nombre_ = DatosPersonales.objects.raw("SELECT DP.id, DP.candidato, OP.url FROM datos_personales as DP INNER JOIN organizaciones_politicas as OP on DP.organizacion_politica = OP.organizacion_politica AND dni_candidato = '" +dni_hoja_de_vida+  "' LIMIT 1")
   datos_personales_ = DatosPersonales.objects.raw("SELECT DISTINCT * FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "' LIMIT 1 ")
-  cargo_eleccion_ = DatosPersonales.objects.raw("SELECT  id,cargo_eleccion FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "'")  
+
+  cargo_eleccion_ = DatosPersonales.objects.raw("SELECT  id,cargo_eleccion FROM datos_personales WHERE dni_candidato = '" +dni_hoja_de_vida+  "'")
   
   ifexpe_ = ExperienciaLaboral.objects.raw("SELECT DISTINCT DP.id, EP.tiene_experiencia_laboral FROM experiencia_laboral AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
   experiencia_laboral_ = ExperienciaLaboral.objects.raw("SELECT DISTINCT DP.id, centro_laboral, tiene_experiencia_laboral, ocupacion,ruc_empresa_laboral, direccion_laboral, desde_anhio,hasta_anhio,pais_laboral,departamento_laboral,provincia_laboral FROM experiencia_laboral AS EP  RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
@@ -583,7 +584,7 @@ def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   cargo_eleccion_popular_ = CargoEleccion.objects.raw("SELECT DISTINCT DP.id, CE.tiene_info_por_declarar, CE.org_politica_cargo, CE.organizacion_politica,CE.cargo, CE.desde_anhio, CE.hasta_anhio, CE.comentario FROM cargo_eleccion AS CE RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion = '"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
   
     
-  renuncias_ = Renuncia.objects.raw("SELECT DISTINCT DP.id, EP.organización_renuncia, EP.comentario FROM renuncia AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
+  renuncias_ = Renuncia.objects.raw("SELECT DISTINCT DP.id, EP.tiene_info_por_declarar, EP.organización_renuncia, EP.comentario FROM renuncia AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
   ifreuncia_ = Renuncia.objects.raw("SELECT DISTINCT DP.id, EP.tiene_info_por_declarar FROM renuncia AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "'")
 
   if_penal_ = SentenciaPenal.objects.raw("SELECT DISTINCT DP.id, EP.tiene_info_por_declarar FROM sentencia_penal AS EP RIGHT JOIN datos_personales AS DP USING (dni_candidato) WHERE DP.cargo_eleccion ='"+cargo_postula_dato+"' AND DP.dni_candidato ='" +dni_hoja_de_vida+ "' ")
@@ -650,4 +651,548 @@ def test(request):
   print(request.method)
   print('////////////////////////////')
 
-    
+def subir_data(request):
+  # Leer el archivo 'datos.csv' con reader() y
+  # mostrar todos los registros, uno a uno:
+  from time import time
+  inicio = time()
+  import csv
+  with open("datos/bien_inmueble.csv", encoding="utf8") as csvarchivo:
+    entrada = csv.reader(csvarchivo)
+    try:
+      for objeto in entrada:
+        try:
+          bien_inmueble_objeto = BienInmueble.objects.create(
+            id = objeto[0],
+            organizacion_politica = objeto[1],
+            distrito_elec = objeto[2],
+            dni_candidato = objeto[3],
+            candidato = objeto[4],
+            tiene_inmueble = objeto[5],
+            tipo_inmueble = objeto[6],
+            direccion_inmueble = objeto[7],
+            esta_inscrito_sunarp = objeto[8],
+            partida_inmueble_sunarp = objeto[9],
+            autovaluo = objeto[10],
+            comentario_inmueble = objeto[11],
+          )
+          bien_inmueble_objeto.save()
+        except:
+          pass
+    except:
+      pass
+  print("bien_inmueble")
+  with open("datos/bien_mueble.csv", encoding="utf8") as csvarchivo:
+    entrada = csv.reader(csvarchivo)
+    try:
+      for objeto in entrada:
+        try:
+          bien_inmueble_objeto = BienMueble.objects.create(
+            id = objeto[0],
+            organizacion_politica = objeto[1],
+            distrito_elec = objeto[2],
+            dni_candidato = objeto[3],
+            candidato = objeto[4],
+            tiene_bien_mueble = objeto[5],
+            vehiculo = objeto[6],
+            placa = objeto[7],
+            valor = objeto[8],
+            caracteristicas_vehiculo = objeto[9],
+            comentario_vehiculo = objeto[10],
+          )
+          bien_inmueble_objeto.save()
+        except:
+          pass
+    except:
+      pass
+  print("bien_mueble")
+  with open("datos/cargo_eleccion.csv", encoding="utf8") as csvarchivo:
+    entrada = csv.reader(csvarchivo)
+    try:
+      for objeto in entrada:
+        try:
+          bien_inmueble_objeto = CargoEleccion.objects.create(
+            id = objeto[0],
+            organizacion_politica = objeto[1],
+            distrito_elec = objeto[2],
+            dni_candidato = objeto[3],
+            candidato = objeto[4],
+            tiene_info_por_declarar = objeto[5],
+            org_politica_cargo = objeto[6],
+            desde_anhio = objeto[7],
+            hasta_anhio = objeto[8],
+            total_anhio_eleccion = objeto[9],
+            cargo = objeto[10],
+            comentario = objeto[11],
+          )
+          bien_inmueble_objeto.save()
+        except:
+          pass
+    except:
+      pass
+  print("cargo_eleccion")
+  with open("datos/cargo_partidario.csv", encoding="utf8") as csvarchivo:
+    entrada = csv.reader(csvarchivo)
+    try:
+      for objeto in entrada:
+        try:
+          bien_inmueble_objeto = CargoPartidario.objects.create(
+            id = objeto[0],
+            organizacion_politica = objeto[1],
+            distrito_elec = objeto[2],
+            dni_candidato = objeto[3],
+            candidato = objeto[4],
+            tiene_cargo_partidario = objeto[5],
+            org_politica_cargo = objeto[6],
+            cargo = objeto[7],
+            desde_anhio = objeto[8],
+            hasta_anhio = objeto[9],
+            comentario = objeto[10],
+          )
+          bien_inmueble_objeto.save()
+        except:
+          pass
+    except:
+      pass
+  print("cargo_partidario")
+  with open("datos/datos_personales.csv", encoding="utf8") as csvarchivo:
+    entrada = csv.reader(csvarchivo)
+    try:
+      for objeto in entrada:
+        try:
+          bien_inmueble_objeto = DatosPersonales.objects.create(
+            id = objeto[0],
+            organizacion_politica = objeto[1],
+            distrito_elec = objeto[2],
+            dni_candidato = objeto[3],
+            candidato = objeto[4],
+            carnet_extranjeria = objeto[5],
+            apellido_paterno = objeto[6],
+            apellido_materno = objeto[7],
+            nombres = objeto[8],
+            sexo = objeto[9],
+            fecha_nacimiento = objeto[10],
+            pais_nacimiento = objeto[11],
+            departamento_nacimiento = objeto[12],
+            provincia_nacimiento = objeto[13],
+            distrito_nacimiento = objeto[14],
+            departamento_domicilio = objeto[15],
+            provincia_domicilio = objeto[16],
+            distrito_domicilio = objeto[17],
+            direccion_domicilio = objeto[18],
+            cargo_eleccion = objeto[19],
+            url = objeto[20],
+          )
+          bien_inmueble_objeto.save()
+        except:
+          pass
+    except:
+      pass
+  print("datos_personales")
+  with open("datos/edad.csv", encoding="utf8") as csvarchivo:
+    from .models import TablaEdad
+    entrada = csv.reader(csvarchivo)
+    try:
+      for objeto in entrada:
+        try:
+          bien_inmueble_objeto = TablaEdad.objects.create(
+            edad = int(objeto[0]),
+            organizacion_politica = objeto[1],
+            dni = objeto[2],
+          )
+          bien_inmueble_objeto.save()
+        except:
+          pass
+    except:
+      pass
+  print("edad")
+  with open("datos/edu_basica.csv", encoding="utf8") as csvarchivo:
+    entrada = csv.reader(csvarchivo)
+    try:
+      for objeto in entrada:
+        try:
+          bien_inmueble_objeto = EducacionBasica.objects.create(
+            id = objeto[0],
+            organizacion_politica = objeto[1],
+            distrito_elec = objeto[2],
+            dni_candidato = objeto[3],
+            candidato = objeto[4],
+            tiene_educacion_basica = objeto[5],
+            tiene_estudio_primaria = objeto[6],
+            concluyo_primaria = objeto[7],
+            tiene_estudio_secundaria = objeto[8],
+            concluyo_secundaria = objeto[9],
+          )
+          bien_inmueble_objeto.save()
+        except:
+          pass
+    except:
+      pass
+  print("edu_basica")
+  with open("datos/estudio_no_univ.csv", encoding="utf8") as csvarchivo:
+    entrada = csv.reader(csvarchivo)
+    try:
+      for objeto in entrada:
+        try:
+          bien_inmueble_objeto = EstudioNoUniversitario.objects.create(
+            id = objeto[0],
+            organizacion_politica = objeto[1],
+            distrito_elec = objeto[2],
+            dni_candidato = objeto[3],
+            candidato = objeto[4],
+            tiene_estudio_no_universitario = objeto[5],
+            centro_estudio_no_universitario = objeto[6],
+            carrera_no_universitaria = objeto[7],
+            concluyo_estudio_no_universitario = objeto[8],
+          )
+          bien_inmueble_objeto.save()
+        except:
+          pass
+    except:
+      pass
+  print("estudio_no_univ")
+  with open("datos/estudio_post.csv", encoding="utf8") as csvarchivo:
+    entrada = csv.reader(csvarchivo)
+    try:
+      for objeto in entrada:
+        try:
+          bien_inmueble_objeto = EstudioPostgrado.objects.create(
+            id = objeto[0],
+            organizacion_politica = objeto[1],
+            distrito_elec = objeto[2],
+            dni_candidato = objeto[3],
+            candidato = objeto[4],
+            tiene_postgrado = objeto[5],
+            centro_estudio_postgrado = objeto[6],
+            especialidad = objeto[7],
+            concluyo_estudio_postgrado = objeto[8],
+            es_egresado_postgrado = objeto[9],
+            es_maestro = objeto[10],
+            es_doctor = objeto[11],
+            anhio_obtencion_postgrado = objeto[12],
+            comentario_estudio_postgrado = objeto[13],
+          )
+          bien_inmueble_objeto.save()
+        except:
+          pass
+    except:
+      pass
+  print("estudio_post")
+  with open("datos/estudio_tec.csv", encoding="utf8") as csvarchivo:
+    entrada = csv.reader(csvarchivo)
+    try:
+      for objeto in entrada:
+        try:
+          bien_inmueble_objeto = EstudioTecnico.objects.create(
+            id = objeto[0],
+            organizacion_politica = objeto[1],
+            distrito_elec = objeto[2],
+            dni_candidato = objeto[3],
+            candidato = objeto[4],
+            tiene_estudio_tecnico = objeto[5],
+            centro_estudio_tecnico = objeto[6],
+            carrera_tecnica = objeto[7],
+            concluyo_estudio_tecnico = objeto[8],
+            comentario_estudio_tecnico = objeto[9],
+          )
+          bien_inmueble_objeto.save()
+        except:
+          pass
+    except:
+      pass
+  print("estudio_tec")
+  with open("datos/estudio_univers.csv", encoding="utf8") as csvarchivo:
+    entrada = csv.reader(csvarchivo)
+    try:
+      for objeto in entrada:
+        try:
+          bien_inmueble_objeto = EstudioUniversitario.objects.create(
+            id = objeto[0],
+            organizacion_politica = objeto[1],
+            distrito_elec = objeto[2],
+            dni_candidato = objeto[3],
+            candidato = objeto[4],
+            tiene_estudio_universitario = objeto[5],
+            universidad = objeto[6],
+            carrera_universitaria = objeto[7],
+            concluyo_estudio_universitario = objeto[8],
+            es_egresado_universitario = objeto[9],
+            anhio_obtencion_universitario = objeto[10],
+            comentario_estudio_universitario = objeto[11],
+          )
+          bien_inmueble_objeto.save()
+        except:
+          pass
+    except:
+      pass
+  print("Estudios Universitarios")
+  with open("datos/exp_lab.csv", encoding="utf8") as csvarchivo:
+    entrada = csv.reader(csvarchivo)
+    try:
+      for objeto in entrada:
+        try:
+          bien_inmueble_objeto = ExperienciaLaboral.objects.create(
+            id = objeto[0],
+            organizacion_politica = objeto[1],
+            distrito_elec = objeto[2],
+            dni_candidato = objeto[3],
+            candidato = objeto[4],
+            tiene_experiencia_laboral = objeto[5],
+            centro_laboral = objeto[6],
+            ocupacion = objeto[7],
+            ruc_empresa_laboral = objeto[8],
+            direccion_laboral = objeto[9],
+            desde_anhio = objeto[10],
+            hasta_anhio = objeto[11],
+            pais_laboral=objeto[12],
+            departamento_laboral = objeto[13],
+            provincia_laboral = objeto[14],
+            distrito_laboral = objeto[15],
+          )
+          bien_inmueble_objeto.save()
+        except:
+          pass
+    except:
+      pass
+  print("exp_lab")
+  with open("datos/finan_priv.csv", encoding="utf8") as csvarchivo:
+    entrada = csv.reader(csvarchivo)
+    try:
+      for objeto in entrada:
+        try:
+          bien_inmueble_objeto = FinanciamientoPrivado.objects.create(
+            id = objeto[0],
+            organizacion_politica = objeto[1],
+            ruc_org_politica = objeto[2],
+            estado = objeto[3],
+            fecha_presentacion = objeto[4],
+            total_activo = objeto[5],
+            total_pasivo = objeto[6],
+            total_patrimonio = objeto[7],
+            total_pasivo_patrimonio = objeto[8],
+            total_ingresos = objeto[9],
+            total_gastos = objeto[10],
+            anhio = objeto[11],
+          )
+          bien_inmueble_objeto.save()
+        except:
+          pass
+    except:
+      pass
+
+  print("finan_priv")
+  with open("datos/finan_pub.csv", encoding="utf8") as csvarchivo:
+    entrada = csv.reader(csvarchivo)
+    try:
+      for objeto in entrada:
+        try:
+          bien_inmueble_objeto = FinanciamientoPublico.objects.create(
+            id = objeto[0],
+            organizacion_politica = objeto[1],
+            num_votos_congresales = objeto[2],
+            monto_quinquenal = objeto[3],
+          )
+          bien_inmueble_objeto.save()
+        except:
+          pass
+    except:
+      pass
+
+  print("finan_pub")
+  with open("datos/info_adi.csv", encoding="utf8") as csvarchivo:
+    entrada = csv.reader(csvarchivo)
+    try:
+      for objeto in entrada:
+        try:
+          bien_inmueble_objeto = InformacionAdicional.objects.create(
+            id = objeto[0],
+            organizacion_politica = objeto[1],
+            distrito_elec = objeto[2],
+            dni_candidato = objeto[3],
+            candidato = objeto[4],
+            tiene_info_adicional = objeto[5],
+            info = objeto[6],
+          )
+          bien_inmueble_objeto.save()
+        except:
+          pass
+    except:
+      pass
+  print("info_adi")
+
+  with open("datos/ingreso.csv", encoding="utf8") as csvarchivo:
+    entrada = csv.reader(csvarchivo)
+    try:
+      for objeto in entrada:
+        try:
+          bien_inmueble_objeto = Ingreso.objects.create(
+            id = objeto[0],
+            organizacion_politica = objeto[1],
+            distrito_elec = objeto[2],
+            dni_candidato = objeto[3],
+            candidato = objeto[4],
+            tiene_ingresos = objeto[5],
+            anhio_ingresos = objeto[6],
+            total_ingresos = objeto[7],
+          )
+          bien_inmueble_objeto.save()
+        except:
+          pass
+    except:
+      pass
+  print("ingreso")
+
+  with open("datos/org_poli.csv", encoding="utf8") as csvarchivo:
+    entrada = csv.reader(csvarchivo)
+    try:
+      for objeto in entrada:
+        try:
+          bien_inmueble_objeto = OrganizacionesPoliticas.objects.create(
+            organizacion_politica = objeto[0],
+            url = objeto[1],
+          )
+          bien_inmueble_objeto.save()
+        except:
+          pass
+    except:
+      pass
+  print("org_poli")
+
+  with open("datos/renuncia.csv", encoding="utf8") as csvarchivo:
+    entrada = csv.reader(csvarchivo)
+    try:
+      for objeto in entrada:
+        try:
+          bien_inmueble_objeto = Renuncia.objects.create(
+            id = objeto[0],
+            organizacion_politica = objeto[1],
+            distrito_elec = objeto[2],
+            dni_candidato = objeto[3],
+            candidato = objeto[4],
+            tiene_info_por_declarar = objeto[5],
+            organización_renuncia = objeto[6],
+            comentario = objeto[7],
+          )
+          bien_inmueble_objeto.save()
+        except:
+          pass
+    except:
+      pass
+
+  print("renuncia")
+  with open("datos/sent_oblig.csv", encoding="utf8") as csvarchivo:
+    entrada = csv.reader(csvarchivo)
+    try:
+      for objeto in entrada:
+        try:
+          bien_inmueble_objeto = SentenciaObligacion.objects.create(
+            id = objeto[0],
+            organizacion_politica = objeto[1],
+            distrito_elec = objeto[2],
+            dni_candidato = objeto[3],
+            candidato = objeto[4],
+            tiene_info_por_declarar = objeto[5],
+            materia_sentencia = objeto[6],
+            n_experiente_obliga = objeto[7],
+            organo_judicial = objeto[8],
+            fallo_obliga = objeto[9],
+          )
+          bien_inmueble_objeto.save()
+        except:
+          pass
+    except:
+      pass
+
+  print("sent_oblig")
+  with open("datos/sent_penal.csv", encoding="utf8") as csvarchivo:
+    entrada = csv.reader(csvarchivo)
+    try:
+      for objeto in entrada:
+        try:
+          bien_inmueble_objeto = SentenciaPenal.objects.create(
+            id = objeto[0],
+            organizacion_politica = objeto[1],
+            distrito_elec = objeto[2],
+            dni_candidato = objeto[3],
+            candidato = objeto[4],
+            tiene_info_por_declarar = objeto[5],
+            n_experiente_penal = objeto[6],
+            fecha_sentencia_penal = objeto[7],
+            organo_judicial = objeto[8],
+            delito_penal = objeto[9],
+            fallo_penal = objeto[10],
+            modalidad_penal = objeto[11],
+            otra_modalidad = objeto[12],
+            cumplimiento_del_fallo = objeto[13],
+          )
+          bien_inmueble_objeto.save()
+        except:
+          pass
+    except:
+      pass
+  print("sent_penal")
+  final = time() - inicio
+  print("Tiempo Total : ", final)
+  return HttpResponse("")
+
+
+def eliminar(lista):
+  for objeto in lista:
+    objeto.delete()
+
+
+def eliminar_data(request):
+  from .models import TablaEdad
+  eliminar(BienInmueble.objects.all())
+  eliminar(BienMueble.objects.all())
+  eliminar(CargoEleccion.objects.all())
+  eliminar(CargoPartidario.objects.all())
+  eliminar(DatosPersonales.objects.all())
+  eliminar(TablaEdad.objects.all())
+  eliminar(EducacionBasica.objects.all())
+  eliminar(EstudioNoUniversitario.objects.all())
+  eliminar(EstudioPostgrado.objects.all())
+  eliminar(EstudioTecnico.objects.all())
+  eliminar(ExperienciaLaboral.objects.all())
+  eliminar(FinanciamientoPrivado.objects.all())
+  eliminar(FinanciamientoPublico.objects.all())
+  eliminar(InformacionAdicional.objects.all())
+  eliminar(Ingreso.objects.all())
+  eliminar(OrganizacionesPoliticas.objects.all())
+  eliminar(Renuncia.objects.all())
+  eliminar(SentenciaObligacion.objects.all())
+  eliminar(SentenciaPenal.objects.all())
+  return HttpResponse('')
+
+
+def corregir_data(request):
+  for o in BienInmueble.objects.all():
+    o.delete()
+  import csv, sys
+  with open("datos/bien_inmueble.csv", encoding="utf8") as csvarchivo:
+    entrada = csv.reader(csvarchivo)
+    try:
+      for objeto in entrada:
+        try:
+          bien_inmueble_objeto = BienInmueble.objects.create(
+            id = objeto[0],
+            organizacion_politica = objeto[1],
+            distrito_elec = objeto[2],
+            dni_candidato = objeto[3],
+            candidato = objeto[4],
+            tiene_inmueble = objeto[5],
+            tipo_inmueble = objeto[6],
+            direccion_inmueble = objeto[7],
+            esta_inscrito_sunarp = objeto[8],
+            partida_inmueble_sunarp = objeto[9],
+            autovaluo = objeto[10],
+            comentario_inmueble = objeto[11],
+          )
+          bien_inmueble_objeto.save()
+        except:
+          print('id : ', objeto[0])
+          pass
+    except:
+      pass
+
+  return HttpResponse('bien')
