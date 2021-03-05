@@ -292,6 +292,24 @@ class InformacionAdicional(models.Model):
   class Meta:
     db_table = 'informacion_adicional'
 
+class AiTotal(models.Model):
+  id = models.CharField(max_length=10)
+  dni_candidato = models.CharField(max_length=8, primary_key=True) 
+	emocion = models.CharField(max_length=20)
+	molestia   = models.FloatField()
+	disgusto  = models.FloatField()
+	miedo = models.FloatField()
+	alegria  = models.FloatField()
+	tristeza   = models.FloatField()
+	sorpresa  = models.FloatField()
+	seriedad  = models.FloatField()
+  cargo_eleccion = models.CharField(max_length=200)
+  organizacion_politica = models.CharField(max_length=250)
+
+   class Meta:
+    db_table = 'ai_total'
+
+
 
 class FinanciamientoPrivado(models.Model):
   id = models.CharField(max_length=10, primary_key=True)
