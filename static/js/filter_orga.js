@@ -21,7 +21,9 @@ function button_filter_org(){
   if(filtro_id==""){
     mark_filters();
   }
-
+  let new_data = []
+  sessionStorage.setItem('data_filtros_seleccionados', JSON.stringify(new_data))
+  
   let url = URL + "/" + VIEW
   if(filtro_id=="edad"){
     let rango=""
