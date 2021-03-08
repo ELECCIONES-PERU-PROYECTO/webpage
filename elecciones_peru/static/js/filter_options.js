@@ -1,4 +1,40 @@
 /*igual al inicio un enter (ver linea 212)*/
+let Json_urls_orga = {
+  "ALIANZA PARA EL PROGRESO"                       :  "https://votoinformado.jne.gob.pe/voto/Resources/imgs/logoop/1257.JPG",
+  "JUNTOS POR EL PERU"                             :  "https://votoinformado.jne.gob.pe/voto/Resources/imgs/logoop/1264.JPG",
+  "FUERZA POPULAR"                                 :  "https://votoinformado.jne.gob.pe/voto/Resources/imgs/logoop/1366.JPG",
+  "PARTIDO DEMOCRATICO SOMOS PERU"                 :  "https://votoinformado.jne.gob.pe/voto/Resources/imgs/logoop/14.JPG",
+  "PARTIDO POPULAR CRISTIANO - PPC"                :  "https://votoinformado.jne.gob.pe/voto/Resources/imgs/logoop/15.JPG",
+  "PARTIDO NACIONALISTA PERUANO"                   :  "https://votoinformado.jne.gob.pe/voto/Resources/imgs/logoop/179.JPG",
+  "VICTORIA NACIONAL"                              :  "https://votoinformado.jne.gob.pe/voto/Resources/imgs/logoop/21.JPG",
+  "EL FRENTE AMPLIO POR JUSTICIA, VIDA Y LIBERTAD" :  "https://votoinformado.jne.gob.pe/voto/Resources/imgs/logoop/2160.JPG",
+  "AVANZA PAIS - PARTIDO DE INTEGRACION SOCIAL"    :  "https://votoinformado.jne.gob.pe/voto/Resources/imgs/logoop/2173.JPG",
+  "DEMOCRACIA DIRECTA"                             :  "https://votoinformado.jne.gob.pe/voto/Resources/imgs/logoop/2191.JPG",
+  "RENOVACION POPULAR"                             :  "https://votoinformado.jne.gob.pe/voto/Resources/imgs/logoop/22.JPG",
+  "PARTIDO POLITICO NACIONAL PERU LIBRE"           :  "https://votoinformado.jne.gob.pe/voto/Resources/imgs/logoop/2218.JPG",
+  "FRENTE POPULAR AGRICOLA FIA DEL PERU - FREPAP"  :  "https://votoinformado.jne.gob.pe/voto/Resources/imgs/logoop/2646.JPG",
+  "PODEMOS PERU"                                   :  "https://votoinformado.jne.gob.pe/voto/Resources/imgs/logoop/2731.JPG",
+  "PARTIDO MORADO"                                 :  "https://votoinformado.jne.gob.pe/voto/Resources/imgs/logoop/2840.JPG",
+  "PARTIDO APRISTA PERUANO"                        :  "https://votoinformado.jne.gob.pe/voto/Resources/imgs/logoop/32.JPG",
+  "ACCION POPULAR"                                 :  "https://votoinformado.jne.gob.pe/voto/Resources/imgs/logoop/4.JPG",
+  "UNION POR EL PERU"                              :  "https://votoinformado.jne.gob.pe/voto/Resources/imgs/logoop/47.JPG",
+  "RENACIMIENTO UNIDO NACIONAL"                    :  "https://votoinformado.jne.gob.pe/voto/Resources/imgs/logoop/5.JPG",
+  "PERU PATRIA SEGURA"                             :  "https://votoinformado.jne.gob.pe/voto/Resources/imgs/logoop/55.JPG"
+}
+
+
+function agregar_imagen_organizacion(){
+  let divs_candidatos = document.getElementsByName("images-candidato")
+  let div_name_orga = document.getElementsByName("orga_candidato_name")
+  for(let i = 0 ; i < div_name_orga.length ; i++){
+    let url = Json_urls_orga[div_name_orga[i].textContent]
+    var img = document.createElement("img");
+    img.src = url
+    img.width = "125"
+    divs_candidatos[i].appendChild(img);
+    }
+}
+
 window.onload = function(){
   // console.log("agregar_filtros_selecs")
   var data1 = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
@@ -21,6 +57,7 @@ window.onload = function(){
     else
     activar_organizaciones()
   }
+  agregar_imagen_organizacion();
 }
 
 function agregar_filtros_selecs(data){
