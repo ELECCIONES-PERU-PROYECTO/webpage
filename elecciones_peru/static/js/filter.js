@@ -22,11 +22,7 @@ let filtro_cargo_postula = false     //15
 let filtro_organizacion = false      //16
 let filtro_distrito = false          //17
 
-let order = 1
-let filter_deleted = 0
-let order_save
 let separer_order = '-'
-let is_finished = false
 
 
 /*******************************/
@@ -37,7 +33,7 @@ let ul_filt_selec = document.getElementById("filtros_seleccionados")
 
 function agregar_badge(badge_text){
   var node = document.createElement("li")
-  node.className= "option_badge"
+  node.className = "option_badge"
   node.name = "badges-filtros-selec"
   node.textContent = badge_text
   if(ul_filt_selec)
@@ -62,6 +58,9 @@ function filter_candidatos() {
   let tiene_sent = document.getElementById("si-sentencia")
   let sent_penal = document.getElementById("penal_cbx")
   let sent_por_oblig = document.getElementById("por_obligaciones")
+  let tiene_ingresos = document.getElementById("tiene_ingresos")
+  let tiene_bienes_inmuebles = document.getElementById("tiene_bienes_inmuebles")
+  let tiene_bienes_muebles = document.getElementById("tiene_bienes_muebles")
 
   let n_academic = document.getElementsByName("nivel_academico")[0]
   let anhio_servicio_list = document.getElementsByName("anhio_servicio")
@@ -81,18 +80,9 @@ function filter_candidatos() {
   let cargo_al_que_postula = document.getElementsByName("cargo_al_que_postula")[0]
   let org_politica = document.getElementsByName("org_politica")[0]
   let dist_electoral = document.getElementsByName("dist_electoral")[0]
+  
 
   // Validators
-  if(lista_orden_filtros.length == 0){
-    setTimeout(function(){
-      UIkit.notification({
-        message: 'Escoja al menos un filtro', 
-        status: 'warning'
-    })
-    }, 1000)
-    return 
-  }
-
   if(oriundo_de_peru[0].checked) {
     console.log("entro a oriundo", oriundo_de_peru[0].checked)
     console.log(departamento_nacimiento.options[departamento_nacimiento.selectedIndex].value)
@@ -110,7 +100,6 @@ function filter_candidatos() {
   if(tiene_sent.checked) {
     if(sent_penal.checked) {
       if(!filtro_penal_cant) {
-        console.log("no se marcaron");
         setTimeout(function(){
           UIkit.notification({
             message: 'Especifique el el tipo de sentencia',
@@ -122,10 +111,9 @@ function filter_candidatos() {
     }
     if(sent_por_oblig.checked) {
       if(!filtro_oblig_cant && !filtro_oblig_mat) {
-        console.log("no se marcaron");
         setTimeout(function(){
           UIkit.notification({
-            message: 'Especifique el el tipo de sentencia',
+            message: 'Especifique el el tipo de sentencia por obligación',
             status: 'danger'
           })
         }, 1000)
@@ -133,12 +121,73 @@ function filter_candidatos() {
       }
     }
   }
- 
 
-  // TODO: Add validator for Bienes y Rentas
+  if(tiene_ingresos.checked) {
+    console.log("tiene ingresos")
+    if(!filtro_ingres_cant) {
+      setTimeout(function(){
+        UIkit.notification({
+          message: 'Especifique el orden según el monto de ingreso',
+          status: 'danger'
+        })
+      }, 1000)
+      return
+    }
+  }
+
+  if(tiene_bienes_inmuebles.checked) {
+    if(!filtro_inmu_cant) {
+      setTimeout(function(){
+        UIkit.notification({
+          message: 'Especifique el orden según la cantidad bienes inmuebles',
+          status: 'danger'
+        })
+      }, 1000)
+      return
+    } else if(!filtro_inmu_valor) {
+      setTimeout(function(){
+        UIkit.notification({
+          message: 'Especifique el orden según la valor bienes inmuebles',
+          status: 'danger'
+        })
+      }, 1000)
+      return
+    }
+  }
+
+  if(tiene_bienes_muebles.checked) {
+    if(!filtro_mueb_cant) {
+      setTimeout(function(){
+        UIkit.notification({
+          message: 'Especifique el orden según la cantidad bienes muebles',
+          status: 'danger'
+        })
+      }, 1000)
+      return
+    } else if(!filtro_mueb_valor) {
+      setTimeout(function(){
+        UIkit.notification({
+          message: 'Especifique el orden según la valor bienes muebles',
+          status: 'danger'
+        })
+      }, 1000)
+      return
+    }
+  }
+
+  if(lista_orden_filtros.length == 0){
+    setTimeout(function(){
+      UIkit.notification({
+        message: 'Escoja al menos un filtro', 
+        status: 'warning'
+    })
+    }, 1000)
+    return 
+  }
   
   sessionStorage.setItem('data_filtros_seleccionados', JSON.stringify(lista_orden_filtros))
 
+  // Apend the order to values in the form
   for(let i = 0; i < lista_orden_filtros.length; i++) {
     if(lista_orden_filtros[i] == 1) {
       n_academic.options[n_academic.selectedIndex].value = n_academic.options[n_academic.selectedIndex].value + separer_order + x
@@ -238,6 +287,7 @@ function filter_candidatos() {
     }
   }
 
+  // Send the form
   form.submit()
 }
 
@@ -275,7 +325,6 @@ function quitar_seleccion_academico(){
 /* FILTRO CARGOS PREVIOS */
 function get_cargos_previos(){
   if(filtro_cargo == false){
-    console.log("entro al filtro de cargo", order_save)
     cant_filtros++
     filtro_cargo = true
     lista_orden_filtros.push(2)
@@ -389,9 +438,6 @@ function quitar_seleccion_sentencias_menosno_tiene(){
       }
     document.getElementById("div_opc_obligaciones").style.display="none"
     }
-    // console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-    // console.log("cant_filtros: ",cant_filtros)
-    filter_deleted++
   }
 
   if(filtro_oblig_mat == true){
@@ -412,10 +458,6 @@ function quitar_seleccion_sentencias_menosno_tiene(){
         inputs[i].checked = false
       }
     }
-    
-    // console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-    // console.log("cant_filtros: ",cant_filtros)
-    filter_deleted++
   }
 
   document.getElementById("por_obligaciones").checked = false
@@ -471,9 +513,6 @@ function quitar_seleccion_sentencias(){
         inputs[i].checked = false
       }
     }
-    // console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-    // console.log("cant_filtros: ",cant_filtros)
-    filter_deleted++
   }
 
   if(filtro_oblig_mat == true){
@@ -494,9 +533,6 @@ function quitar_seleccion_sentencias(){
         inputs[i].checked = false
       }
     }
-    // console.log("lista_orden_filtros.length: ",lista_orden_filtros.length )
-    // console.log("cant_filtros: ",cant_filtros)
-    filter_deleted++
   }
 
   if(filtro_senten_no_tiene == true) {
@@ -509,7 +545,6 @@ function quitar_seleccion_sentencias(){
     if (index > -1) {
       lista_orden_filtros.splice(index, 1)
     }
-    filter_deleted++
   }
   let element = document.getElementById("penal_cbx");
   togglePenal_opciones(element);

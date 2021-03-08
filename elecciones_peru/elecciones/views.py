@@ -10,7 +10,7 @@ def function_filtros_ob(self, query_normal, normnob1, SELECT_candidato, WHERE_ca
   subquery_list = list()
   for i in range(0, len(self)):
     index_ = self[i].find('_')
-    indice = self[i].find("(")
+    indice = self[i].find("-")
     valor = self[i][index_+1:]
     nrorden = self[i][indice+1:indice+3:1]
     uwu = nrorden.find("_")
@@ -18,7 +18,7 @@ def function_filtros_ob(self, query_normal, normnob1, SELECT_candidato, WHERE_ca
 
     if int(valor) > 9 and uwu==-1:
       quitar = self[i][index_-2:]
-    aux = self[i].replace("("+quitar, "") 
+    aux = self[i].replace("-"+quitar, "") 
     self[i] = aux
 
     if valor == "1":
@@ -92,7 +92,6 @@ def function_filtros_ob(self, query_normal, normnob1, SELECT_candidato, WHERE_ca
   WHERE = " WHERE  "+ WHERE_candidato
   Qs = "" 
   ORDER_BY = ""
-  #print(len(subquery_list))
 
   for i in range(0, len(subquery_list)):
     Qs = Qs + " Q"+str(i+1)+".conteo "
@@ -106,7 +105,6 @@ def function_filtros_ob(self, query_normal, normnob1, SELECT_candidato, WHERE_ca
   
   FROM = ""
   GROUP_BY_ = " GROUP BY (DP.id,DP.candidato,DP.dni_candidato, DP.organizacion_politica,  "+  SELECT_candidato+" , "+ Qs+" ) "
-  #print("query_normal: ",query_normal)
   for i in range(0, len(subquery_list)):          
     if i == 0 and query_normal != "":
       FROM = " FROM ( " + query_normal+ " ) AS  QN JOIN datos_personales AS DP USING (dni_candidato) "  
@@ -117,11 +115,10 @@ def function_filtros_ob(self, query_normal, normnob1, SELECT_candidato, WHERE_ca
   ORDER_BY = " ORDER BY "+Qs_
   query_total = SELECT + ", " + Qs + FROM + WHERE + GROUP_BY_ + ORDER_BY
 
-  #print("query_total_function: ", query_total)
 
   return query_total
 
-def function_filtro_normal(self, stack_, SELECT_candidato,WHERE_candidato ):
+def function_filtro_normal(self, stack_, SELECT_candidato, WHERE_candidato):
   # print("self",self)
   print("SELECT_candidato: ", SELECT_candidato)
   print("WHERE_candidato: ", WHERE_candidato)
@@ -236,31 +233,104 @@ def function_filtro_normal(self, stack_, SELECT_candidato,WHERE_candidato ):
       self[18] = ""
       return retorno
 
-def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_sentencia, orden_cant_sentencia_oblig, mat_demanda, no, orden_cant_ingreso,orden_cant_inmueble,orden_valor_inmueble,orden_cant_mueble, orden_valor_mueble,orden_renuncias, rango_edad_val,nac_per_si, nac_per_no, departamento_nacimiento,cargo_postula, org_politica, dist_electoral, tipo_candidato_):
-  lista_valores = [nivel_academico, cargos_previos_order, orden_cant_sentencia,
-    orden_cant_sentencia_oblig, mat_demanda, no, orden_cant_ingreso,orden_cant_inmueble,orden_valor_inmueble,
-    orden_cant_mueble, orden_valor_mueble,orden_renuncias, rango_edad_val,nac_per_si, nac_per_no, departamento_nacimiento,
-    cargo_postula, org_politica, dist_electoral, tipo_candidato_
+def filter_function(request):
+  ###############################################
+  # Variables
+  ###############################################
+  # Tipo de Filtro
+  tipo_candidato_ = request.GET.get("tipo_filter") if request.GET.get("tipo_filter") != None else "unk"
+  # Candidatos
+  nivel_academico = request.GET.get("nivel_academico") if request.GET.get("nivel_academico") != None else "unk"
+  cargos_previos_order = request.GET.get("anhio_servicio") if request.GET.get("anhio_servicio") != None else "unk"
+  orden_cant_sentencia = request.GET.get("cant_senten") if request.GET.get("cant_senten") != None else "unk"
+  orden_cant_sentencia_oblig = request.GET.get("cant_senten_oblig") if request.GET.get("cant_senten_oblig") != None else "unk"
+  mat_demanda = request.GET.get("opc_mat_demanda") if request.GET.get("opc_mat_demanda") != None else "unk"
+  if(request.GET.get("ifsentencias") != None): # si o no, (se tuvo que hacer así xd)
+    if(request.GET.get("ifsentencias") == "si"):
+      no_tiene_sentencias = "unk"
+    else:
+      no_tiene_sentencias = request.GET.get("ifsentencias")
+  else:
+    no_tiene_sentencias = "unk"
+  tipo_sentencia = request.GET.get("tipo_sentencia") if request.GET.get("tipo_sentencia") != None else "unk"  # no se usa
+  orden_cant_ingreso = request.GET.get("cant_ingreso") if request.GET.get("cant_ingreso") != None else "unk"
+  orden_cant_inmueble = request.GET.get("cant_inmuebles") if request.GET.get("cant_inmuebles") != None else "unk"
+  orden_valor_inmueble = request.GET.get("valor_inmuebles") if request.GET.get("valor_inmuebles") != None else "unk"
+  orden_cant_mueble = request.GET.get("cant_muebles") if request.GET.get("cant_muebles") != None else "unk"
+  orden_valor_mueble = request.GET.get("valor_muebles") if request.GET.get("valor_muebles") != None else "unk"
+  orden_renuncias = request.GET.get("cantidad_renuncia") if request.GET.get("cantidad_renuncia") != None else "unk"
+  rango_edad_val = request.GET.get("rango_edad") if request.GET.get("rango_edad") != None else "unk"
+  if(request.GET.get("oriundo_input") != None):
+    if(request.GET.get("oriundo_input") == "NO"):
+      nacio_en_peru_no = "NO"
+    else:
+      nacio_en_peru_si = "SI"
+  else:
+    nacio_en_peru_no = "unk"
+    nacio_en_peru_si = "unk"
+  departamento_nacimiento = request.GET.get("departamento_nacimiento") if request.GET.get("departamento_nacimiento") != None else "unk"
+  cargo_postula = request.GET.get("cargo_al_que_postula") if request.GET.get("cargo_al_que_postula") != None else "unk"
+  org_politica = request.GET.get("org_politica") if request.GET.get("org_politica") != None else "unk"
+  dist_electoral = request.GET.get("dist_electoral") if request.GET.get("dist_electoral") != None else "unk"
+
+  # Org Politica - Falta
+  org_rango_edad = request.GET.get("org_rango_edad")
+  org_edad_orden = request.GET.get("org_edad_orden")
+  org_opc_genero = request.GET.get("org_opc_genero")
+  org_genero_orden = request.GET.get("org_genero_orden")
+  org_opc_educacion = request.GET.get("org_opc_educacion")
+  org_cant_sen_penal_obliga = request.GET.get("cant_sen_penal_obliga")
+  org_cant_sen_penal = request.GET.get("cant_sen_penal")
+  org_cant_sen_civil = request.GET.get("cant_sen_civil")
+  org_oriundo = request.GET.get("org_oriundo")
+  org_departamento_oriundo = request.GET.get("org_departamento_oriundo")
+  org_distrito_electoral = request.GET.get("org_distrito_electoral")
+  org_2019_finan_priv_presento = request.GET.get("2019_est_present")
+  org_2019_finan_priv_orden_ingreso = request.GET.get("2019_ingre_dec")
+  org_2019_finan_priv_presento = request.GET.get("2018_est_present")
+  org_2018_finan_priv_orden_ingreso = request.GET.get("2018_ingre_dec")
+  org_2017_finan_priv_presento = request.GET.get("2017_est_present")
+  org_2017_finan_priv_orden_ingreso = request.GET.get("2017_ingre_dec")
+  org_finan_pub_orden_monto_quinquenal = request.GET.get("monto_quinque")
+
+  ###############################################
+  # XD
+  ###############################################
+  lista_valores = [
+    nivel_academico, cargos_previos_order, orden_cant_sentencia,
+    orden_cant_sentencia_oblig, mat_demanda, no_tiene_sentencias, 
+    orden_cant_ingreso, orden_cant_inmueble, orden_valor_inmueble,
+    orden_cant_mueble, orden_valor_mueble, orden_renuncias, 
+    rango_edad_val, nacio_en_peru_si, nacio_en_peru_no, 
+    departamento_nacimiento, cargo_postula, org_politica, 
+    dist_electoral, tipo_candidato_
   ]
 
-  if lista_valores[4] != "unk":
-    index = lista_valores[4].find("(")
-    aux = lista_valores[4][index:len(lista_valores[4]) :+1]
-    lista_valores[4] = "FAMILIA / ALIMENTARIA"+aux
+  print("********")
+  print(lista_valores[4])
+  print(lista_valores[4].find("-"))
+  print(lista_valores[4][0:lista_valores[4].find("-")])
+  print("$$$$$$$")
 
-  if mat_demanda != "":
-    index = mat_demanda.find("(")
-    aux = lista_valores[4][index:len(lista_valores[4]) :+1]
-    lista_valores[4] = "FAMILIA / ALIMENTARIA"+aux
+  if(lista_valores[4][0:lista_valores[4].find("-")] == "FamiliaAli"):
+    print(">>>>>>>>>>>>>>>>>>>>>><<<<< Entro a familia")
+    order = lista_valores[4][lista_valores[4].find("-"):len(lista_valores[4]) :+1]
+    lista_valores[4] = "FAMILIA / ALIMENTARIA" + order
+
+  # if mat_demanda != "unk":
+  #   index = mat_demanda.find("-")
+  #   aux = lista_valores[4][index:len(lista_valores[4]) :+1]
+  #   print("EL AUX XDDDDDDDDDDd", aux)
+  #   lista_valores[4] = "FAMILIA / ALIMENTARIA"+aux
   
-  print("tipo_candidato_: ", tipo_candidato_)
+  # print("tipo_candidato_: ", tipo_candidato_)
   SELECT_candidato = ""
   WHERE_candidato = ""
   GROUP_by = ""
 
   if tipo_candidato_ == "presidenciales":
     SELECT_candidato =  " DP.cargo_eleccion "
-    WHERE_candidato = " (DP.cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR DP.cargo_eleccion  ='PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA') "
+    WHERE_candidato = " (DP.cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR DP.cargo_eleccion = 'PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA') "
   elif tipo_candidato_ == "congresales":
     SELECT_candidato = " DP.distrito_elec "
     WHERE_candidato = " (DP.cargo_eleccion = 'CONGRESISTA DE LA REPÚBLICA') "
@@ -268,8 +338,6 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
     SELECT_candidato = " DP.cargo_eleccion "
     WHERE_candidato = " (DP.cargo_eleccion = 'REPRESENTANTE ANTE EL PARLAMENTO ANDINO') "
 
-  #print("SELECT_candidato: ", SELECT_candidato)
-  #print("WHERE_candidato: ", WHERE_candidato)
   lista_filtros_normales = list()
   lista_filtros_ob = list()
   lista_val_new = list()
@@ -277,15 +345,17 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
   lista_ids_new = list()
   lista_ids = list()
   lista_ob_dict = list()
+  lista_index = list()
   tienes_al_menos1 = False
+  query_total = ""
 
   for i in range(0, len(lista_valores)-1):
     print("lista_valores[",i,"]: ", lista_valores[i])
-    if lista_valores[13] != "unk" and i == 15:
-      continue
+    # if lista_valores[13] != "unk" and i == 15:
+    #   continue
     if lista_valores[i] != "unk":
       tienes_al_menos1 = True
-      index_ = lista_valores[i].find('(')
+      index_ = lista_valores[i].find("-")
       valor = lista_valores[i][index_+1:]
       lista_valores[i] = lista_valores[i] + str("_") + str(i)
       if (i >= 1 and i <= 3) or (i >= 6 and i <= 11):
@@ -297,9 +367,10 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
     elif lista_valores[i] == "unk":
       lista_valores[i] = ""
 
-  lista_index = list()
 
-  if (tienes_al_menos1 == True):
+  if(tienes_al_menos1):
+    print("xxxxxxxxxx Len Lista Ordenes")
+    print(lista_orden)
     j = 1
     for i in range(0, len(lista_orden)):
       val = lista_orden.index(str(j))
@@ -314,118 +385,126 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
       if(LN[i] in lista_filtros_ob):
         lista_filtros_ob_new.append(LN[i])
 
-  query_total = ""
+    for i in range(0, len(lista_valores)):
+      index_ = lista_valores[i].find("-")
+      if index_ != -1:
+        quitar = lista_valores[i][index_:]
+        if int(valor) > 9:
+          quitar = lista_valores[i][index_-2:]    
+        aux = lista_valores[i].replace(quitar, "")
+        lista_valores[i] = aux
 
-  for i  in range(0, len(lista_valores)):
-    index_ = lista_valores[i].find('(')
-    if index_ != -1:  
-      quitar = lista_valores[i][index_:]
-      if int(valor) > 9:
-        quitar = lista_valores[i][index_-2:]    
-      aux = lista_valores[i].replace(quitar, "")
-      lista_valores[i] = aux
 
-  print("lista_filtros_normales: ", lista_filtros_normales)
-  print("lista_filtros_ob_new: ", lista_filtros_ob_new)
-
-  if len(lista_filtros_normales) == 0:
-    print("Lista de filtros normales esta vacia")
-    query_normal = ""
-    query_total = function_filtros_ob(lista_filtros_ob_new,query_normal,False, SELECT_candidato,WHERE_candidato )
-  
-  
-  elif len(lista_filtros_ob_new) == 0:
-    print("Lista de filtros ob esta vacio")
-    print("lista_filtros_normales: ",lista_filtros_normales)
-    #caso solo 1 filtro de normales
-    if len(lista_filtros_normales) == 1:
-      print("if len(lista_filtros_normales) == 1:")
-      query_total = query_total + function_filtro_normal(lista_valores, False, SELECT_candidato,WHERE_candidato )
-    elif len(lista_filtros_normales) > 1: 
-      query = ""
-      print("len(lista_filtros_normales)  > 1")
-      query = query + function_filtro_normal(lista_valores, True, SELECT_candidato,WHERE_candidato )
-      print("query: ",query)
-      for i in range(1, len(lista_filtros_normales)):
-          query = query +" INTERSECT "+ function_filtro_normal(lista_valores, True, SELECT_candidato,WHERE_candidato )
-      query_total = "SELECT  DISTINCT DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica,   " + SELECT_candidato+ "   FROM  ( "+query + " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) WHERE " + WHERE_candidato  
-  
-
-  
-  elif len(lista_filtros_normales)==1 and len(lista_filtros_ob_new)>1:
-    query_total_filtros_normales = ""
-    query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato,WHERE_candidato )
-    for i in range(1, len(lista_filtros_normales)):
-      query_total_filtros_normales = query_total_filtros_normales +" INTERSECT "+ function_filtro_normal(lista_valores,True, SELECT_candidato,WHERE_candidato )
-    filtro_ob = function_filtros_ob(lista_filtros_ob_new, "",True, SELECT_candidato,WHERE_candidato )
-
-    for i in range(0, len(lista_filtros_ob_new)):
-      index_ = lista_filtros_ob_new[i].find('_')
-      valor = lista_filtros_ob_new[i][index_+1:]
-      quitar = lista_filtros_ob_new[i][index_-1:]
-      print("-------------")
-      print("quitar: ", quitar)
-      print("-------------")
-      #if int(valor) > 9:
-      #  quitar = lista_filtros_ob_new[i][index_-2:]
-      aux = lista_filtros_ob_new[i].replace("("+quitar, "")
-      lista_filtros_ob_new[i] = aux
-    query_total = " SELECT  DP.id,  " + SELECT_candidato + ",  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE " + WHERE_candidato+ "  GROUP BY (conteo,DP.id,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato +") ORDER BY conteo " + lista_filtros_ob_new[0]
-  
-  
-  elif ((len(lista_filtros_normales)>1 and len(lista_filtros_ob_new) ==  1))  or  (len(lista_filtros_normales)==1 and len(lista_filtros_ob_new)==1):
-    query_total_filtros_normales = ""
-    query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato,WHERE_candidato )
-    if len(lista_filtros_normales) >1:  
-      for i in range(1, len(lista_filtros_normales)):
-        query_total_filtros_normales = query_total_filtros_normales +" INTERSECT "+ function_filtro_normal(lista_valores,True, SELECT_candidato,WHERE_candidato )
-    filtro_ob = function_filtros_ob(lista_filtros_ob_new, "",True, SELECT_candidato,WHERE_candidato )
-    for i in range(0, len(lista_filtros_ob_new)):
-      index_ = lista_filtros_ob_new[i].find('_')
-      valor = lista_filtros_ob_new[i][index_+1:]
-      quitar = lista_filtros_ob_new[i][index_-1:]
-      aux = lista_filtros_ob_new[i].replace("("+quitar, "")
-      lista_filtros_ob_new[i] = aux
-    query_total = " SELECT  DP.id,  " + SELECT_candidato + ",  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE "+ WHERE_candidato+"  GROUP BY (conteo,DP.id,  DP.candidato, DP.organizacion_politica,  "+SELECT_candidato +" ) ORDER BY conteo " + lista_filtros_ob_new[0]
-  
-  
-  elif len(lista_filtros_normales)>1 and len(lista_filtros_ob_new)>1:
-    query_total_filtros_normales = ""
-    query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato,WHERE_candidato )
-    for i in range(1, len(lista_filtros_normales)):
-      query_total_filtros_normales = query_total_filtros_normales +" INTERSECT "+ function_filtro_normal(lista_valores, True, SELECT_candidato,WHERE_candidato )
+    if len(lista_filtros_normales) == 0:
+      print("*********** Lista de filtros normales esta vacia")
+      query_normal = ""
+      query_total = function_filtros_ob(lista_filtros_ob_new, query_normal,False, SELECT_candidato, WHERE_candidato)
     
-    print("query_total_filtros_normales: ",query_total_filtros_normales)
-    query_total = function_filtros_ob(lista_filtros_ob_new, query_total_filtros_normales, False, SELECT_candidato, WHERE_candidato)
+    elif len(lista_filtros_ob_new) == 0:
+      if len(lista_filtros_normales) == 1:
+        print("query_total XXXX********",query_total)
+        print("********")
+        print("lista_valores********",lista_valores)
+        print("********")
+        print("SELECT_candidato********",SELECT_candidato)
+        print("********")
+        print("WHERE_candidato********",WHERE_candidato)
+        print("********")
+        query_total = query_total + function_filtro_normal(lista_valores, False, SELECT_candidato, WHERE_candidato)
+      elif len(lista_filtros_normales) > 1: 
+        query = ""
+        query = query + function_filtro_normal(lista_valores, True, SELECT_candidato, WHERE_candidato)
+        for i in range(1, len(lista_filtros_normales)):
+          query = query +" INTERSECT "+ function_filtro_normal(lista_valores, True, SELECT_candidato, WHERE_candidato)
+        query_total = "SELECT  DISTINCT DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica,   " + SELECT_candidato+ "   FROM  ( "+query + " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) WHERE " + WHERE_candidato  
 
-  print("-----------------------------------------------------------------")
-  print("query_total", query_total)
-  print("-----------------------------------------------------------------")
-  candidatos = DatosPersonales.objects.raw(query_total)
+    elif len(lista_filtros_normales)==1 and len(lista_filtros_ob_new)>1:
+      query_total_filtros_normales = ""
+      query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato, WHERE_candidato)
+      for i in range(1, len(lista_filtros_normales)):
+        query_total_filtros_normales = query_total_filtros_normales +" INTERSECT "+ function_filtro_normal(lista_valores,True, SELECT_candidato, WHERE_candidato)
+      filtro_ob = function_filtros_ob(lista_filtros_ob_new, "",True, SELECT_candidato, WHERE_candidato)
 
-  # Paginator 
-  paginator = Paginator(candidatos, 20)
-  page_number = request.GET.get('page')
+      for i in range(0, len(lista_filtros_ob_new)):
+        index_ = lista_filtros_ob_new[i].find('_')
+        valor = lista_filtros_ob_new[i][index_+1:]
+        quitar = lista_filtros_ob_new[i][index_-1:]
+        #print("-------------")
+        #print("quitar: ", quitar)
+        #print("-------------")
+        #if int(valor) > 9:
+        #  quitar = lista_filtros_ob_new[i][index_-2:]
+        aux = lista_filtros_ob_new[i].replace("-"+quitar, "")
+        lista_filtros_ob_new[i] = aux
+      query_total = " SELECT  DP.id,  " + SELECT_candidato + ",  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE " + WHERE_candidato+ "  GROUP BY (conteo,DP.id,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato +") ORDER BY conteo " + lista_filtros_ob_new[0]
 
-  try:
-    page_obj = paginator.get_page(page_number)
-  except PageNotAnInteger:
-    # If page is not an integer deliver the first page
-    posts = paginator.page(1)
-  except EmptyPage:
-    # If page is out of range deliver last page of results
-    posts = paginator.page(paginator.num_pages)
+    elif ((len(lista_filtros_normales)>1 and len(lista_filtros_ob_new) ==  1))  or  (len(lista_filtros_normales)==1 and len(lista_filtros_ob_new)==1):
+      query_total_filtros_normales = ""
+      query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato, WHERE_candidato)
+      if len(lista_filtros_normales) >1:  
+        for i in range(1, len(lista_filtros_normales)):
+          query_total_filtros_normales = query_total_filtros_normales +" INTERSECT "+ function_filtro_normal(lista_valores,True, SELECT_candidato, WHERE_candidato)
+      filtro_ob = function_filtros_ob(lista_filtros_ob_new, "",True, SELECT_candidato, WHERE_candidato)
+      for i in range(0, len(lista_filtros_ob_new)):
+        index_ = lista_filtros_ob_new[i].find('_')
+        valor = lista_filtros_ob_new[i][index_+1:]
+        quitar = lista_filtros_ob_new[i][index_-1:]
+        aux = lista_filtros_ob_new[i].replace("-"+quitar, "")
+        lista_filtros_ob_new[i] = aux
+      query_total = " SELECT  DP.id,  " + SELECT_candidato + ",  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE "+ WHERE_candidato+"  GROUP BY (conteo,DP.id,  DP.candidato, DP.organizacion_politica,  "+SELECT_candidato +" ) ORDER BY conteo " + lista_filtros_ob_new[0]
+    
+    elif len(lista_filtros_normales)>1 and len(lista_filtros_ob_new)>1:
+      query_total_filtros_normales = ""
+      query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato, WHERE_candidato)
+      for i in range(1, len(lista_filtros_normales)):
+        query_total_filtros_normales = query_total_filtros_normales +" INTERSECT "+ function_filtro_normal(lista_valores, True, SELECT_candidato, WHERE_candidato)
+      
+      #print("query_total_filtros_normales: ",query_total_filtros_normales)
+      query_total = function_filtros_ob(lista_filtros_ob_new, query_total_filtros_normales, False, SELECT_candidato, WHERE_candidato)
+
+    #print("-----------------------------------------------------------------")
+    #print("query_total", query_total)
+    #print("-----------------------------------------------------------------")
+    candidatos = DatosPersonales.objects.raw(query_total)
+
+    # Paginator 
+    paginator = Paginator(candidatos, 20)
+    page_number = request.GET.get('page')
+
+    try:
+      page_obj = paginator.get_page(page_number)
+    except PageNotAnInteger:
+      # If page is not an integer deliver the first page
+      posts = paginator.page(1)
+    except EmptyPage:
+      # If page is out of range deliver last page of results
+      posts = paginator.page(paginator.num_pages)
+    
+    return render(request,
+                  'elecciones/dashboard.html',
+                  {'page': page_obj}) 
+
+  else:
+    print("Lista ::::::::::")
+    print(lista_valores)
+    
+    print("***************Lista lista_filtros_normales")
+    print(len(lista_filtros_normales))
+
+    return render(request, 'elecciones/dashboard.html') 
+    
   
-  return render(request,
-                'elecciones/dashboard.html',
-                {'page': page_obj}) 
+
+  
+  
+
 
 def filter_function_orga(request, filtro_id, info_extra, orden):
   #- before column name mean descending order without - mean ascending. 
   query_total = "select * from datos_personales;"
-  print("################################xd###########################")
-  print("filtro_id: ",filtro_id)
-  print("info_extra: ",info_extra)
+  #print("################################xd###########################")
+  #print("filtro_id: ",filtro_id)
+  #print("info_extra: ",info_extra)
   print("orden: ",orden)
   candidatos = ""
 
@@ -534,22 +613,12 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
                 } )
 
 def candidatos(request):
-  candidatos = DatosPersonales.objects.raw(
-    "select * from datos_personales;"
-  )
-    
+  print("tas en candidatos")
   return render(request,
                 'elecciones/dashboard.html',
                 {'candidatos': candidatos})
 
 def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
-  #expertiencia laboral = ExperienciaLaboral.objects.raw()
-  # if cargo_postula_dato == "favicon.png":
-  #     return
-  # print("dni_hoja_de_vida: ",dni_hoja_de_vida)
-  # print("----cargo_eleccion_-----: ",cargo_postula_dato)
-  #if (len(dni_hoja_de_vida)>8 or len(cargo_eleccion_)>13):
-  #    return 
   if cargo_postula_dato == "PRIMER":
       cargo_postula_dato ="PRIMER VICEPRESIDENTE DE LA REPÚBLICA"
   elif cargo_postula_dato =="PRESIDENTE":
@@ -656,55 +725,9 @@ def test(request):
   candidato = DatosPersonales.objects.filter(Q(dni_candidato = request.GET.get("dni")))
   
   print(candidato)
-  # print(candidato.candidato)
   return render(request,'elecciones/test.html', 
     { 'candidato' : candidato }
   ) 
-
-def test_filtros_candidatos(request):
-  tipo_filter = request.GET.get("tipo_filter")
-  # Candidatos
-  niv_academico = request.GET.get("nivel_academico")
-  anhios_cargos_elecciones_pasadas = request.GET.get("anhio_servicio")
-  tiene_sentencias = request.GET.get("ifsentencias") # si o no
-  tipo_sentencia = request.GET.get("tipo_sentencia")
-  cant_senten_penal = request.GET.get("cant_senten_penal")
-  cant_senten_por_oblig = request.GET.get("cant_senten_oblig")
-  mat_demanda = request.GET.get("opc_mat_demanda")
-  bienes_rentas = request.GET.get("opc_mat_demanda")
-  orden_cant_ingresos = request.GET.get("cant_ingreso")
-  orden_cant_inmuebles = request.GET.get("cant_inmuebles")
-  orden_valor_inmuebles = request.GET.get("valor_inmuebles")
-  orden_cant_muebles = request.GET.get("cant_muebles")
-  orden_valor_muebles = request.GET.get("valor_muebles")
-  orden_cantidad_renuncia_a_otros_partidos = request.GET.get("cantidad_renuncia")
-  rango_edad = request.GET.get("rango_edad")
-  nacio_en_peru = request.GET.get("oriundo_input")
-  departamento_nacimiento = request.GET.get("departamento_nacimiento")
-  cargo_al_que_postula = request.GET.get("cargo_al_que_postula")
-  org_politica_al_que_postula = request.GET.get("org_politica")
-  dist_electoral = request.GET.get("dist_electoral")
-  # Org Politica
-  org_rango_edad = request.GET.get("org_rango_edad")
-  org_edad_orden = request.GET.get("org_edad_orden")
-  org_opc_genero = request.GET.get("org_opc_genero")
-  org_genero_orden = request.GET.get("org_genero_orden")
-  org_opc_educacion = request.GET.get("org_opc_educacion")
-  org_cant_sen_penal_obliga = request.GET.get("cant_sen_penal_obliga")
-  org_cant_sen_penal = request.GET.get("cant_sen_penal")
-  org_cant_sen_civil = request.GET.get("cant_sen_civil")
-  org_oriundo = request.GET.get("org_oriundo")
-  org_departamento_oriundo = request.GET.get("org_departamento_oriundo")
-  org_distrito_electoral = request.GET.get("org_distrito_electoral")
-  org_2019_finan_priv_presento = request.GET.get("2019_est_present")
-  org_2019_finan_priv_orden_ingreso = request.GET.get("2019_ingre_dec")
-  org_2019_finan_priv_presento = request.GET.get("2018_est_present")
-  org_2018_finan_priv_orden_ingreso = request.GET.get("2018_ingre_dec")
-  org_2017_finan_priv_presento = request.GET.get("2017_est_present")
-  org_2017_finan_priv_orden_ingreso = request.GET.get("2017_ingre_dec")
-  org_finan_pub_orden_monto_quinquenal = request.GET.get("monto_quinque")
-
-
 
 def subir_data(request):
   # Leer el archivo 'datos.csv' con reader() y
