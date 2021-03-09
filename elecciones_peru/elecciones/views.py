@@ -3,6 +3,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse, JsonResponse
 from .models import *
 from itertools import chain
+from django.db import connection
+
 
 def function_filtros_ob(self, query_normal, normnob1, SELECT_candidato, WHERE_candidato):
   query_total = ""
@@ -148,6 +150,7 @@ def function_filtro_normal(self, stack_, SELECT_candidato,WHERE_candidato ):
         self[0] = ""
         return retorno
     if self[4] != "":
+      print("self[4]", self[4])
       retorno = "SELECT DISTINCT DP.id, DP.dni_candidato,  DP.candidato, DP.organizacion_politica,  "+ SELECT_candidato +",  DP.dni_candidato FROM   sentencia_obligacion AS SO JOIN  datos_personales AS DP USING (dni_candidato) WHERE SO.tiene_info_por_declarar = 'SI' AND  (SO.materia_sentencia = '"+self[
         4]+"' ) AND  " + WHERE_candidato
       self[4] = ""
@@ -241,12 +244,8 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
     orden_cant_mueble, orden_valor_mueble,orden_renuncias, rango_edad_val,nac_per_si, nac_per_no, departamento_nacimiento,
     cargo_postula, org_politica, dist_electoral, tipo_candidato_
   ]
-
-  if lista_valores[4] != "unk":
-    index = lista_valores[4].find("(")
-    aux = lista_valores[4][index:len(lista_valores[4]) :+1]
-    lista_valores[4] = "FAMILIA / ALIMENTARIA"+aux
   
+
   print("tipo_candidato_: ", tipo_candidato_)
   SELECT_candidato = ""
   WHERE_candidato = ""
@@ -648,9 +647,52 @@ def analisisGraficos(request):
 def analisisGraficosPresi(request):
   return render(request, 'elecciones/graphics-presi.html',{})
 
+
+def test(request):
+  candidato = DatosPersonales.objects.filter(Q(dni_candidato = request.GET.get("dni")))
+  return render(request,'elecciones/test.html', 
+    { 'candidato' : candidato }
+  ) 
+
+def iaDisplay(request):
+  print("iaDisplay")
+  dni_candidato = request.GET.get("dni")
+  emocion = request.GET.get("emocion")
+  organizacion = request.GET.get("organizacion")
+  candidatos_presidenciales = AiTotal.objects.raw(" SELECT * FROM ai_total WHERE cargo_eleccion <>'CONGRESISTA DE LA REPÚBLICA' AND cargo_eleccion<>'REPRESENTANTE ANTE EL PARLAMENTO ANDINO';")
+  candidatos_congresales = AiTotal.objects.raw("SELECT * FROM ai_total WHERE cargo_eleccion ='CONGRESISTA DE LA REPÚBLICA';")
+  candidatos_parlamento = AiTotal.objects.raw("SELECT * FROM ai_total WHERE cargo_eleccion ='REPRESENTANTE ANTE EL PARLAMENTO ANDINO';")
+  paginator = Paginator(candidatos_presidenciales,20)
+  page_number = request.Get.get('page')
+  
+  return render(request,
+  'elecciones/iaDisplay.html',
+  {'candidatos_presi':candidatos_presidenciales,
+  'candidatos_congres':candidatos_congresales,
+  'candidatos_parla':candidatos_parlamento
+  })
+
+
+
+
+'''with connection.cursor() as cursor:
+    #query_total_ = " SELECT * FROM datos_personales WHERE dni_candidato='"+dni_candidato+"';"
+    #candidatos_presi_ = Manager.raw(" SELECT * FROM ai_presi;")
+    #candidatos_congres_ = Manager.raw(" SELECT * FROM ai_congre;")
+    #candidatos_parla_ = Manager.raw(" SELECT * FROM ai_pa;")
+    cursor.execute("SELECT * FROM ai_total;")
+    candidatos_presi_ = cursor.fetchone()
+    cursor.execute("SELECT * FROM ai_congre;")
+    candidatos_congres_ = cursor.fetchone()
+    cursor.execute("SELECT * FROM ai_congre;")
+    candidatos_congres_ = cursor.fetchone()
+    return render(request,'elecciones/iaDisplay.html',{
+      'candidatos_presi':candidatos_presi_
+      #'candidatos_congres':candidatos_congres_
+      #'candidatos_parla':candidatos_parla_
+    })'''
+
 def test(request):
   print('////////////////////////////')
   print(request.method)
   print('////////////////////////////')
-
-    

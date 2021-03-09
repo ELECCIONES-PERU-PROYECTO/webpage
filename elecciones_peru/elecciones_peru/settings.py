@@ -92,31 +92,31 @@ WSGI_APPLICATION = 'elecciones_peru.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
-}
+#DATABASES = {
+#    'default': dj_database_url.config(
+#        default=config('DATABASE_URL')
+#    )
+#}
 
-
-
-# DATABASES = {
-#     'default' : {
-#         'ENGINE' : 'django.db.backends.postgresql',
-#         'NAME' : 'elecciones_peru',
-#         'USER' : 'postgres',
-#         'PASSWORD' : 'pvta',
-#         'HOST' : 'localhost',
-#         'PORT' : 5432,
-#     }
-# }
 
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
+    'default' : {
+        'ENGINE' : 'django.db.backends.postgresql',
+        'NAME' : 'proyecto_elecciones',
+        'USER' : 'postgres',
+        'PASSWORD' : '1234567',
+        'HOST' : 'localhost',
+        'PORT' : 5432,
+    }
 }
+
+
+#DATABASES = {
+#    'default': dj_database_url.config(
+#        default=config('DATABASE_URL')
+#    )
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
