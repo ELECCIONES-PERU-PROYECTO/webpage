@@ -647,11 +647,6 @@ def analisisGraficos(request):
 def analisisGraficosPresi(request):
   return render(request, 'elecciones/graphics-presi.html',{})
 
-<<<<<<< HEAD
-def InteligenciaArtificial(request):
-  return render(request,'elecciones/inteligencia-artificial.html',{} )
-
-=======
 
 def test(request):
   candidato = DatosPersonales.objects.filter(Q(dni_candidato = request.GET.get("dni")))
@@ -692,7 +687,6 @@ def iaDisplay(request):
       #'candidatos_congres':candidatos_congres_
       #'candidatos_parla':candidatos_parla_
     })'''
->>>>>>> afda385deb9b6efc4fd358a4c3ea4e116cbdc16a
 
 def test(request):
   print('////////////////////////////')

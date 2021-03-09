@@ -1,0 +1,56 @@
+.body{
+	font-family: 'Poppins', sans-serif;
+}
+.nav {
+	position: absolute;
+	top:0px;
+	z-index: 99;
+	left: 0;
+	right: 0;
+}
+.uk-sticky-placeholder {
+	height: 0 !important;
+}
+.top-wrap::before, .overlay-wrap::before, .overlay-wrap::after, .top-wrap::after {
+	position: absolute;
+	top:0;
+	right:0;
+	left: 0;
+	bottom: 0;
+	content: '';
+	z-index: 1;
+	background-color: rgba(0,0,0,0.5);
+}
+.top-wrap-height {
+	height: 80vh;
+	min-height: 460px;
+	transition: height 0.25s;
+}
+.uk-subnav-pill > * > :first-child {
+	padding: 0.5rem 1rem;
+	background-color: rgb(172 23 23 / 80%);
+    color: rgb(255 255 255);
+    border-radius:7px;
+}
+.top-container {
+	z-index: 2;
+}
+
+.uk-logo img {
+    height: 5vh;
+}
+
+.uk-navbar-container:not(.uk-navbar-transparent) {
+    background: rgb(34 34 34)  !important;
+}
+
+.uk-subnav {
+    margin-top: 105px !important;
+ 
+}
+
+.option{
+    padding: 5px !important;
+    padding-left: 30px !important;
+    
+}

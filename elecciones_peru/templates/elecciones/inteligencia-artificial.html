@@ -13,7 +13,6 @@
 
 </head>
 
-
   <!--HEADER-->
   <header id="top-head" class="uk-position-fixed">
     <div class="uk-container uk-container-expand uk-background-secondary">
@@ -31,40 +30,28 @@
         <div class="uk-navbar-right">  
           <ul class="uk-navbar-nav uk-visible@m" id="opciones_candidatos"> 
             <li class="nav-options pres_opt">
-                <a class="nav_opt" href="{% url 'elecciones:mainpage' %}">Inicio</a>
+              <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a>
             </li>
-			
-            <li class="nav-options pres_opt">
-                <a class="nav_opt"href="{% url 'elecciones:analisisGraficos' %}">
-                    Analítica</a>
+            <li class="nav-options cong_opt">
+              <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Congresales</a>
             </li>
-
-            <li class="nav-options pres_opt">
-                <a class="text-nav" href="#" data-uk-icon="chevron-down">Búsqueda</a>
-                <div class="uk-navbar-dropdown">
-                    <ul class="uk-nav uk-navbar-dropdown-nav">
-                        <li>
-                            <a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
-                        </li>
-                        <li>
-                            <a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Congresales</a>
-                        </li>
-                        <li>
-                            <a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
-                        </li>
-                        <li>
-                            <a class="text-nav" href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
-                        </li>
-                    </ul>
-                </div>
+            <li class="nav-options parl_opt">
+              <a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Candidatos Parlamento Andino</a>
             </li>
-
-                      </ul>
+            <li class="nav-options orga_opt">
+              <a class="nav_opt" href="#" onclick="activar_organizaciones(this.text)">Partidos Políticos</a>
+            </li>
+            <li class="nav-options">
+              <a class="nav_opt" href="{% url 'elecciones:mainpage' %}">
+                Inicio
+              </a>
+            </li>
+          </ul>
         </div>
       </nav>
     </div>
   </header>
   <!--/HEADER-->
 
-  
+
 {% endblock %}
