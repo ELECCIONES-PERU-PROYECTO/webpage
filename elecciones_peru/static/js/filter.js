@@ -136,18 +136,10 @@ function filter_candidatos() {
   }
 
   if(tiene_bienes_inmuebles.checked) {
-    if(!filtro_inmu_cant) {
+    if(!filtro_inmu_cant && !filtro_inmu_valor) {
       setTimeout(function(){
         UIkit.notification({
-          message: 'Especifique el orden según la cantidad bienes inmuebles',
-          status: 'danger'
-        })
-      }, 1000)
-      return
-    } else if(!filtro_inmu_valor) {
-      setTimeout(function(){
-        UIkit.notification({
-          message: 'Especifique el orden según la valor bienes inmuebles',
+          message: 'Marque al menos una sección de bienes inmuebles',
           status: 'danger'
         })
       }, 1000)
@@ -156,18 +148,10 @@ function filter_candidatos() {
   }
 
   if(tiene_bienes_muebles.checked) {
-    if(!filtro_mueb_cant) {
+    if(!filtro_mueb_cant && !filtro_mueb_valor) {
       setTimeout(function(){
         UIkit.notification({
-          message: 'Especifique el orden según la cantidad bienes muebles',
-          status: 'danger'
-        })
-      }, 1000)
-      return
-    } else if(!filtro_mueb_valor) {
-      setTimeout(function(){
-        UIkit.notification({
-          message: 'Especifique el orden según la valor bienes muebles',
+          message: 'Especifique al menos una sección de bienes muebles',
           status: 'danger'
         })
       }, 1000)
@@ -384,6 +368,8 @@ function get_sentencias_penal_cant(){
       orden_cant_sentencia = cant_senten_list[i].value
     }
   }
+
+  console.log("lista orden filtros", lista_orden_filtros)
 }
 
 function get_sentencias_oblig_cant(){
@@ -406,6 +392,8 @@ function get_sentencias_oblig_cant(){
       orden_cant_sentencia_oblig = cant_senten_oblig_list[i].value
     }
   }
+
+  console.log("lista orden filtros", lista_orden_filtros)
 }
 
 function get_sentencias_oblig_mat(){
@@ -423,6 +411,8 @@ function get_sentencias_oblig_mat(){
       mat_demanda = cant_mat_list[i].value
     }
   }
+
+  console.log("lista orden filtros", lista_orden_filtros)
 }
 
 function quitar_seleccion_sentencias_menosno_tiene(){
@@ -444,7 +434,9 @@ function quitar_seleccion_sentencias_menosno_tiene(){
       }
     document.getElementById("div_opc_cant_sentencias").style.display="none"
     }
+    console.log("lista orden filtros", lista_orden_filtros)
   }
+
   if(filtro_oblig_cant  == true){
     document.getElementById("por_obligaciones").checked = false
     orden_cant_sentencia_oblig = ""
@@ -497,6 +489,7 @@ function quitar_seleccion_sentencias_menosno_tiene(){
 }
 
 function quitar_seleccion_sentencias(){
+  console.log("quitar seleccion")
   document.getElementById("por_obligaciones").checked = false
   document.getElementById("penal_cbx").checked = false
   document.getElementById("no_tiene").checked = false
@@ -575,17 +568,21 @@ function quitar_seleccion_sentencias(){
   let element_ = document.getElementById("por_obligaciones")
   toggleObligacion_opciones(element_)
   document.getElementById("mostrar_sentencias").style="display: none;" 
+
+  console.log("lista orden filtros", lista_orden_filtros)
 }
 
 function noTiene_opcion(){
   quitar_seleccion_sentencias_menosno_tiene();
   
+  console.log("no tiene opcion")
   if(filtro_senten_no_tiene == false){
     filtro_senten_no_tiene = true
     no_tiene_val = "NO"
     lista_orden_filtros.push(6)
     cant_filtros++
   }
+  console.log("lista orden filtros", lista_orden_filtros)
 }
 
 
@@ -695,8 +692,13 @@ function quitar_seleccion_b_r(){
   document.getElementById("cant_mueble_desc").checked = false
   document.getElementById("valor_mueble_asc").checked = false
   document.getElementById("valor_mueble_desc").checked = false
+  tiene_ingresos.checked = false
+  tiene_bienes_inmuebles.checked = false
+  tiene_bienes_muebles.checked = false
+  document.getElementById("inputs-ingreso").style.display="none"
+  document.getElementById("inputs-canti-inmu").style.display="none"
+  document.getElementById("inputs-mueb").style.display="none"
 }
-
 
 /* FILTRO RENUNCIAS */
 function get_renuncia(){

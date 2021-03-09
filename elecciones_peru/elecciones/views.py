@@ -10,11 +10,16 @@ def function_filtros_ob(self, query_normal, normnob1, SELECT_candidato, WHERE_ca
   subquery_list = list()
   for i in range(0, len(self)):
     index_ = self[i].find('_')
-    indice = self[i].find("-")
+    indice = self[i].rfind("-")
     valor = self[i][index_+1:]
     nrorden = self[i][indice+1:indice+3:1]
     uwu = nrorden.find("_")
     quitar = self[i][index_-1:]
+
+    print("-------------------- VALOR DEL QUERY -----------------------")
+    print(valor)
+    print("-------------------- ORDEN DEL VALOR -----------------------")
+    print(nrorden)
 
     if int(valor) > 9 and uwu==-1:
       quitar = self[i][index_-2:]
@@ -64,7 +69,7 @@ def function_filtros_ob(self, query_normal, normnob1, SELECT_candidato, WHERE_ca
         subquery = " SELECT  DP.id,SUM (BI.autovaluo) AS conteo, DP.dni_candidato,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato +"  FROM bien_inmueble AS BI JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_inmueble = 'SI' AND " + WHERE_candidato+ " GROUP BY (DP.dni_candidato, DP.candidato, DP.organizacion_politica, DP.id, "+ SELECT_candidato +" ) ORDER BY conteo " + self[i]
         return subquery 
     elif valor == "9" : # cantidad muebles
-      subquery = " SELECT DP.id,COUNT(BM.dni_candidato) AS conteo, DP.dni_candidato FROM bien_mueble AS BM JOIN  datos_personales AS DP USING (dni_candidato)WHERE tiene_bien_mueble  = 'SI' AND  "+  WHERE_candidato +  " GROUP BY (DP.id,DP.dni_candidato) " 
+      subquery = " SELECT DP.id,COUNT(BM.dni_candidato) AS conteo, DP.dni_candidato FROM bien_mueble AS BM JOIN  datos_personales AS DP USING (dni_candidato) WHERE tiene_bien_mueble  = 'SI' AND  "+  WHERE_candidato +  " GROUP BY (DP.id,DP.dni_candidato) " 
       if len(self) >1 or normnob1 == True :
         subquery_list.append(subquery)
       else: 
@@ -119,12 +124,8 @@ def function_filtros_ob(self, query_normal, normnob1, SELECT_candidato, WHERE_ca
   return query_total
 
 def function_filtro_normal(self, stack_, SELECT_candidato, WHERE_candidato):
-  # print("self",self)
-  print("SELECT_candidato: ", SELECT_candidato)
-  print("WHERE_candidato: ", WHERE_candidato)
   if stack_== False:
     if self[0] != "":
-      print("self[0]: ",self[0])
       if(self[0] == 'maestro_doctor'):
         query_total = "SELECT DISTINCT DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica, "+  SELECT_candidato+ "  FROM  estudio_postgrado AS EP   JOIN  datos_personales AS DP USING   (dni_candidato) WHERE ((EP.es_maestro= 'SI' ) OR (EP.es_doctor = 'SI')) AND  "+ WHERE_candidato
         return query_total
@@ -155,7 +156,11 @@ def function_filtro_normal(self, stack_, SELECT_candidato, WHERE_candidato):
       self[5] = ""
       return retorno
     if self[12] != "":
-      retorno = "SELECT DISTINCT DP.id,  DP.dni_candidato,DP.candidato, DP.organizacion_politica, "+ SELECT_candidato+"  FROM tabla_edad AS TE JOIN  datos_personales AS DP USING (dni_candidato) WHERE TE.edad BETWEEN " + (self[12])[:2] + " AND " + ( self[12])[3:5] + " AND  "+WHERE_candidato
+      print("SELF >>>>>>>>>>>>>>>>>>>>>>>>> ", self[12])
+      print("Primer numero >>>>>>>>>>>>>>>>>>>>>>>>> ",(self[12])[:2])
+      print("Segundo numero >>>>>>>>>>>>>>>>>>>>>>>>> ",(self[12])[3:5])
+      retorno = "SELECT DISTINCT DP.id,  DP.dni_candidato,DP.candidato, DP.organizacion_politica, "+ SELECT_candidato+"  FROM tabla_edad AS TE JOIN  datos_personales AS DP USING (dni_candidato) WHERE TE.edad BETWEEN " + (self[12])[:2] + " AND " + (self[12])[3:5] + " AND  "+WHERE_candidato
+      print("retorno >>>>>>>>>>>>>>>>>>>>>>>>> ", retorno)
       self[12] = ""
       return retorno
     if self[13] == "SI":
@@ -180,7 +185,7 @@ def function_filtro_normal(self, stack_, SELECT_candidato, WHERE_candidato):
       return retorno
   elif stack_ == True:
     if self[0] != "":
-      print("self[0]: ",self[0])
+      # print("self[0]: ",self[0])
       if( self[0] == 'maestro_doctor'):
         query_total = "SELECT  DISTINCT  DP.dni_candidato FROM  estudio_postgrado AS EP   JOIN  datos_personales AS DP USING   (dni_candidato) WHERE (EP.es_maestro= 'SI' OR EP.es_doctor = 'SI') AND " + WHERE_candidato
         self[0] = ""
@@ -209,6 +214,9 @@ def function_filtro_normal(self, stack_, SELECT_candidato, WHERE_candidato):
       self[5] = ""
       return retorno
     if self[12] != "":
+      print("SELF >>>>>>>>>>>>>>>>>>>>>>>>> ", self[12])
+      print("Primer numero >>>>>>>>>>>>>>>>>>>>>>>>> ",(self[12])[:2])
+      print("Segundo numero >>>>>>>>>>>>>>>>>>>>>>>>> ",(self[12])[3:5])
       retorno = "SELECT  DISTINCT  DP.dni_candidato FROM tabla_edad AS TE JOIN    datos_personales AS DP USING (dni_candidato) WHERE TE.edad BETWEEN " + (self[12])[:2] + " AND " + ( self[12])[3:5] + " AND "+ WHERE_candidato
       self[12] = ""
       return retorno
@@ -233,18 +241,23 @@ def function_filtro_normal(self, stack_, SELECT_candidato, WHERE_candidato):
       self[18] = ""
       return retorno
 
+
+def unkipify(value):
+  return value if value != None else "unk"
+
+
 def filter_function(request):
   ###############################################
   # Variables
   ###############################################
   # Tipo de Filtro
-  tipo_candidato_ = request.GET.get("tipo_filter") if request.GET.get("tipo_filter") != None else "unk"
+  tipo_candidato_ = unkipify(request.GET.get("tipo_filter"))
   # Candidatos
-  nivel_academico = request.GET.get("nivel_academico") if request.GET.get("nivel_academico") != None else "unk"
-  cargos_previos_order = request.GET.get("anhio_servicio") if request.GET.get("anhio_servicio") != None else "unk"
-  orden_cant_sentencia = request.GET.get("cant_senten") if request.GET.get("cant_senten") != None else "unk"
-  orden_cant_sentencia_oblig = request.GET.get("cant_senten_oblig") if request.GET.get("cant_senten_oblig") != None else "unk"
-  mat_demanda = request.GET.get("opc_mat_demanda") if request.GET.get("opc_mat_demanda") != None else "unk"
+  nivel_academico = unkipify(request.GET.get("nivel_academico"))
+  cargos_previos_order = unkipify(request.GET.get("anhio_servicio"))
+  orden_cant_sentencia = unkipify(request.GET.get("cant_senten"))
+  orden_cant_sentencia_oblig = unkipify(request.GET.get("cant_senten_oblig"))
+  mat_demanda = unkipify(request.GET.get("opc_mat_demanda"))
   if(request.GET.get("ifsentencias") != None): # si o no, (se tuvo que hacer así xd)
     if(request.GET.get("ifsentencias") == "si"):
       no_tiene_sentencias = "unk"
@@ -252,14 +265,14 @@ def filter_function(request):
       no_tiene_sentencias = request.GET.get("ifsentencias")
   else:
     no_tiene_sentencias = "unk"
-  tipo_sentencia = request.GET.get("tipo_sentencia") if request.GET.get("tipo_sentencia") != None else "unk"  # no se usa
-  orden_cant_ingreso = request.GET.get("cant_ingreso") if request.GET.get("cant_ingreso") != None else "unk"
-  orden_cant_inmueble = request.GET.get("cant_inmuebles") if request.GET.get("cant_inmuebles") != None else "unk"
-  orden_valor_inmueble = request.GET.get("valor_inmuebles") if request.GET.get("valor_inmuebles") != None else "unk"
-  orden_cant_mueble = request.GET.get("cant_muebles") if request.GET.get("cant_muebles") != None else "unk"
-  orden_valor_mueble = request.GET.get("valor_muebles") if request.GET.get("valor_muebles") != None else "unk"
-  orden_renuncias = request.GET.get("cantidad_renuncia") if request.GET.get("cantidad_renuncia") != None else "unk"
-  rango_edad_val = request.GET.get("rango_edad") if request.GET.get("rango_edad") != None else "unk"
+  tipo_sentencia = unkipify(request.GET.get("tipo_sentencia"))
+  orden_cant_ingreso = unkipify(request.GET.get("cant_ingreso"))
+  orden_cant_inmueble = unkipify(request.GET.get("cant_inmuebles"))
+  orden_valor_inmueble = unkipify(request.GET.get("valor_inmuebles"))
+  orden_cant_mueble = unkipify(request.GET.get("cant_muebles"))
+  orden_valor_mueble = unkipify(request.GET.get("valor_muebles"))
+  orden_renuncias = unkipify(request.GET.get("cantidad_renuncia"))
+  rango_edad_val = unkipify(request.GET.get("rango_edad"))
   if(request.GET.get("oriundo_input") != None):
     if(request.GET.get("oriundo_input") == "NO"):
       nacio_en_peru_no = "NO"
@@ -268,30 +281,30 @@ def filter_function(request):
   else:
     nacio_en_peru_no = "unk"
     nacio_en_peru_si = "unk"
-  departamento_nacimiento = request.GET.get("departamento_nacimiento") if request.GET.get("departamento_nacimiento") != None else "unk"
-  cargo_postula = request.GET.get("cargo_al_que_postula") if request.GET.get("cargo_al_que_postula") != None else "unk"
-  org_politica = request.GET.get("org_politica") if request.GET.get("org_politica") != None else "unk"
-  dist_electoral = request.GET.get("dist_electoral") if request.GET.get("dist_electoral") != None else "unk"
+  departamento_nacimiento = unkipify(request.GET.get("departamento_nacimiento"))
+  cargo_postula = unkipify(request.GET.get("cargo_al_que_postula"))
+  org_politica = unkipify(request.GET.get("org_politica"))
+  dist_electoral = unkipify(request.GET.get("dist_electoral"))
 
   # Org Politica - Falta
-  org_rango_edad = request.GET.get("org_rango_edad")
-  org_edad_orden = request.GET.get("org_edad_orden")
-  org_opc_genero = request.GET.get("org_opc_genero")
-  org_genero_orden = request.GET.get("org_genero_orden")
-  org_opc_educacion = request.GET.get("org_opc_educacion")
-  org_cant_sen_penal_obliga = request.GET.get("cant_sen_penal_obliga")
-  org_cant_sen_penal = request.GET.get("cant_sen_penal")
-  org_cant_sen_civil = request.GET.get("cant_sen_civil")
-  org_oriundo = request.GET.get("org_oriundo")
-  org_departamento_oriundo = request.GET.get("org_departamento_oriundo")
-  org_distrito_electoral = request.GET.get("org_distrito_electoral")
-  org_2019_finan_priv_presento = request.GET.get("2019_est_present")
-  org_2019_finan_priv_orden_ingreso = request.GET.get("2019_ingre_dec")
-  org_2019_finan_priv_presento = request.GET.get("2018_est_present")
-  org_2018_finan_priv_orden_ingreso = request.GET.get("2018_ingre_dec")
-  org_2017_finan_priv_presento = request.GET.get("2017_est_present")
-  org_2017_finan_priv_orden_ingreso = request.GET.get("2017_ingre_dec")
-  org_finan_pub_orden_monto_quinquenal = request.GET.get("monto_quinque")
+  org_rango_edad = unkipify(request.GET.get("org_rango_edad"))
+  org_edad_orden = unkipify(request.GET.get("org_edad_orden"))
+  org_opc_genero = unkipify(request.GET.get("org_opc_genero"))
+  org_genero_orden = unkipify(request.GET.get("org_genero_orden"))
+  org_opc_educacion = unkipify(request.GET.get("org_opc_educacion"))
+  org_cant_sen_penal_obliga = unkipify(request.GET.get("cant_sen_penal_obliga"))
+  org_cant_sen_penal = unkipify(request.GET.get("cant_sen_penal"))
+  org_cant_sen_civil = unkipify(request.GET.get("cant_sen_civil"))
+  org_oriundo = unkipify(request.GET.get("org_oriundo"))
+  org_departamento_oriundo = unkipify(request.GET.get("org_departamento_oriundo"))
+  org_distrito_electoral = unkipify(request.GET.get("org_distrito_electoral"))
+  org_2019_finan_priv_presento = unkipify(request.GET.get("2019_est_present"))
+  org_2019_finan_priv_orden_ingreso = unkipify(request.GET.get("2019_ingre_dec"))
+  org_2019_finan_priv_presento = unkipify(request.GET.get("2018_est_present"))
+  org_2018_finan_priv_orden_ingreso = unkipify(request.GET.get("2018_ingre_dec"))
+  org_2017_finan_priv_presento = unkipify(request.GET.get("2017_est_present"))
+  org_2017_finan_priv_orden_ingreso = unkipify(request.GET.get("2017_ingre_dec"))
+  org_finan_pub_orden_monto_quinquenal = unkipify(request.GET.get("monto_quinque"))
 
   ###############################################
   # XD
@@ -306,18 +319,17 @@ def filter_function(request):
     dist_electoral, tipo_candidato_
   ]
 
-  print("********")
-  print(lista_valores[4])
-  print(lista_valores[4].find("-"))
-  print(lista_valores[4][0:lista_valores[4].find("-")])
-  print("$$$$$$$")
+  # print("********")
+  # print(lista_valores[4])
+  # print(lista_valores[4].rfind("-"))
+  # print(lista_valores[4][0:lista_valores[4].rfind("-")])
+  # print("$$$$$$$")
 
-  if(lista_valores[4][0:lista_valores[4].find("-")] == "FamiliaAli"):
+  if(lista_valores[4][0:lista_valores[4].rfind("-")] == "FamiliaAli"):
     print(">>>>>>>>>>>>>>>>>>>>>><<<<< Entro a familia")
-    order = lista_valores[4][lista_valores[4].find("-"):len(lista_valores[4]) :+1]
+    order = lista_valores[4][lista_valores[4].rfind("-"):len(lista_valores[4]) :+1]
     lista_valores[4] = "FAMILIA / ALIMENTARIA" + order
-  
-  # print("tipo_candidato_: ", tipo_candidato_)
+
   SELECT_candidato = ""
   WHERE_candidato = ""
   GROUP_by = ""
@@ -345,19 +357,23 @@ def filter_function(request):
 
   for i in range(0, len(lista_valores)-1):
     print("lista_valores[",i,"]: ", lista_valores[i])
-    # if lista_valores[13] != "unk" and i == 15:
-    #   continue
     if lista_valores[i] != "unk":
       tienes_al_menos1 = True
-      index_ = lista_valores[i].find("-")
+      index_ = lista_valores[i].rfind("-")
+      # print("el otro index ---->", index_)
       valor = lista_valores[i][index_+1:]
       lista_valores[i] = lista_valores[i] + str("_") + str(i)
+      # print("valor ---->", valor)
+      # print("lista_valores", i,  "---->", lista_valores[i])
       if (i >= 1 and i <= 3) or (i >= 6 and i <= 11):
+        # print("entro a la condicion (i >= 1 and i <= 3) or (i >= 6 and i <= 11)")
         lista_filtros_ob.append(lista_valores[i])
       else:
         lista_filtros_normales.append(lista_valores[i])
       lista_val_new.append(lista_valores[i])
       lista_orden.append(valor)
+      print("LSITA DE ORDEEEEEN:", lista_orden)
+      print("LSITA VAL NEW:", lista_val_new)
     elif lista_valores[i] == "unk":
       lista_valores[i] = ""
 
@@ -380,7 +396,7 @@ def filter_function(request):
         lista_filtros_ob_new.append(LN[i])
 
     for i in range(0, len(lista_valores)):
-      index_ = lista_valores[i].find("-")
+      index_ = lista_valores[i].rfind("-")
       if index_ != -1:
         quitar = lista_valores[i][index_:]
         if int(valor) > 9:
@@ -423,11 +439,6 @@ def filter_function(request):
         index_ = lista_filtros_ob_new[i].find('_')
         valor = lista_filtros_ob_new[i][index_+1:]
         quitar = lista_filtros_ob_new[i][index_-1:]
-        #print("-------------")
-        #print("quitar: ", quitar)
-        #print("-------------")
-        #if int(valor) > 9:
-        #  quitar = lista_filtros_ob_new[i][index_-2:]
         aux = lista_filtros_ob_new[i].replace("-"+quitar, "")
         lista_filtros_ob_new[i] = aux
       query_total = " SELECT  DP.id,  " + SELECT_candidato + ",  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE " + WHERE_candidato+ "  GROUP BY (conteo,DP.id,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato +") ORDER BY conteo " + lista_filtros_ob_new[0]
@@ -503,7 +514,7 @@ def filter_function_orga(request, filtro_id, info_extra, orden):
   candidatos = ""
 
   if filtro_id =="edad":
-    rango = info_extra.find("-")
+    rango = info_extra.rfind("-")
     var1 = info_extra[0:rango:+1] 
     var2 = info_extra[rango+1:len(filtro_id)+1:+1]
     print("var1: ", var1)

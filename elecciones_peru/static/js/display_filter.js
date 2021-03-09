@@ -1,4 +1,13 @@
+function find_no_tiene(el) {
+  return el == 6
+}
+
 function mostrar_tiposentencias(){
+  let x = lista_orden_filtros.filter(find_no_tiene)
+
+  if(x == 6)
+    quitar_seleccion_sentencias()
+
   document.getElementById("si-sentencia").checked = true
   let div_opc_sentencias = document.getElementById("mostrar_sentencias")
   div_opc_sentencias.style.display="block"
