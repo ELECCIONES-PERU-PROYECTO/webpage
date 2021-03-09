@@ -68,3 +68,23 @@ ul.uk-navbar-nav li a.nav_options {
     background-color:rgb(213 142 142);
     color: rgb(255 255 255);
 }
+
+h1, h2, h3, h4, h5, h6, a, p, li, span, button {
+	font-family: 'Poppins', sans-serif;
+	font-style: normal;
+	text-rendering: optimizeLegibility;
+
+}
+
+.uk-card-body {
+    padding: 15px 10px  !important;
+}
+
+.uk-navbar {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+.padding img{
+    padding: 4px;
+}
+
