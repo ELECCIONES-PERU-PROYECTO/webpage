@@ -82,7 +82,7 @@
           <div class="uk-card uk-card-default uk-box-shadow-large">
             <a class="uk-inline" href={{ candidato.url }}>
               <img src={{ candidato.url }} alt="">
-          </a>
+           </a>
               <div class="uk-card-body">
                 <h3 class="uk-card-title">Candidato</h3>
                 <p>{{ candidato.dni_candidato }}</p>
@@ -93,10 +93,10 @@
       {% endfor %}
       {% for candidato in candidatos_congres %}
         <li data-tags="congresales all">
-          <div class="uk-card uk-card-default">
-            <div class="uk-card-media-top">
-                <img src={{ candidato.url }} alt="">
-            </div>
+          <div class="uk-card uk-card-default uk-box-shadow-large">
+            <a class="uk-inline" href={{ candidato.url }}>
+              <img src={{ candidato.url }} alt="">
+           </a>
             <div class="uk-card-body">
                 <h3 class="uk-card-title">Candidato</h3>
                 <p>{{ candidato.dni_candidato }}</p>
@@ -106,10 +106,10 @@
       {% endfor %}
       {% for candidato in candidatos_parla %}
         <li data-tags="parlamento all">
-          <div class="uk-card uk-card-default">
-            <div class="uk-card-media-top">
-                <img src={{ candidato.url }} alt="">
-            </div>
+          <div class="uk-card uk-card-default uk-box-shadow-large">
+            <a class="uk-inline" href={{ candidato.url }}>
+              <img src={{ candidato.url }} alt="">
+           </a>
             <div class="uk-card-body">
                 <h3 class="uk-card-title">Candidato</h3>
                 <p>{{ candidato.dni_candidato }}</p>
