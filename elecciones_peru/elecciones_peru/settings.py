@@ -92,6 +92,7 @@ WSGI_APPLICATION = 'elecciones_peru.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 
+<<<<<<< HEAD
 
 DATABASES = {
      'default' : {
@@ -103,9 +104,22 @@ DATABASES = {
          'PORT' : 5432,
      }
  }
+=======
+#DATABASES = {
+#    'default': dj_database_url.config(
+#        default=config('DATABASE_URL')
+#    )
+#}
+>>>>>>> afda385deb9b6efc4fd358a4c3ea4e116cbdc16a
 
 
 
+
+#DATABASES = {
+#    'default': dj_database_url.config(
+#        default=config('DATABASE_URL')
+#    )
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
