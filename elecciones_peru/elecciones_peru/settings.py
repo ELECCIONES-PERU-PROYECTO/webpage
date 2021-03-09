@@ -92,11 +92,17 @@ WSGI_APPLICATION = 'elecciones_peru.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 
+
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
-}
+     'default' : {
+         'ENGINE' : 'django.db.backends.postgresql',
+         'NAME' : 'db_partidos2020',
+         'USER' : 'postgres',
+         'PASSWORD' : 'Manzana12345678',
+         'HOST' : 'localhost',
+         'PORT' : 5432,
+     }
+ }
 
 
 

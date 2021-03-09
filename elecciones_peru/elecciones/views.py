@@ -648,6 +648,10 @@ def analisisGraficos(request):
 def analisisGraficosPresi(request):
   return render(request, 'elecciones/graphics-presi.html',{})
 
+def InteligenciaArtificial(request):
+  return render(request,'elecciones/inteligencia-artificial.html',{} )
+
+
 def test(request):
   print('////////////////////////////')
   print(request.method)

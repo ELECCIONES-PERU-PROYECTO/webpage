@@ -1,0 +1,70 @@
+{% extends "elecciones/base.html" %}
+{% block title %}Opciones de Búsqueda{% endblock %}
+{% load static %}
+{% block content %}
+{% block css %}
+<link href="{% static "css/inteligencia-artificial.css" %}" rel="stylesheet">
+<link href="{% static "css/loader.css" %}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/css/uikit.min.css" />
+{% endblock %}
+<script>
+
+</script>
+
+</head>
+
+
+  <!--HEADER-->
+  <header id="top-head" class="uk-position-fixed">
+    <div class="uk-container uk-container-expand uk-background-secondary">
+      <nav class="uk-navbar uk-light" data-uk-navbar="mode:click; duration: 250" >
+        <div class="uk-navbar-left uk-hidden@m">
+          <ul class="uk-navbar-nav">
+            <li class="uk-active uk-flex uk-flex-middle uk-margin-small-left">
+              <a class="uk-padding-remove uk-flex filtros-text" data-uk-toggle href="#offcanvas-nav" data-uk-tooltip>
+                <span data-uk-icon="icon: menu" class="uk-margin-small-right"></span>
+                <span>Opciones de Búsqueda</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="uk-navbar-right">  
+          <ul class="uk-navbar-nav uk-visible@m" id="opciones_candidatos"> 
+            <li class="nav-options pres_opt">
+                <a class="nav_opt" href="{% url 'elecciones:mainpage' %}">Inicio</a>
+            </li>
+			
+            <li class="nav-options pres_opt">
+                <a class="nav_opt"href="{% url 'elecciones:analisisGraficos' %}">
+                    Analítica</a>
+            </li>
+
+            <li class="nav-options pres_opt">
+                <a class="text-nav" href="#" data-uk-icon="chevron-down">Búsqueda</a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li>
+                            <a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
+                        </li>
+                        <li>
+                            <a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Congresales</a>
+                        </li>
+                        <li>
+                            <a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
+                        </li>
+                        <li>
+                            <a class="text-nav" href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+                      </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!--/HEADER-->
+
+  
+{% endblock %}

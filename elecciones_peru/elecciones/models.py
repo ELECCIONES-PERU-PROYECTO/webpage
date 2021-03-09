@@ -180,6 +180,22 @@ class CargoEleccion(models.Model):
   class Meta:
     db_table = 'cargo_eleccion'
 
+class AiTotal(models.Model):
+  dni_candidato = models.CharField(max_length=8)
+  url = models.CharField(max_length=200, default="-",primary_key=True, editable = False) 
+  emocion = models.CharField(max_length=20)
+  molestia = models.FloatField()
+  disgusto = models.FloatField()
+  miedo = models.FloatField()
+  alegria = models.FloatField()
+  tristeza = models.FloatField()
+  sorpresa = models.FloatField()
+  seriedad = models.FloatField()
+  cargo_eleccion = models.CharField(max_length=200)
+  organizacion_politica = models.CharField(max_length=250)
+
+class Meta:
+  db_table = 'ai_total'
 
 class Renuncia(models.Model):
   id = models.CharField(max_length=10, primary_key=True)
