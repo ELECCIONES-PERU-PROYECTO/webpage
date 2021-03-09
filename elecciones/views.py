@@ -121,12 +121,8 @@ def function_filtros_ob(self, query_normal, normnob1, SELECT_candidato, WHERE_ca
   return query_total
 
 def function_filtro_normal(self, stack_, SELECT_candidato,WHERE_candidato ):
-  # print("self",self)
-  print("SELECT_candidato: ", SELECT_candidato)
-  print("WHERE_candidato: ", WHERE_candidato)
   if stack_== False:
     if self[0] != "":
-      print("self[0]: ",self[0])
       if(self[0] == 'maestro_doctor'):
         query_total = "SELECT DISTINCT DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica, "+  SELECT_candidato+ "  FROM  estudio_postgrado AS EP   JOIN  datos_personales AS DP USING   (dni_candidato) WHERE ((EP.es_maestro= 'SI' ) OR (EP.es_doctor = 'SI')) AND  "+ WHERE_candidato
         return query_total
@@ -242,12 +238,7 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
     cargo_postula, org_politica, dist_electoral, tipo_candidato_
   ]
 
-  if lista_valores[4] != "unk":
-    index = lista_valores[4].find("(")
-    aux = lista_valores[4][index:len(lista_valores[4]) :+1]
-    lista_valores[4] = "FAMILIA / ALIMENTARIA"+aux
   
-  print("tipo_candidato_: ", tipo_candidato_)
   SELECT_candidato = ""
   WHERE_candidato = ""
   GROUP_by = ""
