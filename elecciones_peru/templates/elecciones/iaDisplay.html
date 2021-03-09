@@ -135,33 +135,41 @@
 
   <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a></div>
 
+<!--OFF CANVAS NAV-->
   <div id="offcanvas-nav" data-uk-offcanvas="flip: true; overlay: false">
     <div class="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide">
       <button class="uk-offcanvas-close uk-close uk-icon" type="button" data-uk-close></button>
+
       <ul class="uk-nav uk-nav-default">
-        <li class="">
-          <a class="uk-text-uppercase uk-nav-header nav_options uk-text-left" href="{% url 'elecciones:analisisGraficos' %}">
-            Análisis de Datos
-          </a>
-          <!--<span style="font-size: 23px; font-weight:500;" class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>-->
-        </li>
+        <li style="font-size: 21px; font-weight:500; color:#ffffff" class="uk-nav-header">Opciones</li>
+        <li>
+          <a style="font-size: 20px; font-weight:500; color:#ffffff" href="{% url 'elecciones:mainpage' %}">
+            <span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
+            Inicio
+        </a>
+      </li>
         
-        <li class="uk-text-uppercase uk-nav-header nav_options">Búsqueda</li>
-        <li>
-          <a href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
+        <li style="font-size: 20px; font-weight:500; color:#ffffff" class="  nav_options">
+          <span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
+          Búsqueda
         </li>
         <li>
-          <a href="#" onclick="activar_candidatos(this.text)">Congresales</a>
+          <a  class="uk-margin-left color" style="font-size: 18px;"  href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
         </li>
         <li>
-          <a href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
+          <a class="uk-margin-left color" style="font-size: 18px;" href="#" onclick="activar_candidatos(this.text)">Congresales</a>
         </li>
         <li>
-          <a href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
+          <a class="uk-margin-left color" style="font-size: 18px;" href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
+        </li>
+        <li>
+          <a class="uk-margin-left color" style="font-size: 18px;" href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
         </li>
       </ul>
     </div>
   </div>
+
+  <!--OFF CANVAS NAV-->
 
   <!--FOOTER-->
   <footer class="uk-section uk-section-small uk-section-muted footer">
