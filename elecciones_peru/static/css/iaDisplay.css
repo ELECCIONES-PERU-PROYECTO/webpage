@@ -28,9 +28,10 @@
 }
 .uk-subnav-pill > * > :first-child {
 	padding: 0.5rem 1rem;
-	background-color: rgb(172 23 23 / 80%);
+	background-color: rgb(182 34 34);
     color: rgb(255 255 255);
     border-radius:7px;
+
 }
 .top-container {
 	z-index: 2;
@@ -53,4 +54,17 @@
     padding: 5px !important;
     padding-left: 30px !important;
     
+}
+
+ul.uk-navbar-nav li a.nav_options {
+    color: rgb(255 255 255);
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Poppins' !important;
+}
+
+
+.uk-subnav-pill>.uk-active>a {
+    background-color:rgb(213 142 142);
+    color: rgb(255 255 255);
 }
