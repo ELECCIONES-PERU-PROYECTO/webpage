@@ -19,12 +19,6 @@
   <!--/HEADER-->
 
   <!-- CONTENT -->
-  <form>
-    <p>DNI: <input type="text" name="dni"></p>
-    <p>emocion: <input type="text" name="emocion"></p>
-    <p>organizacion: <input type="text" name="organizacion"></p>
-    <p><input type="submit" value="Submit"></p>
-  </form>
   <div uk-filter="target: .js-filter">
 
     <ul class="uk-subnav uk-subnav-pill">
@@ -36,19 +30,44 @@
     <ul class="js-filter uk-child-width-1-2 uk-child-width-1-3@m uk-text-center" uk-grid>
       {% for candidato in candidatos_presi %}
         <li data-tags="presidente all">
-            <div class="uk-card uk-card-default uk-card-body">{{ candidato.dni_candidato }}</div>
+          <div class="uk-card uk-card-default">
+            <div class="uk-card-media-top">
+                <img src={{ candidato.url }} alt="">
+            </div>
+            <div class="uk-card-body">
+                <h3 class="uk-card-title">Candidato</h3>
+                <p>{{ candidato.dni_candidato }}</p>
+            </div>
+        </div>
         </li>
       {% endfor %}
       {% for candidato in candidatos_congres %}
         <li data-tags="congresales all">
-            <div class="uk-card uk-card-primary uk-card-body">{{ candidato.dni_candidato }}</div>
+          <div class="uk-card uk-card-default">
+            <div class="uk-card-media-top">
+                <img src={{ candidato.url }} alt="">
+            </div>
+            <div class="uk-card-body">
+                <h3 class="uk-card-title">Candidato</h3>
+                <p>{{ candidato.dni_candidato }}</p>
+            </div>
+        </div>
         </li>
       {% endfor %}
       {% for candidato in candidatos_parla %}
         <li data-tags="parlamento all">
-            <div class="uk-card uk-card-default uk-card-body">candidato parlamento</div>
+          <div class="uk-card uk-card-default">
+            <div class="uk-card-media-top">
+                <img src={{ candidato.url }} alt="">
+            </div>
+            <div class="uk-card-body">
+                <h3 class="uk-card-title">Candidato</h3>
+                <p>{{ candidato.dni_candidato }}</p>
+            </div>
+        </div>
         </li>
       {% endfor %}
+      {% include "elecciones/pagination.html" with page=page %}
 
     </ul>
 

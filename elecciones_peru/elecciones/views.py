@@ -659,21 +659,17 @@ def iaDisplay(request):
   dni_candidato = request.GET.get("dni")
   emocion = request.GET.get("emocion")
   organizacion = request.GET.get("organizacion")
-  candidatos_presidenciales = AiTotal.objects.raw(" SELECT * FROM ai_total WHERE cargo_eleccion <>'CONGRESISTA DE LA REPÚBLICA' AND cargo_eleccion<>'REPRESENTANTE ANTE EL PARLAMENTO ANDINO';")
-  candidatos_congresales = AiTotal.objects.raw("SELECT * FROM ai_total WHERE cargo_eleccion ='CONGRESISTA DE LA REPÚBLICA';")
-  candidatos_parlamento = AiTotal.objects.raw("SELECT * FROM ai_total WHERE cargo_eleccion ='REPRESENTANTE ANTE EL PARLAMENTO ANDINO';")
-  paginator = Paginator(candidatos_presidenciales,20)
-  page_number = request.Get.get('page')
+  candidatos_presidenciales = AiTotal.objects.raw(" SELECT * FROM ai_total WHERE cargo_eleccion <>'CONGRESISTA DE LA REPÚBLICA' AND cargo_eleccion<>'REPRESENTANTE ANTE EL PARLAMENTO ANDINO' LIMIT 20;")
+  candidatos_congresales = AiTotal.objects.raw("SELECT * FROM ai_total WHERE cargo_eleccion ='CONGRESISTA DE LA REPÚBLICA' LIMIT 20;")
+  candidatos_parlamento = AiTotal.objects.raw("SELECT * FROM ai_total WHERE cargo_eleccion ='REPRESENTANTE ANTE EL PARLAMENTO ANDINO' LIMIT 20;")
   
   return render(request,
   'elecciones/iaDisplay.html',
-  {'candidatos_presi':candidatos_presidenciales,
-  'candidatos_congres':candidatos_congresales,
-  'candidatos_parla':candidatos_parlamento
+  {
+    'candidatos_presi':candidatos_presidenciales,
+    'candidatos_congres':candidatos_congresales,
+    'candidatos_parla':candidatos_parlamento
   })
-
-
-
 
 '''with connection.cursor() as cursor:
     #query_total_ = " SELECT * FROM datos_personales WHERE dni_candidato='"+dni_candidato+"';"
