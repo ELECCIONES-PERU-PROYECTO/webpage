@@ -372,20 +372,39 @@ function toggleObligacion_opciones(element){
 
 
 function get_sentencias_penal_cant(){
-  mostrar_tiposentencias()
   if(filtro_penal_cant == false){
     filtro_penal_cant = true
     cant_filtros++
     lista_orden_filtros.push(3)
   }
+  mostrar_tiposentencias()
+  let cant_senten_list = document.getElementsByName("cant_senten")
+  for(let i = 0; i < cant_senten_list.length; i++) {
+    if(cant_senten_list[i].checked) {
+      orden_cant_sentencia = cant_senten_list[i].value
+    }
+  }
 }
 
 function get_sentencias_oblig_cant(){
   mostrar_tiposentencias()
-  if(filtro_oblig_cant == false){
+  if( filtro_oblig_cant == false){
     filtro_oblig_cant = true
     cant_filtros++
     lista_orden_filtros.push(4)
+
+    let cant_senten_oblig_list = document.getElementsByName("cant_senten_oblig")
+    for(let i = 0; i < cant_senten_oblig_list.length; i++) {
+      if(cant_senten_oblig_list[i].checked) {
+        orden_cant_sentencia_oblig = cant_senten_oblig_list[i].value
+      }
+    }
+  }
+  let cant_senten_oblig_list = document.getElementsByName("cant_senten_oblig")
+  for(let i = 0; i < cant_senten_oblig_list.length; i++) {
+    if(cant_senten_oblig_list[i].checked) {
+      orden_cant_sentencia_oblig = cant_senten_oblig_list[i].value
+    }
   }
 }
 
@@ -396,12 +415,20 @@ function get_sentencias_oblig_mat(){
     cant_filtros++
     lista_orden_filtros.push(5)
   }
+
+  let cant_mat_list = document.getElementsByName("opc_mat_demanda")
+
+  for(let i = 0; i < cant_mat_list.length; i++) {
+    if(cant_mat_list[i].checked) {
+      mat_demanda = cant_mat_list[i].value
+    }
+  }
 }
 
 function quitar_seleccion_sentencias_menosno_tiene(){
   document.getElementById("si-sentencia").checked = false
 
-  if(filtro_penal_cant == true){
+  if(filtro_penal_cant  == true){
     document.getElementById("penal_cbx").checked = false
     orden_cant_sentencia = ""
     filtro_penal_cant = false
@@ -418,8 +445,7 @@ function quitar_seleccion_sentencias_menosno_tiene(){
     document.getElementById("div_opc_cant_sentencias").style.display="none"
     }
   }
-
-  if(filtro_oblig_cant == true){
+  if(filtro_oblig_cant  == true){
     document.getElementById("por_obligaciones").checked = false
     orden_cant_sentencia_oblig = ""
     filtro_oblig_cant = false
@@ -440,7 +466,7 @@ function quitar_seleccion_sentencias_menosno_tiene(){
     }
   }
 
-  if(filtro_oblig_mat == true){
+  if(filtro_oblig_mat  == true){
     document.getElementById("por_obligaciones").checked = false
     mat_demanda = ""
     filtro_oblig_mat = false
@@ -459,14 +485,13 @@ function quitar_seleccion_sentencias_menosno_tiene(){
       }
     }
   }
-
   document.getElementById("por_obligaciones").checked = false
   let element_ = document.getElementById("div_opc_obligaciones")
   toggleObligacion_opciones(element_)
   document.getElementById("penal_cbx").checked = false
   let element = document.getElementById("penal_cbx");
   togglePenal_opciones(element);
-  
+
   document.getElementById("mostrar_sentencias").style.paddingLeft="10px"
   document.getElementById("mostrar_sentencias").style.display="none" 
 }
@@ -474,7 +499,6 @@ function quitar_seleccion_sentencias_menosno_tiene(){
 function quitar_seleccion_sentencias(){
   document.getElementById("por_obligaciones").checked = false
   document.getElementById("penal_cbx").checked = false
-  document.getElementById("no_tiene").checked = false
   document.getElementById("no_tiene").checked = false
   document.getElementById("si-sentencia").checked = false
 

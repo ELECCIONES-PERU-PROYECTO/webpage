@@ -316,12 +316,6 @@ def filter_function(request):
     print(">>>>>>>>>>>>>>>>>>>>>><<<<< Entro a familia")
     order = lista_valores[4][lista_valores[4].find("-"):len(lista_valores[4]) :+1]
     lista_valores[4] = "FAMILIA / ALIMENTARIA" + order
-
-  # if mat_demanda != "unk":
-  #   index = mat_demanda.find("-")
-  #   aux = lista_valores[4][index:len(lista_valores[4]) :+1]
-  #   print("EL AUX XDDDDDDDDDDd", aux)
-  #   lista_valores[4] = "FAMILIA / ALIMENTARIA"+aux
   
   # print("tipo_candidato_: ", tipo_candidato_)
   SELECT_candidato = ""
