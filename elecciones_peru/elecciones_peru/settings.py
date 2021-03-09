@@ -100,17 +100,6 @@ WSGI_APPLICATION = 'elecciones_peru.wsgi.application'
 
 
 
-DATABASES = {
-    'default' : {
-        'ENGINE' : 'django.db.backends.postgresql',
-        'NAME' : 'proyecto_elecciones',
-        'USER' : 'postgres',
-        'PASSWORD' : '1234567',
-        'HOST' : 'localhost',
-        'PORT' : 5432,
-    }
-}
-
 
 #DATABASES = {
 #    'default': dj_database_url.config(
