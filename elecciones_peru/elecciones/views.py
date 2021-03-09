@@ -273,14 +273,21 @@ def filter_function(request):
   orden_valor_mueble = unkipify(request.GET.get("valor_muebles"))
   orden_renuncias = unkipify(request.GET.get("cantidad_renuncia"))
   rango_edad_val = unkipify(request.GET.get("rango_edad"))
+  print(":::::::::::::::::: VALUES :::::::::::::::")
+  print(request.GET.get("oriundo_input"))
   if(request.GET.get("oriundo_input") != None):
-    if(request.GET.get("oriundo_input") == "NO"):
+    print("es dif de None")
+    index = request.GET.get("oriundo_input").rfind("-")
+    print("XDDDDD", request.GET.get("oriundo_input")[0: index])
+    if(request.GET.get("oriundo_input")[0: index] == "NO"):
+      print("es NO")
       nacio_en_peru_no = "NO"
     else:
       nacio_en_peru_si = "SI"
   else:
     nacio_en_peru_no = "unk"
     nacio_en_peru_si = "unk"
+  print("NACIO PERU:::::::::::::::", nacio_en_peru_no)
   departamento_nacimiento = unkipify(request.GET.get("departamento_nacimiento"))
   cargo_postula = unkipify(request.GET.get("cargo_al_que_postula"))
   org_politica = unkipify(request.GET.get("org_politica"))
