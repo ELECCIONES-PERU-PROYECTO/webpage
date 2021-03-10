@@ -82,10 +82,10 @@ function filter_candidatos() {
   let dist_electoral = document.getElementsByName("dist_electoral")[0]
   
 
+  console.log("xXXXXXXXXXXXXXXX",cargo_al_que_postula)
+
   // Validators
   if(oriundo_de_peru[0].checked) {
-    console.log("entro a oriundo", oriundo_de_peru[0].checked)
-    console.log(departamento_nacimiento.options[departamento_nacimiento.selectedIndex].value)
     if(departamento_nacimiento.options[departamento_nacimiento.selectedIndex].value === "default") {
       setTimeout(function(){
         UIkit.notification({
@@ -173,6 +173,7 @@ function filter_candidatos() {
 
   // Apend the order to values in the form
   for(let i = 0; i < lista_orden_filtros.length; i++) {
+    console.log("Entro al form")
     if(lista_orden_filtros[i] == 1) {
       n_academic.options[n_academic.selectedIndex].value = n_academic.options[n_academic.selectedIndex].value + separer_order + x
       x++
@@ -254,18 +255,14 @@ function filter_candidatos() {
       x++
     }
     else if(lista_orden_filtros[i] == 15) {
-      departamento_nacimiento.options[departamento_nacimiento.selectedIndex].value = departamento_nacimiento.options[departamento_nacimiento.selectedIndex].value + separer_order + x
-      x++
-    }
-    else if(lista_orden_filtros[i] == 16) {
       cargo_al_que_postula.options[cargo_al_que_postula.selectedIndex].value = cargo_al_que_postula.options[cargo_al_que_postula.selectedIndex].value + separer_order + x
       x++
     }
-    else if(lista_orden_filtros[i] == 17) {
+    else if(lista_orden_filtros[i] == 16) {
       org_politica.options[org_politica.selectedIndex].value = org_politica.options[org_politica.selectedIndex].value + separer_order + x
       x++
     }
-    else if(lista_orden_filtros[i] == 18) {
+    else if(lista_orden_filtros[i] == 17) {
       dist_electoral.options[dist_electoral.selectedIndex].value = dist_electoral.options[dist_electoral.selectedIndex].value + separer_order + x
       x++
     }

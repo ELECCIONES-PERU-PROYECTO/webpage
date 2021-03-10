@@ -146,6 +146,7 @@ a#video_explanation {
   left: 0;
   top: 0px;
   bottom:0;
+	height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;

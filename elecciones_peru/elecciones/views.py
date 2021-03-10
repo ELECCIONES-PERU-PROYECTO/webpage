@@ -156,14 +156,14 @@ def function_filtro_normal(self, stack_, SELECT_candidato, WHERE_candidato):
       self[5] = ""
       return retorno
     if self[12] != "":
-      print("SELF >>>>>>>>>>>>>>>>>>>>>>>>> ", self[12])
-      print("Primer numero >>>>>>>>>>>>>>>>>>>>>>>>> ",(self[12])[:2])
-      print("Segundo numero >>>>>>>>>>>>>>>>>>>>>>>>> ",(self[12])[3:5])
+      # print("SELF >>>>>>>>>>>>>>>>>>>>>>>>> ", self[12])
+      # print("Primer numero >>>>>>>>>>>>>>>>>>>>>>>>> ",(self[12])[:2])
+      # print("Segundo numero >>>>>>>>>>>>>>>>>>>>>>>>> ",(self[12])[3:5])
       retorno = "SELECT DISTINCT DP.id,  DP.dni_candidato,DP.candidato, DP.organizacion_politica, "+ SELECT_candidato+"  FROM tabla_edad AS TE JOIN  datos_personales AS DP USING (dni_candidato) WHERE TE.edad BETWEEN " + (self[12])[:2] + " AND " + (self[12])[3:5] + " AND  "+WHERE_candidato
-      print("retorno >>>>>>>>>>>>>>>>>>>>>>>>> ", retorno)
       self[12] = ""
       return retorno
     if self[13] == "SI":
+      print("-------------------------- ES ORIUNDO DE PERU: --------------------------", self[13])
       retorno = "SELECT  DISTINCT DP.id, DP.dni_candidato, DP.candidato, Dp.organizacion_politica, " + SELECT_candidato+"   FROM datos_personales AS DP  WHERE    departamento_nacimiento = '"+ self[15]+"' AND "+WHERE_candidato 
       self[13] = ""
       return retorno
@@ -214,14 +214,11 @@ def function_filtro_normal(self, stack_, SELECT_candidato, WHERE_candidato):
       self[5] = ""
       return retorno
     if self[12] != "":
-      print("SELF >>>>>>>>>>>>>>>>>>>>>>>>> ", self[12])
-      print("Primer numero >>>>>>>>>>>>>>>>>>>>>>>>> ",(self[12])[:2])
-      print("Segundo numero >>>>>>>>>>>>>>>>>>>>>>>>> ",(self[12])[3:5])
-      retorno = "SELECT  DISTINCT  DP.dni_candidato FROM tabla_edad AS TE JOIN    datos_personales AS DP USING (dni_candidato) WHERE TE.edad BETWEEN " + (self[12])[:2] + " AND " + ( self[12])[3:5] + " AND "+ WHERE_candidato
+      retorno = "SELECT  DISTINCT  DP.dni_candidato FROM tabla_edad AS TE JOIN datos_personales AS DP USING (dni_candidato) WHERE TE.edad BETWEEN " + (self[12])[:2] + " AND " + ( self[12])[3:5] + " AND "+ WHERE_candidato
       self[12] = ""
       return retorno
     if self[13] == "SI":
-      retorno = "SELECT DISTINCT  DP.dni_candidato FROM  datos_personales AS DP WHERE   departamento_nacimiento = '"+ self[15]+"' AND  "+WHERE_candidato 
+      retorno = "SELECT DISTINCT  DP.dni_candidato FROM  datos_personales AS DP WHERE departamento_nacimiento = '" + self[15] + "' AND  "+ WHERE_candidato 
       self[13] = ""
       return retorno
     if self[14] != "":
@@ -273,21 +270,20 @@ def filter_function(request):
   orden_valor_mueble = unkipify(request.GET.get("valor_muebles"))
   orden_renuncias = unkipify(request.GET.get("cantidad_renuncia"))
   rango_edad_val = unkipify(request.GET.get("rango_edad"))
-  print(":::::::::::::::::: VALUES :::::::::::::::")
-  print(request.GET.get("oriundo_input"))
   if(request.GET.get("oriundo_input") != None):
     print("es dif de None")
     index = request.GET.get("oriundo_input").rfind("-")
-    print("XDDDDD", request.GET.get("oriundo_input")[0: index])
+    ordxr = request.GET.get("oriundo_input")[index : len(request.GET.get("oriundo_input"))]
     if(request.GET.get("oriundo_input")[0: index] == "NO"):
-      print("es NO")
-      nacio_en_peru_no = "NO"
+      print("es NO, number", ordxr)
+      nacio_en_peru_no = "NO" + ordxr
+      nacio_en_peru_si = "unk"
     else:
-      nacio_en_peru_si = "SI"
+      nacio_en_peru_si = "SI" + ordxr
+      nacio_en_peru_no = "unk"
   else:
     nacio_en_peru_no = "unk"
     nacio_en_peru_si = "unk"
-  print("NACIO PERU:::::::::::::::", nacio_en_peru_no)
   departamento_nacimiento = unkipify(request.GET.get("departamento_nacimiento"))
   cargo_postula = unkipify(request.GET.get("cargo_al_que_postula"))
   org_politica = unkipify(request.GET.get("org_politica"))
@@ -326,14 +322,14 @@ def filter_function(request):
     dist_electoral, tipo_candidato_
   ]
 
-  # print("********")
-  # print(lista_valores[4])
+  print("********")
+  print(lista_valores)
+  print("********")
   # print(lista_valores[4].rfind("-"))
   # print(lista_valores[4][0:lista_valores[4].rfind("-")])
   # print("$$$$$$$")
 
   if(lista_valores[4][0:lista_valores[4].rfind("-")] == "FamiliaAli"):
-    print(">>>>>>>>>>>>>>>>>>>>>><<<<< Entro a familia")
     order = lista_valores[4][lista_valores[4].rfind("-"):len(lista_valores[4]) :+1]
     lista_valores[4] = "FAMILIA / ALIMENTARIA" + order
 
@@ -364,30 +360,26 @@ def filter_function(request):
 
   for i in range(0, len(lista_valores)-1):
     print("lista_valores[",i,"]: ", lista_valores[i])
+    if lista_valores[13] != "unk" and i == 15:
+      continue
     if lista_valores[i] != "unk":
       tienes_al_menos1 = True
       index_ = lista_valores[i].rfind("-")
-      # print("el otro index ---->", index_)
+      # if(i != 15):
       valor = lista_valores[i][index_+1:]
       lista_valores[i] = lista_valores[i] + str("_") + str(i)
-      # print("valor ---->", valor)
-      # print("lista_valores", i,  "---->", lista_valores[i])
       if (i >= 1 and i <= 3) or (i >= 6 and i <= 11):
-        # print("entro a la condicion (i >= 1 and i <= 3) or (i >= 6 and i <= 11)")
         lista_filtros_ob.append(lista_valores[i])
       else:
         lista_filtros_normales.append(lista_valores[i])
       lista_val_new.append(lista_valores[i])
+      # if(i != 15): # Evitar que el departamento no se appendee en la lista de orden
       lista_orden.append(valor)
-      print("LSITA DE ORDEEEEEN:", lista_orden)
-      print("LSITA VAL NEW:", lista_val_new)
     elif lista_valores[i] == "unk":
       lista_valores[i] = ""
 
 
   if(tienes_al_menos1):
-    print("xxxxxxxxxx Len Lista Ordenes")
-    print(lista_orden)
     j = 1
     for i in range(0, len(lista_orden)):
       val = lista_orden.index(str(j))
@@ -428,7 +420,7 @@ def filter_function(request):
         print("WHERE_candidato********",WHERE_candidato)
         print("********")
         query_total = query_total + function_filtro_normal(lista_valores, False, SELECT_candidato, WHERE_candidato)
-      elif len(lista_filtros_normales) > 1: 
+      elif len(lista_filtros_normales) > 1:
         query = ""
         query = query + function_filtro_normal(lista_valores, True, SELECT_candidato, WHERE_candidato)
         for i in range(1, len(lista_filtros_normales)):
@@ -471,7 +463,6 @@ def filter_function(request):
       for i in range(1, len(lista_filtros_normales)):
         query_total_filtros_normales = query_total_filtros_normales +" INTERSECT "+ function_filtro_normal(lista_valores, True, SELECT_candidato, WHERE_candidato)
       
-      #print("query_total_filtros_normales: ",query_total_filtros_normales)
       query_total = function_filtros_ob(lista_filtros_ob_new, query_total_filtros_normales, False, SELECT_candidato, WHERE_candidato)
 
     #print("-----------------------------------------------------------------")
@@ -504,11 +495,6 @@ def filter_function(request):
     print(len(lista_filtros_normales))
 
     return render(request, 'elecciones/dashboard.html') 
-    
-  
-
-  
-  
 
 
 def filter_function_orga(request, filtro_id, info_extra, orden):
