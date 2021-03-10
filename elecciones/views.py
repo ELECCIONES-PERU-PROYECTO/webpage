@@ -239,7 +239,6 @@ def filter_function(request, nivel_academico, cargos_previos_order, orden_cant_s
   ]
 
   if(lista_valores[4][0:lista_valores[4].rfind("-")] == "FamiliaAli"):
-    print(">>>>>>>>>>>>>>>>>>>>>><<<<< Entro a familia")
     order = lista_valores[4][lista_valores[4].rfind("-"):len(lista_valores[4]) :+1]
     lista_valores[4] = "FAMILIA / ALIMENTARIA" + order
 
