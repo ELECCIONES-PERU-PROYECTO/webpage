@@ -766,6 +766,14 @@ def iaDisplay(request):
     return render(request,
     'elecciones/iaDisplay.html',{'candidatos':candidatos})
 
+def nosotros(request):
+  return render(request,'elecciones/nosotros.html',{})
+
+def test(request):
+  candidato = DatosPersonales.objects.filter(Q(dni_candidato = request.GET.get("dni")))
+  return render(request,'elecciones/test.html', 
+    { 'candidato' : candidato }
+  ) 
 
 
 def subir_data(request):
