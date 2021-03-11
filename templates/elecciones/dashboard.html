@@ -1301,11 +1301,12 @@
       {% include "elecciones/pagination.html" with page=page %}
     {% else %}
       <div class="uk-container uk-padding uk-text-center no-results-container">
-        <span uk-icon="icon: settings; ratio: 2.3"></span>
-        <h5 id="text_info" class="uk-text-large uk-text-light uk-margin-remove-top"></h5>
-        <div uk-lightbox video-autoplay="true">
+        <img id="gif_info" src="" alt="web tutorial">
+        <!-- <span uk-icon="icon: settings; ratio: 2.3"></span>
+        <h5 id="text_info" class="uk-text-large uk-text-light uk-margin-remove-top"></h5> -->
+        <!-- <div uk-lightbox video-autoplay="true">
           <a id="video_explanation" class="uk-button uk-button-default" href="" data-attrs="width: 1380; height: 920;" data-caption="YouTube">Instrucciones de uso</a>
-        </div>
+        </div> -->
       </div>
     {% endif %}
   </div>
@@ -1329,7 +1330,18 @@
     
     let text_info = document.getElementById('text_info')
     let video_expl = document.getElementById('video_explanation')
+    let gif_expl = document.getElementById('gif_info')
     
+    if(window.innerWidth > 768) {
+      gif_expl.src = "/static/images/gifs/web.gif"
+      gif_expl.style.maxWidth = "676px"
+      gif_expl.style.margin = "auto"
+    }else {
+      gif_expl.src = "/static/images/gifs/mobile.gif"
+      gif_expl.style.minWidth = "400px"
+      gif_expl.style.margin = "auto"
+    }
+
     if(text_info) {
       if(text[text.length - 1] === VIEW || text[text.length - 1] === VIEW + "#") {
         text_info.textContent="Escoge al menos un filtro para que aparezcan los resultados."
