@@ -1,7 +1,6 @@
 {% extends "elecciones/base.html" %}
 {% block title %}Opciones de Búsqueda{% endblock %}
 {% load static %}
-{% block content %}
 {% block css %}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/css/uikit.min.css" />
   <link type='text/css' href="{% static "css/iaDisplay.css" %}" rel="stylesheet">
@@ -12,13 +11,9 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 {% endblock %}
-<script>
 
-</script>
-
-</head>
+{% block content %}
 <body >
-
   <!-- NAV -->
   <div class="nav" data-uk-sticky="cls-active: uk-background-secondary uk-box-shadow-large; top: 100vh; ">
       <nav class="uk-navbar uk-navbar-container" data-uk-navbar>
@@ -56,13 +51,6 @@
       </nav>
   </div>
   <!-- /NAV -->
-
-  <!-- OFFCANVAS -->
-
-  <!-- OFFCANVAS -->
-  <!--HEADER-->
-
-  <!--/HEADER-->
   <!-- CONTENT -->
   <div uk-filter="target: .js-filter">
     <form style="margin-top: 110px" method="GET">
@@ -136,21 +124,19 @@
       {% endfor %}
     </ul>
 
-</div>
+  </div>
   {% for c in candidato %}
     <p>{{c.candidato}}</p>
     <p>{{c.dni_candidato}}</p>
   {% endfor %}
-  
   <!-- /CONTENT -->
-
+  <!-- LOADER -->
   <div id="preloader">
 		<div id="loader"></div>
-  </div>
-
+	</div>
+  <!-- /LOADER -->
   <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a></div>
-
-<!--OFF CANVAS NAV-->
+  <!--OFF CANVAS NAV-->
   <div id="offcanvas-nav" data-uk-offcanvas="flip: true; overlay: false">
     <div class="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide">
       <button class="uk-offcanvas-close uk-close uk-icon" type="button" data-uk-close></button>
@@ -183,9 +169,7 @@
       </ul>
     </div>
   </div>
-
   <!--OFF CANVAS NAV-->
-
   <!--FOOTER-->
   <footer class="uk-section uk-section-small uk-section-muted footer">
     <div class="uk-container">
@@ -193,15 +177,15 @@
     </div>
   </footer>
   <!--/FOOTER-->
-
-</body>
+  <!-- LOADER -->
+  <div id="preloader">
+		<div id="loader"></div>
+	</div>
+  <!-- /LOADER -->
+{% endblock %} 
+{% block js %} 
   <script src="{% static "js/variables.js"%}"></script>
   <script src="{% static "js/jquery-2.1.3.min.js"%}"></script>
   <script src="{% static "js/loader.js"%}"></script>
-  <script src="{% static "js/AI.js"%}"></script>
   <script src="{% static "js/filter_options.js"%}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit-icons.min.js"></script>
-  <script>
-  </script>
 {% endblock %}

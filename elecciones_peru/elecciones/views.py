@@ -735,6 +735,39 @@ def analisisGraficos(request):
 def analisisGraficosPresi(request):
   return render(request, 'elecciones/graphics-presi.html',{})
 
+def iaDisplay(request):
+  if request.method == "GET":
+    print("request.method")
+    cargo_postula_list = request.GET.getlist('cargo_postula')    
+    if len(cargo_postula_list) == 0:
+      cargo_postula_ = "presidenciales" 
+    else:
+      cargo_postula_ = cargo_postula_list[0]
+    #emocion_list = request.GET.getlist("emocion")
+    #if len(emocion_list) == 0:
+    ##  emocion_ = "Alegría" 
+    #else:
+    #  emocion_ = emocion_list[0]
+    organizacion_list = request.GET.getlist("organizacion")
+    if len(organizacion_list) == 0:
+      organizacion_ = "" 
+    else:
+      organizacion_ = organizacion_list[0]
+
+    if cargo_postula_ == "presidenciales":
+      WHERE_candidato = " (cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR cargo_eleccion  ='PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR  cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA') "
+    elif cargo_postula_ == "congresales":
+      WHERE_candidato = " (cargo_eleccion = 'CONGRESISTA DE LA REPÚBLICA') "
+    elif cargo_postula_ == "parlamento":
+      WHERE_candidato = " (cargo_eleccion = 'REPRESENTANTE ANTE EL PARLAMENTO ANDINO') "
+    query_ = "SELECT * FROM ai_total WHERE "+WHERE_candidato+" AND organizacion_politica='"+organizacion_+"'"
+    print("query_: ",query_)
+    candidatos = AiTotal.objects.raw(query_)
+    return render(request,
+    'elecciones/iaDisplay.html',{'candidatos':candidatos})
+
+
+
 def subir_data(request):
   # Leer el archivo 'datos.csv' con reader() y
   # mostrar todos los registros, uno a uno:
@@ -1277,34 +1310,3 @@ def corregir_data(request):
       pass
 
   return HttpResponse('bien')
-
-def iaDisplay(request):
-  if request.method == "GET":
-    print("request.method")
-    cargo_postula_list = request.GET.getlist('cargo_postula')    
-    if len(cargo_postula_list) == 0:
-      cargo_postula_ = "presidenciales" 
-    else:
-      cargo_postula_ = cargo_postula_list[0]
-    #emocion_list = request.GET.getlist("emocion")
-    #if len(emocion_list) == 0:
-    ##  emocion_ = "Alegría" 
-    #else:
-    #  emocion_ = emocion_list[0]
-    organizacion_list = request.GET.getlist("organizacion")
-    if len(organizacion_list) == 0:
-      organizacion_ = "" 
-    else:
-      organizacion_ = organizacion_list[0]
-
-    if cargo_postula_ == "presidenciales":
-      WHERE_candidato = " (cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR cargo_eleccion  ='PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR  cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA') "
-    elif cargo_postula_ == "congresales":
-      WHERE_candidato = " (cargo_eleccion = 'CONGRESISTA DE LA REPÚBLICA') "
-    elif cargo_postula_ == "parlamento":
-      WHERE_candidato = " (cargo_eleccion = 'REPRESENTANTE ANTE EL PARLAMENTO ANDINO') "
-    query_ = "SELECT * FROM ai_total WHERE "+WHERE_candidato+" AND organizacion_politica='"+organizacion_+"'"
-    print("query_: ",query_)
-    candidatos = AiTotal.objects.raw(query_)
-    return render(request,
-    'elecciones/iaDisplay.html',{'candidatos':candidatos})
