@@ -328,7 +328,7 @@ class OrganizacionesPoliticas(models.Model):
     db_table = 'organizaciones_politicas'
 
 class TablaEdad(models.Model):
-  id = models.IntegerField(primary_key=True)
+  id = models.CharField(max_length=10, primary_key=True, default="-")
   edad = models.IntegerField()
   organizacion_politica = models.CharField(max_length = 250,default="-",editable=False)
   dni = models.CharField(max_length = 8)
@@ -337,7 +337,7 @@ class TablaEdad(models.Model):
     db_table = 'tabla_edad'
 
 class AiTotal(models.Model):
-  id = models.CharField(max_length=10, primary_key=True,null=False,default="-")
+  id = models.CharField(max_length=10, primary_key=True, null=False, default="-")
   dni_candidato = models.CharField(max_length=8)
   url = models.CharField(max_length=200, default="-", editable = False) 
   emocion = models.CharField(max_length=20)
