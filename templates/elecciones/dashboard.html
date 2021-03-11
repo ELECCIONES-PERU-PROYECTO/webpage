@@ -1094,6 +1094,20 @@
               </a>
             </li>
           </ul>
+          <ul class="uk-navbar-nav uk-hidden@m uk-visible@s" id="opciones_candidatos"> 
+            <li class="nav-options">
+              <a class="nav_opt" href="{% url 'elecciones:mainpage' %}">
+                Inicio
+              </a>
+            </li>
+          </ul>
+          <ul class="uk-navbar-nav uk-hidden@s uk-visible@xs" id="opciones_candidatos"> 
+            <li class="nav-options uk-flex">
+              <a class="nav_opt" href="{% url 'elecciones:mainpage' %}" style="min-height: auto;">
+                <span uk-icon="icon: home; ratio: 1"></span>
+              </a>
+            </li>
+          </ul>
         </div>
       </nav>
     </div>
