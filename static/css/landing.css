@@ -237,7 +237,7 @@ img{
 	width: 60px;
 	height: 82px;
 	position: absolute; /* don't forget set container to relative */
-	left: 49%;
+	left: 45%;
 	margin-left: 0px;
 	bottom: 0;
   z-index:999;
@@ -263,4 +263,14 @@ img{
 
 html {
 	scroll-behavior: smooth;
+  }
+
+  #info_desktop {display: block;}
+  #info_mobile {display: none;}
+
+  @media screen and (max-width: 768px) {
+
+  #info_desktop {display: none;}
+  #info_mobile {display: block;}
+
   }
