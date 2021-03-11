@@ -2,6 +2,10 @@
 	font-family: 'Poppins', sans-serif;
 }
 
+ul.uk-navbar-nav li a.nav_options {
+    font-weight: 500;
+}
+
 .foto{
     height: 330px;
     max-width: 70%;
@@ -60,6 +64,6 @@ p, li {
 }
 
 .grey-contact{
-        padding-bottom: 30px;
+    padding-bottom: 30px;
 
 }
