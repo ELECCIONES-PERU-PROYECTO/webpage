@@ -44,8 +44,26 @@
               <div class="uk-navbar-right">
                 <ul class="uk-navbar-nav">
                   <li class="uk-visible@s"><a href="">Inicio</a></li>
-                  <li class="uk-visible@s"><a href="">Análisis de datos</a></li>
-                  <li class="uk-visible@s"><a href="">Búsqueda</a></li>
+                  <li class="uk-visible@s"><a href="{% url 'elecciones:analisisGraficos' %}">Análisis de datos</a></li>
+                  <li class="uk-visible@s">
+					  <a href="#" data-uk-icon="chevron-down">Búsqueda</a>
+					  <div class="uk-navbar-dropdown">
+						<ul class="uk-nav uk-navbar-dropdown-nav">
+							<li>
+								<a style="font-size: 16px;" href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
+							</li>
+							<li>
+								<a style="font-size: 16px;" href="#" onclick="activar_candidatos(this.text)">Congresales</a>
+							</li>
+							<li>
+								<a style="font-size: 16px;" href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
+							</li>
+							<li>
+								<a style="font-size: 16px;" href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
+							</li>
+						</ul>
+					</div>
+				</li>
                   <li><a class="uk-hidden@l	uk-hidden@m uk-navbar-toggle" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-nav"></a></li>
                 </ul>
               </div>
@@ -164,8 +182,8 @@
 <!--FIN SECTION-->
 
 		<!--FOOTER-->
-		<footer class="uk-section uk-section-small uk-section-muted">
-			<div class="uk-container">
+		<footer class="uk-section uk-section-small uk-section-muted no-padding">
+			<div class="uk-container footer">
 				<p class="uk-text-small uk-text-center">Copyright © Perú Informado 2021</p>
 			</div>
 		</footer>
@@ -197,6 +215,13 @@
 		<!-- /OFFCANVAS -->
 		
 		<!-- JS FILES -->
+		<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit.min.js"></script>
+		<script src="/static/js/filter_options.js"></script>
+		<script src="/static/js/variables.js"></script>
+		<script src="/static/js/jquery-2.1.3.min.js"></script>
+		<script src="/static/js/loader.js"></script>
+		<script src="/static/js/filter_options.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit-icons.min.js"></script>
 	</body>

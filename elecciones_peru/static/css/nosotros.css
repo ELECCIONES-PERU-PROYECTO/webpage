@@ -39,3 +39,12 @@ h1, h2, h3, h4, h5, h6, a, p, li, span, button {
 .uk-logo img {
     height: 40px;
 }
+
+.footer{
+    padding-top: 30px  !important;
+    padding-bottom: 30px;
+}
+
+.no-padding{
+    padding-top: 0px;
+}
