@@ -274,3 +274,14 @@ html {
   #info_mobile {display: block;}
 
   }
+.small{
+
+	font-size: .7rem;
+	line-height: 1.5;
+
+}
+
+.utec {
+    max-height: 150px;
+    max-width: 200px;
+}
