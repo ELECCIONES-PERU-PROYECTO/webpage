@@ -743,11 +743,6 @@ def iaDisplay(request):
       cargo_postula_ = "presidenciales" 
     else:
       cargo_postula_ = cargo_postula_list[0]
-    #emocion_list = request.GET.getlist("emocion")
-    #if len(emocion_list) == 0:
-    ##  emocion_ = "Alegría" 
-    #else:
-    #  emocion_ = emocion_list[0]
     organizacion_list = request.GET.getlist("organizacion")
     if len(organizacion_list) == 0:
       organizacion_ = "" 
@@ -760,11 +755,45 @@ def iaDisplay(request):
       WHERE_candidato = " (cargo_eleccion = 'CONGRESISTA DE LA REPÚBLICA') "
     elif cargo_postula_ == "parlamento":
       WHERE_candidato = " (cargo_eleccion = 'REPRESENTANTE ANTE EL PARLAMENTO ANDINO') "
-    query_ = "SELECT * FROM ai_total WHERE "+WHERE_candidato+" AND organizacion_politica='"+organizacion_+"'"
-    print("query_: ",query_)
-    candidatos = AiTotal.objects.raw(query_)
+    query_ = "SELECT * FROM ai_total WHERE "+WHERE_candidato+" AND organizacion_politica='"+organizacion_+"' AND emocion='Alegría'"
+    candidatos_alegria = AiTotal.objects.raw(query_)
+    #print("query_: ",query_)
+    
+    query_ = "SELECT * FROM ai_total WHERE "+WHERE_candidato+" AND organizacion_politica='"+organizacion_+"' AND emocion='Molestia'"
+    candidatos_molestia = AiTotal.objects.raw(query_)
+    #print("query_: ",query_)
+    
+    query_ = "SELECT * FROM ai_total WHERE "+WHERE_candidato+" AND organizacion_politica='"+organizacion_+"' AND emocion='Miedo'"
+    candidatos_miedo = AiTotal.objects.raw(query_)
+    #print("query_: ",query_)
+
+    query_ = "SELECT * FROM ai_total WHERE "+WHERE_candidato+" AND organizacion_politica='"+organizacion_+"' AND emocion='Seriedad'"
+    candidatos_seriedad = AiTotal.objects.raw(query_)
+    #print("query_: ",query_)
+
+    query_ = "SELECT * FROM ai_total WHERE "+WHERE_candidato+" AND organizacion_politica='"+organizacion_+"' AND emocion='Sorpresa'"
+    candidatos_sorpresa = AiTotal.objects.raw(query_)
+    #print("query_: ",query_)
+    
+    query_ = "SELECT * FROM ai_total WHERE "+WHERE_candidato+" AND organizacion_politica='"+organizacion_+"' AND emocion='Disgusto'"
+    candidatos_disgusto = AiTotal.objects.raw(query_)
+    #print("query_: ",query_)
+
+    query_ = "SELECT * FROM ai_total WHERE "+WHERE_candidato+" AND organizacion_politica='"+organizacion_+"' AND emocion='Tristeza'"
+    candidatos_tristeza = AiTotal.objects.raw(query_)
+    #print("query_: ",query_)
+
     return render(request,
-    'elecciones/iaDisplay.html',{'candidatos':candidatos})
+    'elecciones/iaDisplay.html',
+    {
+      'candidatos_tristeza':candidatos_tristeza,
+      'candidatos_alegria':candidatos_alegria,
+      'candidatos_sorpresa':candidatos_sorpresa,
+      'candidatos_disgusto':candidatos_disgusto,
+      'candidatos_molestia':candidatos_molestia,
+      'candidatos_miedo':candidatos_miedo,
+      'candidatos_seriedad':candidatos_seriedad
+    })
 
 def nosotros(request):
   return render(request,'elecciones/nosotros.html',{})
