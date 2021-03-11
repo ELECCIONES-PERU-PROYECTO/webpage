@@ -1129,7 +1129,7 @@
       <!--/SELECCTION-->
       <div class="uk-container uk-container-expand uk-margin-top uk-margin-bottom uk-flex uk-flex-center uk-flex-column uk-flex-wrap" style="padding-top: 3rem;">
         {% for organizacion in organizaciones_return %}
-        <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-flex-middle uk-width-1-2@xl uk-width-1-1@m uk-width-3-4@s uk-flex-center uk-margin-bottom uk-margin-auto" uk-grid>
+        <div class="uk-card uk-card-default card_results uk-card-body uk-flex-middle uk-width-1-2@xl uk-width-1-1@m uk-width-3-4@s uk-flex-center uk-margin-bottom uk-margin-auto" uk-grid>
           <div class="uk-text-center uk-padding-remove">
             <img src="{{ organizacion.url }}" width="155px" height="215px" alt="{{ organizacion.organizacion_politica }}">
           </div>
@@ -1176,7 +1176,7 @@
       <!--/SELECCTION-->
       <div class="uk-container uk-margin-top uk-margin-bottom">
         {% for candidato in page %}
-        <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-flex-middle uk-width-3-4@xl uk-width-1-1@m uk-width-3-4@s uk-flex-center uk-margin-bottom uk-margin-auto" uk-grid>
+        <div class="uk-card uk-card-default card_results uk-card-body uk-flex-middle uk-width-3-4@xl uk-width-1-1@m uk-width-3-4@s uk-flex-center uk-margin-bottom uk-margin-auto" uk-grid>
           <div name="images-candidato" class="uk-text-center uk-padding-remove">
             {% if candidato.url %}
               <img src="{{ candidato.url }}" width="155px" height="215px" alt="{{ candidato.candidato }}">

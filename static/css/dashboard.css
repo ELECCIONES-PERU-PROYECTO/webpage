@@ -3,6 +3,10 @@
 	background-color: rgb(255 255 255);
 }
 
+#content .uk-container .card_results {
+	box-shadow: rgb(205 213 223 / 56%) 0px 9px 24px;
+}
+
 .seleccion_container {
 	padding: 1rem 0;
 }
