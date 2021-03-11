@@ -104,29 +104,117 @@
         <button class="uk-button uk-button-primary" type="submit" value="Submit" >Ver candidatos</button>
       </p>
     </form>
-
-    <ul class=" padding js-filter uk-child-width-1-2@m uk-child-width-1-1@s  uk-child-width-1-3@l uk-text-center"  uk-grid uk-lightbox="animation: fade">
-      {% for candidato in candidatos %}
-        <li>
-          <div class="uk-card uk-card-default uk-box-shadow-large">
-            <a class="uk-inline" href={{ candidato.url }}>
-              <img src={{ candidato.url }} alt="">
-            </a>
-              <div class="uk-card-body">
-                <h4 class="uk-card-title">{{ candidato.organizacion_politica }}</h4>
-                
-            </div>
-
-        </div>
-        </li>
+      <ul class="uk-subnav uk-subnav-pill uk-margin-large-left">
+        {% if candidatos_disgusto|length > 0 %}
+        <li uk-filter-control=".tag-Disgusto"><a href="#">Disgusto</a></li>
+        {% endif %}
+        {% if candidatos_molestialength > 0 %}
+        <li uk-filter-control=".tag-Molestia"><a href="#">Molestia</a></li>
+        {% endif %}
+        {% if candidatos_tristeza|length > 0 %}
+        <li uk-filter-control=".tag-Tristeza"><a href="#">Tristeza</a></li>
+        {% endif %}
+        {% if candidatos_alegria|length > 0 %}
+        <li uk-filter-control=".tag-Alegría"><a href="#">Alegría</a></li>
+        {% endif %}
+        {% if candidatos_miedo|length > 0 %}
+        <li uk-filter-control=".tag-Miedo"><a href="#">Miedo</a></li>
+        {% endif %}
+        {% if candidatos_sorpresa|length > 0 %}
+        <li uk-filter-control=".tag-Sorpresa"><a href="#">Sorpresa</a></li>
+        {% endif %}
+        {% if candidatos_seriedad|length > 0 %}
+        <li uk-filter-control=".tag-Seriedad"><a href="#">Seriedad</a></li>
+        {% endif %}
+      </ul>
+    <ul class="padding js-filter uk-child-width-1-2@m uk-child-width-1-1@s uk-child-width-1-3@l uk-text-center"  uk-grid uk-lightbox="animation: fade">
+      {% for candidato in candidatos_disgusto %}
+      <li class="tag-Disgusto">
+        <div class="uk-card uk-card-default uk-box-shadow-large ">
+          <a class="uk-inline" href={{ candidato.url }}>
+            <img src={{ candidato.url }} alt="">
+          </a>
+            <div class="uk-card-body">
+              <h4 class="uk-card-title">{{ candidato.organizacion_politica }}</h4>  
+          </div>
+        </div>      
+      </li>
+      {% endfor %}
+      {% for candidato in candidatos_alegria %}
+      <li class="tag-Alegría">
+        <div class="uk-card uk-card-default uk-box-shadow-large ">
+          <a class="uk-inline" href={{ candidato.url }}>
+            <img src={{ candidato.url }} alt="">
+          </a>
+            <div class="uk-card-body">
+              <h4 class="uk-card-title">{{ candidato.organizacion_politica }}</h4>  
+          </div>
+        </div>      
+      </li>
+      {% endfor %}
+      {% for candidato in candidatos_sorpresa %}
+      <li class="tag-Sorpresa">
+        <div class="uk-card uk-card-default uk-box-shadow-large ">
+          <a class="uk-inline" href={{ candidato.url }}>
+            <img src={{ candidato.url }} alt="">
+          </a>
+            <div class="uk-card-body">
+              <h4 class="uk-card-title">{{ candidato.organizacion_politica }}</h4>  
+          </div>
+        </div>      
+      </li>
+      {% endfor %}
+      {% for candidato in candidatos_seriedad %}
+      <li class="tag-Seriedad">
+        <div class="uk-card uk-card-default uk-box-shadow-large ">
+          <a class="uk-inline" href={{ candidato.url }}>
+            <img src={{ candidato.url }} alt="">
+          </a>
+            <div class="uk-card-body">
+              <h4 class="uk-card-title">{{ candidato.organizacion_politica }}</h4>  
+          </div>
+        </div>      
+      </li>
+      {% endfor %}
+      {% for candidato in candidatos_tristeza %}
+      <li class="tag-Tristeza">
+        <div class="uk-card uk-card-default uk-box-shadow-large ">
+          <a class="uk-inline" href={{ candidato.url }}>
+            <img src={{ candidato.url }} alt="">
+          </a>
+            <div class="uk-card-body">
+              <h4 class="uk-card-title">{{ candidato.organizacion_politica }}</h4>  
+          </div>
+        </div>      
+      </li>
+      {% endfor %}
+      {% for candidato in candidatos_molestia %}
+      <li class="tag-Molestia">
+        <div class="uk-card uk-card-default uk-box-shadow-large ">
+          <a class="uk-inline" href={{ candidato.url }}>
+            <img src={{ candidato.url }} alt="">
+          </a>
+            <div class="uk-card-body">
+              <h4 class="uk-card-title">{{ candidato.organizacion_politica }}</h4>  
+          </div>
+        </div>      
+      </li>
+      {% endfor %}
+      {% for candidato in candidatos_miedo %}
+      <li class="tag-Miedo">
+        <div class="uk-card uk-card-default uk-box-shadow-large ">
+          <a class="uk-inline" href={{ candidato.url }}>
+            <img src={{ candidato.url }} alt="">
+          </a>
+            <div class="uk-card-body">
+              <h4 class="uk-card-title">{{ candidato.organizacion_politica }}</h4>  
+          </div>
+        </div>      
+      </li>
       {% endfor %}
     </ul>
 
   </div>
-  {% for c in candidato %}
-    <p>{{c.candidato}}</p>
-    <p>{{c.dni_candidato}}</p>
-  {% endfor %}
   <!-- /CONTENT -->
   <!-- LOADER -->
   <div id="preloader">
