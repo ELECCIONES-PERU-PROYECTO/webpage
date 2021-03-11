@@ -1286,11 +1286,11 @@ def iaDisplay(request):
       cargo_postula_ = "presidenciales" 
     else:
       cargo_postula_ = cargo_postula_list[0]
-    emocion_list = request.GET.getlist("emocion")
-    if len(emocion_list) == 0:
-      emocion_ = "Alegría" 
-    else:
-      emocion_ = emocion_list[0]
+    #emocion_list = request.GET.getlist("emocion")
+    #if len(emocion_list) == 0:
+    ##  emocion_ = "Alegría" 
+    #else:
+    #  emocion_ = emocion_list[0]
     organizacion_list = request.GET.getlist("organizacion")
     if len(organizacion_list) == 0:
       organizacion_ = "" 
@@ -1303,7 +1303,7 @@ def iaDisplay(request):
       WHERE_candidato = " (cargo_eleccion = 'CONGRESISTA DE LA REPÚBLICA') "
     elif cargo_postula_ == "parlamento":
       WHERE_candidato = " (cargo_eleccion = 'REPRESENTANTE ANTE EL PARLAMENTO ANDINO') "
-    query_ = "SELECT * FROM ai_total WHERE "+WHERE_candidato+" AND emocion='"+emocion_+"' AND organizacion_politica='"+organizacion_+"'"
+    query_ = "SELECT * FROM ai_total WHERE "+WHERE_candidato+" AND organizacion_politica='"+organizacion_+"'"
     print("query_: ",query_)
     candidatos = AiTotal.objects.raw(query_)
     return render(request,

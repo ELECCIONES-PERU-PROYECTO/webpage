@@ -37,8 +37,10 @@ function agregar_imagen_organizacion(){
 
 window.onload = function(){
   var data1 = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
+  let ul_filt_selec_ = document.getElementById("filtros_seleccionados")
   if (data1 != null){
-    agregar_filtros_selecs(data1)
+    if(ul_filt_selec_!=null)
+      agregar_filtros_selecs(data1)
   }
   if (sessionStorage.getItem("hasCodeRunBefore") === null) {
     let data = []
