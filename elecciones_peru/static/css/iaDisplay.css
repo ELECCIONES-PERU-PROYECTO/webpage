@@ -89,3 +89,7 @@ h1, h2, h3, h4, h5, h6, a, p, li, span, button {
     padding: 4px;
 }
 
+.red-button{
+	background-color: rgb(182 34 34) !important;
+    border-radius: 20px;
+}
