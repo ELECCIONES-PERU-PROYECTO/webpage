@@ -47,8 +47,6 @@ class DatosPersonales(models.Model):
   url = models.CharField(max_length=200, default="-", editable=False)
 
   def get_edu_join(self, EducacionBasica):
-    # print("dsa")
-    print(self.id)
     return EducacionBasica.filter(dni_candidato=self.dni_candidato)
 
   def get_experienciaLaboral(self):

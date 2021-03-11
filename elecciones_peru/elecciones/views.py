@@ -16,10 +16,10 @@ def function_filtros_ob(self, query_normal, normnob1, SELECT_candidato, WHERE_ca
     uwu = nrorden.find("_")
     quitar = self[i][index_-1:]
 
-    print("-------------------- VALOR DEL QUERY -----------------------")
-    print(valor)
-    print("-------------------- ORDEN DEL VALOR -----------------------")
-    print(nrorden)
+    # print("-------------------- VALOR DEL QUERY -----------------------")
+    # print(valor)
+    # print("-------------------- ORDEN DEL VALOR -----------------------")
+    # print(nrorden)
 
     if int(valor) > 9 and uwu==-1:
       quitar = self[i][index_-2:]
@@ -138,7 +138,6 @@ def function_filtro_normal(self, stack_, SELECT_candidato, WHERE_candidato):
         elif(self[0] == 'concluyo_estudio_no_universitario'):
           tabla = 'estudio_no_universitario'
         elif(self[0] == 'concluyo_estudio_universitario'):
-          print("ASDADSADSADSADASADSAD")
           tabla = 'estudio_universitario'
         elif(self[0] == 'concluyo_estudio_postgrado'):
           tabla = 'estudio_postgrado'
@@ -163,7 +162,6 @@ def function_filtro_normal(self, stack_, SELECT_candidato, WHERE_candidato):
       self[12] = ""
       return retorno
     if self[13] == "SI":
-      print("-------------------------- ES ORIUNDO DE PERU: --------------------------", self[13])
       retorno = "SELECT  DISTINCT DP.id, DP.dni_candidato, DP.candidato, Dp.organizacion_politica, " + SELECT_candidato+"   FROM datos_personales AS DP  WHERE    departamento_nacimiento = '"+ self[15]+"' AND "+WHERE_candidato 
       self[13] = ""
       return retorno
@@ -246,7 +244,6 @@ def unkipify(value):
 def filter_function(request):
   # Tipo de Filtro
   tipo_candidato_ = unkipify(request.GET.get("tipo_filter"))
-  print("tipo_candidato_ >>>>>>>>>>>>> ", tipo_candidato_)
 
   if(tipo_candidato_ != 'org_politca'):
     ###############################################
@@ -274,11 +271,9 @@ def filter_function(request):
     orden_renuncias = unkipify(request.GET.get("cantidad_renuncia"))
     rango_edad_val = unkipify(request.GET.get("rango_edad"))
     if(request.GET.get("oriundo_input") != None):
-      print("es dif de None")
       index = request.GET.get("oriundo_input").rfind("-")
       ordxr = request.GET.get("oriundo_input")[index : len(request.GET.get("oriundo_input"))]
       if(request.GET.get("oriundo_input")[0: index] == "NO"):
-        print("es NO, number", ordxr)
         nacio_en_peru_no = "NO" + ordxr
         nacio_en_peru_si = "unk"
       else:
@@ -305,9 +300,9 @@ def filter_function(request):
       dist_electoral, tipo_candidato_
     ]
 
-    print("********")
-    print(lista_valores)
-    print("********")
+    # print("********")
+    # print(lista_valores)
+    # print("********")
 
     if(lista_valores[4][0:lista_valores[4].rfind("-")] == "FamiliaAli"):
       order = lista_valores[4][lista_valores[4].rfind("-"):len(lista_valores[4]) :+1]
@@ -339,7 +334,7 @@ def filter_function(request):
     query_total = ""
 
     for i in range(0, len(lista_valores)-1):
-      print("lista_valores[",i,"]: ", lista_valores[i])
+      # print("lista_valores[",i,"]: ", lista_valores[i])
       if lista_valores[13] != "unk" and i == 15:
         continue
       if lista_valores[i] != "unk":
@@ -384,20 +379,20 @@ def filter_function(request):
 
 
       if len(lista_filtros_normales) == 0:
-        print("*********** Lista de filtros normales esta vacia")
+        # print("*********** Lista de filtros normales esta vacia")
         query_normal = ""
         query_total = function_filtros_ob(lista_filtros_ob_new, query_normal,False, SELECT_candidato, WHERE_candidato)
       
       elif len(lista_filtros_ob_new) == 0:
         if len(lista_filtros_normales) == 1:
-          print("query_total XXXX********",query_total)
-          print("********")
-          print("lista_valores********",lista_valores)
-          print("********")
-          print("SELECT_candidato********",SELECT_candidato)
-          print("********")
-          print("WHERE_candidato********",WHERE_candidato)
-          print("********")
+          # print("query_total XXXX********",query_total)
+          # print("********")
+          # print("lista_valores********",lista_valores)
+          # print("********")
+          # print("SELECT_candidato********",SELECT_candidato)
+          # print("********")
+          # print("WHERE_candidato********",WHERE_candidato)
+          # print("********")
           query_total = query_total + function_filtro_normal(lista_valores, False, SELECT_candidato, WHERE_candidato)
         elif len(lista_filtros_normales) > 1:
           query = ""
@@ -474,8 +469,6 @@ def filter_function(request):
     # Variables
     ###############################################
     # Org Politica
-
-    ##### Agregar campos para la educacion
     org_rango_edad = unkipify(request.GET.get("org_rango_edad"))
     org_edad_orden = unkipify(request.GET.get("org_edad_orden"))
     org_educacion_prim_ord = unkipify(request.GET.get("org_educacion_prim"))
@@ -501,30 +494,30 @@ def filter_function(request):
     org_2017_finan_priv_orden_ingreso = unkipify(request.GET.get("2017_ingre_dec"))
     org_finan_pub_orden_monto_quinquenal = unkipify(request.GET.get("monto_quinque"))
 
-    print("org_rango_edad >>>>>>>>>>><<<<<<", org_rango_edad)
-    print("org_edad_orden >>>>>>>>>>><<<<<<", org_edad_orden)
-    print("org_educacion_prim_ord >>>>>>>>>>><<<<<<", org_educacion_prim_ord)
-    print("org_educacion_sec_ord >>>>>>>>>>><<<<<<", org_educacion_sec_ord)
-    print("org_educacion_tec_ord >>>>>>>>>>><<<<<<", org_educacion_tec_ord)
-    print("org_educacion_no_univ_ord >>>>>>>>>>><<<<<<", org_educacion_no_univ_ord)
-    print("org_educacion_univ_ord >>>>>>>>>>><<<<<<", org_educacion_univ_ord)
-    print("org_educacion_post_ord >>>>>>>>>>><<<<<<", org_educacion_post_ord)
-    print("org_educacion_doc_ord >>>>>>>>>>><<<<<<", org_educacion_doc_ord)
-    print("org_opc_sexo >>>>>>>>>>><<<<<<", org_opc_sexo)
-    print("org_sexo_orden >>>>>>>>>>><<<<<<", org_sexo_orden)
-    print("org_cant_sen_penal_obliga >>>>>>>>>>><<<<<<", org_cant_sen_penal_obliga)
-    print("org_cant_sen_penal >>>>>>>>>>><<<<<<", org_cant_sen_penal)
-    print("org_cant_sen_civil >>>>>>>>>>><<<<<<", org_cant_sen_civil)
-    print("org_oriundo >>>>>>>>>>><<<<<<", org_oriundo)
-    print("org_departamento_oriundo >>>>>>>>>>><<<<<<", org_departamento_oriundo)
-    print("org_distrito_electoral >>>>>>>>>>><<<<<<", org_distrito_electoral)
-    print("org_2019_finan_priv_presento >>>>>>>>>>><<<<<<", org_2019_finan_priv_presento)
-    print("org_2019_finan_priv_orden_ingreso >>>>>>>>>>><<<<<<", org_2019_finan_priv_orden_ingreso)
-    print("org_2018_finan_priv_presento >>>>>>>>>>><<<<<<", org_2018_finan_priv_presento)
-    print("org_2018_finan_priv_orden_ingreso >>>>>>>>>>><<<<<<", org_2018_finan_priv_orden_ingreso)
-    print("org_2017_finan_priv_presento >>>>>>>>>>><<<<<<", org_2017_finan_priv_presento)
-    print("org_2017_finan_priv_orden_ingreso >>>>>>>>>>><<<<<<", org_2017_finan_priv_orden_ingreso)
-    print("org_finan_pub_orden_monto_quinquenal >>>>>>>>>>><<<<<<", org_finan_pub_orden_monto_quinquenal)
+    # print("org_rango_edad >>>>>>>>>>><<<<<<", org_rango_edad)
+    # print("org_edad_orden >>>>>>>>>>><<<<<<", org_edad_orden)
+    # print("org_educacion_prim_ord >>>>>>>>>>><<<<<<", org_educacion_prim_ord)
+    # print("org_educacion_sec_ord >>>>>>>>>>><<<<<<", org_educacion_sec_ord)
+    # print("org_educacion_tec_ord >>>>>>>>>>><<<<<<", org_educacion_tec_ord)
+    # print("org_educacion_no_univ_ord >>>>>>>>>>><<<<<<", org_educacion_no_univ_ord)
+    # print("org_educacion_univ_ord >>>>>>>>>>><<<<<<", org_educacion_univ_ord)
+    # print("org_educacion_post_ord >>>>>>>>>>><<<<<<", org_educacion_post_ord)
+    # print("org_educacion_doc_ord >>>>>>>>>>><<<<<<", org_educacion_doc_ord)
+    # print("org_opc_sexo >>>>>>>>>>><<<<<<", org_opc_sexo)
+    # print("org_sexo_orden >>>>>>>>>>><<<<<<", org_sexo_orden)
+    # print("org_cant_sen_penal_obliga >>>>>>>>>>><<<<<<", org_cant_sen_penal_obliga)
+    # print("org_cant_sen_penal >>>>>>>>>>><<<<<<", org_cant_sen_penal)
+    # print("org_cant_sen_civil >>>>>>>>>>><<<<<<", org_cant_sen_civil)
+    # print("org_oriundo >>>>>>>>>>><<<<<<", org_oriundo)
+    # print("org_departamento_oriundo >>>>>>>>>>><<<<<<", org_departamento_oriundo)
+    # print("org_distrito_electoral >>>>>>>>>>><<<<<<", org_distrito_electoral)
+    # print("org_2019_finan_priv_presento >>>>>>>>>>><<<<<<", org_2019_finan_priv_presento)
+    # print("org_2019_finan_priv_orden_ingreso >>>>>>>>>>><<<<<<", org_2019_finan_priv_orden_ingreso)
+    # print("org_2018_finan_priv_presento >>>>>>>>>>><<<<<<", org_2018_finan_priv_presento)
+    # print("org_2018_finan_priv_orden_ingreso >>>>>>>>>>><<<<<<", org_2018_finan_priv_orden_ingreso)
+    # print("org_2017_finan_priv_presento >>>>>>>>>>><<<<<<", org_2017_finan_priv_presento)
+    # print("org_2017_finan_priv_orden_ingreso >>>>>>>>>>><<<<<<", org_2017_finan_priv_orden_ingreso)
+    # print("org_finan_pub_orden_monto_quinquenal >>>>>>>>>>><<<<<<", org_finan_pub_orden_monto_quinquenal)
 
     #- before column name mean descending order without - mean ascending. 
     query_total = "select * from datos_personales;"
@@ -533,8 +526,8 @@ def filter_function(request):
       rango = org_rango_edad.rfind("-")
       var1 = org_rango_edad[0:rango:+1] 
       var2 = org_rango_edad[rango+1:len(org_rango_edad)+1:+1]
-      print("var1: ", var1)
-      print("var2: ", var2)
+      # print("var1: ", var1)
+      # print("var2: ", var2)
       # le falta PK
       #query_total = " SELECT  COUNT (*),partido FROM tabla_edad WHERE edad BETWEEN " +var1+ " AND " +var2+" GROUP BY (partido)"    
       #query_total = " SELECT  dni_candidato, candidato, organizacion_politica, cargo_eleccion FROM datos_personales "
@@ -595,7 +588,7 @@ def filter_function(request):
       query_total =  "SELECT total_ingresos AS monto, OP.organizacion_politica FROM financiamiento_privado AS EB  JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE  estado   = '"+org_2019_finan_priv_presento+"' AND  anhio = '2019' GROUP BY (OP.organizacion_politica,monto,OP.url) ORDER BY (monto) " + org_2019_finan_priv_orden_ingreso
 
     elif org_2018_finan_priv_presento != "unk":
-      print("org_pol: 2018 ..........", org_2018_finan_priv_presento)
+      # print("org_pol: 2018 ..........", org_2018_finan_priv_presento)
       query_total =  "SELECT total_ingresos AS monto, OP.organizacion_politica FROM financiamiento_privado AS EB  JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE  estado   = '"+org_2018_finan_priv_presento+"' AND  anhio = '2018' GROUP BY (OP.organizacion_politica,monto,OP.url) ORDER BY (monto) " + org_2018_finan_priv_orden_ingreso
 
     elif org_2017_finan_priv_presento != "unk":
@@ -604,8 +597,8 @@ def filter_function(request):
     elif org_finan_pub_orden_monto_quinquenal != "unk":
       query_total =  " SELECT monto_quinquenal AS monto, OP.organizacion_politica, EB.num_votos_congresales FROM financiamiento_publico AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) GROUP BY (EB.num_votos_congresales,OP.organizacion_politica,monto,OP.url) ORDER BY (monto) " + org_finan_pub_orden_monto_quinquenal
     
-    print("-------LLEGA A FINAL CASI DE LA FUNCION------------")
-    print("query_total: ",query_total)
+    # print("-------LLEGA A FINAL CASI DE LA FUNCION------------")
+    # print("query_total: ",query_total)
     
     candidatos = OrganizacionesPoliticas.objects.raw(query_total)
     # Paginator 
@@ -628,12 +621,6 @@ def filter_function(request):
                     'page': page_obj,
                     'organizaciones_return': page_obj
                   } )
-
-def candidatos(request):
-  print("tas en candidatos")
-  return render(request,
-                'elecciones/dashboard.html',
-                {'candidatos': candidatos})
 
 def hojadevida_by_dni(request, dni_hoja_de_vida, cargo_postula_dato):
   if cargo_postula_dato == "PRIMER":
@@ -738,13 +725,13 @@ def mainpage(request):
 def analisisGraficos(request):
   return render(request,'elecciones/graphics.html',{})
 
-def test(request):
-  candidato = DatosPersonales.objects.filter(Q(dni_candidato = request.GET.get("dni")))
+# def test(request):
+#   candidato = DatosPersonales.objects.filter(Q(dni_candidato = request.GET.get("dni")))
   
-  print(candidato)
-  return render(request,'elecciones/test.html', 
-    { 'candidato' : candidato }
-  ) 
+#   print(candidato)
+#   return render(request,'elecciones/test.html', 
+#     { 'candidato' : candidato }
+#   ) 
 
 def subir_data(request):
   # Leer el archivo 'datos.csv' con reader() y
@@ -1288,4 +1275,3 @@ def corregir_data(request):
       pass
 
   return HttpResponse('bien')
-
