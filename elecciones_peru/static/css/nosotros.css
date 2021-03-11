@@ -3,8 +3,9 @@
 }
 
 .foto{
-    max-width: 60%;
-    max-height: 70% ;
+    height: 330px;
+    max-width: 70%;
+    max-height: 90%;
 }
 
 .uk-box-shadow-xlarge {
@@ -47,4 +48,8 @@ h1, h2, h3, h4, h5, h6, a, p, li, span, button {
 
 .no-padding{
     padding-top: 0px;
+}
+
+.div-image{
+    height: 250px;
 }
