@@ -36,17 +36,14 @@ function agregar_imagen_organizacion(){
 }
 
 window.onload = function(){
-  // console.log("agregar_filtros_selecs")
   var data1 = JSON.parse(sessionStorage.getItem('data_filtros_seleccionados'))
-  // console.log(data1)
+  let ul_filt_selec_ = document.getElementById("filtros_seleccionados")
   if (data1 != null){
-    // console.log("data1", data1)
-    agregar_filtros_selecs(data1)
+    if(ul_filt_selec_!=null)
+      agregar_filtros_selecs(data1)
   }
-  // console.log("hasCodeRunBefore still false")
   if (sessionStorage.getItem("hasCodeRunBefore") === null) {
     let data = []
-    // console.log("hasCodeRunBefore = true")
     sessionStorage.setItem('data_filtros_seleccionados', JSON.stringify(data))
     sessionStorage.setItem("hasCodeRunBefore", true);
   }
@@ -61,12 +58,8 @@ window.onload = function(){
 }
 
 function agregar_filtros_selecs(data){
-  let url = window.location.href
-  let text = url.split("/")
-
   if(typeof badges !== "undefined")
     quitar_badges()
-  if(text[3] == "busqueda") {
     for(let i = 0 ;i < data.length ; i++){
       if (data[i] == "1"){
         agregar_badge("Nivel Académico")
@@ -120,8 +113,6 @@ function agregar_filtros_selecs(data){
       else if( data[i]=="17"){
         agregar_badge("Distrito Electoral")
       }
-      
-    }
   }
 }
 
@@ -198,8 +189,11 @@ function activar_candidatos(text){
     if(post_presis)
       post_presis.style = "display : none"
     let tip_cand_filter = document.getElementsByName("tipo_candidato_filter")[0]
-    if(tip_cand_filter)
+    let tip_cand = document.getElementsByName("tipo_filter")[0]
+    if(tip_cand_filter) {
       tip_cand_filter.id = "congresales"      
+      tip_cand.value = "congresales"
+    }
   }
 
   if(text == "Candidatos Presidenciales" || text == "Presidencial"){
@@ -230,8 +224,11 @@ function activar_candidatos(text){
     if(post_presis)
       post_presis.style = ""
     let tip_cand_filter = document.getElementsByName("tipo_candidato_filter")[0]
-    if(tip_cand_filter)
+    let tip_cand = document.getElementsByName("tipo_filter")[0]
+    if(tip_cand_filter) {
       tip_cand_filter.id = "presidenciales"
+      tip_cand.value = "presidenciales"
+    }
   }
 
   if(text == "Candidatos Parlamento Andino" || text == "Parlamento Andino"){
@@ -262,8 +259,11 @@ function activar_candidatos(text){
     if(post_presis)
       post_presis.style = "display : none"
     let tip_cand_filter = document.getElementsByName("tipo_candidato_filter")[0]
-    if(tip_cand_filter)
+    let tip_cand = document.getElementsByName("tipo_filter")[0]
+    if(tip_cand_filter) {
       tip_cand_filter.id = "parlamento"
+      tip_cand.value = "parlamento"
+    }
   }
   if (text == "Organización Política"){
     activar_organizaciones(text);
