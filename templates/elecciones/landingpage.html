@@ -91,9 +91,9 @@
 
 			<!--Arrow-->
 				<svg class="arrow">
-					<a href="#first" ><path class="a1" d="M0 0 L30 22 L60 0"></path></a>
-					<a href="#first"><path class="a2" d="M0 20 L30 42 L60 20"></path></a>
-					<a href="#first"><path class="a3" d="M0 40 L30 62 L60 40"></path></a>	
+					<a onclick="functionforscroll('first')" ><path class="a1" d="M0 0 L30 22 L60 0"></path></a>
+					<a onclick="functionforscroll('first')"><path class="a2" d="M0 20 L30 42 L60 20"></path></a>
+					<a onclick="functionforscroll('first')"><path class="a3" d="M0 40 L30 62 L60 40"></path></a>	
 				</svg>
 			<!--/Arrow-->
 			
@@ -557,5 +557,11 @@
 			// 		console.log(res)
 			// 	})
 			// }
+		</script>
+		<script>
+			var functionforscroll = function(id){
+				var reqId = "#"+id;
+				window.scrollTo(0, $(reqId).offset().top);
+			}
 		</script>
 {% endblock %}
