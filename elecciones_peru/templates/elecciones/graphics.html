@@ -1123,6 +1123,14 @@
 										</ul>
 										Mira los candidatos de cierto partido politico según su nivel académico alcanzado: 
 										<p>
+											<select class="uk-select opt_select uk-margin-small-right" type="text" onchange=tipo_candidato_select(this)>
+												<option value="default" disabled selected>Elegir Tipo de Candidato</option>
+												<option value="presidenciales">Presidencales</option>
+												<option value="congresales">Congresales</option>
+												<option value="parlamento">Parlamento Andino</option>
+											</select >
+										</p>
+										<p>
 											<select class="uk-select opt_select uk-margin-small-right" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
 												<option value="default" disabled selected>Elegir Organización Política</option>
 												<option value="ACCION POPULAR">Acción Popular</option>
