@@ -485,7 +485,7 @@
               </li>
             </ul>
             <div class="uk-margin uk-text-center">
-              <input type="button" id="filtrar_cand" onclick="filter_candidatos()" class="uk-button bg_red uk-text-bold" value="Filtrar"> 
+              <input type="button" id="filtrar_cand" onclick="filter_candidatos()" class="uk-button bg_red uk-text-bold" value="Filtrar">
             </div>
           </form>
         </div>
@@ -514,7 +514,7 @@
             </li>
           </ul>
           <!-- <div class="spacer_mob"></div> -->
-          <form class="filter_options">
+          <form method="GET" class="filter_options" id="filtro_org_form">
             <input value="org_politca" disable name="tipo_filter" class="uk-hidden">
             <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
               <li class="uk-nav-header" name="tipo_candidato_">Opciones de Búsqueda</li>
@@ -567,7 +567,7 @@
                   </fieldset>
                 </ul>
               </li>
-              <li class="uk-parent" id="org_opc_genero"><a class="aside_options"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Sexo</a>
+              <li class="uk-parent" id="org_opc_sexo"><a class="aside_options"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Sexo</a>
                 <ul>
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex">
@@ -576,29 +576,29 @@
                         Ordenar los partidos según la cantidad candidatos de sexo femenino o masculino 
                         </label>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="org_gen_masc" name="org_opc_genero" onclick="set_valor(this)" value="MASCULINO">
+                          <input type="radio" id="org_gen_masc" name="org_opc_sexo" onclick="set_valor(this)" value="MASCULINO">
                           <label for="org_gen_masc">
                             Masculino
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="org_gen_fem" name="org_opc_genero" onclick="set_valor(this)" value="FEMENINO">
+                          <input type="radio" id="org_gen_fem" name="org_opc_sexo" onclick="set_valor(this)" value="FEMENINO">
                           <label for="org_gen_fem">
                             Fememino
                           </label>
                         </div>
-                        <div id="orden_genero_container" style="margin-top: 10px; margin-left: 15px;">
+                        <div id="orden_sexo_container" style="margin-top: 10px; margin-left: 15px;">
                           <label>
                             Ordenar:
                           </label>
                           <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                            <input type="radio" id="org_ord_asc"  name="org_genero_orden" onclick="set_valor(this)" value="ASC">
+                            <input type="radio" id="org_ord_asc"  name="org_sexo_orden" onclick="set_valor(this)" value="ASC">
                             <label for="org_ord_asc">
                               De menor a mayor
                             </label>
                           </div>
                           <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                            <input type="radio" id="org_ord_desc" name="org_genero_orden" onclick="set_valor(this)" value="DESC">
+                            <input type="radio" id="org_ord_desc" name="org_sexo_orden" onclick="set_valor(this)" value="DESC">
                             <label for="org_ord_desc">
                               De mayor a menor
                             </label>
@@ -625,13 +625,13 @@
                             Ordenar:
                         </label>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="org_est_prim_asc" name="org_opc_educacion" onclick="set_valor(this)" value="ASC">
+                          <input type="radio" id="org_est_prim_asc" name="org_educacion_prim" onclick="set_valor(this)" value="ASC">
                           <label for="org_est_prim_asc">
                             De menor a mayor
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="org_est_prim_desc" name="org_opc_educacion" onclick="set_valor(this)" value="DESC">
+                          <input type="radio" id="org_est_prim_desc" name="org_educacion_prim" onclick="set_valor(this)" value="DESC">
                           <label for="org_est_prim_desc">
                             De mayor a menor
                           </label>
@@ -641,13 +641,13 @@
                           Ordenar:
                         </label>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="org_est_sec_asc" name="org_opc_educacion" onclick="set_valor(this)" value="ASC">
+                          <input type="radio" id="org_est_sec_asc" name="org_educacion_sec" onclick="set_valor(this)" value="ASC">
                           <label for="org_est_sec_asc">
                             De menor a mayor
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="org_est_sec_desc" name="org_opc_educacion"  onclick="set_valor(this)" value="DESC">
+                          <input type="radio" id="org_est_sec_desc" name="org_educacion_sec"  onclick="set_valor(this)" value="DESC">
                           <label for="org_est_sec_desc">
                             De mayor a menor
                           </label>
@@ -657,13 +657,13 @@
                           Ordenar:
                         </label>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="org_est_tec_asc" name="org_opc_educacion" onclick="set_valor(this)" value="ASC">
+                          <input type="radio" id="org_est_tec_asc" name="org_educacion_tec" onclick="set_valor(this)" value="ASC">
                           <label for="org_est_tec_asc">
                             De menor a mayor
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="org_est_tec_desc" name="org_opc_educacion" onclick="set_valor(this)" value="DESC">
+                          <input type="radio" id="org_est_tec_desc" name="org_educacion_tec" onclick="set_valor(this)" value="DESC">
                           <label for="org_est_tec_desc">
                             De mayor a menor
                           </label>
@@ -673,14 +673,14 @@
                           Ordenar:
                         </label>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="org_est_no_univ_asc" name="org_opc_educacion"  onclick="set_valor(this)" value="ASC">
+                          <input type="radio" id="org_est_no_univ_asc" name="org_educacion_no_univ"  onclick="set_valor(this)" value="ASC">
                           <label for="org_est_no_univ_asc">
                             De menor a mayor
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
                           
-                          <input type="radio" id="org_est_no_univ_desc" name="org_opc_educacion" onclick="set_valor(this)" value="DESC">
+                          <input type="radio" id="org_est_no_univ_desc" name="org_educacion_no_univ" onclick="set_valor(this)" value="DESC">
                           <label for="org_est_no_univ_desc">
                             De mayor a menor
                           </label>
@@ -690,13 +690,13 @@
                           Ordenar:
                         </label>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="org_est_univ_asc" name="org_opc_educacion" onclick="set_valor(this)" value="ASC">
+                          <input type="radio" id="org_est_univ_asc" name="org_educacion_univ" onclick="set_valor(this)" value="ASC">
                           <label for="org_est_univ_asc">
                             De menor a mayor
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="org_est_univ_desc" name="org_opc_educacion" onclick="set_valor(this)" value="DESC">
+                          <input type="radio" id="org_est_univ_desc" name="org_educacion_univ" onclick="set_valor(this)" value="DESC">
                           <label for="org_est_univ_desc">
                             De mayor a menor
                           </label>
@@ -706,13 +706,13 @@
                           Ordenar:
                         </label>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="org_post_asc" name="org_opc_educacion" onclick="set_valor(this)" value="ASC">
+                          <input type="radio" id="org_post_asc" name="org_educacion_post" onclick="set_valor(this)" value="ASC">
                           <label for="org_post_asc">
                             De menor a mayor
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="org_post_desc" name="org_opc_educacion" onclick="set_valor(this)" value="DESC">
+                          <input type="radio" id="org_post_desc" name="org_educacion_post" onclick="set_valor(this)" value="DESC">
                           <label for="org_post_desc">
                             De mayor a menor
                           </label>
@@ -722,13 +722,13 @@
                           Ordenar:
                         </label>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="org_doc_asc" name="org_opc_educacion" onclick="set_valor(this)" value="ASC">
+                          <input type="radio" id="org_doc_asc" name="org_educacion_doc" onclick="set_valor(this)" value="ASC">
                           <label for="org_doc_asc">
                             De menor a mayor
                           </label>
                         </div>
                         <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="org_doc_desc" name="org_opc_educacion" onclick="set_valor(this)" value="DESC">
+                          <input type="radio" id="org_doc_desc" name="org_educacion_doc" onclick="set_valor(this)" value="DESC">
                           <label for="org_doc_desc">
                             De mayor a menor
                           </label>
@@ -809,23 +809,7 @@
                   <fieldset class="uk-fieldset uk-padding-small">
                     <div class="uk-width-1-1@s uk-flex uk-flex-between">
                       <div class="uk-flex uk-flex-column" style="width: 95%">
-                        <label>
-                          Ordenar los partidos según la cantidad de candidatos
-                          por partido nacidos en el lugar
-                        </label>
-                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="org_oriundo_asc" name="org_oriundo" value="ASC" onclick="set_valor(this)">
-                          <label for="org_oriundo_asc">
-                            De menor a mayor
-                          </label>
-                        </div>
-                        <div class="uk-flex uk-flex-middle uk-margin-small-left">
-                          <input type="radio" id="org_oriundo_desc" name="org_oriundo" value="DESC"  onclick="set_valor(this)">
-                          <label for="org_oriundo_desc">
-                            De mayor a menor
-                          </label>
-                        </div>
-                        <div id="org_desplegable_oriundo" class="uk-flex uk-flex-column uk-padding-small uk-padding-remove-top uk-margin-small-top">
+                        <div id="org_desplegable_oriundo" class="uk-flex uk-flex-column uk-padding-remove-top uk-margin-small-top">
                           <label>
                             Departamento de nacimiento
                           </label>
@@ -858,6 +842,24 @@
                             <option value="UCAYALI">Ucayali</option> 
                           </select>
                         </div>
+                        <div class="uk-padding-small" id="dep_order_ctn" style="display: none;">
+                          <label>
+                            Ordenar los partidos según la cantidad de candidatos
+                            por partido nacidos en el lugar
+                          </label>
+                          <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                            <input type="radio" id="org_oriundo_asc" name="org_oriundo" value="ASC" onclick="set_valor(this)">
+                            <label for="org_oriundo_asc">
+                              De menor a mayor
+                            </label>
+                          </div>
+                          <div class="uk-flex uk-flex-middle uk-margin-small-left">
+                            <input type="radio" id="org_oriundo_desc" name="org_oriundo" value="DESC"  onclick="set_valor(this)">
+                            <label for="org_oriundo_desc">
+                              De mayor a menor
+                            </label>
+                          </div>
+                        </div>
                       </div>
                       <a onclick="quitar_todas_selecciones(this)" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
                     </div>
@@ -865,8 +867,7 @@
                 </ul>
               </li>
               <li class="uk-parent" id="dist_electo" ><a class="aside_options"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>
-                Candidatos Congresales
-                que postulan por un distrito electoral diferente al de su nacimiento
+                Candidatos congresales que postulan por un distrito electoral diferente al de su nacimiento
               </a>
                 <ul>
                   <fieldset class="uk-fieldset uk-padding-small">
@@ -904,7 +905,7 @@
                           2019
                         </label>
                         <div class="uk-width-1-1@s" id="2019_est_present" >
-                          <div class="uk-margin-small-bottom">
+                          <div>
                             <label>
                               Estado de presentación:
                             </label>
@@ -921,7 +922,7 @@
                               </label>
                             </div>
                           </div>
-                          <div class="uk-margin-small-bottom">
+                          <div class="uk-margin-small-bottom uk-padding-small">
                             <label style="margin-top: 10px">
                               Ordenar los partidos según el monto de ingresos declarados
                             </label>
@@ -943,7 +944,7 @@
                           2018                    
                         </label>
                         <div class="uk-width-1-1@s" id="2018_est_present">
-                          <div class="uk-margin-small-bottom">
+                          <div>
                             <label>
                               Estado de presentación:
                             </label>
@@ -960,7 +961,7 @@
                               </label>
                             </div>
                           </div>
-                          <div class="uk-margin-small-bottom">
+                          <div class="uk-margin-small-bottom uk-padding-small">
                             <label>
                               Ordenar los partidos según el monto de ingresos declarados
                             </label>
@@ -982,7 +983,7 @@
                           2017                      
                         </label>
                         <div class="uk-width-1-1@s" id="2017_est_present">
-                          <div class="uk-margin-small-bottom">
+                          <div>
                             <label>
                               Estado de presentación:
                             </label>
@@ -999,7 +1000,7 @@
                               </label>
                             </div>
                           </div>
-                          <div>
+                          <div class="uk-padding-small">
                             <label>
                               Ordenar los partidos según el monto de ingresos declarados
                             </label>
@@ -1051,7 +1052,7 @@
               </li>
             </ul>
             <div class="uk-margin uk-text-center">
-              <input id="filtrar_org" type="submit" class="uk-button bg_red uk-text-bold" value="Filtrar">
+              <input type="button" id="filtrar_org" onclick="button_filter_org()" class="uk-button bg_red uk-text-bold" value="Filtrar">
             </div>
           </form>
         </div>

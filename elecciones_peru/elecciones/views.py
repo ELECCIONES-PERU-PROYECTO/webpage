@@ -244,371 +244,390 @@ def unkipify(value):
 
 
 def filter_function(request):
-  ###############################################
-  # Variables
-  ###############################################
   # Tipo de Filtro
   tipo_candidato_ = unkipify(request.GET.get("tipo_filter"))
-  # Candidatos
-  nivel_academico = unkipify(request.GET.get("nivel_academico"))
-  cargos_previos_order = unkipify(request.GET.get("anhio_servicio"))
-  orden_cant_sentencia = unkipify(request.GET.get("cant_senten"))
-  orden_cant_sentencia_oblig = unkipify(request.GET.get("cant_senten_oblig"))
-  mat_demanda = unkipify(request.GET.get("opc_mat_demanda"))
-  if(request.GET.get("ifsentencias") != None): # si o no, (se tuvo que hacer así xd)
-    if(request.GET.get("ifsentencias") == "si"):
-      no_tiene_sentencias = "unk"
-    else:
-      no_tiene_sentencias = request.GET.get("ifsentencias")
-  else:
-    no_tiene_sentencias = "unk"
-  tipo_sentencia = unkipify(request.GET.get("tipo_sentencia"))
-  orden_cant_ingreso = unkipify(request.GET.get("cant_ingreso"))
-  orden_cant_inmueble = unkipify(request.GET.get("cant_inmuebles"))
-  orden_valor_inmueble = unkipify(request.GET.get("valor_inmuebles"))
-  orden_cant_mueble = unkipify(request.GET.get("cant_muebles"))
-  orden_valor_mueble = unkipify(request.GET.get("valor_muebles"))
-  orden_renuncias = unkipify(request.GET.get("cantidad_renuncia"))
-  rango_edad_val = unkipify(request.GET.get("rango_edad"))
-  if(request.GET.get("oriundo_input") != None):
-    print("es dif de None")
-    index = request.GET.get("oriundo_input").rfind("-")
-    ordxr = request.GET.get("oriundo_input")[index : len(request.GET.get("oriundo_input"))]
-    if(request.GET.get("oriundo_input")[0: index] == "NO"):
-      print("es NO, number", ordxr)
-      nacio_en_peru_no = "NO" + ordxr
-      nacio_en_peru_si = "unk"
-    else:
-      nacio_en_peru_si = "SI" + ordxr
-      nacio_en_peru_no = "unk"
-  else:
-    nacio_en_peru_no = "unk"
-    nacio_en_peru_si = "unk"
-  departamento_nacimiento = unkipify(request.GET.get("departamento_nacimiento"))
-  cargo_postula = unkipify(request.GET.get("cargo_al_que_postula"))
-  org_politica = unkipify(request.GET.get("org_politica"))
-  dist_electoral = unkipify(request.GET.get("dist_electoral"))
+  print("tipo_candidato_ >>>>>>>>>>>>> ", tipo_candidato_)
 
-  # Org Politica - Falta
-  org_rango_edad = unkipify(request.GET.get("org_rango_edad"))
-  org_edad_orden = unkipify(request.GET.get("org_edad_orden"))
-  org_opc_genero = unkipify(request.GET.get("org_opc_genero"))
-  org_genero_orden = unkipify(request.GET.get("org_genero_orden"))
-  org_opc_educacion = unkipify(request.GET.get("org_opc_educacion"))
-  org_cant_sen_penal_obliga = unkipify(request.GET.get("cant_sen_penal_obliga"))
-  org_cant_sen_penal = unkipify(request.GET.get("cant_sen_penal"))
-  org_cant_sen_civil = unkipify(request.GET.get("cant_sen_civil"))
-  org_oriundo = unkipify(request.GET.get("org_oriundo"))
-  org_departamento_oriundo = unkipify(request.GET.get("org_departamento_oriundo"))
-  org_distrito_electoral = unkipify(request.GET.get("org_distrito_electoral"))
-  org_2019_finan_priv_presento = unkipify(request.GET.get("2019_est_present"))
-  org_2019_finan_priv_orden_ingreso = unkipify(request.GET.get("2019_ingre_dec"))
-  org_2019_finan_priv_presento = unkipify(request.GET.get("2018_est_present"))
-  org_2018_finan_priv_orden_ingreso = unkipify(request.GET.get("2018_ingre_dec"))
-  org_2017_finan_priv_presento = unkipify(request.GET.get("2017_est_present"))
-  org_2017_finan_priv_orden_ingreso = unkipify(request.GET.get("2017_ingre_dec"))
-  org_finan_pub_orden_monto_quinquenal = unkipify(request.GET.get("monto_quinque"))
-
-  ###############################################
-  # XD
-  ###############################################
-  lista_valores = [
-    nivel_academico, cargos_previos_order, orden_cant_sentencia,
-    orden_cant_sentencia_oblig, mat_demanda, no_tiene_sentencias, 
-    orden_cant_ingreso, orden_cant_inmueble, orden_valor_inmueble,
-    orden_cant_mueble, orden_valor_mueble, orden_renuncias, 
-    rango_edad_val, nacio_en_peru_si, nacio_en_peru_no, 
-    departamento_nacimiento, cargo_postula, org_politica, 
-    dist_electoral, tipo_candidato_
-  ]
-
-  print("********")
-  print(lista_valores)
-  print("********")
-  # print(lista_valores[4].rfind("-"))
-  # print(lista_valores[4][0:lista_valores[4].rfind("-")])
-  # print("$$$$$$$")
-
-  if(lista_valores[4][0:lista_valores[4].rfind("-")] == "FamiliaAli"):
-    order = lista_valores[4][lista_valores[4].rfind("-"):len(lista_valores[4]) :+1]
-    lista_valores[4] = "FAMILIA / ALIMENTARIA" + order
-
-  SELECT_candidato = ""
-  WHERE_candidato = ""
-  GROUP_by = ""
-
-  if tipo_candidato_ == "presidenciales":
-    SELECT_candidato =  " DP.cargo_eleccion "
-    WHERE_candidato = " (DP.cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR DP.cargo_eleccion = 'PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA') "
-  elif tipo_candidato_ == "congresales":
-    SELECT_candidato = " DP.distrito_elec "
-    WHERE_candidato = " (DP.cargo_eleccion = 'CONGRESISTA DE LA REPÚBLICA') "
-  elif tipo_candidato_ == "parlamento":
-    SELECT_candidato = " DP.cargo_eleccion "
-    WHERE_candidato = " (DP.cargo_eleccion = 'REPRESENTANTE ANTE EL PARLAMENTO ANDINO') "
-
-  lista_filtros_normales = list()
-  lista_filtros_ob = list()
-  lista_val_new = list()
-  lista_orden = list()
-  lista_ids_new = list()
-  lista_ids = list()
-  lista_ob_dict = list()
-  lista_index = list()
-  tienes_al_menos1 = False
-  query_total = ""
-
-  for i in range(0, len(lista_valores)-1):
-    print("lista_valores[",i,"]: ", lista_valores[i])
-    if lista_valores[13] != "unk" and i == 15:
-      continue
-    if lista_valores[i] != "unk":
-      tienes_al_menos1 = True
-      index_ = lista_valores[i].rfind("-")
-      # if(i != 15):
-      valor = lista_valores[i][index_+1:]
-      lista_valores[i] = lista_valores[i] + str("_") + str(i)
-      if (i >= 1 and i <= 3) or (i >= 6 and i <= 11):
-        lista_filtros_ob.append(lista_valores[i])
+  if(tipo_candidato_ != 'org_politca'):
+    ###############################################
+    # Variables
+    ###############################################
+    # Candidatos
+    nivel_academico = unkipify(request.GET.get("nivel_academico"))
+    cargos_previos_order = unkipify(request.GET.get("anhio_servicio"))
+    orden_cant_sentencia = unkipify(request.GET.get("cant_senten"))
+    orden_cant_sentencia_oblig = unkipify(request.GET.get("cant_senten_oblig"))
+    mat_demanda = unkipify(request.GET.get("opc_mat_demanda"))
+    if(request.GET.get("ifsentencias") != None): # si o no, (se tuvo que hacer así xd)
+      if(request.GET.get("ifsentencias") == "si"):
+        no_tiene_sentencias = "unk"
       else:
-        lista_filtros_normales.append(lista_valores[i])
-      lista_val_new.append(lista_valores[i])
-      # if(i != 15): # Evitar que el departamento no se appendee en la lista de orden
-      lista_orden.append(valor)
-    elif lista_valores[i] == "unk":
-      lista_valores[i] = ""
+        no_tiene_sentencias = request.GET.get("ifsentencias")
+    else:
+      no_tiene_sentencias = "unk"
+    tipo_sentencia = unkipify(request.GET.get("tipo_sentencia"))
+    orden_cant_ingreso = unkipify(request.GET.get("cant_ingreso"))
+    orden_cant_inmueble = unkipify(request.GET.get("cant_inmuebles"))
+    orden_valor_inmueble = unkipify(request.GET.get("valor_inmuebles"))
+    orden_cant_mueble = unkipify(request.GET.get("cant_muebles"))
+    orden_valor_mueble = unkipify(request.GET.get("valor_muebles"))
+    orden_renuncias = unkipify(request.GET.get("cantidad_renuncia"))
+    rango_edad_val = unkipify(request.GET.get("rango_edad"))
+    if(request.GET.get("oriundo_input") != None):
+      print("es dif de None")
+      index = request.GET.get("oriundo_input").rfind("-")
+      ordxr = request.GET.get("oriundo_input")[index : len(request.GET.get("oriundo_input"))]
+      if(request.GET.get("oriundo_input")[0: index] == "NO"):
+        print("es NO, number", ordxr)
+        nacio_en_peru_no = "NO" + ordxr
+        nacio_en_peru_si = "unk"
+      else:
+        nacio_en_peru_si = "SI" + ordxr
+        nacio_en_peru_no = "unk"
+    else:
+      nacio_en_peru_no = "unk"
+      nacio_en_peru_si = "unk"
+    departamento_nacimiento = unkipify(request.GET.get("departamento_nacimiento"))
+    cargo_postula = unkipify(request.GET.get("cargo_al_que_postula"))
+    org_politica = unkipify(request.GET.get("org_politica"))
+    dist_electoral = unkipify(request.GET.get("dist_electoral"))
+
+    ###############################################
+    # XD
+    ###############################################
+    lista_valores = [
+      nivel_academico, cargos_previos_order, orden_cant_sentencia,
+      orden_cant_sentencia_oblig, mat_demanda, no_tiene_sentencias, 
+      orden_cant_ingreso, orden_cant_inmueble, orden_valor_inmueble,
+      orden_cant_mueble, orden_valor_mueble, orden_renuncias, 
+      rango_edad_val, nacio_en_peru_si, nacio_en_peru_no, 
+      departamento_nacimiento, cargo_postula, org_politica, 
+      dist_electoral, tipo_candidato_
+    ]
+
+    print("********")
+    print(lista_valores)
+    print("********")
+
+    if(lista_valores[4][0:lista_valores[4].rfind("-")] == "FamiliaAli"):
+      order = lista_valores[4][lista_valores[4].rfind("-"):len(lista_valores[4]) :+1]
+      lista_valores[4] = "FAMILIA / ALIMENTARIA" + order
+
+    SELECT_candidato = ""
+    WHERE_candidato = ""
+    GROUP_by = ""
+
+    if tipo_candidato_ == "presidenciales":
+      SELECT_candidato =  " DP.cargo_eleccion "
+      WHERE_candidato = " (DP.cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR DP.cargo_eleccion = 'PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR  DP.cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA') "
+    elif tipo_candidato_ == "congresales":
+      SELECT_candidato = " DP.distrito_elec "
+      WHERE_candidato = " (DP.cargo_eleccion = 'CONGRESISTA DE LA REPÚBLICA') "
+    elif tipo_candidato_ == "parlamento":
+      SELECT_candidato = " DP.cargo_eleccion "
+      WHERE_candidato = " (DP.cargo_eleccion = 'REPRESENTANTE ANTE EL PARLAMENTO ANDINO') "
+
+    lista_filtros_normales = list()
+    lista_filtros_ob = list()
+    lista_val_new = list()
+    lista_orden = list()
+    lista_ids_new = list()
+    lista_ids = list()
+    lista_ob_dict = list()
+    lista_index = list()
+    tienes_al_menos1 = False
+    query_total = ""
+
+    for i in range(0, len(lista_valores)-1):
+      print("lista_valores[",i,"]: ", lista_valores[i])
+      if lista_valores[13] != "unk" and i == 15:
+        continue
+      if lista_valores[i] != "unk":
+        tienes_al_menos1 = True
+        index_ = lista_valores[i].rfind("-")
+        # if(i != 15):
+        valor = lista_valores[i][index_+1:]
+        lista_valores[i] = lista_valores[i] + str("_") + str(i)
+        if (i >= 1 and i <= 3) or (i >= 6 and i <= 11):
+          lista_filtros_ob.append(lista_valores[i])
+        else:
+          lista_filtros_normales.append(lista_valores[i])
+        lista_val_new.append(lista_valores[i])
+        # if(i != 15): # Evitar que el departamento no se appendee en la lista de orden
+        lista_orden.append(valor)
+      elif lista_valores[i] == "unk":
+        lista_valores[i] = ""
+
+    if(tienes_al_menos1):
+      j = 1
+      for i in range(0, len(lista_orden)):
+        val = lista_orden.index(str(j))
+        lista_index.append(val)
+        j += 1
+      LN = list()
+      for i in lista_index:
+        LN.append(lista_val_new[i])
+
+      lista_filtros_ob_new = list()
+      for i in range(0, len(LN)):
+        if(LN[i] in lista_filtros_ob):
+          lista_filtros_ob_new.append(LN[i])
+
+      for i in range(0, len(lista_valores)):
+        index_ = lista_valores[i].rfind("-")
+        if index_ != -1:
+          quitar = lista_valores[i][index_:]
+          if int(valor) > 9:
+            quitar = lista_valores[i][index_-2:]    
+          aux = lista_valores[i].replace(quitar, "")
+          lista_valores[i] = aux
 
 
-  if(tienes_al_menos1):
-    j = 1
-    for i in range(0, len(lista_orden)):
-      val = lista_orden.index(str(j))
-      lista_index.append(val)
-      j += 1
-    LN = list()
-    for i in lista_index:
-      LN.append(lista_val_new[i])
+      if len(lista_filtros_normales) == 0:
+        print("*********** Lista de filtros normales esta vacia")
+        query_normal = ""
+        query_total = function_filtros_ob(lista_filtros_ob_new, query_normal,False, SELECT_candidato, WHERE_candidato)
+      
+      elif len(lista_filtros_ob_new) == 0:
+        if len(lista_filtros_normales) == 1:
+          print("query_total XXXX********",query_total)
+          print("********")
+          print("lista_valores********",lista_valores)
+          print("********")
+          print("SELECT_candidato********",SELECT_candidato)
+          print("********")
+          print("WHERE_candidato********",WHERE_candidato)
+          print("********")
+          query_total = query_total + function_filtro_normal(lista_valores, False, SELECT_candidato, WHERE_candidato)
+        elif len(lista_filtros_normales) > 1:
+          query = ""
+          query = query + function_filtro_normal(lista_valores, True, SELECT_candidato, WHERE_candidato)
+          for i in range(1, len(lista_filtros_normales)):
+            query = query +" INTERSECT "+ function_filtro_normal(lista_valores, True, SELECT_candidato, WHERE_candidato)
+          query_total = "SELECT  DISTINCT DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica,   " + SELECT_candidato+ "   FROM  ( "+query + " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) WHERE " + WHERE_candidato  
 
-    lista_filtros_ob_new = list()
-    for i in range(0, len(LN)):
-      if(LN[i] in lista_filtros_ob):
-        lista_filtros_ob_new.append(LN[i])
-
-    for i in range(0, len(lista_valores)):
-      index_ = lista_valores[i].rfind("-")
-      if index_ != -1:
-        quitar = lista_valores[i][index_:]
-        if int(valor) > 9:
-          quitar = lista_valores[i][index_-2:]    
-        aux = lista_valores[i].replace(quitar, "")
-        lista_valores[i] = aux
-
-
-    if len(lista_filtros_normales) == 0:
-      print("*********** Lista de filtros normales esta vacia")
-      query_normal = ""
-      query_total = function_filtros_ob(lista_filtros_ob_new, query_normal,False, SELECT_candidato, WHERE_candidato)
-    
-    elif len(lista_filtros_ob_new) == 0:
-      if len(lista_filtros_normales) == 1:
-        print("query_total XXXX********",query_total)
-        print("********")
-        print("lista_valores********",lista_valores)
-        print("********")
-        print("SELECT_candidato********",SELECT_candidato)
-        print("********")
-        print("WHERE_candidato********",WHERE_candidato)
-        print("********")
-        query_total = query_total + function_filtro_normal(lista_valores, False, SELECT_candidato, WHERE_candidato)
-      elif len(lista_filtros_normales) > 1:
-        query = ""
-        query = query + function_filtro_normal(lista_valores, True, SELECT_candidato, WHERE_candidato)
-        for i in range(1, len(lista_filtros_normales)):
-          query = query +" INTERSECT "+ function_filtro_normal(lista_valores, True, SELECT_candidato, WHERE_candidato)
-        query_total = "SELECT  DISTINCT DP.id,  DP.dni_candidato, DP.candidato, DP.organizacion_politica,   " + SELECT_candidato+ "   FROM  ( "+query + " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) WHERE " + WHERE_candidato  
-
-    elif len(lista_filtros_normales)==1 and len(lista_filtros_ob_new)>1:
-      query_total_filtros_normales = ""
-      query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato, WHERE_candidato)
-      for i in range(1, len(lista_filtros_normales)):
-        query_total_filtros_normales = query_total_filtros_normales +" INTERSECT "+ function_filtro_normal(lista_valores,True, SELECT_candidato, WHERE_candidato)
-      filtro_ob = function_filtros_ob(lista_filtros_ob_new, "",True, SELECT_candidato, WHERE_candidato)
-
-      for i in range(0, len(lista_filtros_ob_new)):
-        index_ = lista_filtros_ob_new[i].find('_')
-        valor = lista_filtros_ob_new[i][index_+1:]
-        quitar = lista_filtros_ob_new[i][index_-1:]
-        aux = lista_filtros_ob_new[i].replace("-"+quitar, "")
-        lista_filtros_ob_new[i] = aux
-      query_total = " SELECT  DP.id,  " + SELECT_candidato + ",  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE " + WHERE_candidato+ "  GROUP BY (conteo,DP.id,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato +") ORDER BY conteo " + lista_filtros_ob_new[0]
-
-    elif ((len(lista_filtros_normales)>1 and len(lista_filtros_ob_new) ==  1))  or  (len(lista_filtros_normales)==1 and len(lista_filtros_ob_new)==1):
-      query_total_filtros_normales = ""
-      query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato, WHERE_candidato)
-      if len(lista_filtros_normales) >1:  
+      elif len(lista_filtros_normales)==1 and len(lista_filtros_ob_new)>1:
+        query_total_filtros_normales = ""
+        query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato, WHERE_candidato)
         for i in range(1, len(lista_filtros_normales)):
           query_total_filtros_normales = query_total_filtros_normales +" INTERSECT "+ function_filtro_normal(lista_valores,True, SELECT_candidato, WHERE_candidato)
-      filtro_ob = function_filtros_ob(lista_filtros_ob_new, "",True, SELECT_candidato, WHERE_candidato)
-      for i in range(0, len(lista_filtros_ob_new)):
-        index_ = lista_filtros_ob_new[i].find('_')
-        valor = lista_filtros_ob_new[i][index_+1:]
-        quitar = lista_filtros_ob_new[i][index_-1:]
-        aux = lista_filtros_ob_new[i].replace("-"+quitar, "")
-        lista_filtros_ob_new[i] = aux
-      query_total = " SELECT  DP.id,  " + SELECT_candidato + ",  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE "+ WHERE_candidato+"  GROUP BY (conteo,DP.id,  DP.candidato, DP.organizacion_politica,  "+SELECT_candidato +" ) ORDER BY conteo " + lista_filtros_ob_new[0]
-    
-    elif len(lista_filtros_normales)>1 and len(lista_filtros_ob_new)>1:
-      query_total_filtros_normales = ""
-      query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato, WHERE_candidato)
-      for i in range(1, len(lista_filtros_normales)):
-        query_total_filtros_normales = query_total_filtros_normales +" INTERSECT "+ function_filtro_normal(lista_valores, True, SELECT_candidato, WHERE_candidato)
+        filtro_ob = function_filtros_ob(lista_filtros_ob_new, "",True, SELECT_candidato, WHERE_candidato)
+
+        for i in range(0, len(lista_filtros_ob_new)):
+          index_ = lista_filtros_ob_new[i].find('_')
+          valor = lista_filtros_ob_new[i][index_+1:]
+          quitar = lista_filtros_ob_new[i][index_-1:]
+          aux = lista_filtros_ob_new[i].replace("-"+quitar, "")
+          lista_filtros_ob_new[i] = aux
+        query_total = " SELECT  DP.id,  " + SELECT_candidato + ",  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE " + WHERE_candidato+ "  GROUP BY (conteo,DP.id,  DP.candidato, DP.organizacion_politica, " + SELECT_candidato +") ORDER BY conteo " + lista_filtros_ob_new[0]
+
+      elif ((len(lista_filtros_normales)>1 and len(lista_filtros_ob_new) ==  1))  or  (len(lista_filtros_normales)==1 and len(lista_filtros_ob_new)==1):
+        query_total_filtros_normales = ""
+        query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato, WHERE_candidato)
+        if len(lista_filtros_normales) >1:  
+          for i in range(1, len(lista_filtros_normales)):
+            query_total_filtros_normales = query_total_filtros_normales +" INTERSECT "+ function_filtro_normal(lista_valores,True, SELECT_candidato, WHERE_candidato)
+        filtro_ob = function_filtros_ob(lista_filtros_ob_new, "",True, SELECT_candidato, WHERE_candidato)
+        for i in range(0, len(lista_filtros_ob_new)):
+          index_ = lista_filtros_ob_new[i].find('_')
+          valor = lista_filtros_ob_new[i][index_+1:]
+          quitar = lista_filtros_ob_new[i][index_-1:]
+          aux = lista_filtros_ob_new[i].replace("-"+quitar, "")
+          lista_filtros_ob_new[i] = aux
+        query_total = " SELECT  DP.id,  " + SELECT_candidato + ",  DP.candidato, DP.organizacion_politica FROM ( "+ query_total_filtros_normales+ " ) AS QN JOIN datos_personales AS DP USING (dni_candidato) join ( " + filtro_ob[0] +" ) AS Q1 USING (dni_candidato) WHERE "+ WHERE_candidato+"  GROUP BY (conteo,DP.id,  DP.candidato, DP.organizacion_politica,  "+SELECT_candidato +" ) ORDER BY conteo " + lista_filtros_ob_new[0]
       
-      query_total = function_filtros_ob(lista_filtros_ob_new, query_total_filtros_normales, False, SELECT_candidato, WHERE_candidato)
+      elif len(lista_filtros_normales)>1 and len(lista_filtros_ob_new)>1:
+        query_total_filtros_normales = ""
+        query_total_filtros_normales = query_total_filtros_normales + function_filtro_normal(lista_valores,True, SELECT_candidato, WHERE_candidato)
+        for i in range(1, len(lista_filtros_normales)):
+          query_total_filtros_normales = query_total_filtros_normales +" INTERSECT "+ function_filtro_normal(lista_valores, True, SELECT_candidato, WHERE_candidato)
+        
+        query_total = function_filtros_ob(lista_filtros_ob_new, query_total_filtros_normales, False, SELECT_candidato, WHERE_candidato)
 
-    #print("-----------------------------------------------------------------")
-    #print("query_total", query_total)
-    #print("-----------------------------------------------------------------")
-    candidatos = DatosPersonales.objects.raw(query_total)
+      #print("-----------------------------------------------------------------")
+      #print("query_total", query_total)
+      #print("-----------------------------------------------------------------")
+      candidatos = DatosPersonales.objects.raw(query_total)
 
+      # Paginator 
+      paginator = Paginator(candidatos, 20)
+      page_number = request.GET.get('page')
+
+      try:
+        page_obj = paginator.get_page(page_number)
+      except PageNotAnInteger:
+        # If page is not an integer deliver the first page
+        posts = paginator.page(1)
+      except EmptyPage:
+        # If page is out of range deliver last page of results
+        posts = paginator.page(paginator.num_pages)
+      
+      return render(request,
+                    'elecciones/dashboard.html',
+                    {'page': page_obj}) 
+
+    else:
+      return render(request, 'elecciones/dashboard.html') 
+
+  else:
+    ###############################################
+    # Variables
+    ###############################################
+    # Org Politica
+
+    ##### Agregar campos para la educacion
+    org_rango_edad = unkipify(request.GET.get("org_rango_edad"))
+    org_edad_orden = unkipify(request.GET.get("org_edad_orden"))
+    org_educacion_prim_ord = unkipify(request.GET.get("org_educacion_prim"))
+    org_educacion_sec_ord = unkipify(request.GET.get("org_educacion_sec"))
+    org_educacion_tec_ord = unkipify(request.GET.get("org_educacion_tec"))
+    org_educacion_no_univ_ord = unkipify(request.GET.get("org_educacion_no_univ"))
+    org_educacion_univ_ord = unkipify(request.GET.get("org_educacion_univ"))
+    org_educacion_post_ord = unkipify(request.GET.get("org_educacion_post"))
+    org_educacion_doc_ord = unkipify(request.GET.get("org_educacion_doc"))
+    org_opc_sexo = unkipify(request.GET.get("org_opc_sexo"))
+    org_sexo_orden = unkipify(request.GET.get("org_sexo_orden"))
+    org_cant_sen_penal_obliga = unkipify(request.GET.get("cant_sen_penal_obliga"))
+    org_cant_sen_penal = unkipify(request.GET.get("cant_sen_penal"))
+    org_cant_sen_civil = unkipify(request.GET.get("cant_sen_civil"))
+    org_oriundo = unkipify(request.GET.get("org_oriundo"))
+    org_departamento_oriundo = unkipify(request.GET.get("org_departamento_oriundo"))
+    org_distrito_electoral = unkipify(request.GET.get("org_distrito_electoral"))
+    org_2019_finan_priv_presento = unkipify(request.GET.get("2019_est_present"))
+    org_2019_finan_priv_orden_ingreso = unkipify(request.GET.get("2019_ingre_dec"))
+    org_2018_finan_priv_presento = unkipify(request.GET.get("2018_est_present"))
+    org_2018_finan_priv_orden_ingreso = unkipify(request.GET.get("2018_ingre_dec"))
+    org_2017_finan_priv_presento = unkipify(request.GET.get("2017_est_present"))
+    org_2017_finan_priv_orden_ingreso = unkipify(request.GET.get("2017_ingre_dec"))
+    org_finan_pub_orden_monto_quinquenal = unkipify(request.GET.get("monto_quinque"))
+
+    print("org_rango_edad >>>>>>>>>>><<<<<<", org_rango_edad)
+    print("org_edad_orden >>>>>>>>>>><<<<<<", org_edad_orden)
+    print("org_educacion_prim_ord >>>>>>>>>>><<<<<<", org_educacion_prim_ord)
+    print("org_educacion_sec_ord >>>>>>>>>>><<<<<<", org_educacion_sec_ord)
+    print("org_educacion_tec_ord >>>>>>>>>>><<<<<<", org_educacion_tec_ord)
+    print("org_educacion_no_univ_ord >>>>>>>>>>><<<<<<", org_educacion_no_univ_ord)
+    print("org_educacion_univ_ord >>>>>>>>>>><<<<<<", org_educacion_univ_ord)
+    print("org_educacion_post_ord >>>>>>>>>>><<<<<<", org_educacion_post_ord)
+    print("org_educacion_doc_ord >>>>>>>>>>><<<<<<", org_educacion_doc_ord)
+    print("org_opc_sexo >>>>>>>>>>><<<<<<", org_opc_sexo)
+    print("org_sexo_orden >>>>>>>>>>><<<<<<", org_sexo_orden)
+    print("org_cant_sen_penal_obliga >>>>>>>>>>><<<<<<", org_cant_sen_penal_obliga)
+    print("org_cant_sen_penal >>>>>>>>>>><<<<<<", org_cant_sen_penal)
+    print("org_cant_sen_civil >>>>>>>>>>><<<<<<", org_cant_sen_civil)
+    print("org_oriundo >>>>>>>>>>><<<<<<", org_oriundo)
+    print("org_departamento_oriundo >>>>>>>>>>><<<<<<", org_departamento_oriundo)
+    print("org_distrito_electoral >>>>>>>>>>><<<<<<", org_distrito_electoral)
+    print("org_2019_finan_priv_presento >>>>>>>>>>><<<<<<", org_2019_finan_priv_presento)
+    print("org_2019_finan_priv_orden_ingreso >>>>>>>>>>><<<<<<", org_2019_finan_priv_orden_ingreso)
+    print("org_2018_finan_priv_presento >>>>>>>>>>><<<<<<", org_2018_finan_priv_presento)
+    print("org_2018_finan_priv_orden_ingreso >>>>>>>>>>><<<<<<", org_2018_finan_priv_orden_ingreso)
+    print("org_2017_finan_priv_presento >>>>>>>>>>><<<<<<", org_2017_finan_priv_presento)
+    print("org_2017_finan_priv_orden_ingreso >>>>>>>>>>><<<<<<", org_2017_finan_priv_orden_ingreso)
+    print("org_finan_pub_orden_monto_quinquenal >>>>>>>>>>><<<<<<", org_finan_pub_orden_monto_quinquenal)
+
+    #- before column name mean descending order without - mean ascending. 
+    query_total = "select * from datos_personales;"
+
+    if org_rango_edad != "unk":
+      rango = org_rango_edad.rfind("-")
+      var1 = org_rango_edad[0:rango:+1] 
+      var2 = org_rango_edad[rango+1:len(org_rango_edad)+1:+1]
+      print("var1: ", var1)
+      print("var2: ", var2)
+      # le falta PK
+      #query_total = " SELECT  COUNT (*),partido FROM tabla_edad WHERE edad BETWEEN " +var1+ " AND " +var2+" GROUP BY (partido)"    
+      #query_total = " SELECT  dni_candidato, candidato, organizacion_politica, cargo_eleccion FROM datos_personales "
+      query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM tabla_edad  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica)  WHERE edad BETWEEN " +var1+ " AND " +var2+"  GROUP BY (OP.organizacion_politica , OP.url)  ORDER BY (conteo) " + org_edad_orden
+    
+    elif org_educacion_prim_ord != "unk":
+      #query_total = " SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM educacion_basica WHERE concluyo_secundaria  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
+      query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM educacion_basica  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE concluyo_primaria  = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) " + org_educacion_prim_ord
+      #query_total = " SELECT nombre , url from organizacion_politica"
+      
+    elif org_educacion_sec_ord != "unk":
+      query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM educacion_basica  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE concluyo_secundaria  = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) " + org_educacion_sec_ord
+
+    elif org_educacion_tec_ord != "unk":
+      query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM estudio_tecnico  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE concluyo_estudio_tecnico = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) " + org_educacion_tec_ord
+      #query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_tecnico WHERE concluyo_estudio_tecnico  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
+    
+    elif org_educacion_no_univ_ord != "unk":
+      query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM estudio_no_universitario  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE concluyo_estudio_no_universitario = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) " + org_educacion_no_univ_ord
+      #query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_no_universitario WHERE concluyo_estudio_no_universitario  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
+    
+    elif org_educacion_univ_ord != "unk":
+      #query_total = "SELECT id, COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_universitario WHERE concluyo_estudio_universitario  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
+      query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM estudio_universitario  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE concluyo_estudio_universitario = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) " + org_educacion_univ_ord
+    
+    elif org_educacion_post_ord != "unk":
+      #query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_postgrado WHERE concluyo_estudio_postgrado  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
+      query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM estudio_postgrado  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE concluyo_estudio_postgrado = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) " + org_educacion_post_ord
+
+    elif org_educacion_doc_ord != "unk":
+      #query_total = "SELECT id, COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_postgrado WHERE ( es_maestro  = 'SI' OR es_doctor = 'SI') GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
+      query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM estudio_postgrado  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE ( es_maestro  = 'SI' OR es_doctor = 'SI') GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) " + org_educacion_doc_ord
+
+    elif org_opc_sexo != "unk":
+      query_total =" SELECT OP.organizacion_politica , OP.url , COUNT (DP.dni_candidato) AS conteo FROM datos_personales AS DP JOIN organizaciones_politicas AS OP USING(organizacion_politica) WHERE sexo = '"+org_opc_sexo+"' GROUP BY (OP.organizacion_politica) ORDER BY (conteo)  " + org_sexo_orden
+
+    elif org_cant_sen_penal_obliga != "unk":
+      #query_total = " SELECT id,SUM(conteo) AS total, organizacion_politica FROM (SELECT  COUNT(dni_candidato) AS conteo, organizacion_politica  FROM sentencia_penal   WHERE  tiene_info_por_declarar  = 'SI' GROUP BY (organizacion_politica) UNION ALL SELECT  COUNT(dni_candidato) AS conteo, organizacion_politica  FROM sentencia_obligacion   WHERE  tiene_info_por_declarar  = 'SI' GROUP BY (organizacion_politica)) TABLA GROUP BY partido ORDER BY total " +orden 
+      query_total= "SELECT SUM(conteo) AS total, organizacion_politica FROM (SELECT  COUNT(dni_candidato) AS conteo , organizacion_politica FROM sentencia_penal WHERE  tiene_info_por_declarar  = 'SI' GROUP BY (organizacion_politica) UNION ALL SELECT  COUNT(dni_candidato) AS conteo , organizacion_politica  FROM sentencia_obligacion WHERE  tiene_info_por_declarar   = 'SI' GROUP BY (organizacion_politica)) TABLA GROUP BY organizacion_politica ORDER BY total " + org_cant_sen_penal_obliga
+      #query_total = " SELECT OP.organizacion_politica, OP.url, COUNT (DP.dni_candidato)  AS conteo FROM sentencia_penal AS DP JOIN organizaciones_politicas AS OP USING(organizacion_politica) WHERE DP.tiene_info_por_declarar= 'SI' "
+    
+    elif org_cant_sen_penal != "unk":
+      #query_total = " SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM sentencia_penal WHERE  tiene_info_por_declarar   = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) "
+      query_total = " SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM sentencia_penal  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE tiene_info_por_declarar   = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) " + org_cant_sen_penal
+    
+    elif org_cant_sen_civil != "unk":
+      query_total = " SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM sentencia_obligacion  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE tiene_info_por_declarar   = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) " + org_cant_sen_civil
+      #query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM sentencia_obligacion  WHERE  tiene_info_por_declarar  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) "
+    
+    elif org_oriundo != "unk":
+      query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM datos_personales  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE departamento_nacimiento = '"+ org_departamento_oriundo +"' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) " + org_oriundo
+    
+    elif org_distrito_electoral != "unk":
+      #query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica  FROM datos_personales  WHERE departamento_nacimiento <> distrito_elec AND  distrito_elec <> 'PERUANOS RESIDENTES EN EL EXTRANJERO' AND distrito_elec <> 'LIMA PROVINCIAS' GROUP BY (organizacion_politica,id) ORDER BY (conteo) "
+      query_total = " SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM datos_personales  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE departamento_nacimiento <> distrito_elec AND  distrito_elec <> 'PERUANOS RESIDENTES EN EL EXTRANJERO' AND distrito_elec <> 'LIMA PROVINCIAS' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) " + org_distrito_electoral
+
+    elif org_2019_finan_priv_presento != "unk":
+      query_total =  "SELECT total_ingresos AS monto, OP.organizacion_politica FROM financiamiento_privado AS EB  JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE  estado   = '"+org_2019_finan_priv_presento+"' AND  anhio = '2019' GROUP BY (OP.organizacion_politica,monto,OP.url) ORDER BY (monto) " + org_2019_finan_priv_orden_ingreso
+
+    elif org_2018_finan_priv_presento != "unk":
+      print("org_pol: 2018 ..........", org_2018_finan_priv_presento)
+      query_total =  "SELECT total_ingresos AS monto, OP.organizacion_politica FROM financiamiento_privado AS EB  JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE  estado   = '"+org_2018_finan_priv_presento+"' AND  anhio = '2018' GROUP BY (OP.organizacion_politica,monto,OP.url) ORDER BY (monto) " + org_2018_finan_priv_orden_ingreso
+
+    elif org_2017_finan_priv_presento != "unk":
+      query_total =  "SELECT total_ingresos AS monto, OP.organizacion_politica FROM financiamiento_privado AS EB  JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE  estado   = '"+org_2017_finan_priv_presento+"' AND  anhio = '2017' GROUP BY (OP.organizacion_politica,monto,OP.url) ORDER BY (monto) " + org_2017_finan_priv_orden_ingreso
+
+    elif org_finan_pub_orden_monto_quinquenal != "unk":
+      query_total =  " SELECT monto_quinquenal AS monto, OP.organizacion_politica, EB.num_votos_congresales FROM financiamiento_publico AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) GROUP BY (EB.num_votos_congresales,OP.organizacion_politica,monto,OP.url) ORDER BY (monto) " + org_finan_pub_orden_monto_quinquenal
+    
+    print("-------LLEGA A FINAL CASI DE LA FUNCION------------")
+    print("query_total: ",query_total)
+    
+    candidatos = OrganizacionesPoliticas.objects.raw(query_total)
     # Paginator 
     paginator = Paginator(candidatos, 20)
     page_number = request.GET.get('page')
+    #page_number = request.GET.get('page')
 
     try:
-      page_obj = paginator.get_page(page_number)
+        page_obj = paginator.get_page(page_number)
     except PageNotAnInteger:
-      # If page is not an integer deliver the first page
-      posts = paginator.page(1)
+        # If page is not an integer deliver the first page
+        posts = paginator.page(1)
     except EmptyPage:
-      # If page is out of range deliver last page of results
-      posts = paginator.page(paginator.num_pages)
-    
+        # If page is out of range deliver last page of results
+        posts = paginator.page(paginator.num_pages)
+
     return render(request,
                   'elecciones/dashboard.html',
-                  {'page': page_obj}) 
-
-  else:
-    print("Lista ::::::::::")
-    print(lista_valores)
-    
-    print("***************Lista lista_filtros_normales")
-    print(len(lista_filtros_normales))
-
-    return render(request, 'elecciones/dashboard.html') 
-
-
-def filter_function_orga(request, filtro_id, info_extra, orden):
-  #- before column name mean descending order without - mean ascending. 
-  query_total = "select * from datos_personales;"
-  #print("################################xd###########################")
-  #print("filtro_id: ",filtro_id)
-  #print("info_extra: ",info_extra)
-  print("orden: ",orden)
-  candidatos = ""
-
-  if filtro_id =="edad":
-    rango = info_extra.rfind("-")
-    var1 = info_extra[0:rango:+1] 
-    var2 = info_extra[rango+1:len(filtro_id)+1:+1]
-    print("var1: ", var1)
-    print("var2: ", var2)
-    # le falta PK
-    #query_total = " SELECT  COUNT (*),partido FROM tabla_edad WHERE edad BETWEEN " +var1+ " AND " +var2+" GROUP BY (partido)"    
-    #query_total = " SELECT  dni_candidato, candidato, organizacion_politica, cargo_eleccion FROM datos_personales "
-    query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM tabla_edad  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica)  WHERE edad BETWEEN " +var1+ " AND " +var2+"  GROUP BY (OP.organizacion_politica , OP.url)  ORDER BY (conteo) "+orden
-
-    # candidatos = OrganizacionPolitica.objects.raw ("SELECT OP.organizacion_politica ,COUNT (DP.dni_candidato) AS conteo FROM datos_personales AS DP JOIN organizaciones_politicas AS OP  USING(organizacion_politica) WHERE  sexo = 'MASCULINO' GROUP BY (OP.organizacion_politica) ORDER BY (conteo) DESC")
-  
-  elif filtro_id == "primaria":
-    #query_total = " SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM educacion_basica WHERE concluyo_secundaria  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
-    query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM educacion_basica  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE concluyo_primaria  = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) "+orden
-    #query_total = " SELECT nombre , url from organizacion_politica"
-    
-  elif filtro_id == "secundaria":
-    query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM educacion_basica  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE concluyo_secundaria  = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) "+orden
-
-  elif filtro_id == "tecnicos":
-    query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM estudio_tecnico  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE concluyo_estudio_tecnico = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) "+orden
-    #query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_tecnico WHERE concluyo_estudio_tecnico  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
-  
-  elif filtro_id == "nouni":
-    query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM estudio_no_universitario  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE concluyo_estudio_no_universitario = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) "+orden
-    #query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_no_universitario WHERE concluyo_estudio_no_universitario  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
-  
-  elif filtro_id == "uni":
-    #query_total = "SELECT id, COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_universitario WHERE concluyo_estudio_universitario  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
-    query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM estudio_universitario  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE concluyo_estudio_universitario = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) "+orden
-  
-  elif filtro_id == "postgrado":
-    #query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_postgrado WHERE concluyo_estudio_postgrado  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
-    query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM estudio_postgrado  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE concluyo_estudio_postgrado = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) "+orden
-
-  elif filtro_id == "maestrodoctor":
-    #query_total = "SELECT id, COUNT (dni_candidato) AS conteo, organizacion_politica FROM estudio_postgrado WHERE ( es_maestro  = 'SI' OR es_doctor = 'SI') GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
-    query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM estudio_postgrado  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE ( es_maestro  = 'SI' OR es_doctor = 'SI') GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) "+orden
-
-  elif filtro_id == "genero":
-    #query_total = "SELECT COUNT (DP.dni_candidato) AS conteo, OP.organizacion_politica FROM datos_personales AS DP JOIN organizaciones_politicas AS OP USING(organizacion_politica) WHERE  sexo = '" + info_extra+ "' GROUP BY (OP.organizacion_politica) ORDER BY (conteo) " + orden
-    query_total =" SELECT OP.organizacion_politica , OP.url , COUNT (DP.dni_candidato) AS conteo FROM datos_personales AS DP JOIN organizaciones_politicas AS OP USING(organizacion_politica) WHERE sexo = '"+info_extra+"' GROUP BY (OP.organizacion_politica) ORDER BY (conteo)  "+ orden
-
-  elif filtro_id == "cant_sen_penal_obliga":
-    #query_total = " SELECT id,SUM(conteo) AS total, organizacion_politica FROM (SELECT  COUNT(dni_candidato) AS conteo, organizacion_politica  FROM sentencia_penal   WHERE  tiene_info_por_declarar  = 'SI' GROUP BY (organizacion_politica) UNION ALL SELECT  COUNT(dni_candidato) AS conteo, organizacion_politica  FROM sentencia_obligacion   WHERE  tiene_info_por_declarar  = 'SI' GROUP BY (organizacion_politica)) TABLA GROUP BY partido ORDER BY total " +orden 
-    query_total= "SELECT SUM(conteo) AS total, organizacion_politica FROM (SELECT  COUNT(dni_candidato) AS conteo , organizacion_politica FROM sentencia_penal WHERE  tiene_info_por_declarar  = 'SI' GROUP BY (organizacion_politica) UNION ALL SELECT  COUNT(dni_candidato) AS conteo , organizacion_politica  FROM sentencia_obligacion WHERE  tiene_info_por_declarar   = 'SI' GROUP BY (organizacion_politica)) TABLA GROUP BY organizacion_politica ORDER BY total "+orden
-    #query_total = " SELECT OP.organizacion_politica, OP.url, COUNT (DP.dni_candidato)  AS conteo FROM sentencia_penal AS DP JOIN organizaciones_politicas AS OP USING(organizacion_politica) WHERE DP.tiene_info_por_declarar= 'SI' "
-  
-  elif filtro_id =="cant_sen_penal":
-    #query_total = " SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM sentencia_penal WHERE  tiene_info_por_declarar   = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) "+orden
-    query_total = " SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM sentencia_penal  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE tiene_info_por_declarar   = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) "+orden
-  
-  elif filtro_id =="cant_sen_civil":
-    query_total = " SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM sentencia_obligacion  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE tiene_info_por_declarar   = 'SI' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) "+orden
-    #query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM sentencia_obligacion  WHERE  tiene_info_por_declarar  = 'SI' GROUP BY (organizacion_politica) ORDER BY (conteo) "+orden
-  
-  elif filtro_id =="org_oriundo":
-    #query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica FROM datos_personales  WHERE departamento_nacimiento = '"+ info_extra+"' GROUP BY (organizacion_politica) ORDER BY (conteo) " + orden
-    query_total =" SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM datos_personales  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE departamento_nacimiento = '"+ info_extra+"' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) "+orden
-  
-  elif filtro_id =="org_distrito_electoral":
-    #query_total = "SELECT id,COUNT (dni_candidato) AS conteo, organizacion_politica  FROM datos_personales  WHERE departamento_nacimiento <> distrito_elec AND  distrito_elec <> 'PERUANOS RESIDENTES EN EL EXTRANJERO' AND distrito_elec <> 'LIMA PROVINCIAS' GROUP BY (organizacion_politica,id) ORDER BY (conteo) "+orden
-    query_total = " SELECT COUNT (dni_candidato) AS conteo, OP.organizacion_politica , OP.url FROM datos_personales  AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE departamento_nacimiento <> distrito_elec AND  distrito_elec <> 'PERUANOS RESIDENTES EN EL EXTRANJERO' AND distrito_elec <> 'LIMA PROVINCIAS' GROUP BY (OP.organizacion_politica , OP.url) ORDER BY (conteo) "+orden
-
-  elif filtro_id =="2019priv":
-    query_total =  "SELECT total_ingresos AS monto, OP.organizacion_politica FROM financiamiento_privado AS EB  JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE  estado   = '"+info_extra+"' AND  anhio = '2019' GROUP BY (OP.organizacion_politica,monto,OP.url) ORDER BY (monto) "+orden
-
-  elif filtro_id =="2018priv":
-    query_total =  "SELECT total_ingresos AS monto, OP.organizacion_politica FROM financiamiento_privado AS EB  JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE  estado   = '"+info_extra+"' AND  anhio = '2018' GROUP BY (OP.organizacion_politica,monto,OP.url) ORDER BY (monto) "+orden
-
-  elif filtro_id =="2017priv":
-    query_total =  "SELECT total_ingresos AS monto, OP.organizacion_politica FROM financiamiento_privado AS EB  JOIN organizaciones_politicas AS OP USING (organizacion_politica) WHERE  estado   = '"+info_extra+"' AND  anhio = '2017' GROUP BY (OP.organizacion_politica,monto,OP.url) ORDER BY (monto) "+orden
-
-  elif filtro_id =="monto_quinque":
-    query_total =  " SELECT monto_quinquenal AS monto, OP.organizacion_politica, EB.num_votos_congresales FROM financiamiento_publico AS EB JOIN organizaciones_politicas AS OP USING (organizacion_politica) GROUP BY (EB.num_votos_congresales,OP.organizacion_politica,monto,OP.url) ORDER BY (monto) "+orden
-
-  print("-------LLEGA A FINAL CASI DE LA FUNCION------------")
-  print("query_total: ",query_total)
-  ##candidatos = DatosPersonales.objects.raw("SELECT * FROM datos_personales")
-  #candidatos = DatosPersonales.objects.raw(query_total)
-  candidatos = OrganizacionesPoliticas.objects.raw(query_total)
-  # Paginator 
-  paginator = Paginator(candidatos, 20)
-  page_number = request.GET.get('page')
-  #page_number = request.GET.get('page')
-
-  try:
-      page_obj = paginator.get_page(page_number)
-  except PageNotAnInteger:
-      # If page is not an integer deliver the first page
-      posts = paginator.page(1)
-  except EmptyPage:
-      # If page is out of range deliver last page of results
-      posts = paginator.page(paginator.num_pages)
-
-  return render(request,
-                'elecciones/dashboard.html',
-                {
-                  'page': page_obj,
-                  'organizaciones_return': page_obj
-                } )
+                  {
+                    'page': page_obj,
+                    'organizaciones_return': page_obj
+                  } )
 
 def candidatos(request):
   print("tas en candidatos")

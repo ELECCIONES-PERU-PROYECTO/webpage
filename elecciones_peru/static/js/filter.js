@@ -80,9 +80,6 @@ function filter_candidatos() {
   let cargo_al_que_postula = document.getElementsByName("cargo_al_que_postula")[0]
   let org_politica = document.getElementsByName("org_politica")[0]
   let dist_electoral = document.getElementsByName("dist_electoral")[0]
-  
-
-  console.log("xXXXXXXXXXXXXXXX",cargo_al_que_postula)
 
   // Validators
   if(oriundo_de_peru[0].checked) {
@@ -123,7 +120,6 @@ function filter_candidatos() {
   }
 
   if(tiene_ingresos.checked) {
-    console.log("tiene ingresos")
     if(!filtro_ingres_cant) {
       setTimeout(function(){
         UIkit.notification({
@@ -173,7 +169,7 @@ function filter_candidatos() {
 
   // Apend the order to values in the form
   for(let i = 0; i < lista_orden_filtros.length; i++) {
-    console.log("Entro al form")
+    // console.log("Entro al form")
     if(lista_orden_filtros[i] == 1) {
       n_academic.options[n_academic.selectedIndex].value = n_academic.options[n_academic.selectedIndex].value + separer_order + x
       x++
@@ -366,7 +362,7 @@ function get_sentencias_penal_cant(){
     }
   }
 
-  console.log("lista orden filtros", lista_orden_filtros)
+  // console.log("lista orden filtros", lista_orden_filtros)
 }
 
 function get_sentencias_oblig_cant(){
@@ -390,7 +386,7 @@ function get_sentencias_oblig_cant(){
     }
   }
 
-  console.log("lista orden filtros", lista_orden_filtros)
+  // console.log("lista orden filtros", lista_orden_filtros)
 }
 
 function get_sentencias_oblig_mat(){
@@ -409,7 +405,7 @@ function get_sentencias_oblig_mat(){
     }
   }
 
-  console.log("lista orden filtros", lista_orden_filtros)
+  // console.log("lista orden filtros", lista_orden_filtros)
 }
 
 function quitar_seleccion_sentencias_menosno_tiene(){
@@ -431,7 +427,7 @@ function quitar_seleccion_sentencias_menosno_tiene(){
       }
     document.getElementById("div_opc_cant_sentencias").style.display="none"
     }
-    console.log("lista orden filtros", lista_orden_filtros)
+    // console.log("lista orden filtros", lista_orden_filtros)
   }
 
   if(filtro_oblig_cant  == true){
@@ -486,7 +482,6 @@ function quitar_seleccion_sentencias_menosno_tiene(){
 }
 
 function quitar_seleccion_sentencias(){
-  console.log("quitar seleccion")
   document.getElementById("por_obligaciones").checked = false
   document.getElementById("penal_cbx").checked = false
   document.getElementById("no_tiene").checked = false
@@ -553,7 +548,6 @@ function quitar_seleccion_sentencias(){
     filtro_senten_no_tiene = false
     no_tiene_val = ""
     cant_filtros--
-    // console.log("Procedo a quitar el 6")
     const index = lista_orden_filtros.indexOf(6)
 
     if (index > -1) {
@@ -565,21 +559,19 @@ function quitar_seleccion_sentencias(){
   let element_ = document.getElementById("por_obligaciones")
   toggleObligacion_opciones(element_)
   document.getElementById("mostrar_sentencias").style="display: none;" 
-
-  console.log("lista orden filtros", lista_orden_filtros)
 }
 
 function noTiene_opcion(){
   quitar_seleccion_sentencias_menosno_tiene();
   
-  console.log("no tiene opcion")
+  // console.log("no tiene opcion")
   if(filtro_senten_no_tiene == false){
     filtro_senten_no_tiene = true
     no_tiene_val = "NO"
     lista_orden_filtros.push(6)
     cant_filtros++
   }
-  console.log("lista orden filtros", lista_orden_filtros)
+  // console.log("lista orden filtros", lista_orden_filtros)
 }
 
 

@@ -5,6 +5,7 @@ let filtro_id = ""
 let filtro_info = ""
 let orden = ""
 let info_extra= ""
+let have_filter = false
 
 function mark_filters(){
   setTimeout(function(){
@@ -16,159 +17,200 @@ function mark_filters(){
   return "again"
 }
 
-function button_filter_org(){
-  if(filtro_id==""){
-    mark_filters();
+
+/*******************************/
+// Filter Button
+/*******************************/
+function button_filter_org() {
+  if(!have_filter) {
+    setTimeout(function(){
+      UIkit.notification({
+        message: 'Marque al menos un filtro', 
+        status: 'danger'
+    });
+    }, 1000);
+    return
   }
-  let new_data = []
-  sessionStorage.setItem('data_filtros_seleccionados', JSON.stringify(new_data))
+
+  let form = document.getElementById("filtro_org_form")
+
+  let sexo = document.getElementsByName("org_opc_sexo")
+  let sexo_ord = document.getElementsByName("org_sexo_orden")
+  let sexo_marked = false
+  let sexo_ord_marked = false
+
+  let edad = document.getElementsByName("org_rango_edad")
+  let edad_ord = document.getElementsByName("org_edad_orden")
+  let edad_marked = false
+  let edad_ord_marked = false
+
+  let oriundo = document.getElementsByName("org_oriundo")
+  let oriundo_dep = document.getElementsByName("org_departamento_oriundo")[0]
+  let oriundo_dep_value = oriundo_dep.options[oriundo_dep.selectedIndex].value
+  let oriundo_marked = false
+
+  let finan_2017 = document.getElementsByName("2017_est_present")
+  let finan_2017_ord = document.getElementsByName("2017_ingre_dec")
+  let finan_2017_marked = false
+  let finan_2017_ord_marked = false
+
+  let finan_2018 = document.getElementsByName("2018_est_present")
+  let finan_2018_ord = document.getElementsByName("2018_ingre_dec")
+  let finan_2018_marked = false
+  let finan_2018_ord_marked = false
+
+  let finan_2019 = document.getElementsByName("2019_est_present")
+  let finan_2019_ord = document.getElementsByName("2019_ingre_dec")
+  let finan_2019_marked = false
+  let finan_2019_ord_marked = false
+
+  ////////// Validators [No pude ponerlo en una func :( ] //////////
+  // Sexo
+  for(let i = 0; i < sexo.length; i++)
+    if(sexo[i].checked)
+      sexo_marked = true
+
+  for(let i = 0; i < sexo_ord.length; i++)
+    if(sexo_ord[i].checked)
+      sexo_ord_marked = true
   
-  let url = URL + "/" + VIEW
-  if(filtro_id=="edad"){
-    let rango=""
-    inputs_edad = document.getElementsByName("org_rango_edad")
-    orden_edad_ = document.getElementsByName("org_edad_orden")
-    for(let i = 0 ; i < inputs_edad.length; i++){
-      if(inputs_edad[i].checked){
-        rango = inputs_edad[i].value
-      }
-    }
-    for(let i = 0 ;i < orden_edad_.length; i++){
-      filtro_info = orden_edad_[i].value
-    }
+
+  // Edad
+  for(let i = 0; i < edad.length; i++)
+    if(edad[i].checked)
+      edad_marked = true
+
+  for(let i = 0; i < edad_ord.length; i++)
+    if(edad_ord[i].checked)
+      edad_ord_marked = true
+
     
+  // Oriundo
+  for(let i = 0; i < oriundo.length; i++)
+    if(oriundo[i].checked)
+      oriundo_marked = true
+  
+  
+  // Financiamiento Privado
+  for(let i = 0; i < finan_2017.length; i++) 
+    if(finan_2017[i].checked)
+      finan_2017_marked = true
 
-    url = url+"/"+filtro_id+"/"+rango+"/"+filtro_info
-    // console.log(url)
-  } else if(filtro_id=="genero"){
-    let inputs_genero = document.getElementsByName("org_opc_genero")
-    let inputs_orden = document.getElementsByName("org_genero_orden")
-    let genero = ""
-    for(let i = 0 ; i < inputs_genero.length; i++){
-      if(inputs_genero[i].checked){
-        genero = inputs_genero[i].value
-      }
-    }
-    for(let i = 0 ; i < inputs_orden.length; i++){
-      if(inputs_orden[i].checked){
-        orden = inputs_orden[i].value
-      }
-    }
-    info_extra = genero
-    //filtro_orden = orden
-    if(orden==""){
-      setTimeout(function(){
-        UIkit.notification({
-          message: 'Marque orden', 
-          status: 'danger'
-      });
-      }, 1000);
-      return;
-    }
-    url = url+"/"+ filtro_id+"/"+genero+"/"+orden
-    // console.log(url)
-  } else if(filtro_id=="primaria" || filtro_id == "secundaria" || 
-            filtro_id == "tecnicos"  ||filtro_id == "nouni"|| 
-            filtro_id == "uni" ||   filtro_id =="postgrado" || 
-            filtro_id=="maestrodoctor"  
-            ) {
-      let orden = filtro_info
+  for(let i = 0; i < finan_2017_ord.length; i++)
+    if(finan_2017_ord[i].checked)
+      finan_2017_ord_marked = true
 
-      url = url+"/"+filtro_id+"/unk"+"/"+orden
-      // console.log(url)
-  } else if(filtro_id=="cant_sen_penal_obliga"){
-      url = url+"/"+filtro_id+"/unk/"+filtro_info
-  } else if(filtro_id=="cant_sen_penal"){
-      //url = url+"/"+filtro_id+"/"+filtro_info+"/unk"
-      url = url+"/"+filtro_id+"/unk/" + filtro_info
-    } else if(filtro_id=="cant_sen_civil"){
-      //url = url+"/"+filtro_id+"/"+filtro_info+"/unk"
-      url = url+"/"+filtro_id+"/unk/" + filtro_info
+  for(let i = 0; i < finan_2018.length; i++) 
+    if(finan_2018[i].checked)
+      finan_2018_marked = true
+  
+  for(let i = 0; i < finan_2018_ord.length; i++)
+    if(finan_2018_ord[i].checked)
+      finan_2018_ord_marked = true
 
-    } else if(filtro_id=="org_oriundo"){
-    url = url+"/"+filtro_id+"/"+info_extra+"/"+filtro_info
-    // console.log(url)
-  }else if(filtro_id=="org_distrito_electoral"){
-    url = url+"/"+filtro_id+"/unk/"+filtro_info
-    // console.log(url)
-  }else if(filtro_id=="2019priv" ){
-    // console.log("2019_priv: --> filtro_info : ",filtro_info)
-    //let orden_=""
-    
-    let inputs = document.getElementsByName("2019_ingre_dec")
-    for(let i = 0 ; i < inputs.length; i++){
-      if(inputs[i].checked == true)
-        orden = inputs[i].value  
-    }
-    if(orden == "") orden = "ASC";
-    
-    url = url+"/"+filtro_id+"/"+filtro_info+"/"+orden
-    // console.log(url)
-  } else if(filtro_id=="2018priv" ){
-    // console.log("2018_priv: --> filtro_info : ",filtro_info)
-    if(orden == "") orden = "ASC";
-    let inputs = document.getElementsByName("2018_ingre_dec")
-    for(let i = 0 ; i < inputs.length; i++){
-      if(inputs[i].checked == true)
-      orden = inputs[i].value  
-    }
+  for(let i = 0; i < finan_2019.length; i++) 
+    if(finan_2019[i].checked)
+      finan_2019_marked = true
+
+  for(let i = 0; i < finan_2019_ord.length; i++)
+    if(finan_2019_ord[i].checked)
+      finan_2019_ord_marked = true
 
 
-    url = url+"/"+filtro_id+"/"+filtro_info+"/"+orden
-    // console.log(url)
-  } else if(filtro_id=="2017priv" ){
-      let inputs = document.getElementsByName("2017_ingre_dec")
-      for(let i = 0 ; i < inputs.length; i++){
-        if(inputs[i].checked == true)
-          orden = inputs[i].value  
-      }
-
-      if(orden == "") orden = "ASC";
-      url = url+"/"+filtro_id+"/"+filtro_info+"/"+orden
-      // console.log(url)
-  } else if(filtro_id=="monto_quinque"){
-
-    orden = filtro_info;
-
-    url = url+"/"+filtro_id+"/unk/"+orden
-    // console.log(url)
+  // Alerts
+  if(sexo_marked && !sexo_ord_marked) {
+    setTimeout(function(){
+      UIkit.notification({
+        message: 'Marque el tipo de orden en el filtro de Sexo', 
+        status: 'danger'
+    });
+    }, 1000);
+    return
   }
-  // console.log(url)
-  window.location = url   
+
+  if(edad_marked && !edad_ord_marked) {
+    setTimeout(function(){
+      UIkit.notification({
+        message: 'Marque el tipo de orden en el filtro de Edad', 
+        status: 'danger'
+    });
+    }, 1000);
+    return
+  }
+
+  if(oriundo_dep_value !== "default" && !oriundo_marked) {
+    setTimeout(function(){
+      UIkit.notification({
+        message: 'Marque el tipo de orden en el filtro de Oriundo', 
+        status: 'danger'
+    });
+    }, 1000);
+    return
+  }
+
+  if(finan_2017_marked && !finan_2017_ord_marked) {
+    setTimeout(function(){
+      UIkit.notification({
+        message: 'Marque el tipo de orden según ingresos en el filtro de Financiamiento Privado del 2017', 
+        status: 'danger'
+    });
+    }, 1000);
+    return
+  }
+
+  if(finan_2018_marked && !finan_2018_ord_marked) {
+    setTimeout(function(){
+      UIkit.notification({
+        message: 'Marque el tipo de orden según ingresos en el filtro de Financiamiento Privado del 2018', 
+        status: 'danger'
+    });
+    }, 1000);
+    return
+  }
+
+  if(finan_2019_marked && !finan_2019_ord_marked) {
+    setTimeout(function(){
+      UIkit.notification({
+        message: 'Marque el tipo de orden según ingresos en el filtro de Financiamiento Privado del 2019', 
+        status: 'danger'
+    });
+    }, 1000);
+    return
+  }
+
+  // Send the form
+  form.submit()
 }
 
 function quitar_todas_selecciones(id_){
-  let gen_or_cont = document.getElementById("orden_genero_container")
+  let gen_or_cont = document.getElementById("orden_sexo_container")
   let edad_or_cont = document.getElementById("orden_edad_container")
-  // console.log("id_: ",id_)
+  let drp_cnt = document.getElementById("dep_order_ctn")
   let lista_inputs_all = document.getElementsByTagName("input")
-  for(let i = 0 ; i<lista_inputs_all.length; i++){
-    if(id_ == "org_desplegable_oriundo_" && lista_inputs_all[i].name =="org_oriundo"){
-      continue
-    }
-    if (id_== lista_inputs_all[i].id  ){
-        // console.log("------------------------------------")
-       // console.log("lista_inputs_all[i].id: ", lista_inputs_all[i].id)
-       // console.log("------------------------------------")
+  let litsta_selects = document.getElementsByTagName("select")
 
+  for(let i = 0 ; i<lista_inputs_all.length; i++){
+    if(id_ == "org_desplegable_oriundo_" && lista_inputs_all[i].name =="org_oriundo")
       continue
-    }
+    if(id_== lista_inputs_all[i].id)
+      continue
     lista_inputs_all[i].checked = false
   }
-  let litsta_selects = document.getElementsByTagName("select")
+
   for(let i = 0 ; i<litsta_selects.length; i++){
     //if(litsta_selects[i].id == id_){
     //  continue
     //}
     // console.log("dentro de funcion id_: ",id_ )
-    if(id_ == "org_oriundo" || id_ =="org_desplegable_oriundo_"){
-      return;
-    }
-    // console.log("elimina")
+    if(id_ == "org_oriundo" || id_ =="org_desplegable_oriundo_")
+      return
     litsta_selects[i].selectedIndex = 0
   }
+
   gen_or_cont.style.display = "none"
   edad_or_cont.style.display="none"
+  drp_cnt.style.display = "none"
+  
   document.getElementById("2019_est_present").style.display="block"
   document.getElementById("2018_est_present").style.display="block"
   document.getElementById("2017_est_present").style.display="block"
@@ -180,74 +222,31 @@ function quitar_todas_selecciones(id_){
 }
 
 function set_valor(element){
-  // console.log("element.id : ",element.id)
-  if(element.id == "org_desplegable_oriundo_" ){
-    let select = document.getElementById("org_desplegable_oriundo_")
-    info_extra = select.options[select.selectedIndex].value
-    return
-  }
-  if(element.name != "org_genero_orden" && element.name != "org_edad_orden" && element.name !="2019_ingre_dec" && element.name !="2018_ingre_dec" && element.name !="2017_ingre_dec"){
-    quitar_todas_selecciones(element.id)
-
-  }
-
-    filtro_id = element.name
-    filtro_info = element.value
+  have_filter = true
   
-  if(element.name == "org_opc_educacion"){
-    inputs_educacion = document.getElementsByName("org_opc_educacion")
-    for(let i = 0 ; i < inputs_educacion.length; i++){
-      if(inputs_educacion[i].checked == true){
-        if(i ==0 || i==1){
-          filtro_id = "primaria"
-          filtro_info = inputs_educacion[i].value
-        }
-        else if(i ==2 || i==3){
-          filtro_id = "secundaria"
-          filtro_info = inputs_educacion[i].value
-        }
-        else if(i ==4 || i==5){
-          filtro_id = "tecnicos" 
-          filtro_info = inputs_educacion[i].value 
-        }
-        else if(i ==6 || i==7){
-          filtro_id = "nouni"
-          filtro_info = inputs_educacion[i].value  
-        }
-        else if(i ==8 || i==9){
-          filtro_id = "uni"
-          filtro_info = inputs_educacion[i].value  
-        }
-        else if(i ==10 || i==11){
-          filtro_id = "postgrado"
-          filtro_info = inputs_educacion[i].value  
-        }
-        else if(i ==12 || i==13){
-          filtro_id = "maestrodoctor"
-          filtro_info = inputs_educacion[i].value  
-        }
-      }
-    }
-  } 
-  else if (element.name=="org_rango_edad" || element.name == "org_edad_orden"){
-    filtro_id = "edad"
+  if(element.name != "org_sexo_orden" && element.name != "org_edad_orden" && element.name !="2019_ingre_dec" && element.name !="2018_ingre_dec" && element.name !="2017_ingre_dec" && element.name !="2019_est_present" && element.name !="2018_est_present" && element.name !="2017_est_present" && element.name != "org_departamento_oriundo" && element.name != "org_oriundo") {
+    quitar_todas_selecciones(element.id)
+  }
+
+  if(element.name == "org_rango_edad" || element.name == "org_edad_orden"){ // Edad
     let gen_or_cont = document.getElementById("orden_edad_container")
     let gen = document.getElementsByName("org_rango_edad")
     
     if(gen[0].checked || gen[1].checked|| gen[2].checked) 
-    gen_or_cont.style.display = "block"
+      gen_or_cont.style.display = "block"
     else 
-    gen_or_cont.style.display = "none"
-  }
-  else if(element.name == "org_opc_genero" || element.name == "org_genero_orden"){
-    filtro_id = "genero"
-    let gen_or_cont = document.getElementById("orden_genero_container")
-    let gen = document.getElementsByName("org_opc_genero")
+      gen_or_cont.style.display = "none"
+  } else if(element.name == "org_opc_sexo" || element.name == "org_sexo_orden"){ // Sexo
+    let gen_or_cont = document.getElementById("orden_sexo_container")
+    let gen = document.getElementsByName("org_opc_sexo")
     
     if(gen[0].checked || gen[1].checked ) 
-    gen_or_cont.style.display = "block"
+      gen_or_cont.style.display = "block"
     else 
-    gen_or_cont.style.display = "none"
+      gen_or_cont.style.display = "none"
+  } else if(element.name == "org_departamento_oriundo" || element.name == "org_oriundo") {
+    let drp_cnt = document.getElementById("dep_order_ctn")
+    drp_cnt.style.display = "block"
   } else if(element.name =="2019_est_present" || element.name =="2019_ingre_dec"){
     filtro_id = "2019priv"
     document.getElementById("2018_est_present").style.display="none"
