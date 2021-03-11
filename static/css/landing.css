@@ -264,3 +264,10 @@ img{
 html {
 	scroll-behavior: smooth;
   }
+
+.small{
+
+	font-size: .7rem;
+	line-height: 1.5;
+
+}
