@@ -648,6 +648,9 @@ def analisisGraficosPresi(request):
   return render(request, 'elecciones/graphics-presi.html',{})
 
 
+def nosotros(request):
+  return render(request,'elecciones/nosotros.html',{})
+
 def test(request):
   candidato = DatosPersonales.objects.filter(Q(dni_candidato = request.GET.get("dni")))
   return render(request,'elecciones/test.html', 
