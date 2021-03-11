@@ -328,10 +328,10 @@ class OrganizacionesPoliticas(models.Model):
     db_table = 'organizaciones_politicas'
 
 class TablaEdad(models.Model):
+  id = models.IntegerField(primary_key=True)
   edad = models.IntegerField()
   organizacion_politica = models.CharField(max_length = 250,default="-",editable=False)
-  dni = models.CharField(max_length = 8,primary_key=True)
-  id = models.IntegerField()
+  dni = models.CharField(max_length = 8)
 
   class Meta:
     db_table = 'tabla_edad'
