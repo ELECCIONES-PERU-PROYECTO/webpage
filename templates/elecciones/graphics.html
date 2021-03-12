@@ -213,13 +213,13 @@
 										Mire los candidatos de un determinado rango de edad del partido político que desee:
 									</h5>
 									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_tipo_candidato" data-grupo="edad-grupo" type="text" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
 										</select>
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_organizacion" data-grupo="edad-grupo" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -241,7 +241,7 @@
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
 										</select>
-										<select id="edad_select" class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
+										<select id="edad_select_edades" class="uk-select opt_select uk-margin-small-bottom" type="text" data-grupo="edad-grupo" name="organizacion" onchange=info_extra_info(this)>
 											<option value="default" disabled selected>Elegir Rango  de Edad</option>
 											<option value="18-29">18 a 29 años</option>
 											<option value="30-59">30 a 59</option>
@@ -386,13 +386,13 @@
 										Mire los candidatos que han tenido cargo políticos ordenados según la cantidad de mayor a menor  del partido político que desee:
 									</h5>
 									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_tipo_candidato" data-grupo="cargosprevios-grupo" type="text" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
 										</select>									
-										<select  class="uk-select opt_select uk-margin-small-bottom"  onchange=cambiar_organizacion(this)  type="text" name="organizacion">
+										<select  class="uk-select opt_select uk-margin-small-bottom select_organizacion" data-grupo="cargosprevios-grupo" onchange=cambiar_organizacion(this)  type="text" name="organizacion">
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -479,13 +479,13 @@
 										Mire los candidatos ordenados de mayor a menor por cantidad de renuncias de partidos polítos del partido político que desee: 
 									</h5>
 									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_tipo_candidato" data-grupo="renuncia-grupo" type="text" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
 										</select>									
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_organizacion" type="text" data-grupo="renuncia-grupo" name="organizacion" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -597,13 +597,13 @@
 										Mire los candidatos ordenados de mayor a menor por cantidad de sentencias penales y por obligaciones del partido político que desee: 
 									</h5>
 									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_tipo_candidato" type="text" data-grupo="sentencias-grupo" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
 										</select>									
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_organizacion" type="text" data-grupo="sentencias-grupo" name="organizacion" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -725,13 +725,13 @@
 										Mire los candidatos ordenados de mayor a menor por cantidad de ingresos del partido político que desee: 
 									</h5>
 									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_tipo_candidato" type="text" data-grupo="ingresos-grupo" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
 										</select>
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange="cambiar_organizacion(this)" name="organizacion")>
+										<select class="uk-select opt_select uk-margin-small-bottom select_organizacion" type="text"  data-grupo="ingresos-grupo" onchange="cambiar_organizacion(this)" name="organizacion")>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -822,13 +822,13 @@
 										Mire los candidatos ordenados de mayor a menor por cantidad de biene inmuebles del partido político que desee: 
 									</h5>
 									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_tipo_candidato" type="text" data-grupo="inmuebles-grupo" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
 										</select>
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_organizacion" type="text" data-grupo="inmuebles-grupo"  name="organizacion" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -922,13 +922,13 @@
 										Mire los candidatos ordenados de mayor a menor por cantidad de bienes muebles del partido político que desee: 
 									</h5>
 									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_tipo_candidato" type="text" data-grupo="muebles-grupo" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
 										</select>
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_organizacion" type="text" data-grupo="muebles-grupo" name="organizacion" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -1038,13 +1038,13 @@
 										Mire los candidatos según el nivel académico alcanzado del partido político que desee: 
 									</h5>
 									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_tipo_candidato" type="text"  data-grupo="academico-grupo" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
 										</select>
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_organizacion" type="text" data-grupo="academico-grupo" name="organizacion" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -1067,7 +1067,7 @@
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
 										</select>
 
-										<select id="academico_select" class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
+										<select id="academico_select_nivel" class="uk-select opt_select uk-margin-small-bottom" type="text"  data-grupo="academico-grupo"  name="organizacion" onchange=info_extra_info(this)>
 											<option value="default" disabled selected>Elegir Nivel Académico</option>
 											<option value="concluyo_primaria">Concluyó primaria</option>
 											<option value="concluyo_secundaria">Concluyó secundaria</option>
@@ -1174,10 +1174,10 @@
 		flexFont();
 	};
 </script>
-<script src="{% static "js/tobusquedaurl.js"%}"></script>
 <script src="{% static "js/variables.js"%}"></script>
 <script src="{% static "js/jquery-2.1.3.min.js"%}"></script>
 <script src="{% static "js/graphics.js"%}"></script>
 <script src="{% static "js/loader.js"%}"></script>
 <script src="{% static "js/filter_options.js"%}"></script>
+<script src="{% static "js/tobusquedaurl.js"%}"></script>
 {% endblock %}
