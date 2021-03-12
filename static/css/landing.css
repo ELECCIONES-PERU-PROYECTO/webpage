@@ -228,3 +228,60 @@ ul.uk-navbar-nav li a.nav_options {
 .color{
 	color: #ffffff  !important;
 }
+
+img{
+	border-radius: 13px;
+}
+
+.arrow {
+	width: 60px;
+	height: 82px;
+	position: absolute; /* don't forget set container to relative */
+	left: 45%;
+	margin-left: 0px;
+	bottom: 0;
+  z-index:999;
+}
+/* set arrow styles */
+.arrow path {
+	stroke: white;
+	stroke-width: 2px;
+	fill: transparent;	
+	animation: down 2s infinite;
+}
+/* arrow keyframe animation */
+@keyframes down{
+0% { opacity:0 }
+25% { opacity:1 }
+75% { opacity:0 }
+100% { opacity:0 }
+}
+/* arrow animation delay */
+.arrow path.a1{	animation-delay:-1s; }
+.arrow path.a2{	animation-delay:-.5s; }
+.arrow path.a3{	animation-delay:0s; }
+
+html {
+	scroll-behavior: smooth;
+  }
+
+  #info_desktop {display: block;}
+  #info_mobile {display: none;}
+
+  @media screen and (max-width: 768px) {
+
+  #info_desktop {display: none;}
+  #info_mobile {display: block;}
+
+  }
+.small{
+
+	font-size: .7rem;
+	line-height: 1.5;
+
+}
+
+.utec {
+    max-height: 150px;
+    max-width: 200px;
+}

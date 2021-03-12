@@ -23,6 +23,13 @@
             </li>
           </ul>
           <ul class="uk-nav uk-nav-default uk-nav-parent-icon uk-hidden@m" data-uk-nav>
+            <li class="uk-nav-header">
+              <a class="nav_opt" href="{% url 'elecciones:mainpage' %}">
+              Inicio
+              </a>
+            </li>
+          </ul>
+          <ul class="uk-nav uk-nav-default uk-nav-parent-icon uk-hidden@m" data-uk-nav>
             <li class="uk-nav-header">Tipos de búsqueda</li>
             <li class="nav-options pres_opt mob_opt">
               <a class="nav_opt" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a>
@@ -1229,11 +1236,12 @@
       {% include "elecciones/pagination.html" with page=page %}
     {% else %}
       <div class="uk-container uk-padding uk-text-center no-results-container">
-        <span uk-icon="icon: settings; ratio: 2.3"></span>
-        <h5 id="text_info" class="uk-text-large uk-text-light uk-margin-remove-top"></h5>
-        <div uk-lightbox video-autoplay="true">
+        <img id="gif_info" src="" alt="web tutorial">
+        <!-- <span uk-icon="icon: settings; ratio: 2.3"></span>
+        <h5 id="text_info" class="uk-text-large uk-text-light uk-margin-remove-top"></h5> -->
+        <!-- <div uk-lightbox video-autoplay="true">
           <a id="video_explanation" class="uk-button uk-button-default" href="" data-attrs="width: 1380; height: 920;" data-caption="YouTube">Instrucciones de uso</a>
-        </div>
+        </div> -->
       </div>
     {% endif %}
   </div>
@@ -1245,37 +1253,42 @@
 	</div>
   <!-- /LOADER -->
 {% endblock %}
-
 {% block js %}
-<script src="{% static "js/variables.js"%}"></script>
-<script src="{% static "js/jquery-2.1.3.min.js"%}"></script>
-<script src="{% static "js/loader.js"%}"></script>
-<script src="{% static "js/filter.js"%}"></script>
-<script src="{% static "js/filter_options.js"%}"></script>
-<script src="{% static "js/display_filter.js"%}"></script>
-<script src="{% static "js/filter_orga.js"%}"></script>
-<script>
-  let url = window.location.href
-  let text = url.split("/")
-  
-  let text_info = document.getElementById('text_info')
-  let video_expl = document.getElementById('video_explanation')
-  
-  if(text_info) {
-    if(text[text.length - 1] === VIEW || text[text.length - 1] === VIEW + "#") {
-      text_info.textContent="Escoge al menos un filtro para que aparezcan los resultados."
-      text_info.style.marginBottom = "1rem"
+  <script src="{% static "js/variables.js"%}"></script>
+  <script src="{% static "js/jquery-2.1.3.min.js"%}"></script>
+  <script src="{% static "js/loader.js"%}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit-icons.min.js"></script>
+  <script src="{% static "js/filter.js"%}"></script>
+  <script src="{% static "js/filter_options.js"%}"></script>
+  <script src="{% static "js/display_filter.js"%}"></script>
+  <script src="{% static "js/filter_orga.js"%}"></script>
+  <script>
+    let url = window.location.href
+    let text = url.split("/")
+    
+    let text_info = document.getElementById('text_info')
+    let video_expl = document.getElementById('video_explanation')
+    let gif_expl = document.getElementById('gif_info')
 
-      if(window.innerWidth > 960) 
-        video_expl.href = "https://www.youtube.com/watch?v=BTHaY6tmFRs"
-      else {
-        video_expl.href = "https://www.youtube.com/watch?v=hEPIN4m_BbE"
-        video_expl.style.width = "70%"
-        video_expl.style.margin = "auto"
+    if(text_info) {
+      if(text[text.length - 1] === VIEW || text[text.length - 1] === VIEW + "#") {
+        text_info.textContent="Escoge al menos un filtro para que aparezcan los resultados."
+        text_info.style.marginBottom = "1rem"
+
+        if(window.innerWidth > 768) {
+          gif_expl.src = "/static/images/gifs/web.gif"
+          gif_expl.style.maxWidth = "676px"
+          gif_expl.style.margin = "auto"
+        }else {
+          gif_expl.src = "/static/images/gifs/mobile.gif"
+          gif_expl.style.minWidth = "300px"
+          gif_expl.style.margin = "auto"
+        }
+      } else {
+        text_info.textContent="No se encontraron resultados para esta búsqueda"
       }
-    } else {
-      text_info.textContent="No se encontraron resultados para esta búsqueda"
     }
-  }
 </script>
+  </script>
 {% endblock %}
