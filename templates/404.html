@@ -1,8 +1,12 @@
 {% extends "elecciones/base.html" %}
 {% block title %}Error{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/css/uikit.min.css" />
+{% endblock %}
 {% block content %}
-<div class="uk-alert-danger uk-tex-center" uk-alert>
-  <a class="uk-alert-close" uk-close></a>
-  <p>La página que está buscando no se encuentra disponible.</p>
-</div>
+<body>
+  <div class="uk-alert-danger uk-tex-center" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p>La página que está buscando no se encuentra disponible.</p>
+  </div>
 {% endblock %}
