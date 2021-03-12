@@ -46,7 +46,7 @@ function busqueda_url(id_)
     }
     else if(id_=="cargo_previos_busqueda")
     {
-        window.location = "/busqueda?tipo_filter="+tipo_candidato+"&anhio_servicio="+info_extra+"-1&org_politica="+organizacion_politica+"-2"
+        window.location = "/busqueda?tipo_filter="+tipo_candidato+"&anhio_servicio=DESC-1&org_politica="+organizacion_politica+"-2"
     }
     else if (id_=="renuncia_busqueda"){
         window.location ="/busqueda?tipo_filter="+tipo_candidato+"&cantidad_renuncia=DESC-1&org_politica="+organizacion_politica+"-2"
