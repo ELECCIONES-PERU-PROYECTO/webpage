@@ -72,8 +72,8 @@
 				<!--	<span style="letter-spacing: 0.2em; font-size: 0.725rem">FEATURED ARTICLE</span> -->
 					<h1 style= "line-height: 60px;" class="uk-margin-remove-top uk-margin-small-bottom uk-margin-remove-adjacent">ELECCIONES GENERALES 2021</h1>
 					
-			><p style= "line-height: 30px;"class="uk-margin-small-bottom">Encuentra información sobre el panorama general de los candidatos y por partidos.
-			><p class="uk-margin-small-bottom">¡Haz click en en nombre de la sección que quieras visualizar!
+			<p style= "line-height: 30px;"class="uk-margin-small-bottom">Encuentra información sobre el panorama general de los candidatos y por partidos.</p>
+			<p class="uk-margin-small-bottom">¡Haz click en en nombre de la sección que quieras visualizar!</p>
 					<!--<a href="#" class="uk-button uk-button-default uk-margin-small-top">INFÓRMATE</a>-->
 				</div>
 			</div>
@@ -219,7 +219,7 @@
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
 										</select>
-										<select class="uk-select opt_select uk-margin-small-bottom" onchange=cambiar_organizacion(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -241,7 +241,7 @@
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
 										</select>
-										<select id="edad_select" class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=cambiar_organizacion(this)>
+										<select id="edad_select" class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Rango  de Edad</option>
 											<option value="18-29">18 a 29 años</option>
 											<option value="30-59">30 a 59</option>
@@ -625,7 +625,7 @@
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
 										</select>									
-										<button class="uk-button red-button uk-flex uk-flex-center uk-margin-auto" id="renuncia_busqueda"onclick=busqueda_url(this.id)>Ver candidatos</button>									
+										<button class="uk-button red-button uk-flex uk-flex-center uk-margin-auto" id="sentencias_busqueda"onclick=busqueda_url(this.id)>Ver candidatos</button>									
 									</div>
 								</div>
 
@@ -731,7 +731,7 @@
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
 										</select>
-										<select class="uk-select opt_select uk-margin-small-bottom" onchange=cambiar_organizacion(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange="cambiar_organizacion(this)" name="organizacion")>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -753,13 +753,7 @@
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
 										</select>
-										<select id="edad_select" class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=cambiar_organizacion(this)>
-											<option value="default" disabled selected>Elegir Rango  de Edad</option>
-											<option value="18-29">18 a 29 años</option>
-											<option value="30-59">30 a 59</option>
-											<option value="60-85">60 a 85</option>
-										</select>
-										<button class="uk-button red-button uk-flex uk-flex-center uk-margin-auto" id="edad_busqueda" onclick=busqueda_url(this.id)>Ver candidatos</button>
+										<button class="uk-button red-button uk-flex uk-flex-center uk-margin-auto" id="ingreso_busqueda" onclick=busqueda_url(this.id)>Ver candidatos</button>
 									</div>
 								</div>
 							</li>
@@ -834,7 +828,7 @@
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
 										</select>
-										<select class="uk-select opt_select uk-margin-small-bottom" onchange=cambiar_organizacion(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -856,13 +850,7 @@
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
 										</select>
-										<select id="edad_select" class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=cambiar_organizacion(this)>
-											<option value="default" disabled selected>Elegir Rango  de Edad</option>
-											<option value="18-29">18 a 29 años</option>
-											<option value="30-59">30 a 59</option>
-											<option value="60-85">60 a 85</option>
-										</select>
-										<button class="uk-button red-button uk-flex uk-flex-center uk-margin-auto" id="edad_busqueda" onclick=busqueda_url(this.id)>Ver candidatos</button>
+										<button class="uk-button red-button uk-flex uk-flex-center uk-margin-auto" id="inmueble_busqueda" onclick=busqueda_url(this.id)>Ver candidatos</button>
 									</div>
 								</div>
 							</li>
@@ -940,7 +928,7 @@
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
 										</select>
-										<select class="uk-select opt_select uk-margin-small-bottom" onchange=cambiar_organizacion(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -962,13 +950,7 @@
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
 										</select>
-										<select id="edad_select" class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=cambiar_organizacion(this)>
-											<option value="default" disabled selected>Elegir Rango  de Edad</option>
-											<option value="18-29">18 a 29 años</option>
-											<option value="30-59">30 a 59</option>
-											<option value="60-85">60 a 85</option>
-										</select>
-										<button class="uk-button red-button uk-flex uk-flex-center uk-margin-auto" id="edad_busqueda" onclick=busqueda_url(this.id)>Ver candidatos</button>
+										<button class="uk-button red-button uk-flex uk-flex-center uk-margin-auto" id="mueble_busqueda" onclick=busqueda_url(this.id)>Ver candidatos</button>
 									</div>
 								</div>
 							</li>
@@ -1062,7 +1044,7 @@
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
 										</select>
-										<select class="uk-select opt_select uk-margin-small-bottom" onchange=cambiar_organizacion(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -1084,13 +1066,19 @@
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
 										</select>
-										<select id="edad_select" class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=cambiar_organizacion(this)>
-											<option value="default" disabled selected>Elegir Rango  de Edad</option>
-											<option value="18-29">18 a 29 años</option>
-											<option value="30-59">30 a 59</option>
-											<option value="60-85">60 a 85</option>
-										</select>
-										<button class="uk-button red-button uk-flex uk-flex-center uk-margin-auto" id="edad_busqueda" onclick=busqueda_url(this.id)>Ver candidatos</button>
+
+										<select id="academico_select" class="uk-select opt_select uk-margin-small-right" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
+											<option value="default" disabled selected>Elegir Nivel Académico</option>
+											<option value="concluyo_primaria">Concluyó primaria</option>
+											<option value="concluyo_secundaria">Concluyó secundaria</option>
+											<option value="concluyo_estudio_tecnico">Concluyó técnico</option>
+											<option value="concluyo_estudio_no_universitario">Concluyó estudios no universitarios</option>
+											<option value="concluyo_estudio_universitario">Concluyó universidad</option>
+											<option value="concluyo_estudio_postgrado">Concluyó postgrado</option>
+											<option value="maestro_doctor">Maestro o Doctor</option>
+										</select >
+								
+										<button class="uk-button red-button uk-flex uk-flex-center uk-margin-auto" id="academico_busqueda" onclick=busqueda_url(this.id)>Ver candidatos</button>
 									</div>
 								</div>
 							</li>
