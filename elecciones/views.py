@@ -301,9 +301,9 @@ def filter_function(request):
       dist_electoral, tipo_candidato_
     ]
 
-    print("********")
-    print(lista_valores)
-    print("********")
+    # print("********")
+    # print(lista_valores)
+    # print("********")
 
     if(lista_valores[4][0:lista_valores[4].rfind("-")] == "FamiliaAli"):
       order = lista_valores[4][lista_valores[4].rfind("-"):len(lista_valores[4]) :+1]
@@ -335,7 +335,7 @@ def filter_function(request):
     query_total = ""
 
     for i in range(0, len(lista_valores)-1):
-      print("lista_valores[",i,"]: ", lista_valores[i])
+      # print("lista_valores[",i,"]: ", lista_valores[i])
       if lista_valores[13] != "unk" and i == 15:
         continue
       if lista_valores[i] != "unk":
@@ -344,7 +344,6 @@ def filter_function(request):
         # if(i != 15):
         valor = lista_valores[i][index_+1:]
         lista_valores[i] = lista_valores[i] + str("_") + str(i)
-        print("valores XD", lista_valores[i])
         if (i >= 1 and i <= 3) or (i >= 6 and i <= 11):
           lista_filtros_ob.append(lista_valores[i])
         else:
@@ -352,7 +351,6 @@ def filter_function(request):
         lista_val_new.append(lista_valores[i])
         # if(i != 15): # Evitar que el departamento no se appendee en la lista de orden
         lista_orden.append(valor)
-        print("ccccl",lista_orden)
       elif lista_valores[i] == "unk":
         lista_valores[i] = ""
 
@@ -396,7 +394,6 @@ def filter_function(request):
           # print("********")
           # print("WHERE_candidato********",WHERE_candidato)
           # print("********")
-          print("xddd", function_filtro_normal(lista_valores, False, SELECT_candidato, WHERE_candidato))
           query_total = query_total + function_filtro_normal(lista_valores, False, SELECT_candidato, WHERE_candidato)
         elif len(lista_filtros_normales) > 1:
           query = ""
