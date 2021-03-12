@@ -66,9 +66,11 @@
 			<!-- /NAV -->
 			<div class="uk-container uk-container-small uk-flex-auto uk-text-center" data-uk-scrollspy="target: > .animate; cls: uk-animation-slide-bottom-small uk-invisible; delay: 300">
 				<h1 class="uk-heading-primary animate uk-invisible" style="font-weight: 700;">NOSOTROS</h1>
+				<!--
 				<div class="uk-width-4-5@m uk-margin-auto animate uk-invisible">
 					<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad, reiciendis maxime, facilis nam natus incidunt provident.</p>
 				</div>
+			-->
 				<div class="uk-margin-medium-top animate uk-invisible" data-uk-margin data-uk-scrollspy-class="uk-animation-fade uk-invisible">
 					<a href="#conocer" class="uk-button uk-button-primary uk-button-large uk-width-2-3 uk-text-uppercase uk-width-auto@s"data-uk-icon="arrow-right" data-uk-scroll="duration: 500" title="Conócenos">Conócenos</a>
 				</div>
@@ -111,7 +113,7 @@
 					Esteban Principe Ventosilla
 					</h2>
 					<p class="subtitle-text uk-margin-medium-bottom">
-						Realizamos un análisis mediante inteligencia artificial para identificar las emociones que transmiten cada cadidato, en base a las fotográfias presentadas al Jurado Nacional de Elecciones.				
+						Correo: esteban.principe@utec.edu.pe
 					</p>
 					<div>
 						<a href="https://www.instagram.com/miunmnn/" class="uk-icon-button uk-margin-small-right" uk-icon="instagram"></a>					
@@ -189,7 +191,6 @@
 					<a class="uk-text-uppercase uk-nav-header nav_options uk-text-left" href="{% url 'elecciones:analisisGraficos' %}">
 						Análisis de Datos
 					</a>
-					<!--<span style="font-size: 23px; font-weight:500;" class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>-->
 				</li>
 				
 				<li class="uk-text-uppercase uk-nav-header nav_options">Búsqueda</li>
@@ -217,10 +218,8 @@
 {% endblock %}
 {% block js %}
 <!-- JS FILES -->
-<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit.min.js"></script>
 <script src="/static/js/filter_options.js"></script>
 <script src="/static/js/variables.js"></script>
 <script src="/static/js/jquery-2.1.3.min.js"></script>
 <script src="/static/js/loader.js"></script>
-<script src="/static/js/filter_options.js"></script>
 {% endblock %}
