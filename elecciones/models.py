@@ -331,7 +331,7 @@ class TablaEdad(models.Model):
   id = models.CharField(max_length=10, primary_key=True, default="-")
   edad = models.IntegerField()
   organizacion_politica = models.CharField(max_length = 250,default="-",editable=False)
-  dni = models.CharField(max_length = 8)
+  dni_candidato = models.CharField(max_length = 8)
 
   class Meta:
     db_table = 'tabla_edad'

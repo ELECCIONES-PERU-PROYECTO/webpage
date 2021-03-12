@@ -92,17 +92,6 @@ WSGI_APPLICATION = 'elecciones_peru.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 
-# DATABASES = {
-#      'default' : {
-#          'ENGINE' : 'django.db.backends.postgresql',
-#          'NAME' : 'proyecto_elecciones',
-#          'USER' : 'postgres',
-#          'PASSWORD' : '1234567',
-#          'HOST' : 'localhost',
-#          'PORT' : 5432,
-#      }
-#  }
-
 DATABASES = {
     'default' : {
         'ENGINE' : 'django.db.backends.postgresql',
@@ -113,6 +102,17 @@ DATABASES = {
         'PORT' : 5432,
     }
 }
+
+#DATABASES = {
+#    'default' : {
+#        'ENGINE' : 'django.db.backends.postgresql',
+#        'NAME' : 'elecciones_peru',
+#        'USER' : 'postgres',
+#        'PASSWORD' : 'pvta',
+#        'HOST' : 'localhost',
+#        'PORT' : 5432,
+#    }
+#}
 
 
 #DATABASES = {
