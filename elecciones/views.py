@@ -270,6 +270,7 @@ def filter_function(request):
     orden_valor_mueble = unkipify(request.GET.get("valor_muebles"))
     orden_renuncias = unkipify(request.GET.get("cantidad_renuncia"))
     rango_edad_val = unkipify(request.GET.get("rango_edad"))
+    print(">>>>>>>>>>>>>>> Rango edad", rango_edad_val)
     if(request.GET.get("oriundo_input") != None):
       index = request.GET.get("oriundo_input").rfind("-")
       ordxr = request.GET.get("oriundo_input")[index : len(request.GET.get("oriundo_input"))]

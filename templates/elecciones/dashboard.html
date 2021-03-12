@@ -1236,12 +1236,8 @@
       {% include "elecciones/pagination.html" with page=page %}
     {% else %}
       <div class="uk-container uk-padding uk-text-center no-results-container">
-        <img id="gif_info" src="" alt="web tutorial">
-        <!-- <span uk-icon="icon: settings; ratio: 2.3"></span>
-        <h5 id="text_info" class="uk-text-large uk-text-light uk-margin-remove-top"></h5> -->
-        <!-- <div uk-lightbox video-autoplay="true">
-          <a id="video_explanation" class="uk-button uk-button-default" href="" data-attrs="width: 1380; height: 920;" data-caption="YouTube">Instrucciones de uso</a>
-        </div> -->
+        <img id="gif_info" src="" alt="tutorial">
+        <h5 id="text_info" class="uk-text-large uk-text-muted uk-margin-remove-top"></h5>
       </div>
     {% endif %}
   </div>
@@ -1268,16 +1264,12 @@
     let text = url.split("/")
     
     let text_info = document.getElementById('text_info')
-    let video_expl = document.getElementById('video_explanation')
     let gif_expl = document.getElementById('gif_info')
 
     if(text_info) {
       if(text[text.length - 1] === VIEW || text[text.length - 1] === VIEW + "#") {
-        text_info.textContent="Escoge al menos un filtro para que aparezcan los resultados."
-        text_info.style.marginBottom = "1rem"
-
         if(window.innerWidth > 768) {
-          gif_expl.src = "https://i.ibb.co/Q9g9NSX/desktop.gif"
+          gif_expl.src = "https://media.giphy.com/media/6Lj4gJkRSJdjkZ2R8M/giphy.gif"
           gif_expl.style.maxWidth = "676px"
           gif_expl.style.margin = "auto"
         }else {
