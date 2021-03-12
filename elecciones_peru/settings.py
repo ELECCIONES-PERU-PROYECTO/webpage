@@ -95,9 +95,9 @@ WSGI_APPLICATION = 'elecciones_peru.wsgi.application'
 DATABASES = {
     'default' : {
         'ENGINE' : 'django.db.backends.postgresql',
-        'NAME' : 'proyecto_elecciones',
+        'NAME' : 'db_partidos_final',
         'USER' : 'postgres',
-        'PASSWORD' : '1234567',
+        'PASSWORD' : 'Manzana12345678',
         'HOST' : 'localhost',
         'PORT' : 5432,
     }
