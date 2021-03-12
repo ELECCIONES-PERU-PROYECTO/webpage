@@ -60,7 +60,7 @@ function busqueda_url(id_)
     else if (id_=="inmueble_busqueda"){
         window.location = "/busqueda?tipo_filter="+tipo_candidato+"&cant_inmuebles=DESC-1&org_politica="+organizacion_politica+"-2"
     }
-    else if (id_=="bien_mueble"){
+    else if (id_=="mueble_busqueda"){
         window.location = "/busqueda?tipo_filter="+tipo_candidato+"&cant_muebles=DESC-1&org_politica="+organizacion_politica+"-2"
     }
     else if (id_=="academico_busqueda"){
