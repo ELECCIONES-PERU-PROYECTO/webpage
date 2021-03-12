@@ -31,6 +31,7 @@
 						<div class="uk-navbar-right">
 							<ul class="uk-navbar-nav uk-visible@s">
 								<!-- <li class="uk-active uk-visible@m"><a href="" data-uk-icon="home"></a></li> -->
+								<li><a class="nav_options" href="{% url 'elecciones:nosotros' %}">Nosotros</a></li>
 								<li><a class="nav_options" href="{% url 'elecciones:analisisGraficos' %}">Análisis de datos</a></li>
 								<li>
 									<a class="nav_options" href="#" data-uk-icon="chevron-down">Búsqueda</a>
@@ -265,13 +266,12 @@
 						<h2 class="uk-margin-small-top uk-text-uppercase">
 							Inteligencia artificial aplicada a los candidatos
 						</h2>
-						<!-- <p class="subtitle-text uk-margin-medium-bottom">
-							Realizamos un análisis mediante inteligencia artificial para identificar las emociones que transmiten cada cadidato, en base a las fotográfias presentadas al Jurado Nacional de Elecciones.				
-						</p> -->
-						<p class="subtitle-text uk-margin-medium-bottom">
+						<p class="subtitle-text uk-margin-small-bottom">
 							Realizamos un análisis mediante inteligencia artificial para identificar las emociones transmitidas por cada candidato, en base a las fotografías presentadas al Jurado Nacional de Elecciones (JNE).
 						</p>
-						<span class="pill_proxi">Próximamente</span>
+						<a href="{% url 'elecciones:analisisIA'%}" class="uk-button uk-button-small button-click-aqui uk-margin-small-bottom uk-margin-auto uk-margin-remove-left@m">
+							Click Aquí
+						</a>
 					</div>
 					<div data-uk-scrollspy="cls: uk-animation-fade" style="margin-top: 20px;" class="uk-flex-first uk-flex-last@m uk-width-1-2@s uk-margin-auto">
 						<img src="{% static "images/AI2.jpg" %}" data-uk-img alt="Image">
@@ -379,11 +379,17 @@
 				<ul class="uk-nav uk-nav-default">
 					<li style="font-size: 21px; font-weight:500; color:#ffffff" class="uk-nav-header">Opciones</li>
 					<li>
+						<a style="font-size: 20px; font-weight:500; color:#ffffff" href="{% url 'elecciones:nosotros' %}">
+							<span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
+							Nosotros
+						</a>
+					</li>
+					<li>
 						<a style="font-size: 20px; font-weight:500; color:#ffffff" href="{% url 'elecciones:analisisGraficos' %}">
 							<span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
 							Análisis de Datos
-					</a>
-				</li>
+						</a>
+					</li>
 					<li>
 						<a style="font-size: 20px; font-weight:500; color:#ffffff" ">
 							<span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
