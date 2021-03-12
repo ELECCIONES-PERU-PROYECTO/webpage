@@ -127,6 +127,8 @@ function busqueda_url(id_)
     }
     selects_index_0("none")
 
+    sessionStorage_tipo_candidato(tipo_candidato)
+    
     if(id_=="edad_busqueda")
     {
         sessionStorage.setItem('data_filtros_seleccionados', JSON.stringify([13,16]))
