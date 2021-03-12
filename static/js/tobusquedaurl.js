@@ -49,7 +49,7 @@ function sessionStorage_tipo_candidato(tipo_candidato_)
 
 
 function busqueda_url(id_)
-{   
+{
     if(organizacion_politica=="" || tipo_candidato=="") {
           setTimeout(function(){
             UIkit.notification({
