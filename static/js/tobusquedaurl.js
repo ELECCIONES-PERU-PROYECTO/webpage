@@ -13,34 +13,26 @@ function selects_index_0(dataset_grupo)
     {
       if(dataset_grupo == select_organizacion[i].dataset.grupo)
       {
-        console.log("dataset_grupo: ",dataset_grupo)
-        console.log("select_organizacion ---> continue")
         continue
       }
-      console.log("select_organizacion")
       select_organizacion[i].selectedIndex = 0
     }
     for(let i = 0 ; i < select_tipo_candidato.length;i++)
     {
         if(dataset_grupo == select_tipo_candidato[i].dataset.grupo)
         {
-            console.log("dataset_grupo: ",dataset_grupo)
-            console.log("select_tipo_candidato ---> continue")
             continue
         }
-      console.log("select_tipo_candidato")
       select_tipo_candidato[i].selectedIndex = 0
     }
     let select_edad_rango = document.getElementById("academico_select_nivel")
     if (select_edad_rango.dataset.grupo != dataset_grupo)
     {
-        console.log("select_edad_rango.selectedIndex = 0")
         select_edad_rango.selectedIndex = 0
     }
     let select_nivel_academico = document.getElementById("edad_select_edades")
     if (select_nivel_academico.dataset.grupo != dataset_grupo)
     {
-        console.log("select_nivel_academico.selectedIndex = 0")
         select_nivel_academico.selectedIndex = 0
     }
     if(dataset_grupo == "none")
@@ -133,9 +125,6 @@ function busqueda_url(id_)
           }, 1000)
           return 
     }
-    console.log("organizacion_politica: ",organizacion_politica)
-    console.log("info_extra: ",info_extra)
-    console.log("tipo_candidato: ",tipo_candidato)
     selects_index_0("none")
 
     if(id_=="edad_busqueda")
