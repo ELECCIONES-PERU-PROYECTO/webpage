@@ -52,57 +52,44 @@
   <!-- CONTENT -->
   <div uk-filter="target: .js-filter">
     <form style="margin-top: 110px" method="GET">
-    <div class="uk-container-small uk-margin-large-left">
-      <h4>Seleccione el cargo y organización política:</h4>
-      <p>Cargo: 
-      <select  class="uk-select opt_select uk-margin-small-right"  type="text" name="cargo_postula">
-        <option value="default" disabled selected>Elegir Cargo Al que Postula</option>
-        <option value="presidenciales">Presidenciales</option>
-        <option value="congresales">Congresales</option>
-        <option value="parlamento">Parlamento Andino</option>
-      </select >
-      </p>
-      <!--<p>
-        Emoción: 
-        <select  class="uk-select opt_select uk-margin-small-right"  type="text" name="emocion">
-          <option value="default" disabled selected>Elegir Emoción</option>
-          <option value="Molestia">Molestia</option>
-          <option value="Alegría">Alegría</option>
-          <option value="Seriedad">Seriedad</option>
-          <option value="Tristeza">Tristeza</option>
-          <option value="Disgusto">Disgusto</option>
-          <option value="Miedo">Miedo</option>
-          <option value="Sorpresa">Sorpresa</option>
+    <div class="uk-container uk-margin-auto">
+      <h3 class="uk-text-center">Seleccione el cargo y organización política:</h3>
+      <div class="uk-margin-auto uk-width-1-2@s uk-width-1-1@xs">
+        <h5 class="uk-margin-small-bottom uk-margin-small-top">Cargo:</h5> 
+        <select class="uk-select opt_select uk-margin-small-right"  type="text" name="cargo_postula">
+          <option value="default" disabled selected>Elegir Cargo Al que Postula</option>
+          <option value="presidenciales">Presidenciales</option>
+          <option value="congresales">Congresales</option>
+          <option value="parlamento">Parlamento Andino</option>
         </select >
-      </p>-->
-      <p>Organización: 
-        <select  class="uk-select opt_select uk-margin-small-right"  type="text" name="organizacion">
-          <option value="default" disabled selected>Elegir Organización Política</option>
-          <option value="ACCION POPULAR">Acción Popular</option>
-          <option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
-          <option value="AVANZA PAIS - PARTIDO DE INTEGRACION SOCIAL">Avanza País</option>
-          <option value="DEMOCRACIA DIRECTA">Democracia Directa</option>
-          <option value="EL FRENTE AMPLIO POR JUSTICIA, VIDA Y LIBERTAD">Frente Amplio</option>
-          <option value="FRENTE POPULAR AGRICOLA FIA DEL PERU - FREPAP">FREPAP</option>
-          <option value="FUERZA POPULAR">Fuerza Popular</option>
-          <option value="JUNTOS POR EL PERU">Juntos Por el Perú</option>
-          <option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
-          <option value="PARTIDO MORADO">Partido Morado</option>
-          <option value="PARTIDO NACIONALISTA PERUANO">Partido Nacionalista Peruano</option>
-          <option value="PARTIDO POLITICO NACIONAL PERU LIBRE">Nacional Perú Libre</option>
-          <option value="PARTIDO POPULAR CRISTIANO - PPC">Partido Popular Cristiano</option>
-          <option value="PERU PATRIA SEGURA">Perú Patria Segura</option>
-          <option value="PODEMOS PERU">Podemos Perú</option>
-          <option value="RENACIMIENTO UNIDO NACIONAL">Renacimiento Unido Nacional</option>
-          <option value="RENOVACION POPULAR">Renovación Popular</option>
-          <option value="UNION POR EL PERU">Unión por el Perú</option>
-          <option value="VICTORIA NACIONAL">Victoria Nacional</option>
-        </select >
-      </p>
+        <h5 class="uk-margin-small-bottom uk-margin-small-top">Organización:</h5>
+          <select  class="uk-select opt_select uk-margin-small-right"  type="text" name="organizacion">
+            <option value="default" disabled selected>Elegir Organización Política</option>
+            <option value="ACCION POPULAR">Acción Popular</option>
+            <option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
+            <option value="AVANZA PAIS - PARTIDO DE INTEGRACION SOCIAL">Avanza País</option>
+            <option value="DEMOCRACIA DIRECTA">Democracia Directa</option>
+            <option value="EL FRENTE AMPLIO POR JUSTICIA, VIDA Y LIBERTAD">Frente Amplio</option>
+            <option value="FRENTE POPULAR AGRICOLA FIA DEL PERU - FREPAP">FREPAP</option>
+            <option value="FUERZA POPULAR">Fuerza Popular</option>
+            <option value="JUNTOS POR EL PERU">Juntos Por el Perú</option>
+            <option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
+            <option value="PARTIDO MORADO">Partido Morado</option>
+            <option value="PARTIDO NACIONALISTA PERUANO">Partido Nacionalista Peruano</option>
+            <option value="PARTIDO POLITICO NACIONAL PERU LIBRE">Nacional Perú Libre</option>
+            <option value="PARTIDO POPULAR CRISTIANO - PPC">Partido Popular Cristiano</option>
+            <option value="PERU PATRIA SEGURA">Perú Patria Segura</option>
+            <option value="PODEMOS PERU">Podemos Perú</option>
+            <option value="RENACIMIENTO UNIDO NACIONAL">Renacimiento Unido Nacional</option>
+            <option value="RENOVACION POPULAR">Renovación Popular</option>
+            <option value="UNION POR EL PERU">Unión por el Perú</option>
+            <option value="VICTORIA NACIONAL">Victoria Nacional</option>
+          </select >
+      </div>
+      <button class="uk-button uk-button-primary red-button uk-margin-auto uk-flex uk-flex-center" type="submit" value="Submit" style="margin-top: 1.5rem;">
+        Ver candidatos
+      </button>
     </div>
-      <p class="uk-margin-large-left" uk-margin>
-        <button class="uk-button uk-button-primary red-button" type="submit" value="Submit" >Ver candidatos</button>
-      </p>
     </form>
       <ul class="uk-subnav uk-subnav-pill uk-margin-large-left">
         {% if candidatos_disgusto|length > 0 %}

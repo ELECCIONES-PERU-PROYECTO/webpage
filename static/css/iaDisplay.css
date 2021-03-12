@@ -38,7 +38,7 @@
 }
 
 .uk-logo img {
-    height: 5vh;
+	height: 5vh;
 	max-height: 40px;
 }
 
@@ -46,49 +46,44 @@
     background: rgb(34 34 34)  !important;
 }
 
-
-
 .option{
-    padding: 5px !important;
-    padding-left: 30px !important;
-    
+	padding: 5px !important;
+	padding-left: 30px !important;
 }
 
 ul.uk-navbar-nav li a.nav_options {
-    color: rgb(255 255 255);
-    font-size: 16px;
-    font-weight: 500;
-    font-family: 'Poppins' !important;
+	color: rgb(255 255 255);
+	font-size: 16px;
+	font-weight: 500;
+	font-family: 'Poppins' !important;
 }
 
-
 .uk-subnav-pill>.uk-active>a {
-    background-color:rgb(213 142 142);
-    color: rgb(255 255 255);
+	background-color:rgb(213 142 142);
+	color: rgb(255 255 255);
 }
 
 h1, h2, h3, h4, h5, h6, a, p, li, span, button {
 	font-family: 'Poppins', sans-serif;
 	font-style: normal;
 	text-rendering: optimizeLegibility;
-
 }
 
 .uk-card-body {
-    padding: 15px 10px  !important;
+	padding: 15px 10px  !important;
 }
 
 .uk-navbar {
-    padding-right: 30px;
-    padding-left: 30px;
+	padding-right: 30px;
+	padding-left: 30px;
 }
 .padding img{
-    padding: 4px;
+	padding: 4px;
 }
 
 .red-button{
 	background-color: rgb(182 34 34) !important;
-    border-radius: 20px;
+	border-radius: 4px;
 }
 
 .uk-subnav {
@@ -97,10 +92,16 @@ h1, h2, h3, h4, h5, h6, a, p, li, span, button {
 }
 
 .uk-subnav>* {
-    padding-bottom: 10px;
-    padding-top: 5px;
+	padding-bottom: 10px;
+	padding-top: 5px;
 }
 
 .uk-container-small {
-    padding-right: 30px;
+	padding-right: 30px;
+}
+
+.footer {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
 }
