@@ -35,9 +35,10 @@
 							</div>
 						</div>
 						<div class="uk-navbar-right">
-							<ul class="uk-navbar-nav">
-								<li class="uk-visible@s"><a class="nav_options" href="{% url 'elecciones:mainpage' %}">Inicio</a></li>
-								<li class="uk-visible@s"><a class="nav_options" href="{% url 'elecciones:analisisGraficos' %}">Análisis de datos</a></li>
+							<ul class="uk-navbar-nav uk-visible@m">
+								<li><a class="nav_options" href="{% url 'elecciones:mainpage' %}">Inicio</a></li>
+								<li><a class="nav_options" href="{% url 'elecciones:analisisIA' %}">Análisis IA</a></li>
+								<li><a class="nav_options" href="{% url 'elecciones:analisisGraficos' %}">Análisis de datos</a></li>
 								<li>
 									<a class="nav_options" href="#" data-uk-icon="chevron-down">Búsqueda</a>
 									<div class="uk-navbar-dropdown">
@@ -57,7 +58,9 @@
 										</ul>
 									</div>
 								</li>
-								<li><a class="uk-hidden@l	uk-hidden@m uk-navbar-toggle" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-nav"></a></li>
+							</ul>
+							<ul class="uk-navbar-nav uk-hidden@m">
+								<li><a class="uk-navbar-toggle" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-nav"></a></li>
 							</ul>
 						</div>
 					</nav>
@@ -71,8 +74,8 @@
 					<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad, reiciendis maxime, facilis nam natus incidunt provident.</p>
 				</div>
 			-->
-				<div class="uk-margin-medium-top animate uk-invisible" data-uk-margin data-uk-scrollspy-class="uk-animation-fade uk-invisible">
-					<a href="#conocer" class="uk-button uk-button-primary uk-button-large uk-width-2-3 uk-text-uppercase uk-width-auto@s"data-uk-icon="arrow-right" data-uk-scroll="duration: 500" title="Conócenos">Conócenos</a>
+				<div class="uk-margin-small-top animate uk-invisible" data-uk-margin data-uk-scrollspy-class="uk-animation-fade uk-invisible">
+					<a href="#conocer" class="uk-button uk-button-default uk-button-medium uk-width-2-3 uk-width-auto@s uk-text-uppercase" data-uk-icon="arrow-down" data-uk-scroll="duration: 500" title="Conócenos">Conócenos</a>
 				</div>
 			</div> 
 			</div>
@@ -189,11 +192,20 @@
 			<button class="uk-offcanvas-close uk-close uk-icon" type="button" data-uk-close></button>
 			<ul class="uk-nav uk-nav-default">
 				<li class="">
+					<a class="uk-text-uppercase uk-nav-header nav_options uk-text-left" href="{% url 'elecciones:mainpage' %}">
+						Inicio
+					</a>
+				</li>
+				<li class="">
+					<a class="uk-text-uppercase uk-nav-header nav_options uk-text-left" href="{% url 'elecciones:analisisIA' %}">
+						Análisis IA
+					</a>
+				</li>
+				<li class="">
 					<a class="uk-text-uppercase uk-nav-header nav_options uk-text-left" href="{% url 'elecciones:analisisGraficos' %}">
 						Análisis de Datos
 					</a>
 				</li>
-				
 				<li class="uk-text-uppercase uk-nav-header nav_options">Búsqueda</li>
 				<li>
 					<a href="#" onclick="activar_candidatos(this.text)">Presidencial</a>

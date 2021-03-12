@@ -29,9 +29,10 @@
 							</div>
 						</div>
 						<div class="uk-navbar-right">
-							<ul class="uk-navbar-nav uk-visible@s">
+							<ul class="uk-navbar-nav uk-visible@m">
 								<!-- <li class="uk-active uk-visible@m"><a href="" data-uk-icon="home"></a></li> -->
 								<li><a class="nav_options" href="{% url 'elecciones:nosotros' %}">Nosotros</a></li>
+								<li><a class="nav_options" href="{% url 'elecciones:analisisIA' %}">Análisis IA</a></li>
 								<li><a class="nav_options" href="{% url 'elecciones:analisisGraficos' %}">Análisis de datos</a></li>
 								<li>
 									<a class="nav_options" href="#" data-uk-icon="chevron-down">Búsqueda</a>
@@ -53,7 +54,7 @@
 									</div>
 								</li>
 							</ul>
-							<a class="uk-navbar-toggle uk-navbar-item uk-hidden@s" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-nav"></a>
+							<a class="uk-navbar-toggle uk-navbar-item uk-hidden@m" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-nav"></a>
 						</div>
 					</nav>
 				</div>
@@ -382,6 +383,12 @@
 						<a style="font-size: 20px; font-weight:500; color:#ffffff" href="{% url 'elecciones:nosotros' %}">
 							<span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
 							Nosotros
+						</a>
+					</li>
+					<li>
+						<a style="font-size: 20px; font-weight:500; color:#ffffff" href="{% url 'elecciones:analisisIA' %}">
+							<span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
+							Análisis IA
 						</a>
 					</li>
 					<li>

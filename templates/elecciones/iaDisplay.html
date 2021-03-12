@@ -22,7 +22,7 @@
         </div>
         <div class="uk-navbar-right">
           <ul class="uk-navbar-nav uk-visible@s">
-            <!-- <li class="uk-active uk-visible@m"><a href="" data-uk-icon="home"></a></li> -->
+            <li><a class="nav_options" href="{% url 'elecciones:mainpage' %}">Inicio</a></li>
             <li><a class="nav_options" href="{% url 'elecciones:analisisGraficos' %}">Análisis de datos</a></li>
             <li>
               <a class="nav_options" href="#" data-uk-icon="chevron-down">Búsqueda</a>
@@ -220,9 +220,14 @@
           <a style="font-size: 20px; font-weight:500; color:#ffffff" href="{% url 'elecciones:mainpage' %}">
             <span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
             Inicio
-        </a>
-      </li>
-        
+          </a>
+        </li>
+        <li>
+          <a style="font-size: 20px; font-weight:500; color:#ffffff" href="{% url 'elecciones:analisisGraficos' %}">
+            <span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
+            Análisis de datos
+          </a>
+        </li>
         <li style="font-size: 20px; font-weight:500; color:#ffffff" class="  nav_options">
           <span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
           Búsqueda
