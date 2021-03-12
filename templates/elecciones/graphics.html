@@ -72,8 +72,8 @@
 				<!--	<span style="letter-spacing: 0.2em; font-size: 0.725rem">FEATURED ARTICLE</span> -->
 					<h1 style= "line-height: 60px;" class="uk-margin-remove-top uk-margin-small-bottom uk-margin-remove-adjacent">ELECCIONES GENERALES 2021</h1>
 					
-					<p style= "line-height: 30px;"class="uk-margin-small-bottom">Encuentra información sobre el panorama general de los candidatos y por partidos.</p>
-					<p class="uk-margin-small-bottom">¡Haz click en en nombre de la sección que quieras visualizar!</p>
+			><p style= "line-height: 30px;"class="uk-margin-small-bottom">Encuentra información sobre el panorama general de los candidatos y por partidos.
+			><p class="uk-margin-small-bottom">¡Haz click en en nombre de la sección que quieras visualizar!
 					<!--<a href="#" class="uk-button uk-button-default uk-margin-small-top">INFÓRMATE</a>-->
 				</div>
 			</div>
@@ -91,9 +91,9 @@
 							<h2 class="uk-margin-remove-adjacent uk-text-bold uk-text-center uk-margin-small-bottom">
 								DATOS SOCIODEMOGRAFICOS
 							</h2>
-							<!--<p class="uk-article-meta">Written on March 23, 2019. Posted in <a href="#">Blog</a> | <span data-uk-icon="icon: future"></span> Takes 7 min reading.</p>-->
+					
 						</header>
-						<p class="paragraph"></p>
+						<p class="paragraph"> </p>
 
 						<ul uk-accordion="multiple: true ">
 							<li>
@@ -209,17 +209,17 @@
 											</div>
 										</li>	
 									</ul>
-									Mira los candidatos de un determinado rango de edad del partido político que desee:
-									<p>
-										<select class="uk-select opt_select uk-margin-small-right" type="text" onchange=tipo_candidato_select(this)>
+									<h5 class="uk-text-muted uk-text-center">
+										Mire los candidatos de un determinado rango de edad del partido político que desee:
+									</h5>
+									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
+										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
-										</select >
-									</p>
-									<p>
-										<select class="uk-select opt_select uk-margin-small-right" onchange=cambiar_organizacion(this)>
+										</select>
+										<select class="uk-select opt_select uk-margin-small-bottom" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -229,7 +229,6 @@
 											<option value="FRENTE POPULAR AGRICOLA FIA DEL PERU - FREPAP">FREPAP</option>
 											<option value="FUERZA POPULAR">Fuerza Popular</option>
 											<option value="JUNTOS POR EL PERU">Juntos Por el Perú</option>
-											
 											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
 											<option value="PARTIDO MORADO">Partido Morado</option>
 											<option value="PARTIDO NACIONALISTA PERUANO">Partido Nacionalista Peruano</option>
@@ -241,44 +240,16 @@
 											<option value="RENOVACION POPULAR">Renovación Popular</option>
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
-										</select >
-									</p>
-									<p>
-										<select id="edad_select" class="uk-select opt_select uk-margin-small-right" type="text" onchange=cambiar_organizacion(this)>
+										</select>
+										<select id="edad_select" class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Rango  de Edad</option>
 											<option value="18-29">18 a 29 años</option>
 											<option value="30-59">30 a 59</option>
 											<option value="60-85">60 a 85</option>
-										</select >
-									</p>
-									<p uk-margin>
-										<button class="uk-button red-button uk-align-center" id="edad_busqueda" onclick=busqueda_url(this.id)>Ver candidatos</button>
-									</p>
-								</div>
-								<!--
-								<div class="uk-accordion-content uk-margin-medium-top">
-									<h3>PARTICIPACIÓN SEGÚN RANGOS DE EDAD</h3>
-									
-									<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: slide">
-
-										<div>
-											<h4 class="uk-text-center">GENERAL</h4>
-
-											<a class="uk-inline" href="{% static "images/graphic_images/edad_todo.png" %}" >
-												<img src="{% static "images/graphic_images/edad_todo.png" %}" alt="">
-											</a>
-										</div>
-
-										<div>
-											<h3>POR ORGANIZACIONES POLÍTICAS</h3>
-
-											<a class="uk-inline" href="{% static "images/graphic_images/edad_partido.png" %}" >
-												<img src="{% static "images/graphic_images/edad_partido.png" %}" alt="">
-											</a>
-										</div>
-										
+										</select>
+										<button class="uk-button red-button uk-flex uk-flex-center uk-margin-auto" id="edad_busqueda" onclick=busqueda_url(this.id)>Ver candidatos</button>
 									</div>
-								</div>-->
+								</div>
 							</li>
 							
 							<li>
@@ -345,14 +316,6 @@
 	
 						</ul>
 						<br>
-						<!--
-						<figure>
-							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAyAAAAEsCAYAAAA7Ldc6AAADuUlEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMA3p/4AAaxRls8AAAAASUVORK5CYII=" data-src="https://picsum.photos/800/300/?random=1" width="1500" height="300"  alt="Alt text" class="lazy" data-uk-img>
-							<figcaption class="uk-padding-small uk-text-center uk-text-muted">Caption of the image</figcaption>
-						</figure>
-						-->
-						
-						<!--<a href="#" title="Read More" class="uk-button uk-button-default uk-button-small">READ MORE</a>-->
 					</article>
 
 					<article class="uk-section uk-section-small uk-padding-remove-top uk-margin-medium-bottom">
@@ -360,7 +323,6 @@
 							<h2 class="uk-margin-remove-adjacent uk-text-bold uk-text-center uk-margin-small-bottom">
 								PARTICIPACIÓN POLÍTICA
 							</h2>
-							<!--<p class="uk-article-meta">Written on March 23, 2019. Posted in <a href="#">Blog</a> | <span data-uk-icon="icon: future"></span> Takes 7 min reading.</p>-->
 						</header>
 						<p class="paragraph"> </p>
 
@@ -420,18 +382,17 @@
 											</div>
 										</li>
 									</ul>
-									Mira los candidatos que han tenido cargo políticos ordenados según la cantidad
-									 de mayor a menor  del partido político que desee:
-									<p>
-										<select class="uk-select opt_select uk-margin-small-right" type="text" onchange=tipo_candidato_select(this)>
+									<h5 class="uk-text-muted uk-text-center">
+										Mire los candidatos que han tenido cargo políticos ordenados según la cantidad de mayor a menor  del partido político que desee:
+									</h5>
+									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
+										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
-										</select >
-									</p>
-									<p>
-										<select  class="uk-select opt_select uk-margin-small-right"  onchange=cambiar_organizacion(this)  type="text" name="organizacion">
+										</select>									
+										<select  class="uk-select opt_select uk-margin-small-bottom"  onchange=cambiar_organizacion(this)  type="text" name="organizacion">
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -441,7 +402,6 @@
 											<option value="FRENTE POPULAR AGRICOLA FIA DEL PERU - FREPAP">FREPAP</option>
 											<option value="FUERZA POPULAR">Fuerza Popular</option>
 											<option value="JUNTOS POR EL PERU">Juntos Por el Perú</option>
-											
 											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
 											<option value="PARTIDO MORADO">Partido Morado</option>
 											<option value="PARTIDO NACIONALISTA PERUANO">Partido Nacionalista Peruano</option>
@@ -453,14 +413,10 @@
 											<option value="RENOVACION POPULAR">Renovación Popular</option>
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
-										</select >
-									</p>
-									<p uk-margin>
-										<button class="uk-button  red-button uk-align-center" id="cargo_previos_busqueda" onclick=busqueda_url(this.id)>Ver candidatos</button>
-									</p>
+										</select>
+										<button class="uk-button red-button uk-flex uk-flex-center uk-margin-auto" id="cargo_previos_busqueda" onclick=busqueda_url(this.id)>Ver candidatos</button>									
+									</div>
 								</div>
-								
-								
 							</li>
 							<li>
 								<a class="uk-accordion-title uk-text-bold" href="#">Renuncia a otras organizaciones políticas</a>
@@ -519,17 +475,17 @@
 											</div>
 										</li>	
 									</ul>
-									Mira los candidatos ordenados de mayor a menor por cantidad de renuncias de partidos polítos del partido político que desee: 
-									<p>
-										<select class="uk-select opt_select uk-margin-small-right" type="text" onchange=tipo_candidato_select(this)>
+									<h5 class="uk-text-muted uk-text-center">
+										Mire los candidatos ordenados de mayor a menor por cantidad de renuncias de partidos polítos del partido político que desee: 
+									</h5>
+									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
+										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
-										</select >
-									</p>
-									<p>
-										<select class="uk-select opt_select uk-margin-small-right" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
+										</select>									
+										<select class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -539,7 +495,6 @@
 											<option value="FRENTE POPULAR AGRICOLA FIA DEL PERU - FREPAP">FREPAP</option>
 											<option value="FUERZA POPULAR">Fuerza Popular</option>
 											<option value="JUNTOS POR EL PERU">Juntos Por el Perú</option>
-											
 											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
 											<option value="PARTIDO MORADO">Partido Morado</option>
 											<option value="PARTIDO NACIONALISTA PERUANO">Partido Nacionalista Peruano</option>
@@ -551,11 +506,9 @@
 											<option value="RENOVACION POPULAR">Renovación Popular</option>
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
-										</select >
-									</p>
-									<p uk-margin>
-										<button class="uk-button  red-button uk-align-center" id="renuncia_busqueda"onclick=busqueda_url(this.id)>Ver candidatos</button>
-									</p>
+										</select>									
+										<button class="uk-button red-button uk-flex uk-flex-center uk-margin-auto" id="renuncia_busqueda"onclick=busqueda_url(this.id)>Ver candidatos</button>									
+									</div>
 								</div>
 
 							</li>
@@ -581,7 +534,6 @@
 							<h2 class="uk-margin-remove-adjacent uk-text-bold uk-text-center uk-margin-small-bottom">
 								SENTENCIAS JUDICIALES
 							</h2>
-							<!--<p class="uk-article-meta">Written on March 23, 2019. Posted in <a href="#">Blog</a> | <span data-uk-icon="icon: future"></span> Takes 7 min reading.</p>-->
 						</header>
 						<p class="paragraph"> </p>
 
@@ -641,17 +593,17 @@
 											</div>
 										</li>
 									</ul>
-									Mira los candidatos ordenados de mayor a menor por cantidad de sentencias penales y por obligaciones del partido político que desee: 
-									<p>
-										<select class="uk-select opt_select uk-margin-small-right" type="text" onchange=tipo_candidato_select(this)>
+									<h5 class="uk-text-muted uk-text-center">
+										Mire los candidatos ordenados de mayor a menor por cantidad de sentencias penales y por obligaciones del partido político que desee: 
+									</h5>
+									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
+										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
-										</select >
-									</p>
-									<p>
-										<select class="uk-select opt_select uk-margin-small-right" type="text" onchange=cambiar_organizacion(this) name="organizacion">
+										</select>									
+										<select class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -661,7 +613,6 @@
 											<option value="FRENTE POPULAR AGRICOLA FIA DEL PERU - FREPAP">FREPAP</option>
 											<option value="FUERZA POPULAR">Fuerza Popular</option>
 											<option value="JUNTOS POR EL PERU">Juntos Por el Perú</option>
-											
 											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
 											<option value="PARTIDO MORADO">Partido Morado</option>
 											<option value="PARTIDO NACIONALISTA PERUANO">Partido Nacionalista Peruano</option>
@@ -673,11 +624,9 @@
 											<option value="RENOVACION POPULAR">Renovación Popular</option>
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
-										</select >
-									</p>
-									<p uk-margin>
-										<button class="uk-button  red-button uk-align-center" id="sentencias_busqueda" onclick=busqueda_url(this.id)>Ver candidatos</button>
-									</p>
+										</select>									
+										<button class="uk-button red-button uk-flex uk-flex-center uk-margin-auto" id="renuncia_busqueda"onclick=busqueda_url(this.id)>Ver candidatos</button>									
+									</div>
 								</div>
 
 								
@@ -708,7 +657,6 @@
 							<h2 class="uk-margin-remove-adjacent uk-text-bold uk-text-center uk-margin-small-bottom">
 								ESTADO FINANCIERO
 							</h2>
-							<!--<p class="uk-article-meta">Written on March 21, 2019. Posted in <a href="#">Blog</a> | <span data-uk-icon="icon: future"></span> Takes 7 min reading.</p>-->
 						</header>
 						<p class="paragraph"> </p>
 
@@ -773,17 +721,17 @@
 
 											</div>
 									</ul>
-									Mira los candidatos ordenados de mayor a menor por cantidad de ingresos del partido político que desee: 
-									<p>
-										<select class="uk-select opt_select uk-margin-small-right" type="text" onchange=tipo_candidato_select(this)>
+									<h5 class="uk-text-muted uk-text-center">
+										Mire los candidatos ordenados de mayor a menor por cantidad de ingresos del partido político que desee: 
+									</h5>
+									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
+										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
-										</select >
-									</p>
-									<p>
-										<select class="uk-select opt_select uk-margin-small-right" type="text" onchange="cambiar_organizacion(this)" name="organizacion" onchange="">
+										</select>
+										<select class="uk-select opt_select uk-margin-small-bottom" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -793,7 +741,6 @@
 											<option value="FRENTE POPULAR AGRICOLA FIA DEL PERU - FREPAP">FREPAP</option>
 											<option value="FUERZA POPULAR">Fuerza Popular</option>
 											<option value="JUNTOS POR EL PERU">Juntos Por el Perú</option>
-											
 											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
 											<option value="PARTIDO MORADO">Partido Morado</option>
 											<option value="PARTIDO NACIONALISTA PERUANO">Partido Nacionalista Peruano</option>
@@ -805,12 +752,15 @@
 											<option value="RENOVACION POPULAR">Renovación Popular</option>
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
-										</select >
-									</p>
-									<p uk-margin>
-										<button class="uk-button  red-button uk-align-center" id="ingreso_busqueda" onclick=busqueda_url(this.id)>Ver candidatos</button>
-									</p>
-									
+										</select>
+										<select id="edad_select" class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=cambiar_organizacion(this)>
+											<option value="default" disabled selected>Elegir Rango  de Edad</option>
+											<option value="18-29">18 a 29 años</option>
+											<option value="30-59">30 a 59</option>
+											<option value="60-85">60 a 85</option>
+										</select>
+										<button class="uk-button red-button uk-flex uk-flex-center uk-margin-auto" id="edad_busqueda" onclick=busqueda_url(this.id)>Ver candidatos</button>
+									</div>
 								</div>
 							</li>
 							<li>
@@ -874,17 +824,17 @@
 												</div>										
 											</div>
 									</ul>
-									Mira los candidatos ordenados de mayor a menor por cantidad de biene inmuebles del partido político que desee: 
-									<p>
-										<select class="uk-select opt_select uk-margin-small-right" type="text" onchange=tipo_candidato_select(this)>
+									<h5 class="uk-text-muted uk-text-center">
+										Mire los candidatos ordenados de mayor a menor por cantidad de biene inmuebles del partido político que desee: 
+									</h5>
+									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
+										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
-										</select >
-									</p>
-									<p>
-										<select class="uk-select opt_select uk-margin-small-right" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
+										</select>
+										<select class="uk-select opt_select uk-margin-small-bottom" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -894,7 +844,6 @@
 											<option value="FRENTE POPULAR AGRICOLA FIA DEL PERU - FREPAP">FREPAP</option>
 											<option value="FUERZA POPULAR">Fuerza Popular</option>
 											<option value="JUNTOS POR EL PERU">Juntos Por el Perú</option>
-											
 											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
 											<option value="PARTIDO MORADO">Partido Morado</option>
 											<option value="PARTIDO NACIONALISTA PERUANO">Partido Nacionalista Peruano</option>
@@ -906,12 +855,15 @@
 											<option value="RENOVACION POPULAR">Renovación Popular</option>
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
-										</select >
-									</p>
-									<p uk-margin>
-										<button class="uk-button red-button uk-align-center" id="inmueble_busqueda" onclick=busqueda_url(this.id)>Ver candidatos</button>
-									</p>
-									
+										</select>
+										<select id="edad_select" class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=cambiar_organizacion(this)>
+											<option value="default" disabled selected>Elegir Rango  de Edad</option>
+											<option value="18-29">18 a 29 años</option>
+											<option value="30-59">30 a 59</option>
+											<option value="60-85">60 a 85</option>
+										</select>
+										<button class="uk-button red-button uk-flex uk-flex-center uk-margin-auto" id="edad_busqueda" onclick=busqueda_url(this.id)>Ver candidatos</button>
+									</div>
 								</div>
 							</li>
 							<li>
@@ -978,17 +930,17 @@
 												</div>									
 											</div>
 									</ul>
-									Mira los candidatos ordenados de mayor a menor por cantidad de bienes muebles del partido político que desee: 
-									<p>
-										<select class="uk-select opt_select uk-margin-small-right" type="text" onchange=tipo_candidato_select(this)>
+									<h5 class="uk-text-muted uk-text-center">
+										Mire los candidatos ordenados de mayor a menor por cantidad de bienes muebles del partido político que desee: 
+									</h5>
+									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
+										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
-										</select >
-									</p>
-									<p>
-										<select class="uk-select opt_select uk-margin-small-right" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
+										</select>
+										<select class="uk-select opt_select uk-margin-small-bottom" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -998,7 +950,6 @@
 											<option value="FRENTE POPULAR AGRICOLA FIA DEL PERU - FREPAP">FREPAP</option>
 											<option value="FUERZA POPULAR">Fuerza Popular</option>
 											<option value="JUNTOS POR EL PERU">Juntos Por el Perú</option>
-											
 											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
 											<option value="PARTIDO MORADO">Partido Morado</option>
 											<option value="PARTIDO NACIONALISTA PERUANO">Partido Nacionalista Peruano</option>
@@ -1010,12 +961,15 @@
 											<option value="RENOVACION POPULAR">Renovación Popular</option>
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
-										</select >
-									</p>
-									<p uk-margin>
-										<button class="uk-button red-button uk-align-center" id="bien_mueble" onclick=busqueda_url(this.id)>Ver candidatos</button>
-									</p>
-									
+										</select>
+										<select id="edad_select" class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=cambiar_organizacion(this)>
+											<option value="default" disabled selected>Elegir Rango  de Edad</option>
+											<option value="18-29">18 a 29 años</option>
+											<option value="30-59">30 a 59</option>
+											<option value="60-85">60 a 85</option>
+										</select>
+										<button class="uk-button red-button uk-flex uk-flex-center uk-margin-auto" id="edad_busqueda" onclick=busqueda_url(this.id)>Ver candidatos</button>
+									</div>
 								</div>
 							</li>
 						</ul>
@@ -1029,7 +983,6 @@
 							<h2 class="uk-margin-remove-adjacent uk-text-bold uk-text-center uk-margin-small-bottom">
 								FORMACIÓN ACADÉMICA
 							</h2>
-							<!--<p class="uk-article-meta">Written on March 21, 2019. Posted in <a href="#">Blog</a> | <span data-uk-icon="icon: future"></span> Takes 7 min reading.</p>-->
 						</header>
 						<p class="paragraph"> </p>
 
@@ -1099,17 +1052,17 @@
 												</div>									
 											</div>
 									</ul>
-									Mira los candidatos según el nivel académico alcanzado del partido político que desee: 
-									<p>
-										<select class="uk-select opt_select uk-margin-small-right" type="text" onchange=tipo_candidato_select(this)>
+									<h5 class="uk-text-muted uk-text-center">
+										Mire los candidatos según el nivel académico alcanzado del partido político que desee: 
+									</h5>
+									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
+										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
-										</select >
-									</p>
-									<p>
-										<select class="uk-select opt_select uk-margin-small-right" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
+										</select>
+										<select class="uk-select opt_select uk-margin-small-bottom" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -1119,7 +1072,6 @@
 											<option value="FRENTE POPULAR AGRICOLA FIA DEL PERU - FREPAP">FREPAP</option>
 											<option value="FUERZA POPULAR">Fuerza Popular</option>
 											<option value="JUNTOS POR EL PERU">Juntos Por el Perú</option>
-											
 											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
 											<option value="PARTIDO MORADO">Partido Morado</option>
 											<option value="PARTIDO NACIONALISTA PERUANO">Partido Nacionalista Peruano</option>
@@ -1131,26 +1083,16 @@
 											<option value="RENOVACION POPULAR">Renovación Popular</option>
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
-										</select >
-									</p>
-									<p>
-										<select id="academico_select" class="uk-select opt_select uk-margin-small-right" type="text" onchange=cambiar_organizacion(this)>
-											<option value="default" disabled selected>Elegir Nivel Académico</option>
-											<option value="concluyo_primaria">Concluyó primaria</option>
-											<option value="concluyo_secundaria">Concluyó secundaria</option>
-											<option value="concluyo_estudio_tecnico">Concluyó técnico</option>
-											<option value="concluyo_estudio_no_universitario">Concluyó estudios no universitarios</option>
-											<option value="concluyo_estudio_universitario">Concluyó universidad</option>
-											<option value="concluyo_estudio_postgrado">Concluyó postgrado</option>
-											<option value="maestro_doctor">Maestro o Doctor</option>
-										</select >
-									</p>
-									<p uk-margin>
-										<button class="uk-button red-button uk-align-center" id="academico_busqueda" onclick=busqueda_url(this.id)>Ver candidatos</button>
-									</p>
+										</select>
+										<select id="edad_select" class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=cambiar_organizacion(this)>
+											<option value="default" disabled selected>Elegir Rango  de Edad</option>
+											<option value="18-29">18 a 29 años</option>
+											<option value="30-59">30 a 59</option>
+											<option value="60-85">60 a 85</option>
+										</select>
+										<button class="uk-button red-button uk-flex uk-flex-center uk-margin-auto" id="edad_busqueda" onclick=busqueda_url(this.id)>Ver candidatos</button>
+									</div>
 								</div>
-
-					
 							</li>
 						</ul>
 					<br>
@@ -1192,7 +1134,7 @@
 	<!--FOOTER-->
 	<footer class="uk-section uk-section-small uk-section-muted">
 		<div class="uk-container">
-			<p class="uk-text-small uk-text-center">Copyright © Perú Informado 2021</p>
+	><p class="uk-text-small uk-text-center">Copyright © Perú Informado 2021
 		</div>
 	</footer>
 	<!--/FOOTER-->
@@ -1215,8 +1157,7 @@
 					</a>
 				</li>
 			</ul>
-			<!--<h3>Title</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	><!--<h3>Title</h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 			-->
 		</div>
 	</div>

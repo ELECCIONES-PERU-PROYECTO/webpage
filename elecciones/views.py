@@ -732,8 +732,6 @@ def analisisGraficos(request):
 #   return render(request,'elecciones/test.html', 
 #     { 'candidato' : candidato }
 #   ) 
-def analisisGraficosPresi(request):
-  return render(request, 'elecciones/graphics-presi.html',{})
 
 def iaDisplay(request):
   if request.method == "GET":
