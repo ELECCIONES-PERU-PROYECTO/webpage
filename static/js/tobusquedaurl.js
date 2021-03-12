@@ -27,6 +27,26 @@ function tipo_candidato_select(select_)
     console.log("tipo_candidato",tipo_candidato)
 }
 
+function sessionStorage_tipo_candidato(tipo_candidato_)
+{
+    if(tipo_candidato_ == "presidenciales")
+    {
+        let data = { tipo_filtro :'candidatos', tipo_candiato_s : 'Candidatos Presidenciales' }
+        sessionStorage.setItem('data_filtro',JSON.stringify(data))
+    }
+    else if(tipo_candidato_ == "congresales")
+    {
+        let data = { tipo_filtro :'candidatos', tipo_candiato_s : 'Candidatos Congresales' }
+        sessionStorage.setItem('data_filtro',JSON.stringify(data))
+    
+    }
+    else if(tipo_candidato_ == "parlamento")
+    {
+        let data = { tipo_filtro :'candidatos', tipo_candiato_s : 'Candidatos Parlamento Andino' }
+        sessionStorage.setItem('data_filtro',JSON.stringify(data))
+    }
+}
+
 
 function busqueda_url(id_)
 {   
@@ -39,6 +59,7 @@ function busqueda_url(id_)
           }, 1000)
           return 
       }
+    sessionStorage_tipo_candidato(tipo_candidato)
     if(id_=="edad_busqueda")
     {
         sessionStorage.setItem('data_filtros_seleccionados', JSON.stringify([13]))
