@@ -86,16 +86,16 @@
             <option value="VICTORIA NACIONAL">Victoria Nacional</option>
           </select >
       </div>
-      <button class="uk-button uk-button-primary red-button uk-margin-auto uk-flex uk-flex-center" type="submit" value="Submit" style="margin-top: 1.5rem;">
+      <button class="uk-button uk-button-primary red-button uk-margin-auto uk-margin-medium-bottom uk-flex uk-flex-center" type="submit" value="Submit" style="margin-top: 1.5rem;">
         Ver candidatos
       </button>
     </div>
     </form>
-      <ul class="uk-subnav uk-subnav-pill uk-margin-large-left">
+      <ul class="uk-subnav uk-subnav-pill pildoras_ctn">
         {% if candidatos_disgusto|length > 0 %}
         <li uk-filter-control=".tag-Disgusto"><a href="#">Disgusto</a></li>
         {% endif %}
-        {% if candidatos_molestialength > 0 %}
+        {% if candidatos_molestia|length > 0 %}
         <li uk-filter-control=".tag-Molestia"><a href="#">Molestia</a></li>
         {% endif %}
         {% if candidatos_tristeza|length > 0 %}
@@ -114,9 +114,9 @@
         <li uk-filter-control=".tag-Seriedad"><a href="#">Seriedad</a></li>
         {% endif %}
       </ul>
-    <ul class="padding js-filter uk-child-width-1-2@m uk-child-width-1-1@s uk-child-width-1-3@l uk-text-center"  uk-grid uk-lightbox="animation: fade">
+    <ul class="uk-padding-remove ai_results_ctn uk-margin-auto uk-container-xlarge js-filter uk-child-width-1-1 uk-text-center" uk-lightbox="animation: fade">
       {% for candidato in candidatos_disgusto %}
-      <li class="tag-Disgusto">
+      <li class="tag-Disgusto uk-padding-remove">
         <div class="uk-card uk-card-default uk-box-shadow-large ">
           <a class="uk-inline" href={{ candidato.url }}>
             <img src={{ candidato.url }} alt="">
@@ -128,7 +128,7 @@
       </li>
       {% endfor %}
       {% for candidato in candidatos_alegria %}
-      <li class="tag-Alegría">
+      <li class="tag-Alegría uk-padding-remove">
         <div class="uk-card uk-card-default uk-box-shadow-large ">
           <a class="uk-inline" href={{ candidato.url }}>
             <img src={{ candidato.url }} alt="">
@@ -140,7 +140,7 @@
       </li>
       {% endfor %}
       {% for candidato in candidatos_sorpresa %}
-      <li class="tag-Sorpresa">
+      <li class="tag-Sorpresa uk-padding-remove">
         <div class="uk-card uk-card-default uk-box-shadow-large ">
           <a class="uk-inline" href={{ candidato.url }}>
             <img src={{ candidato.url }} alt="">
@@ -152,7 +152,7 @@
       </li>
       {% endfor %}
       {% for candidato in candidatos_seriedad %}
-      <li class="tag-Seriedad">
+      <li class="tag-Seriedad uk-padding-remove">
         <div class="uk-card uk-card-default uk-box-shadow-large ">
           <a class="uk-inline" href={{ candidato.url }}>
             <img src={{ candidato.url }} alt="">
@@ -164,7 +164,7 @@
       </li>
       {% endfor %}
       {% for candidato in candidatos_tristeza %}
-      <li class="tag-Tristeza">
+      <li class="tag-Tristeza uk-padding-remove">
         <div class="uk-card uk-card-default uk-box-shadow-large ">
           <a class="uk-inline" href={{ candidato.url }}>
             <img src={{ candidato.url }} alt="">
@@ -176,7 +176,7 @@
       </li>
       {% endfor %}
       {% for candidato in candidatos_molestia %}
-      <li class="tag-Molestia">
+      <li class="tag-Molestia uk-padding-remove">
         <div class="uk-card uk-card-default uk-box-shadow-large ">
           <a class="uk-inline" href={{ candidato.url }}>
             <img src={{ candidato.url }} alt="">
@@ -188,7 +188,7 @@
       </li>
       {% endfor %}
       {% for candidato in candidatos_miedo %}
-      <li class="tag-Miedo">
+      <li class="tag-Miedo uk-padding-remove">
         <div class="uk-card uk-card-default uk-box-shadow-large ">
           <a class="uk-inline" href={{ candidato.url }}>
             <img src={{ candidato.url }} alt="">

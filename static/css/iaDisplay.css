@@ -8,6 +8,12 @@
 	left: 0;
 	right: 0;
 }
+.ai_results_ctn {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 460px);
+	grid-gap: 30px;
+	justify-content: center;
+}
 .uk-sticky-placeholder {
 	height: 0 !important;
 }
@@ -69,6 +75,14 @@ h1, h2, h3, h4, h5, h6, a, p, li, span, button {
 	text-rendering: optimizeLegibility;
 }
 
+li {
+	list-style: none;
+}
+
+.pildoras_ctn {
+	justify-content: center;
+}
+
 .uk-card-body {
 	padding: 15px 10px  !important;
 }
@@ -101,7 +115,16 @@ h1, h2, h3, h4, h5, h6, a, p, li, span, button {
 }
 
 .footer {
-	position: absolute;
+	position: sticky;
 	width: 100%;
 	bottom: 0;
+}
+
+@media screen and (max-width: 400px){
+	.ai_results_ctn {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, 320px);
+		grid-gap: 30px;
+		justify-content: center;
+	}
 }
