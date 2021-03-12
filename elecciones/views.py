@@ -726,14 +726,6 @@ def mainpage(request):
 def analisisGraficos(request):
   return render(request,'elecciones/graphics.html',{})
 
-# def test(request):
-#   candidato = DatosPersonales.objects.filter(Q(dni_candidato = request.GET.get("dni")))
-  
-#   print(candidato)
-#   return render(request,'elecciones/test.html', 
-#     { 'candidato' : candidato }
-#   ) 
-
 def iaDisplay(request):
   if request.method == "GET":
     print("request.method")
@@ -797,12 +789,21 @@ def iaDisplay(request):
 def nosotros(request):
   return render(request,'elecciones/nosotros.html',{})
 
-def test(request):
-  candidato = DatosPersonales.objects.filter(Q(dni_candidato = request.GET.get("dni")))
-  return render(request,'elecciones/test.html', 
-    { 'candidato' : candidato }
-  ) 
+def error_404(request, exception):
+  data = {}
+  return render(request,'404.html', data)
 
+def error_500(request):
+  data = {}
+  return render(request,'500.html', data)
+
+def error_403(request, exception):
+  data = {}
+  return render(request,'403.html', data)
+
+def error_400(request, exception):
+  data = {}
+  return render(request,'400.html', data)
 
 def subir_data(request):
   # Leer el archivo 'datos.csv' con reader() y

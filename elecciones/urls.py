@@ -11,3 +11,8 @@ urlpatterns = [
   #path('eliminar/', views.eliminar_data, name='eliminar_data'),
   #path('correjir', views.corregir_data, name='correjir')
 ]
+
+handler404 = 'elecciones.views.error_404'
+handler500 = 'elecciones.views.error_500'
+handler403 = 'elecciones.views.error_403'
+handler400 = 'elecciones.views.error_400'
