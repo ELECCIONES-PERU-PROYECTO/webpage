@@ -733,6 +733,76 @@ def analisisGraficos(request):
 #     { 'candidato' : candidato }
 #   ) 
 
+def iaDisplay(request):
+  if request.method == "GET":
+    print("request.method")
+    cargo_postula_list = request.GET.getlist('cargo_postula')    
+    if len(cargo_postula_list) == 0:
+      cargo_postula_ = "presidenciales" 
+    else:
+      cargo_postula_ = cargo_postula_list[0]
+    organizacion_list = request.GET.getlist("organizacion")
+    if len(organizacion_list) == 0:
+      organizacion_ = "" 
+    else:
+      organizacion_ = organizacion_list[0]
+
+    if cargo_postula_ == "presidenciales":
+      WHERE_candidato = " (cargo_eleccion = 'PRESIDENTE DE LA REPÚBLICA' OR cargo_eleccion  ='PRIMER VICEPRESIDENTE DE LA REPÚBLICA' OR  cargo_eleccion = 'SEGUNDO VICEPRESIDENTE DE LA REPÚBLICA') "
+    elif cargo_postula_ == "congresales":
+      WHERE_candidato = " (cargo_eleccion = 'CONGRESISTA DE LA REPÚBLICA') "
+    elif cargo_postula_ == "parlamento":
+      WHERE_candidato = " (cargo_eleccion = 'REPRESENTANTE ANTE EL PARLAMENTO ANDINO') "
+    query_ = "SELECT * FROM ai_total WHERE "+WHERE_candidato+" AND organizacion_politica='"+organizacion_+"' AND emocion='Alegría'"
+    candidatos_alegria = AiTotal.objects.raw(query_)
+    #print("query_: ",query_)
+    
+    query_ = "SELECT * FROM ai_total WHERE "+WHERE_candidato+" AND organizacion_politica='"+organizacion_+"' AND emocion='Molestia'"
+    candidatos_molestia = AiTotal.objects.raw(query_)
+    #print("query_: ",query_)
+    
+    query_ = "SELECT * FROM ai_total WHERE "+WHERE_candidato+" AND organizacion_politica='"+organizacion_+"' AND emocion='Miedo'"
+    candidatos_miedo = AiTotal.objects.raw(query_)
+    #print("query_: ",query_)
+
+    query_ = "SELECT * FROM ai_total WHERE "+WHERE_candidato+" AND organizacion_politica='"+organizacion_+"' AND emocion='Seriedad'"
+    candidatos_seriedad = AiTotal.objects.raw(query_)
+    #print("query_: ",query_)
+
+    query_ = "SELECT * FROM ai_total WHERE "+WHERE_candidato+" AND organizacion_politica='"+organizacion_+"' AND emocion='Sorpresa'"
+    candidatos_sorpresa = AiTotal.objects.raw(query_)
+    #print("query_: ",query_)
+    
+    query_ = "SELECT * FROM ai_total WHERE "+WHERE_candidato+" AND organizacion_politica='"+organizacion_+"' AND emocion='Disgusto'"
+    candidatos_disgusto = AiTotal.objects.raw(query_)
+    #print("query_: ",query_)
+
+    query_ = "SELECT * FROM ai_total WHERE "+WHERE_candidato+" AND organizacion_politica='"+organizacion_+"' AND emocion='Tristeza'"
+    candidatos_tristeza = AiTotal.objects.raw(query_)
+    #print("query_: ",query_)
+
+    return render(request,
+    'elecciones/iaDisplay.html',
+    {
+      'candidatos_tristeza':candidatos_tristeza,
+      'candidatos_alegria':candidatos_alegria,
+      'candidatos_sorpresa':candidatos_sorpresa,
+      'candidatos_disgusto':candidatos_disgusto,
+      'candidatos_molestia':candidatos_molestia,
+      'candidatos_miedo':candidatos_miedo,
+      'candidatos_seriedad':candidatos_seriedad
+    })
+
+def nosotros(request):
+  return render(request,'elecciones/nosotros.html',{})
+
+def test(request):
+  candidato = DatosPersonales.objects.filter(Q(dni_candidato = request.GET.get("dni")))
+  return render(request,'elecciones/test.html', 
+    { 'candidato' : candidato }
+  ) 
+
+
 def subir_data(request):
   # Leer el archivo 'datos.csv' con reader() y
   # mostrar todos los registros, uno a uno:

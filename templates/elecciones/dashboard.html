@@ -1,18 +1,13 @@
 {% extends "elecciones/base.html" %}
 {% block title %}Opciones de Búsqueda{% endblock %}
 {% load static %}
-{% block content %}
 {% block css %}
 <link href="{% static "css/dashboard.css" %}" rel="stylesheet">
 <link href="{% static "css/loader.css" %}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/css/uikit.min.css" />
 {% endblock %}
-<script>
-
-</script>
-
-</head>
-<body data-uk-filter="target: .js-filter">
+{% block content %}
+<body>
   <!-- OFFCANVAS -->
   <div id="offcanvas-nav" class="uk-position-fixed" data-uk-offcanvas="flip: true; overlay: true; esc-close: true">
     <div class="uk-offcanvas-bar candidatos-sidebar uk-offcanvas-bar-animation uk-offcanvas-slide uk-padding-remove">
@@ -1244,40 +1239,43 @@
   </div>
   <!-- /CONTENT -->
 
+  <!-- LOADER -->
   <div id="preloader">
 		<div id="loader"></div>
 	</div>
-  <script src="{% static "js/variables.js"%}"></script>
-  <script src="{% static "js/jquery-2.1.3.min.js"%}"></script>
-  <script src="{% static "js/loader.js"%}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit-icons.min.js"></script>
-  <script src="{% static "js/filter.js"%}"></script>
-  <script src="{% static "js/filter_options.js"%}"></script>
-  <script src="{% static "js/display_filter.js"%}"></script>
-  <script src="{% static "js/filter_orga.js"%}"></script>
-  <script>
-    let url = window.location.href
-    let text = url.split("/")
-    
-    let text_info = document.getElementById('text_info')
-    let video_expl = document.getElementById('video_explanation')
-    
-    if(text_info) {
-      if(text[text.length - 1] === VIEW || text[text.length - 1] === VIEW + "#") {
-        text_info.textContent="Escoge al menos un filtro para que aparezcan los resultados."
-        text_info.style.marginBottom = "1rem"
+  <!-- /LOADER -->
+{% endblock %}
 
-        if(window.innerWidth > 960) 
-          video_expl.href = "https://www.youtube.com/watch?v=BTHaY6tmFRs"
-        else {
-          video_expl.href = "https://www.youtube.com/watch?v=hEPIN4m_BbE"
-          video_expl.style.width = "70%"
-          video_expl.style.margin = "auto"
-        }
-      } else {
-        text_info.textContent="No se encontraron resultados para esta búsqueda"
+{% block js %}
+<script src="{% static "js/variables.js"%}"></script>
+<script src="{% static "js/jquery-2.1.3.min.js"%}"></script>
+<script src="{% static "js/loader.js"%}"></script>
+<script src="{% static "js/filter.js"%}"></script>
+<script src="{% static "js/filter_options.js"%}"></script>
+<script src="{% static "js/display_filter.js"%}"></script>
+<script src="{% static "js/filter_orga.js"%}"></script>
+<script>
+  let url = window.location.href
+  let text = url.split("/")
+  
+  let text_info = document.getElementById('text_info')
+  let video_expl = document.getElementById('video_explanation')
+  
+  if(text_info) {
+    if(text[text.length - 1] === VIEW || text[text.length - 1] === VIEW + "#") {
+      text_info.textContent="Escoge al menos un filtro para que aparezcan los resultados."
+      text_info.style.marginBottom = "1rem"
+
+      if(window.innerWidth > 960) 
+        video_expl.href = "https://www.youtube.com/watch?v=BTHaY6tmFRs"
+      else {
+        video_expl.href = "https://www.youtube.com/watch?v=hEPIN4m_BbE"
+        video_expl.style.width = "70%"
+        video_expl.style.margin = "auto"
       }
+    } else {
+      text_info.textContent="No se encontraron resultados para esta búsqueda"
     }
-  </script>
+  }
+</script>
 {% endblock %}

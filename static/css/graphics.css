@@ -22,6 +22,11 @@ nav.nav-scroll > ul > li > a {
   font-weight: 500;
 }
 
+.red-button{
+	color: #FFF;
+	background: #b62222;
+}
+
 .text-nav {
 	font-weight: 500;
 }
@@ -123,4 +128,9 @@ margin: 20px;
 }
 #go-top a:hover {
 	background: #000000;
+}
+
+.red-button{
+	background-color: rgb(182 34 34) !important;
+    border-radius: 4px;
 }

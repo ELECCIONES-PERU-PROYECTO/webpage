@@ -5,35 +5,20 @@
     </span>
     <br>
     {% if page.has_previous %}
-      <a onclick="pagination(this.id)" id="1" class="no-text-styles-hover">
+      <a href="?page=1" class="no-text-styles-hover">
         <span uk-icon="icon: chevron-double-left; ratio: 1.5" title="Primero"></span>
       </a>
-      <a onclick="pagination(this.id)" id="{{ page.previous_page_number }}" class="no-text-styles-hover">
+      <a href="?page={{ page.previous_page_number }}" class="no-text-styles-hover">
         <span uk-icon="icon: chevron-left; ratio: 1.5" title="Anterior"></span>
       </a>
     {% endif %}
     {% if page.has_next %}
-      <a onclick="pagination(this.id)" id="{{ page.next_page_number }}" class="no-text-styles-hover">
+      <a href="?page={{ page.next_page_number }}" class="no-text-styles-hover">
         <span uk-icon="icon: chevron-right; ratio: 1.5" title="Último"></span>
       </a>
-      <a onclick="pagination(this.id)" id="{{ page.paginator.num_pages }}" class="no-text-styles-hover">
+      <a href="?page={{ page.paginator.num_pages }}" class="no-text-styles-hover">
         <span uk-icon="icon: chevron-double-right; ratio: 1.5" title="Siguiente"></span>
       </a>
     {% endif %}
   </span>
 </div>
-
-<script>
-  let hrf = window.location.href
-  let xrl = hrf.split("/")
-  let busq = xrl[xrl.length-1]
-  let page = "&page="
-
-  function pagination(id) {
-    let old_page = busq.lastIndexOf("&")
-    if(busq.indexOf('page') != -1) 
-      window.location = busq.slice(0, old_page) + page + id
-    else
-      window.location = window.location + page + id
-  }
-</script>
