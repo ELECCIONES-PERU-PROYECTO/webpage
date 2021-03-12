@@ -36,8 +36,8 @@
 						</div>
 						<div class="uk-navbar-right">
 							<ul class="uk-navbar-nav">
-								<li class="uk-visible@s nav-type"><a href="{% url 'elecciones:mainpage' %}">Inicio</a></li>
-								<li class="uk-visible@s nav-type"><a href="{% url 'elecciones:analisisGraficos' %}">Análisis de datos</a></li>
+								<li class="uk-visible@s"><a class="nav_options" href="{% url 'elecciones:mainpage' %}">Inicio</a></li>
+								<li class="uk-visible@s"><a class="nav_options" href="{% url 'elecciones:analisisGraficos' %}">Análisis de datos</a></li>
 								<li>
 									<a class="nav_options" href="#" data-uk-icon="chevron-down">Búsqueda</a>
 									<div class="uk-navbar-dropdown">
@@ -191,7 +191,6 @@
 					<a class="uk-text-uppercase uk-nav-header nav_options uk-text-left" href="{% url 'elecciones:analisisGraficos' %}">
 						Análisis de Datos
 					</a>
-					<!--<span style="font-size: 23px; font-weight:500;" class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>-->
 				</li>
 				
 				<li class="uk-text-uppercase uk-nav-header nav_options">Búsqueda</li>
@@ -219,10 +218,8 @@
 {% endblock %}
 {% block js %}
 <!-- JS FILES -->
-<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit.min.js"></script>
 <script src="/static/js/filter_options.js"></script>
 <script src="/static/js/variables.js"></script>
 <script src="/static/js/jquery-2.1.3.min.js"></script>
 <script src="/static/js/loader.js"></script>
-<script src="/static/js/filter_options.js"></script>
 {% endblock %}
