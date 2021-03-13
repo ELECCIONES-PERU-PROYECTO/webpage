@@ -1,3 +1,5 @@
+@import url("fonts.css");
+
 /* -- Colors -- */
 .bg_red {
 	background-color: rgb(255 255 255);
@@ -97,8 +99,9 @@ ul.uk-navbar-nav li.nav-options a {
 	height: 75vh;
 }
 
-#text_info {
+h5#text_info {
 	line-height: 26px;
+	font-family: 'poppins-light';
 }
 
 #video_explanation {

@@ -236,10 +236,8 @@ def function_filtro_normal(self, stack_, SELECT_candidato, WHERE_candidato):
       self[18] = ""
       return retorno
 
-
 def unkipify(value):
   return value if value != None else "unk"
-
 
 def filter_function(request):
   # Tipo de Filtro
@@ -728,7 +726,6 @@ def analisisGraficos(request):
 
 def iaDisplay(request):
   if request.method == "GET":
-    print("request.method")
     cargo_postula_list = request.GET.getlist('cargo_postula')    
     if len(cargo_postula_list) == 0:
       cargo_postula_ = "presidenciales" 
@@ -774,6 +771,11 @@ def iaDisplay(request):
     candidatos_tristeza = AiTotal.objects.raw(query_)
     #print("query_: ",query_)
 
+    if(candidatos_alegria or candidatos_molestia or candidatos_miedo or candidatos_seriedad or candidatos_sorpresa or candidatos_disgusto or candidatos_tristeza):
+      have_results = True
+    else:
+      have_results = False
+
     return render(request,
     'elecciones/iaDisplay.html',
     {
@@ -783,7 +785,8 @@ def iaDisplay(request):
       'candidatos_disgusto':candidatos_disgusto,
       'candidatos_molestia':candidatos_molestia,
       'candidatos_miedo':candidatos_miedo,
-      'candidatos_seriedad':candidatos_seriedad
+      'candidatos_seriedad':candidatos_seriedad,
+      'have_results': have_results
     })
 
 def nosotros(request):
