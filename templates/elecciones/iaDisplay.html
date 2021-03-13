@@ -294,9 +294,27 @@
 	</div>
   <!-- /LOADER -->
 {% endblock %} 
-{% block js %} 
+{% block js %}
   <script src="{% static "js/variables.js"%}"></script>
   <script src="{% static "js/jquery-2.1.3.min.js"%}"></script>
   <script src="{% static "js/loader.js"%}"></script>
   <script src="{% static "js/filter_options.js"%}"></script>
+  <script>
+    let url = window.location.href
+    let text = url.split("/")
+    
+    let text_info = document.getElementById('text_info')
+    let icon_text_info = document.getElementById('icon_text_info')
+
+    console.log(text[text.length - 1])
+    if(text_info) {
+      if(text[text.length - 1] === IA_VIEW || text[text.length - 1] === IA_VIEW + "#") {
+        icon_text_info.style.display = "none"
+        text_info.style.display = "none"
+      } else {
+        text_info.textContent="No se encontraron resultados para esta búsqueda."
+        icon_text_info.style.display = "block"
+      }
+    }
+</script>
 {% endblock %}
