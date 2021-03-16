@@ -23,13 +23,6 @@
             </li>
           </ul>
           <ul class="uk-nav uk-nav-default uk-nav-parent-icon uk-hidden@m" data-uk-nav>
-            <li class="uk-nav-header">
-              <a class="nav_opt" href="{% url 'elecciones:mainpage' %}">
-              Inicio
-              </a>
-            </li>
-          </ul>
-          <ul class="uk-nav uk-nav-default uk-nav-parent-icon uk-hidden@m" data-uk-nav>
             <li class="uk-nav-header">Tipos de búsqueda</li>
             <li class="nav-options pres_opt mob_opt">
               <a class="nav_opt" onclick="activar_candidatos(this.text)">Candidatos Presidenciales</a>
@@ -178,7 +171,7 @@
                         </div>
                       </div>
                       <div>
-                        <label><input type="radio" id="no_tiene" value="no" name="ifsentencias" onclick="noTiene_opcion(this)">No tiene sentencias</label>
+                        <label><input type="radio" id="no_tiene" value="NO" name="ifsentencias" onclick="noTiene_opcion(this)">No tiene sentencias</label>
                       </div>
                     </div>
                     <a onclick="quitar_seleccion_sentencias()" class="uk-icon-link trash_icon" uk-icon="icon: trash; ratio: 1"></a>
@@ -1104,7 +1097,7 @@
             </li>
           </ul>
           <ul class="uk-navbar-nav uk-hidden@s uk-visible@xs" id="opciones_candidatos"> 
-            <li class="nav-options uk-flex">
+            <li class="nav-options uk-flex uk-padding-remove">
               <a class="nav_opt" href="{% url 'elecciones:mainpage' %}" style="min-height: auto;">
                 <span uk-icon="icon: home; ratio: 1"></span>
               </a>
@@ -1143,7 +1136,7 @@
         </nav>
       </div> -->
       <!--/SELECCTION-->
-      <div class="uk-container uk-container-expand uk-margin-top uk-margin-bottom uk-flex uk-flex-center uk-flex-column uk-flex-wrap" style="padding-top: 3rem;">
+      <div class="uk-container uk-container-expand uk-margin-top uk-flex uk-flex-center uk-flex-column uk-flex-wrap" style="padding-top: 2.3rem; padding-bottom: 2.5rem;">
         {% for organizacion in organizaciones_return %}
         <div class="uk-card uk-card-default card_results uk-card-body uk-flex-middle uk-width-1-2@xl uk-width-1-1@m uk-width-3-4@s uk-flex-center uk-margin-bottom uk-margin-auto" uk-grid>
           <div class="uk-text-center uk-padding-remove">
@@ -1275,11 +1268,11 @@
           gif_expl.style.margin = "auto"
         }else {
           gif_expl.src = "https://s4.gifyu.com/images/Presentation2_small.gif"
-          gif_expl.style.minWidth = "300px"
+          gif_expl.style.minWidth = "280px"
           gif_expl.style.margin = "auto"
         }
       } else {
-        text_info.textContent="No se encontraron resultados para esta búsqueda"
+        text_info.textContent="No se encontraron resultados para esta búsqueda."
         icon_text_info.style.display = "block"
         gif_expl.style.display = "none"
       }
