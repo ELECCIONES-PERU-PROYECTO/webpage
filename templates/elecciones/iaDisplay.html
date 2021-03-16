@@ -3,11 +3,13 @@
 {% load static %}
 {% block css %}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/css/uikit.min.css" />
-  <link type='text/css' href="{% static "css/iaDisplay.css" %}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <link type='text/css' href="{% static "css/loader.css" %}" rel="stylesheet">
+  <link type='text/css' href="{% static "css/iaDisplay.css" %}" rel="stylesheet">
+  <link type="text/css" href="{% static "css/styles.css" %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -232,11 +234,6 @@
     {% endif %}
   </div>
   <!-- /CONTENT -->
-  <!-- LOADER -->
-  <div id="preloader">
-		<div id="loader"></div>
-	</div>
-  <!-- /LOADER -->
   <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a></div>
   <!--OFF CANVAS NAV-->
   <div id="offcanvas-nav" data-uk-offcanvas="flip: true; overlay: false">
@@ -244,34 +241,34 @@
       <button class="uk-offcanvas-close uk-close uk-icon" type="button" data-uk-close></button>
 
       <ul class="uk-nav uk-nav-default">
-        <li style="font-size: 21px; font-weight:500; color:#ffffff" class="uk-nav-header">Opciones</li>
+        <li style="font-size: 18px; color:#ffffff" class="uk-nav-header">Opciones</li>
         <li>
-          <a style="font-size: 20px; font-weight:500; color:#ffffff" href="{% url 'elecciones:mainpage' %}">
+          <a style="font-size: 16px; color:#ffffff" href="{% url 'elecciones:mainpage' %}">
             <span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
             Inicio
           </a>
         </li>
         <li>
-          <a style="font-size: 20px; font-weight:500; color:#ffffff" href="{% url 'elecciones:analisisGraficos' %}">
+          <a style="font-size: 16px; color:#ffffff" href="{% url 'elecciones:analisisGraficos' %}">
             <span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
             Análisis de datos
           </a>
         </li>
-        <li style="font-size: 20px; font-weight:500; color:#ffffff" class="  nav_options">
+        <li style="font-size: 16px; color:#ffffff" class="  nav_options">
           <span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
           Búsqueda
         </li>
         <li>
-          <a  class="uk-margin-left color" style="font-size: 18px;"  href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
+          <a  class="uk-margin-left color" style="font-size: 16px; color:#ffffff;" href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
         </li>
         <li>
-          <a class="uk-margin-left color" style="font-size: 18px;" href="#" onclick="activar_candidatos(this.text)">Congresales</a>
+          <a class="uk-margin-left color" style="font-size: 16px; color:#ffffff;" href="#" onclick="activar_candidatos(this.text)">Congresales</a>
         </li>
         <li>
-          <a class="uk-margin-left color" style="font-size: 18px;" href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
+          <a class="uk-margin-left color" style="font-size: 16px; color:#ffffff;" href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
         </li>
         <li>
-          <a class="uk-margin-left color" style="font-size: 18px;" href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
+          <a class="uk-margin-left color" style="font-size: 16px; color:#ffffff;" href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
         </li>
       </ul>
     </div>

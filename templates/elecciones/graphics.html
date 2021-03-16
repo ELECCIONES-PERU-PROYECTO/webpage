@@ -9,40 +9,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 <link type="text/css" href="{% static "css/graphics.css" %}" rel="stylesheet">
 <link type="text/css" href="{% static "css/loader.css" %}" rel="stylesheet">
+<link type="text/css" href="{% static "css/styles.css" %}" rel="stylesheet">
 {% endblock %}
 {% block content %}
 <body id="top">
 	<!--HEADER-->
 	<header id="header" style="background-color: #fff;" data-uk-sticky="animation: uk-animation-fade;">
 		<div class="uk-container">
-			<nav id="navbar" data-uk-navbar="mode: click;">
+			<nav id="navbar" data-uk-navbar="mode: hover;">
 				<div class="uk-navbar-left nav-overlay">
 				</div>
-				<div class="uk-navbar-center nav-overlay">
+				<div class="uk-navbar-left nav-overlay">
 					<a class="uk-navbar-item uk-logo" href="{% url 'elecciones:mainpage' %}" title="Logo">
-						<img class="uk-visible@s" src="{% static "images/logos/ELEGIMOS_negro.png" %}" alt="Logo">
-						<img class="uk-hidden@s" src="{% static "images/logos/ELEGIMOS_favicon.png" %}" alt="Logo">
+						<img src="{% static "images/logos/ELEGIMOS_negro.png" %}" alt="Logo">
+						<!-- <img class="uk-hidden@s" src="{% static "images/logos/ELEGIMOS_favicon.png" %}" alt="Logo"> -->
 					</a>
 				</div>
 				<div class="uk-navbar-right nav-overlay">
 					<ul class="uk-navbar-nav uk-visible@m">
-						<li><a class="text-nav" href="{% url 'elecciones:mainpage' %}">Inicio</a></li>
+						<li><a class="nav_options" href="{% url 'elecciones:mainpage' %}">Inicio</a></li>
 						<li><a class="nav_options" href="{% url 'elecciones:analisisIA' %}">Análisis IA</a></li>
 						<li>
-							<a class="text-nav" href="#" data-uk-icon="chevron-down">Búsqueda</a>
+							<a class="nav_options" data-uk-icon="chevron-down">Búsqueda</a>
 							<div class="uk-navbar-dropdown">
 								<ul class="uk-nav uk-navbar-dropdown-nav">
 									<li>
-										<a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
+										<a style="font-size: 16px;" onclick="activar_candidatos(this.text)">Presidencial</a>
 									</li>
 									<li>
-										<a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Congresales</a>
+										<a style="font-size: 16px;" onclick="activar_candidatos(this.text)">Congresales</a>
 									</li>
 									<li>
-										<a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
+										<a style="font-size: 16px;" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
 									</li>
 									<li>
-										<a class="text-nav" href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
+										<a style="font-size: 16px;" onclick="activar_organizaciones(this.text)">Organización Política</a>
 									</li>
 								</ul>
 							</div>
@@ -1105,35 +1106,35 @@
 		<div class="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide">
 			<button class="uk-offcanvas-close uk-close" type="button" data-uk-close></button>
 			<ul class="uk-nav uk-nav-default">
-				<li style="font-size: 21px; font-weight:500; color:#ffffff" class="uk-nav-header">Opciones</li>
+				<li style="font-size: 18px;color:#ffffff" class="uk-nav-header">Opciones</li>
 				<li>
-					<a style="font-size: 20px; font-weight:500; color:#ffffff" href="{% url 'elecciones:mainpage' %}">
+					<a style="font-size: 16px; color:#ffffff" href="{% url 'elecciones:mainpage' %}">
 						<span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
 						Inicio
 					</a>
 				</li>
 				<li>
-					<a style="font-size: 20px; font-weight:500; color:#ffffff" href="{% url 'elecciones:analisisIA' %}">
+					<a style="font-size: 16px; color:#ffffff" href="{% url 'elecciones:analisisIA' %}">
 						<span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
 						Análisis IA
 					</a>
 				</li>
 				<li>
-					<a style="font-size: 20px; font-weight:500; color:#ffffff" ">
+					<a style="font-size: 16px; color:#ffffff">
 						<span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
 						Búsqueda
 					</a>
 					<li>
-						<a class="uk-margin-left color" style="font-size: 18px;" href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
+						<a class="uk-margin-left color" style="font-size: 15px; color:#ffffff;" href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
 					</li>
 					<li>
-						<a class="uk-margin-left color" style="font-size: 18px;" href="#" onclick="activar_candidatos(this.text)">Congresales</a>
+						<a class="uk-margin-left color" style="font-size: 15px; color:#ffffff;" href="#" onclick="activar_candidatos(this.text)">Congresales</a>
 					</li>
 					<li>
-						<a class="uk-margin-left color" style="font-size: 18px;" href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
+						<a class="uk-margin-left color" style="font-size: 15px; color:#ffffff;" href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
 					</li>
 					<li>
-						<a class="uk-margin-left color"style="font-size: 18px;" href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
+						<a class="uk-margin-left color"style="font-size: 15px; color:#ffffff;" href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
 					</li>
 				</li>
 			</ul>

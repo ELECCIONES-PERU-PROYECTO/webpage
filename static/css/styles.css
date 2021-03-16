@@ -1,0 +1,6 @@
+
+.uk-navbar-dropdown.uk-open.uk-navbar-dropdown-bottom-left, .uk-navbar-dropdown.uk-open.uk-navbar-dropdown-bottom-right {
+  right: 0 !important;
+  left: auto !important;
+  top: 50px !important;
+}

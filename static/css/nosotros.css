@@ -1,10 +1,12 @@
+@import url("fonts.css");
+
 .body{
 	font-family: 'Poppins', sans-serif;
 }
 
 ul.uk-navbar-nav li a.nav_options {
-    font-weight: 300;
     font-size: 16px;
+    font-weight: 500;
     color: #fff;
 }
 
@@ -22,11 +24,15 @@ h1, h2, h3, h4, h5, h6, a, p, li, span, button {
 	font-family: 'Poppins', sans-serif;
 	font-style: normal;
 	text-rendering: optimizeLegibility;
-    opacity: 0.9;
+	opacity: 0.9;
 }
 
-p, li {
-    font-weight: 300;
+p, li, a {
+	font-weight: 300;
+}
+
+.uk-navbar-dropdown-nav a {
+    font-family: 'poppins-light';
 }
 
 .grey-container {
