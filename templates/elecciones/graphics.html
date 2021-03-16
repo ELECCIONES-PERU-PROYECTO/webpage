@@ -1119,10 +1119,22 @@
 					</a>
 				</li>
 				<li>
-					<a style="font-size: 20px; font-weight:500; color:#ffffff" href="{% url 'elecciones:filter_function' %}">
+					<a style="font-size: 20px; font-weight:500; color:#ffffff" ">
 						<span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
 						Búsqueda
 					</a>
+					<li>
+						<a class="uk-margin-left color" style="font-size: 18px;" href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
+					</li>
+					<li>
+						<a class="uk-margin-left color" style="font-size: 18px;" href="#" onclick="activar_candidatos(this.text)">Congresales</a>
+					</li>
+					<li>
+						<a class="uk-margin-left color" style="font-size: 18px;" href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
+					</li>
+					<li>
+						<a class="uk-margin-left color"style="font-size: 18px;" href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
+					</li>
 				</li>
 			</ul>
 		</div>

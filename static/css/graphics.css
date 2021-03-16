@@ -19,7 +19,7 @@ nav.nav-scroll > ul {
   padding-bottom: 1rem;
 }
 nav.nav-scroll > ul > li > a {
-  font-weight: 500;
+  font-weight: 300;
 }
 
 .red-button{
@@ -28,7 +28,7 @@ nav.nav-scroll > ul > li > a {
 }
 
 .text-nav {
-	font-weight: 500;
+	font-weight: 300;
 }
 .news-slide > li > .uk-card {
   box-shadow: none;
