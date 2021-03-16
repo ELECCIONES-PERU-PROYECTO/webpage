@@ -116,6 +116,11 @@ h1, .h01 {
 	letter-spacing: -.1rem;
 }
 
+
+.uk-navbar-dropdown-nav a {
+	font-family: 'poppins-light';
+}
+
 h2, .h02 {
 	font-size: 2.4rem;
 	line-height: 1.25;
@@ -265,9 +270,6 @@ li {
 }
 ol, ul {
 	margin-left: 1.7rem;
-}
-ul li {
-	padding-left: .4rem;
 }
 ul ul, ul ol, ol ol, ol ul {
 	margin: .6rem 0 .6rem 1.7rem;
@@ -959,10 +961,15 @@ header .logo a {
  * menu toggle - (_layout.css)
  * ------------------------------------------------------------------- 
  */
-.top-bar .uk-navbar-nav li a.text-nav {
-	font-size: 16px;
-	font-weight: 300;
+.top-bar .uk-navbar-nav li a.nav_opt{
+	font-size: 15px;
+	font-weight: 500;
 }
+
+.uk-navbar-dropdown.uk-open.uk-navbar-dropdown-bottom-right, .uk-navbar-dropdown.uk-open.uk-navbar-dropdown-bottom-left {
+	top: 50px !important;
+}
+
 .menu-toggle {
 	float: left;
 	width: 40px;
@@ -1655,7 +1662,7 @@ header .logo a {
 	.blocktext h2 {
 		font-size: 2.1rem;
 	}
-	.top-bar .uk-navbar-nav li a.text-nav {
+	.top-bar .uk-navbar-nav li a.nav_opt {
 		font-size: 13px;
 	}
 }

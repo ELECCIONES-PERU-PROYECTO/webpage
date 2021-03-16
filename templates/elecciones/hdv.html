@@ -18,23 +18,35 @@
 					<div class="uk-container uk-flex">
 						<div class="uk-navbar-left">
 							<ul class="uk-navbar-nav">
-								<li><a class="text-nav" href="{% url 'elecciones:mainpage' %}">Inicio</a></li>
-								<li><a class="text-nav"href="{% url 'elecciones:analisisGraficos' %}">Analítica</a></li>
+								<li><a class="nav_opt" href="{% url 'elecciones:mainpage' %}">Inicio</a></li>
 								<li>
-									<a class="text-nav" href="#" data-uk-icon="chevron-down">Búsqueda</a>
+									<a class="nav_opt" href="#" data-uk-icon="chevron-down">Análisis</a>
 									<div class="uk-navbar-dropdown">
 										<ul class="uk-nav uk-navbar-dropdown-nav">
 											<li>
-												<a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
+												<a class="nav_opt" href="{% url 'elecciones:analisisGraficos' %}" onclick="activar_candidatos(this.text)">Análisis Gráficos</a>
 											</li>
 											<li>
-												<a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Congresales</a>
+												<a class="nav_opt" href="{% url 'elecciones:analisisIA' %}" onclick="activar_candidatos(this.text)">Análisis IA</a>
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<a class="nav_opt" href="#" data-uk-icon="chevron-down">Búsqueda</a>
+									<div class="uk-navbar-dropdown">
+										<ul class="uk-nav uk-navbar-dropdown-nav">
+											<li>
+												<a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
 											</li>
 											<li>
-												<a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
+												<a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Congresales</a>
 											</li>
 											<li>
-												<a class="text-nav" href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
+												<a class="nav_opt" href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
+											</li>
+											<li>
+												<a class="nav_opt" href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
 											</li>
 										</ul>
 									</div>
