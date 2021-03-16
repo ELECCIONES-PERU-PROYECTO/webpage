@@ -236,10 +236,8 @@ def function_filtro_normal(self, stack_, SELECT_candidato, WHERE_candidato):
       self[18] = ""
       return retorno
 
-
 def unkipify(value):
   return value if value != None else "unk"
-
 
 def filter_function(request):
   # Tipo de Filtro
@@ -270,6 +268,7 @@ def filter_function(request):
     orden_valor_mueble = unkipify(request.GET.get("valor_muebles"))
     orden_renuncias = unkipify(request.GET.get("cantidad_renuncia"))
     rango_edad_val = unkipify(request.GET.get("rango_edad"))
+    print(">>>>>>>>>>>>>>> Rango edad", rango_edad_val)
     if(request.GET.get("oriundo_input") != None):
       index = request.GET.get("oriundo_input").rfind("-")
       ordxr = request.GET.get("oriundo_input")[index : len(request.GET.get("oriundo_input"))]
@@ -725,17 +724,8 @@ def mainpage(request):
 def analisisGraficos(request):
   return render(request,'elecciones/graphics.html',{})
 
-# def test(request):
-#   candidato = DatosPersonales.objects.filter(Q(dni_candidato = request.GET.get("dni")))
-  
-#   print(candidato)
-#   return render(request,'elecciones/test.html', 
-#     { 'candidato' : candidato }
-#   ) 
-
 def iaDisplay(request):
   if request.method == "GET":
-    print("request.method")
     cargo_postula_list = request.GET.getlist('cargo_postula')    
     if len(cargo_postula_list) == 0:
       cargo_postula_ = "presidenciales" 
@@ -781,6 +771,11 @@ def iaDisplay(request):
     candidatos_tristeza = AiTotal.objects.raw(query_)
     #print("query_: ",query_)
 
+    if(candidatos_alegria or candidatos_molestia or candidatos_miedo or candidatos_seriedad or candidatos_sorpresa or candidatos_disgusto or candidatos_tristeza):
+      have_results = True
+    else:
+      have_results = False
+
     return render(request,
     'elecciones/iaDisplay.html',
     {
@@ -790,18 +785,28 @@ def iaDisplay(request):
       'candidatos_disgusto':candidatos_disgusto,
       'candidatos_molestia':candidatos_molestia,
       'candidatos_miedo':candidatos_miedo,
-      'candidatos_seriedad':candidatos_seriedad
+      'candidatos_seriedad':candidatos_seriedad,
+      'have_results': have_results
     })
 
 def nosotros(request):
   return render(request,'elecciones/nosotros.html',{})
 
-def test(request):
-  candidato = DatosPersonales.objects.filter(Q(dni_candidato = request.GET.get("dni")))
-  return render(request,'elecciones/test.html', 
-    { 'candidato' : candidato }
-  ) 
+def error_404(request, exception):
+  data = {}
+  return render(request,'404.html', data)
 
+def error_500(request):
+  data = {}
+  return render(request,'500.html', data)
+
+def error_403(request, exception):
+  data = {}
+  return render(request,'403.html', data)
+
+def error_400(request, exception):
+  data = {}
+  return render(request,'400.html', data)
 
 def subir_data(request):
   # Leer el archivo 'datos.csv' con reader() y

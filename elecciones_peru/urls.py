@@ -22,5 +22,5 @@ urlpatterns = [
    #path('admin/', admin.site.urls),
     path('', include('elecciones.urls', namespace='elecciones'))
 ]
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

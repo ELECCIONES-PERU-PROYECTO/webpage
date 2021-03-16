@@ -9,39 +9,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 <link type="text/css" href="{% static "css/graphics.css" %}" rel="stylesheet">
 <link type="text/css" href="{% static "css/loader.css" %}" rel="stylesheet">
+<link type="text/css" href="{% static "css/styles.css" %}" rel="stylesheet">
 {% endblock %}
 {% block content %}
 <body id="top">
 	<!--HEADER-->
 	<header id="header" style="background-color: #fff;" data-uk-sticky="animation: uk-animation-fade;">
 		<div class="uk-container">
-			<nav id="navbar" data-uk-navbar="mode: click;">
+			<nav id="navbar" data-uk-navbar="mode: hover;">
 				<div class="uk-navbar-left nav-overlay">
 				</div>
-				<div class="uk-navbar-center nav-overlay">
+				<div class="uk-navbar-left nav-overlay">
 					<a class="uk-navbar-item uk-logo" href="{% url 'elecciones:mainpage' %}" title="Logo">
-						<img class="uk-visible@s" src="{% static "images/logos/ELEGIMOS_negro.png" %}" alt="Logo">
-						<img class="uk-hidden@s" src="{% static "images/logos/ELEGIMOS_favicon.png" %}" alt="Logo">
+						<img src="{% static "images/logos/ELEGIMOS_negro.png" %}" alt="Logo">
+						<!-- <img class="uk-hidden@s" src="{% static "images/logos/ELEGIMOS_favicon.png" %}" alt="Logo"> -->
 					</a>
 				</div>
 				<div class="uk-navbar-right nav-overlay">
 					<ul class="uk-navbar-nav uk-visible@m">
-						<li><a class="text-nav" href="{% url 'elecciones:mainpage' %}">Inicio</a></li>
+						<li><a class="nav_options" href="{% url 'elecciones:mainpage' %}">Inicio</a></li>
+						<li><a class="nav_options" href="{% url 'elecciones:analisisIA' %}">Análisis IA</a></li>
 						<li>
-							<a class="text-nav" href="#" data-uk-icon="chevron-down">Búsqueda</a>
+							<a class="nav_options" data-uk-icon="chevron-down">Búsqueda</a>
 							<div class="uk-navbar-dropdown">
 								<ul class="uk-nav uk-navbar-dropdown-nav">
 									<li>
-										<a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
+										<a style="font-size: 16px;" onclick="activar_candidatos(this.text)">Presidencial</a>
 									</li>
 									<li>
-										<a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Congresales</a>
+										<a style="font-size: 16px;" onclick="activar_candidatos(this.text)">Congresales</a>
 									</li>
 									<li>
-										<a class="text-nav" href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
+										<a style="font-size: 16px;" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
 									</li>
 									<li>
-										<a class="text-nav" href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
+										<a style="font-size: 16px;" onclick="activar_organizaciones(this.text)">Organización Política</a>
 									</li>
 								</ul>
 							</div>
@@ -89,14 +91,14 @@
 					<article id="content_graphics" class="uk-section uk-section-small uk-padding-remove-top uk-margin-medium-bottom">
 						<header>
 							<h2 class="uk-margin-remove-adjacent uk-text-bold uk-text-center uk-margin-small-bottom">
-								DATOS SOCIODEMOGRAFICOS
+								DATOS SOCIODEMOGRÁFICOS
 							</h2>
 					
 						</header>
 						<p class="paragraph"> </p>
 
 						<ul uk-accordion="multiple: true ">
-							<li>
+							<li class="uk-open">
 								<a class="uk-accordion-title uk-text-bold" href="#">Sexo</a>
 								<div class="uk-accordion-content uk-margin-medium-top">
 									<ul uk-tab>
@@ -213,13 +215,13 @@
 										Mire los candidatos de un determinado rango de edad del partido político que desee:
 									</h5>
 									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_tipo_candidato" data-grupo="edad-grupo" type="text" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
 										</select>
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_organizacion" data-grupo="edad-grupo" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -229,19 +231,19 @@
 											<option value="FRENTE POPULAR AGRICOLA FIA DEL PERU - FREPAP">FREPAP</option>
 											<option value="FUERZA POPULAR">Fuerza Popular</option>
 											<option value="JUNTOS POR EL PERU">Juntos Por el Perú</option>
-											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
+											<option value="PARTIDO POLITICO NACIONAL PERU LIBRE">Nacional Perú Libre</option>
 											<option value="PARTIDO MORADO">Partido Morado</option>
 											<option value="PARTIDO NACIONALISTA PERUANO">Partido Nacionalista Peruano</option>
-											<option value="PARTIDO POLITICO NACIONAL PERU LIBRE">Nacional Perú Libre</option>
-											<option value="PARTIDO POPULAR CRISTIANO - PPC">Partido Popular Cristiano</option>
 											<option value="PERU PATRIA SEGURA">Perú Patria Segura</option>
 											<option value="PODEMOS PERU">Podemos Perú</option>
+											<option value="PARTIDO POPULAR CRISTIANO - PPC">Partido Popular Cristiano</option>
 											<option value="RENACIMIENTO UNIDO NACIONAL">Renacimiento Unido Nacional</option>
 											<option value="RENOVACION POPULAR">Renovación Popular</option>
+											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
 										</select>
-										<select id="edad_select" class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
+										<select id="edad_select_edades" class="uk-select opt_select uk-margin-small-bottom" type="text" data-grupo="edad-grupo" name="organizacion" onchange=info_extra_info(this)>
 											<option value="default" disabled selected>Elegir Rango  de Edad</option>
 											<option value="18-29">18 a 29 años</option>
 											<option value="30-59">30 a 59</option>
@@ -386,13 +388,13 @@
 										Mire los candidatos que han tenido cargo políticos ordenados según la cantidad de mayor a menor  del partido político que desee:
 									</h5>
 									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_tipo_candidato" data-grupo="cargosprevios-grupo" type="text" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
 										</select>									
-										<select  class="uk-select opt_select uk-margin-small-bottom"  onchange=cambiar_organizacion(this)  type="text" name="organizacion">
+										<select  class="uk-select opt_select uk-margin-small-bottom select_organizacion" data-grupo="cargosprevios-grupo" onchange=cambiar_organizacion(this)  type="text" name="organizacion">
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -402,15 +404,15 @@
 											<option value="FRENTE POPULAR AGRICOLA FIA DEL PERU - FREPAP">FREPAP</option>
 											<option value="FUERZA POPULAR">Fuerza Popular</option>
 											<option value="JUNTOS POR EL PERU">Juntos Por el Perú</option>
-											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
+											<option value="PARTIDO POLITICO NACIONAL PERU LIBRE">Nacional Perú Libre</option>
 											<option value="PARTIDO MORADO">Partido Morado</option>
 											<option value="PARTIDO NACIONALISTA PERUANO">Partido Nacionalista Peruano</option>
-											<option value="PARTIDO POLITICO NACIONAL PERU LIBRE">Nacional Perú Libre</option>
-											<option value="PARTIDO POPULAR CRISTIANO - PPC">Partido Popular Cristiano</option>
 											<option value="PERU PATRIA SEGURA">Perú Patria Segura</option>
 											<option value="PODEMOS PERU">Podemos Perú</option>
+											<option value="PARTIDO POPULAR CRISTIANO - PPC">Partido Popular Cristiano</option>
 											<option value="RENACIMIENTO UNIDO NACIONAL">Renacimiento Unido Nacional</option>
 											<option value="RENOVACION POPULAR">Renovación Popular</option>
+											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
 										</select>
@@ -479,13 +481,13 @@
 										Mire los candidatos ordenados de mayor a menor por cantidad de renuncias de partidos polítos del partido político que desee: 
 									</h5>
 									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_tipo_candidato" data-grupo="renuncia-grupo" type="text" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
 										</select>									
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_organizacion" type="text" data-grupo="renuncia-grupo" name="organizacion" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -495,15 +497,15 @@
 											<option value="FRENTE POPULAR AGRICOLA FIA DEL PERU - FREPAP">FREPAP</option>
 											<option value="FUERZA POPULAR">Fuerza Popular</option>
 											<option value="JUNTOS POR EL PERU">Juntos Por el Perú</option>
-											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
+											<option value="PARTIDO POLITICO NACIONAL PERU LIBRE">Nacional Perú Libre</option>
 											<option value="PARTIDO MORADO">Partido Morado</option>
 											<option value="PARTIDO NACIONALISTA PERUANO">Partido Nacionalista Peruano</option>
-											<option value="PARTIDO POLITICO NACIONAL PERU LIBRE">Nacional Perú Libre</option>
-											<option value="PARTIDO POPULAR CRISTIANO - PPC">Partido Popular Cristiano</option>
 											<option value="PERU PATRIA SEGURA">Perú Patria Segura</option>
 											<option value="PODEMOS PERU">Podemos Perú</option>
+											<option value="PARTIDO POPULAR CRISTIANO - PPC">Partido Popular Cristiano</option>
 											<option value="RENACIMIENTO UNIDO NACIONAL">Renacimiento Unido Nacional</option>
 											<option value="RENOVACION POPULAR">Renovación Popular</option>
+											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
 										</select>									
@@ -597,13 +599,13 @@
 										Mire los candidatos ordenados de mayor a menor por cantidad de sentencias penales y por obligaciones del partido político que desee: 
 									</h5>
 									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_tipo_candidato" type="text" data-grupo="sentencias-grupo" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
 										</select>									
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_organizacion" type="text" data-grupo="sentencias-grupo" name="organizacion" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -613,15 +615,15 @@
 											<option value="FRENTE POPULAR AGRICOLA FIA DEL PERU - FREPAP">FREPAP</option>
 											<option value="FUERZA POPULAR">Fuerza Popular</option>
 											<option value="JUNTOS POR EL PERU">Juntos Por el Perú</option>
-											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
+											<option value="PARTIDO POLITICO NACIONAL PERU LIBRE">Nacional Perú Libre</option>
 											<option value="PARTIDO MORADO">Partido Morado</option>
 											<option value="PARTIDO NACIONALISTA PERUANO">Partido Nacionalista Peruano</option>
-											<option value="PARTIDO POLITICO NACIONAL PERU LIBRE">Nacional Perú Libre</option>
-											<option value="PARTIDO POPULAR CRISTIANO - PPC">Partido Popular Cristiano</option>
 											<option value="PERU PATRIA SEGURA">Perú Patria Segura</option>
 											<option value="PODEMOS PERU">Podemos Perú</option>
+											<option value="PARTIDO POPULAR CRISTIANO - PPC">Partido Popular Cristiano</option>
 											<option value="RENACIMIENTO UNIDO NACIONAL">Renacimiento Unido Nacional</option>
 											<option value="RENOVACION POPULAR">Renovación Popular</option>
+											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
 										</select>									
@@ -725,13 +727,13 @@
 										Mire los candidatos ordenados de mayor a menor por cantidad de ingresos del partido político que desee: 
 									</h5>
 									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_tipo_candidato" type="text" data-grupo="ingresos-grupo" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
 										</select>
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange="cambiar_organizacion(this)" name="organizacion")>
+										<select class="uk-select opt_select uk-margin-small-bottom select_organizacion" type="text"  data-grupo="ingresos-grupo" onchange="cambiar_organizacion(this)" name="organizacion")>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -741,15 +743,15 @@
 											<option value="FRENTE POPULAR AGRICOLA FIA DEL PERU - FREPAP">FREPAP</option>
 											<option value="FUERZA POPULAR">Fuerza Popular</option>
 											<option value="JUNTOS POR EL PERU">Juntos Por el Perú</option>
-											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
+											<option value="PARTIDO POLITICO NACIONAL PERU LIBRE">Nacional Perú Libre</option>
 											<option value="PARTIDO MORADO">Partido Morado</option>
 											<option value="PARTIDO NACIONALISTA PERUANO">Partido Nacionalista Peruano</option>
-											<option value="PARTIDO POLITICO NACIONAL PERU LIBRE">Nacional Perú Libre</option>
-											<option value="PARTIDO POPULAR CRISTIANO - PPC">Partido Popular Cristiano</option>
 											<option value="PERU PATRIA SEGURA">Perú Patria Segura</option>
 											<option value="PODEMOS PERU">Podemos Perú</option>
+											<option value="PARTIDO POPULAR CRISTIANO - PPC">Partido Popular Cristiano</option>
 											<option value="RENACIMIENTO UNIDO NACIONAL">Renacimiento Unido Nacional</option>
 											<option value="RENOVACION POPULAR">Renovación Popular</option>
+											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
 										</select>
@@ -822,13 +824,13 @@
 										Mire los candidatos ordenados de mayor a menor por cantidad de biene inmuebles del partido político que desee: 
 									</h5>
 									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_tipo_candidato" type="text" data-grupo="inmuebles-grupo" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
 										</select>
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_organizacion" type="text" data-grupo="inmuebles-grupo"  name="organizacion" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -838,15 +840,15 @@
 											<option value="FRENTE POPULAR AGRICOLA FIA DEL PERU - FREPAP">FREPAP</option>
 											<option value="FUERZA POPULAR">Fuerza Popular</option>
 											<option value="JUNTOS POR EL PERU">Juntos Por el Perú</option>
-											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
+											<option value="PARTIDO POLITICO NACIONAL PERU LIBRE">Nacional Perú Libre</option>
 											<option value="PARTIDO MORADO">Partido Morado</option>
 											<option value="PARTIDO NACIONALISTA PERUANO">Partido Nacionalista Peruano</option>
-											<option value="PARTIDO POLITICO NACIONAL PERU LIBRE">Nacional Perú Libre</option>
-											<option value="PARTIDO POPULAR CRISTIANO - PPC">Partido Popular Cristiano</option>
 											<option value="PERU PATRIA SEGURA">Perú Patria Segura</option>
 											<option value="PODEMOS PERU">Podemos Perú</option>
+											<option value="PARTIDO POPULAR CRISTIANO - PPC">Partido Popular Cristiano</option>
 											<option value="RENACIMIENTO UNIDO NACIONAL">Renacimiento Unido Nacional</option>
 											<option value="RENOVACION POPULAR">Renovación Popular</option>
+											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
 										</select>
@@ -922,13 +924,13 @@
 										Mire los candidatos ordenados de mayor a menor por cantidad de bienes muebles del partido político que desee: 
 									</h5>
 									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_tipo_candidato" type="text" data-grupo="muebles-grupo" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
 										</select>
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_organizacion" type="text" data-grupo="muebles-grupo" name="organizacion" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -938,15 +940,15 @@
 											<option value="FRENTE POPULAR AGRICOLA FIA DEL PERU - FREPAP">FREPAP</option>
 											<option value="FUERZA POPULAR">Fuerza Popular</option>
 											<option value="JUNTOS POR EL PERU">Juntos Por el Perú</option>
-											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
+											<option value="PARTIDO POLITICO NACIONAL PERU LIBRE">Nacional Perú Libre</option>
 											<option value="PARTIDO MORADO">Partido Morado</option>
 											<option value="PARTIDO NACIONALISTA PERUANO">Partido Nacionalista Peruano</option>
-											<option value="PARTIDO POLITICO NACIONAL PERU LIBRE">Nacional Perú Libre</option>
-											<option value="PARTIDO POPULAR CRISTIANO - PPC">Partido Popular Cristiano</option>
 											<option value="PERU PATRIA SEGURA">Perú Patria Segura</option>
 											<option value="PODEMOS PERU">Podemos Perú</option>
+											<option value="PARTIDO POPULAR CRISTIANO - PPC">Partido Popular Cristiano</option>
 											<option value="RENACIMIENTO UNIDO NACIONAL">Renacimiento Unido Nacional</option>
 											<option value="RENOVACION POPULAR">Renovación Popular</option>
+											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
 										</select>
@@ -1038,13 +1040,13 @@
 										Mire los candidatos según el nivel académico alcanzado del partido político que desee: 
 									</h5>
 									<div class="uk-width-1-2@s uk-width-1-1@xs uk-margin-auto">
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" onchange=tipo_candidato_select(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_tipo_candidato" type="text"  data-grupo="academico-grupo" onchange=tipo_candidato_select(this)>
 											<option value="default" disabled selected>Elegir Tipo de Candidato</option>
 											<option value="presidenciales">Presidenciales</option>
 											<option value="congresales">Congresales</option>
 											<option value="parlamento">Parlamento Andino</option>
 										</select>
-										<select class="uk-select opt_select uk-margin-small-bottom" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
+										<select class="uk-select opt_select uk-margin-small-bottom select_organizacion" type="text" data-grupo="academico-grupo" name="organizacion" onchange=cambiar_organizacion(this)>
 											<option value="default" disabled selected>Elegir Organización Política</option>
 											<option value="ACCION POPULAR">Acción Popular</option>
 											<option value="ALIANZA PARA EL PROGRESO">Alianza para el progreso</option>
@@ -1054,20 +1056,20 @@
 											<option value="FRENTE POPULAR AGRICOLA FIA DEL PERU - FREPAP">FREPAP</option>
 											<option value="FUERZA POPULAR">Fuerza Popular</option>
 											<option value="JUNTOS POR EL PERU">Juntos Por el Perú</option>
-											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
+											<option value="PARTIDO POLITICO NACIONAL PERU LIBRE">Nacional Perú Libre</option>
 											<option value="PARTIDO MORADO">Partido Morado</option>
 											<option value="PARTIDO NACIONALISTA PERUANO">Partido Nacionalista Peruano</option>
-											<option value="PARTIDO POLITICO NACIONAL PERU LIBRE">Nacional Perú Libre</option>
-											<option value="PARTIDO POPULAR CRISTIANO - PPC">Partido Popular Cristiano</option>
 											<option value="PERU PATRIA SEGURA">Perú Patria Segura</option>
 											<option value="PODEMOS PERU">Podemos Perú</option>
+											<option value="PARTIDO POPULAR CRISTIANO - PPC">Partido Popular Cristiano</option>
 											<option value="RENACIMIENTO UNIDO NACIONAL">Renacimiento Unido Nacional</option>
 											<option value="RENOVACION POPULAR">Renovación Popular</option>
+											<option value="PARTIDO DEMOCRATICO SOMOS PERU">Somos Perú</option>
 											<option value="UNION POR EL PERU">Unión por el Perú</option>
 											<option value="VICTORIA NACIONAL">Victoria Nacional</option>
 										</select>
 
-										<select id="academico_select" class="uk-select opt_select uk-margin-small-right" type="text" name="organizacion" onchange=cambiar_organizacion(this)>
+										<select id="academico_select_nivel" class="uk-select opt_select uk-margin-small-bottom" type="text"  data-grupo="academico-grupo"  name="organizacion" onchange=info_extra_info(this)>
 											<option value="default" disabled selected>Elegir Nivel Académico</option>
 											<option value="concluyo_primaria">Concluyó primaria</option>
 											<option value="concluyo_secundaria">Concluyó secundaria</option>
@@ -1088,33 +1090,6 @@
 					</article>
 
 				</div>
-
-				<!--
-
-				<div class="uk-tile uk-tile-small uk-tile-muted uk-border-rounded">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in.
-			</div>-->
-				<!--
-				<div class="uk-width-1-3@m">
-					
-					<h4 class="uk-heading-line uk-text-bold"><span>Archive</span></h4>
-					<ul class="uk-list">
-						<li><a href="">March</a></li>
-						<li><a href="">February</a></li>
-						<li><a href="">January</a></li>
-						<li><a href="">December <small>(2017)</small></a></li>
-						<li><a href="">November <small>(2017)</small></a></li>
-						<li><a href="">October <small>(2017)</small></a></li>
-						<li><a href="">September <small>(2017)</small></a></li>
-						<li><a href="">August <small>(2017)</small></a></li>
-					</ul>						
-				</div>
-				-->
-			
-
 			</div>
 		</div>
 	</div>
@@ -1122,7 +1097,7 @@
 	<!--FOOTER-->
 	<footer class="uk-section uk-section-small uk-section-muted">
 		<div class="uk-container">
-	><p class="uk-text-small uk-text-center">Copyright © Perú Informado 2021
+			<p class="uk-text-small uk-text-center">Copyright © Elegimos 2021</p>
 		</div>
 	</footer>
 	<!--/FOOTER-->
@@ -1131,22 +1106,38 @@
 		<div class="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide">
 			<button class="uk-offcanvas-close uk-close" type="button" data-uk-close></button>
 			<ul class="uk-nav uk-nav-default">
-				<li style="font-size: 21px; font-weight:500; color:#ffffff" class="uk-nav-header">Opciones</li>
+				<li style="font-size: 18px;color:#ffffff" class="uk-nav-header">Opciones</li>
 				<li>
-					<a style="font-size: 20px; font-weight:500; color:#ffffff" href="{% url 'elecciones:mainpage' %}">
+					<a style="font-size: 16px; color:#ffffff" href="{% url 'elecciones:mainpage' %}">
 						<span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
 						Inicio
-				</a>
-			</li>
+					</a>
+				</li>
 				<li>
-					<a style="font-size: 20px; font-weight:500; color:#ffffff" href="{% url 'elecciones:filter_function' %}">
+					<a style="font-size: 16px; color:#ffffff" href="{% url 'elecciones:analisisIA' %}">
+						<span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
+						Análisis IA
+					</a>
+				</li>
+				<li>
+					<a style="font-size: 16px; color:#ffffff">
 						<span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
 						Búsqueda
 					</a>
+					<li>
+						<a class="uk-margin-left color" style="font-size: 15px; color:#ffffff;" href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
+					</li>
+					<li>
+						<a class="uk-margin-left color" style="font-size: 15px; color:#ffffff;" href="#" onclick="activar_candidatos(this.text)">Congresales</a>
+					</li>
+					<li>
+						<a class="uk-margin-left color" style="font-size: 15px; color:#ffffff;" href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
+					</li>
+					<li>
+						<a class="uk-margin-left color"style="font-size: 15px; color:#ffffff;" href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
+					</li>
 				</li>
 			</ul>
-	><!--<h3>Title</h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-			-->
 		</div>
 	</div>
 	<!--/OFFCANVAS-->
@@ -1174,37 +1165,10 @@
 		flexFont();
 	};
 </script>
-<script src="{% static "js/tobusquedaurl.js"%}"></script>
 <script src="{% static "js/variables.js"%}"></script>
 <script src="{% static "js/jquery-2.1.3.min.js"%}"></script>
 <script src="{% static "js/graphics.js"%}"></script>
 <script src="{% static "js/loader.js"%}"></script>
 <script src="{% static "js/filter_options.js"%}"></script>
+<script src="{% static "js/tobusquedaurl.js"%}"></script>
 {% endblock %}
-<!--POR SI ACA-->
-										<!--<div class="uk-text-center" uk-grid>
-												<div >
-													<div class="uk-card uk-card-body uk-width-auto@m  uk-align-left">
-										
-														<div class="uk-width-1-3@m" uk-lightbox="animation: slide">
-														
-														<a class="uk-inline" href="{% static "images/graphic_images/all_gender.png" %}" width="200" height="200" alt="Alt text" class="lazy">
-															<img src="{% static "images/graphic_images/all_gender.png" %}" alt="">
-														</a>
-													
-														</div>
-													</div>
-												</div>
-												<div class= " uk-card uk-card-body uk-width-auto@m uk-align-right">
-													
-													<div class="uk-width-expand@m uk-lightbox="animation: slide">
-														
-														<a class="uk-inline" href="{% static "images/graphic_images/partido_gender.png" %}"  alt="Alt text" class="lazy">
-															<img src="{% static "images/graphic_images/partido_gender.png" %}" alt="">
-														</a>
-													
-														</div>
-												</div>
-							
-											</div>
-										-->
