@@ -1,4 +1,5 @@
 @import url("font-awesome/css/font-awesome.min.css");
+@import url("fonts.css");
 
 nav.nav-scroll {
   position: relative;
@@ -47,6 +48,10 @@ h1, h2, h3, h4, h5, h6, a, p, li, span, button {
 	opacity: 0.9;
 }
 
+a {
+	font-family: 'poppins-light';
+}
+
 p, li, a {
 	font-weight: 300;
 }
@@ -55,7 +60,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 .uk-logo > img {
-  height: 45px;
+  height: 30px;
 }
 #header.uk-sticky-below {
   box-shadow: 0 2px 14px 0 rgba(0,0,0,0.07);

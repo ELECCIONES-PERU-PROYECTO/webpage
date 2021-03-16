@@ -212,33 +212,36 @@
 		<div class="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide">
 			<button class="uk-offcanvas-close uk-close uk-icon" type="button" data-uk-close></button>
 			<ul class="uk-nav uk-nav-default">
-				<li class="">
-					<a class="uk-text-uppercase uk-nav-header nav_options uk-text-left" href="{% url 'elecciones:mainpage' %}">
-						Inicio
-					</a>
-				</li>
-				<li class="">
-					<a class="uk-text-uppercase uk-nav-header nav_options uk-text-left" href="{% url 'elecciones:analisisIA' %}">
+				<li style="font-size: 18px; color:#ffffff" class="uk-nav-header">Opciones</li>
+				<li>
+					<a style="font-size: 16px; color:#ffffff" href="{% url 'elecciones:analisisIA' %}">
+						<span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
 						Análisis IA
 					</a>
 				</li>
-				<li class="">
-					<a class="uk-text-uppercase uk-nav-header nav_options uk-text-left" href="{% url 'elecciones:analisisGraficos' %}">
+				<li>
+					<a style="font-size: 16px; color:#ffffff" href="{% url 'elecciones:analisisGraficos' %}">
+						<span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
 						Análisis de Datos
 					</a>
 				</li>
-				<li class="uk-text-uppercase uk-nav-header nav_options">Búsqueda</li>
 				<li>
-					<a href="#" onclick="activar_candidatos(this.text)">Presidencial</a>
-				</li>
-				<li>
-					<a href="#" onclick="activar_candidatos(this.text)">Congresales</a>
-				</li>
-				<li>
-					<a href="#" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
-				</li>
-				<li>
-					<a href="#" onclick="activar_organizaciones(this.text)">Organización Política</a>
+					<a style="font-size: 16px; color:#ffffff">
+						<span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
+						Búsqueda
+					</a>
+					<li>
+						<a class="uk-margin-medium-left" style="font-size: 15px; color:#ffffff;" onclick="activar_candidatos(this.text)">Presidencial</a>
+					</li>
+					<li>
+						<a class="uk-margin-medium-left" style="font-size: 15px; color:#ffffff;" onclick="activar_candidatos(this.text)">Congresales</a>
+					</li>
+					<li>
+						<a class="uk-margin-medium-left" style="font-size: 15px; color:#ffffff;" onclick="activar_candidatos(this.text)">Parlamento Andino</a>
+					</li>
+					<li>
+						<a class="uk-margin-medium-left" style="font-size: 15px; color:#ffffff;" onclick="activar_organizaciones(this.text)">Organización Política</a>
+					</li>
 				</li>
 			</ul>
 		</div>
