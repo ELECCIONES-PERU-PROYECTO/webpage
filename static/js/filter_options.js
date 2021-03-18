@@ -22,17 +22,54 @@ let Json_urls_orga = {
   "PERU PATRIA SEGURA"                             :  "https://votoinformado.jne.gob.pe/voto/Resources/imgs/logoop/55.JPG"
 }
 
+let Json_plan_gob = {
+  "ACCION POPULAR"                                 :  "https://pdfhost.io/v/rEIM3lEcH_Accin_PopularPDF.pdf",
+  "VICTORIA NACIONAL"                              :  "https://pdfhost.io/v/khjAx3mPQ_Victoria_NacionalPDF.pdf",
+  "AVANZA PAIS - PARTIDO DE INTEGRACION SOCIAL"    :  "https://pdfhost.io/v/~dtWUFRJf_Microsoft_Word_Anexo_5_Resumen_PDG_Avanza_Pais_221220docx.pdf",
+  "PARTIDO DEMOCRATICO SOMOS PERU"                 :  "https://pdfhost.io/v/or0LK3O~2_Partido_Democrtico.pdf",
+  "RENOVACION POPULAR"                             :  "https://pdfhost.io/v/AdNM57Nip_Renovacin_PopularPDF.pdf",
+  "PODEMOS PERU"                                   :  "https://pdfhost.io/v/Jw4HUlLvR_PodemosPDF.pdf",
+  "PARTIDO POLITICO NACIONAL PERU LIBRE"           :  "https://pdfhost.io/v/gHfVcdteX_Per_Libre_1PDF.pdf",
+  "UNION POR EL PERU"                              :  "https://pdfhost.io/v/iGf~SLhhy_Unin_por_el_PerPDF.pdf",
+  "PARTIDO POPULAR CRISTIANO - PPC"                :  "https://pdfhost.io/v/3nyJiYx.N_PPCPDF.pdf",
+  "RENACIMIENTO UNIDO NACIONAL"                    :  "https://pdfhost.io/v/WkYdaugpF_RUNAPDF.pdf",
+  "PERU PATRIA SEGURA"                             :  "https://pdfhost.io/v/KfrkVttzI_Per_Patria_SeguraPDF.pdf",
+  "PARTIDO NACIONALISTA PERUANO"                   :  "https://pdfhost.io/v/TDjeDnFZN_Partido_NacionalistaPDF.pdf",
+  "JUNTOS POR EL PERU"                             :  "https://pdfhost.io/v/0CzONkyG9_Juntos_por_el_PerPDF.pdf",
+  "EL FRENTE AMPLIO POR JUSTICIA, VIDA Y LIBERTAD" :  "https://pdfhost.io/v/cKMvQv3dU_Frente_AmplioPDF.pdf",
+  "PARTIDO MORADO"                                 :  "https://pdfhost.io/v/gfXzmadFC_Partido_MoradoPDF.pdf",
+  "FUERZA POPULAR"                                 :  "https://pdfhost.io/v/JeNXHhIs2_Fuerza_PopularPDF.pdf",
+  "ALIANZA PARA EL PROGRESO"                       :  "https://pdfhost.io/v/~tojb6ED7_Microsoft_Word_2020_12_21_PLAN_INTEGRAL_DE_GOBIERNO_APPdocx.pdf",
+  "DEMOCRACIA DIRECTA"                             :  "https://pdfhost.io/v/Na~QKu~5h_Democracia_DirectaPDF.pdf"
+  // "FRENTE POPULAR AGRICOLA FIA DEL PERU - FREPAP"  :  ""
+}
+
 
 function agregar_imagen_organizacion(){
   let divs_candidatos = document.getElementsByName("images-candidato")
   let div_name_orga = document.getElementsByName("orga_candidato_name")
-  for(let i = 0 ; i < div_name_orga.length ; i++){
+  for(let i = 0; i < div_name_orga.length; i++){
     let url = Json_urls_orga[div_name_orga[i].textContent]
-    var img = document.createElement("img");
+    let img = document.createElement("img");
     img.src = url
     img.width = "125"
     divs_candidatos[i].appendChild(img);
-    }
+  }
+}
+
+function ver_plan_gobierno() {
+  let div_plan_gob = document.getElementsByName("plan_gob")
+  let org_name = document.getElementsByName("org_name")
+  for(let i = 0; i < org_name.length; i++){
+    let url = Json_plan_gob[org_name[i].innerText]
+    let btn = document.createElement("a");
+    btn.text = "Plan de Gobierno"
+    btn.href = url
+    btn.target = "blank"
+    btn.className = "view_details_btn uk-text-center"
+    if(url)
+      div_plan_gob[i].appendChild(btn);
+  }
 }
 
 window.onload = function(){
@@ -55,12 +92,13 @@ window.onload = function(){
     activar_organizaciones()
   }
   agregar_imagen_organizacion();
+  ver_plan_gobierno();
 }
 
 function agregar_filtros_selecs(data){
   if(typeof badges !== "undefined")
     quitar_badges()
-    for(let i = 0 ;i < data.length ; i++){
+    for(let i = 0;i < data.length; i++){
       if (data[i] == "1"){
         agregar_badge("Nivel Académico")
       }

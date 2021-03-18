@@ -351,11 +351,3 @@ class AiTotal(models.Model):
 
   class Meta:
     db_table = 'ai_total'
-    
-class PlanesGobierno(models.Model):
-  organizacion_politica = models.CharField(max_length=200, primary_key=True,null=False,default='-')
-  url1 = models.CharField(max_length=200, default="-", editable = False) 
-  url2 = models.CharField(max_length=200, default="-", editable = False) 
-
-  class Meta:
-    db_table = 'planes_gobierno'

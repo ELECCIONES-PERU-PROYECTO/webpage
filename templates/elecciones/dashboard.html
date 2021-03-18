@@ -1124,7 +1124,7 @@
     </div> -->
     <!-- todos los candidatos -->
 
-    {% if organizaciones_return %}
+    {% if organizaciones %}
       <!-- SELECCTION -->
       <!-- <div class="uk-container uk-container-expand seleccion_container" style="padding-top: 3rem;">
         <h5 class="uk-margin-small-bottom">
@@ -1137,31 +1137,32 @@
       </div> -->
       <!--/SELECCTION-->
       <div class="uk-container uk-container-expand uk-margin-top uk-flex uk-flex-center uk-flex-column uk-flex-wrap" style="padding-top: 2.3rem; padding-bottom: 2.5rem;">
-        {% for organizacion in organizaciones_return %}
+        {% for organizacion in organizaciones %}
         <div class="uk-card uk-card-default card_results uk-card-body uk-flex-middle uk-width-1-2@xl uk-width-1-1@m uk-width-3-4@s uk-flex-center uk-margin-bottom uk-margin-auto" uk-grid>
           <div class="uk-text-center uk-padding-remove">
             <img src="{{ organizacion.url }}" width="155px" height="215px" alt="{{ organizacion.organizacion_politica }}">
           </div>
           <div class="uk-width-expand@m uk-padding-right uk-padding-small candidato-card">
-            <div class="uk-grid uk-grid-small uk-child-width-1-1@s uk-child-width-1-2@m uk-margin-remove" uk-grid>
+            <div class="uk-grid uk-grid-small uk-child-width-1-1@s uk-child-width-1-3@m uk-margin-remove" uk-grid>
               <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
                 <p class="uk-text-muted uk-margin-remove">Nombre de la organización</p>
-                {{ organizacion.organizacion_politica }}
+                <p name="org_name" class="uk-margin-remove">
+                  {{ organizacion.organizacion_politica }}
+                </p>
               </div>
               <div class="uk-text-small" style="margin: 0 0 0.5rem 0;">
                 {%  if organizacion.conteo %}
                   <p class="uk-text-muted uk-margin-remove">Cantidad de candidatos que cumplen con las opciones de búsqueda</p>
                   {{ organizacion.conteo }} candidatos
                 {% elif organizacion.monto %}
-                    <p class="uk-text-muted uk-margin-remove">Ingreso</p>
-                    {{ organizacion.monto }} soles
-                    {% else %}
-                      <p class="uk-text-muted uk-margin-remove">Ingreso</p>
-                      0 soles
+                  <p class="uk-text-muted uk-margin-remove">Ingreso</p>
+                  {{ organizacion.monto }} soles
+                {% else %}
+                  <p class="uk-text-muted uk-margin-remove">Ingreso</p>
+                  0 soles
                 {% endif %}
-                <!--
-                <p class="uk-text-muted uk-margin-remove">Cantidad de candidatos que cumplen con los opciones de búsqueda</p>
-                No presentan monto alguno en el año indicado--> 
+              </div>
+              <div name="plan_gob" class="uk-text-small uk-flex uk-flex-middle" style="margin: 0 0 0.5rem 0;">
               </div>
             </div>
           </div>
@@ -1214,7 +1215,7 @@
               </div>
               <div class="uk-text-small uk-flex uk-flex-middle" style="margin: 0 0 0.5rem 0;">
                 <a onclick="verHojadeVida(this)" 
-                  class="dni_id hoja_de_vida_btn" 
+                  class="dni_id view_details_btn" 
                   id="{{candidato.dni_candidato}}"
                   name="{{candidato.cargo_eleccion}}" 
                   style="width: fit-content; height: fit-content;">
