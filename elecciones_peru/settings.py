@@ -23,25 +23,26 @@ import sys
 
 mimetypes.add_type("text/css", ".css", True)
 
-# DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.getenv("DEBUG", "False") == "True"
-DEBUG = True
+DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
+
+# Connect to local database or remote
+DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "True") == "True"
 
 #ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1, localhost, elegimos.pe, nex.ieh.mybluehost.me, *").split(",")
 
 ALLOWED_HOSTS = ["*"]
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = os.getenv("CSRF_COOKIE_SECURE", "False") == "True"
 
-# SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = os.getenv("SESSION_COOKIE_SECURE", "False") == "True"
 
-# SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = os.getenv("SECURE_SSL_REDIRECT", "False") == "True"
 
 # Investigar
 # SECURE_HSTS_SECONDS = True
@@ -89,23 +90,25 @@ WSGI_APPLICATION = 'elecciones_peru.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-
-# DATABASES = {
-#    'default' : {
-#        'ENGINE' : 'django.db.backends.postgresql',
-#        'NAME' : 'elecciones_peru',
-#        'USER' : 'postgres',
-#        'PASSWORD' : 'pvta',
-#        'HOST' : 'localhost',
-#        'PORT' : 5432,
-#    }
-# }
-
-DATABASES = {
-   'default': dj_database_url.config(
-       default=config('DATABASE_URL')
-   )
-}
+if DEVELOPMENT_MODE is True:
+    DATABASES = {
+        'default' : {
+            'ENGINE' : 'django.db.backends.postgresql',
+            'NAME' : 'elecciones_peru',
+            'USER' : 'postgres',
+            'PASSWORD' : 'postgres',
+            'HOST' : 'localhost',
+            'PORT' : 5432,
+        }
+    }
+elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
+    if os.getenv("DATABASE_URL", None) is None:
+        raise Exception("DATABASE_URL environment variable not defined")
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=config('DATABASE_URL')
+        )
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
