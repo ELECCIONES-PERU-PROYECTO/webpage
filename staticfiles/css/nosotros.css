@@ -1,0 +1,87 @@
+@import url("fonts.css");
+
+.body{
+	font-family: 'Poppins', sans-serif;
+}
+
+ul.uk-navbar-nav li a.nav_options {
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.foto{
+    height: 330px;
+    max-width: 70%;
+    max-height: 90%;
+}
+
+.uk-box-shadow-xlarge {
+    box-shadow: 0 15px 52px rgb(0 0 0 / 30%);
+}
+
+h1, h2, h3, h4, h5, h6, a, p, li, span, button {
+	font-family: 'Poppins', sans-serif;
+	font-style: normal;
+	text-rendering: optimizeLegibility;
+	opacity: 0.9;
+}
+
+p, li, a {
+	font-weight: 300;
+}
+
+a {
+    font-family: 'poppins-light';
+}
+
+.grey-container {
+    background: rgb(235 235 235);
+}
+
+.black-container{
+	background: rgb(0 0 0);
+	color: rgb(255 255 255);
+}
+
+.uk-section-small {
+    padding-top: 30px;
+    padding-bottom: 0px;
+}
+
+.uk-section>:last-child {
+    padding-top: 60px;
+}
+
+.uk-container{
+    margin-left: 0px;
+    margin-right: 0px !important;
+    max-width: 6000px;
+}
+
+
+.uk-logo img {
+    height: 40px  !important;
+}
+
+.footer{
+    padding-top: 30px  !important;
+    padding-bottom: 30px;
+}
+
+.no-padding{
+    padding-top: 0px;
+}
+
+.div-image{
+    height: 250px;
+}
+
+.grey-contact{
+    padding-bottom: 30px;
+
+}
+
+.white{
+	color: rgb(255 255 255);
+}

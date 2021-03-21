@@ -1,0 +1,158 @@
+@import url("font-awesome/css/font-awesome.min.css");
+@import url("fonts.css");
+
+nav.nav-scroll {
+  position: relative;
+  z-index: 2;
+  height: 2rem;
+  box-sizing: border-box;
+  overflow-y: hidden;
+  padding: 1rem;
+  border-top: 1px solid rgba(0,0,0,0.075);
+  line-height: 1em;
+}
+
+nav.nav-scroll > ul {
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 1rem;
+}
+nav.nav-scroll > ul > li > a {
+  font-weight: 300;
+}
+
+.red-button{
+	color: #FFF;
+	background: #b62222;
+}
+
+ul.uk-navbar-nav li a.nav_options {
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.text-nav {
+	font-weight: 300;
+}
+.news-slide > li > .uk-card {
+  box-shadow: none;
+  border:  1px solid rgba(0,0,0,0.075);
+}
+
+h1, h2, h3, h4, h5, h6, a, p, li, span, button {
+	font-family: 'Poppins', sans-serif;
+	font-style: normal;
+	text-rendering: optimizeLegibility;
+	opacity: 0.9;
+}
+
+a {
+	font-family: 'poppins-light';
+}
+
+p, li, a {
+	font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+.uk-logo > img {
+  height: 30px;
+}
+#header.uk-sticky-below {
+  box-shadow: 0 2px 14px 0 rgba(0,0,0,0.07);
+}
+
+/*BLACK */
+.uk-overlay-primary {
+  /* background: rgb(0 0 0); */
+	background: rgba(0 0 0 0.5);
+}
+
+.uk-h3, h3 {
+  
+  text-align: center;
+}
+
+.square{
+counter-reset: list-counter;
+list-style: none;
+
+}
+.square li{
+margin: 1.5em 0; 
+font-family: 'Poppins', sans-serif;  
+}
+.square li:before{
+content: counter(list-counter);
+counter-increment: list-counter;
+width: 1em;
+height: 1em;
+padding: .5em;
+margin-right: 1em;
+border: .25em solid #ccc;
+background: #000;
+color: #fff;
+font-family: arial;
+font-weight: bold;
+text-align: center;
+display: inline-block;
+font-family: 'Poppins', sans-serif;  
+
+}
+.prueba{
+color: #000000;
+font-size:20px;
+font-weight: bolder;
+}
+
+.flexFont {
+height:8em;
+width:103%;
+background-color:#eeeeee;
+padding:1%;
+margin: 20px;
+}
+
+#go-top {
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+	z-index: 600;
+	display: none;
+}
+
+#go-top a {
+	text-decoration: none;
+	border: 0 none;
+	display: block;
+	height: 50px;
+	width: 50px;
+	line-height: 50px;
+	text-align: center;
+	background: #B62222;
+	color: #FFFFFF;
+	text-align: center;
+	text-transform: uppercase;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	border-radius: 50%;
+}
+#go-top a i {
+	font-size: 1.2rem;
+	line-height: inherit;
+}
+#go-top a:hover {
+	background: #000000;
+}
+
+.red-button{
+	background-color: rgb(182 34 34) !important;
+    border-radius: 4px;
+}
