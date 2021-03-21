@@ -683,6 +683,10 @@ def mainpage(request):
 def analisisGraficos(request):
   return render(request,'elecciones/graphics.html',{})
 
+
+def planesdegobierno(request):
+  return render(request,'elecciones/planesgobierno.html')
+
 def iaDisplay(request):
   if request.method == "GET":
     cargo_postula_list = request.GET.getlist('cargo_postula')    
