@@ -70,8 +70,6 @@
 	color: #ffffff;	
 }
 
-
-
 section[name="top_section"]{
 	padding-top: 30px !important;
 
@@ -135,6 +133,10 @@ strong, b {
 
 #white-text{
 	color: #ffffff;
+}
+
+.grey_section {
+	background: #ebebeb;
 }
 
 a[name="button_section"]{
