@@ -103,25 +103,220 @@
 		<!-- /TOP -->
 		<section class="uk-section grey_section">
 			<div class="uk-container">
-				<h2 id="countdown-title" class="uk-margin-small-top uk-margin-small-bottom uk-text-center">
-					Faltan
-				</h2>
-				<h2 class="uk-text-center uk-margin-small-top uk-margin-small-bottom" id="countdown" style="color: rgb(182 34 34); font-size: 23px"></h2>
-				<h2 id="countdown-footer" class="uk-margin-small-top uk-margin-small-bottom uk-text-center">
-					para las elecciones
-				</h2>
-			</div>
-			<div class="uk-container uk-margin-small-top uk-margin-small-bottom">
-				<hr class="uk-margin-auto" style="width: 40%; border-top: 1px solid #4a4a4a">
-			</div>
-			<div class="uk-container">
-				<h2 class="uk-margin-small-top uk-margin-small-bottom uk-text-center" style="font-size: 23px">
-				Conoce tu lugar de votación
-				</h2>
-				<a class="uk-button uk-button-small button-click-aqui uk-align-center uk-margin-small-top" href="https://www.consultamiembrodemesa.eleccionesgenerales2021.pe/#/" target="_blank" style="width: fit-content;">
-				Ver aquí
-				</a>
-			</div>
+				<div class="uk-child-width-1-2@m" uk-grid>
+					<div class=" uk-text-center uk-text-left@m">
+						<div class="uk-container">
+							<h2 id="countdown-title" class="uk-margin-small-top uk-margin-small-bottom uk-text-center">
+								Faltan
+							</h2>
+							<h2 class="uk-text-center uk-margin-small-top uk-margin-small-bottom" id="countdown" style="color: rgb(182 34 34); font-size: 23px"></h2>
+							<h2 id="countdown-footer" class="uk-margin-small-top uk-margin-small-bottom uk-text-center">
+								para las elecciones
+							</h2>
+						</div>
+						<div class="uk-container uk-margin-small-top uk-margin-small-bottom">
+							<hr class="uk-margin-auto" style="width: 40%; border-top: 1px solid #4a4a4a">
+						</div>
+						<div class="uk-container">
+							<h2 class="uk-margin-small-top uk-margin-small-bottom uk-text-center" style="font-size: 23px">
+							Conoce tu lugar de votación
+							</h2>
+							<a class="uk-button uk-button-small button-click-aqui uk-align-center uk-margin-small-top" href="https://www.consultamiembrodemesa.eleccionesgenerales2021.pe/#/" target="_blank" style="width: fit-content;">
+							Ver aquí
+							</a>
+						</div>
+					</div>
+					<div class="uk-flex-first uk-flex-last@m uk-width-1-2@s uk-margin-auto" data-uk-scrollspy="cls: uk-animation-fade">
+								<div class="uk-container uk-margin-auto">
+								  <h3 class="uk-text-center">Conoce tu horario de votación</h3>
+								  <div class="uk-margin-auto uk-width-1-2@s uk-width-1-1@xs">
+									<h5 class="uk-margin-small-bottom uk-margin-small-top">Último dígito de su DNI:</h5> 
+									<select class="uk-select opt_select uk-margin-small-right" onchange="onchange_horario(this)">
+									  <option value="default" disabled selected>Elegir último dígito de DNI</option>
+									  <option value="0">0</option>
+									  <option value="1">1</option>
+									  <option value="2">2</option>
+									  <option value="3">3</option>
+									  <option value="4">4</option>
+									  <option value="5">5</option>
+									  <option value="6">6</option>
+									  <option value="7">7</option>
+									  <option value="8">8</option>
+									  <option value="9">9</option>
+									</select>
+								  </div>
+								</div>
+							<a id="button_modal" class="uk-button uk-button-small button-click-aqui uk-align-center uk-margin-small-top" href="">
+								Ver aquí
+							</a>
+							<div id="modal-group-1" uk-modal>
+								<div class="uk-modal-dialog">
+									<button class="uk-modal-close-default" type="button" uk-close></button>
+									<div class="uk-modal-header">
+										<h2 class="uk-modal-title">Horario de Votación</h2>
+									</div>
+									<div class="uk-modal-body">
+										<p>modal-group-1.</p>
+									</div>
+									<div class="uk-modal-footer uk-text-right">
+										<button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+										<a href="#modal-group-2" class="uk-button uk-button-primary" uk-toggle>Next</a>
+									</div>
+								</div>
+							</div>
+							<div id="modal-group-2" uk-modal>
+								<div class="uk-modal-dialog">
+									<button class="uk-modal-close-default" type="button" uk-close></button>
+									<div class="uk-modal-header">
+										<h2 class="uk-modal-title">Horario de Votación</h2>
+									</div>
+									<div class="uk-modal-body">
+										<p>modal-group-2.</p>
+									</div>
+									<div class="uk-modal-footer uk-text-right">
+										<button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+										<a href="#modal-group-3" class="uk-button uk-button-primary" uk-toggle>Next</a>
+									</div>
+								</div>
+							</div>
+							<div id="modal-group-3" uk-modal>
+								<div class="uk-modal-dialog">
+									<button class="uk-modal-close-default" type="button" uk-close></button>
+									<div class="uk-modal-header">
+										<h2 class="uk-modal-title">Horario de Votación</h2>
+									</div>
+									<div class="uk-modal-body">
+										<p>modal-group-3</p>
+									</div>
+									<div class="uk-modal-footer uk-text-right">
+										<button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+										<a href="#modal-group-4" class="uk-button uk-button-primary" uk-toggle>Next</a>
+									</div>
+								</div>
+							</div>
+							<div id="modal-group-4" uk-modal>
+								<div class="uk-modal-dialog">
+									<button class="uk-modal-close-default" type="button" uk-close></button>
+									<div class="uk-modal-header">
+										<h2 class="uk-modal-title">Horario de Votación</h2>
+									</div>
+									<div class="uk-modal-body">
+										<p>modal-group-4</p>
+									</div>
+									<div class="uk-modal-footer uk-text-right">
+										<button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+										<a href="#modal-group-5" class="uk-button uk-button-primary" uk-toggle>Next</a>
+									</div>
+								</div>
+							</div>
+							<div id="modal-group-5" uk-modal>
+								<div class="uk-modal-dialog">
+									<button class="uk-modal-close-default" type="button" uk-close></button>
+									<div class="uk-modal-header">
+										<h2 class="uk-modal-title">Horario de Votación</h2>
+									</div>
+									<div class="uk-modal-body">
+										<p>modal-group-5</p>
+									</div>
+									<div class="uk-modal-footer uk-text-right">
+										<button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+										<a href="#modal-group-6" class="uk-button uk-button-primary" uk-toggle>Next</a>
+									</div>
+								</div>
+							</div>
+							<div id="modal-group-6" uk-modal>
+								<div class="uk-modal-dialog">
+									<button class="uk-modal-close-default" type="button" uk-close></button>
+									<div class="uk-modal-header">
+										<h2 class="uk-modal-title">Horario de Votación</h2>
+									</div>
+									<div class="uk-modal-body">
+										<p>modal-group-6</p>
+									</div>
+									<div class="uk-modal-footer uk-text-right">
+										<button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+										<a href="#modal-group-7" class="uk-button uk-button-primary" uk-toggle>Next</a>
+									</div>
+								</div>
+							</div>
+							<div id="modal-group-7" uk-modal>
+								<div class="uk-modal-dialog">
+									<button class="uk-modal-close-default" type="button" uk-close></button>
+									<div class="uk-modal-header">
+										<h2 class="uk-modal-title">Horario de Votación</h2>
+									</div>
+									<div class="uk-modal-body">
+										<p>modal-group-7</p>
+									</div>
+									<div class="uk-modal-footer uk-text-right">
+										<button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+										<a href="#modal-group-8" class="uk-button uk-button-primary" uk-toggle>Next</a>
+									</div>
+								</div>
+							</div>
+							<div id="modal-group-8" uk-modal>
+								<div class="uk-modal-dialog">
+									<button class="uk-modal-close-default" type="button" uk-close></button>
+									<div class="uk-modal-header">
+										<h2 class="uk-modal-title">Horario de Votación</h2>
+									</div>
+									<div class="uk-modal-body">
+										<p>modal-group-8.</p>
+									</div>
+									<div class="uk-modal-footer uk-text-right">
+										<button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+										<a href="#modal-group-9" class="uk-button uk-button-primary" uk-toggle>Next</a>
+									</div>
+								</div>
+							</div>
+							<div id="modal-group-9" uk-modal>
+								<div class="uk-modal-dialog">
+									<button class="uk-modal-close-default" type="button" uk-close></button>
+									<div class="uk-modal-header">
+										<h2 class="uk-modal-title">Horario de Votación</h2>
+									</div>
+									<div class="uk-modal-body">
+										<p>modal-group-9</p>
+									</div>
+									<div class="uk-modal-footer uk-text-right">
+										<button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+										<a href="#modal-group-10" class="uk-button uk-button-primary" uk-toggle>Next</a>
+									</div>
+								</div>
+							</div>
+							<div id="modal-group-10" uk-modal>
+								<div class="uk-modal-dialog">
+									<button class="uk-modal-close-default" type="button" uk-close></button>
+									<div class="uk-modal-header">
+										<h2 class="uk-modal-title">Horario de Votación</h2>
+									</div>
+									<div class="uk-modal-body">
+										<p>modal-group-10</p>
+									</div>
+									<div class="uk-modal-footer uk-text-right">
+										<button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+										<a href="#modal-group-11" class="uk-button uk-button-primary" uk-toggle>Next</a>
+									</div>
+								</div>
+							</div>
+							<div id="modal-group-11" uk-modal>
+								<div class="uk-modal-dialog">
+									<button class="uk-modal-close-default" type="button" uk-close></button>
+									<div class="uk-modal-header">
+										<h2 class="uk-modal-title">Horario de Votación</h2>
+									</div>
+									<div class="uk-modal-body">
+										<p>modal-group-11.</p>
+									</div>
+									<div class="uk-modal-footer uk-text-right">
+										<button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+										<a href="#modal-group-1" class="uk-button uk-button-primary" uk-toggle>Next</a>
+									</div>
+								</div>
+							</div>		
+					</div>
+				</div>
+			</div>	
 		</section>
 		<section id="first" class="uk-section uk-section-large">
 			<div class="uk-container">
@@ -423,6 +618,7 @@
 	<script src="{% static "js/loader.js"%}"></script>
 	<script src="{% static "js/filter_options.js"%}"></script>
 	<script src="{% static "js/countdown.js"%}"></script>
+	<script src="{% static "js/schedule.js"%}"></script>
 	<script>
 		let functionforscroll = function(id){
 			let reqId = "#"+id;

@@ -94,9 +94,9 @@ if DEVELOPMENT_MODE is True:
     DATABASES = {
         'default' : {
             'ENGINE' : 'django.db.backends.postgresql',
-            'NAME' : 'elecciones_peru',
+            'NAME' : 'proyecto_elecciones',
             'USER' : 'postgres',
-            'PASSWORD' : 'pvta',
+            'PASSWORD' : '1234567',
             'HOST' : 'localhost',
             'PORT' : 5432,
         }
