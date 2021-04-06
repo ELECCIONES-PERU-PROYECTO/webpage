@@ -23,15 +23,16 @@ import sys
 
 mimetypes.add_type("text/css", ".css", True)
 
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
+# DEBUG = True
 
 # Connect to local database or remote
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "True") == "True"
+# DEVELOPMENT_MODE = True
 
 #ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1, localhost, elegimos.pe, nex.ieh.mybluehost.me, *").split(",")
 
@@ -94,9 +95,9 @@ if DEVELOPMENT_MODE is True:
     DATABASES = {
         'default' : {
             'ENGINE' : 'django.db.backends.postgresql',
-            'NAME' : 'proyecto_elecciones',
+            'NAME' : 'elecciones_peru',
             'USER' : 'postgres',
-            'PASSWORD' : '1234567',
+            'PASSWORD' : 'pvta',
             'HOST' : 'localhost',
             'PORT' : 5432,
         }
