@@ -103,25 +103,64 @@
 		<!-- /TOP -->
 		<section class="uk-section grey_section">
 			<div class="uk-container">
-				<h2 id="countdown-title" class="uk-margin-small-top uk-margin-small-bottom uk-text-center">
-					Faltan
-				</h2>
-				<h2 class="uk-text-center uk-margin-small-top uk-margin-small-bottom" id="countdown" style="color: rgb(182 34 34); font-size: 23px"></h2>
-				<h2 id="countdown-footer" class="uk-margin-small-top uk-margin-small-bottom uk-text-center">
-					para las elecciones
-				</h2>
-			</div>
-			<div class="uk-container uk-margin-small-top uk-margin-small-bottom">
-				<hr class="uk-margin-auto" style="width: 40%; border-top: 1px solid #4a4a4a">
-			</div>
-			<div class="uk-container">
-				<h2 class="uk-margin-small-top uk-margin-small-bottom uk-text-center" style="font-size: 23px">
-				Conoce tu lugar de votación
-				</h2>
-				<a class="uk-button uk-button-small button-click-aqui uk-align-center uk-margin-small-top" href="https://www.consultamiembrodemesa.eleccionesgenerales2021.pe/#/" target="_blank" style="width: fit-content;">
-				Ver aquí
-				</a>
-			</div>
+				<div class="uk-child-width-1-2@m" uk-grid>
+					<div class=" uk-text-center uk-text-left@m">
+						<div class="uk-container">
+							<h2 id="countdown-title" class="uk-margin-small-top uk-margin-small-bottom uk-text-center" style="font-size: 23px">
+								Faltan
+							</h2>
+							<h2 class="uk-text-center uk-margin-small-top uk-margin-small-bottom" id="countdown" style="color: rgb(182 34 34); font-size: 23px"></h2>
+							<h2 id="countdown-footer" class="uk-margin-small-top uk-margin-small-bottom uk-text-center" style="font-size: 23px">
+								para las elecciones
+							</h2>
+						</div>
+						<div class="uk-container uk-margin-small-top uk-margin-small-bottom">
+							<hr class="uk-margin-auto" style="width: 40%; border-top: 1px solid #4a4a4a">
+						</div>
+						<div class="uk-container">
+							<h2 class="uk-margin-small-top uk-margin-small-bottom uk-text-center" style="font-size: 23px">
+							Conoce tu lugar de votación
+							</h2>
+							<a class="uk-button uk-button-small button-click-aqui uk-align-center uk-margin-small-top" href="https://www.consultamiembrodemesa.eleccionesgenerales2021.pe/#/" target="_blank" style="width: fit-content;">
+							Ver aquí
+							</a>
+						</div>
+					</div>
+					<div class="uk-flex uk-flex-column uk-width-1-2@s uk-margin-auto" style="align-self: center;" data-uk-scrollspy="cls: uk-animation-fade">
+							<div class="uk-container uk-margin-auto">
+								<h3 class="uk-text-center uk-margin-small-bottom">Conoce tu horario de votación</h3>
+								<div class="uk-margin-auto uk-width-3-4">
+								<h5 class="uk-margin-small-bottom uk-margin-small-top">Último dígito de su DNI:</h5> 
+								<select class="uk-select opt_select uk-margin-small-right" onchange="onchange_horario(this)">
+									<option value="default" disabled selected>Elegir último dígito de DNI</option>
+									<option value="10"></option>
+									<option value="0">0</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+								</select>
+								</div>
+							</div>
+						<a href="#modal_schedule" uk-toggle class="uk-button uk-button-small button-click-aqui uk-align-center uk-margin-small-top uk-margin-remove-bottom">Ver aquí</a>
+						<div class="uk-container uk-margin-auto uk-padding">
+							<p class="uk-text-center uk-margin-small-bottom">Adulto mayor, mujer embarazada o persona con discapacidad o de riesgo el horario preferente es de 7:00 a. m. a 9:00 a. m.</p>
+						</div>
+						<div id="modal_schedule" uk-modal>
+							<div class="uk-modal-dialog uk-modal-body">
+								<button class="uk-modal-close-default" type="button" uk-close></button>
+								<h4 class="uk-modal-title">Tu horario de votación es de:</h4>
+								<p id="schedule">1:00 - 2:00</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>	
 		</section>
 		<section id="first" class="uk-section uk-section-large">
 			<div class="uk-container">
@@ -203,7 +242,6 @@
 						<div class="uk-grid uk-child-width-1-2@m uk-flex-middle" data-uk-grid data-uk-scrollspy="target: > div; cls: uk-animation-slide-left-medium">
 							<div class="uk-text-center">
 								<img class="uk-width-1-2@s uk-width-1-1@m" src="{% static "images/par_andino.png" %}"  alt="" data-uk-img>
-
 							</div>
 							<div data-uk-scrollspy-class="uk-animation-slide-right-medium uk-text-center uk-text-left@m">
 								<h2 class="uk-margin-small-top ">Candidatos al Parlamento Andino elecciones 2021</h2>
@@ -394,6 +432,7 @@
 							<span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span>
 							Búsqueda
 						</a>
+					</li>
 						<li>
 							<a class="uk-margin-medium-left" style="font-size: 15px; color:#ffffff;" onclick="activar_candidatos(this.text)">Presidencial</a>
 						</li>
@@ -406,7 +445,6 @@
 						<li>
 							<a class="uk-margin-medium-left" style="font-size: 15px; color:#ffffff;" onclick="activar_organizaciones(this.text)">Organización Política</a>
 						</li>
-					</li>
 				</ul>
 			</div>
 		</div>
@@ -423,6 +461,7 @@
 	<script src="{% static "js/loader.js"%}"></script>
 	<script src="{% static "js/filter_options.js"%}"></script>
 	<script src="{% static "js/countdown.js"%}"></script>
+	<script src="{% static "js/schedule.js"%}"></script>
 	<script>
 		let functionforscroll = function(id){
 			let reqId = "#"+id;
