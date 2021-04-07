@@ -14,7 +14,7 @@ let x = setInterval(function() {
   let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     
   // Output the result in an element with id="demo"
-  document.getElementById("countdown").innerHTML = (days != 0 ? days + (days == 1 ? " día" :  " días") + " y " + hours + (hours == 1 ? " hora" :  " horas") : hours + (hours == 1 ? " hora" :  " horas"))
+  document.getElementById("countdown").innerHTML = (days != 0 ? days + (days == 1 ? " día" :  " días") + (hours != 0 ?  " y " + hours + (hours == 1 ? " hora" :  " horas") : "") : hours + (hours == 1 ? " hora" :  " horas"))
     
   // If the count down is over, write some text 
   if (distance < 0) {
