@@ -29,9 +29,10 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
-
+# DEBUG = True
 # Connect to local database or remote
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "True") == "True"
+# DEVELOPMENT_MODE = True
 
 #ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1, localhost, elegimos.pe, nex.ieh.mybluehost.me, *").split(",")
 
