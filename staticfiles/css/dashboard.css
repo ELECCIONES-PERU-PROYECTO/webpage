@@ -177,7 +177,7 @@ a#video_explanation {
 	color: #fff;
 	font-size: 18px;
 }
-##left-col ul.uk-nav.uk-nav-default > li.uk-parent > a.aside_options:hover, #left-col ul.uk-nav-default > li.uk-open > a  {
+#left-col ul.uk-nav.uk-nav-default > li.uk-parent > a.aside_options:hover, #left-col ul.uk-nav-default > li.uk-open > a  {
 	border-left: 2px solid #fff;
 	padding-left: 30px;
 	color: #fff;
