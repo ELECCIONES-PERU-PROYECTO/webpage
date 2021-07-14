@@ -1,7 +1,7 @@
 # Elegimos
 
 ###### 
-It is a website with information on the candidates of the 2021 Peruvian elections.
+Elegimos is a website with information about the candidates of the 2021 Peruvian elections.
 
 In Elegimos webpage you can find a filter tool which you can apply as many filters as you want to the presidential and congressional candidates.
 There are two types of filters, the ones that limit your candidates, such as if they were born in a certain Peruvian city or not, if they had any police records, maybe if they are in a certain age range and more, and, there are filters that order your results, such as anual income, properties and so on.
