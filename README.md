@@ -47,9 +47,15 @@ Dependencias
 2. Run this command
     `python3 manage.py collectstatic`
 
+EXTRA:
+![image](https://user-images.githubusercontent.com/40151035/125702990-9c4603c4-7e67-4cc4-9a24-352d5dfd1d23.png)
+![image](https://user-images.githubusercontent.com/40151035/125703046-8573d932-fa8f-4b5b-8f7e-47bc9b1c8f6f.png)
+
+
+
 ###### Made with :heart: by
 
 [@mistyblunch]( https://github.com/gracenikole)
 [@alexandra](https://github.com/Alexandra-SR)
-[@Miunmn](https://github.com/Miunmn)
+[@Miunmn](https://github.com/Miunmn) 
 [@Roosevelt](https://github.com/rubaldoch)
