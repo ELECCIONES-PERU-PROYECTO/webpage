@@ -19,6 +19,9 @@ There is another really important feature which is our statistics webpage view t
 ![image](https://user-images.githubusercontent.com/40151035/125702123-4cef96dd-52d8-474a-af62-26a4edca5a7d.png)
 
 
+The last but not least feature is our AI analysis applied to all the candidates to determine the proportion of emotions shown on the face. 
+![image](https://user-images.githubusercontent.com/40151035/125702644-a5f6dc24-414f-419d-8213-f9ceba346e24.png)
+
 ### Guía de instalación
 
 Dependencias
