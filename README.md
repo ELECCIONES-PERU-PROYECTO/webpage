@@ -13,6 +13,12 @@ There are two types of filters, the ones that limit your candidates, such as if 
 ![image](https://user-images.githubusercontent.com/40151035/125700912-25bd2b00-6627-4b74-9390-057fee153c79.png)
 
 
+There is another really important feature which is our statistics webpage view that includes many statistical graphics about all the Peruvian political parties.
+![image](https://user-images.githubusercontent.com/40151035/125702057-67212b90-465c-4d82-93cd-d519b2ffb2e2.png)
+![image](https://user-images.githubusercontent.com/40151035/125702079-ee3e4e62-7300-4601-9fd6-a2ad0ad98f55.png)
+![image](https://user-images.githubusercontent.com/40151035/125702123-4cef96dd-52d8-474a-af62-26a4edca5a7d.png)
+
+
 ### Guía de instalación
 
 Dependencias
